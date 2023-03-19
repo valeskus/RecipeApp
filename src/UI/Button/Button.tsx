@@ -6,6 +6,8 @@ import {
   TouchableHighlight,
   View,
 } from 'react-native';
+import {Colors} from '../Colors';
+import {Icons} from '../Icons';
 
 export type Props = {
   icon: ImageSourcePropType;
@@ -19,10 +21,7 @@ export function Button({icon, onPress, active}: Props): JSX.Element {
       <View style={styles.button}>
         <Image source={icon} style={styles.buttonImage} />
         {active ? (
-          <Image
-            source={require('../../../assets/active.png')}
-            style={styles.buttonActive}
-          />
+          <Image source={Icons.active} style={styles.buttonActive} />
         ) : null}
       </View>
     </TouchableHighlight>
@@ -30,17 +29,17 @@ export function Button({icon, onPress, active}: Props): JSX.Element {
 }
 const styles = StyleSheet.create({
   buttonImage: {
-    width: 50,
-    height: 50,
+    width: 25,
+    height: 25,
     alignSelf: 'center',
   },
   button: {
     padding: 20,
     borderRadius: 50,
-    width: 100,
-    height: 100,
-    backgroundColor: 'white',
-    shadowColor: 'rgba(148,146,171,1)',
+    width: 50,
+    height: 50,
+    backgroundColor: Colors.background,
+    shadowColor: Colors.shadow,
     shadowOpacity: 0.5,
     shadowRadius: 5,
     shadowOffset: {width: 0, height: 0},
@@ -48,8 +47,8 @@ const styles = StyleSheet.create({
     position: 'relative',
   },
   buttonActive: {
-    width: 130,
-    height: 130,
+    width: 50,
+    height: 50,
     alignSelf: 'center',
     position: 'absolute',
   },
