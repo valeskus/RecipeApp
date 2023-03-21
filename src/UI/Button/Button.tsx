@@ -1,40 +1,57 @@
 import React from 'react';
 import {
   Image,
-  ImageSourcePropType,
   StyleSheet,
-  TouchableHighlight,
-  View,
+  Pressable,
+  StyleProp,
+  ViewStyle,
+  ImageStyle,
 } from 'react-native';
 import {Colors} from '../Colors';
 import {Icons} from '../Icons';
 
 export type Props = {
-  icon: ImageSourcePropType;
-  onPress: () => {};
+  icon: keyof typeof Icons;
+  onPress: () => void;
   active?: boolean;
+  pressableStyle?: StyleProp<ViewStyle>;
+  iconStyle?: StyleProp<ImageStyle>;
+  iconActiveStyle?: StyleProp<ImageStyle>;
 };
 
-export function Button({icon, onPress, active}: Props): JSX.Element {
+export function Button({
+  icon,
+  onPress,
+  active,
+  pressableStyle,
+  iconStyle,
+  iconActiveStyle,
+}: Props): JSX.Element {
   return (
-    <TouchableHighlight onPress={onPress}>
-      <View style={styles.button}>
-        <Image source={icon} style={styles.buttonImage} />
-        {active ? (
-          <Image source={Icons.active} style={styles.buttonActive} />
-        ) : null}
-      </View>
-    </TouchableHighlight>
+    <Pressable
+      onPress={onPress}
+      style={({pressed}) => [
+        styles.button,
+        pressed && styles.buttonPressed,
+        pressableStyle,
+      ]}>
+      <Image source={Icons[icon]} style={[styles.buttonImage, iconStyle]} />
+      {active && (
+        <Image
+          source={Icons.active}
+          style={[styles.buttonActive, iconActiveStyle]}
+        />
+      )}
+    </Pressable>
   );
 }
 const styles = StyleSheet.create({
   buttonImage: {
-    width: 25,
-    height: 25,
+    width: '50%',
+    height: '50%',
     alignSelf: 'center',
   },
   button: {
-    padding: 20,
     borderRadius: 50,
     width: 50,
     height: 50,
@@ -47,9 +64,12 @@ const styles = StyleSheet.create({
     position: 'relative',
   },
   buttonActive: {
-    width: 50,
-    height: 50,
+    width: '100%',
+    height: '100%',
     alignSelf: 'center',
     position: 'absolute',
+  },
+  buttonPressed: {
+    transform: [{scale: 0.9}],
   },
 });

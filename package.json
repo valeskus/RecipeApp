@@ -7,14 +7,18 @@
     "ios": "react-native run-ios",
     "lint": "eslint .",
     "start": "react-native start",
+    "start:reset-cache": "yarn start --reset-cache",
+    "start:playground": "APP_ENV=playground react-native start",
+    "start:playground:reset-cache": "yarn start:playground --reset-cache",
     "test": "jest",
-     "android:reverse-adb": "adb reverse tcp:8081 tcp:8081",
+    "android:reverse-adb": "adb reverse tcp:8081 tcp:8081",
     "android:open-dev-menu": "adb shell input keyevent 82",
     "install:pods": "cd ios && bundle exec pod install"
   },
   "dependencies": {
     "react": "18.2.0",
-    "react-native": "0.71.4"
+    "react-native": "0.71.4",
+    "react-native-dotenv": "^3.4.8"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",

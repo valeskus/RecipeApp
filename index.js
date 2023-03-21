@@ -1,9 +1,11 @@
-/**
- * @format
- */
-
 import {AppRegistry} from 'react-native';
 import App from './App';
 import {name as appName} from './app.json';
+import {PLAYGROUND} from '@env';
+import {Playground} from './src/UI/Playground';
 
-AppRegistry.registerComponent(appName, () => App);
+if (PLAYGROUND === 'true') {
+  AppRegistry.registerComponent(appName, () => Playground);
+} else {
+  AppRegistry.registerComponent(appName, () => App);
+}
