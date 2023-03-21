@@ -2,6 +2,7 @@ import * as React from 'react';
 import {SafeAreaView, StyleSheet} from 'react-native';
 import {Button} from '../Button';
 import {CategoryCard} from '../CategoryCard';
+import {ProductCardGrid} from '../Product Card/ProductCardGrid';
 
 export const Playground: React.FC<{}> = () => {
   return (
@@ -10,7 +11,7 @@ export const Playground: React.FC<{}> = () => {
       <Button icon="carbs" onPress={() => {}} />
       <Button icon="menu" onPress={() => {}} active={true} />
       <CategoryCard title="Breacfast" onPress={() => {}} />
-      <CategoryCard title="Lunch" onPress={() => {}} />
+      <ProductCardGrid title="Nazvanie" onPress={() => {}} />
     </SafeAreaView>
   );
 };
