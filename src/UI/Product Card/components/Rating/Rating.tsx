@@ -1,19 +1,20 @@
 import React from 'react';
 import {Image, StyleSheet, View} from 'react-native';
-import {Icons} from '../../../Icons';
+import {Colors} from '../../../Colors';
 
 export type Props = {
   rating: number;
 };
-
 export function Rating({rating}: Props): JSX.Element {
+  const colorWidth = rating * 20;
+
   return (
     <View style={styles.productCardRaitingContainer}>
       <Image
         source={require('../../../../../assets/rating.png')}
         style={styles.productCardRaitingItem}
       />
-      <View style={styles.raitingWraper} />
+      <View style={[styles.raitingWraper, {width: colorWidth}]} />
     </View>
   );
 }
@@ -25,15 +26,14 @@ const styles = StyleSheet.create({
     zIndex: 10,
   },
   productCardRaitingContainer: {
-    width: '70%',
+    width: 100,
     flexDirection: 'row',
     marginBottom: 3,
-    backgroundColor: 'red',
+    backgroundColor: Colors.tertiary,
     position: 'relative',
   },
   raitingWraper: {
-    width: '100%',
     height: 20,
-    backgroundColor: 'red',
+    backgroundColor: Colors.rating,
   },
 });

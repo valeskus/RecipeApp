@@ -42,7 +42,7 @@ export function ProductCardGrid({
       />
       <View style={styles.productCardDetails}>
         <Text style={styles.productCardTitle}>{title}</Text>
-        <Rating rating={5} />
+        <Rating rating={2} />
         <Text style={styles.productCardDetailsItem}>Kcal: {calories}</Text>
         <Text style={styles.productCardDetailsItem}>Time: {time}</Text>
       </View>

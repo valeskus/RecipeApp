@@ -7,4 +7,5 @@ export const Colors = {
   border: '#8F8E8E',
   shadow: '#9492AB',
   text: '#4B4B4D',
+  rating: '#FFCC00',
 };

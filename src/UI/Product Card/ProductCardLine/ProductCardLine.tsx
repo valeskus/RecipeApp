@@ -6,19 +6,25 @@ import {
   StyleProp,
   ViewStyle,
   Text,
+  View,
 } from 'react-native';
 import {Colors} from '../../Colors';
+import {Rating} from '../components/Rating';
 
 export type Props = {
-  //   icon: keyof typeof Icons;
+  //   image: keyof typeof Image;
   title: string;
+  calories: string;
+  time: string;
   onPress: () => void;
   pressableStyle?: StyleProp<ViewStyle>;
 };
 
 export function ProductCardLine({
-  //   icon,
+  //   image,
   title,
+  calories,
+  time,
   onPress,
   pressableStyle,
 }: Props): JSX.Element {
@@ -26,46 +32,66 @@ export function ProductCardLine({
     <Pressable
       onPress={onPress}
       style={({pressed}) => [
-        styles.categoryContainer,
+        styles.productGridContainer,
         pressed && styles.cardPressed,
         pressableStyle,
       ]}>
       <Image
-        source={require('../../../assets/zopa.jpg')}
+        source={require('../../../../assets/zopa.jpg')}
         style={styles.categoryCardImage}
       />
-      <Text style={styles.categoryCardTitle}>{title}</Text>
+      <View style={styles.productCardDetails}>
+        <Text style={styles.productCardTitle}>{title}</Text>
+        <Rating rating={5} />
+        <View style={styles.productCardLineItem}>
+          <Text style={styles.productCardLineDetailsItem}>
+            Kcal: {calories}
+          </Text>
+          <Text style={styles.productCardLineDetailsItem}>Time: {time}</Text>
+        </View>
+      </View>
     </Pressable>
   );
 }
 const styles = StyleSheet.create({
-  categoryCardImage: {
-    width: '100%',
-    flex: 4,
-    alignSelf: 'center',
+  productGridContainer: {
     borderRadius: 20,
-  },
-  categoryContainer: {
-    borderRadius: 20,
-    width: 170,
-    height: 170,
+    width: 350,
+    height: 120,
     backgroundColor: Colors.background,
     shadowColor: Colors.shadow,
     shadowOpacity: 0.5,
     shadowRadius: 5,
     shadowOffset: {width: 0, height: 0},
     justifyContent: 'center',
-    flexDirection: 'column',
-    padding: 3,
+    flexDirection: 'row',
+    margin: 20,
   },
-  categoryCardTitle: {
-    flex: 1,
-    marginVertical: 5,
+  categoryCardImage: {
+    flex: 2,
+    height: '100%',
+    alignSelf: 'center',
+    borderTopLeftRadius: 20,
+    borderBottomLeftRadius: 20,
+  },
+  productCardTitle: {
+    marginBottom: 2,
     fontSize: 18,
     color: Colors.primary,
   },
-
+  productCardDetails: {
+    flex: 2,
+    padding: 10,
+  },
+  productCardLineDetailsItem: {
+    fontSize: 15,
+    color: Colors.text,
+    marginRight: 10,
+  },
   cardPressed: {
     transform: [{scale: 0.9}],
+  },
+  productCardLineItem: {
+    flexDirection: 'row',
   },
 });
