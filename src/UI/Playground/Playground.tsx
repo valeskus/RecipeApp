@@ -11,7 +11,12 @@ export const Playground: React.FC<{}> = () => {
       <Button icon="carbs" onPress={() => {}} />
       <Button icon="menu" onPress={() => {}} active={true} />
       <CategoryCard title="Breacfast" onPress={() => {}} />
-      <ProductCardGrid title="Nazvanie" onPress={() => {}} />
+      <ProductCardGrid
+        title="Nazvanie"
+        calories="500"
+        time="1:50"
+        onPress={() => {}}
+      />
     </SafeAreaView>
   );
 };
