@@ -31,7 +31,7 @@ export function CategoryCard({
         pressableStyle,
       ]}>
       <Image
-        source={require('../../../assets/zopa.jpg')}
+        source={require('../../../assets/eda.jpeg')}
         style={styles.categoryCardImage}
       />
       <Text style={styles.categoryCardTitle}>{title}</Text>

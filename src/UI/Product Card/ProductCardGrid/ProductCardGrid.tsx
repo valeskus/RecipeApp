@@ -37,7 +37,7 @@ export function ProductCardGrid({
         pressableStyle,
       ]}>
       <Image
-        source={require('../../../../assets/zopa.jpg')}
+        source={require('../../../../assets/eda.jpeg')}
         style={styles.productCardGridImage}
       />
       <View style={styles.productCardDetails}>

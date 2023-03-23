@@ -37,7 +37,7 @@ export function ProductCardLine({
         pressableStyle,
       ]}>
       <Image
-        source={require('../../../../assets/zopa.jpg')}
+        source={require('../../../../assets/eda.jpeg')}
         style={styles.productCardLineImage}
       />
       <View style={styles.productCardDetails}>
