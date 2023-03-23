@@ -1,6 +1,7 @@
 import React from 'react';
 import {Image, StyleSheet, View} from 'react-native';
 import {Colors} from '../../../Colors';
+import {Icons} from '../../../Icons';
 
 export type Props = {
   rating: number;
@@ -10,10 +11,7 @@ export function Rating({rating}: Props): JSX.Element {
 
   return (
     <View style={styles.productCardRaitingContainer}>
-      <Image
-        source={require('../../../../../assets/rating.png')}
-        style={styles.productCardRaitingItem}
-      />
+      <Image source={Icons.rating} style={styles.productCardRaitingItem} />
       <View style={[styles.raitingWraper, {width: colorWidth}]} />
     </View>
   );

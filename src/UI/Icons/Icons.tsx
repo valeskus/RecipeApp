@@ -13,5 +13,5 @@ export const Icons = {
   proteins: require('../../../assets/proteins.png'),
   fats: require('../../../assets/fats.png'),
   kcal: require('../../../assets/kcal.png'),
-  star: require('../../../assets/star.png'),
+  rating: require('../../../assets/rating.png'),
 };
