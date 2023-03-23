@@ -38,7 +38,7 @@ export function ProductCardGrid({
       ]}>
       <Image
         source={require('../../../../assets/zopa.jpg')}
-        style={styles.categoryCardImage}
+        style={styles.productCardGridImage}
       />
       <View style={styles.productCardDetails}>
         <Text style={styles.productCardTitle}>{title}</Text>
@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     margin: 20,
   },
-  categoryCardImage: {
+  productCardGridImage: {
     width: '100%',
     flex: 3,
     alignSelf: 'center',

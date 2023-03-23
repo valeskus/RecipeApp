@@ -32,17 +32,19 @@ export function ProductCardLine({
     <Pressable
       onPress={onPress}
       style={({pressed}) => [
-        styles.productGridContainer,
+        styles.productCardLineContainer,
         pressed && styles.cardPressed,
         pressableStyle,
       ]}>
       <Image
         source={require('../../../../assets/zopa.jpg')}
-        style={styles.categoryCardImage}
+        style={styles.productCardLineImage}
       />
       <View style={styles.productCardDetails}>
         <Text style={styles.productCardTitle}>{title}</Text>
-        <Rating rating={5} />
+        <View style={styles.productCardLineItem}>
+          <Rating rating={4} />
+        </View>
         <View style={styles.productCardLineItem}>
           <Text style={styles.productCardLineDetailsItem}>
             Kcal: {calories}
@@ -54,7 +56,7 @@ export function ProductCardLine({
   );
 }
 const styles = StyleSheet.create({
-  productGridContainer: {
+  productCardLineContainer: {
     borderRadius: 20,
     width: 350,
     height: 120,
@@ -67,7 +69,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     margin: 20,
   },
-  categoryCardImage: {
+  productCardLineImage: {
     flex: 2,
     height: '100%',
     alignSelf: 'center',
@@ -78,6 +80,7 @@ const styles = StyleSheet.create({
     marginBottom: 2,
     fontSize: 18,
     color: Colors.primary,
+    flex: 1,
   },
   productCardDetails: {
     flex: 2,
@@ -93,5 +96,6 @@ const styles = StyleSheet.create({
   },
   productCardLineItem: {
     flexDirection: 'row',
+    flex: 1,
   },
 });
