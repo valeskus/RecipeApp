@@ -1,6 +1,13 @@
 import React from 'react';
-import {SafeAreaView, StyleSheet} from 'react-native';
+import {Platform, SafeAreaView, StyleSheet, UIManager} from 'react-native';
 import {Button} from './src/UI/Button';
+
+if (
+  Platform.OS === 'android' &&
+  UIManager.setLayoutAnimationEnabledExperimental
+) {
+  UIManager.setLayoutAnimationEnabledExperimental(true);
+}
 
 function App(): JSX.Element {
   return (

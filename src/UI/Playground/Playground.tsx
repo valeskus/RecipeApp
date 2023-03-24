@@ -5,6 +5,7 @@ import {CategoryCard} from '../CategoryCard';
 import {ProductCardGrid} from '../Product Card/ProductCardGrid';
 import {ProductCardLine} from '../Product Card/ProductCardLine';
 import {SearchBar} from '../SearchBar';
+import {Select} from '../Select';
 
 export const Playground: React.FC<{}> = () => {
   return (
@@ -26,6 +27,7 @@ export const Playground: React.FC<{}> = () => {
           onPress={() => {}}
         />
         <SearchBar />
+        <Select onChange={() => {}} items={['Ingredients', 'Instructions']} />
       </ScrollView>
     </SafeAreaView>
   );
