@@ -2,7 +2,8 @@ import * as React from 'react';
 import {SafeAreaView, ScrollView, StyleSheet} from 'react-native';
 import {Button} from '../Button';
 import {CategoryCard} from '../CategoryCard';
-import {Image} from '../Image';
+import {ImageMock} from '../ImageMock';
+import {IngredientsListItem} from '../IngredientsListItem';
 import {ProductCardGrid} from '../Product Card/ProductCardGrid';
 import {ProductCardLine} from '../Product Card/ProductCardLine';
 import {SearchBar} from '../SearchBar';
@@ -13,20 +14,25 @@ export const Playground: React.FC<{}> = () => {
     <SafeAreaView style={styles.PlaygroundContainer}>
       <ScrollView style={styles.PlaygroundContainer}>
         <Button icon="like" onPress={() => {}} active={true} />
-        <CategoryCard title="Breacfast" onPress={() => {}} image={Image} />
+        <CategoryCard title="Breacfast" onPress={() => {}} image={ImageMock} />
         <ProductCardGrid
           title="Nazvanie"
           calories="500"
           time="1:50"
           onPress={() => {}}
-          image={Image}
+          image={ImageMock}
         />
         <ProductCardLine
-          image={Image}
+          image={ImageMock}
           title="Nazvanie"
           calories="500"
           time="1:50"
           onPress={() => {}}
+        />
+        <IngredientsListItem
+          title="Product"
+          count="200mg"
+          description=" jdhaskdhjkashdhadkhsadjhsahhjfhjkfhsjdfhjdshfjdhfjkdshfkshkdhsjdhsajhd"
         />
         <Toggle onChange={() => {}} items={['Ingredients', 'Instructions']} />
 
