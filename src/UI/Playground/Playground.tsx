@@ -12,7 +12,6 @@ export const Playground: React.FC<{}> = () => {
     <SafeAreaView style={styles.PlaygroundContainer}>
       <ScrollView style={styles.PlaygroundContainer}>
         <Button icon="like" onPress={() => {}} active={true} />
-
         <CategoryCard title="Breacfast" onPress={() => {}} />
         <ProductCardGrid
           title="Nazvanie"
@@ -26,8 +25,27 @@ export const Playground: React.FC<{}> = () => {
           time="1:50"
           onPress={() => {}}
         />
-        <SearchBar />
         <Select onChange={() => {}} items={['Ingredients', 'Instructions']} />
+
+        <ProductCardLine
+          title="Nazvanie"
+          calories="500"
+          time="1:50"
+          onPress={() => {}}
+        />
+        <ProductCardLine
+          title="Nazvanie"
+          calories="500"
+          time="1:50"
+          onPress={() => {}}
+        />
+        <ProductCardLine
+          title="Nazvanie"
+          calories="500"
+          time="1:50"
+          onPress={() => {}}
+        />
+        <SearchBar />
       </ScrollView>
     </SafeAreaView>
   );
