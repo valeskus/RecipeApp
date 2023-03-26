@@ -2,6 +2,7 @@ import * as React from 'react';
 import {SafeAreaView, ScrollView, StyleSheet} from 'react-native';
 import {Button} from '../Button';
 import {CategoryCard} from '../CategoryCard';
+import {Image} from '../Image';
 import {ProductCardGrid} from '../Product Card/ProductCardGrid';
 import {ProductCardLine} from '../Product Card/ProductCardLine';
 import {SearchBar} from '../SearchBar';
@@ -12,14 +13,16 @@ export const Playground: React.FC<{}> = () => {
     <SafeAreaView style={styles.PlaygroundContainer}>
       <ScrollView style={styles.PlaygroundContainer}>
         <Button icon="like" onPress={() => {}} active={true} />
-        <CategoryCard title="Breacfast" onPress={() => {}} />
+        <CategoryCard title="Breacfast" onPress={() => {}} image={Image} />
         <ProductCardGrid
           title="Nazvanie"
           calories="500"
           time="1:50"
           onPress={() => {}}
+          image={Image}
         />
         <ProductCardLine
+          image={Image}
           title="Nazvanie"
           calories="500"
           time="1:50"
@@ -27,24 +30,6 @@ export const Playground: React.FC<{}> = () => {
         />
         <Select onChange={() => {}} items={['Ingredients', 'Instructions']} />
 
-        <ProductCardLine
-          title="Nazvanie"
-          calories="500"
-          time="1:50"
-          onPress={() => {}}
-        />
-        <ProductCardLine
-          title="Nazvanie"
-          calories="500"
-          time="1:50"
-          onPress={() => {}}
-        />
-        <ProductCardLine
-          title="Nazvanie"
-          calories="500"
-          time="1:50"
-          onPress={() => {}}
-        />
         <SearchBar />
       </ScrollView>
     </SafeAreaView>

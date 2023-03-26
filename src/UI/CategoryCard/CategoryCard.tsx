@@ -10,14 +10,14 @@ import {
 import {Colors} from '../Colors';
 
 export type Props = {
-  //   icon: keyof typeof Icons;
+  image: string;
   title: string;
   onPress: () => void;
   pressableStyle?: StyleProp<ViewStyle>;
 };
 
 export function CategoryCard({
-  //   icon,
+  image,
   title,
   onPress,
   pressableStyle,
@@ -30,10 +30,7 @@ export function CategoryCard({
         pressed && styles.cardPressed,
         pressableStyle,
       ]}>
-      <Image
-        source={require('../../../assets/eda.jpeg')}
-        style={styles.categoryCardImage}
-      />
+      <Image source={{uri: image}} style={styles.categoryCardImage} />
       <Text style={styles.categoryCardTitle}>{title}</Text>
     </Pressable>
   );
@@ -41,14 +38,16 @@ export function CategoryCard({
 const styles = StyleSheet.create({
   categoryCardImage: {
     width: '100%',
+    height: 130,
     flex: 4,
     alignSelf: 'center',
-    borderRadius: 20,
+    borderTopRightRadius: 20,
+    borderTopLeftRadius: 20,
   },
   categoryContainer: {
     borderRadius: 20,
-    width: 170,
-    height: 170,
+    width: '40%',
+    // height: 170,
     backgroundColor: Colors.background,
     shadowColor: Colors.shadow,
     shadowOpacity: 0.5,
@@ -56,12 +55,13 @@ const styles = StyleSheet.create({
     shadowOffset: {width: 0, height: 0},
     justifyContent: 'center',
     flexDirection: 'column',
-    padding: 3,
+    marginLeft: 30,
   },
   categoryCardTitle: {
     flex: 1,
-    marginVertical: 5,
+    margin: 10,
     fontSize: 18,
+    fontWeight: 'bold',
     color: Colors.primary,
   },
 

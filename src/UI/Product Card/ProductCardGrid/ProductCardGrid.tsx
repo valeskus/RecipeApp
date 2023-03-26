@@ -12,7 +12,7 @@ import {Colors} from '../../Colors';
 import {Rating} from '../components/Rating';
 
 export type Props = {
-  //   image: keyof typeof Image;
+  image: string;
   title: string;
   calories: string;
   time: string;
@@ -21,7 +21,7 @@ export type Props = {
 };
 
 export function ProductCardGrid({
-  //   image,
+  image,
   title,
   calories,
   time,
@@ -36,10 +36,7 @@ export function ProductCardGrid({
         pressed && styles.cardPressed,
         pressableStyle,
       ]}>
-      <Image
-        source={require('../../../../assets/eda.jpeg')}
-        style={styles.productCardGridImage}
-      />
+      <Image source={{uri: image}} style={styles.productCardGridImage} />
       <View style={styles.productCardDetails}>
         <Text style={styles.productCardTitle}>{title}</Text>
         <Rating rating={2} />
@@ -52,8 +49,7 @@ export function ProductCardGrid({
 const styles = StyleSheet.create({
   productGridContainer: {
     borderRadius: 20,
-    width: 170,
-    height: 230,
+    width: '45%',
     backgroundColor: Colors.background,
     shadowColor: Colors.shadow,
     shadowOpacity: 0.5,
@@ -65,6 +61,7 @@ const styles = StyleSheet.create({
   },
   productCardGridImage: {
     width: '100%',
+    height: 120,
     flex: 3,
     alignSelf: 'center',
     borderTopRightRadius: 20,
