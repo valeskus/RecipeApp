@@ -6,7 +6,7 @@ import {Image} from '../Image';
 import {ProductCardGrid} from '../Product Card/ProductCardGrid';
 import {ProductCardLine} from '../Product Card/ProductCardLine';
 import {SearchBar} from '../SearchBar';
-import {Select} from '../Select';
+import {Toggle} from '../Toggle';
 
 export const Playground: React.FC<{}> = () => {
   return (
@@ -28,7 +28,7 @@ export const Playground: React.FC<{}> = () => {
           time="1:50"
           onPress={() => {}}
         />
-        <Select onChange={() => {}} items={['Ingredients', 'Instructions']} />
+        <Toggle onChange={() => {}} items={['Ingredients', 'Instructions']} />
 
         <SearchBar />
       </ScrollView>

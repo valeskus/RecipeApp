@@ -7,7 +7,7 @@ export type Props = {
   onChange: (element: string) => void;
 };
 
-export function Select({items, onChange}: Props): JSX.Element {
+export function Toggle({items, onChange}: Props): JSX.Element {
   const [activeItem, setActiveItem] = useState(items[0]);
 
   const setActive = useCallback(
@@ -64,6 +64,7 @@ const styles = StyleSheet.create({
   },
   selectButton: {
     flex: 1,
+    paddingVertical: 10,
   },
   selectItemActive: {
     backgroundColor: Colors.secondary,
@@ -77,7 +78,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignSelf: 'center',
     zIndex: 10,
-    paddingVertical: 10,
   },
   selectItemTitle: {
     flex: 1,
