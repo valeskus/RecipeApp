@@ -53,6 +53,7 @@ const styles = StyleSheet.create({
     width: 20,
     height: 20,
     alignSelf: 'flex-start',
+    tintColor: Colors.primary,
   },
   listItemImage: {
     width: '70%',
