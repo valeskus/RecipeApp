@@ -20,9 +20,11 @@ export function IngredientsListItem({
       <View style={styles.ingredientsListItemContentContainer}>
         <View style={styles.ingredientsListItemContent}>
           <Text style={styles.ingredientsListItemTitle}>{title}</Text>
-          <Text style={styles.ingredientsListItemDescription}>
-            {description}
-          </Text>
+          {description && (
+            <Text style={styles.ingredientsListItemDescription}>
+              {description}
+            </Text>
+          )}
         </View>
         <Text style={styles.ingredientsListItemCount}>{count}</Text>
       </View>
@@ -39,7 +41,8 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     borderBottomColor: Colors.borderTextSecondary,
-    borderBottomWidth: 2,
+    borderBottomWidth: 1,
+    paddingBottom: 15,
   },
   ingredientsListItemContent: {
     flexDirection: 'column',
@@ -52,10 +55,10 @@ const styles = StyleSheet.create({
   },
   ingredientsListItemDescription: {
     color: Colors.borderTextSecondary,
-    marginBottom: 2,
   },
   ingredientsListItemCount: {
     color: Colors.text,
+    fontSize: 18,
   },
   ingredientsListItemDot: {
     width: 20,

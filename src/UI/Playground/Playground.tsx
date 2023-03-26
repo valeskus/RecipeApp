@@ -4,6 +4,7 @@ import {Button} from '../Button';
 import {CategoryCard} from '../CategoryCard';
 import {ImageMock} from '../ImageMock';
 import {IngredientsListItem} from '../IngredientsListItem';
+import {InstructionListItem} from '../InstructionsListItem';
 import {ProductCardGrid} from '../Product Card/ProductCardGrid';
 import {ProductCardLine} from '../Product Card/ProductCardLine';
 import {SearchBar} from '../SearchBar';
@@ -32,7 +33,12 @@ export const Playground: React.FC<{}> = () => {
         <IngredientsListItem
           title="Product"
           count="200mg"
-          description=" jdhaskdhjkashdhadkhsadjhsahhjfhjkfhsjdfhjdshfjdhfjkdshfkshkdhsjdhsajhd"
+          description=" Lorem Ipsum is simply dummy text of the printing and typesetting industry. "
+        />
+        <InstructionListItem
+          image={ImageMock}
+          count={1}
+          description=" Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. "
         />
         <Toggle onChange={() => {}} items={['Ingredients', 'Instructions']} />
 
