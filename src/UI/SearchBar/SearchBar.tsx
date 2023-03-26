@@ -1,17 +1,34 @@
 import React from 'react';
-import {Image, StyleSheet, View, TextInput} from 'react-native';
+import {
+  Image,
+  StyleSheet,
+  View,
+  TextInput,
+  Pressable,
+  StyleProp,
+  ViewStyle,
+} from 'react-native';
 import {Colors} from '../Colors';
 import {Icons} from '../Icons';
 
 export type Props = {
-  text: string;
+  onPress: () => void;
+  pressableStyle?: StyleProp<ViewStyle>;
 };
 
-export function SearchBar(): JSX.Element {
+export function SearchBar({onPress, pressableStyle}: Props): JSX.Element {
   return (
     <View style={styles.searchBarContainer}>
       <TextInput placeholder="Search" style={styles.searchBarInput} />
-      <Image source={Icons.search} style={styles.searchBarIcon} />
+      <Pressable
+        onPress={onPress}
+        style={({pressed}) => [
+          styles.searchBarIconContainer,
+          pressed && styles.searchPress,
+          pressableStyle,
+        ]}>
+        <Image source={Icons.search} style={styles.searchBarIcon} />
+      </Pressable>
     </View>
   );
 }
@@ -39,8 +56,13 @@ const styles = StyleSheet.create({
   searchBarIcon: {
     width: 27,
     height: 27,
+  },
+  searchBarIconContainer: {
     position: 'absolute',
     right: 20,
     top: 10,
+  },
+  searchPress: {
+    transform: [{scale: 0.9}],
   },
 });

@@ -42,7 +42,7 @@ export const Playground: React.FC<{}> = () => {
         />
         <Toggle onChange={() => {}} items={['Ingredients', 'Instructions']} />
 
-        <SearchBar />
+        <SearchBar onPress={() => {}} />
       </ScrollView>
     </SafeAreaView>
   );
