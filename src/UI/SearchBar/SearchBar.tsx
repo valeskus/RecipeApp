@@ -42,6 +42,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.5,
     shadowRadius: 5,
     shadowOffset: {width: 0, height: 0},
+    elevation: 8,
     flexDirection: 'row',
     position: 'relative',
     justifyContent: 'flex-start',
@@ -52,6 +53,8 @@ const styles = StyleSheet.create({
   },
   searchBarInput: {
     fontSize: 17,
+    padding: 0,
+    color: Colors.text,
   },
   searchBarIcon: {
     width: 27,

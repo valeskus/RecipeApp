@@ -58,6 +58,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     flexDirection: 'column',
     margin: 20,
+    elevation: 8,
   },
   productCardGridImage: {
     width: '100%',

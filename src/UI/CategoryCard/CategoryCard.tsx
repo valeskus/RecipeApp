@@ -47,12 +47,12 @@ const styles = StyleSheet.create({
   categoryContainer: {
     borderRadius: 20,
     width: '40%',
-    // height: 170,
     backgroundColor: Colors.background,
     shadowColor: Colors.shadow,
     shadowOpacity: 0.5,
     shadowRadius: 5,
     shadowOffset: {width: 0, height: 0},
+    elevation: 8,
     justifyContent: 'center',
     flexDirection: 'column',
     marginLeft: 30,
