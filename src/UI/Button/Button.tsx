@@ -63,6 +63,7 @@ const styles = StyleSheet.create({
     elevation: 8,
     justifyContent: 'center',
     position: 'relative',
+    margin: 8,
   },
   buttonActive: {
     width: '100%',

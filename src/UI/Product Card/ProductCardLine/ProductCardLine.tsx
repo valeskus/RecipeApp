@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
     elevation: 8,
     justifyContent: 'center',
     flexDirection: 'row',
-    margin: 20,
+    margin: 8,
   },
   productCardLineImage: {
     flex: 2,

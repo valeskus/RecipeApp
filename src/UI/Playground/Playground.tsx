@@ -15,7 +15,7 @@ export const Playground: React.FC<{}> = () => {
   return (
     <SafeAreaView style={styles.PlaygroundContainer}>
       <ScrollView style={styles.PlaygroundContainer}>
-        <Button icon="like" onPress={() => {}} active={true} />
+        <Button icon="like" onPress={() => {}} active={false} />
         <PickListItem onChange={() => {}} item="Item" />
         <CategoryCard title="Breacfast" onPress={() => {}} image={ImageMock} />
         <ProductCardGrid

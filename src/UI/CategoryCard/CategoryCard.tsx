@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
     elevation: 8,
     justifyContent: 'center',
     flexDirection: 'column',
-    marginLeft: 30,
+    margin: 8,
   },
   categoryCardTitle: {
     flex: 1,
