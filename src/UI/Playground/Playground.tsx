@@ -8,7 +8,7 @@ import {InstructionListItem} from '../InstructionsListItem';
 import {PickListItem} from '../PickListItem';
 import {ProductCardGrid} from '../Product Card/ProductCardGrid';
 import {ProductCardLine} from '../Product Card/ProductCardLine';
-import {SearchBar} from '../SearchBar';
+import {Search} from '../Search';
 import {Toggle} from '../Toggle';
 
 export const Playground: React.FC<{}> = () => {
@@ -44,7 +44,7 @@ export const Playground: React.FC<{}> = () => {
         />
         <Toggle onChange={() => {}} items={['Ingredients', 'Instructions']} />
 
-        <SearchBar onPress={() => {}} />
+        <Search onSearch={() => {}} />
       </ScrollView>
     </SafeAreaView>
   );

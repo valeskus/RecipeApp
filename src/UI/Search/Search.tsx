@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useCallback, useState} from 'react';
 import {
   Image,
   StyleSheet,
@@ -12,16 +12,36 @@ import {Colors} from '../Colors';
 import {Icons} from '../Icons';
 
 export type Props = {
-  onPress: () => void;
+  onSearch: (e: string) => void;
   pressableStyle?: StyleProp<ViewStyle>;
 };
 
-export function SearchBar({onPress, pressableStyle}: Props): JSX.Element {
+export function Search({onSearch, pressableStyle}: Props): JSX.Element {
+  const [searchValue, setSearchValue] = useState('');
+
+  const handleChange = useCallback(
+    (nextValue: string) => {
+      if (!nextValue) {
+        onSearch(nextValue);
+      }
+
+      setSearchValue(nextValue);
+    },
+    [onSearch],
+  );
+  const handlePress = useCallback(() => {
+    onSearch(searchValue);
+  }, [onSearch, searchValue]);
   return (
     <View style={styles.searchBarContainer}>
-      <TextInput placeholder="Search" style={styles.searchBarInput} />
+      <TextInput
+        placeholder="Search"
+        style={styles.searchBarInput}
+        onChangeText={handleChange}
+        value={searchValue}
+      />
       <Pressable
-        onPress={onPress}
+        onPress={handlePress}
         style={({pressed}) => [
           styles.searchBarIconContainer,
           pressed && styles.searchPress,
