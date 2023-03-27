@@ -14,8 +14,9 @@ import {Rating} from '../components/Rating';
 export type Props = {
   image: string;
   title: string;
-  calories: string;
+  calories: number;
   time: string;
+  rating: number;
   onPress: () => void;
   pressableStyle?: StyleProp<ViewStyle>;
 };
@@ -25,6 +26,7 @@ export function ProductCardLine({
   title,
   calories,
   time,
+  rating,
   onPress,
   pressableStyle,
 }: Props): JSX.Element {
@@ -40,7 +42,7 @@ export function ProductCardLine({
       <View style={styles.productCardDetails}>
         <Text style={styles.productCardTitle}>{title}</Text>
         <View style={styles.productCardLineItem}>
-          <Rating rating={4} />
+          <Rating rating={rating} />
         </View>
         <View style={styles.productCardLineItem}>
           <Text style={styles.productCardLineDetailsItem}>

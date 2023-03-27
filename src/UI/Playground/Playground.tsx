@@ -20,15 +20,18 @@ export const Playground: React.FC<{}> = () => {
         <CategoryCard title="Breacfast" onPress={() => {}} image={ImageMock} />
         <ProductCardGrid
           title="Nazvanie"
-          calories="500"
+          calories={500}
+          rating={3}
           time="1:50"
           onPress={() => {}}
           image={ImageMock}
         />
+
         <ProductCardLine
           image={ImageMock}
           title="Nazvanie"
-          calories="500"
+          calories={500}
+          rating={2}
           time="1:50"
           onPress={() => {}}
         />
@@ -52,6 +55,6 @@ export const Playground: React.FC<{}> = () => {
 const styles = StyleSheet.create({
   PlaygroundContainer: {
     flex: 1,
-    marginLeft: 10,
+    // marginLeft: 10,
   },
 });
