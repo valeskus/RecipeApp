@@ -33,22 +33,28 @@ export function Toggle({items, onChange}: Props): JSX.Element {
       </View>
 
       <View style={[styles.selectItem]}>
-        {items.map((item, index) => {
-          return (
-            <Pressable
-              onPress={() => setActive(item)}
-              style={[styles.selectButton]}
-              key={index}>
-              <Text
-                style={[
-                  styles.selectItemTitle,
-                  activeItem === item && styles.activeTitle,
-                ]}>
-                {item}
-              </Text>
-            </Pressable>
-          );
-        })}
+        <Pressable
+          onPress={() => setActive(items[0])}
+          style={[styles.selectButton]}>
+          <Text
+            style={[
+              styles.selectItemTitle,
+              activeItem === items[0] && styles.activeTitle,
+            ]}>
+            {items[0]}
+          </Text>
+        </Pressable>
+        <Pressable
+          onPress={() => setActive(items[1])}
+          style={[styles.selectButton]}>
+          <Text
+            style={[
+              styles.selectItemTitle,
+              activeItem === items[1] && styles.activeTitle,
+            ]}>
+            {items[1]}
+          </Text>
+        </Pressable>
       </View>
     </View>
   );
