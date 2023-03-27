@@ -5,6 +5,7 @@ import {CategoryCard} from '../CategoryCard';
 import {ImageMock} from '../ImageMock';
 import {IngredientsListItem} from '../IngredientsListItem';
 import {InstructionListItem} from '../InstructionsListItem';
+import {PickListItem} from '../PickListItem';
 import {ProductCardGrid} from '../Product Card/ProductCardGrid';
 import {ProductCardLine} from '../Product Card/ProductCardLine';
 import {SearchBar} from '../SearchBar';
@@ -15,6 +16,7 @@ export const Playground: React.FC<{}> = () => {
     <SafeAreaView style={styles.PlaygroundContainer}>
       <ScrollView style={styles.PlaygroundContainer}>
         <Button icon="like" onPress={() => {}} active={true} />
+        <PickListItem onChange={() => {}} item="Item" />
         <CategoryCard title="Breacfast" onPress={() => {}} image={ImageMock} />
         <ProductCardGrid
           title="Nazvanie"
@@ -50,5 +52,6 @@ export const Playground: React.FC<{}> = () => {
 const styles = StyleSheet.create({
   PlaygroundContainer: {
     flex: 1,
+    marginLeft: 10,
   },
 });
