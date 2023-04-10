@@ -3,6 +3,9 @@ export interface CategoryModel {
   title: string;
   image: string;
 }
+export interface CategoryListModel {
+  categories: Array<CategoryModel>;
+}
 
 export interface MacroNutrientsModel {
   protein: number;
@@ -21,7 +24,7 @@ export interface InstructionModel {
   description: string;
 }
 
-export interface BaseReipeModel {
+export interface BaseRecipeModel {
   id: string;
   title: string;
   kcal: number;
@@ -30,7 +33,7 @@ export interface BaseReipeModel {
   image: string;
 }
 
-export interface DetailRecipeModel extends BaseReipeModel {
+export interface DetailRecipeModel extends BaseRecipeModel {
   description: string;
   macroNutrients: MacroNutrientsModel;
   ingredients: Array<IngredientModel>;
@@ -54,11 +57,7 @@ export interface FilterModel {
 }
 
 export interface RecipeListModel {
-  recipes: Array<BaseReipeModel>;
+  recipes: Array<BaseRecipeModel>;
   filters: Array<FilterModel>;
   sortOptions: Array<SortOptionModel>;
-}
-
-export interface CategoryListModel {
-  categories: Array<CategoryModel>;
 }

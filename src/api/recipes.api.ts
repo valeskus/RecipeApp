@@ -1,6 +1,7 @@
 import axios from 'axios';
+import {DetailRecipeModel, RecipeListModel} from '../models';
 
-const BASE_URL = 'http://localhost:3000';
+import {API_URL} from '@env';
 
 export interface SeachOptions {
   search: string;
@@ -11,20 +12,23 @@ export interface SeachOptions {
   }>;
 }
 
+const client = axios.create({
+  baseURL: API_URL,
+});
+
 export const searchRecipes = async (options: SeachOptions) => {
-  try {
-    const result = await axios.get(`${BASE_URL}/recipes`, {
-      params: options,
-    });
-    return result.data;
-  } catch (error) {
-    console.log(error);
-  }
+  const result = await client.get<RecipeListModel>('/recipes', {
+    params: options,
+  });
+
+  return result;
 };
 
 export const getRecipeById = async (id: string) => {
   try {
-    const result = await axios.get(`${BASE_URL}/recipes/${id}`);
+    const result = await axios.get<DetailRecipeModel>(
+      `${API_URL}/recipes/${id}`,
+    );
     return result.data;
   } catch (error) {
     console.log(error);

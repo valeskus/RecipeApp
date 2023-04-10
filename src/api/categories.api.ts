@@ -1,12 +1,9 @@
 import axios from 'axios';
+import {CategoryListModel} from '../models';
 
-const BASE_URL = 'http://localhost:';
+import {API_URL} from '@env';
 
 export const getCategories = async () => {
-  try {
-    const result = await axios.get(`${BASE_URL}/categories`);
-    return result.data;
-  } catch (error) {
-    console.log(error);
-  }
+  const result = await axios.get<CategoryListModel>(`${API_URL}/categories`);
+  return result.data;
 };
