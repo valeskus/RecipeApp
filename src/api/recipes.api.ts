@@ -1,10 +1,21 @@
 import axios from 'axios';
 
-const BASE_URL = 'http://localhost:';
+const BASE_URL = 'http://localhost:3000';
 
-export const getRecipes = async (options: {}) => {
+export interface SeachOptions {
+  search: string;
+  sort?: string; // Reference SortOptionModel.id
+  filter?: Array<{
+    key: string; // Reference FilterModel.id
+    value: string; // Reference FilterValueModel.id
+  }>;
+}
+
+export const searchRecipes = async (options: SeachOptions) => {
   try {
-    const result = await axios.get(`${BASE_URL}/recipes`, {data: {options}});
+    const result = await axios.get(`${BASE_URL}/recipes`, {
+      params: options,
+    });
     return result.data;
   } catch (error) {
     console.log(error);
