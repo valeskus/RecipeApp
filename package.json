@@ -16,9 +16,13 @@
     "install:pods": "cd ios && bundle exec pod install"
   },
   "dependencies": {
+    "@react-navigation/native": "^6.1.6",
+    "@react-navigation/native-stack": "^6.9.12",
     "react": "18.2.0",
     "react-native": "0.71.4",
-    "react-native-dotenv": "^3.4.8"
+    "react-native-dotenv": "^3.4.8",
+    "react-redux": "^8.0.5",
+    "redux": "^4.2.1"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
