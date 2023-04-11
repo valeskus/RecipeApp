@@ -3,23 +3,10 @@ import {DetailRecipeModel} from '../../models';
 import {RecipeDetailsActions} from './recipeDetailsActions';
 
 export interface recipeDetailsStoreState {
-  recipe: DetailRecipeModel;
+  recipe?: DetailRecipeModel;
 }
 
-const initialState: recipeDetailsStoreState = {
-  recipe: {
-    id: '',
-    title: '',
-    kcal: 0,
-    time: '',
-    rating: 0,
-    image: '',
-    description: '',
-    macroNutrients: {protein: 0, carbs: 0, fats: 0},
-    ingredients: [],
-    instructions: [],
-  },
-};
+const initialState: recipeDetailsStoreState = {};
 
 export function recipeDetailsReducer(
   state = initialState,

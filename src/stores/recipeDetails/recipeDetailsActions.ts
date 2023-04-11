@@ -4,7 +4,7 @@ import {DetailRecipeModel} from '../../models';
 
 export enum RecipeDetailsActions {
   GET = '@recipe/get',
-  ERROR = '@error/recipes',
+  ERROR = '@error/recipe',
 }
 
 const actionGetRecipe = (payload: DetailRecipeModel) => ({
@@ -17,7 +17,7 @@ const actionError = (error: unknown) => ({
   payload: error,
 });
 
-export const getRecipeDetails = async (dispatch: Dispatch, id: string) => {
+export const getRecipeDetails = async (id: string, dispatch: Dispatch) => {
   try {
     const recipe = await RecipesApi.getRecipeById(id);
 

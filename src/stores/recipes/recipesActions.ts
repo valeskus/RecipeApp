@@ -18,9 +18,8 @@ const actionError = (error: unknown) => ({
 });
 
 export const getRecipes = async (
-  dispatch: Dispatch,
   options: RecipesApi.SeachOptions,
-  //???
+  dispatch: Dispatch,
 ) => {
   try {
     const recipeList = await RecipesApi.searchRecipes(options);

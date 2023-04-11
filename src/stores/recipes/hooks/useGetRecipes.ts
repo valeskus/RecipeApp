@@ -3,11 +3,13 @@ import * as Redux from 'react-redux';
 import {getRecipes} from '../recipesActions';
 import {SeachOptions} from '../../../api/recipes.api';
 
-//TODO options type
-export const useGetRecipeList = (options: SeachOptions) => {
+export const useGetRecipeList = () => {
   const dispatch = Redux.useDispatch();
 
-  return React.useCallback(async () => {
-    await getRecipes(dispatch, options);
-  }, [dispatch, options]);
+  return React.useCallback(
+    async (options: SeachOptions) => {
+      await getRecipes(options, dispatch);
+    },
+    [dispatch],
+  );
 };
