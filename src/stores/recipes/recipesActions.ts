@@ -1,20 +1,14 @@
 import {Dispatch} from 'redux';
 import * as RecipesApi from '../../api/recipes.api';
-import {RecipeListModel, DetailRecipeModel} from '../../models';
+import {RecipeListModel} from '../../models';
 
 export enum RecipesActions {
   GET = '@recipes/get',
-  GET_BY_ID = '@recipeById/get',
   ERROR = '@error/recipes',
 }
 
 const actionGetRecipes = (payload: RecipeListModel) => ({
   type: RecipesActions.GET,
-  payload,
-});
-
-const actionGetRecipeById = (payload: DetailRecipeModel) => ({
-  type: RecipesActions.GET_BY_ID,
   payload,
 });
 
@@ -32,16 +26,6 @@ export const getRecipes = async (
     const recipeList = await RecipesApi.searchRecipes(options);
 
     dispatch(actionGetRecipes(recipeList));
-  } catch (error) {
-    dispatch(actionError(error));
-  }
-};
-
-export const getRecipeById = async (dispatch: Dispatch, id: string) => {
-  try {
-    const recipe = await RecipesApi.getRecipeById(id);
-
-    dispatch(actionGetRecipeById(recipe));
   } catch (error) {
     dispatch(actionError(error));
   }

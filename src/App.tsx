@@ -1,8 +1,10 @@
 import React from 'react';
+import {Provider} from 'react-redux';
 import {Platform, SafeAreaView, StyleSheet, UIManager} from 'react-native';
 import {Button} from './UI/Button';
 
 import * as CategoriesStore from './stores/categories';
+import {store} from './stores/rootStore';
 
 if (
   Platform.OS === 'android' &&
@@ -14,7 +16,7 @@ if (
 function App(): JSX.Element {
   const [isLoading, setLoading] = React.useState(false);
 
-  const categories = CategoriesStore.useCategoriesStore();
+  const {categories} = CategoriesStore.useCategoriesStore();
 
   const getCategories = CategoriesStore.useGetCategories();
 
@@ -32,9 +34,11 @@ function App(): JSX.Element {
   // }
 
   return (
-    <SafeAreaView>
-      <Button icon="like" onPress={() => {}} active={true} />
-    </SafeAreaView>
+    <Provider store={store}>
+      <SafeAreaView>
+        <Button icon="like" onPress={() => {}} active={true} />
+      </SafeAreaView>
+    </Provider>
   );
 }
 

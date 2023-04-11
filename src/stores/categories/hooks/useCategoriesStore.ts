@@ -1,6 +1,9 @@
 import * as Redux from 'react-redux';
+import {CategoryStoreState} from '../categoriesReducer';
+import {RootStore} from '../../rootStore';
 
 export const useCategoriesStore = () => {
-  // TODO
-  return Redux.useSelector((store: any) => store.categories);
+  return Redux.useSelector<RootStore, CategoryStoreState>(
+    store => store.categories,
+  );
 };
