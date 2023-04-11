@@ -1,9 +1,7 @@
-import axios from 'axios';
 import {CategoryListModel} from '../models';
-
-import {API_URL} from '@env';
+import {client} from './client.api';
 
 export const getCategories = async () => {
-  const result = await axios.get<CategoryListModel>(`${API_URL}/categories`);
+  const result = await client.get<CategoryListModel>('/categories');
   return result.data;
 };
