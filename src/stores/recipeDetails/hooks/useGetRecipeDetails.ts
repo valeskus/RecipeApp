@@ -1,11 +1,11 @@
 import * as React from 'react';
 import * as Redux from 'react-redux';
-import {getRecipeById} from '../recipeDetailsActions';
+import {getRecipeDetails} from '../recipeDetailsActions';
 
-export const useGetRecipeById = (id: string) => {
+export const useGetRecipeDetails = (id: string) => {
   const dispatch = Redux.useDispatch();
 
   return React.useCallback(async () => {
-    await getRecipeById(dispatch, id);
+    await getRecipeDetails(dispatch, id);
   }, [dispatch, id]);
 };

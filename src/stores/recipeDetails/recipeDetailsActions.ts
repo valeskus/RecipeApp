@@ -17,7 +17,7 @@ const actionError = (error: unknown) => ({
   payload: error,
 });
 
-export const getRecipeById = async (dispatch: Dispatch, id: string) => {
+export const getRecipeDetails = async (dispatch: Dispatch, id: string) => {
   try {
     const recipe = await RecipesApi.getRecipeById(id);
 
