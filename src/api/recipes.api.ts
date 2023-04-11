@@ -1,5 +1,4 @@
 import {DetailRecipeModel, RecipeListModel} from '../models';
-
 import {client} from './client.api';
 
 export interface SeachOptions {
@@ -16,7 +15,7 @@ export const searchRecipes = async (options: SeachOptions) => {
     params: options,
   });
 
-  return result;
+  return result.data;
 };
 
 export const getRecipeById = async (id: string) => {
