@@ -1,4 +1,4 @@
-import {createStore, combineReducers} from 'redux';
+import {configureStore, combineReducers} from '@reduxjs/toolkit';
 import {categoriesReducer} from './categories';
 import {recipesesReducer} from './recipes/recipesReducer';
 import {recipeDetailsReducer} from './recipeDetails/recipeDetailsReducer';
@@ -11,4 +11,4 @@ const rootReducer = combineReducers({
 
 export type RootStore = ReturnType<typeof rootReducer>;
 
-export const store = createStore(rootReducer);
+export const store = configureStore({reducer: rootReducer});
