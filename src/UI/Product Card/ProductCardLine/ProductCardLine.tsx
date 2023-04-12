@@ -57,7 +57,7 @@ export function ProductCardLine({
 const styles = StyleSheet.create({
   productCardLineContainer: {
     borderRadius: 20,
-    width: '90%',
+    width: '100%',
     backgroundColor: Colors.background,
     shadowColor: Colors.shadow,
     shadowOpacity: 0.5,

@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
     shadowOffset: {width: 0, height: 0},
     justifyContent: 'center',
     flexDirection: 'column',
-    margin: 8,
+    margin: 9,
     elevation: 8,
   },
   productCardGridImage: {

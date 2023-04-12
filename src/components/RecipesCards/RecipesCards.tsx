@@ -8,7 +8,7 @@ export type Props = {
   cardType: string;
 };
 
-export function ProductCards({cardType}: Props): JSX.Element {
+export function RecipesCards({cardType}: Props): JSX.Element {
   const products = [
     {
       id: 1,
@@ -53,7 +53,11 @@ export function ProductCards({cardType}: Props): JSX.Element {
   ];
 
   return (
-    <View style={styles.productCardsContainer}>
+    <View
+      style={[
+        styles.recipesCardsContainer,
+        cardType === 'line' && styles.centeredLineCard,
+      ]}>
       {products.map(product => {
         return cardType === 'line' ? (
           <ProductCardLine
@@ -81,9 +85,12 @@ export function ProductCards({cardType}: Props): JSX.Element {
   );
 }
 const styles = StyleSheet.create({
-  productCardsContainer: {
-    width: '100%',
+  recipesCardsContainer: {
     flexDirection: 'row',
     flexWrap: 'wrap',
+    width: '100%',
+  },
+  centeredLineCard: {
+    justifyContent: 'center',
   },
 });
