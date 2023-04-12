@@ -2,6 +2,7 @@ import React, {useEffect} from 'react';
 import {StyleSheet, View} from 'react-native';
 import {CategoryCard} from '../../UI/CategoryCard';
 import {ImageMock} from '../../UI/ImageMock';
+// import * as CategoriesStore from './stores/categories';
 
 export function CategoryCards(): JSX.Element {
   const categories = [
@@ -14,14 +15,26 @@ export function CategoryCards(): JSX.Element {
     {id: 7, title: 'Category 7', image: ImageMock},
     {id: 8, title: 'Category 8', image: ImageMock},
   ];
-  useEffect(() => {
-    // CategoryService.getCategories().then(categories => {
-    //   if (!categories) {
-    //     return;
-    //   }
-    //   dispatch(setCategories(categories));
-    // }, []);
-  }, []);
+
+  // const [isLoading, setLoading] = React.useState(false);
+
+  // const {categories} = CategoriesStore.useCategoriesStore();
+
+  // const getCategories = CategoriesStore.useGetCategories();
+
+  // React.useEffect(() => {
+  //   setLoading(true);
+
+  //   getCategories().then(() => {
+  //     setLoading(false);
+  //   });
+
+  // }, []);
+
+  // if (isLoading) {
+  //   return <Loader />
+  // }
+
   return (
     <View style={styles.categoryCardsContainer}>
       {categories.map(category => {

@@ -1,10 +1,10 @@
 import React from 'react';
 import {Provider} from 'react-redux';
 import {Platform, SafeAreaView, StyleSheet, UIManager} from 'react-native';
-import {Button} from './UI/Button';
-
-import * as CategoriesStore from './stores/categories';
 import {store} from './stores/rootStore';
+import {CategoriesList} from './screens/CategoriesList';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 if (
   Platform.OS === 'android' &&
@@ -13,35 +13,26 @@ if (
   UIManager.setLayoutAnimationEnabledExperimental(true);
 }
 
+const Stack = createNativeStackNavigator();
+
 function App(): JSX.Element {
-  const [isLoading, setLoading] = React.useState(false);
-
-  const {categories} = CategoriesStore.useCategoriesStore();
-
-  const getCategories = CategoriesStore.useGetCategories();
-
-  React.useEffect(() => {
-    setLoading(true);
-
-    getCategories().then(() => {
-      setLoading(false);
-    });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  // if (isLoading) {
-  //   return <Loader />
-  // }
-
   return (
     <Provider store={store}>
-      <SafeAreaView>
-        <Button icon="like" onPress={() => {}} active={true} />
+      <SafeAreaView style={styles.appContainer}>
+        <NavigationContainer>
+          <Stack.Navigator>
+            <Stack.Screen name="Categories" component={CategoriesList} />
+          </Stack.Navigator>
+        </NavigationContainer>
       </SafeAreaView>
     </Provider>
   );
 }
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  appContainer: {
+    flex: 1,
+  },
+});
 
 export default App;
