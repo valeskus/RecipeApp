@@ -1,11 +1,12 @@
 import React from 'react';
-import {ScrollView, StyleSheet} from 'react-native';
+import {ScrollView, StyleSheet, StatusBar} from 'react-native';
 import {CategoryCards} from '../../components/CategoryCards';
 import {Search} from '../../UI/Search';
 
 export function CategoriesList(): JSX.Element {
   return (
     <ScrollView style={styles.categoriesScreenContainer}>
+      <StatusBar />
       <Search onSearch={() => {}} />
       <CategoryCards />
     </ScrollView>
