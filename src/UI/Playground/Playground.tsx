@@ -1,54 +1,12 @@
 import * as React from 'react';
-import {SafeAreaView, ScrollView, StyleSheet} from 'react-native';
-import {Button} from '../Button';
-import {CategoryCard} from '../CategoryCard';
-import {ImageMock} from '../ImageMock';
-import {IngredientsListItem} from '../IngredientsListItem';
-import {InstructionListItem} from '../InstructionsListItem';
-import {PickListItem} from '../PickListItem';
-import {ProductCardGrid} from '../Product Card/ProductCardGrid';
-import {ProductCardLine} from '../Product Card/ProductCardLine';
-import {Search} from '../Search';
-import {Toggle} from '../Toggle';
+import {SafeAreaView, StyleSheet} from 'react-native';
+
+import {CategoriesList} from '../../screens/CategoriesList';
 
 export const Playground: React.FC<{}> = () => {
   return (
     <SafeAreaView style={styles.PlaygroundContainer}>
-      <ScrollView style={styles.PlaygroundContainer}>
-        <Button icon="like" onPress={() => {}} active={false} />
-        <PickListItem onChange={() => {}} item="Item" />
-        <CategoryCard title="Breacfast" onPress={() => {}} image={ImageMock} />
-        <ProductCardGrid
-          title="Nazvanie"
-          calories={500}
-          rating={3}
-          time="1:50"
-          onPress={() => {}}
-          image={ImageMock}
-        />
-
-        <ProductCardLine
-          image={ImageMock}
-          title="Nazvanie"
-          calories={500}
-          rating={2}
-          time="1:50"
-          onPress={() => {}}
-        />
-        <IngredientsListItem
-          title="Product"
-          count="200mg"
-          description=" Lorem Ipsum is simply dummy text of the printing and typesetting industry. "
-        />
-        <InstructionListItem
-          image={ImageMock}
-          count={1}
-          description=" Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. "
-        />
-        <Toggle onChange={() => {}} items={['Ingredients', 'Instructions']} />
-
-        <Search onSearch={() => {}} />
-      </ScrollView>
+      <CategoriesList />
     </SafeAreaView>
   );
 };
