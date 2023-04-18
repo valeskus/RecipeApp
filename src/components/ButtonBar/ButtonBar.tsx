@@ -1,4 +1,6 @@
 import React, {useCallback} from 'react';
+import {useNavigation} from '@react-navigation/native';
+
 import {StyleSheet, View} from 'react-native';
 import {Button} from '../../UI/Button';
 
@@ -8,6 +10,8 @@ export type Props = {
 };
 
 export function ButtonBar({onCardTypeChange, gridType}: Props): JSX.Element {
+  const navigation = useNavigation();
+
   const changeType = useCallback(() => {
     if (gridType) {
       return onCardTypeChange(false);
@@ -15,10 +19,18 @@ export function ButtonBar({onCardTypeChange, gridType}: Props): JSX.Element {
     return onCardTypeChange(true);
   }, [onCardTypeChange, gridType]);
 
+  const handleSortPress = () => {
+    return navigation.navigate('Sort');
+  };
+
+  const handleFilterPress = () => {
+    return navigation.navigate('Filter');
+  };
+
   return (
     <View style={styles.buttonBarContainer}>
-      <Button icon="filter" onPress={() => {}} />
-      <Button icon="sort" onPress={() => {}} />
+      <Button icon="filter" onPress={handleFilterPress} />
+      <Button icon="sort" onPress={handleSortPress} />
       <View style={styles.cardFormButtonContainer}>
         {gridType ? (
           <Button icon="grid" onPress={changeType} />

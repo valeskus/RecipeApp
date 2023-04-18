@@ -1,5 +1,7 @@
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
+
 import {ImageMock} from '../../UI/ImageMock';
 import {ProductCardGrid} from '../../UI/Product Card/ProductCardGrid';
 import {ProductCardLine} from '../../UI/Product Card/ProductCardLine';
@@ -57,6 +59,8 @@ export function RecipesCards({gridType}: Props): JSX.Element {
   const [sortData, setSortData] = React.useState();
   const [filterData, setFilterData] = React.useState([]);
 
+  const navigation = useNavigation();
+
   const {recipes} = RecipesStore.useRecipesStore();
 
   const getRecipes = RecipesStore.useGetRecipeList();
@@ -73,6 +77,10 @@ export function RecipesCards({gridType}: Props): JSX.Element {
     });
   }, [searchData, sortData, filterData, getRecipes]);
 
+  const handlePress = () => {
+    return navigation.navigate('Recipe Details');
+  };
+
   return (
     <View
       style={[
@@ -88,7 +96,7 @@ export function RecipesCards({gridType}: Props): JSX.Element {
             time={product.time}
             image={product.image}
             key={product.id}
-            onPress={() => {}}
+            onPress={handlePress}
           />
         ) : (
           <ProductCardLine
@@ -98,7 +106,7 @@ export function RecipesCards({gridType}: Props): JSX.Element {
             time={product.time}
             image={product.image}
             key={product.id}
-            onPress={() => {}}
+            onPress={handlePress}
           />
         );
       })}

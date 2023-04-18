@@ -1,14 +1,17 @@
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
+
 import {CategoryCard} from '../../UI/CategoryCard';
 import * as CategoriesStore from '../../stores/categories';
 
 export function CategoryCards(): JSX.Element {
   const [isLoading, setLoading] = React.useState(false);
-
   const {categories} = CategoriesStore.useCategoriesStore();
 
   const getCategories = CategoriesStore.useGetCategories();
+
+  const navigation = useNavigation();
 
   React.useEffect(() => {
     setLoading(true);
@@ -23,13 +26,17 @@ export function CategoryCards(): JSX.Element {
   //   return <Loader />;
   // }
 
+  const handlePress = () => {
+    return navigation.navigate('Recipes');
+  };
+
   return (
     <View style={styles.categoryCardsContainer}>
       {categories.map(category => {
         return (
           <CategoryCard
             title={category.title}
-            onPress={() => {}}
+            onPress={handlePress}
             image={category.image}
             key={category.id}
           />

@@ -6,21 +6,21 @@ import {PickListItem} from '../../UI/PickListItem';
 export type Props = {
   filter: FilterModel;
   index: number;
-  key: string;
+  id: string;
   onChange: (filterId: string, valueId: string) => void;
 };
 
 //TODO onChange
 
-export function FilterItem({filter, index, key, onChange}: Props): JSX.Element {
+export function FilterItem({filter, index, id, onChange}: Props): JSX.Element {
   const [selected, setSelected] = React.useState('');
   //TODO
   const handleSelectedValue = useCallback(
-    (id: string) => {
-      setSelected(id);
-      return onChange(key, selected);
+    (valueId: string) => {
+      setSelected(valueId);
+      return onChange(id, selected);
     },
-    [key, selected, onChange],
+    [id, selected, onChange],
   );
 
   return (

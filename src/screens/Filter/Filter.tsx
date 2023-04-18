@@ -54,6 +54,7 @@ export function Filter(): JSX.Element {
               filter={filter}
               index={index}
               key={filter.id}
+              id={filter.id}
               onChange={handleFilterItem}
             />
           );
