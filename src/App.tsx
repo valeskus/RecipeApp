@@ -6,6 +6,7 @@ import {CategoriesList} from './screens/CategoriesList';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {RecipesList} from './screens/RecipesList';
+import {Filter} from './screens/Filter';
 
 if (
   Platform.OS === 'android' &&
@@ -22,6 +23,7 @@ function App(): JSX.Element {
       <SafeAreaView style={styles.appContainer}>
         <NavigationContainer>
           <Stack.Navigator>
+            <Stack.Screen name="Filter" component={Filter} />
             <Stack.Screen name="Recipes" component={RecipesList} />
             <Stack.Screen name="Categories" component={CategoriesList} />
           </Stack.Navigator>

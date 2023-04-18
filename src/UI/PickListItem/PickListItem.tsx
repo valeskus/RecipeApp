@@ -1,32 +1,30 @@
-import React, {useCallback, useState} from 'react';
+import React, {useCallback} from 'react';
 import {Image, StyleSheet, Pressable, View, Text} from 'react-native';
 import {Colors} from '../Colors';
 import {Icons} from '../Icons';
 
 export type Props = {
   item: string;
+  id: string;
   onChange: (element: string) => void;
+  active: string;
 };
 
-export function PickListItem({item, onChange}: Props): JSX.Element {
-  const [activeItem, setActiveItem] = useState('');
-
+export function PickListItem({item, id, onChange, active}: Props): JSX.Element {
   const setActive = useCallback(
     (activeElement: string): void => {
-      if (activeItem === activeElement) {
-        setActiveItem('');
+      if (active === activeElement) {
         return onChange('');
       }
-      setActiveItem(activeElement);
-      onChange(activeElement);
+      onChange(id);
     },
-    [activeItem, onChange],
+    [onChange, id, active],
   );
 
   return (
     <View style={styles.pickListItemContainer}>
-      <Pressable onPress={() => setActive(item)} style={styles.pick}>
-        {activeItem === item && (
+      <Pressable onPress={() => setActive(id)} style={styles.pick}>
+        {active === id && (
           <Image source={Icons.dot} style={[styles.pickActive]} />
         )}
       </Pressable>
