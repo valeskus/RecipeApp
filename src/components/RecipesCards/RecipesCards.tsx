@@ -3,6 +3,7 @@ import {StyleSheet, View} from 'react-native';
 import {ImageMock} from '../../UI/ImageMock';
 import {ProductCardGrid} from '../../UI/Product Card/ProductCardGrid';
 import {ProductCardLine} from '../../UI/Product Card/ProductCardLine';
+import * as RecipesStore from '../../stores/recipes';
 
 export type Props = {
   gridType: boolean;
@@ -51,6 +52,26 @@ export function RecipesCards({gridType}: Props): JSX.Element {
       time: '1:50',
     },
   ];
+  const [isLoading, setLoading] = React.useState(false);
+  const [searchData, setSearchData] = React.useState();
+  const [sortData, setSortData] = React.useState();
+  const [filterData, setFilterData] = React.useState([]);
+
+  const {recipes} = RecipesStore.useRecipesStore();
+
+  const getRecipes = RecipesStore.useGetRecipeList();
+
+  React.useEffect(() => {
+    setLoading(true);
+    const options = {
+      search: searchData,
+      sort: sortData,
+      filter: filterData,
+    };
+    getRecipes(options).then(() => {
+      setLoading(false);
+    });
+  }, [searchData, sortData, filterData, getRecipes]);
 
   return (
     <View

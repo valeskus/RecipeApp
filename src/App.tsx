@@ -23,7 +23,6 @@ function App(): JSX.Element {
         <NavigationContainer>
           <Stack.Navigator>
             <Stack.Screen name="Recipes" component={RecipesList} />
-
             <Stack.Screen name="Categories" component={CategoriesList} />
           </Stack.Navigator>
         </NavigationContainer>
