@@ -12,7 +12,7 @@ import {Icons} from '../Icons';
 
 export type Props = {
   icon: keyof typeof Icons;
-  onPress: () => void;
+  onPress: () => any;
   active?: boolean;
   pressableStyle?: StyleProp<ViewStyle>;
   iconStyle?: StyleProp<ImageStyle>;

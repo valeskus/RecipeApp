@@ -5,10 +5,10 @@ import {ProductCardGrid} from '../../UI/Product Card/ProductCardGrid';
 import {ProductCardLine} from '../../UI/Product Card/ProductCardLine';
 
 export type Props = {
-  cardType: string;
+  gridType: boolean;
 };
 
-export function RecipesCards({cardType}: Props): JSX.Element {
+export function RecipesCards({gridType}: Props): JSX.Element {
   const products = [
     {
       id: 1,
@@ -56,11 +56,11 @@ export function RecipesCards({cardType}: Props): JSX.Element {
     <View
       style={[
         styles.recipesCardsContainer,
-        cardType === 'line' && styles.centeredLineCard,
+        !gridType && styles.centeredLineCard,
       ]}>
       {products.map(product => {
-        return cardType === 'line' ? (
-          <ProductCardLine
+        return gridType ? (
+          <ProductCardGrid
             title={product.title}
             rating={product.rating}
             calories={product.calories}
@@ -70,7 +70,7 @@ export function RecipesCards({cardType}: Props): JSX.Element {
             onPress={() => {}}
           />
         ) : (
-          <ProductCardGrid
+          <ProductCardLine
             title={product.title}
             rating={product.rating}
             calories={product.calories}

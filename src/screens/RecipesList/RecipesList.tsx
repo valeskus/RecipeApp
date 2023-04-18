@@ -1,16 +1,22 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 import {ScrollView, StyleSheet, StatusBar} from 'react-native';
 import {Search} from '../../UI/Search';
 import {RecipesCards} from '../../components/RecipesCards';
+import {ButtonBar} from '../../components/ButtonBar';
 
 export function RecipesList(): JSX.Element {
-  const [cardType, setCardType] = React.useState('grid');
+  const [gridType, setGridType] = React.useState(true);
+
+  const changeCardType = useCallback((type: boolean) => {
+    return setGridType(type);
+  }, []);
 
   return (
     <ScrollView style={styles.recipiesScreenContainer}>
       <StatusBar />
       <Search onSearch={() => {}} />
-      <RecipesCards cardType={cardType} />
+      <ButtonBar onCardTypeChange={changeCardType} gridType={gridType} />
+      <RecipesCards gridType={gridType} />
     </ScrollView>
   );
 }
