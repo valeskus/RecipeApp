@@ -2,6 +2,7 @@ export const Icons = {
   sort: require('../../../assets/sort.png'),
   filter: require('../../../assets/filter.png'),
   select: require('../../../assets/select.png'),
+  cancel: require('../../../assets/cancel.png'),
   search: require('../../../assets/search.png'),
   add: require('../../../assets/add.png'),
   grid: require('../../../assets/grid.png'),

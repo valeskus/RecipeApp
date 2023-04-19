@@ -7,7 +7,7 @@ export function Sort(): JSX.Element {
   const navigation = useNavigation();
   return (
     <View style={styles.sortScreenContainer}>
-      <Button icon="select" onPress={() => navigation.goBack()} />
+      <Button icon="cancel" onPress={() => navigation.goBack()} />
     </View>
   );
 }

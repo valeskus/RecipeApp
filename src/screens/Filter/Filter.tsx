@@ -53,7 +53,7 @@ export function Filter(): JSX.Element {
           );
         })}
       </View>
-      <Button icon="select" onPress={() => navigation.goBack()} />
+      <Button icon="cancel" onPress={() => navigation.goBack()} />
     </ScrollView>
   );
 }
