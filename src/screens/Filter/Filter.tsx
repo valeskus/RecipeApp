@@ -5,7 +5,6 @@ import {FilterItem} from '../../components/FilterItem';
 import {FilterModel} from '../../models';
 
 export function Filter(): JSX.Element {
-  const [isLoading, setLoading] = React.useState(false);
   const [filterList, setFiltreList] = React.useState([{}]);
 
   //   const {filters} = RecipesStore.useRecipesStore();
@@ -27,15 +26,6 @@ export function Filter(): JSX.Element {
       ],
     },
   ];
-
-  React.useEffect(() => {
-    setLoading(true);
-  }, []);
-
-  Array<{
-    key: string; // Reference FilterModel.id
-    value: string; // Reference FilterValueModel.id
-  }>;
 
   const handleFilterItem = useCallback(
     (filterId: string, valueId: string) => {

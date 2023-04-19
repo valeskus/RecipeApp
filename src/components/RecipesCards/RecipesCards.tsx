@@ -9,12 +9,13 @@ import * as RecipesStore from '../../stores/recipes';
 
 export type Props = {
   gridType: boolean;
+  categoryTitle?: string;
 };
 
-export function RecipesCards({gridType}: Props): JSX.Element {
-  const products = [
+export function RecipesCards({gridType, categoryTitle}: Props): JSX.Element {
+  const recipes = [
     {
-      id: 1,
+      id: '1',
       title: 'Product 1',
       image: ImageMock,
       rating: 4,
@@ -22,7 +23,7 @@ export function RecipesCards({gridType}: Props): JSX.Element {
       time: '1:50',
     },
     {
-      id: 2,
+      id: '2',
       title: 'Product 2',
       image: ImageMock,
       rating: 3,
@@ -30,7 +31,7 @@ export function RecipesCards({gridType}: Props): JSX.Element {
       time: '1:50',
     },
     {
-      id: 3,
+      id: '3',
       title: 'Product 3',
       image: ImageMock,
       rating: 1,
@@ -38,7 +39,7 @@ export function RecipesCards({gridType}: Props): JSX.Element {
       time: '1:50',
     },
     {
-      id: 4,
+      id: '4',
       title: 'Product 4',
       image: ImageMock,
       rating: 4.5,
@@ -46,7 +47,7 @@ export function RecipesCards({gridType}: Props): JSX.Element {
       time: '1:50',
     },
     {
-      id: 5,
+      id: '5',
       title: 'Product 5',
       image: ImageMock,
       rating: 1.5,
@@ -55,13 +56,13 @@ export function RecipesCards({gridType}: Props): JSX.Element {
     },
   ];
   const [isLoading, setLoading] = React.useState(false);
-  const [searchData, setSearchData] = React.useState();
+  const [searchData, setSearchData] = React.useState(categoryTitle);
   const [sortData, setSortData] = React.useState();
   const [filterData, setFilterData] = React.useState([]);
 
   const navigation = useNavigation();
 
-  const {recipes} = RecipesStore.useRecipesStore();
+  // const {recipes} = RecipesStore.useRecipesStore();
 
   const getRecipes = RecipesStore.useGetRecipeList();
 
@@ -72,13 +73,14 @@ export function RecipesCards({gridType}: Props): JSX.Element {
       sort: sortData,
       filter: filterData,
     };
+    //TODO options and states
     getRecipes(options).then(() => {
       setLoading(false);
     });
   }, [searchData, sortData, filterData, getRecipes]);
 
-  const handlePress = () => {
-    return navigation.navigate('Recipe Details');
+  const handlePress = (id: string) => {
+    return navigation.navigate('RecipeDetails', id);
   };
 
   return (
@@ -87,26 +89,26 @@ export function RecipesCards({gridType}: Props): JSX.Element {
         styles.recipesCardsContainer,
         !gridType && styles.centeredLineCard,
       ]}>
-      {products.map(product => {
+      {recipes.map(recipe => {
         return gridType ? (
           <ProductCardGrid
-            title={product.title}
-            rating={product.rating}
-            calories={product.calories}
-            time={product.time}
-            image={product.image}
-            key={product.id}
-            onPress={handlePress}
+            title={recipe.title}
+            rating={recipe.rating}
+            calories={recipe.calories}
+            time={recipe.time}
+            image={recipe.image}
+            key={recipe.id}
+            onPress={() => handlePress(recipe.id)}
           />
         ) : (
           <ProductCardLine
-            title={product.title}
-            rating={product.rating}
-            calories={product.calories}
-            time={product.time}
-            image={product.image}
-            key={product.id}
-            onPress={handlePress}
+            title={recipe.title}
+            rating={recipe.rating}
+            calories={recipe.calories}
+            time={recipe.time}
+            image={recipe.image}
+            key={recipe.id}
+            onPress={() => handlePress(recipe.id)}
           />
         );
       })}

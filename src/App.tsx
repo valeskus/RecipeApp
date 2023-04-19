@@ -4,7 +4,10 @@ import {Platform, UIManager} from 'react-native';
 import {store} from './stores/rootStore';
 import {CategoriesList} from './screens/CategoriesList';
 import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {
+  NativeStackScreenProps,
+  createNativeStackNavigator,
+} from '@react-navigation/native-stack';
 import {RecipesList} from './screens/RecipesList';
 import {Filter} from './screens/Filter';
 import {Sort} from './screens/Sort';
@@ -17,15 +20,16 @@ if (
   UIManager.setLayoutAnimationEnabledExperimental(true);
 }
 
-type RootStackParamList = {
+export type RootStackParamList = {
   Categories: undefined;
-  Recipes: undefined;
+  Recipes: {title: string};
   Sort: undefined;
   Filter: undefined;
-  RecipeDetails: undefined;
+  RecipeDetails: {id: string};
   //TODO add id to Recipe Details
 };
 //TODO ceate sort and filter modal window from navigation
+
 const Stack = createNativeStackNavigator();
 declare global {
   namespace ReactNavigation {

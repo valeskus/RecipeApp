@@ -26,8 +26,8 @@ export function CategoryCards(): JSX.Element {
   //   return <Loader />;
   // }
 
-  const handlePress = () => {
-    return navigation.navigate('Recipes');
+  const handlePress = (title: string) => {
+    return navigation.navigate('Recipes', {title});
   };
 
   return (
@@ -36,7 +36,7 @@ export function CategoryCards(): JSX.Element {
         return (
           <CategoryCard
             title={category.title}
-            onPress={handlePress}
+            onPress={() => handlePress(category.title)}
             image={category.image}
             key={category.id}
           />
