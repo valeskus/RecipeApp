@@ -1,7 +1,7 @@
 import React from 'react';
-import {StyleSheet, Text, View, Image} from 'react-native';
-import {Colors} from '../Colors';
+import {Text, View, Image} from 'react-native';
 import {Icons} from '../Icons';
+import {styles} from './styles';
 
 export type Props = {
   title: string;
@@ -31,38 +31,3 @@ export function IngredientsListItem({
     </View>
   );
 }
-const styles = StyleSheet.create({
-  ingredientsListItemContainer: {
-    width: '100%',
-    flexDirection: 'row',
-    marginBottom: 15,
-  },
-  ingredientsListItemContentContainer: {
-    flex: 1,
-    flexDirection: 'row',
-    borderBottomColor: Colors.borderTextSecondary,
-    borderBottomWidth: 1,
-    paddingBottom: 15,
-  },
-  ingredientsListItemContent: {
-    flexDirection: 'column',
-    flex: 1,
-  },
-  ingredientsListItemTitle: {
-    color: Colors.text,
-    fontSize: 18,
-    alignSelf: 'flex-start',
-  },
-  ingredientsListItemDescription: {
-    color: Colors.borderTextSecondary,
-  },
-  ingredientsListItemCount: {
-    color: Colors.text,
-    fontSize: 18,
-  },
-  ingredientsListItemDot: {
-    width: 20,
-    height: 20,
-    alignSelf: 'flex-start',
-  },
-});

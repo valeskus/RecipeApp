@@ -4,10 +4,7 @@ import {Platform, UIManager} from 'react-native';
 import {store} from './stores/rootStore';
 import {CategoriesList} from './screens/CategoriesList';
 import {NavigationContainer} from '@react-navigation/native';
-import {
-  NativeStackScreenProps,
-  createNativeStackNavigator,
-} from '@react-navigation/native-stack';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {RecipesList} from './screens/RecipesList';
 import {Filter} from './screens/Filter';
 import {Sort} from './screens/Sort';

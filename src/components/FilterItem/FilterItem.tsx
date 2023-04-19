@@ -1,5 +1,6 @@
 import React, {useCallback} from 'react';
-import {StyleSheet, View, Text} from 'react-native';
+import {View, Text} from 'react-native';
+import {styles} from './styles';
 import {FilterModel} from '../../models';
 import {PickListItem} from '../../UI/PickListItem';
 
@@ -40,9 +41,3 @@ export function FilterItem({filter, index, id, onChange}: Props): JSX.Element {
     </View>
   );
 }
-const styles = StyleSheet.create({
-  filterScreenContainer: {
-    flex: 1,
-    padding: 10,
-  },
-});

@@ -1,7 +1,7 @@
 import React, {useCallback} from 'react';
 import {useNavigation} from '@react-navigation/native';
-
-import {StyleSheet, View} from 'react-native';
+import {View} from 'react-native';
+import {styles} from './styles';
 import {Button} from '../../UI/Button';
 
 export type Props = {
@@ -41,13 +41,3 @@ export function ButtonBar({onCardTypeChange, gridType}: Props): JSX.Element {
     </View>
   );
 }
-const styles = StyleSheet.create({
-  buttonBarContainer: {
-    flex: 1,
-    flexDirection: 'row',
-  },
-  cardFormButtonContainer: {
-    flex: 2,
-    alignItems: 'flex-end',
-  },
-});

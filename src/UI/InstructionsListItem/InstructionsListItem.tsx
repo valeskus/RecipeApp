@@ -1,7 +1,7 @@
 import React from 'react';
-import {StyleSheet, Text, View, Image} from 'react-native';
-import {Colors} from '../Colors';
+import {Text, View, Image} from 'react-native';
 import {Icons} from '../Icons';
+import {styles} from './styles';
 
 export type Props = {
   image?: string;
@@ -25,40 +25,3 @@ export function InstructionListItem({
     </View>
   );
 }
-const styles = StyleSheet.create({
-  ingredientsListItemContainer: {
-    width: '100%',
-    flexDirection: 'row',
-    marginBottom: 15,
-  },
-  listItemContentContainer: {
-    flex: 1,
-    flexDirection: 'column',
-    borderBottomColor: Colors.borderTextSecondary,
-    borderBottomWidth: 1,
-    alignItems: 'center',
-  },
-  listItemCount: {
-    color: Colors.text,
-    fontSize: 18,
-    alignSelf: 'flex-start',
-    marginBottom: 15,
-  },
-  listItemDescription: {
-    color: Colors.text,
-    marginBottom: 15,
-    width: '100%',
-  },
-  listItemDot: {
-    width: 20,
-    height: 20,
-    alignSelf: 'flex-start',
-    tintColor: Colors.primary,
-  },
-  listItemImage: {
-    width: '70%',
-    height: 150,
-    marginBottom: 15,
-    borderRadius: 10,
-  },
-});

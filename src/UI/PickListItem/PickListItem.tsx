@@ -1,7 +1,7 @@
 import React, {useCallback} from 'react';
-import {Image, StyleSheet, Pressable, View, Text} from 'react-native';
-import {Colors} from '../Colors';
+import {Image, Pressable, View, Text} from 'react-native';
 import {Icons} from '../Icons';
+import {styles} from './styles';
 
 export type Props = {
   item: string;
@@ -32,32 +32,3 @@ export function PickListItem({item, id, onChange, active}: Props): JSX.Element {
     </View>
   );
 }
-const styles = StyleSheet.create({
-  pickListItemContainer: {
-    width: '100%',
-    flexDirection: 'row',
-    backgroundColor: Colors.background,
-    alignItems: 'center',
-    marginVertical: 10,
-  },
-  pick: {
-    borderRadius: 5,
-    width: 35,
-    height: 35,
-    borderWidth: 1,
-    borderColor: Colors.borderTextSecondary,
-    justifyContent: 'center',
-    position: 'relative',
-  },
-  pickActive: {
-    width: '100%',
-    height: '100%',
-    alignSelf: 'center',
-    position: 'absolute',
-  },
-  pickListItem: {
-    color: Colors.text,
-    marginLeft: 5,
-    fontSize: 17,
-  },
-});

@@ -1,5 +1,6 @@
 import React from 'react';
-import {ScrollView, StyleSheet, StatusBar} from 'react-native';
+import {ScrollView, StatusBar} from 'react-native';
+import {styles} from './styles';
 import {CategoryCards} from '../../components/CategoryCards';
 import {Search} from '../../UI/Search';
 
@@ -12,8 +13,3 @@ export function CategoriesList(): JSX.Element {
     </ScrollView>
   );
 }
-const styles = StyleSheet.create({
-  categoriesScreenContainer: {
-    flex: 1,
-  },
-});

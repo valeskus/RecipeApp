@@ -1,5 +1,6 @@
 import React, {useCallback} from 'react';
-import {ScrollView, StyleSheet, StatusBar, View} from 'react-native';
+import {ScrollView, StatusBar, View} from 'react-native';
+import {styles} from './styles';
 // import * as RecipesStore from '../../stores/recipes';
 import {FilterItem} from '../../components/FilterItem';
 import {FilterModel} from '../../models';
@@ -53,9 +54,3 @@ export function Filter(): JSX.Element {
     </ScrollView>
   );
 }
-const styles = StyleSheet.create({
-  filterScreenContainer: {
-    flex: 1,
-    padding: 10,
-  },
-});

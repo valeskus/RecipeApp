@@ -1,5 +1,6 @@
 import React, {useCallback} from 'react';
-import {ScrollView, StyleSheet, StatusBar} from 'react-native';
+import {ScrollView, StatusBar} from 'react-native';
+import {styles} from './styles';
 import {Search} from '../../UI/Search';
 import {RecipesCards} from '../../components/RecipesCards';
 import {ButtonBar} from '../../components/ButtonBar';
@@ -24,9 +25,3 @@ export function RecipesList(): JSX.Element {
     </ScrollView>
   );
 }
-const styles = StyleSheet.create({
-  recipiesScreenContainer: {
-    flex: 1,
-    padding: 10,
-  },
-});

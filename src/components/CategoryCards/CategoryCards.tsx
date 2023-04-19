@@ -1,7 +1,7 @@
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
+import {View} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-
+import {styles} from './styles';
 import {CategoryCard} from '../../UI/CategoryCard';
 import * as CategoriesStore from '../../stores/categories';
 
@@ -45,11 +45,3 @@ export function CategoryCards(): JSX.Element {
     </View>
   );
 }
-const styles = StyleSheet.create({
-  categoryCardsContainer: {
-    flex: 1,
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'center',
-  },
-});

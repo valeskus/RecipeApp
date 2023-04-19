@@ -1,12 +1,6 @@
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
-
+import {View} from 'react-native';
+import {styles} from './styles';
 export function RecipeDetails(): JSX.Element {
   return <View style={styles.detailsScreenContainer} />;
 }
-const styles = StyleSheet.create({
-  detailsScreenContainer: {
-    flex: 1,
-    padding: 10,
-  },
-});

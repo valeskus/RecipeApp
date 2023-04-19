@@ -1,5 +1,6 @@
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
+import {View} from 'react-native';
+import {styles} from './styles';
 import {useNavigation} from '@react-navigation/native';
 
 import {ImageMock} from '../../UI/ImageMock';
@@ -115,13 +116,3 @@ export function RecipesCards({gridType, categoryTitle}: Props): JSX.Element {
     </View>
   );
 }
-const styles = StyleSheet.create({
-  recipesCardsContainer: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    width: '100%',
-  },
-  centeredLineCard: {
-    justifyContent: 'center',
-  },
-});
