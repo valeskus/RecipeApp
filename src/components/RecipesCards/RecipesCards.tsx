@@ -81,7 +81,7 @@ export function RecipesCards({gridType, categoryTitle}: Props): JSX.Element {
   }, [searchData, sortData, filterData, getRecipes]);
 
   const handlePress = (id: string) => {
-    return navigation.navigate('RecipeDetails', id);
+    return navigation.navigate('RecipeDetails', {id});
   };
 
   return (

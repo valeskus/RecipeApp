@@ -4,10 +4,12 @@ import {styles} from './styles';
 // import * as RecipesStore from '../../stores/recipes';
 import {FilterItem} from '../../components/FilterItem';
 import {FilterModel} from '../../models';
+import {Button} from '../../UI/Button';
+import {useNavigation} from '@react-navigation/native';
 
 export function Filter(): JSX.Element {
   const [filterList, setFiltreList] = React.useState([{}]);
-
+  const navigation = useNavigation();
   //   const {filters} = RecipesStore.useRecipesStore();
   const filters: Array<FilterModel> = [
     {
@@ -51,6 +53,7 @@ export function Filter(): JSX.Element {
           );
         })}
       </View>
+      <Button icon="select" onPress={() => navigation.goBack()} />
     </ScrollView>
   );
 }
