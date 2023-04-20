@@ -19,7 +19,7 @@ if (
 
 export type RootStackParamList = {
   Categories: undefined;
-  Recipes: {title: string};
+  Recipes: string | undefined;
   Sort: undefined;
   Filter: undefined;
   RecipeDetails: {id: string};

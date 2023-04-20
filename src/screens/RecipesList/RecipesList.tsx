@@ -4,12 +4,14 @@ import {styles} from './styles';
 import {Search} from '../../UI/Search';
 import {RecipesCards} from '../../components/RecipesCards';
 import {ButtonBar} from '../../components/ButtonBar';
+// import {useRoute} from '@react-navigation/native';
 
-//TODO: Props import??? How to get route.params?
+//TODO:  How to get route.params with correct type?
 
 export function RecipesList(): JSX.Element {
   const [gridType, setGridType] = React.useState(true);
-  // const {title} = route.params;
+  // const route = useRoute();
+  // const title = route.params;
   const title = '';
 
   const changeCardType = useCallback((type: boolean) => {

@@ -27,7 +27,7 @@ export function CategoryCards(): JSX.Element {
   // }
 
   const handlePress = (title: string) => {
-    return navigation.navigate('Recipes', {title});
+    return navigation.navigate('Recipes', title);
   };
 
   return (
