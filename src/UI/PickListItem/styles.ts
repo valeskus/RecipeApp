@@ -5,7 +5,6 @@ export const styles = StyleSheet.create({
   pickListItemContainer: {
     width: '100%',
     flexDirection: 'row',
-    backgroundColor: Colors.background,
     alignItems: 'center',
     marginVertical: 10,
   },

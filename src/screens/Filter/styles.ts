@@ -5,4 +5,7 @@ export const styles = StyleSheet.create({
     flex: 1,
     padding: 10,
   },
+  goBackButton: {
+    alignItems: 'flex-end',
+  },
 });

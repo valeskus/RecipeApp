@@ -1,5 +1,5 @@
 import React, {useCallback} from 'react';
-import {ScrollView, StatusBar, View} from 'react-native';
+import {ScrollView, View} from 'react-native';
 import {styles} from './styles';
 // import * as RecipesStore from '../../stores/recipes';
 import {FilterItem} from '../../components/FilterItem';
@@ -39,7 +39,9 @@ export function Filter(): JSX.Element {
   );
   return (
     <ScrollView style={styles.filterScreenContainer}>
-      <StatusBar />
+      <View style={styles.goBackButton}>
+        <Button icon="cancel" onPress={() => navigation.goBack()} />
+      </View>
       <View>
         {filters.map((filter, index) => {
           return (
@@ -53,7 +55,6 @@ export function Filter(): JSX.Element {
           );
         })}
       </View>
-      <Button icon="cancel" onPress={() => navigation.goBack()} />
     </ScrollView>
   );
 }

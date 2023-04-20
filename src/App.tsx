@@ -23,9 +23,7 @@ export type RootStackParamList = {
   Sort: undefined;
   Filter: undefined;
   RecipeDetails: {id: string};
-  //TODO add id to Recipe Details
 };
-//TODO ceate sort and filter modal window from navigation
 
 const Stack = createNativeStackNavigator();
 declare global {
