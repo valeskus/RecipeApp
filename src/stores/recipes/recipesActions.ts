@@ -23,7 +23,6 @@ export const getRecipes = async (
 ) => {
   try {
     const recipeList = await RecipesApi.searchRecipes(options);
-
     dispatch(actionGetRecipes(recipeList));
   } catch (error) {
     dispatch(actionError(error));

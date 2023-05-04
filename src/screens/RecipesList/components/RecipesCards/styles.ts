@@ -9,4 +9,7 @@ export const styles = StyleSheet.create({
   centeredLineCard: {
     justifyContent: 'center',
   },
+  loadingIndicator: {
+    marginVertical: 18,
+  },
 });

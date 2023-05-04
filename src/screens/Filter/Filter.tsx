@@ -1,12 +1,13 @@
 import React from 'react';
 import {ScrollView, View} from 'react-native';
 import {styles} from './styles';
-import {FilterItem} from '../../components/FilterItem';
+import {FilterItem} from './components/FilterItem';
 import {Button} from '../../UI/Button';
-import {useFilterController} from './useFilterController';
+import {useFilterController} from './hook';
 
 export function Filter(): JSX.Element {
-  const {onCacnelPress, onFilterChange, filters} = useFilterController();
+  const {onCacnelPress, onSelectPress, onFilterChange, filters} =
+    useFilterController();
 
   return (
     <ScrollView style={styles.filterScreenContainer}>
@@ -26,6 +27,7 @@ export function Filter(): JSX.Element {
           );
         })}
       </View>
+      <Button icon="select" onPress={onSelectPress} />
     </ScrollView>
   );
 }

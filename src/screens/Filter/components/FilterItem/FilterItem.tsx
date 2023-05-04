@@ -1,8 +1,8 @@
 import React, {useCallback} from 'react';
 import {View, Text} from 'react-native';
 import {styles} from './styles';
-import {FilterModel} from '../../models';
-import {PickListItem} from '../../UI/PickListItem';
+import {FilterModel} from '../../../../models';
+import {PickListItem} from '../../../../UI/PickListItem';
 
 export type Props = {
   filter: FilterModel;

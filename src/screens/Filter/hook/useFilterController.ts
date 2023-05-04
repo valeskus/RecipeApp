@@ -1,29 +1,12 @@
 import React, {useCallback} from 'react';
-import {FilterModel} from '../../models';
 import {useNavigation} from '@react-navigation/native';
+import * as RecipesStore from '../../../stores/recipes';
 
 export const useFilterController = () => {
   const [filterList, setFiltreList] = React.useState([{}]);
   const navigation = useNavigation();
-  //   const {filters} = RecipesStore.useRecipesStore();
-  const filters: Array<FilterModel> = [
-    {
-      id: '1',
-      title: 'Filter 1',
-      values: [
-        {label: 'value 1', id: 'value 1.1'},
-        {label: 'value 2', id: 'value 1.2'},
-      ],
-    },
-    {
-      id: '2',
-      title: 'Filter 2',
-      values: [
-        {label: 'value 1', id: 'value 2.1'},
-        {label: 'value 2', id: 'value 2.2'},
-      ],
-    },
-  ];
+
+  const {filters} = RecipesStore.useRecipesStore();
 
   const onFilterChange = useCallback(
     (filterId: string, valueId: string) => {
@@ -36,9 +19,14 @@ export const useFilterController = () => {
   const onCacnelPress = () => {
     navigation.goBack();
   };
+  const onSelectPress = () => {
+    //TODO params
+    navigation.goBack();
+  };
 
   return {
     onCacnelPress,
+    onSelectPress,
     onFilterChange,
     filters,
   };
