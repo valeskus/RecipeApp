@@ -8,13 +8,13 @@ import {Colors} from '../../UI/Colors';
 import {useRecipeListController} from './hooks';
 
 export function RecipesList(): JSX.Element {
-  const {gridType, isLoading, recipes, onChangeCardType} =
+  const {gridType, isLoading, recipesList, onChangeCardType, onSearch} =
     useRecipeListController();
 
   return (
     <ScrollView style={styles.recipiesScreenContainer}>
       <StatusBar />
-      <Search onSearch={() => {}} />
+      <Search onSearch={onSearch} />
       <ButtonBar onCardTypeChange={onChangeCardType} gridType={gridType} />
       {isLoading && (
         <ActivityIndicator
@@ -22,7 +22,7 @@ export function RecipesList(): JSX.Element {
           style={styles.loadingIndicator}
         />
       )}
-      {!isLoading && <RecipesCards gridType={gridType} recipes={recipes} />}
+      {!isLoading && <RecipesCards gridType={gridType} recipes={recipesList} />}
     </ScrollView>
   );
 }
