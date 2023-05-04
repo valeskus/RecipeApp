@@ -1,4 +1,4 @@
-import React, {useCallback} from 'react';
+import React, {useCallback, useEffect} from 'react';
 import {SeachOptions} from '../../../api/recipes.api';
 import * as RecipesStore from '../../../stores/recipes';
 import {BaseRecipeModel} from '../../../models';
@@ -15,8 +15,6 @@ export const useRecipeListController = () => {
   const {recipes} = RecipesStore.useRecipesStore();
 
   const [isLoading, setLoading] = React.useState(false);
-  const [recipesList, setRecipesList] =
-    React.useState<Array<BaseRecipeModel>>(recipes);
 
   const [searchData, setSearchData] = React.useState(title);
   const [sortData, setSortData] = React.useState();
@@ -28,34 +26,24 @@ export const useRecipeListController = () => {
 
   const getRecipes = RecipesStore.useGetRecipeList();
 
-  React.useEffect(() => {
+  useEffect(() => {
+    // TODO options and states
     setLoading(true);
+
     const options: SeachOptions = {
       search: searchData,
       sort: sortData,
       filter: filterData,
     };
-    // TODO options and states
     getRecipes(options).then(() => {
       setLoading(false);
     });
   }, [searchData, sortData, filterData, getRecipes]);
 
-  const onSearch = useCallback(
-    (value: string) => {
-      const newRecipeList = recipes.filter(recipe =>
-        recipe.title.toLowerCase().includes(value.toLowerCase()),
-      );
-      setRecipesList(newRecipeList);
-    },
-    [recipes],
-  );
-
   return {
     gridType,
     isLoading,
-    recipesList,
+    recipes,
     onChangeCardType,
-    onSearch,
   };
 };

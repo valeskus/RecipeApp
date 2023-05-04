@@ -6,6 +6,7 @@ export interface recipeDetailsStoreState {
   recipe?: DetailRecipeModel;
 }
 
+//TODO type
 const initialState: recipeDetailsStoreState = {};
 
 export function recipeDetailsReducer(

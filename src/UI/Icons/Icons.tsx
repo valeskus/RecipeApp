@@ -16,4 +16,5 @@ export const Icons = {
   kcal: require('../../../assets/kcal.png'),
   rating: require('../../../assets/rating.png'),
   dot: require('../../../assets/dot.png'),
+  time: require('../../../assets/clock.png'),
 };

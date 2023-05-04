@@ -1,11 +1,11 @@
 import React from 'react';
 import {View} from 'react-native';
 import {styles} from './styles';
-import {useNavigation} from '@react-navigation/native';
 
 import {ProductCardGrid} from '../../../../UI/Product Card/ProductCardGrid';
 import {ProductCardLine} from '../../../../UI/Product Card/ProductCardLine';
 import {BaseRecipeModel} from '../../../../models';
+import {useRecipeCardControler} from './hooks';
 
 export type Props = {
   gridType: boolean;
@@ -13,12 +13,7 @@ export type Props = {
 };
 
 export function RecipesCards({gridType, recipes}: Props): JSX.Element {
-  const navigation = useNavigation();
-
-  const handlePress = (id: string) => {
-    return navigation.navigate('RecipeDetails', {id});
-  };
-
+  const {handlePress} = useRecipeCardControler();
   return (
     <View
       style={[

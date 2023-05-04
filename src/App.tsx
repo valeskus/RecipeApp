@@ -22,7 +22,7 @@ export type RootStackParamList = {
   Recipes: string | undefined;
   Sort: undefined;
   Filter: undefined;
-  RecipeDetails: {id: string};
+  RecipeDetails: undefined;
 };
 
 const Stack = createNativeStackNavigator();
