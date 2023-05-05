@@ -21,7 +21,37 @@ export const searchRecipes = async (
 
   // return result.data;
 
-  return mockData.recipesList;
+  const resultCategory = Object.keys(mockData.collection.categories)
+    .map((category, index) => {
+      const categoryTitle: string = category.toLowerCase();
+      if (categoryTitle === options.search.toLowerCase()) {
+        return Object.values(mockData.collection.categories)[index];
+      }
+    })
+    .filter(element => {
+      return element !== undefined;
+    });
+
+  const resultRecipes = Object.values(mockData.collection.categories)
+    .map(category => {
+      return category.recipes.filter(recipe => {
+        if (recipe.title.toLowerCase().includes(options.search.toLowerCase())) {
+          return recipe;
+        }
+      });
+    })
+    .filter(element => {
+      return element !== undefined;
+    })
+    .flat(1);
+
+  const result: RecipeListModel = {
+    recipes: resultCategory[0]?.recipes || resultRecipes,
+    filters: mockData.collection.filters,
+    sortOptions: mockData.collection.sortOptions,
+  };
+
+  return result;
 };
 
 export const getRecipeById = async (id: string): Promise<DetailRecipeModel> => {

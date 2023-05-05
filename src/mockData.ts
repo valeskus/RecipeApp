@@ -214,49 +214,98 @@ export const mockData = {
     },
   ],
 
-  recipesList: {
-    recipes: [
-      {
-        id: '1',
-        title: 'Product 1',
-        image: ImageMock,
-        rating: 4,
-        kcal: 500,
-        time: '1:50',
+  collection: {
+    categories: {
+      'category 1': {
+        recipes: [
+          {
+            id: '1',
+            title: 'Product 1',
+            image: ImageMock,
+            rating: 4,
+            kcal: 500,
+            time: '1:50',
+          },
+          {
+            id: '2',
+            title: 'Product 2',
+            image: ImageMock,
+            rating: 3,
+            kcal: 500,
+            time: '1:50',
+          },
+          {
+            id: '3',
+            title: 'Product 3',
+            image: ImageMock,
+            rating: 1,
+            kcal: 500,
+            time: '1:50',
+          },
+          {
+            id: '4',
+            title: 'Product 4',
+            image: ImageMock,
+            rating: 4.5,
+            kcal: 500,
+            time: '1:50',
+          },
+          {
+            id: '5',
+            title: 'Product 5',
+            image: ImageMock,
+            rating: 1.5,
+            kcal: 500,
+            time: '1:50',
+          },
+        ],
       },
-      {
-        id: '2',
-        title: 'Product 2',
-        image: ImageMock,
-        rating: 3,
-        kcal: 500,
-        time: '1:50',
+      'category 2': {
+        recipes: [
+          {
+            id: '1.1',
+            title: 'Product 1',
+            image: ImageMock,
+            rating: 4,
+            kcal: 500,
+            time: '1:50',
+          },
+          {
+            id: '2.1',
+            title: 'Product 2',
+            image: ImageMock,
+            rating: 3,
+            kcal: 500,
+            time: '1:50',
+          },
+          {
+            id: '3.1',
+            title: 'Product 3',
+            image: ImageMock,
+            rating: 1,
+            kcal: 500,
+            time: '1:50',
+          },
+          {
+            id: '4.1',
+            title: 'Product 4',
+            image: ImageMock,
+            rating: 4.5,
+            kcal: 500,
+            time: '1:50',
+          },
+          {
+            id: '5.1',
+            title: 'Product 5',
+            image: ImageMock,
+            rating: 1.5,
+            kcal: 500,
+            time: '1:50',
+          },
+        ],
       },
-      {
-        id: '3',
-        title: 'Product 3',
-        image: ImageMock,
-        rating: 1,
-        kcal: 500,
-        time: '1:50',
-      },
-      {
-        id: '4',
-        title: 'Product 4',
-        image: ImageMock,
-        rating: 4.5,
-        kcal: 500,
-        time: '1:50',
-      },
-      {
-        id: '5',
-        title: 'Product 5',
-        image: ImageMock,
-        rating: 1.5,
-        kcal: 500,
-        time: '1:50',
-      },
-    ],
+    },
+
     filters: [
       {
         id: 'filter1',
