@@ -10,12 +10,12 @@ export const useRecipeListController = () => {
 
   const [isLoading, setLoading] = React.useState(false);
 
-  // const [searchData, setSearchData] = React.useState(title);
-  const [sortData, setSortData] = React.useState();
-  const [filterData, setFilterData] = React.useState([]);
-
   const {params} =
     useRoute<RouteProp<ReactNavigation.RootParamList, 'Recipes'>>();
+
+  const [searchData, setSearchData] = React.useState(params.searchTerm);
+  const [sortData, setSortData] = React.useState();
+  const [filterData, setFilterData] = React.useState([]);
 
   const onChangeCardType = useCallback((type: boolean) => {
     return setGridType(type);
@@ -27,19 +27,20 @@ export const useRecipeListController = () => {
     setLoading(true);
 
     const options: SeachOptions = {
-      search: params.searchTerm,
+      search: searchData,
       sort: sortData,
       filter: filterData,
     };
     getRecipes(options).then(() => {
       setLoading(false);
     });
-  }, [sortData, filterData, getRecipes, params]);
+  }, [sortData, filterData, getRecipes, searchData]);
 
   return {
     gridType,
     isLoading,
     recipes,
     onChangeCardType,
+    searchData,
   };
 };

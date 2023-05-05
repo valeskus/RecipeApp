@@ -13,10 +13,16 @@ import {Icons} from '../Icons';
 export type Props = {
   onSearch: (e: string) => void;
   pressableStyle?: StyleProp<ViewStyle>;
+  searchTerm?: string;
 };
 
-export function Search({onSearch, pressableStyle}: Props): JSX.Element {
-  const [searchValue, setSearchValue] = useState('');
+export function Search({
+  onSearch,
+  pressableStyle,
+  searchTerm,
+}: Props): JSX.Element {
+  const [searchValue, setSearchValue] = useState(searchTerm || '');
+
   const handleChange = useCallback((nextValue: string) => {
     if (!nextValue) {
       return setSearchValue(nextValue);
@@ -41,7 +47,8 @@ export function Search({onSearch, pressableStyle}: Props): JSX.Element {
           styles.searchBarIconContainer,
           pressed && styles.searchPress,
           pressableStyle,
-        ]}>
+        ]}
+        disabled={!searchValue}>
         <Image source={Icons.search} style={styles.searchBarIcon} />
       </Pressable>
     </View>

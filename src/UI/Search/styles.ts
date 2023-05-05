@@ -24,6 +24,7 @@ export const styles = StyleSheet.create({
     fontSize: 17,
     padding: 0,
     color: Colors.text,
+    width: '100%',
   },
   searchBarIcon: {
     width: 27,

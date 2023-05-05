@@ -264,7 +264,7 @@ export const mockData = {
         recipes: [
           {
             id: '1.1',
-            title: 'Product 1',
+            title: 'Product 1.1',
             image: ImageMock,
             rating: 4,
             kcal: 500,
@@ -272,7 +272,7 @@ export const mockData = {
           },
           {
             id: '2.1',
-            title: 'Product 2',
+            title: 'Product 2.1',
             image: ImageMock,
             rating: 3,
             kcal: 500,
@@ -280,7 +280,7 @@ export const mockData = {
           },
           {
             id: '3.1',
-            title: 'Product 3',
+            title: 'Product 3.1',
             image: ImageMock,
             rating: 1,
             kcal: 500,
@@ -288,7 +288,7 @@ export const mockData = {
           },
           {
             id: '4.1',
-            title: 'Product 4',
+            title: 'Product 4.1',
             image: ImageMock,
             rating: 4.5,
             kcal: 500,
@@ -296,7 +296,7 @@ export const mockData = {
           },
           {
             id: '5.1',
-            title: 'Product 5',
+            title: 'Product 5.1',
             image: ImageMock,
             rating: 1.5,
             kcal: 500,

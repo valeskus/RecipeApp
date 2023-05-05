@@ -8,13 +8,13 @@ import {Colors} from '../../UI/Colors';
 import {useRecipeListController} from './hooks';
 
 export function RecipesList(): JSX.Element {
-  const {gridType, isLoading, recipes, onChangeCardType} =
+  const {gridType, isLoading, recipes, onChangeCardType, searchData} =
     useRecipeListController();
 
   return (
     <ScrollView style={styles.recipiesScreenContainer}>
       <StatusBar />
-      <Search onSearch={() => {}} />
+      <Search onSearch={() => {}} searchTerm={searchData} />
       <ButtonBar onCardTypeChange={onChangeCardType} gridType={gridType} />
       {isLoading && (
         <ActivityIndicator
