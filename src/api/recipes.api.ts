@@ -24,8 +24,6 @@ export const searchRecipes = async (
   return mockData.recipesList;
 };
 
-// TODO Specify rerturn type for all api calls
-
 export const getRecipeById = async (id: string): Promise<DetailRecipeModel> => {
   // const result = await client.get<DetailRecipeModel>(`/recipes/${id}`);
   // return result.data;
