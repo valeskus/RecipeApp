@@ -1,4 +1,4 @@
-import React, {useCallback, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {
   Image,
   View,
@@ -10,19 +10,19 @@ import {
 import {styles} from './styles';
 import {Icons} from '../Icons';
 
+import * as SearchStore from '../../stores/search';
+
 export type Props = {
   onSearch: (e: string) => void;
   pressableStyle?: StyleProp<ViewStyle>;
-  searchTerm?: string;
 };
 
-export function Search({
-  onSearch,
-  pressableStyle,
-  searchTerm,
-}: Props): JSX.Element {
-  const [searchValue, setSearchValue] = useState(searchTerm || '');
+export function Search({onSearch, pressableStyle}: Props): JSX.Element {
+  const {searchTerm} = SearchStore.useSearchStore();
 
+  useEffect(() => {
+    setSearchValue(searchTerm);
+  }, [searchTerm]);
   const handleChange = useCallback((nextValue: string) => {
     if (!nextValue) {
       return setSearchValue(nextValue);
@@ -33,6 +33,7 @@ export function Search({
   const handlePress = useCallback(() => {
     onSearch(searchValue);
   }, [onSearch, searchValue]);
+
   return (
     <View style={styles.searchBarContainer}>
       <TextInput
