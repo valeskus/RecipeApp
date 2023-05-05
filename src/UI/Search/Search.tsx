@@ -18,16 +18,13 @@ export type Props = {
 export function Search({onSearch, pressableStyle}: Props): JSX.Element {
   const [searchValue, setSearchValue] = useState('');
 
-  const handleChange = useCallback(
-    (nextValue: string) => {
-      if (!nextValue) {
-        onSearch(nextValue);
-      }
+  const handleChange = useCallback((nextValue: string) => {
+    if (!nextValue) {
+      return;
+    }
 
-      setSearchValue(nextValue);
-    },
-    [onSearch],
-  );
+    setSearchValue(nextValue);
+  }, []);
   const handlePress = useCallback(() => {
     onSearch(searchValue);
   }, [onSearch, searchValue]);
