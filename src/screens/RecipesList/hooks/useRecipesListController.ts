@@ -36,11 +36,27 @@ export const useRecipeListController = () => {
     });
   }, [sortData, filterData, getRecipes, searchData]);
 
+  const handleSearch = useCallback(
+    (searchTerm: string) => {
+      setSearchData(searchTerm);
+      const options: SeachOptions = {
+        search: searchTerm,
+        sort: sortData,
+        filter: filterData,
+      };
+      getRecipes(options).then(() => {
+        setLoading(false);
+      });
+    },
+    [sortData, filterData, getRecipes],
+  );
+
   return {
     gridType,
     isLoading,
     recipes,
     onChangeCardType,
     searchData,
+    handleSearch,
   };
 };
