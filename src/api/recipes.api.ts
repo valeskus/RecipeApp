@@ -12,7 +12,9 @@ export interface SeachOptions {
   }>;
 }
 
-export const searchRecipes = async (options: SeachOptions) => {
+export const searchRecipes = async (
+  options: SeachOptions,
+): Promise<RecipeListModel> => {
   // const result = await client.get<RecipeListModel>('/recipes', {
   //   params: options,
   // });
@@ -22,12 +24,18 @@ export const searchRecipes = async (options: SeachOptions) => {
   return mockData.recipesList;
 };
 
-export const getRecipeById = async (id: string) => {
+// TODO Specify rerturn type for all api calls
+
+export const getRecipeById = async (id: string): Promise<DetailRecipeModel> => {
   // const result = await client.get<DetailRecipeModel>(`/recipes/${id}`);
   // return result.data;
-  const recipes = mockData.recipesDetailsList;
-  const result = recipes.find(recipe => {
-    return recipe.id === id;
+  return new Promise<any>(resolve => {
+    setTimeout(() => {
+      const recipes = mockData.recipesDetailsList;
+      const result = recipes.find(recipe => {
+        return recipe.id === id;
+      });
+      resolve(result);
+    }, 5000);
   });
-  return result;
 };

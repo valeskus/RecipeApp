@@ -2,18 +2,19 @@ import * as Redux from 'redux';
 import {DetailRecipeModel} from '../../models';
 import {RecipeDetailsActions} from './recipeDetailsActions';
 
-export interface recipeDetailsStoreState {
+export interface RecipeDetailsStoreState {
   recipe?: DetailRecipeModel;
 }
 
-//TODO type
-const initialState: recipeDetailsStoreState = {};
+const initialState: RecipeDetailsStoreState = {};
 
 export function recipeDetailsReducer(
   state = initialState,
   action: Redux.AnyAction,
-) {
+): RecipeDetailsStoreState {
   switch (action.type) {
+    // TODO: clear receipe details action
+    // return initialState
     case RecipeDetailsActions.GET: {
       const {
         id,
@@ -29,17 +30,18 @@ export function recipeDetailsReducer(
       } = action.payload as DetailRecipeModel;
 
       return {
-        ...state,
-        id,
-        title,
-        kcal,
-        time,
-        rating,
-        image,
-        description,
-        macroNutrients,
-        ingredients,
-        instructions,
+        recipe: {
+          id,
+          title,
+          kcal,
+          time,
+          rating,
+          image,
+          description,
+          macroNutrients,
+          ingredients,
+          instructions,
+        },
       };
     }
     default:

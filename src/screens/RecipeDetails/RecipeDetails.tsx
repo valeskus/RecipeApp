@@ -4,39 +4,44 @@ import {styles} from './styles';
 import {useRecipeDetailsControler} from './hooks';
 import {Icons} from '../../UI/Icons';
 
-export function RecipeDetails(): JSX.Element {
-  const {recipe, isLoading} = useRecipeDetailsControler();
-  console.log(recipe);
+export const RecipeDetails: React.FC = () => {
+  const {recipe} = useRecipeDetailsControler();
+
+  if (!recipe) {
+    // return <Loader />;
+    return null;
+  }
+
   return (
     <ScrollView style={styles.detailsScreenContainer}>
-      <Image source={{uri: recipe?.image}} style={styles.image} />
+      <Image source={{uri: recipe.image}} style={styles.image} />
       <View style={styles.detailsContainer}>
-        <Text style={styles.title}>{recipe?.title}</Text>
+        <Text style={styles.title}>{recipe.title}</Text>
         <View style={styles.timeContainer}>
           <Image style={styles.timeIcon} source={Icons.time} />
-          <Text>{recipe?.time}</Text>
+          <Text>{recipe.time}</Text>
         </View>
 
-        <Text>{recipe?.description}</Text>
+        <Text>{recipe.description}</Text>
         <View>
           <View>
             <Image source={Icons.dot} />
-            <Text>{recipe?.kcal}</Text>
+            <Text>{recipe.kcal}</Text>
           </View>
           <View>
             <Image source={Icons.dot} />
-            <Text>{recipe?.macroNutrients.protein}</Text>
+            <Text>{recipe.macroNutrients.protein}</Text>
           </View>
           <View>
             <Image source={Icons.dot} />
-            <Text>{recipe?.macroNutrients.fats}</Text>
+            <Text>{recipe.macroNutrients.fats}</Text>
           </View>
           <View>
             <Image source={Icons.dot} />
-            <Text>{recipe?.macroNutrients.carbs}</Text>
+            <Text>{recipe.macroNutrients.carbs}</Text>
           </View>
         </View>
       </View>
     </ScrollView>
   );
-}
+};

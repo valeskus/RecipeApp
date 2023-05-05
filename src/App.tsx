@@ -19,10 +19,12 @@ if (
 
 export type RootStackParamList = {
   Categories: undefined;
-  Recipes: string | undefined;
+  Recipes: undefined;
   Sort: undefined;
   Filter: undefined;
-  RecipeDetails: undefined;
+  RecipeDetails: {
+    id: string;
+  };
 };
 
 const Stack = createNativeStackNavigator();

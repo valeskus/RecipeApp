@@ -1,9 +1,9 @@
 import * as Redux from 'react-redux';
 import {RootStore} from '../../rootStore';
-import {recipeDetailsStoreState} from '../recipeDetailsReducer';
+import {RecipeDetailsStoreState} from '../recipeDetailsReducer';
 
 export const useRecipeDetailsStore = () => {
-  return Redux.useSelector<RootStore, recipeDetailsStoreState>(
+  return Redux.useSelector<RootStore, RecipeDetailsStoreState>(
     store => store.recipeDetails,
   );
 };

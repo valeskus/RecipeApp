@@ -1,22 +1,24 @@
 import {useEffect, useState} from 'react';
 import * as RecipeDetailsStore from '../../../stores/recipeDetails';
+import {RouteProp, useRoute} from '@react-navigation/native';
 
 export const useRecipeDetailsControler = () => {
-  const [isLoading, setLoading] = useState(false);
+  const {params} =
+    useRoute<RouteProp<ReactNavigation.RootParamList, 'RecipeDetails'>>();
 
-  //TODO type and isLoading
-
-  const recipe = RecipeDetailsStore.useRecipeDetailsStore();
+  const {recipe} = RecipeDetailsStore.useRecipeDetailsStore();
+  const getRecipe = RecipeDetailsStore.useGetRecipeDetails();
 
   useEffect(() => {
-    if (!recipe) {
-      return setLoading(true);
-    }
-    return setLoading(false);
-  }, [recipe]);
+    getRecipe(params.id);
+
+    return () => {
+      // TODO: clear receipe details action
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return {
     recipe,
-    isLoading,
   };
 };
