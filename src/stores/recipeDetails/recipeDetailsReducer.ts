@@ -13,8 +13,6 @@ export function recipeDetailsReducer(
   action: Redux.AnyAction,
 ): RecipeDetailsStoreState {
   switch (action.type) {
-    // TODO: clear receipe details action
-    // return initialState
     case RecipeDetailsActions.GET: {
       const {
         id,
@@ -43,6 +41,9 @@ export function recipeDetailsReducer(
           instructions,
         },
       };
+    }
+    case RecipeDetailsActions.RESET: {
+      return initialState;
     }
     default:
       return state;
