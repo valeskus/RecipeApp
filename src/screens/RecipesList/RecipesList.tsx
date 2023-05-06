@@ -1,7 +1,7 @@
 import React from 'react';
 import {ActivityIndicator, ScrollView, StatusBar} from 'react-native';
 import {styles} from './styles';
-import {Search} from '../../UI/Search';
+import {Search} from '../../components/Search';
 import {RecipesCards} from './components/RecipesCards';
 import {ButtonBar} from './components/ButtonBar';
 import {Colors} from '../../UI/Colors';

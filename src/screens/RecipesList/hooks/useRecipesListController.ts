@@ -11,7 +11,7 @@ export const useRecipeListController = () => {
 
   const [isLoading, setLoading] = React.useState(false);
 
-  const [searchData, setSearchData] = React.useState(searchTerm);
+  // const [searchData, setSearchData] = React.useState(searchTerm);
   const [sortData, setSortData] = React.useState();
   const [filterData, setFilterData] = React.useState([]);
 
@@ -20,44 +20,30 @@ export const useRecipeListController = () => {
   }, []);
 
   const getRecipes = RecipesStore.useGetRecipeList();
-  const setSearchTerm = SearchStore.useSearchTerm();
+  // const setSearchTerm = SearchStore.useSearchTerm();
 
-  useEffect(() => {
+  const handleSearch = useCallback(() => {
     setLoading(true);
-
     const options: SeachOptions = {
-      search: searchData,
+      search: searchTerm,
       sort: sortData,
       filter: filterData,
     };
     getRecipes(options).then(() => {
       setLoading(false);
     });
-  }, [sortData, filterData, getRecipes, searchData]);
+  }, [sortData, filterData, getRecipes, searchTerm]);
 
-  const handleSearch = useCallback(
-    (search: string) => {
-      setSearchTerm({searchTerm: search}).then(() => {
-        setSearchData(search);
-      });
-      const options: SeachOptions = {
-        search: search,
-        sort: sortData,
-        filter: filterData,
-      };
-      getRecipes(options).then(() => {
-        setLoading(false);
-      });
-    },
-    [sortData, filterData, getRecipes, setSearchTerm],
-  );
+  useEffect(() => {
+    handleSearch();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return {
     gridType,
     isLoading,
     recipes,
     onChangeCardType,
-    searchData,
     handleSearch,
   };
 };
