@@ -5,6 +5,7 @@ export const styles = StyleSheet.create({
   productGridContainer: {
     borderRadius: 20,
     width: '45%',
+    height: 230,
     backgroundColor: Colors.background,
     shadowColor: Colors.shadow,
     shadowOpacity: 0.5,

@@ -18,7 +18,7 @@ export const styles = StyleSheet.create({
     fontSize: 17,
     padding: 15,
     paddingRight: 50,
-    margin: 20,
+    margin: 10,
   },
   searchBarInput: {
     fontSize: 17,

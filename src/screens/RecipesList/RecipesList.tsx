@@ -1,5 +1,5 @@
 import React from 'react';
-import {ActivityIndicator, ScrollView, StatusBar} from 'react-native';
+import {ActivityIndicator, View, StatusBar} from 'react-native';
 import {styles} from './styles';
 import {Search} from '../../components/Search';
 import {RecipesCards} from './components/RecipesCards';
@@ -12,10 +12,13 @@ export function RecipesList(): JSX.Element {
     useRecipeListController();
 
   return (
-    <ScrollView style={styles.recipiesScreenContainer}>
+    <View style={styles.recipiesScreenContainer}>
       <StatusBar />
-      <Search onSearch={handleSearch} />
-      <ButtonBar onCardTypeChange={onChangeCardType} gridType={gridType} />
+      <View style={styles.searchMenuContainer}>
+        <Search onSearch={handleSearch} />
+        <ButtonBar onCardTypeChange={onChangeCardType} gridType={gridType} />
+      </View>
+      <View style={styles.blurContainer} />
       {isLoading && (
         <ActivityIndicator
           color={Colors.primary}
@@ -23,6 +26,6 @@ export function RecipesList(): JSX.Element {
         />
       )}
       {!isLoading && <RecipesCards gridType={gridType} recipes={recipes} />}
-    </ScrollView>
+    </View>
   );
 }

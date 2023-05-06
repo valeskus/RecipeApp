@@ -6,6 +6,11 @@ export const styles = StyleSheet.create({
     flexWrap: 'wrap',
     width: '100%',
   },
+  offset: {
+    marginTop: -80,
+    paddingTop: 80,
+  },
+
   centeredLineCard: {
     justifyContent: 'center',
   },

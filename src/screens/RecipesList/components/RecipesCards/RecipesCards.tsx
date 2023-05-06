@@ -1,5 +1,5 @@
 import React from 'react';
-import {View} from 'react-native';
+import {ScrollView} from 'react-native';
 import {styles} from './styles';
 
 import {ProductCardGrid} from '../../../../UI/Product Card/ProductCardGrid';
@@ -15,8 +15,9 @@ export type Props = {
 export function RecipesCards({gridType, recipes}: Props): JSX.Element {
   const {handlePress} = useRecipeCardControler();
   return (
-    <View
-      style={[
+    <ScrollView
+      style={styles.offset}
+      contentContainerStyle={[
         styles.recipesCardsContainer,
         !gridType && styles.centeredLineCard,
       ]}>
@@ -43,6 +44,6 @@ export function RecipesCards({gridType, recipes}: Props): JSX.Element {
           />
         );
       })}
-    </View>
+    </ScrollView>
   );
 }
