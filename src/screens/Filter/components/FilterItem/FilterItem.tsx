@@ -11,11 +11,8 @@ export type Props = {
   onChange: (filterId: string, valueId: string) => void;
 };
 
-//TODO onChange
-
 export function FilterItem({filter, index, id, onChange}: Props): JSX.Element {
   const [selected, setSelected] = React.useState('');
-  //TODO
   const handleSelectedValue = useCallback(
     (valueId: string) => {
       setSelected(valueId);

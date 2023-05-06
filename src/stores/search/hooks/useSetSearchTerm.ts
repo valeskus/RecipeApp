@@ -1,13 +1,12 @@
 import * as React from 'react';
 import * as Redux from 'react-redux';
 import {setSearchTerm} from '../searchActions';
-
-//TODO types
+import {SearchTermModel} from '../../../models';
 
 export const useSearchTerm = () => {
   const dispatch = Redux.useDispatch();
   return React.useCallback(
-    async (searchTerm: {}) => {
+    async (searchTerm: SearchTermModel) => {
       await setSearchTerm(searchTerm, dispatch);
     },
     [dispatch],

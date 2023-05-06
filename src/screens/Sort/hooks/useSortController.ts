@@ -22,7 +22,6 @@ export const useSortController = () => {
     navigation.goBack();
   };
   const onSelectPress = () => {
-    //TODO params
     navigation.goBack();
   };
 

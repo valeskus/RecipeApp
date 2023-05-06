@@ -20,7 +20,6 @@ export const useFilterController = () => {
     navigation.goBack();
   };
   const onSelectPress = () => {
-    //TODO params
     navigation.goBack();
   };
 
