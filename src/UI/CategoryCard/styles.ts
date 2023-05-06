@@ -12,7 +12,7 @@ export const styles = StyleSheet.create({
   },
   categoryContainer: {
     borderRadius: 20,
-    width: '40%',
+    width: '45%',
     backgroundColor: Colors.background,
     shadowColor: Colors.shadow,
     shadowOpacity: 0.5,
@@ -21,7 +21,7 @@ export const styles = StyleSheet.create({
     elevation: 8,
     justifyContent: 'center',
     flexDirection: 'column',
-    margin: 10,
+    margin: 9,
   },
   categoryCardTitle: {
     flex: 1,
