@@ -13,7 +13,8 @@ export const styles = StyleSheet.create({
     elevation: 8,
     justifyContent: 'center',
     flexDirection: 'row',
-    margin: 8,
+    marginVertical: 8,
+    marginHorizontal: 25,
   },
   productCardLineImage: {
     flex: 2,
