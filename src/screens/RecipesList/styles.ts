@@ -29,4 +29,21 @@ export const styles = StyleSheet.create({
     borderBottomEndRadius: 30,
     borderBottomStartRadius: 30,
   },
+  textMessageContainer: {
+    width: '100%',
+    justifyContent: 'center',
+    alignContent: 'center',
+    alignItems: 'center',
+    flex: 1,
+    flexDirection: 'column',
+  },
+  textMessage: {
+    textAlign: 'center',
+    fontSize: 15,
+    color: Colors.text,
+  },
+  textMessageAccent: {
+    fontSize: 18,
+    marginBottom: 5,
+  },
 });

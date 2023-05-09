@@ -11,7 +11,6 @@ export const useRecipeListController = () => {
 
   const [isLoading, setLoading] = React.useState(false);
 
-  // const [searchData, setSearchData] = React.useState(searchTerm);
   const [sortData, setSortData] = React.useState();
   const [filterData, setFilterData] = React.useState([]);
 
@@ -20,7 +19,8 @@ export const useRecipeListController = () => {
   }, []);
 
   const getRecipes = RecipesStore.useGetRecipeList();
-  // const setSearchTerm = SearchStore.useSearchTerm();
+
+  const isRecipes = recipes.length > 0;
 
   const handleSearch = useCallback(() => {
     setLoading(true);
@@ -42,6 +42,7 @@ export const useRecipeListController = () => {
   return {
     gridType,
     isLoading,
+    isRecipes,
     recipes,
     onChangeCardType,
     handleSearch,
