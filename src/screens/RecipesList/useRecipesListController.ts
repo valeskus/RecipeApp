@@ -1,7 +1,7 @@
 import React, {useCallback, useEffect} from 'react';
-import {SeachOptions} from '../../../api/recipes.api';
-import * as RecipesStore from '../../../stores/recipes';
-import * as SearchStore from '../../../stores/search';
+import {SeachOptions} from '../../api/recipes.api';
+import * as RecipesStore from '../../stores/recipes';
+import * as SearchStore from '../../stores/search';
 
 export const useRecipeListController = () => {
   const [gridType, setGridType] = React.useState(true);

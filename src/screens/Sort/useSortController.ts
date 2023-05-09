@@ -1,6 +1,6 @@
 import React, {useCallback} from 'react';
 import {useNavigation} from '@react-navigation/native';
-import * as RecipesStore from '../../../stores/recipes';
+import * as RecipesStore from '../../stores/recipes';
 
 export const useSortController = () => {
   const [sortItem, setSortItem] = React.useState('');

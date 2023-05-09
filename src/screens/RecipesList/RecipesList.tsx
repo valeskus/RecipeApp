@@ -5,7 +5,7 @@ import {Search} from '../../components/Search';
 import {RecipesCards} from './components/RecipesCards';
 import {ButtonBar} from './components/ButtonBar';
 import {Colors} from '../../UI/Colors';
-import {useRecipeListController} from './hooks';
+import {useRecipeListController} from './useRecipesListController';
 
 export function RecipesList(): JSX.Element {
   const {

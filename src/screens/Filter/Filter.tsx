@@ -3,7 +3,7 @@ import {ScrollView, View} from 'react-native';
 import {styles} from './styles';
 import {FilterItem} from './components/FilterItem';
 import {Button} from '../../UI/Button';
-import {useFilterController} from './hook';
+import {useFilterController} from './useFilterController';
 
 export function Filter(): JSX.Element {
   const {onCacnelPress, onSelectPress, onFilterChange, filters} =

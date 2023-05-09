@@ -1,7 +1,7 @@
 import {RefObject, createRef, useCallback} from 'react';
 import {TextInput} from 'react-native';
 
-import * as SearchStore from '../../../stores/search';
+import * as SearchStore from '../../stores/search';
 
 export interface UseSearchControllerParams {
   onSearch: () => void;

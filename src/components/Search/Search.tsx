@@ -3,7 +3,10 @@ import {Image, TextInput, Pressable} from 'react-native';
 import {styles} from './styles';
 import {Icons} from '../../UI/Icons';
 
-import {useSearchController, UseSearchControllerParams} from './hooks';
+import {
+  useSearchController,
+  UseSearchControllerParams,
+} from './useSearchController';
 
 interface Props extends UseSearchControllerParams {}
 

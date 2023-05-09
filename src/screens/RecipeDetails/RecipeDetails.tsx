@@ -1,7 +1,7 @@
 import React from 'react';
 import {Image, ScrollView, Text, View} from 'react-native';
 import {styles} from './styles';
-import {useRecipeDetailsControler} from './hooks';
+import {useRecipeDetailsControler} from './useRecipeDetailsController';
 import {Icons} from '../../UI/Icons';
 
 export const RecipeDetails: React.FC = () => {

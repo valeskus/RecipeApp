@@ -1,5 +1,5 @@
 import {useEffect} from 'react';
-import * as RecipeDetailsStore from '../../../stores/recipeDetails';
+import * as RecipeDetailsStore from '../../stores/recipeDetails';
 import {RouteProp, useRoute} from '@react-navigation/native';
 
 export const useRecipeDetailsControler = () => {

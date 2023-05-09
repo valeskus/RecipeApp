@@ -2,7 +2,7 @@ import React from 'react';
 import {View} from 'react-native';
 import {styles} from './styles';
 import {Button} from '../../UI/Button';
-import {useSortController} from './hooks';
+import {useSortController} from './useSortController';
 import {PickListItem} from '../../UI/PickListItem';
 export function Sort(): JSX.Element {
   const {onCacnelPress, onSelectPress, sortOptions, onSortChange, sortItem} =
