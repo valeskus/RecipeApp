@@ -4,7 +4,7 @@ import {Colors} from '../../UI/Colors';
 export const styles = StyleSheet.create({
   searchBarContainer: {
     borderRadius: 20,
-    width: 350,
+    width: '100%',
     height: 50,
     backgroundColor: Colors.background,
     shadowColor: Colors.shadow,

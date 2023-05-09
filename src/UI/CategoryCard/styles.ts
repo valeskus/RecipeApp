@@ -5,7 +5,6 @@ export const styles = StyleSheet.create({
   categoryCardImage: {
     width: '100%',
     height: 130,
-    flex: 4,
     alignSelf: 'center',
     borderTopRightRadius: 20,
     borderTopLeftRadius: 20,
@@ -24,7 +23,6 @@ export const styles = StyleSheet.create({
     margin: 9,
   },
   categoryCardTitle: {
-    flex: 1,
     margin: 10,
     fontSize: 18,
     fontWeight: 'bold',

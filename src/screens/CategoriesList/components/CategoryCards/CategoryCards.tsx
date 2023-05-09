@@ -1,5 +1,5 @@
 import React from 'react';
-import {View} from 'react-native';
+import {ScrollView} from 'react-native';
 import {styles} from './styles';
 import {CategoryCard} from '../../../../UI/CategoryCard';
 import {useCategoryCardControler} from './hooks/';
@@ -7,7 +7,9 @@ import {useCategoryCardControler} from './hooks/';
 export function CategoryCards(): JSX.Element {
   const {handlePress, isLoading, categories} = useCategoryCardControler();
   return (
-    <View style={styles.categoryCardsContainer}>
+    <ScrollView
+      style={styles.offset}
+      contentContainerStyle={styles.categoryCardsContainer}>
       {categories.map(category => {
         return (
           <CategoryCard
@@ -18,6 +20,6 @@ export function CategoryCards(): JSX.Element {
           />
         );
       })}
-    </View>
+    </ScrollView>
   );
 }

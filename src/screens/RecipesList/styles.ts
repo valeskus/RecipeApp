@@ -17,6 +17,7 @@ export const styles = StyleSheet.create({
     borderBottomEndRadius: 30,
     borderBottomStartRadius: 30,
     zIndex: 10,
+    alignItems: 'center',
   },
   blurContainer: {
     width: '100%',
