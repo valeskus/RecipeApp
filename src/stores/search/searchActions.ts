@@ -1,14 +1,13 @@
 import {Dispatch} from 'redux';
-import {SearchTermModel} from '../../models';
 
 export enum SearchActions {
   SET = '@search/set',
   ERROR = '@error/recipes',
 }
 
-const actionSetSearchTerm = (payload: SearchTermModel) => ({
+const actionSetSearchTerm = (searchTerm: string) => ({
   type: SearchActions.SET,
-  payload,
+  payload: {searchTerm},
 });
 
 const actionError = (error: unknown) => ({
@@ -16,10 +15,7 @@ const actionError = (error: unknown) => ({
   payload: error,
 });
 
-export const setSearchTerm = async (
-  searchTerm: SearchTermModel,
-  dispatch: Dispatch,
-) => {
+export const setSearchTerm = async (searchTerm: string, dispatch: Dispatch) => {
   try {
     dispatch(actionSetSearchTerm(searchTerm));
   } catch (error) {

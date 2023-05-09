@@ -11,28 +11,22 @@ export const useRecipeListController = () => {
 
   const [isLoading, setLoading] = React.useState(false);
 
-  const [sortData, setSortData] = React.useState();
-  const [filterData, setFilterData] = React.useState([]);
-
   const onChangeCardType = useCallback((type: boolean) => {
     return setGridType(type);
   }, []);
 
   const getRecipes = RecipesStore.useGetRecipeList();
 
-  const isRecipes = recipes.length > 0;
+  const isRecipesListEmpty = recipes.length === 0;
 
-  const handleSearch = useCallback(() => {
+  const handleSearch = useCallback(async () => {
     setLoading(true);
     const options: SeachOptions = {
       search: searchTerm,
-      sort: sortData,
-      filter: filterData,
     };
-    getRecipes(options).then(() => {
-      setLoading(false);
-    });
-  }, [sortData, filterData, getRecipes, searchTerm]);
+    await getRecipes(options);
+    setLoading(false);
+  }, [getRecipes, searchTerm]);
 
   useEffect(() => {
     handleSearch();
@@ -42,7 +36,7 @@ export const useRecipeListController = () => {
   return {
     gridType,
     isLoading,
-    isRecipes,
+    isRecipesListEmpty,
     recipes,
     onChangeCardType,
     handleSearch,

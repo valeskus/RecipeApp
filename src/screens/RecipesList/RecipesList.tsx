@@ -1,5 +1,5 @@
 import React from 'react';
-import {ActivityIndicator, View, StatusBar, Text} from 'react-native';
+import {ActivityIndicator, View, Text} from 'react-native';
 import {styles} from './styles';
 import {Search} from '../../components/Search';
 import {RecipesCards} from './components/RecipesCards';
@@ -11,17 +11,16 @@ export function RecipesList(): JSX.Element {
   const {
     gridType,
     isLoading,
-    isRecipes,
+    isRecipesListEmpty,
     recipes,
     onChangeCardType,
     handleSearch,
   } = useRecipeListController();
   return (
     <View style={styles.recipiesScreenContainer}>
-      <StatusBar />
       <View style={styles.searchMenuContainer}>
         <Search onSearch={handleSearch} />
-        {isRecipes && (
+        {!isRecipesListEmpty && (
           <ButtonBar onCardTypeChange={onChangeCardType} gridType={gridType} />
         )}
       </View>
@@ -32,7 +31,7 @@ export function RecipesList(): JSX.Element {
           style={styles.loadingIndicator}
         />
       )}
-      {!isRecipes && (
+      {isRecipesListEmpty && (
         <View style={styles.textMessageContainer}>
           <Text style={[styles.textMessage, styles.textMessageAccent]}>
             0 results found for your search.

@@ -1,4 +1,3 @@
-import {ImageMock} from '../UI/ImageMock';
 import {mockData} from '../mockData';
 import {DetailRecipeModel, RecipeListModel} from '../models';
 import {client} from './client.api';

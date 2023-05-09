@@ -3,35 +3,42 @@ import {TextInput} from 'react-native';
 
 import * as SearchStore from '../../../stores/search';
 
-export const useSearchController = (onSearch: () => void) => {
+export interface UseSearchControllerParams {
+  onSearch: () => void;
+}
+
+export const useSearchController = (params: UseSearchControllerParams) => {
   const {searchTerm} = SearchStore.useSearchStore();
 
   const setSearchTerm = SearchStore.useSearchTerm();
+
   const searchInputRef: RefObject<TextInput> = createRef();
 
   const handleChange = useCallback(
     (nextValue: string) => {
-      setSearchTerm({searchTerm: nextValue});
+      setSearchTerm(nextValue);
     },
     [setSearchTerm],
   );
   const handleSearch = useCallback(() => {
-    onSearch();
-  }, [onSearch]);
+    params.onSearch();
+  }, [params]);
 
   const handleResetSearchInput = useCallback(() => {
-    setSearchTerm({searchTerm: ''});
+    setSearchTerm('');
   }, [setSearchTerm]);
 
-  const hendlePress = useCallback(() => {
+  const handlePress = useCallback(() => {
     searchInputRef.current?.focus();
-  }, [searchInputRef]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return {
     searchTerm,
     searchInputRef,
     handleChange,
     handleSearch,
     handleResetSearchInput,
-    hendlePress,
+    handlePress,
   };
 };
