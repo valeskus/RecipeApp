@@ -5,6 +5,7 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     width: '100%',
+    paddingBottom: 100,
   },
   offset: {
     marginTop: -80,
