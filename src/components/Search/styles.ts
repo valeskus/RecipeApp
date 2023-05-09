@@ -17,7 +17,7 @@ export const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     fontSize: 17,
     padding: 15,
-    paddingRight: 50,
+    paddingRight: 62,
     margin: 10,
   },
   searchBarInput: {
@@ -30,10 +30,19 @@ export const styles = StyleSheet.create({
     width: 27,
     height: 27,
   },
+  resetSearchIcon: {
+    width: 10,
+    height: 10,
+  },
   searchBarIconContainer: {
     position: 'absolute',
-    right: 20,
+    right: 10,
     top: 10,
+  },
+  resetSearchIconContainer: {
+    position: 'absolute',
+    right: 50,
+    top: 20,
   },
   searchPress: {
     transform: [{scale: 0.9}],

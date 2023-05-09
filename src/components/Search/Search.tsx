@@ -1,16 +1,9 @@
-import React, {useCallback} from 'react';
-import {
-  Image,
-  View,
-  TextInput,
-  Pressable,
-  StyleProp,
-  ViewStyle,
-} from 'react-native';
+import React from 'react';
+import {Image, TextInput, Pressable, StyleProp, ViewStyle} from 'react-native';
 import {styles} from './styles';
 import {Icons} from '../../UI/Icons';
 
-import * as SearchStore from '../../stores/search';
+import {useSearchController} from './hooks';
 
 export type Props = {
   onSearch: () => void;
@@ -18,30 +11,38 @@ export type Props = {
 };
 
 export function Search({onSearch, pressableStyle}: Props): JSX.Element {
-  const {searchTerm} = SearchStore.useSearchStore();
-
-  const setSearchTerm = SearchStore.useSearchTerm();
-
-  const handleChange = useCallback(
-    (nextValue: string) => {
-      setSearchTerm({searchTerm: nextValue});
-    },
-    [setSearchTerm],
-  );
-  const handlePress = useCallback(() => {
-    onSearch();
-  }, [onSearch]);
-
+  const {
+    searchTerm,
+    searchInputRef,
+    handleChange,
+    handleSearch,
+    handleResetSearchInput,
+    hendlePress,
+  } = useSearchController(onSearch);
   return (
-    <View style={styles.searchBarContainer}>
+    <Pressable style={styles.searchBarContainer} onPress={hendlePress}>
       <TextInput
         placeholder="Search"
         style={styles.searchBarInput}
         onChangeText={handleChange}
         value={searchTerm}
+        ref={searchInputRef}
       />
+      {searchTerm && (
+        <Pressable
+          onPress={handleResetSearchInput}
+          style={({pressed}) => [
+            styles.resetSearchIconContainer,
+            pressed && styles.searchPress,
+            pressableStyle,
+          ]}
+          disabled={!searchTerm}>
+          <Image source={Icons.cancel} style={styles.resetSearchIcon} />
+        </Pressable>
+      )}
+
       <Pressable
-        onPress={handlePress}
+        onPress={handleSearch}
         style={({pressed}) => [
           styles.searchBarIconContainer,
           pressed && styles.searchPress,
@@ -50,6 +51,6 @@ export function Search({onSearch, pressableStyle}: Props): JSX.Element {
         disabled={!searchTerm}>
         <Image source={Icons.search} style={styles.searchBarIcon} />
       </Pressable>
-    </View>
+    </Pressable>
   );
 }
