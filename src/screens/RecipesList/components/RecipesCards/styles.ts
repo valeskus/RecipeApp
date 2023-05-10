@@ -2,11 +2,9 @@ import {StyleSheet} from 'react-native';
 
 export const styles = StyleSheet.create({
   recipesCardsContainer: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
     width: '100%',
     paddingBottom: 100,
-    justifyContent: 'center',
+    justifyContent: 'space-between',
   },
   offset: {
     marginTop: -80,
@@ -18,5 +16,8 @@ export const styles = StyleSheet.create({
   },
   loadingIndicator: {
     marginVertical: 18,
+  },
+  cardPlaceholder: {
+    flex: 1,
   },
 });

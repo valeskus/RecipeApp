@@ -14,7 +14,6 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     flexDirection: 'row',
     marginVertical: 8,
-    marginHorizontal: 25,
   },
   productCardLineImage: {
     flex: 2,

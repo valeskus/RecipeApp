@@ -3,8 +3,10 @@ import {Colors} from '../../Colors';
 
 export const styles = StyleSheet.create({
   productGridContainer: {
+    flex: 1,
+    // flexBasis: '50%',
     borderRadius: 20,
-    width: '45%',
+    // width: '45%',
     height: 230,
     backgroundColor: Colors.background,
     shadowColor: Colors.shadow,
@@ -12,7 +14,7 @@ export const styles = StyleSheet.create({
     shadowRadius: 5,
     shadowOffset: {width: 0, height: 0},
     flexDirection: 'column',
-    margin: '2%',
+    margin: 10,
     elevation: 8,
   },
   productCardGridImage: {

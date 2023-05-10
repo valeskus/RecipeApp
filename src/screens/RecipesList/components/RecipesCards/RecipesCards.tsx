@@ -1,49 +1,82 @@
 import React from 'react';
-import {ScrollView} from 'react-native';
+import {FlatList, FlatListProps, ListRenderItem, View} from 'react-native';
 import {styles} from './styles';
 
 import {ProductCardGrid} from '../../../../UI/Product Card/ProductCardGrid';
 import {ProductCardLine} from '../../../../UI/Product Card/ProductCardLine';
 import {BaseRecipeModel} from '../../../../models';
-import {useRecipeCardControler} from './hooks';
+import {UseRecipeCardControlerParams, useRecipeCardControler} from './hooks';
 
-interface Props {
-  gridType: boolean;
-  recipes: Array<BaseRecipeModel>;
+interface Props extends UseRecipeCardControlerParams {}
+
+interface RenderItemParams {
+  onPress: (id: string) => void;
+  gridType: UseRecipeCardControlerParams['gridType'];
 }
 
+const getRenderItem =
+  (params: RenderItemParams): ListRenderItem<BaseRecipeModel> =>
+  ({item}) => {
+    if (item.id === 'EMPTY') {
+      return <View style={styles.cardPlaceholder} />;
+    }
+
+    return params.gridType === 'grid' ? (
+      <ProductCardGrid
+        title={item.title}
+        rating={item.rating}
+        calories={item.kcal}
+        time={item.time}
+        image={item.image}
+        onPress={() => params.onPress(item.id)}
+      />
+    ) : (
+      <ProductCardLine
+        title={item.title}
+        rating={item.rating}
+        calories={item.kcal}
+        time={item.time}
+        image={item.image}
+        onPress={() => params.onPress(item.id)}
+      />
+    );
+  };
+
+const keyExtractor: FlatListProps<BaseRecipeModel>['keyExtractor'] = item =>
+  item.id;
+
 export function RecipesCards({gridType, recipes}: Props): JSX.Element {
-  const {handlePress} = useRecipeCardControler();
+  const {onPress, data} = useRecipeCardControler({recipes, gridType});
+
+  const commonProps = {
+    style: styles.offset,
+    data,
+    renderItem: getRenderItem({
+      onPress,
+      gridType,
+    }),
+    keyExtractor,
+  };
+
+  if (gridType === 'grid') {
+    return (
+      <FlatList
+        {...commonProps}
+        contentContainerStyle={styles.recipesCardsContainer}
+        numColumns={2}
+        key="grid-list"
+      />
+    );
+  }
+
   return (
-    <ScrollView
-      style={styles.offset}
+    <FlatList
+      {...commonProps}
+      key="linear-list"
       contentContainerStyle={[
         styles.recipesCardsContainer,
-        !gridType && styles.centeredLineCard,
-      ]}>
-      {recipes.map(recipe => {
-        return gridType ? (
-          <ProductCardGrid
-            title={recipe.title}
-            rating={recipe.rating}
-            calories={recipe.kcal}
-            time={recipe.time}
-            image={recipe.image}
-            key={recipe.id}
-            onPress={() => handlePress(recipe.id)}
-          />
-        ) : (
-          <ProductCardLine
-            title={recipe.title}
-            rating={recipe.rating}
-            calories={recipe.kcal}
-            time={recipe.time}
-            image={recipe.image}
-            key={recipe.id}
-            onPress={() => handlePress(recipe.id)}
-          />
-        );
-      })}
-    </ScrollView>
+        styles.centeredLineCard,
+      ]}
+    />
   );
 }
