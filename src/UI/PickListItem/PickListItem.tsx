@@ -3,12 +3,12 @@ import {Image, Pressable, View, Text} from 'react-native';
 import {Icons} from '../Icons';
 import {styles} from './styles';
 
-export type Props = {
+interface Props {
   item: string;
   id: string;
   onChange: (element: string) => void;
   active: string;
-};
+}
 
 export function PickListItem({item, id, onChange, active}: Props): JSX.Element {
   const setActive = useCallback(

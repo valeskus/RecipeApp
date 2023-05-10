@@ -3,14 +3,14 @@ import {Image, Pressable, StyleProp, ViewStyle, ImageStyle} from 'react-native';
 import {styles} from './styles';
 import {Icons} from '../Icons';
 
-export type Props = {
+interface Props {
   icon: keyof typeof Icons;
   onPress: () => any;
   active?: boolean;
   pressableStyle?: StyleProp<ViewStyle>;
   iconStyle?: StyleProp<ImageStyle>;
   iconActiveStyle?: StyleProp<ImageStyle>;
-};
+}
 
 export function Button({
   icon,

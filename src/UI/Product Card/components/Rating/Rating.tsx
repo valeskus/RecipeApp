@@ -3,9 +3,9 @@ import {Image, View} from 'react-native';
 import {styles} from './styles';
 import {Icons} from '../../../Icons';
 
-export type Props = {
+interface Props {
   rating: number;
-};
+}
 export function Rating({rating}: Props): JSX.Element {
   const colorWidth = rating > 5 || rating < 0 ? 0 : rating * 20;
 

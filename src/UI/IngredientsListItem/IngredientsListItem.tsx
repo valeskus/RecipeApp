@@ -3,11 +3,11 @@ import {Text, View, Image} from 'react-native';
 import {Icons} from '../Icons';
 import {styles} from './styles';
 
-export type Props = {
+interface Props {
   title: string;
   description?: string;
   count: string;
-};
+}
 
 export function IngredientsListItem({
   title,

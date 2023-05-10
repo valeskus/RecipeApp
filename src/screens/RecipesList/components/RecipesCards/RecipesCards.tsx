@@ -7,10 +7,10 @@ import {ProductCardLine} from '../../../../UI/Product Card/ProductCardLine';
 import {BaseRecipeModel} from '../../../../models';
 import {useRecipeCardControler} from './hooks';
 
-export type Props = {
+interface Props {
   gridType: boolean;
   recipes: Array<BaseRecipeModel>;
-};
+}
 
 export function RecipesCards({gridType, recipes}: Props): JSX.Element {
   const {handlePress} = useRecipeCardControler();

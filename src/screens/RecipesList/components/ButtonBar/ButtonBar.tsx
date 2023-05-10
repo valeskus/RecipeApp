@@ -4,10 +4,10 @@ import {styles} from './styles';
 import {Button} from '../../../../UI/Button';
 import {useButtonBarController} from './hooks';
 
-export type Props = {
+interface Props {
   onCardTypeChange: (type: boolean) => void;
   gridType: boolean;
-};
+}
 
 export function ButtonBar({onCardTypeChange, gridType}: Props): JSX.Element {
   const {changeType, handleFilterPress, handleSortPress} =

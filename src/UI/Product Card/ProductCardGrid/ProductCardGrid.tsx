@@ -3,7 +3,7 @@ import {Image, Pressable, StyleProp, ViewStyle, Text, View} from 'react-native';
 import {styles} from './styles';
 import {Rating} from '../components/Rating';
 
-export type Props = {
+interface Props {
   image: string;
   title: string;
   calories: number;
@@ -11,7 +11,7 @@ export type Props = {
   rating: number;
   onPress: () => void;
   pressableStyle?: StyleProp<ViewStyle>;
-};
+}
 
 export function ProductCardGrid({
   image,

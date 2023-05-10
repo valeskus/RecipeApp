@@ -4,12 +4,12 @@ import {styles} from './styles';
 import {FilterModel} from '../../../../models';
 import {PickListItem} from '../../../../UI/PickListItem';
 
-export type Props = {
+interface Props {
   filter: FilterModel;
   index: number;
   id: string;
   onChange: (filterId: string, valueId: string) => void;
-};
+}
 
 export function FilterItem({filter, index, id, onChange}: Props): JSX.Element {
   const [selected, setSelected] = React.useState('');

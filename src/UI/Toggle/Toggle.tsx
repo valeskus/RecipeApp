@@ -2,10 +2,10 @@ import React, {useCallback, useState} from 'react';
 import {Pressable, Text, View, LayoutAnimation} from 'react-native';
 import {styles} from './styles';
 
-export type Props = {
+interface Props {
   items: [string, string];
   onChange: (element: string) => void;
-};
+}
 
 export function Toggle({items, onChange}: Props): JSX.Element {
   const [activeItem, setActiveItem] = useState(items[0]);

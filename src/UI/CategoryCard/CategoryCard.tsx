@@ -2,12 +2,12 @@ import * as React from 'react';
 import {Image, Pressable, StyleProp, ViewStyle, Text} from 'react-native';
 import {styles} from './styles';
 
-export type Props = {
+interface Props {
   image: string;
   title: string;
   onPress: () => void;
   pressableStyle?: StyleProp<ViewStyle>;
-};
+}
 
 export function CategoryCard({
   image,
