@@ -19,6 +19,7 @@ export function Search({onSearch}: Props): JSX.Element {
     handleResetSearchInput,
     handlePress,
   } = useSearchController({onSearch});
+
   return (
     <Pressable style={styles.searchBarContainer} onPress={handlePress}>
       <TextInput
