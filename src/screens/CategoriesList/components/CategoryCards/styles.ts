@@ -6,6 +6,7 @@ export const styles = StyleSheet.create({
     flexWrap: 'wrap',
     width: '100%',
     paddingBottom: 60,
+    justifyContent: 'center',
   },
   offset: {
     marginTop: -30,

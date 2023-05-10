@@ -11,7 +11,7 @@ export const styles = StyleSheet.create({
   },
   categoryContainer: {
     borderRadius: 20,
-    width: '46%',
+    width: '45%',
     backgroundColor: Colors.background,
     shadowColor: Colors.shadow,
     shadowOpacity: 0.5,
