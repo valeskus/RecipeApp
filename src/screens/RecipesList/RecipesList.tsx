@@ -3,7 +3,7 @@ import {ActivityIndicator, View} from 'react-native';
 import {styles} from './styles';
 import {Search} from '../../components/Search';
 import {RecipesCards} from './components/RecipesCards';
-import {ButtonBar} from './components/ButtonBar';
+import {RecipesListControls} from './components/RecipesListControls';
 import {Colors} from '../../UI/Colors';
 import {useRecipeListController} from './useRecipesListController';
 import {RecipesListMessage} from './components/RecipesListMessage';
@@ -22,7 +22,10 @@ export function RecipesList(): JSX.Element {
       <View style={styles.searchMenuContainer}>
         <Search onSearch={handleSearch} />
         {!isRecipesListEmpty && (
-          <ButtonBar onCardTypeChange={onChangeCardType} gridType={gridType} />
+          <RecipesListControls
+            onCardTypeChange={onChangeCardType}
+            gridType={gridType}
+          />
         )}
       </View>
       <View style={styles.blurContainer} />

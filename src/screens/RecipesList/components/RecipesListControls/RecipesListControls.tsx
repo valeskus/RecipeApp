@@ -9,7 +9,10 @@ interface Props {
   gridType: boolean;
 }
 
-export function ButtonBar({onCardTypeChange, gridType}: Props): JSX.Element {
+export function RecipesListControls({
+  onCardTypeChange,
+  gridType,
+}: Props): JSX.Element {
   const {changeType, handleFilterPress, handleSortPress} =
     useButtonBarController(onCardTypeChange, gridType);
   return (
