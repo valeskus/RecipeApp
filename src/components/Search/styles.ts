@@ -29,20 +29,24 @@ export const styles = StyleSheet.create({
   searchBarIcon: {
     width: 27,
     height: 27,
+    marginVertical: 7,
+    marginHorizontal: 5,
   },
   resetSearchIcon: {
     width: 10,
     height: 10,
+    marginHorizontal: 5,
+    marginVertical: 20,
   },
   searchBarIconContainer: {
     position: 'absolute',
-    right: 10,
-    top: 10,
+    right: 5,
+    top: 5,
   },
   resetSearchIconContainer: {
     position: 'absolute',
-    right: 50,
-    top: 20,
+    right: 42,
+    top: 0,
   },
   searchPress: {
     transform: [{scale: 0.9}],

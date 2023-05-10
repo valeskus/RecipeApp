@@ -14,7 +14,7 @@ export const styles = StyleSheet.create({
 
   centeredLineCard: {
     justifyContent: 'center',
-    paddingHorizontal: 10,
+    paddingHorizontal: '2%',
   },
   loadingIndicator: {
     marginVertical: 18,

@@ -13,7 +13,7 @@ export const styles = StyleSheet.create({
     shadowOffset: {width: 0, height: 0},
     justifyContent: 'center',
     flexDirection: 'column',
-    margin: 9,
+    margin: '2%',
     elevation: 8,
   },
   productCardGridImage: {

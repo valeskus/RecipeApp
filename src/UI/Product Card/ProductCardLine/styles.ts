@@ -44,5 +44,6 @@ export const styles = StyleSheet.create({
   productCardLineItem: {
     flexDirection: 'row',
     flex: 1,
+    flexWrap: 'wrap',
   },
 });
