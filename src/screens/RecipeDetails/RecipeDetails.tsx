@@ -1,15 +1,15 @@
 import React from 'react';
-import {Image, ScrollView, Text, View} from 'react-native';
+import {ActivityIndicator, Image, ScrollView, Text, View} from 'react-native';
 import {styles} from './styles';
 import {useRecipeDetailsControler} from './useRecipeDetailsController';
 import {Icons} from '../../UI/Icons';
+import {Colors} from '../../UI/Colors';
 
-export const RecipeDetails: React.FC = () => {
+export function RecipeDetails(): JSX.Element {
   const {recipe} = useRecipeDetailsControler();
 
   if (!recipe) {
-    // return <Loader />;
-    return null;
+    return <ActivityIndicator color={Colors.primary} />;
   }
 
   return (
@@ -44,4 +44,4 @@ export const RecipeDetails: React.FC = () => {
       </View>
     </ScrollView>
   );
-};
+}
