@@ -35,7 +35,7 @@ export function RecipesList(): JSX.Element {
           style={styles.loadingIndicator}
         />
       )}
-      {isRecipesListEmpty && <RecipesListMessage />}
+      {!isLoading && isRecipesListEmpty && <RecipesListMessage />}
       {!isLoading && (
         <RecipesCards
           gridType={gridType ? 'grid' : 'linear'}

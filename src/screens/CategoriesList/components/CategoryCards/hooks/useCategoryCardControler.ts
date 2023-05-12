@@ -22,13 +22,13 @@ export const useCategoryCardControler = () => {
   }, []);
   const setSearchTerm = SearchStore.useSearchTerm();
 
-  const handlePress = useCallback(async (categoryTitle: string) => {
+  const onPress = useCallback(async (categoryTitle: string) => {
     await setSearchTerm(categoryTitle);
     return navigation.navigate('Recipes');
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return {
-    handlePress,
+    onPress,
     isLoading,
     categories,
   };

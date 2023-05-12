@@ -50,7 +50,11 @@ export const searchRecipes = async (
     sortOptions: mockData.collection.sortOptions,
   };
 
-  return result;
+  return new Promise<any>(resolve => {
+    setTimeout(() => {
+      resolve(result);
+    }, 2000);
+  });
 };
 
 export const getRecipeById = async (id: string): Promise<DetailRecipeModel> => {
