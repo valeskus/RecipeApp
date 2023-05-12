@@ -2,16 +2,16 @@ import {useCallback} from 'react';
 import {useNavigation} from '@react-navigation/native';
 
 export const useButtonBarController = (
-  onCardTypeChange: (type: boolean) => void,
-  gridType: boolean,
+  onCardTypeChange: (type: 'grid' | 'linear') => void,
+  gridType: 'grid' | 'linear',
 ) => {
   const navigation = useNavigation();
 
   const changeType = useCallback(() => {
-    if (gridType) {
-      return onCardTypeChange(false);
+    if (gridType === 'grid') {
+      return onCardTypeChange('linear');
     }
-    return onCardTypeChange(true);
+    return onCardTypeChange('grid');
   }, [onCardTypeChange, gridType]);
 
   const handleSortPress = () => {

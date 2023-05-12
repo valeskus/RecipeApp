@@ -5,8 +5,8 @@ import {Button} from '../../../../UI/Button';
 import {useButtonBarController} from './hooks';
 
 interface Props {
-  onCardTypeChange: (type: boolean) => void;
-  gridType: boolean;
+  onCardTypeChange: (type: 'grid' | 'linear') => void;
+  gridType: 'grid' | 'linear';
 }
 
 export function RecipesListControls({
@@ -20,7 +20,7 @@ export function RecipesListControls({
       <Button icon="filter" onPress={handleFilterPress} />
       <Button icon="sort" onPress={handleSortPress} />
       <View style={styles.cardFormButtonContainer}>
-        {gridType ? (
+        {gridType === 'grid' ? (
           <Button icon="grid" onPress={changeType} />
         ) : (
           <Button icon="lineGrid" onPress={changeType} />

@@ -36,12 +36,7 @@ export function RecipesList(): JSX.Element {
         />
       )}
       {!isLoading && isRecipesListEmpty && <RecipesListMessage />}
-      {!isLoading && (
-        <RecipesCards
-          gridType={gridType ? 'grid' : 'linear'}
-          recipes={recipes}
-        />
-      )}
+      {!isLoading && <RecipesCards gridType={gridType} recipes={recipes} />}
     </View>
   );
 }
