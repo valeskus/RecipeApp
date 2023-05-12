@@ -21,7 +21,7 @@ export function RecipesList(): JSX.Element {
     <View style={styles.recipiesScreenContainer}>
       <View style={styles.searchMenuContainer}>
         <Search onSearch={handleSearch} />
-        {!isRecipesListEmpty && (
+        {!isLoading && !isRecipesListEmpty && (
           <RecipesListControls
             onCardTypeChange={onChangeCardType}
             gridType={gridType}

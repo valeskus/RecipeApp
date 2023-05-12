@@ -9,7 +9,7 @@ export const styles = StyleSheet.create({
     backgroundColor: Colors.background,
   },
   loadingIndicator: {
-    alignSelf: 'center',
+    flex: 1,
   },
   searchMenuContainer: {
     width: '100%',
