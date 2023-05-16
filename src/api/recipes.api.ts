@@ -67,6 +67,6 @@ export const getRecipeById = async (id: string): Promise<DetailRecipeModel> => {
         return recipe.id === id;
       });
       resolve(result);
-    }, 5000);
+    }, 0);
   });
 };

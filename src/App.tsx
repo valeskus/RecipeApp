@@ -44,7 +44,11 @@ function App(): JSX.Element {
             <Stack.Screen name="Filter" component={Filter} />
             <Stack.Screen name="Sort" component={Sort} />
           </Stack.Group>
-          <Stack.Screen name="RecipeDetails" component={RecipeDetails} />
+          <Stack.Screen
+            name="RecipeDetails"
+            component={RecipeDetails}
+            options={{headerShown: false}}
+          />
           <Stack.Screen name="Recipes" component={RecipesList} />
         </Stack.Navigator>
       </NavigationContainer>
