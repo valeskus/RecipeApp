@@ -6,6 +6,7 @@ import {Colors} from '../../UI/Colors';
 import {Header} from './components/Header';
 import {TimeCounter} from './components/TimeCounter';
 import {NutrientsValue} from './components/NutrientsValue';
+import {Toggle} from '../../UI/Toggle';
 
 export function RecipeDetails(): JSX.Element {
   const {recipe} = useRecipeDetailsControler();
@@ -25,14 +26,14 @@ export function RecipeDetails(): JSX.Element {
             <Text style={styles.title}>{recipe.title}</Text>
             <TimeCounter time={recipe.time} />
           </View>
-
-          <Text>{recipe.description}</Text>
+          <Text style={styles.description}>{recipe.description}</Text>
           <NutrientsValue
             kcal={recipe.kcal}
             protein={recipe.macroNutrients.protein}
             fats={recipe.macroNutrients.fats}
             carbs={recipe.macroNutrients.carbs}
           />
+          <Toggle items={['Ingredients', 'Instructions']} onChange={() => {}} />
         </View>
       </View>
     </ScrollView>

@@ -3,6 +3,7 @@ import {StyleSheet} from 'react-native';
 export const styles = StyleSheet.create({
   nutrientValuesContainer: {
     flexDirection: 'row',
+    marginBottom: 20,
   },
   nutrientValue: {
     flex: 1,

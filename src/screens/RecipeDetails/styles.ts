@@ -12,7 +12,7 @@ export const styles = StyleSheet.create({
   detailsContainer: {
     backgroundColor: 'white',
     borderTopRightRadius: 80,
-    paddingTop: 30,
+    paddingTop: 20,
     paddingHorizontal: 15,
   },
   contentContainer: {
@@ -20,10 +20,14 @@ export const styles = StyleSheet.create({
   },
   topContainer: {
     flexDirection: 'row',
+    alignItems: 'center',
   },
   title: {
     fontSize: 30,
     fontWeight: '600',
     flex: 1,
+  },
+  description: {
+    marginBottom: 20,
   },
 });
