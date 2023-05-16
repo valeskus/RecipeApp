@@ -9,27 +9,21 @@ export const styles = StyleSheet.create({
     height: 400,
     resizeMode: 'cover',
   },
-
   detailsContainer: {
     backgroundColor: 'white',
     borderTopRightRadius: 80,
+    paddingTop: 30,
+    paddingHorizontal: 15,
   },
   contentContainer: {
     marginTop: -70,
   },
+  topContainer: {
+    flexDirection: 'row',
+  },
   title: {
-    fontSize: 25,
+    fontSize: 30,
     fontWeight: '600',
-  },
-  timeContainer: {
-    width: 50,
-    height: 50,
-    alignContent: 'center',
-    justifyContent: 'center',
-  },
-  timeIcon: {
-    width: '100%',
-    height: '100%',
-    resizeMode: 'contain',
+    flex: 1,
   },
 });

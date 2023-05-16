@@ -2,9 +2,10 @@ import React from 'react';
 import {ActivityIndicator, Image, ScrollView, Text, View} from 'react-native';
 import {styles} from './styles';
 import {useRecipeDetailsControler} from './useRecipeDetailsController';
-import {Icons} from '../../UI/Icons';
 import {Colors} from '../../UI/Colors';
 import {Header} from './components/Header';
+import {TimeCounter} from './components/TimeCounter';
+import {NutrientsValue} from './components/NutrientsValue';
 
 export function RecipeDetails(): JSX.Element {
   const {recipe} = useRecipeDetailsControler();
@@ -20,31 +21,18 @@ export function RecipeDetails(): JSX.Element {
 
       <View style={styles.contentContainer}>
         <View style={styles.detailsContainer}>
-          <Text style={styles.title}>{recipe.title}</Text>
-          <View style={styles.timeContainer}>
-            <Image style={styles.timeIcon} source={Icons.time} />
-            <Text>{recipe.time}</Text>
+          <View style={styles.topContainer}>
+            <Text style={styles.title}>{recipe.title}</Text>
+            <TimeCounter time={recipe.time} />
           </View>
 
           <Text>{recipe.description}</Text>
-          <View>
-            <View>
-              <Image source={Icons.dot} />
-              <Text>{recipe.kcal}</Text>
-            </View>
-            <View>
-              <Image source={Icons.dot} />
-              <Text>{recipe.macroNutrients.protein}</Text>
-            </View>
-            <View>
-              <Image source={Icons.dot} />
-              <Text>{recipe.macroNutrients.fats}</Text>
-            </View>
-            <View>
-              <Image source={Icons.dot} />
-              <Text>{recipe.macroNutrients.carbs}</Text>
-            </View>
-          </View>
+          <NutrientsValue
+            kcal={recipe.kcal}
+            protein={recipe.macroNutrients.protein}
+            fats={recipe.macroNutrients.fats}
+            carbs={recipe.macroNutrients.carbs}
+          />
         </View>
       </View>
     </ScrollView>
