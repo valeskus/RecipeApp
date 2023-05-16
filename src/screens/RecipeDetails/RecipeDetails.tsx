@@ -4,7 +4,7 @@ import {styles} from './styles';
 import {useRecipeDetailsControler} from './useRecipeDetailsController';
 import {Icons} from '../../UI/Icons';
 import {Colors} from '../../UI/Colors';
-import {Button} from '../../UI/Button';
+import {Header} from './components/Header';
 
 export function RecipeDetails(): JSX.Element {
   const {recipe} = useRecipeDetailsControler();
@@ -15,14 +15,7 @@ export function RecipeDetails(): JSX.Element {
 
   return (
     <ScrollView style={styles.detailsScreenContainer}>
-      <View style={styles.header}>
-        <View style={styles.headerLeftButton}>
-          <Button icon="leftArrow" onPress={() => {}} />
-        </View>
-        <View style={styles.headerRightButton}>
-          <Button icon="like" onPress={() => {}} />
-        </View>
-      </View>
+      <Header />
       <Image source={{uri: recipe.image}} style={styles.image} />
 
       <View style={styles.contentContainer}>
