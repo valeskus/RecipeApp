@@ -1,18 +1,16 @@
-import React, {useCallback, useState} from 'react';
+import React, {useCallback} from 'react';
 import {Pressable, Text, View, LayoutAnimation} from 'react-native';
 import {styles} from './styles';
 
 interface Props {
   items: [string, string];
+  activeItem: string;
   onChange: (element: string) => void;
 }
 
-export function Toggle({items, onChange}: Props): JSX.Element {
-  const [activeItem, setActiveItem] = useState(items[0]);
-
+export function Toggle({items, onChange, activeItem}: Props): JSX.Element {
   const setActive = useCallback(
     (activeElement: string): void => {
-      setActiveItem(activeElement);
       onChange(activeElement);
       toggleBox();
     },

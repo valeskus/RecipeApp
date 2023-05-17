@@ -18,35 +18,38 @@ export function RecipeDetails(): JSX.Element {
   }
 
   return (
-    <ScrollView style={styles.detailsScreenContainer}>
+    <>
       <Header />
-      <Image source={{uri: recipe.image}} style={styles.image} />
+      <ScrollView style={styles.detailsScreenContainer}>
+        <Image source={{uri: recipe.image}} style={styles.image} />
 
-      <View style={styles.contentContainer}>
-        <View style={styles.detailsContainer}>
-          <View style={styles.topContainer}>
-            <Text style={styles.title}>{recipe.title}</Text>
-            <TimeCounter time={recipe.time} />
+        <View style={styles.contentContainer}>
+          <View style={styles.detailsContainer}>
+            <View style={styles.topContainer}>
+              <Text style={styles.title}>{recipe.title}</Text>
+              <TimeCounter time={recipe.time} />
+            </View>
+            <Text style={styles.description}>{recipe.description}</Text>
+            <NutrientsValue
+              kcal={recipe.kcal}
+              protein={recipe.macroNutrients.protein}
+              fats={recipe.macroNutrients.fats}
+              carbs={recipe.macroNutrients.carbs}
+            />
+            <Toggle
+              items={['Ingredients', 'Instructions']}
+              activeItem={activeItem}
+              onChange={onTogglePress}
+            />
           </View>
-          <Text style={styles.description}>{recipe.description}</Text>
-          <NutrientsValue
-            kcal={recipe.kcal}
-            protein={recipe.macroNutrients.protein}
-            fats={recipe.macroNutrients.fats}
-            carbs={recipe.macroNutrients.carbs}
-          />
-          <Toggle
-            items={['Ingredients', 'Instructions']}
-            onChange={onTogglePress}
-          />
+          {activeItem === 'Ingredients' && (
+            <IngredientsList ingredients={recipe.ingredients} />
+          )}
+          {activeItem === 'Instructions' && (
+            <InstructionsList instructions={recipe.instructions} />
+          )}
         </View>
-        {activeItem === 'ingredients' && (
-          <IngredientsList ingredients={recipe.ingredients} />
-        )}
-        {activeItem === 'instructions' && (
-          <InstructionsList instructions={recipe.instructions} />
-        )}
-      </View>
-    </ScrollView>
+      </ScrollView>
+    </>
   );
 }
