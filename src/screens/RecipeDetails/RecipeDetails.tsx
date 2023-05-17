@@ -7,6 +7,7 @@ import {Header} from './components/Header';
 import {TimeCounter} from './components/TimeCounter';
 import {NutrientsValue} from './components/NutrientsValue';
 import {Toggle} from '../../UI/Toggle';
+import {IngredientsList} from '../RecipesList/components/IngredientsList ';
 
 export function RecipeDetails(): JSX.Element {
   const {recipe} = useRecipeDetailsControler();
@@ -35,6 +36,7 @@ export function RecipeDetails(): JSX.Element {
           />
           <Toggle items={['Ingredients', 'Instructions']} onChange={() => {}} />
         </View>
+        <IngredientsList ingredients={recipe.ingredients} />
       </View>
     </ScrollView>
   );
