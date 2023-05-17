@@ -7,10 +7,11 @@ import {Header} from './components/Header';
 import {TimeCounter} from './components/TimeCounter';
 import {NutrientsValue} from './components/NutrientsValue';
 import {Toggle} from '../../UI/Toggle';
-import {IngredientsList} from '../RecipesList/components/IngredientsList ';
+import {IngredientsList} from './components/IngredientsList ';
+import {InstructionsList} from './components/InstructionsList';
 
 export function RecipeDetails(): JSX.Element {
-  const {recipe} = useRecipeDetailsControler();
+  const {recipe, onTogglePress, activeItem} = useRecipeDetailsControler();
 
   if (!recipe) {
     return <ActivityIndicator color={Colors.primary} />;
@@ -34,9 +35,17 @@ export function RecipeDetails(): JSX.Element {
             fats={recipe.macroNutrients.fats}
             carbs={recipe.macroNutrients.carbs}
           />
-          <Toggle items={['Ingredients', 'Instructions']} onChange={() => {}} />
+          <Toggle
+            items={['Ingredients', 'Instructions']}
+            onChange={onTogglePress}
+          />
         </View>
-        <IngredientsList ingredients={recipe.ingredients} />
+        {activeItem === 'ingredients' && (
+          <IngredientsList ingredients={recipe.ingredients} />
+        )}
+        {activeItem === 'instructions' && (
+          <InstructionsList instructions={recipe.instructions} />
+        )}
       </View>
     </ScrollView>
   );

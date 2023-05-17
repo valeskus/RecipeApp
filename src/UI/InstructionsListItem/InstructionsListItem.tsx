@@ -9,7 +9,7 @@ interface Props {
   count: number;
 }
 
-export function InstructionListItem({
+export function InstructionsListItem({
   image,
   description,
   count,

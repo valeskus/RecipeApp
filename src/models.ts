@@ -22,6 +22,7 @@ export interface IngredientModel {
 }
 
 export interface InstructionModel {
+  id: 'string';
   image?: string;
   description: string;
 }

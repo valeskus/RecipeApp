@@ -1,8 +1,12 @@
-import {useEffect} from 'react';
+import {useCallback, useEffect, useState} from 'react';
 import * as RecipeDetailsStore from '../../stores/recipeDetails';
 import {RouteProp, useRoute} from '@react-navigation/native';
 
 export const useRecipeDetailsControler = () => {
+  const [activeItem, setActiveItem] = useState<'ingredients' | 'instructions'>(
+    'ingredients',
+  );
+
   const {params} =
     useRoute<RouteProp<ReactNavigation.RootParamList, 'RecipeDetails'>>();
 
@@ -19,7 +23,16 @@ export const useRecipeDetailsControler = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const onTogglePress = useCallback(() => {
+    if (activeItem === 'ingredients') {
+      return setActiveItem('instructions');
+    }
+    setActiveItem('ingredients');
+  }, [activeItem]);
+
   return {
     recipe,
+    onTogglePress,
+    activeItem,
   };
 };

@@ -30,11 +30,12 @@ export const styles = StyleSheet.create({
     height: 20,
     alignSelf: 'flex-start',
     tintColor: Colors.primary,
+    marginRight: 10,
   },
   listItemImage: {
     width: '70%',
     height: 150,
     marginBottom: 15,
-    borderRadius: 10,
+    borderRadius: 15,
   },
 });
