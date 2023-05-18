@@ -1,9 +1,10 @@
 import React from 'react';
-import {ActivityIndicator, FlatList, ListRenderItem, View} from 'react-native';
+import {FlatList, ListRenderItem, View} from 'react-native';
 import {styles} from './styles';
 import {CategoryCard} from '../../../../UI/CategoryCard';
 import {useCategoryCardControler} from './hooks/';
 import {CategoryModel} from '../../../../models';
+import {CategoryListSkeleton} from '../CategoryListSkeleton';
 
 interface RenderItemParams {
   onPress: (categoryTitle: string) => void;
@@ -29,8 +30,8 @@ export function CategoryCards(): JSX.Element {
   const {onPress, isLoading, categories} = useCategoryCardControler();
   return (
     <>
-      {isLoading && <ActivityIndicator style={styles.loader} />}
-      {!isLoading && (
+      {!isLoading && <CategoryListSkeleton />}
+      {isLoading && (
         <FlatList
           style={styles.offset}
           contentContainerStyle={styles.categoryCardsContainer}
