@@ -38,8 +38,6 @@ export const useRecipeCardControler = (
     ];
   }, [params.recipes, params.gridType]);
 
-  console.log(data);
-
   return {
     onPress,
     data,

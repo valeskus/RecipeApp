@@ -10,7 +10,6 @@ export const useFilterController = () => {
 
   const onFilterChange = useCallback(
     (filterId: string, valueId: string) => {
-      console.log(filterId, valueId);
       return setFiltreList([...filterList, {key: filterId, value: valueId}]);
     },
     [filterList],
