@@ -4,7 +4,7 @@ import {styles} from './styles';
 import {CategoryCard} from '../../../../UI/CategoryCard';
 import {useCategoryCardControler} from './hooks/';
 import {CategoryModel} from '../../../../models';
-import {CategoryListSkeleton} from '../CategoryListSkeleton';
+import {CategoryListSkeleton} from '../Skeleton/CategoryListSkeleton';
 
 interface RenderItemParams {
   onPress: (categoryTitle: string) => void;
@@ -30,8 +30,8 @@ export function CategoryCards(): JSX.Element {
   const {onPress, isLoading, categories} = useCategoryCardControler();
   return (
     <>
-      {!isLoading && <CategoryListSkeleton />}
-      {isLoading && (
+      {isLoading && <CategoryListSkeleton />}
+      {!isLoading && (
         <FlatList
           style={styles.offset}
           contentContainerStyle={styles.categoryCardsContainer}
