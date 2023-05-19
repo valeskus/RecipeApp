@@ -4,7 +4,7 @@ import {styles} from './styles';
 import {CategoryCard} from '../../../../UI/CategoryCard';
 import {useCategoryCardControler} from './hooks/';
 import {CategoryModel} from '../../../../models';
-import {CategoryListSkeleton} from '../Skeleton/CategoryListSkeleton';
+import {CategoryListSkeleton} from '../CategoryListSkeleton';
 
 interface RenderItemParams {
   onPress: (categoryTitle: string) => void;

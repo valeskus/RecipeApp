@@ -1,6 +1,6 @@
 import React from 'react';
 import ContentLoader, {Rect} from 'react-content-loader/native';
-import {Colors} from '../../../../../UI/Colors';
+import {Colors} from '../../../../UI/Colors';
 
 export function CategoryListSkeleton(): JSX.Element {
   return (
