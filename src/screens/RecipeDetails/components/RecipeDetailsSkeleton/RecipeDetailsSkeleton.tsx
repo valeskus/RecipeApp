@@ -4,10 +4,15 @@ import {Colors} from '../../../../UI/Colors';
 
 export function RecipeDetailsSkeleton(): JSX.Element {
   return (
+    //android 330
     <ContentLoader
-      viewBox="0 0 300 650"
+      // viewBox={boxSize}
       backgroundColor={Colors.secondary}
-      opacity={0.2}>
+      opacity={0.2}
+      width={'100%'}
+      height={'100%'}
+      // style={{width: '100%'}}
+    >
       <Rect x="0" y="1" rx="20" ry="20" width="100%" height="100%" />
       <Circle cx={25} cy={65} r={20} />
       <Circle cx={275} cy={65} r={20} />

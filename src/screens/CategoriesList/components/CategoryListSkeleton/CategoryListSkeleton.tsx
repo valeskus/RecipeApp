@@ -5,7 +5,9 @@ import {Colors} from '../../../../UI/Colors';
 export function CategoryListSkeleton(): JSX.Element {
   return (
     <ContentLoader
-      viewBox="0 0 300 590"
+      // viewBox="0 0 300 590"
+      width={'100%'}
+      height={'100%'}
       backgroundColor={Colors.secondary}
       opacity={0.2}>
       <Rect x="10" y="1" rx="20" ry="20" width="45%" height="105" />

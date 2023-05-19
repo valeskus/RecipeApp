@@ -1,41 +1,46 @@
 import React from 'react';
 import ContentLoader, {Circle, Rect} from 'react-content-loader/native';
 import {Colors} from '../../../../UI/Colors';
+import {Dimensions} from 'react-native';
 
 export function RecipeListSkeleton(): JSX.Element {
+  const screenDimensions = Dimensions.get('screen').width;
+  console.log(screenDimensions);
   return (
     <ContentLoader
-      viewBox="0 0 300 595"
+      width={screenDimensions}
+      height={'100%'}
       backgroundColor={Colors.secondary}
       opacity={0.2}>
-      <Circle cx="28" cy="21" r="21" />
-      <Circle cx="80" cy="21" r="21" />
-      <Circle cx="275" cy="21" r="21" />
+      <Circle cx="8%" cy="30" r="24" />
+      <Circle cx="25%" cy="30" r="24" />
+      <Circle cx="86%" cy="30" r="24" />
 
-      <Rect x="10" y="55" rx="20" ry="20" width="45%" height="105" />
-      <Rect x="17" y="170" rx="4" ry="4" width="40%" height="13" />
-      <Rect x="17" y="187" rx="4" ry="4" width="33%" height="15" />
-      <Rect x="17" y="205" rx="4" ry="4" width="17%" height="8" />
-      <Rect x="17" y="217" rx="4" ry="4" width="17%" height="8" />
-      <Rect x="158" y="55" rx="20" ry="20" width="45%" height="105" />
-      <Rect x="165" y="170" rx="4" ry="4" width="40%" height="13" />
-      <Rect x="165" y="187" rx="4" ry="4" width="33%" height="15" />
-      <Rect x="165" y="205" rx="4" ry="4" width="17%" height="8" />
-      <Rect x="165" y="217" rx="4" ry="4" width="17%" height="8" />
+      <Rect x="2%" y="75" rx="20" ry="20" width="43%" height="130" />
+      <Rect x="5%" y="215" rx="4" ry="4" width="37%" height="13" />
+      <Rect x="5%" y="237" rx="4" ry="4" width="33%" height="15" />
+      <Rect x="5%" y="265" rx="4" ry="4" width="17%" height="8" />
+      <Rect x="5%" y="280" rx="4" ry="4" width="17%" height="8" />
+      <Rect x="49%" y="75" rx="20" ry="20" width="43%" height="130" />
+      <Rect x="51%" y="215" rx="4" ry="4" width="37%" height="13" />
+      <Rect x="51%" y="237" rx="4" ry="4" width="33%" height="15" />
+      <Rect x="51%" y="265" rx="4" ry="4" width="17%" height="8" />
+      <Rect x="51%" y="280" rx="4" ry="4" width="17%" height="8" />
 
-      <Rect x="10" y="255" rx="20" ry="20" width="45%" height="105" />
-      <Rect x="17" y="370" rx="4" ry="4" width="40%" height="13" />
-      <Rect x="17" y="387" rx="4" ry="4" width="33%" height="15" />
-      <Rect x="17" y="405" rx="4" ry="4" width="17%" height="8" />
-      <Rect x="17" y="417" rx="4" ry="4" width="17%" height="8" />
-      <Rect x="158" y="255" rx="20" ry="20" width="45%" height="105" />
-      <Rect x="165" y="370" rx="4" ry="4" width="40%" height="13" />
-      <Rect x="165" y="387" rx="4" ry="4" width="33%" height="15" />
-      <Rect x="165" y="405" rx="4" ry="4" width="17%" height="8" />
-      <Rect x="165" y="417" rx="4" ry="4" width="17%" height="8" />
+      <Rect x="3%" y="325" rx="20" ry="20" width="43%" height="130" />
+      <Rect x="5%" y="465" rx="4" ry="4" width="40%" height="13" />
+      <Rect x="5%" y="487" rx="4" ry="4" width="33%" height="15" />
+      <Rect x="5%" y="515" rx="4" ry="4" width="17%" height="8" />
+      <Rect x="5%" y="530" rx="4" ry="4" width="17%" height="8" />
 
-      <Rect x="10" y="455" rx="20" ry="20" width="45%" height="105" />
-      <Rect x="158" y="455" rx="20" ry="20" width="45%" height="105" />
+      <Rect x="49%" y="325" rx="20" ry="20" width="43%" height="130" />
+      <Rect x="51%" y="465" rx="4" ry="4" width="40%" height="13" />
+      <Rect x="51%" y="487" rx="4" ry="4" width="33%" height="15" />
+      <Rect x="51%" y="515" rx="4" ry="4" width="17%" height="8" />
+      <Rect x="51%" y="530" rx="4" ry="4" width="17%" height="8" />
+
+      <Rect x="3%" y="575" rx="20" ry="20" width="43%" height="130" />
+      <Rect x="49%" y="575" rx="20" ry="20" width="43%" height="130" />
     </ContentLoader>
   );
 }
