@@ -1,20 +1,14 @@
 import React, {useRef} from 'react';
-import {
-  ActivityIndicator,
-  Animated,
-  Dimensions,
-  Text,
-  View,
-} from 'react-native';
+import {Animated, Dimensions, Text, View} from 'react-native';
 import {styles} from './styles';
 import {useRecipeDetailsControler} from './useRecipeDetailsController';
-import {Colors} from '../../UI/Colors';
 import {Header} from './components/Header';
 import {TimeCounter} from './components/TimeCounter';
 import {NutrientsValue} from './components/NutrientsValue';
 import {Toggle} from '../../UI/Toggle';
 import {IngredientsList} from './components/IngredientsList ';
 import {InstructionsList} from './components/InstructionsList';
+import {RecipeDetailsSkeleton} from './components/RecipeDetailsSkeleton';
 
 const {height} = Dimensions.get('screen');
 
@@ -23,7 +17,7 @@ export function RecipeDetails(): JSX.Element {
   const scrollYRef = useRef(new Animated.Value(0));
 
   if (!recipe) {
-    return <ActivityIndicator color={Colors.primary} />;
+    return <RecipeDetailsSkeleton />;
   }
 
   const scale = scrollYRef.current.interpolate({
