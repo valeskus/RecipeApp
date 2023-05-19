@@ -20,10 +20,6 @@ export function RecipeDetails(): JSX.Element {
     return <RecipeDetailsSkeleton />;
   }
 
-  if (true) {
-    return <RecipeDetailsSkeleton />;
-  }
-
   const scale = scrollYRef.current.interpolate({
     inputRange: [-height, 0, 1],
     outputRange: [5, 1, 1],

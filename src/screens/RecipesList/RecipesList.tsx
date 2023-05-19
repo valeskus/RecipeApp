@@ -21,7 +21,7 @@ export function RecipesList(): JSX.Element {
     <View style={styles.recipiesScreenContainer}>
       <View style={styles.searchMenuContainer}>
         <Search onSearch={handleSearch} />
-        {isLoading && !isRecipesListEmpty && (
+        {!isLoading && !isRecipesListEmpty && (
           <RecipesListControls
             onCardTypeChange={onChangeCardType}
             gridType={gridType}
@@ -29,9 +29,9 @@ export function RecipesList(): JSX.Element {
         )}
       </View>
       <View style={styles.blurContainer} />
-      {!isLoading && <RecipeListSkeleton />}
-      {isLoading && isRecipesListEmpty && <RecipesListMessage />}
-      {isLoading && <RecipesCards gridType={gridType} recipes={recipes} />}
+      {isLoading && <RecipeListSkeleton />}
+      {!isLoading && isRecipesListEmpty && <RecipesListMessage />}
+      {!isLoading && <RecipesCards gridType={gridType} recipes={recipes} />}
     </View>
   );
 }
