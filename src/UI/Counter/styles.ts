@@ -4,8 +4,12 @@ import {Colors} from '../Colors';
 export const styles = StyleSheet.create({
   buttonContent: {
     fontSize: 18,
-    color: Colors.text,
+    color: Colors.primary,
     textAlign: 'center',
+    fontWeight: '600',
+  },
+  buttonPressed: {
+    transform: [{scale: 0.9}],
   },
   button: {
     borderRadius: 50,

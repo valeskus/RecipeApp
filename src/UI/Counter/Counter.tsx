@@ -4,15 +4,20 @@ import {styles} from './styles';
 
 interface Props {
   count: number;
+  onPress: () => void;
 }
-export function Counter({count}: Props): JSX.Element {
+export function Counter({count, onPress}: Props): JSX.Element {
   return (
     <View style={styles.counterContainer}>
-      <Pressable style={styles.button}>
+      <Pressable
+        style={({pressed}) => [styles.button, pressed && styles.buttonPressed]}
+        onPress={onPress}>
         <Text style={styles.buttonContent}>+</Text>
       </Pressable>
       <Text style={styles.count}>{count}</Text>
-      <Pressable style={styles.button}>
+      <Pressable
+        style={({pressed}) => [styles.button, pressed && styles.buttonPressed]}
+        onPress={onPress}>
         <Text style={styles.buttonContent}>-</Text>
       </Pressable>
     </View>
