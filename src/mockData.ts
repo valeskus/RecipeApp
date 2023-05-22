@@ -4,7 +4,7 @@ export const mockData = {
   recipesDetailsList: [
     {
       id: '1',
-      title: 'Product 1',
+      title: 'Product 1 ',
       image: ImageMock,
       rating: 4,
       kcal: 500,

@@ -35,11 +35,13 @@ export const styles = StyleSheet.create({
   topContainer: {
     flexDirection: 'row',
     alignItems: 'center',
+    marginBottom: 10,
   },
   title: {
     fontSize: 30,
     fontWeight: '600',
-    flex: 1,
+    flex: 2,
+    flexWrap: 'wrap',
   },
   description: {
     marginBottom: 20,
