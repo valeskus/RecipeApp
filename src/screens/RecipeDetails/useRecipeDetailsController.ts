@@ -3,7 +3,7 @@ import * as RecipeDetailsStore from '../../stores/recipeDetails';
 import {RouteProp, useRoute} from '@react-navigation/native';
 
 export const useRecipeDetailsControler = () => {
-  const [activeItem, setActiveItem] = useState('Ingredients');
+  const [activeSection, setActiveSection] = useState('Ingredients');
 
   const {params} =
     useRoute<RouteProp<ReactNavigation.RootParamList, 'RecipeDetails'>>();
@@ -22,12 +22,12 @@ export const useRecipeDetailsControler = () => {
   }, []);
 
   const onTogglePress = useCallback((activeElement: string) => {
-    setActiveItem(activeElement);
+    setActiveSection(activeElement);
   }, []);
 
   return {
     recipe,
     onTogglePress,
-    activeItem,
+    activeSection,
   };
 };

@@ -16,7 +16,7 @@ export const styles = StyleSheet.create({
   },
   selectItemActive: {
     backgroundColor: Colors.secondary,
-    width: '50%',
+    // width: '50%',
     borderRadius: 15,
     zIndex: 10,
     paddingVertical: 20,
@@ -35,7 +35,8 @@ export const styles = StyleSheet.create({
     color: Colors.background,
   },
   moveRight: {
-    alignSelf: 'flex-end',
+    // alignSelf: 'flex-end',
+    left: '33%',
   },
   activeItemWrap: {
     width: '100%',

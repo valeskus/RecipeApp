@@ -16,6 +16,7 @@ export const mockData = {
         carbs: 30,
         fats: 10,
       },
+      servingsCount: 3,
       ingredients: [
         {
           id: 'i1',

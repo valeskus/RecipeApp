@@ -14,7 +14,7 @@ export function IngredientsList({ingredients}: Props): JSX.Element {
     <View style={styles.ingredientsContainer}>
       <View style={styles.header}>
         <Text style={styles.title}>Ingredients</Text>
-        <Counter count={2} />
+        <Counter count={2} onPress={() => {}} />
       </View>
       <Text style={styles.itemsCounter}>{ingredients.length} items</Text>
 
