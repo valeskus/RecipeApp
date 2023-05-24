@@ -6,7 +6,7 @@ import {styles} from './styles';
 interface Props {
   title: string;
   description?: string;
-  count: number;
+  count: string;
   unit: string;
 }
 
@@ -28,7 +28,7 @@ export function IngredientsListItem({
             </Text>
           )}
         </View>
-        <Text style={styles.ingredientsListItemCount}>{count}</Text>
+        <Text style={styles.ingredientsListItemCount}>{count} </Text>
         <Text style={styles.ingredientsListItemCount}>{unit}</Text>
       </View>
     </View>

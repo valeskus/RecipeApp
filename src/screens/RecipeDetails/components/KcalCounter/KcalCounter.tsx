@@ -7,11 +7,14 @@ import {useKcalCounterControler} from './useKcalCounterControler';
 
 interface Props {
   recipe: DetailRecipeModel;
+  count: number;
 }
 
-export function KcalCounter({recipe}: Props): JSX.Element {
-  const {activeKcalItem, onTogglePress, onCount} =
-    useKcalCounterControler(recipe);
+export function KcalCounter({recipe, count}: Props): JSX.Element {
+  const {activeKcalItem, onTogglePress, onCount} = useKcalCounterControler(
+    recipe,
+    count,
+  );
 
   return (
     <View>

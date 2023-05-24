@@ -1,7 +1,10 @@
 import {useCallback, useState} from 'react';
 import {DetailRecipeModel} from '../../../../models';
 
-export const useKcalCounterControler = (recipe: DetailRecipeModel) => {
+export const useKcalCounterControler = (
+  recipe: DetailRecipeModel,
+  count: number,
+) => {
   const [activeKcalItem, setActiveKcalItem] = useState('100g');
 
   const onTogglePress = useCallback((activeElement: string) => {
@@ -10,23 +13,45 @@ export const useKcalCounterControler = (recipe: DetailRecipeModel) => {
 
   const onCount = useCallback(() => {
     switch (activeKcalItem) {
+      case '100g':
+        return {
+          kcal: ((recipe.kcal * 100) / recipe.weight).toFixed(1),
+          protein: (
+            (recipe.macroNutrients.protein * 100) /
+            recipe.weight
+          ).toFixed(1),
+          fats: ((recipe.macroNutrients.fats * 100) / recipe.weight).toFixed(1),
+          carbs: ((recipe.macroNutrients.carbs * 100) / recipe.weight).toFixed(
+            1,
+          ),
+        };
+
       case '1 serving':
         return {
-          kcal: Math.round(recipe.kcal / recipe.servingsCount),
-          protein: Math.round(
-            recipe.macroNutrients.protein / recipe.servingsCount,
+          kcal: (recipe.kcal / recipe.servingsCount).toFixed(1),
+          protein: (
+            recipe.macroNutrients.protein / recipe.servingsCount
+          ).toFixed(1),
+          fats: (recipe.macroNutrients.fats / recipe.servingsCount).toFixed(1),
+          carbs: (recipe.macroNutrients.carbs / recipe.servingsCount).toFixed(
+            1,
           ),
-          fats: Math.round(recipe.macroNutrients.fats / recipe.servingsCount),
-          carbs: Math.round(recipe.macroNutrients.carbs / recipe.servingsCount),
         };
       case 'all amount':
         return {
-          kcal: Math.round(recipe.kcal * recipe.servingsCount),
-          protein: Math.round(
-            recipe.macroNutrients.protein * recipe.servingsCount,
-          ),
-          fats: Math.round(recipe.macroNutrients.fats * recipe.servingsCount),
-          carbs: Math.round(recipe.macroNutrients.carbs * recipe.servingsCount),
+          kcal: ((recipe.kcal / recipe.servingsCount) * count).toFixed(1),
+          protein: (
+            (recipe.macroNutrients.protein / recipe.servingsCount) *
+            count
+          ).toFixed(1),
+          fats: (
+            (recipe.macroNutrients.fats / recipe.servingsCount) *
+            count
+          ).toFixed(1),
+          carbs: (
+            (recipe.macroNutrients.carbs / recipe.servingsCount) *
+            count
+          ).toFixed(1),
         };
       default:
         return {
@@ -36,7 +61,7 @@ export const useKcalCounterControler = (recipe: DetailRecipeModel) => {
           carbs: recipe.macroNutrients.carbs,
         };
     }
-  }, [recipe, activeKcalItem]);
+  }, [recipe, activeKcalItem, count]);
   return {
     activeKcalItem,
     onTogglePress,

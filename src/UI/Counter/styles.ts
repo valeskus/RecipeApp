@@ -26,8 +26,9 @@ export const styles = StyleSheet.create({
   counterContainer: {
     flexDirection: 'row',
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    position: 'absolute',
+    right: '15%',
+    top: 20,
   },
   count: {
     fontSize: 20,

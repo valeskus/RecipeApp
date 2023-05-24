@@ -6,15 +6,11 @@ import {styles} from './styles';
 import {Icons} from '../../../../UI/Icons';
 
 interface Props {
-  // kcal: number;
-  // protein: number;
-  // fats: number;
-  // carbs: number;
   nutrients: {
-    kcal: number;
-    protein: number;
-    fats: number;
-    carbs: number;
+    kcal: number | string;
+    protein: number | string;
+    fats: number | string;
+    carbs: number | string;
   };
 }
 

@@ -1,20 +1,28 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 import {Text, View} from 'react-native';
 import {styles} from './styles';
 import {IngredientsListItem} from '../../../../UI/IngredientsListItem';
 import {IngredientModel} from '../../../../models';
-import {Counter} from '../../../../UI/Counter';
 
 interface Props {
   ingredients: Array<IngredientModel>;
+  servingCount: number;
 }
 
-export function IngredientsList({ingredients}: Props): JSX.Element {
+export function IngredientsList({
+  ingredients,
+  servingCount,
+}: Props): JSX.Element {
+  const setIngredientCount = useCallback(
+    (count: number) => {
+      return (count * servingCount).toFixed(1);
+    },
+    [servingCount],
+  );
   return (
     <View style={styles.ingredientsContainer}>
       <View style={styles.header}>
         <Text style={styles.title}>Ingredients</Text>
-        <Counter count={2} onPress={() => {}} />
       </View>
       <Text style={styles.itemsCounter}>{ingredients.length} items</Text>
 
@@ -23,7 +31,7 @@ export function IngredientsList({ingredients}: Props): JSX.Element {
           <IngredientsListItem
             title={item.title}
             description={item.description}
-            count={item.count}
+            count={setIngredientCount(item.count)}
             unit={item.unit}
             key={item.id}
           />

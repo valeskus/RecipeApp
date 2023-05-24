@@ -3,12 +3,16 @@ import * as RecipeDetailsStore from '../../stores/recipeDetails';
 import {RouteProp, useRoute} from '@react-navigation/native';
 
 export const useRecipeDetailsControler = () => {
+  const {recipe} = RecipeDetailsStore.useRecipeDetailsStore();
+
   const [activeSection, setActiveSection] = useState('Ingredients');
+  const [servingsCount, setServingsCount] = useState<number | undefined>(
+    recipe?.servingsCount,
+  );
 
   const {params} =
     useRoute<RouteProp<ReactNavigation.RootParamList, 'RecipeDetails'>>();
 
-  const {recipe} = RecipeDetailsStore.useRecipeDetailsStore();
   const getRecipe = RecipeDetailsStore.useGetRecipeDetails();
   const resetRecipe = RecipeDetailsStore.useResetRecipeDetails();
 
@@ -25,9 +29,15 @@ export const useRecipeDetailsControler = () => {
     setActiveSection(activeElement);
   }, []);
 
+  const onCountChange = useCallback((value: number) => {
+    setServingsCount(value);
+  }, []);
+
   return {
     recipe,
     onTogglePress,
     activeSection,
+    servingsCount,
+    onCountChange,
   };
 };

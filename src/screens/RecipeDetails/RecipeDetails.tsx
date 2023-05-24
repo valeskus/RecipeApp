@@ -10,11 +10,13 @@ import {IngredientsList} from './components/IngredientsList ';
 import {InstructionsList} from './components/InstructionsList';
 import {RecipeDetailsSkeleton} from './components/RecipeDetailsSkeleton';
 import {KcalCounter} from './components/KcalCounter';
+import {Counter} from '../../UI/Counter';
 
 const {height} = Dimensions.get('screen');
 
 export function RecipeDetails(): JSX.Element {
-  const {recipe, onTogglePress, activeSection} = useRecipeDetailsControler();
+  const {recipe, onTogglePress, activeSection, servingsCount, onCountChange} =
+    useRecipeDetailsControler();
   const scrollYRef = useRef(new Animated.Value(0));
 
   if (!recipe) {
@@ -58,7 +60,12 @@ export function RecipeDetails(): JSX.Element {
             <TimeCounter time={recipe.time} />
           </View>
           <Text style={styles.description}>{recipe.description}</Text>
-          <KcalCounter recipe={recipe} />
+
+          <KcalCounter
+            recipe={recipe}
+            count={servingsCount || recipe.servingsCount}
+          />
+
           <Toggle
             items={['Ingredients', 'Instructions']}
             activeItem={activeSection}
@@ -66,7 +73,16 @@ export function RecipeDetails(): JSX.Element {
           />
         </View>
         {activeSection === 'Ingredients' && (
-          <IngredientsList ingredients={recipe.ingredients} />
+          <View>
+            <IngredientsList
+              ingredients={recipe.ingredients}
+              servingCount={servingsCount || recipe.servingsCount}
+            />
+            <Counter
+              count={servingsCount || recipe.servingsCount}
+              onChange={onCountChange}
+            />
+          </View>
         )}
         {activeSection === 'Instructions' && (
           <InstructionsList instructions={recipe.instructions} />

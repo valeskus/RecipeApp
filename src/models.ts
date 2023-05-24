@@ -39,6 +39,7 @@ export interface BaseRecipeModel {
 export interface DetailRecipeModel extends BaseRecipeModel {
   description: string;
   servingsCount: number;
+  weight: number;
   macroNutrients: MacroNutrientsModel;
   ingredients: Array<IngredientModel>;
   instructions: Array<InstructionModel>;

@@ -8,6 +8,7 @@ export const mockData = {
       image: ImageMock,
       rating: 4,
       kcal: 500,
+      weight: 1300,
       time: '1:50',
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim cras. Ac turpis egestas sed tempus.',
