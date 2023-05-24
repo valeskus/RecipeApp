@@ -11,7 +11,7 @@ export function RecipeListSkeleton(): JSX.Element {
       opacity={0.2}>
       <Circle cx="8%" cy="30" r="24" />
       <Circle cx="25%" cy="30" r="24" />
-      <Circle cx="86%" cy="30" r="24" />
+      <Circle cx="90%" cy="30" r="24" />
 
       <Rect x="2%" y="75" rx="20" ry="20" width="43%" height="130" />
       <Rect x="5%" y="215" rx="4" ry="4" width="37%" height="13" />
