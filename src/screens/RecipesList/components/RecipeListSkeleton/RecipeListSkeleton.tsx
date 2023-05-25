@@ -9,8 +9,8 @@ export function RecipeListSkeleton(): JSX.Element {
       height={'100%'}
       backgroundColor={Colors.secondary}
       opacity={0.2}>
-      <Circle cx="8%" cy="30" r="24" />
-      <Circle cx="25%" cy="30" r="24" />
+      <Circle cx="10%" cy="30" r="24" />
+      <Circle cx="31%" cy="30" r="24" />
       <Circle cx="90%" cy="30" r="24" />
 
       <Rect x="2%" y="75" rx="20" ry="20" width="43%" height="130" />
