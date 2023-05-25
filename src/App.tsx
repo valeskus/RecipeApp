@@ -9,6 +9,7 @@ import {RecipesList} from './screens/RecipesList';
 import {Filter} from './screens/Filter';
 import {Sort} from './screens/Sort';
 import {RecipeDetails} from './screens/RecipeDetails';
+import {Header} from './components/Header';
 
 if (
   Platform.OS === 'android' &&
@@ -39,7 +40,14 @@ function App(): JSX.Element {
     <Provider store={store}>
       <NavigationContainer>
         <Stack.Navigator>
-          <Stack.Screen name="Categories" component={CategoriesList} />
+          <Stack.Screen
+            name="Categories"
+            component={CategoriesList}
+            options={{
+              title: 'Categories',
+              header: Header,
+            }}
+          />
           <Stack.Group screenOptions={{presentation: 'modal'}}>
             <Stack.Screen name="Filter" component={Filter} />
             <Stack.Screen name="Sort" component={Sort} />
@@ -49,7 +57,14 @@ function App(): JSX.Element {
             component={RecipeDetails}
             options={{headerShown: false}}
           />
-          <Stack.Screen name="Recipes" component={RecipesList} />
+          <Stack.Screen
+            name="Recipes"
+            component={RecipesList}
+            options={{
+              title: 'Recipes',
+              header: Header,
+            }}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>
