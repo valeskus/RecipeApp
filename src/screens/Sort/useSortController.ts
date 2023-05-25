@@ -18,7 +18,7 @@ export const useSortController = () => {
     [sortItem],
   );
 
-  const onCacnelPress = () => {
+  const onCleanPress = () => {
     navigation.goBack();
   };
   const onSelectPress = () => {
@@ -26,7 +26,7 @@ export const useSortController = () => {
   };
 
   return {
-    onCacnelPress,
+    onCleanPress,
     onSelectPress,
     onSortChange,
     sortOptions,

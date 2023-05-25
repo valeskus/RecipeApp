@@ -5,7 +5,7 @@ import {NativeStackNavigationOptions} from '@react-navigation/native-stack';
 import {Icons} from '../../UI/Icons';
 import {useNavigation} from '@react-navigation/native';
 
-interface HeaderProps {
+export interface HeaderProps {
   options: NativeStackNavigationOptions;
 }
 

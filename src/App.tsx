@@ -56,7 +56,8 @@ function App(): JSX.Element {
               }}
             />
           </Stack.Group>
-          <Stack.Group screenOptions={{presentation: 'modal'}}>
+          <Stack.Group
+            screenOptions={{presentation: 'modal', headerShown: false}}>
             <Stack.Screen name="Filter" component={Filter} />
             <Stack.Screen name="Sort" component={Sort} />
           </Stack.Group>

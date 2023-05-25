@@ -18,4 +18,5 @@ export const Icons = {
   dot: require('../../../assets/dot.png'),
   time: require('../../../assets/clock.png'),
   leftArrow: require('../../../assets/leftArrow.png'),
+  clean: require('../../../assets/clean.png'),
 };

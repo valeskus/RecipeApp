@@ -15,7 +15,7 @@ export const useFilterController = () => {
     [filterList],
   );
 
-  const onCacnelPress = () => {
+  const onCleanPress = () => {
     navigation.goBack();
   };
   const onSelectPress = () => {
@@ -23,7 +23,7 @@ export const useFilterController = () => {
   };
 
   return {
-    onCacnelPress,
+    onCleanPress,
     onSelectPress,
     onFilterChange,
     filters,

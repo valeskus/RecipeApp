@@ -1,15 +1,15 @@
 import React from 'react';
-import {View} from 'react-native';
-import {styles} from './styles';
-import {Button} from '../../UI/Button';
+import {ScrollView} from 'react-native';
+
 import {useSortController} from './useSortController';
 import {PickListItem} from '../../UI/PickListItem';
+import {Modal} from '../../UI/Modal';
 export function Sort(): JSX.Element {
-  const {onCacnelPress, onSelectPress, sortOptions, onSortChange, sortItem} =
+  const {onCleanPress, onSelectPress, sortOptions, onSortChange, sortItem} =
     useSortController();
-  return (
-    <View style={styles.sortScreenContainer}>
-      <Button icon="cancel" onPress={onCacnelPress} />
+
+  const sortList = (
+    <ScrollView>
       {sortOptions.map(sort => {
         return (
           <PickListItem
@@ -20,7 +20,14 @@ export function Sort(): JSX.Element {
           />
         );
       })}
-      <Button icon="select" onPress={onSelectPress} />
-    </View>
+    </ScrollView>
+  );
+  return (
+    <Modal
+      children={sortList}
+      title={'Sort'}
+      onSelectPress={onSelectPress}
+      onCleanPress={onCleanPress}
+    />
   );
 }

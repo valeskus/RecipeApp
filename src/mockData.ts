@@ -380,6 +380,14 @@ export const mockData = {
             label: 'variant 2',
             id: 'variant2',
           },
+          {
+            label: 'variant 3',
+            id: 'variant3',
+          },
+          {
+            label: 'variant 4',
+            id: 'variant4',
+          },
         ],
       },
       {
@@ -393,6 +401,50 @@ export const mockData = {
           {
             label: 'variant 2.2',
             id: 'variant2.2',
+          },
+        ],
+      },
+      {
+        id: 'filter3',
+        title: 'Filter 3',
+        values: [
+          {
+            label: 'variant 3.1',
+            id: 'variant3.1',
+          },
+          {
+            label: 'variant 3.2',
+            id: 'variant3.2',
+          },
+          {
+            label: 'variant 3.3',
+            id: 'variant3.3',
+          },
+          {
+            label: 'variant 3.4',
+            id: 'variant3.4',
+          },
+        ],
+      },
+      {
+        id: 'filter4',
+        title: 'Filter 4',
+        values: [
+          {
+            label: 'variant 4.1',
+            id: 'variant4.1',
+          },
+          {
+            label: 'variant 4.2',
+            id: 'variant4.2',
+          },
+          {
+            label: 'variant 4.3',
+            id: 'variant4.3',
+          },
+          {
+            label: 'variant 4.4',
+            id: 'variant4.4',
           },
         ],
       },
