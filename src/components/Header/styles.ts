@@ -12,6 +12,8 @@ export const styles = StyleSheet.create({
     fontSize: 25,
     fontWeight: '600',
     textAlign: 'center',
+    paddingBottom: 5,
+
     flex: 1,
   },
 
@@ -24,13 +26,13 @@ export const styles = StyleSheet.create({
     alignSelf: 'center',
   },
   button: {
-    width: 30,
-    height: 30,
+    width: 25,
+    height: 25,
     backgroundColor: Colors.background,
     justifyContent: 'center',
     alignSelf: 'flex-start',
     position: 'absolute',
-    bottom: 0,
+    bottom: 5,
     left: 10,
     zIndex: 10,
   },

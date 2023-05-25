@@ -40,30 +40,31 @@ function App(): JSX.Element {
     <Provider store={store}>
       <NavigationContainer>
         <Stack.Navigator>
-          <Stack.Screen
-            name="Categories"
-            component={CategoriesList}
-            options={{
-              title: 'Categories',
-              header: Header,
-            }}
-          />
+          <Stack.Group screenOptions={{header: Header}}>
+            <Stack.Screen
+              name="Categories"
+              component={CategoriesList}
+              options={{
+                title: 'Categories',
+              }}
+            />
+            <Stack.Screen
+              name="Recipes"
+              component={RecipesList}
+              options={{
+                title: 'Recipes',
+              }}
+            />
+          </Stack.Group>
           <Stack.Group screenOptions={{presentation: 'modal'}}>
             <Stack.Screen name="Filter" component={Filter} />
             <Stack.Screen name="Sort" component={Sort} />
           </Stack.Group>
+
           <Stack.Screen
             name="RecipeDetails"
             component={RecipeDetails}
             options={{headerShown: false}}
-          />
-          <Stack.Screen
-            name="Recipes"
-            component={RecipesList}
-            options={{
-              title: 'Recipes',
-              header: Header,
-            }}
           />
         </Stack.Navigator>
       </NavigationContainer>
