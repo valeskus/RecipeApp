@@ -6,7 +6,7 @@ export const styles = StyleSheet.create({
     position: 'absolute',
     flexDirection: 'row',
     zIndex: 10,
-    paddingTop: 50,
+    top: 30,
   },
   headerWraper: {
     backgroundColor: Colors.shadow,

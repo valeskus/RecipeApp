@@ -4,8 +4,6 @@ import {Colors} from '../../UI/Colors';
 export const styles = StyleSheet.create({
   headerContainer: {
     backgroundColor: Colors.background,
-    height: 50,
-    width: '100%',
     flexDirection: 'row',
     alignItems: 'center',
   },
@@ -16,20 +14,24 @@ export const styles = StyleSheet.create({
     textAlign: 'center',
     flex: 1,
   },
+
   buttonPressed: {
     transform: [{scale: 0.9}],
   },
   buttonImage: {
-    width: '50%',
-    height: '50%',
+    width: '100%',
+    height: '100%',
     alignSelf: 'center',
   },
   button: {
-    borderRadius: 50,
-    width: 50,
-    height: 50,
-    backgroundColor: Colors.accent,
+    width: 30,
+    height: 30,
+    backgroundColor: Colors.background,
     justifyContent: 'center',
-    alignSelf: 'center',
+    alignSelf: 'flex-start',
+    position: 'absolute',
+    bottom: 0,
+    left: 10,
+    zIndex: 10,
   },
 });
