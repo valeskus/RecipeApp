@@ -1,12 +1,12 @@
 import React from 'react';
 import {Provider} from 'react-redux';
-import {Platform, UIManager} from 'react-native';
+import {Platform, SafeAreaView, UIManager} from 'react-native';
 import {store} from './stores/rootStore';
 import {CategoriesList} from './screens/CategoriesList';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {RecipesList} from './screens/RecipesList';
-import {Filter} from './screens/Filter';
+import {Filter, ClearButton} from './screens/Filter';
 import {Sort} from './screens/Sort';
 import {RecipeDetails} from './screens/RecipeDetails';
 import {Header} from './components/Header';
@@ -40,7 +40,15 @@ function App(): JSX.Element {
     <Provider store={store}>
       <NavigationContainer>
         <Stack.Navigator>
-          <Stack.Group screenOptions={{header: Header}}>
+          <Stack.Group
+            screenOptions={{
+              // eslint-disable-next-line react/no-unstable-nested-components
+              header: ({options}) => (
+                <SafeAreaView>
+                  <Header options={options} />
+                </SafeAreaView>
+              ),
+            }}>
             <Stack.Screen
               name="Categories"
               component={CategoriesList}
@@ -56,11 +64,29 @@ function App(): JSX.Element {
               }}
             />
           </Stack.Group>
-          <Stack.Group
-            screenOptions={{presentation: 'modal', headerShown: false}}>
-            <Stack.Screen name="Filter" component={Filter} />
-            <Stack.Screen name="Sort" component={Sort} />
-          </Stack.Group>
+
+          <Stack.Screen
+            name="Sort"
+            component={Sort}
+            options={{
+              presentation: 'modal',
+              title: 'Sort',
+              // eslint-disable-next-line react/no-unstable-nested-components
+              header: ({options}) => <Header options={options} />,
+            }}
+          />
+          <Stack.Screen
+            name="Filter"
+            component={Filter}
+            options={{
+              presentation: 'modal',
+              title: 'Filter',
+              // eslint-disable-next-line react/no-unstable-nested-components
+              header: ({options}) => (
+                <Header options={options} headerRight={<ClearButton />} />
+              ),
+            }}
+          />
 
           <Stack.Screen
             name="RecipeDetails"

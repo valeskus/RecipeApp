@@ -9,7 +9,6 @@ export interface UseSearchControllerParams {
 
 export const useSearchController = (params: UseSearchControllerParams) => {
   const {searchTerm} = SearchStore.useSearchStore();
-
   const setSearchTerm = SearchStore.useSearchTerm();
 
   const searchInputRef: RefObject<TextInput> = createRef();

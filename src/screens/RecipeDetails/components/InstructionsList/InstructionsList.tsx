@@ -1,8 +1,8 @@
 import React from 'react';
 import {View} from 'react-native';
 import {styles} from './styles';
-import {InstructionsListItem} from '../../../../UI/InstructionsListItem';
 import {InstructionModel} from '../../../../models';
+import {InstructionsListItem} from '../InstructionsListItem';
 
 interface Props {
   instructions: Array<InstructionModel>;

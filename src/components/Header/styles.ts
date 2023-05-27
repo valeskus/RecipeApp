@@ -6,13 +6,13 @@ export const styles = StyleSheet.create({
     backgroundColor: Colors.background,
     flexDirection: 'row',
     alignItems: 'center',
+    paddingVertical: 10,
   },
   headerTitle: {
     color: Colors.primary,
     fontSize: 25,
     fontWeight: '600',
     textAlign: 'center',
-    paddingBottom: 5,
 
     flex: 1,
   },
@@ -28,12 +28,15 @@ export const styles = StyleSheet.create({
   button: {
     width: 25,
     height: 25,
-    backgroundColor: Colors.background,
     justifyContent: 'center',
-    alignSelf: 'flex-start',
     position: 'absolute',
-    bottom: 5,
     left: 10,
-    zIndex: 10,
+    zIndex: 1,
+  },
+  headerRightContinaer: {
+    justifyContent: 'center',
+    position: 'absolute',
+    right: 10,
+    zIndex: 1,
   },
 });

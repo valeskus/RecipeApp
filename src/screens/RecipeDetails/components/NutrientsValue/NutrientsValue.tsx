@@ -4,14 +4,10 @@ import {Image, Text, View} from 'react-native';
 import {styles} from './styles';
 
 import {Icons} from '../../../../UI/Icons';
+import {Nutrients} from '../../hooks';
 
 interface Props {
-  nutrients: {
-    kcal: number | string;
-    protein: number | string;
-    fats: number | string;
-    carbs: number | string;
-  };
+  nutrients: Nutrients;
 }
 
 export function NutrientsValue({nutrients}: Props): JSX.Element {

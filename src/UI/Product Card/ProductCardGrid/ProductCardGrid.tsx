@@ -33,7 +33,7 @@ export function ProductCardGrid({
       <Image source={{uri: image}} style={styles.productCardGridImage} />
       <View style={styles.productCardDetails}>
         <Text numberOfLines={1} style={styles.productCardTitle}>
-          {title.length < 35 ? `${title}` : `${title.substring(0, 32)}...`}
+          {title}
         </Text>
         <Rating rating={rating} />
         <Text style={styles.productCardDetailsItem}>Kcal: {calories}</Text>

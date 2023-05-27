@@ -5,7 +5,7 @@ import {resetRecipeDetails} from '../recipeDetailsActions';
 export const useResetRecipeDetails = () => {
   const dispatch = Redux.useDispatch();
 
-  return React.useCallback(async () => {
-    await resetRecipeDetails(dispatch);
+  return React.useCallback(() => {
+    resetRecipeDetails(dispatch);
   }, [dispatch]);
 };

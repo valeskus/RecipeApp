@@ -12,13 +12,13 @@ interface Props {
 }
 
 export function FilterItem({filter, index, id, onChange}: Props): JSX.Element {
-  const [selected, setSelected] = React.useState('');
+  const [selectedId, setSelectedId] = React.useState('');
   const handleSelectedValue = useCallback(
     (valueId: string) => {
-      setSelected(valueId);
-      return onChange(id, selected);
+      setSelectedId(valueId);
+      return onChange(id, selectedId);
     },
-    [id, selected, onChange],
+    [id, selectedId, onChange],
   );
 
   return (
@@ -27,11 +27,11 @@ export function FilterItem({filter, index, id, onChange}: Props): JSX.Element {
       {filter.values.map(value => {
         return (
           <PickListItem
-            item={value.label}
+            label={value.label}
             key={value.id}
             id={value.id}
             onChange={handleSelectedValue}
-            active={selected}
+            activeId={selectedId}
           />
         );
       })}

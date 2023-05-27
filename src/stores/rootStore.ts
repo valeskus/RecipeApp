@@ -1,8 +1,8 @@
 import {configureStore, combineReducers} from '@reduxjs/toolkit';
-import {categoriesReducer} from './categories';
+import {categoriesReducer} from './categories/categoriesReducer';
 import {recipesesReducer} from './recipes/recipesReducer';
 import {recipeDetailsReducer} from './recipeDetails/recipeDetailsReducer';
-import {searchReducer} from './search';
+import {searchReducer} from './search/searchReducer';
 
 const rootReducer = combineReducers({
   categories: categoriesReducer,

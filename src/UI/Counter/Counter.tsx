@@ -8,8 +8,9 @@ import {
 
 interface Props extends UseCounterControlerParams {}
 
-export function Counter({count, onChange}: Props): JSX.Element {
-  const {onMinusPress, onPlusPress} = useCounterControler({count, onChange});
+export function Counter(props: Props): JSX.Element {
+  const {onMinusPress, onPlusPress} = useCounterControler(props);
+
   return (
     <View style={styles.counterContainer}>
       <Pressable
@@ -17,7 +18,7 @@ export function Counter({count, onChange}: Props): JSX.Element {
         onPress={onMinusPress}>
         <Text style={styles.buttonContent}>-</Text>
       </Pressable>
-      <Text style={styles.count}>{count}</Text>
+      <Text style={styles.count}>{props.count}</Text>
       <Pressable
         style={({pressed}) => [styles.button, pressed && styles.buttonPressed]}
         onPress={onPlusPress}>
