@@ -1,12 +1,13 @@
-import {Controller, Get} from '@nestjs/common';
+import {Controller, Get, Param} from '@nestjs/common';
 import {RecipeService} from './recipe.service';
+import {DetailRecipeModel} from './models';
 
-@Controller()
+@Controller('recipe')
 export class RecipeController {
-  constructor(private readonly appService: RecipeService) {}
+  constructor(private readonly recipeService: RecipeService) {}
 
-  @Get()
-  getHello(): string {
-    return this.appService.getHello();
+  @Get(':id')
+  getHello(@Param('id') id: string): Promise<DetailRecipeModel> {
+    return this.recipeService.getRecipeById(id);
   }
 }
