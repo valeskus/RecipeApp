@@ -16,13 +16,13 @@ export interface MacroNutrientsModel {
 export interface IngredientModel {
   id: string;
   title: string;
-  description: string;
+  description?: string;
   count: number;
   unit: string;
 }
 
 export interface InstructionModel {
-  id: 'string';
+  id: string;
   image?: string;
   description: string;
 }
