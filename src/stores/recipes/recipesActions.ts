@@ -18,7 +18,7 @@ const actionError = (error: unknown) => ({
 });
 
 export const getRecipes = async (
-  options: RecipesApi.SeachOptions,
+  options: RecipesApi.SearchOptions,
   dispatch: Dispatch,
 ) => {
   try {

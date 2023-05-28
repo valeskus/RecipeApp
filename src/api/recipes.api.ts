@@ -2,7 +2,7 @@ import {mockData} from '../mockData';
 import {DetailRecipeModel, RecipeListModel} from '../models';
 import {client} from './client.api';
 
-export interface SeachOptions {
+export interface SearchOptions {
   search: string;
   sort?: string; // Reference SortOptionModel.id
   filter?: Array<{
@@ -12,7 +12,7 @@ export interface SeachOptions {
 }
 
 export const searchRecipes = async (
-  options: SeachOptions,
+  options: SearchOptions,
 ): Promise<RecipeListModel> => {
   // const result = await client.get<RecipeListModel>('/recipes', {
   //   params: options,

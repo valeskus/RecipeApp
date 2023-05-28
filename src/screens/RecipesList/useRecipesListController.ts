@@ -1,5 +1,5 @@
 import React, {useCallback, useEffect} from 'react';
-import {SeachOptions} from '../../api/recipes.api';
+import {SearchOptions} from '../../api/recipes.api';
 import * as RecipesStore from '../../stores/recipes';
 import * as SearchStore from '../../stores/search';
 import {useGridTypes} from './hooks';
@@ -18,7 +18,7 @@ export const useRecipeListController = () => {
 
   const handleSearch = useCallback(async () => {
     setLoading(true);
-    const options: SeachOptions = {
+    const options: SearchOptions = {
       search: searchTerm,
     };
     await getRecipes(options);
