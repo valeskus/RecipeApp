@@ -1,7 +1,7 @@
 import {Injectable} from '@nestjs/common';
 import {DetailRecipeModel} from './models';
 
-const ImageMock = 'https://fastly.picsum.photos/id/975/500/500.jpg';
+const ImageMock = 'https://picsum.photos/500/500';
 
 @Injectable()
 export class RecipeService {
