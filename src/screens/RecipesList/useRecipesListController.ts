@@ -19,7 +19,7 @@ export const useRecipeListController = () => {
   const handleSearch = useCallback(async () => {
     setLoading(true);
     const options: SearchOptions = {
-      search: searchTerm,
+      searchTerm,
     };
     await getRecipes(options);
     setLoading(false);
