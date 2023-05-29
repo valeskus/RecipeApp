@@ -47,17 +47,10 @@ export const useNutrientsContoller = (params: UseNutrientsContollerParams) => {
       return fallbackNutrients;
     }
     return {
-      kcal: Math.floor(((recipe.kcal * 100) / recipe.weight) * 10) / 10,
-      protein:
-        Math.floor(
-          ((recipe.macroNutrients.protein * 100) / recipe.weight) * 10,
-        ) / 10,
-      fats:
-        Math.floor(((recipe.macroNutrients.fats * 100) / recipe.weight) * 10) /
-        10,
-      carbs:
-        Math.floor(((recipe.macroNutrients.carbs * 100) / recipe.weight) * 10) /
-        10,
+      kcal: (recipe.kcal * 100) / recipe.weight,
+      protein: (recipe.macroNutrients.protein * 100) / recipe.weight,
+      fats: (recipe.macroNutrients.fats * 100) / recipe.weight,
+      carbs: (recipe.macroNutrients.carbs * 100) / recipe.weight,
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [!!recipe]);
@@ -68,17 +61,10 @@ export const useNutrientsContoller = (params: UseNutrientsContollerParams) => {
     }
 
     return {
-      kcal: Math.floor((recipe.kcal / recipe.servingsCount) * 10) / 10,
-      protein:
-        Math.floor(
-          (recipe.macroNutrients.protein / recipe.servingsCount) * 10,
-        ) / 10,
-      fats:
-        Math.floor((recipe.macroNutrients.fats / recipe.servingsCount) * 10) /
-        10,
-      carbs:
-        Math.floor((recipe.macroNutrients.carbs / recipe.servingsCount) * 10) /
-        10,
+      kcal: recipe.kcal / recipe.servingsCount,
+      protein: recipe.macroNutrients.protein / recipe.servingsCount,
+      fats: recipe.macroNutrients.fats / recipe.servingsCount,
+      carbs: recipe.macroNutrients.carbs / recipe.servingsCount,
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [!!recipe]);
@@ -91,17 +77,14 @@ export const useNutrientsContoller = (params: UseNutrientsContollerParams) => {
     const {numberOfServings} = params;
 
     return {
-      kcal: Math.floor((recipe.kcal / recipe.servingsCount) * numberOfServings),
-      protein: Math.floor(
+      kcal: (recipe.kcal / recipe.servingsCount) * numberOfServings,
+      protein:
         (recipe.macroNutrients.protein / recipe.servingsCount) *
-          numberOfServings,
-      ),
-      fats: Math.floor(
+        numberOfServings,
+      fats:
         (recipe.macroNutrients.fats / recipe.servingsCount) * numberOfServings,
-      ),
-      carbs: Math.floor(
+      carbs:
         (recipe.macroNutrients.carbs / recipe.servingsCount) * numberOfServings,
-      ),
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [params.numberOfServings, !!recipe]);
