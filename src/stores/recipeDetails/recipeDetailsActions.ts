@@ -7,13 +7,15 @@ export enum RecipeDetailsActions {
   RESET = '@recipe/reset',
   ERROR = '@error/recipe',
 }
-//TODO remove undefined
-const actionGetRecipe = (payload: DetailRecipeModel | undefined) => ({
+
+const actionGetRecipe = (payload: DetailRecipeModel) => ({
   type: RecipeDetailsActions.GET,
   payload,
 });
+
 const actionResetRecipe = () => ({
   type: RecipeDetailsActions.RESET,
+  payload: {},
 });
 
 const actionError = (error: unknown) => ({
@@ -29,10 +31,6 @@ export const getRecipeDetails = async (id: string, dispatch: Dispatch) => {
     dispatch(actionError(error));
   }
 };
-export const resetRecipeDetails = async (dispatch: Dispatch) => {
-  try {
-    dispatch(actionResetRecipe());
-  } catch (error) {
-    dispatch(actionError(error));
-  }
+export const resetRecipeDetails = (dispatch: Dispatch) => {
+  dispatch(actionResetRecipe());
 };

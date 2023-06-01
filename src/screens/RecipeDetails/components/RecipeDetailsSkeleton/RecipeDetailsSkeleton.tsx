@@ -10,8 +10,8 @@ export function RecipeDetailsSkeleton(): JSX.Element {
       width={'100%'}
       height={'100%'}>
       <Rect x="0" y="1" rx="20" ry="20" width="100%" height="100%" />
-      <Circle cx={'10%'} cy={70} r={25} />
-      <Circle cx={'90%'} cy={70} r={25} />
+      <Circle cx={'10%'} cy={73} r={25} />
+      <Circle cx={'90%'} cy={73} r={25} />
 
       <Rect x="-16%" y="320" rx="60" ry="60" width="116%" height="100%" />
       <Rect x="3%" y="350" rx="4" ry="4" width="47%" height="25" />

@@ -9,14 +9,33 @@ import {Toggle} from '../../UI/Toggle';
 import {IngredientsList} from './components/IngredientsList ';
 import {InstructionsList} from './components/InstructionsList';
 import {RecipeDetailsSkeleton} from './components/RecipeDetailsSkeleton';
-import {KcalCounter} from './components/KcalCounter';
 import {Counter} from '../../UI/Counter';
+import {Tabs} from '../../UI/Tabs';
+import {
+  NutrientsUnitLabels,
+  PrescriptionCardLabels,
+  PrescriptionCardSection,
+} from './hooks';
+import {NutrientsValue} from './components/NutrientsValue';
 
 const {height} = Dimensions.get('screen');
 
+const nutritionLabelsMap = Object.keys(NutrientsUnitLabels).map(id => ({
+  id,
+  label: (NutrientsUnitLabels as any)[id],
+}));
+
 export function RecipeDetails(): JSX.Element {
-  const {recipe, onTogglePress, activeSection, servingsCount, onCountChange} =
-    useRecipeDetailsControler();
+  const {
+    recipe,
+    onServingsCountChange,
+    onPrescriptionCardSectionChange,
+    onNutrientsSectionChange,
+    nutrients,
+    nutrientsActiveSection,
+    prescriptionCardActiveSection,
+    servingsCount,
+  } = useRecipeDetailsControler();
   const scrollYRef = useRef(new Animated.Value(0));
 
   if (!recipe) {
@@ -60,33 +79,34 @@ export function RecipeDetails(): JSX.Element {
             <TimeCounter time={recipe.time} />
           </View>
           <Text style={styles.description}>{recipe.description}</Text>
-
-          <KcalCounter
-            recipe={recipe}
-            count={servingsCount || recipe.servingsCount}
-          />
-
           <Toggle
-            items={['Ingredients', 'Instructions']}
-            activeItem={activeSection}
-            onChange={onTogglePress}
+            items={nutritionLabelsMap}
+            activeItem={nutrientsActiveSection}
+            onChange={onNutrientsSectionChange}
           />
+          <NutrientsValue nutrients={nutrients} />
+          <Tabs
+            activeItem={prescriptionCardActiveSection}
+            onChange={onPrescriptionCardSectionChange}>
+            <View
+              aria-label={PrescriptionCardLabels.Ingredients}
+              aria-id={PrescriptionCardSection.Ingredients}>
+              <IngredientsList
+                ingredients={recipe.ingredients}
+                servingCount={servingsCount || recipe.servingsCount}
+              />
+              <Counter
+                count={servingsCount || recipe.servingsCount}
+                onChange={onServingsCountChange}
+              />
+            </View>
+            <View
+              aria-label={PrescriptionCardLabels.Instructions}
+              aria-id={PrescriptionCardSection.Instructions}>
+              <InstructionsList instructions={recipe.instructions} />
+            </View>
+          </Tabs>
         </View>
-        {activeSection === 'Ingredients' && (
-          <View>
-            <IngredientsList
-              ingredients={recipe.ingredients}
-              servingCount={servingsCount || recipe.servingsCount}
-            />
-            <Counter
-              count={servingsCount || recipe.servingsCount}
-              onChange={onCountChange}
-            />
-          </View>
-        )}
-        {activeSection === 'Instructions' && (
-          <InstructionsList instructions={recipe.instructions} />
-        )}
       </Animated.ScrollView>
     </View>
   );

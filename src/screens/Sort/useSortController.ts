@@ -3,33 +3,29 @@ import {useNavigation} from '@react-navigation/native';
 import * as RecipesStore from '../../stores/recipes';
 
 export const useSortController = () => {
-  const [sortItem, setSortItem] = React.useState('');
+  const [activeSortId, setActiveSortId] = React.useState('');
   const navigation = useNavigation();
 
   const {sortOptions} = RecipesStore.useRecipesStore();
 
   const onSortChange = useCallback(
     (id: string) => {
-      if (sortItem === id) {
-        return setSortItem('');
+      if (activeSortId === id) {
+        return setActiveSortId('');
       }
-      setSortItem(id);
+      setActiveSortId(id);
     },
-    [sortItem],
+    [activeSortId],
   );
 
-  const onCleanPress = () => {
-    navigation.goBack();
-  };
   const onSelectPress = () => {
     navigation.goBack();
   };
 
   return {
-    onCleanPress,
     onSelectPress,
     onSortChange,
     sortOptions,
-    sortItem,
+    activeSortId,
   };
 };

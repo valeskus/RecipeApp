@@ -32,7 +32,9 @@ export function ProductCardLine({
       ]}>
       <Image source={{uri: image}} style={styles.productCardLineImage} />
       <View style={styles.productCardDetails}>
-        <Text style={styles.productCardTitle}>{title}</Text>
+        <Text numberOfLines={2} style={styles.productCardTitle}>
+          {title}
+        </Text>
         <View style={styles.productCardLineItem}>
           <Rating rating={rating} />
         </View>

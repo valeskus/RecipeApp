@@ -1,9 +1,9 @@
-import React, {useCallback} from 'react';
+import React, {useCallback, useMemo} from 'react';
 import {Pressable, Text, View, LayoutAnimation} from 'react-native';
 import {styles} from './styles';
 
 interface Props {
-  items: [string, string] | [string, string, string];
+  items: Array<{id: string; label: string}>;
   activeItem: string;
   onChange: (element: string) => void;
 }
@@ -11,31 +11,33 @@ interface Props {
 export function Toggle({items, onChange, activeItem}: Props): JSX.Element {
   const setActive = useCallback(
     (activeElement: string): void => {
+      LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
+
       onChange(activeElement);
-      toggleBox();
     },
     [onChange],
   );
-  const toggleBox = () => {
-    LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
-  };
 
-  const activeItemWidth = useCallback(() => {
+  const ids = useMemo(() => {
+    return items.map(({id}) => id);
+  }, [items]);
+
+  const activeItemWidth = useMemo(() => {
     return 100 / items.length;
   }, [items]);
 
-  const getActiveItemPosition = useCallback(() => {
-    return (100 / items.length) * items.indexOf(activeItem);
-  }, [items, activeItem]);
+  const activeItemPosition = useMemo(() => {
+    return (100 / ids.length) * ids.indexOf(activeItem);
+  }, [ids, activeItem]);
 
   return (
     <View style={styles.selectContainer}>
       <View style={styles.activeItemWrap}>
         <View
           style={[
-            {width: `${activeItemWidth()}%`},
+            {width: `${activeItemWidth}%`},
             styles.selectItemActive,
-            {left: `${getActiveItemPosition()}%`},
+            {left: `${activeItemPosition}%`},
           ]}
         />
       </View>
@@ -44,15 +46,15 @@ export function Toggle({items, onChange, activeItem}: Props): JSX.Element {
         {items.map((item, index) => {
           return (
             <Pressable
-              onPress={() => setActive(items[index])}
+              onPress={() => setActive(item.id)}
               style={[styles.selectButton]}
               key={index}>
               <Text
                 style={[
                   styles.selectItemTitle,
-                  activeItem === items[index] && styles.activeTitle,
+                  activeItem === item.id && styles.activeTitle,
                 ]}>
-                {items[index]}
+                {item.label}
               </Text>
             </Pressable>
           );

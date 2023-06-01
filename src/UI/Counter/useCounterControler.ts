@@ -7,20 +7,17 @@ export interface UseCounterControlerParams {
 
 export const useCounterControler = (params: UseCounterControlerParams) => {
   const onMinusPress = useCallback(() => {
-    if (params.count <= 1 || !params.count) {
+    if (params.count === 0) {
       return;
     }
-    params.onChange(params.count - 1);
 
-    return;
+    params.onChange(params.count - 1);
   }, [params]);
+
   const onPlusPress = useCallback(() => {
-    if (!params.count) {
-      return;
-    }
     params.onChange(params.count + 1);
-    return;
   }, [params]);
+
   return {
     onMinusPress,
     onPlusPress,

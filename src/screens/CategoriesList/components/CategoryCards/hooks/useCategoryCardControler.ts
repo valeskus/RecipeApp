@@ -20,13 +20,16 @@ export const useCategoryCardControler = () => {
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
   const setSearchTerm = SearchStore.useSearchTerm();
 
   const onPress = useCallback(async (categoryTitle: string) => {
-    await setSearchTerm(categoryTitle);
+    setSearchTerm(categoryTitle);
+
     return navigation.navigate('Recipes');
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
   return {
     onPress,
     isLoading,

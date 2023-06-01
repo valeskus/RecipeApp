@@ -1,17 +1,23 @@
-import {useCallback, useEffect, useState} from 'react';
+import {useCallback, useEffect} from 'react';
 import * as RecipeDetailsStore from '../../stores/recipeDetails';
 import {RouteProp, useRoute} from '@react-navigation/native';
+import {
+  NutrientsSection,
+  PrescriptionCardSection,
+  useNutrientsContoller,
+  usePrescriptionCardController,
+} from './hooks';
 
 export const useRecipeDetailsControler = () => {
-  const {recipe} = RecipeDetailsStore.useRecipeDetailsStore();
-
-  const [activeSection, setActiveSection] = useState('Ingredients');
-  const [servingsCount, setServingsCount] = useState<number | undefined>(
-    recipe?.servingsCount,
-  );
-
   const {params} =
     useRoute<RouteProp<ReactNavigation.RootParamList, 'RecipeDetails'>>();
+
+  const PrescriptionCard = usePrescriptionCardController();
+  const Nutrients = useNutrientsContoller({
+    numberOfServings: PrescriptionCard.servingsCount,
+  });
+
+  const {recipe} = RecipeDetailsStore.useRecipeDetailsStore();
 
   const getRecipe = RecipeDetailsStore.useGetRecipeDetails();
   const resetRecipe = RecipeDetailsStore.useResetRecipeDetails();
@@ -25,19 +31,30 @@ export const useRecipeDetailsControler = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const onTogglePress = useCallback((activeElement: string) => {
-    setActiveSection(activeElement);
-  }, []);
+  const onPrescriptionCardSectionChange = useCallback(
+    (activeElement: string) => {
+      PrescriptionCard.changeSection(activeElement as PrescriptionCardSection);
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [],
+  );
 
-  const onCountChange = useCallback((value: number) => {
-    setServingsCount(value);
-  }, []);
+  const onNutrientsSectionChange = useCallback(
+    (activeElement: string) => {
+      Nutrients.changeSection(activeElement as NutrientsSection);
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [],
+  );
 
   return {
     recipe,
-    onTogglePress,
-    activeSection,
-    servingsCount,
-    onCountChange,
+    onServingsCountChange: PrescriptionCard.onCountChange,
+    onPrescriptionCardSectionChange,
+    onNutrientsSectionChange,
+    nutrients: Nutrients.nutrients,
+    nutrientsActiveSection: Nutrients.activeSection,
+    prescriptionCardActiveSection: PrescriptionCard.activeSection,
+    servingsCount: PrescriptionCard.servingsCount,
   };
 };

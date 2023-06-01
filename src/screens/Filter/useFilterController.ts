@@ -15,15 +15,11 @@ export const useFilterController = () => {
     [filterList],
   );
 
-  const onCleanPress = () => {
-    navigation.goBack();
-  };
   const onSelectPress = () => {
     navigation.goBack();
   };
 
   return {
-    onCleanPress,
     onSelectPress,
     onFilterChange,
     filters,

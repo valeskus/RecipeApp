@@ -1,8 +1,8 @@
 import React, {useCallback} from 'react';
 import {Text, View} from 'react-native';
 import {styles} from './styles';
-import {IngredientsListItem} from '../../../../UI/IngredientsListItem';
 import {IngredientModel} from '../../../../models';
+import {IngredientsListItem} from '../IngredientsListItem';
 
 interface Props {
   ingredients: Array<IngredientModel>;

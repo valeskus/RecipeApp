@@ -5,6 +5,7 @@ import {SearchOptions} from '../../../api/recipes.api';
 
 export const useGetRecipeList = () => {
   const dispatch = Redux.useDispatch();
+
   return React.useCallback(
     async (options: SearchOptions) => {
       await getRecipes(options, dispatch);
