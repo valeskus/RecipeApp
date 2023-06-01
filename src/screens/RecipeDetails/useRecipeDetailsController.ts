@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from 'react';
+import { useCallback, useEffect,useState } from 'react';
 import { RouteProp, useRoute } from '@react-navigation/native';
 
 import * as RecipeDetailsStore from '@stores/recipeDetails';
@@ -11,7 +11,10 @@ import {
 } from './hooks';
 
 export const useRecipeDetailsController = () => {
-  const { params } =
+  const [isLoading, setLoading] = useState(false);
+  const [isError, setError] = useState(false);
+
+  const {params} =
     useRoute<RouteProp<ReactNavigation.RootParamList, 'RecipeDetails'>>();
 
   const PrescriptionCard = usePrescriptionCardController();
@@ -23,15 +26,27 @@ export const useRecipeDetailsController = () => {
 
   const getRecipe = RecipeDetailsStore.useGetRecipeDetails();
   const resetRecipe = RecipeDetailsStore.useResetRecipeDetails();
+  const fetchData = async () => {
+    try {
+      setLoading(true);
+
+      await getRecipe(params.id);
+
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+      setError(true);
+    }
+  };
 
   useEffect(() => {
-    getRecipe(params.id);
+    fetchData();
 
     return () => {
+      setError(false);
       resetRecipe();
     };
   }, []);
-
   const onPrescriptionCardSectionChange = useCallback(
     (activeElement: string) => {
       PrescriptionCard.changeSection(activeElement as PrescriptionCardSection);
@@ -55,5 +70,7 @@ export const useRecipeDetailsController = () => {
     nutrientsActiveSection: Nutrients.activeSection,
     prescriptionCardActiveSection: PrescriptionCard.activeSection,
     servingsCount: PrescriptionCard.servingsCount,
+    isLoading,
+    isError,
   };
 };

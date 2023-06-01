@@ -17,7 +17,10 @@ import {
   PrescriptionCardLabels,
   PrescriptionCardSection,
 } from './hooks';
+
 import { NutrientsValue } from './components/NutrientsValue';
+import { Error } from './components/Error';
+
 
 const { height } = Dimensions.get('screen');
 
@@ -36,11 +39,18 @@ export function RecipeDetails(): JSX.Element {
     nutrientsActiveSection,
     prescriptionCardActiveSection,
     servingsCount,
+
+    isLoading,
+    isError,
   } = useRecipeDetailsController();
+
   const scrollYRef = useRef(new Animated.Value(0));
 
-  if (!recipe) {
+  if (isLoading) {
     return <RecipeDetailsSkeleton />;
+  }
+  if (isError || !recipe) {
+    return <Error />;
   }
 
   const scale = scrollYRef.current.interpolate({
@@ -56,7 +66,6 @@ export function RecipeDetails(): JSX.Element {
         source={{ uri: recipe.image }}
         style={[styles.image, { transform: [{ scale }] }]}
       />
-
       <Animated.ScrollView
         style={styles.detailsScreen}
         scrollEventThrottle={16}
@@ -73,8 +82,7 @@ export function RecipeDetails(): JSX.Element {
           {
             useNativeDriver: true,
           },
-        )}
-      >
+        )}>
         <View style={styles.contentContainer}>
           <View style={styles.topContainer}>
             <Text style={styles.title}>{recipe.title}</Text>
@@ -89,12 +97,10 @@ export function RecipeDetails(): JSX.Element {
           <NutrientsValue nutrients={nutrients} />
           <Tabs
             activeItem={prescriptionCardActiveSection}
-            onChange={onPrescriptionCardSectionChange}
-          >
+            onChange={onPrescriptionCardSectionChange}>
             <View
               aria-label={PrescriptionCardLabels.Ingredients}
-              aria-id={PrescriptionCardSection.Ingredients}
-            >
+              aria-id={PrescriptionCardSection.Ingredients}>
               <IngredientsList
                 ingredients={recipe.ingredients}
                 servingCount={servingsCount || recipe.servingsCount}
@@ -114,5 +120,6 @@ export function RecipeDetails(): JSX.Element {
         </View>
       </Animated.ScrollView>
     </SafeAreaView>
+
   );
 }
