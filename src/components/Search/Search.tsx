@@ -28,6 +28,7 @@ export function Search({onSearch}: Props): JSX.Element {
         onChangeText={handleChange}
         value={searchTerm}
         ref={searchInputRef}
+        autoCapitalize="none"
       />
       {searchTerm && (
         <Pressable
