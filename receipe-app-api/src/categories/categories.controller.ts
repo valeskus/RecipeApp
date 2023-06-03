@@ -1,4 +1,4 @@
-import { BadRequestException, Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { BadRequestException, Body, Controller, Get, NotFoundException, Param, Post } from '@nestjs/common';
 
 import { CategoriesService } from './categories.service';
 import { Category } from './schemas';
@@ -22,7 +22,7 @@ export class CategoriesController {
     const category = await this.categoriesService.findOneById(id);
 
     if (!category) {
-      throw new BadRequestException('Category not found');
+      throw new NotFoundException('Category not found');
     }
 
     return category;
