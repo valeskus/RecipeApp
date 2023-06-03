@@ -1,15 +1,26 @@
 import { BadRequestException, Body, Controller, Get, NotFoundException, Param, Post } from '@nestjs/common';
+import {
+  ApiOperation,
+  ApiOkResponse,
+  ApiTags,
+} from '@nestjs/swagger';
 
 import { ProductsService } from './products.service';
 import { Product } from './schemas';
-import { CreateProductDto } from './dto';
+import { CreateProductDto, GetAllProductsDto } from './dto';
 
+@ApiTags('Products')
 @Controller('products')
 export class ProductsController {
-  constructor(private readonly productsService: ProductsService) {}
+  constructor(private readonly productsService: ProductsService) { }
 
   @Get()
-  async findAll(): Promise<{products: Array<Product>}> {
+  @ApiOperation({ summary: 'Get all products' })
+  @ApiOkResponse({
+    description: "Retrieves all products",
+    type: GetAllProductsDto
+  })
+  async findAll(): Promise<GetAllProductsDto> {
     const products = await this.productsService.findAll();
 
     return {
@@ -18,6 +29,11 @@ export class ProductsController {
   }
 
   @Get(':id')
+  @ApiOperation({ summary: 'Get product by id' })
+  @ApiOkResponse({
+    description: "Returns a product by given id",
+    type: Product
+  })
   async findOneById(@Param('id') id: string): Promise<Product> {
     const product = await this.productsService.findOneById(id);
 
@@ -29,7 +45,12 @@ export class ProductsController {
   }
 
   @Post()
-  async create(@Body() createProductDto: CreateProductDto) {
+  @ApiOperation({ summary: 'Create product' })
+  @ApiOkResponse({
+    description: "Creates a product by given fields",
+    type: Product
+  })
+  async create(@Body() createProductDto: CreateProductDto): Promise<Product> {
     try {
       return await this.productsService.create(createProductDto);
     } catch (error) {
