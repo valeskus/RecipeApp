@@ -1,6 +1,7 @@
-import {Controller, Get, Param} from '@nestjs/common';
-import {RecipeService} from './recipe.service';
-import {DetailRecipeModel} from './models';
+import { Controller, Get, Param } from '@nestjs/common';
+
+import { RecipeService } from './recipe.service';
+import { DetailRecipeModel } from './models';
 
 @Controller('recipe')
 export class RecipeController {

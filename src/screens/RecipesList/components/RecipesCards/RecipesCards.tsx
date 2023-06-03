@@ -1,52 +1,57 @@
 import React from 'react';
-import {FlatList, FlatListProps, ListRenderItem, View} from 'react-native';
-import {styles} from './styles';
+import { FlatList, FlatListProps, ListRenderItem, View } from 'react-native';
 
-import {ProductCardGrid} from '../../../../UI/Product Card/ProductCardGrid';
-import {ProductCardLine} from '../../../../UI/Product Card/ProductCardLine';
-import {BaseRecipeModel} from '../../../../models';
-import {UseRecipeCardControlerParams, useRecipeCardControler} from './hooks';
+import { ProductCardLine } from '@UI/ProductCard/ProductCardLine';
+import { ProductCardGrid } from '@UI/ProductCard/ProductCardGrid';
 
-interface Props extends UseRecipeCardControlerParams {}
+import { BaseRecipeModel } from '../../../../models';
+
+import { styles } from './styles';
+import { UseRecipeCardControllerParams, useRecipeCardController } from './hooks';
+
+interface Props extends UseRecipeCardControllerParams { }
 
 interface RenderItemParams {
   onPress: (id: string) => void;
-  gridType: UseRecipeCardControlerParams['gridType'];
+  gridType: UseRecipeCardControllerParams['gridType'];
 }
 
 const getRenderItem =
-  (params: RenderItemParams): ListRenderItem<BaseRecipeModel> =>
-  ({item}) => {
-    if (item.id === 'EMPTY') {
-      return <View style={styles.cardPlaceholder} />;
-    }
+  (params: RenderItemParams) => {
+    const Card: ListRenderItem<BaseRecipeModel> = ({ item }) => {
+      if (item.id === 'EMPTY') {
+        return <View style={styles.cardPlaceholder} />;
+      }
 
-    return params.gridType === 'grid' ? (
-      <ProductCardGrid
-        title={item.title}
-        rating={item.rating}
-        calories={item.kcal}
-        time={item.time}
-        image={item.image}
-        onPress={() => params.onPress(item.id)}
-      />
-    ) : (
-      <ProductCardLine
-        title={item.title}
-        rating={item.rating}
-        calories={item.kcal}
-        time={item.time}
-        image={item.image}
-        onPress={() => params.onPress(item.id)}
-      />
-    );
+      return params.gridType === 'grid' ? (
+        <ProductCardGrid
+          title={item.title}
+          rating={item.rating}
+          calories={item.kCal}
+          time={item.time}
+          image={item.image}
+          onPress={() => params.onPress(item.id)}
+        />
+      ) : (
+        <ProductCardLine
+          title={item.title}
+          rating={item.rating}
+          calories={item.kCal}
+          time={item.time}
+          image={item.image}
+          onPress={() => params.onPress(item.id)}
+        />
+      );
+    };
+
+    return Card;
   };
 
 const keyExtractor: FlatListProps<BaseRecipeModel>['keyExtractor'] = item =>
   item.id;
 
-export function RecipesCards({gridType, recipes}: Props): JSX.Element {
-  const {onPress, data} = useRecipeCardControler({recipes, gridType});
+export function RecipesCards({ gridType, recipes }: Props): JSX.Element {
+  const { onPress, data } = useRecipeCardController({ recipes, gridType });
 
   const commonProps = {
     style: styles.offset,

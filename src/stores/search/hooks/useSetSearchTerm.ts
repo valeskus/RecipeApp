@@ -1,6 +1,7 @@
 import * as React from 'react';
 import * as Redux from 'react-redux';
-import {setSearchTerm} from '../searchActions';
+
+import { setSearchTerm } from '../searchActions';
 
 export const useSearchTerm = () => {
   const dispatch = Redux.useDispatch();

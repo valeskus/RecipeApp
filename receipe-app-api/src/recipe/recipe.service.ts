@@ -1,5 +1,6 @@
-import {Injectable} from '@nestjs/common';
-import {DetailRecipeModel} from './models';
+import { Injectable } from '@nestjs/common';
+
+import { DetailRecipeModel } from './models';
 
 const ImageMock = 'https://picsum.photos/500/500';
 
@@ -8,12 +9,13 @@ export class RecipeService {
   async getRecipeById(id: string): Promise<DetailRecipeModel> {
     await new Promise(resolve => setTimeout(resolve, 1500));
 
+    /* eslint-disable */
     return {
       id: id,
       title: 'Product 1 ',
       image: ImageMock,
       rating: 4,
-      kcal: 500,
+      kCal: 500,
       weight: 1300,
       time: '1:50',
       description:
@@ -64,5 +66,6 @@ export class RecipeService {
         },
       ],
     };
+    /* eslint-enable */
   }
 }

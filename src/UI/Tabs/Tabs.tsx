@@ -1,5 +1,6 @@
 import React from 'react';
-import {Toggle} from '../Toggle';
+
+import { Toggle } from '../Toggle';
 
 interface TabsProps {
   activeItem: string;
@@ -20,7 +21,7 @@ export function Tabs({
   onChange,
   children,
 }: React.PropsWithChildren<TabsProps>): JSX.Element {
-  const listOfTabs = React.Children.map<any, {props: ChildProps}>(
+  const listOfTabs = React.Children.map<any, { props: ChildProps }>(
     children as any,
     child => {
       const label = child.props['aria-label'] || '';
@@ -35,16 +36,13 @@ export function Tabs({
   );
 
   const items = listOfTabs
-    .map(({id, label}) => ({id, label}))
-    .filter(({id}) => id);
-
-  console.log('items', items);
-  console.log('activeItem', activeItem);
+    .map(({ id, label }) => ({ id, label }))
+    .filter(({ id }) => id);
 
   return (
     <>
       <Toggle items={items} activeItem={activeItem} onChange={onChange} />
-      {listOfTabs.map(({layout}) => layout)}
+      {listOfTabs.map(({ layout }) => layout)}
     </>
   );
 }

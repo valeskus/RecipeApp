@@ -1,6 +1,8 @@
-import {Dispatch} from 'redux';
-import * as CategoriesApi from '../../api/categories.api';
-import {CategoryListModel} from '../../models';
+import { Dispatch } from 'redux';
+
+import * as CategoriesApi from '@api/categories.api';
+
+import { CategoryListModel } from '../../models';
 
 export enum CategoriesActions {
   GET = '@categories/get',

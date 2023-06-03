@@ -1,5 +1,6 @@
-import {StyleSheet} from 'react-native';
-import {Colors} from '../../UI/Colors';
+import { StyleSheet } from 'react-native';
+
+import { Colors } from '@UI/Colors';
 
 export const styles = StyleSheet.create({
   searchBarContainer: {
@@ -10,7 +11,7 @@ export const styles = StyleSheet.create({
     shadowColor: Colors.shadow,
     shadowOpacity: 0.5,
     shadowRadius: 5,
-    shadowOffset: {width: 0, height: 0},
+    shadowOffset: { width: 0, height: 0 },
     elevation: 8,
     flexDirection: 'row',
     position: 'relative',
@@ -49,6 +50,6 @@ export const styles = StyleSheet.create({
     top: 0,
   },
   searchPress: {
-    transform: [{scale: 0.9}],
+    transform: [{ scale: 0.9 }],
   },
 });

@@ -1,5 +1,5 @@
-import {useCallback} from 'react';
-import {useNavigation} from '@react-navigation/native';
+import { useCallback } from 'react';
+import { useNavigation } from '@react-navigation/native';
 
 export const useButtonBarController = (
   onCardTypeChange: (type: 'grid' | 'linear') => void,
@@ -11,6 +11,7 @@ export const useButtonBarController = (
     if (gridType === 'grid') {
       return onCardTypeChange('linear');
     }
+
     return onCardTypeChange('grid');
   }, [onCardTypeChange, gridType]);
 
@@ -21,6 +22,7 @@ export const useButtonBarController = (
   const handleFilterPress = () => {
     return navigation.navigate('Filter');
   };
+
   return {
     changeType,
     handleSortPress,

@@ -1,1 +1,1 @@
-export * from './useRecipesCardControler';
+export * from './useRecipesCardController';

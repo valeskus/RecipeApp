@@ -1,4 +1,5 @@
 import { BadRequestException, Body, Controller, Get, Param, Post } from '@nestjs/common';
+
 import { CategoriesService } from './categories.service';
 import { Category } from './schemas';
 import { CreateCategoryDto } from './dto';
@@ -13,7 +14,7 @@ export class CategoriesController {
 
     return {
       categories
-    }
+    };
   }
 
   @Get(':id')
@@ -21,7 +22,7 @@ export class CategoriesController {
     const category = await this.categoriesService.findOneById(id);
 
     if (!category) {
-      throw new BadRequestException('Category not found'); 
+      throw new BadRequestException('Category not found');
     }
 
     return category;
@@ -32,7 +33,7 @@ export class CategoriesController {
     try {
       return await this.categoriesService.create(createCategoryDto);
     } catch (error) {
-      throw new BadRequestException(error.message); 
+      throw new BadRequestException(error.message);
     }
   }
 }

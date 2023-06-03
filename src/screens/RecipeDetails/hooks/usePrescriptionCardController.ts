@@ -1,5 +1,6 @@
-import {useCallback, useState} from 'react';
-import {useServingsController} from './useServingsController';
+import { useCallback, useState } from 'react';
+
+import { useServingsController } from './useServingsController';
 
 export enum PrescriptionCardSection {
   Ingredients = 'Ingredients',
@@ -12,7 +13,7 @@ export const PrescriptionCardLabels = {
 };
 
 export const usePrescriptionCardController = () => {
-  const {servingsCount, onCountChange} = useServingsController();
+  const { servingsCount, onCountChange } = useServingsController();
 
   const [activeSection, setActiveSection] = useState(
     PrescriptionCardSection.Ingredients,

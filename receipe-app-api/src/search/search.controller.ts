@@ -1,6 +1,7 @@
-import {Controller, Get, Query} from '@nestjs/common';
-import {SearchService} from './search.service';
-import {RecipeListModel} from './models';
+import { Controller, Get, Query } from '@nestjs/common';
+
+import { SearchService } from './search.service';
+import { RecipeListModel } from './models';
 
 @Controller('search')
 export class SearchController {

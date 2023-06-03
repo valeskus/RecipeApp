@@ -1,14 +1,17 @@
-import React, {useCallback, useEffect} from 'react';
-import {SearchOptions} from '../../api/recipes.api';
-import * as RecipesStore from '../../stores/recipes';
-import * as SearchStore from '../../stores/search';
-import {useGridTypes} from './hooks';
+import React, { useCallback, useEffect } from 'react';
+
+import * as RecipesStore from '@stores/recipes';
+import * as SearchStore from '@stores/search';
+
+import { SearchOptions } from '@api/recipes.api';
+
+import { useGridTypes } from './hooks';
 
 export const useRecipeListController = () => {
-  const {gridType, onChangeCardType} = useGridTypes();
+  const { gridType, onChangeCardType } = useGridTypes();
 
-  const {recipes} = RecipesStore.useRecipesStore();
-  const {searchTerm} = SearchStore.useSearchStore();
+  const { recipes } = RecipesStore.useRecipesStore();
+  const { searchTerm } = SearchStore.useSearchStore();
 
   const [isLoading, setLoading] = React.useState(false);
 
@@ -27,7 +30,6 @@ export const useRecipeListController = () => {
 
   useEffect(() => {
     handleSearch();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return {

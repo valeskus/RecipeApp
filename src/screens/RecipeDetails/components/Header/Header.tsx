@@ -1,14 +1,16 @@
-import React, {useCallback} from 'react';
-import {Animated, SafeAreaView, View} from 'react-native';
-import {styles} from './styles';
-import {Button} from '../../../../UI/Button';
-import {useNavigation} from '@react-navigation/native';
+import React, { useCallback } from 'react';
+import { Animated, SafeAreaView, View } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+
+import { Button } from '@UI/Button';
+
+import { styles } from './styles';
 
 interface Props {
   scrollYRef: any;
 }
 
-export function Header({scrollYRef}: Props): JSX.Element {
+export function Header({ scrollYRef }: Props): JSX.Element {
   const headerOpacity = scrollYRef.current.interpolate({
     inputRange: [190, 280, 310, 350],
     outputRange: [0, 0.2, 0.5, 0.5],
@@ -17,11 +19,11 @@ export function Header({scrollYRef}: Props): JSX.Element {
   const navigation = useNavigation();
   const onGoBack = useCallback(() => {
     navigation.goBack();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
   return (
-    <SafeAreaView style={[styles.header]}>
-      <Animated.View style={[styles.headerWraper, {opacity: headerOpacity}]} />
+    <SafeAreaView style={styles.header}>
+      <Animated.View style={[styles.headerWrapper, { opacity: headerOpacity }]} />
       <View style={styles.headerLeftButton}>
         <Button icon="leftArrow" onPress={onGoBack} />
       </View>

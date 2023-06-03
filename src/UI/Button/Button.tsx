@@ -1,7 +1,9 @@
 import React from 'react';
-import {Image, Pressable, StyleProp, ViewStyle, ImageStyle} from 'react-native';
-import {styles} from './styles';
-import {Icons} from '../Icons';
+import { Image, Pressable, StyleProp, ViewStyle, ImageStyle } from 'react-native';
+
+import { Icons } from '../Icons';
+
+import { styles } from './styles';
 
 interface Props {
   icon: keyof typeof Icons;
@@ -23,11 +25,12 @@ export function Button({
   return (
     <Pressable
       onPress={onPress}
-      style={({pressed}) => [
+      style={({ pressed }) => [
         styles.button,
         pressed && styles.buttonPressed,
         pressableStyle,
-      ]}>
+      ]}
+    >
       <Image source={Icons[icon]} style={[styles.buttonImage, iconStyle]} />
       {active && (
         <Image

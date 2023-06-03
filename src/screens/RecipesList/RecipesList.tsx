@@ -1,12 +1,14 @@
 import React from 'react';
-import {View} from 'react-native';
-import {styles} from './styles';
-import {Search} from '../../components/Search';
-import {RecipesCards} from './components/RecipesCards';
-import {RecipesListControls} from './components/RecipesListControls';
-import {useRecipeListController} from './useRecipesListController';
-import {RecipesListMessage} from './components/RecipesListMessage';
-import {RecipeListSkeleton} from './components/RecipeListSkeleton';
+import { View } from 'react-native';
+
+import { Search } from '@components/Search';
+
+import { styles } from './styles';
+import { RecipesCards } from './components/RecipesCards';
+import { RecipesListControls } from './components/RecipesListControls';
+import { useRecipeListController } from './useRecipesListController';
+import { RecipesListMessage } from './components/RecipesListMessage';
+import { RecipeListSkeleton } from './components/RecipeListSkeleton';
 
 export function RecipesList(): JSX.Element {
   const {
@@ -17,8 +19,9 @@ export function RecipesList(): JSX.Element {
     onChangeCardType,
     handleSearch,
   } = useRecipeListController();
+
   return (
-    <View style={styles.recipiesScreenContainer}>
+    <View style={styles.recipesScreenContainer}>
       <View style={styles.searchMenuContainer}>
         <Search onSearch={handleSearch} />
         {!isLoading && !isRecipesListEmpty && (

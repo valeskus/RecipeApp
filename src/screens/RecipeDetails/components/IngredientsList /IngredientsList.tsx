@@ -1,8 +1,10 @@
-import React, {useCallback} from 'react';
-import {Text, View} from 'react-native';
-import {styles} from './styles';
-import {IngredientModel} from '../../../../models';
-import {IngredientsListItem} from '../IngredientsListItem';
+import React, { useCallback } from 'react';
+import { Text, View } from 'react-native';
+
+import { IngredientModel } from '../../../../models';
+import { IngredientsListItem } from '../IngredientsListItem';
+
+import { styles } from './styles';
 
 interface Props {
   ingredients: Array<IngredientModel>;
@@ -19,6 +21,7 @@ export function IngredientsList({
     },
     [servingCount],
   );
+
   return (
     <View style={styles.ingredientsContainer}>
       <View style={styles.header}>

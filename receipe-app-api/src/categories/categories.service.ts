@@ -10,20 +10,20 @@ import { CreateCategoryDto } from './dto';
 export class CategoriesService {
   constructor(@InjectModel(Category.name) private categoryModel: Model<Category>) { }
 
-  async findAll(): Promise<Array<Category>> {
+  findAll(): Promise<Array<Category>> {
     return this.categoryModel.find().exec();
   }
 
-  async findOneById(id: string): Promise<Category | null> {
+  findOneById(id: string): Promise<Category | null> {
     if (!isMongoId(id)) {
-      return null;
+      return Promise.resolve(null);
     }
 
-    return this.categoryModel.findOne({ _id: id }).exec()
+    return this.categoryModel.findOne({ _id: id }).exec();
   }
 
-  async findOneByTitle(title: string): Promise<Category | null> {
-    return this.categoryModel.findOne({ title }).exec()
+  findOneByTitle(title: string): Promise<Category | null> {
+    return this.categoryModel.findOne({ title }).exec();
   }
 
   async create(createCategoryDto: CreateCategoryDto): Promise<Category> {

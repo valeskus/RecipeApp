@@ -1,8 +1,11 @@
-import React, {useCallback} from 'react';
-import {View, Text} from 'react-native';
-import {styles} from './styles';
-import {FilterModel} from '../../../../models';
-import {PickListItem} from '../../../../UI/PickListItem';
+import React, { useCallback } from 'react';
+import { View, Text } from 'react-native';
+
+import { PickListItem } from '@UI/PickListItem';
+
+import { FilterModel } from '../../../../models';
+
+import { styles } from './styles';
 
 interface Props {
   filter: FilterModel;
@@ -11,11 +14,12 @@ interface Props {
   onChange: (filterId: string, valueId: string) => void;
 }
 
-export function FilterItem({filter, index, id, onChange}: Props): JSX.Element {
+export function FilterItem({ filter, index, id, onChange }: Props): JSX.Element {
   const [selectedId, setSelectedId] = React.useState('');
   const handleSelectedValue = useCallback(
     (valueId: string) => {
       setSelectedId(valueId);
+
       return onChange(id, selectedId);
     },
     [id, selectedId, onChange],

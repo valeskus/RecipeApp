@@ -1,11 +1,11 @@
-import {useCallback} from 'react';
+import { useCallback } from 'react';
 
-export interface UseCounterControlerParams {
+export interface UseCounterControllerParams {
   count: number;
   onChange: (value: number) => void;
 }
 
-export const useCounterControler = (params: UseCounterControlerParams) => {
+export const useCounterController = (params: UseCounterControllerParams) => {
   const onMinusPress = useCallback(() => {
     if (params.count === 0) {
       return;

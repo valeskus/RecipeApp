@@ -1,18 +1,19 @@
 import React from 'react';
-import {ScrollView, View} from 'react-native';
+import { ScrollView, View } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import {useSortController} from './useSortController';
-import {PickListItem} from '../../UI/PickListItem';
-import {Button} from '../../UI/Button';
-import {styles} from './styles';
-import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import { PickListItem } from '@UI/PickListItem';
+import { Button } from '@UI/Button';
+
+import { useSortController } from './useSortController';
+import { styles } from './styles';
 
 export function Sort(): JSX.Element {
-  const {onSelectPress, sortOptions, onSortChange, activeSortId} =
+  const { onSelectPress, sortOptions, onSortChange, activeSortId } =
     useSortController();
 
-  const {bottom} = useSafeAreaInsets();
-  const fotterOffset = bottom || 20;
+  const { bottom } = useSafeAreaInsets();
+  const footerOffset = bottom || 20;
 
   return (
     <View style={styles.modalContainer}>
@@ -29,8 +30,8 @@ export function Sort(): JSX.Element {
           );
         })}
       </ScrollView>
-      <View style={[styles.footerOffset, {height: fotterOffset}]} />
-      <View style={[styles.selectButtonContainer, {bottom: fotterOffset}]}>
+      <View style={[styles.footerOffset, { height: footerOffset }]} />
+      <View style={[styles.selectButtonContainer, { bottom: footerOffset }]}>
         <Button icon="select" onPress={onSelectPress} />
       </View>
     </View>

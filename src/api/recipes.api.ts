@@ -1,5 +1,6 @@
-import {DetailRecipeModel, RecipeListModel} from '../models';
-import {client} from './client.api';
+import { DetailRecipeModel, RecipeListModel } from '../models';
+
+import { client } from './client.api';
 
 export interface SearchOptions {
   searchTerm: string;
@@ -22,5 +23,6 @@ export const searchRecipes = async (
 
 export const getRecipeById = async (id: string): Promise<DetailRecipeModel> => {
   const result = await client.get<DetailRecipeModel>(`/recipe/${id}`);
+
   return result.data;
 };
