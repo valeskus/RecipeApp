@@ -7,7 +7,7 @@ export class RecipeController {
   constructor(private readonly recipeService: RecipeService) {}
 
   @Get(':id')
-  getHello(@Param('id') id: string): Promise<DetailRecipeModel> {
+  get(@Param('id') id: string): Promise<DetailRecipeModel> {
     return this.recipeService.getRecipeById(id);
   }
 }

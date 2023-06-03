@@ -7,7 +7,7 @@ export class SearchController {
   constructor(private readonly searchService: SearchService) {}
 
   @Get()
-  getHello(@Query('searchTerm') searchTerm: string): Promise<RecipeListModel> {
+  get(@Query('searchTerm') searchTerm: string): Promise<RecipeListModel> {
     return this.searchService.findBySearch(searchTerm);
   }
 }
