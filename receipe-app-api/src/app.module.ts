@@ -12,10 +12,7 @@ const DBUrl = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@$
 
 @Module({
   imports: [
-    MongooseModule.forRoot(DBUrl, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true
-    }),
+    MongooseModule.forRoot(DBUrl),
     RecipeModule,
     CategoriesModule,
     SearchModule
