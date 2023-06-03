@@ -1,2 +1,2 @@
 export * from './Filter';
-export {ClearButton} from './components/ClearButton';
+export { ClearButton } from './components/ClearButton';

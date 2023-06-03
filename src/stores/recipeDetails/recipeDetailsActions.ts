@@ -1,6 +1,8 @@
-import {Dispatch} from 'redux';
-import * as RecipesApi from '../../api/recipes.api';
-import {DetailRecipeModel} from '../../models';
+import { Dispatch } from 'redux';
+
+import * as RecipesApi from '@api/recipes.api';
+
+import { DetailRecipeModel } from '../../models';
 
 export enum RecipeDetailsActions {
   GET = '@recipe/get',
@@ -31,6 +33,7 @@ export const getRecipeDetails = async (id: string, dispatch: Dispatch) => {
     dispatch(actionError(error));
   }
 };
+
 export const resetRecipeDetails = (dispatch: Dispatch) => {
   dispatch(actionResetRecipe());
 };

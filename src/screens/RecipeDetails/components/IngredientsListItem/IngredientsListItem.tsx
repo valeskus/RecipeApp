@@ -1,7 +1,9 @@
 import React from 'react';
-import {Text, View, Image} from 'react-native';
-import {styles} from './styles';
-import {Icons} from '../../../../UI/Icons';
+import { Text, View, Image } from 'react-native';
+
+import { Icons } from '@UI/Icons';
+
+import { styles } from './styles';
 
 interface Props {
   title: string;

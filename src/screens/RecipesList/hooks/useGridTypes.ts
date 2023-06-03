@@ -1,4 +1,4 @@
-import {useCallback, useState} from 'react';
+import { useCallback, useState } from 'react';
 
 export const useGridTypes = () => {
   // TODO
@@ -9,5 +9,5 @@ export const useGridTypes = () => {
     return setGridType(type);
   }, []);
 
-  return {gridType, onChangeCardType};
+  return { gridType, onChangeCardType };
 };

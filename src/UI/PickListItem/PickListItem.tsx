@@ -1,7 +1,9 @@
-import React, {useCallback} from 'react';
-import {Image, Pressable, View, Text} from 'react-native';
-import {Icons} from '../Icons';
-import {styles} from './styles';
+import React, { useCallback } from 'react';
+import { Image, Pressable, View, Text } from 'react-native';
+
+import { Icons } from '../Icons';
+
+import { styles } from './styles';
 
 interface Props {
   label: string;
@@ -21,6 +23,7 @@ export function PickListItem({
       if (activeId === activeElement) {
         return onChange('');
       }
+
       onChange(id);
     },
     [onChange, id, activeId],
@@ -30,7 +33,7 @@ export function PickListItem({
     <View style={styles.pickListItemContainer}>
       <Pressable onPress={() => setActive(id)} style={styles.pick}>
         {activeId === id && (
-          <Image source={Icons.dot} style={[styles.pickActive]} />
+          <Image source={Icons.dot} style={styles.pickActive} />
         )}
       </Pressable>
       <Text style={styles.pickListItem}>{label}</Text>

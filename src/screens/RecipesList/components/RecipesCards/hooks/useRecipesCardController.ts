@@ -1,19 +1,20 @@
-import {useNavigation} from '@react-navigation/native';
-import {BaseRecipeModel} from '../../../../../models';
-import {useMemo} from 'react';
+import { useNavigation } from '@react-navigation/native';
+import { useMemo } from 'react';
 
-export interface UseRecipeCardControlerParams {
+import { BaseRecipeModel } from '../../../../../models';
+
+export interface UseRecipeCardControllerParams {
   recipes: Array<BaseRecipeModel>;
   gridType: 'linear' | 'grid';
 }
 
-export const useRecipeCardControler = (
-  params: UseRecipeCardControlerParams,
+export const useRecipeCardController = (
+  params: UseRecipeCardControllerParams,
 ) => {
   const navigation = useNavigation();
 
   const onPress = (id: string) => {
-    navigation.navigate('RecipeDetails', {id});
+    navigation.navigate('RecipeDetails', { id });
   };
 
   const data = useMemo(() => {
@@ -30,7 +31,7 @@ export const useRecipeCardControler = (
       {
         id: 'EMPTY',
         title: '',
-        kcal: 0,
+        kCal: 0,
         time: '',
         rating: 0,
         image: '',

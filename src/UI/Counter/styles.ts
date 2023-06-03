@@ -1,5 +1,6 @@
-import {StyleSheet} from 'react-native';
-import {Colors} from '../Colors';
+import { StyleSheet } from 'react-native';
+
+import { Colors } from '../Colors';
 
 export const styles = StyleSheet.create({
   buttonContent: {
@@ -9,7 +10,7 @@ export const styles = StyleSheet.create({
     fontWeight: '600',
   },
   buttonPressed: {
-    transform: [{scale: 0.9}],
+    transform: [{ scale: 0.9 }],
   },
   button: {
     borderRadius: 50,
@@ -19,7 +20,7 @@ export const styles = StyleSheet.create({
     shadowColor: Colors.shadow,
     shadowOpacity: 0.5,
     shadowRadius: 1,
-    shadowOffset: {width: 0, height: 0},
+    shadowOffset: { width: 0, height: 0 },
     elevation: 8,
     position: 'relative',
   },

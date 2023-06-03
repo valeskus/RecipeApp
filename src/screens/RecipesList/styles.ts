@@ -1,8 +1,9 @@
-import {StyleSheet} from 'react-native';
-import {Colors} from '../../UI/Colors';
+import { StyleSheet } from 'react-native';
+
+import { Colors } from '@UI/Colors';
 
 export const styles = StyleSheet.create({
-  recipiesScreenContainer: {
+  recipesScreenContainer: {
     flex: 1,
     paddingHorizontal: 10,
     flexDirection: 'column',

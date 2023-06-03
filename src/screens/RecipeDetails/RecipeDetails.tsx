@@ -1,24 +1,25 @@
-import React, {useRef} from 'react';
-import {Animated, Dimensions, Text, View} from 'react-native';
-import {styles} from './styles';
-import {useRecipeDetailsControler} from './useRecipeDetailsController';
-import {Header} from './components/Header';
-import {TimeCounter} from './components/TimeCounter';
+import React, { useRef } from 'react';
+import { Animated, Dimensions, Text, View } from 'react-native';
 
-import {Toggle} from '../../UI/Toggle';
-import {IngredientsList} from './components/IngredientsList ';
-import {InstructionsList} from './components/InstructionsList';
-import {RecipeDetailsSkeleton} from './components/RecipeDetailsSkeleton';
-import {Counter} from '../../UI/Counter';
-import {Tabs} from '../../UI/Tabs';
+import { Tabs } from '@UI/Tabs';
+import { Counter } from '@UI/Counter';
+import { Toggle } from '@UI/Toggle';
+
+import { styles } from './styles';
+import { useRecipeDetailsController } from './useRecipeDetailsController';
+import { Header } from './components/Header';
+import { TimeCounter } from './components/TimeCounter';
+import { IngredientsList } from './components/IngredientsList ';
+import { InstructionsList } from './components/InstructionsList';
+import { RecipeDetailsSkeleton } from './components/RecipeDetailsSkeleton';
 import {
   NutrientsUnitLabels,
   PrescriptionCardLabels,
   PrescriptionCardSection,
 } from './hooks';
-import {NutrientsValue} from './components/NutrientsValue';
+import { NutrientsValue } from './components/NutrientsValue';
 
-const {height} = Dimensions.get('screen');
+const { height } = Dimensions.get('screen');
 
 const nutritionLabelsMap = Object.keys(NutrientsUnitLabels).map(id => ({
   id,
@@ -35,7 +36,7 @@ export function RecipeDetails(): JSX.Element {
     nutrientsActiveSection,
     prescriptionCardActiveSection,
     servingsCount,
-  } = useRecipeDetailsControler();
+  } = useRecipeDetailsController();
   const scrollYRef = useRef(new Animated.Value(0));
 
   if (!recipe) {
@@ -52,8 +53,8 @@ export function RecipeDetails(): JSX.Element {
     <View style={styles.detailsScreenContainer}>
       <Header scrollYRef={scrollYRef} />
       <Animated.Image
-        source={{uri: recipe.image}}
-        style={[styles.image, {transform: [{scale}]}]}
+        source={{ uri: recipe.image }}
+        style={[styles.image, { transform: [{ scale }] }]}
       />
 
       <Animated.ScrollView
@@ -72,7 +73,8 @@ export function RecipeDetails(): JSX.Element {
           {
             useNativeDriver: true,
           },
-        )}>
+        )}
+      >
         <View style={styles.contentContainer}>
           <View style={styles.topContainer}>
             <Text style={styles.title}>{recipe.title}</Text>
@@ -87,10 +89,12 @@ export function RecipeDetails(): JSX.Element {
           <NutrientsValue nutrients={nutrients} />
           <Tabs
             activeItem={prescriptionCardActiveSection}
-            onChange={onPrescriptionCardSectionChange}>
+            onChange={onPrescriptionCardSectionChange}
+          >
             <View
               aria-label={PrescriptionCardLabels.Ingredients}
-              aria-id={PrescriptionCardSection.Ingredients}>
+              aria-id={PrescriptionCardSection.Ingredients}
+            >
               <IngredientsList
                 ingredients={recipe.ingredients}
                 servingCount={servingsCount || recipe.servingsCount}
@@ -102,7 +106,8 @@ export function RecipeDetails(): JSX.Element {
             </View>
             <View
               aria-label={PrescriptionCardLabels.Instructions}
-              aria-id={PrescriptionCardSection.Instructions}>
+              aria-id={PrescriptionCardSection.Instructions}
+            >
               <InstructionsList instructions={recipe.instructions} />
             </View>
           </Tabs>

@@ -1,6 +1,7 @@
 import React from 'react';
-import {View, Text} from 'react-native';
-import {styles} from './styles';
+import { View, Text } from 'react-native';
+
+import { styles } from './styles';
 
 export function RecipesListMessage(): JSX.Element {
   return (
@@ -8,7 +9,7 @@ export function RecipesListMessage(): JSX.Element {
       <Text style={[styles.textMessage, styles.textMessageAccent]}>
         0 results found for your search.
       </Text>
-      <Text style={[styles.textMessage]}>Please try another search term</Text>
+      <Text style={styles.textMessage}>Please try another search term</Text>
     </View>
   );
 }

@@ -1,14 +1,15 @@
 import React from 'react';
-import {Image, Text, View} from 'react-native';
-import {styles} from './styles';
+import { Image, Text, View } from 'react-native';
 
-import {Icons} from '../../../../UI/Icons';
+import { Icons } from '@UI/Icons';
+
+import { styles } from './styles';
 
 interface Props {
   time: string;
 }
 
-export function TimeCounter({time}: Props): JSX.Element {
+export function TimeCounter({ time }: Props): JSX.Element {
   return (
     <View style={styles.timeContainer}>
       <Image style={styles.timeIcon} source={Icons.time} />

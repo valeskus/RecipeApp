@@ -1,5 +1,6 @@
-import {useCallback, useMemo, useState} from 'react';
-import * as RecipeDetailsStore from '../../../stores/recipeDetails';
+import { useCallback, useMemo, useState } from 'react';
+
+import * as RecipeDetailsStore from '@stores/recipeDetails';
 
 export enum NutrientsSection {
   '100g' = '100g',
@@ -16,43 +17,43 @@ export const NutrientsUnitLabels = {
 const NutrientsSectionMap = {
   [NutrientsSection['100g']]: 'nutrientsFor100g',
   [NutrientsSection.Serving]: 'nutrientsForServing',
-  [NutrientsSection.AllServings]: 'nutrientsForAllsServing',
+  [NutrientsSection.AllServings]: 'nutrientsForAllServing',
 };
 
-interface UseNutrientsContollerParams {
+interface UseNutrientsControllerParams {
   numberOfServings: number;
 }
 
 export interface Nutrients {
-  kcal: number;
+  kCal: number;
   protein: number;
   fats: number;
   carbs: number;
 }
 
 const fallbackNutrients: Nutrients = {
-  kcal: 0,
+  kCal: 0,
   protein: 0,
   fats: 0,
   carbs: 0,
 };
 
-export const useNutrientsContoller = (params: UseNutrientsContollerParams) => {
+export const useNutrientsController = (params: UseNutrientsControllerParams) => {
   const [activeSection, setActiveSection] = useState(NutrientsSection['100g']);
 
-  const {recipe} = RecipeDetailsStore.useRecipeDetailsStore();
+  const { recipe } = RecipeDetailsStore.useRecipeDetailsStore();
 
   const nutrientsFor100g = useMemo(() => {
     if (!recipe) {
       return fallbackNutrients;
     }
+
     return {
-      kcal: (recipe.kcal * 100) / recipe.weight,
+      kCal: (recipe.kCal * 100) / recipe.weight,
       protein: (recipe.macroNutrients.protein * 100) / recipe.weight,
       fats: (recipe.macroNutrients.fats * 100) / recipe.weight,
       carbs: (recipe.macroNutrients.carbs * 100) / recipe.weight,
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [!!recipe]);
 
   const nutrientsForServing = useMemo(() => {
@@ -61,23 +62,22 @@ export const useNutrientsContoller = (params: UseNutrientsContollerParams) => {
     }
 
     return {
-      kcal: recipe.kcal / recipe.servingsCount,
+      kCal: recipe.kCal / recipe.servingsCount,
       protein: recipe.macroNutrients.protein / recipe.servingsCount,
       fats: recipe.macroNutrients.fats / recipe.servingsCount,
       carbs: recipe.macroNutrients.carbs / recipe.servingsCount,
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [!!recipe]);
 
-  const nutrientsForAllsServing = useMemo(() => {
+  const nutrientsForAllServing = useMemo(() => {
     if (!recipe) {
       return fallbackNutrients;
     }
 
-    const {numberOfServings} = params;
+    const { numberOfServings } = params;
 
     return {
-      kcal: (recipe.kcal / recipe.servingsCount) * numberOfServings,
+      kCal: (recipe.kCal / recipe.servingsCount) * numberOfServings,
       protein:
         (recipe.macroNutrients.protein / recipe.servingsCount) *
         numberOfServings,
@@ -86,7 +86,6 @@ export const useNutrientsContoller = (params: UseNutrientsContollerParams) => {
       carbs:
         (recipe.macroNutrients.carbs / recipe.servingsCount) * numberOfServings,
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [params.numberOfServings, !!recipe]);
 
   const changeSection = useCallback((item: NutrientsSection) => {
@@ -96,7 +95,7 @@ export const useNutrientsContoller = (params: UseNutrientsContollerParams) => {
   const nutrients = {
     nutrientsFor100g,
     nutrientsForServing,
-    nutrientsForAllsServing,
+    nutrientsForAllServing,
   }[NutrientsSectionMap[activeSection]]!;
 
   return {

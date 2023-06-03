@@ -1,8 +1,9 @@
 import React from 'react';
-import {Image, TextInput, Pressable} from 'react-native';
-import {styles} from './styles';
-import {Icons} from '../../UI/Icons';
+import { Image, TextInput, Pressable } from 'react-native';
 
+import { Icons } from '@UI/Icons';
+
+import { styles } from './styles';
 import {
   useSearchController,
   UseSearchControllerParams,
@@ -10,7 +11,7 @@ import {
 
 interface Props extends UseSearchControllerParams {}
 
-export function Search({onSearch}: Props): JSX.Element {
+export function Search({ onSearch }: Props): JSX.Element {
   const {
     searchTerm,
     searchInputRef,
@@ -18,7 +19,7 @@ export function Search({onSearch}: Props): JSX.Element {
     handleSearch,
     handleResetSearchInput,
     handlePress,
-  } = useSearchController({onSearch});
+  } = useSearchController({ onSearch });
 
   return (
     <Pressable style={styles.searchBarContainer} onPress={handlePress}>
@@ -33,22 +34,24 @@ export function Search({onSearch}: Props): JSX.Element {
       {searchTerm && (
         <Pressable
           onPress={handleResetSearchInput}
-          style={({pressed}) => [
+          style={({ pressed }) => [
             styles.resetSearchIconContainer,
             pressed && styles.searchPress,
           ]}
-          disabled={!searchTerm}>
+          disabled={!searchTerm}
+        >
           <Image source={Icons.cancel} style={styles.resetSearchIcon} />
         </Pressable>
       )}
 
       <Pressable
         onPress={handleSearch}
-        style={({pressed}) => [
+        style={({ pressed }) => [
           styles.searchBarIconContainer,
           pressed && styles.searchPress,
         ]}
-        disabled={!searchTerm}>
+        disabled={!searchTerm}
+      >
         <Image source={Icons.search} style={styles.searchBarIcon} />
       </Pressable>
     </Pressable>

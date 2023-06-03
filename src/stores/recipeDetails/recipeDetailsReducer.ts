@@ -1,6 +1,8 @@
 import * as Redux from 'redux';
-import {DetailRecipeModel} from '../../models';
-import {RecipeDetailsActions} from './recipeDetailsActions';
+
+import { DetailRecipeModel } from '../../models';
+
+import { RecipeDetailsActions } from './recipeDetailsActions';
 
 export interface RecipeDetailsStoreState {
   recipe?: DetailRecipeModel;
@@ -17,7 +19,7 @@ export function recipeDetailsReducer(
       const {
         id,
         title,
-        kcal,
+        kCal,
         servingsCount,
         weight,
         time,
@@ -33,7 +35,7 @@ export function recipeDetailsReducer(
         recipe: {
           id,
           title,
-          kcal,
+          kCal,
           servingsCount,
           weight,
           time,
@@ -46,9 +48,11 @@ export function recipeDetailsReducer(
         },
       };
     }
+
     case RecipeDetailsActions.RESET: {
       return initialState;
     }
+
     default:
       return state;
   }

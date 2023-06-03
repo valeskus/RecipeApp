@@ -1,15 +1,17 @@
 import React from 'react';
-import {Provider} from 'react-redux';
-import {Platform, SafeAreaView, UIManager} from 'react-native';
-import {store} from './stores/rootStore';
-import {CategoriesList} from './screens/CategoriesList';
-import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {RecipesList} from './screens/RecipesList';
-import {Filter, ClearButton} from './screens/Filter';
-import {Sort} from './screens/Sort';
-import {RecipeDetails} from './screens/RecipeDetails';
-import {Header} from './components/Header';
+import { Provider } from 'react-redux';
+import { Platform, SafeAreaView, UIManager } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+import { Header } from '@components/Header';
+
+import { store } from './stores/rootStore';
+import { CategoriesList } from './screens/CategoriesList';
+import { RecipesList } from './screens/RecipesList';
+import { Filter, ClearButton } from './screens/Filter';
+import { Sort } from './screens/Sort';
+import { RecipeDetails } from './screens/RecipeDetails';
 
 if (
   Platform.OS === 'android' &&
@@ -42,13 +44,13 @@ function App(): JSX.Element {
         <Stack.Navigator>
           <Stack.Group
             screenOptions={{
-              // eslint-disable-next-line react/no-unstable-nested-components
-              header: ({options}) => (
+              header: ({ options }) => (
                 <SafeAreaView>
                   <Header options={options} />
                 </SafeAreaView>
               ),
-            }}>
+            }}
+          >
             <Stack.Screen
               name="Categories"
               component={CategoriesList}
@@ -71,8 +73,7 @@ function App(): JSX.Element {
             options={{
               presentation: 'modal',
               title: 'Sort',
-              // eslint-disable-next-line react/no-unstable-nested-components
-              header: ({options}) => <Header options={options} />,
+              header: ({ options }) => <Header options={options} />,
             }}
           />
           <Stack.Screen
@@ -81,8 +82,7 @@ function App(): JSX.Element {
             options={{
               presentation: 'modal',
               title: 'Filter',
-              // eslint-disable-next-line react/no-unstable-nested-components
-              header: ({options}) => (
+              header: ({ options }) => (
                 <Header options={options} headerRight={<ClearButton />} />
               ),
             }}
@@ -91,7 +91,7 @@ function App(): JSX.Element {
           <Stack.Screen
             name="RecipeDetails"
             component={RecipeDetails}
-            options={{headerShown: false}}
+            options={{ headerShown: false }}
           />
         </Stack.Navigator>
       </NavigationContainer>

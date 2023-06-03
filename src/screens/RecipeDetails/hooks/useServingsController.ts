@@ -1,9 +1,9 @@
-import {useCallback, useEffect, useState} from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
-import * as RecipeDetailsStore from '../../../stores/recipeDetails';
+import * as RecipeDetailsStore from '@stores/recipeDetails';
 
 export const useServingsController = () => {
-  const {recipe} = RecipeDetailsStore.useRecipeDetailsStore();
+  const { recipe } = RecipeDetailsStore.useRecipeDetailsStore();
 
   const [servingsCount, setServingsCount] = useState(0);
 
@@ -11,7 +11,6 @@ export const useServingsController = () => {
     if (recipe) {
       setServingsCount(recipe.servingsCount);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [!!recipe]);
 
   const onCountChange = useCallback((value: number) => {

@@ -1,7 +1,9 @@
 import React from 'react';
-import {Text, View, Image} from 'react-native';
-import {styles} from './styles';
-import {Icons} from '../../../../UI/Icons';
+import { Text, View, Image } from 'react-native';
+
+import { Icons } from '@UI/Icons';
+
+import { styles } from './styles';
 
 interface Props {
   image?: string;
@@ -19,7 +21,7 @@ export function InstructionsListItem({
       <Image source={Icons.dot} style={styles.listItemDot} />
       <View style={styles.listItemContentContainer}>
         <Text style={styles.listItemCount}>Step {count}</Text>
-        {image && <Image source={{uri: image}} style={styles.listItemImage} />}
+        {image && <Image source={{ uri: image }} style={styles.listItemImage} />}
         <Text style={styles.listItemDescription}>{description}</Text>
       </View>
     </View>
