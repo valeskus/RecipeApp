@@ -1,53 +1,50 @@
-import {StyleSheet} from 'react-native';
-import {Colors} from '../../Colors';
+import { StyleSheet } from 'react-native';
+
+import { Colors } from '../../Colors';
 
 export const styles = StyleSheet.create({
-  productGridContainer: {
-    flex: 1,
+  productCardLineContainer: {
     borderRadius: 20,
-    height: 230,
+    width: '100%',
     backgroundColor: Colors.background,
     shadowColor: Colors.shadow,
     shadowOpacity: 0.5,
     shadowRadius: 5,
-    shadowOffset: {width: 0, height: 0},
-    flexDirection: 'column',
-    margin: 10,
+    shadowOffset: { width: 0, height: 0 },
     elevation: 8,
+    justifyContent: 'center',
+    flexDirection: 'row',
+    marginVertical: 8,
   },
-  productCardGridImage: {
-    width: '100%',
+  productCardLineImage: {
+    flex: 2,
     height: 120,
-    flex: 3,
     alignSelf: 'center',
-    borderTopRightRadius: 20,
     borderTopLeftRadius: 20,
+    borderBottomLeftRadius: 20,
   },
   productCardTitle: {
     marginBottom: 2,
     fontSize: 18,
     color: Colors.primary,
+    flex: 1,
   },
   productCardDetails: {
     flex: 2,
     padding: 10,
   },
-  productCardDetailsItem: {
+  productCardLineDetailsItem: {
     fontSize: 15,
     color: Colors.text,
+    marginRight: 10,
   },
   cardPressed: {
-    transform: [{scale: 0.9}],
+    transform: [{ scale: 0.9 }],
   },
-  note: {
-    color: Colors.secondary,
-    fontSize: 13,
-    fontWeight: '300',
-  },
-  productCardDetailsItemBox: {
+  productCardLineItem: {
     flexDirection: 'row',
-    alignItems: 'flex-end',
-    marginBottom: 5,
+    flex: 1,
+    flexWrap: 'wrap',
   },
   icon: {
     width: 17,

@@ -1,23 +1,25 @@
-import {useCallback, useEffect} from 'react';
-import * as RecipeDetailsStore from '../../stores/recipeDetails';
-import {RouteProp, useRoute} from '@react-navigation/native';
+import { useCallback, useEffect } from 'react';
+import { RouteProp, useRoute } from '@react-navigation/native';
+
+import * as RecipeDetailsStore from '@stores/recipeDetails';
+
 import {
   NutrientsSection,
   PrescriptionCardSection,
-  useNutrientsContoller,
+  useNutrientsController,
   usePrescriptionCardController,
 } from './hooks';
 
-export const useRecipeDetailsControler = () => {
-  const {params} =
+export const useRecipeDetailsController = () => {
+  const { params } =
     useRoute<RouteProp<ReactNavigation.RootParamList, 'RecipeDetails'>>();
 
   const PrescriptionCard = usePrescriptionCardController();
-  const Nutrients = useNutrientsContoller({
+  const Nutrients = useNutrientsController({
     numberOfServings: PrescriptionCard.servingsCount,
   });
 
-  const {recipe} = RecipeDetailsStore.useRecipeDetailsStore();
+  const { recipe } = RecipeDetailsStore.useRecipeDetailsStore();
 
   const getRecipe = RecipeDetailsStore.useGetRecipeDetails();
   const resetRecipe = RecipeDetailsStore.useResetRecipeDetails();
@@ -28,14 +30,12 @@ export const useRecipeDetailsControler = () => {
     return () => {
       resetRecipe();
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const onPrescriptionCardSectionChange = useCallback(
     (activeElement: string) => {
       PrescriptionCard.changeSection(activeElement as PrescriptionCardSection);
     },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     [],
   );
 
@@ -43,7 +43,6 @@ export const useRecipeDetailsControler = () => {
     (activeElement: string) => {
       Nutrients.changeSection(activeElement as NutrientsSection);
     },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     [],
   );
 

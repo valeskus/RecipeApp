@@ -1,6 +1,8 @@
 import * as Redux from 'redux';
-import {CategoryListModel, CategoryModel} from '../../models';
-import {CategoriesActions} from './categoriesActions';
+
+import { CategoryListModel, CategoryModel } from '../../models';
+
+import { CategoriesActions } from './categoriesActions';
 
 export interface CategoryStoreState {
   categories: Array<CategoryModel>;
@@ -16,13 +18,14 @@ export function categoriesReducer(
 ): CategoryStoreState {
   switch (action.type) {
     case CategoriesActions.GET: {
-      const {categories} = action.payload as CategoryListModel;
+      const { categories } = action.payload as CategoryListModel;
 
       return {
         ...state,
         categories,
       };
     }
+
     default:
       return state;
   }

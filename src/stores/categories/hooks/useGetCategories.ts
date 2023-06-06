@@ -1,6 +1,7 @@
 import * as React from 'react';
 import * as Redux from 'react-redux';
-import {getCategories} from '../categoriesActions';
+
+import { getCategories } from '../categoriesActions';
 
 export const useGetCategories = () => {
   const dispatch = Redux.useDispatch();

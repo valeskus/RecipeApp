@@ -1,16 +1,17 @@
-import React, {useCallback} from 'react';
-import {useNavigation} from '@react-navigation/native';
-import * as RecipesStore from '../../stores/recipes';
+import React, { useCallback } from 'react';
+import { useNavigation } from '@react-navigation/native';
+
+import * as RecipesStore from '@stores/recipes';
 
 export const useFilterController = () => {
-  const [filterList, setFiltreList] = React.useState([{}]);
+  const [filterList, setFilterList] = React.useState([{}]);
   const navigation = useNavigation();
 
-  const {filters} = RecipesStore.useRecipesStore();
+  const { filters } = RecipesStore.useRecipesStore();
 
   const onFilterChange = useCallback(
     (filterId: string, valueId: string) => {
-      return setFiltreList([...filterList, {key: filterId, value: valueId}]);
+      return setFilterList([...filterList, { key: filterId, value: valueId }]);
     },
     [filterList],
   );

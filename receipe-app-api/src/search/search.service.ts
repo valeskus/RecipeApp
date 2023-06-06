@@ -1,5 +1,6 @@
-import {Injectable} from '@nestjs/common';
-import {RecipeListModel} from './models';
+import { Injectable } from '@nestjs/common';
+
+import { RecipeListModel } from './models';
 
 const ImageMock = 'https://picsum.photos/500/500';
 
@@ -117,7 +118,7 @@ export class SearchService {
             title: 'Product 1',
             image: ImageMock,
             rating: 4,
-            kcal: 500,
+            kCal: 500,
             time: '1:50',
           },
         ],
@@ -133,7 +134,7 @@ export class SearchService {
           title: 'Product 1',
           image: ImageMock,
           rating: 4,
-          kcal: 500,
+          kCal: 500,
           time: '1:50',
         },
         {
@@ -141,7 +142,7 @@ export class SearchService {
           title: 'Product 2',
           image: ImageMock,
           rating: 3,
-          kcal: 500,
+          kCal: 500,
           time: '1:50',
         },
         {
@@ -149,7 +150,7 @@ export class SearchService {
           title: 'Product 3',
           image: ImageMock,
           rating: 1,
-          kcal: 500,
+          kCal: 500,
           time: '1:50',
         },
         {
@@ -157,7 +158,7 @@ export class SearchService {
           title: 'Product 4',
           image: ImageMock,
           rating: 4.5,
-          kcal: 500,
+          kCal: 500,
           time: '1:50',
         },
         {
@@ -165,7 +166,7 @@ export class SearchService {
           title: 'Product 5',
           image: ImageMock,
           rating: 1.5,
-          kcal: 500,
+          kCal: 500,
           time: '1:50',
         },
       ],

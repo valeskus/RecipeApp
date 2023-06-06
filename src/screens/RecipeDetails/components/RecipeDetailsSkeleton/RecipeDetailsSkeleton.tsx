@@ -1,6 +1,7 @@
 import React from 'react';
-import ContentLoader, {Circle, Rect} from 'react-content-loader/native';
-import {Colors} from '../../../../UI/Colors';
+import ContentLoader, { Circle, Rect } from 'react-content-loader/native';
+
+import { Colors } from '@UI/Colors';
 
 export function RecipeDetailsSkeleton(): JSX.Element {
   return (
@@ -8,7 +9,8 @@ export function RecipeDetailsSkeleton(): JSX.Element {
       backgroundColor={Colors.secondary}
       opacity={0.2}
       width={'100%'}
-      height={'100%'}>
+      height={'100%'}
+    >
       <Rect x="0" y="1" rx="20" ry="20" width="100%" height="100%" />
       <Circle cx={'10%'} cy={73} r={25} />
       <Circle cx={'90%'} cy={73} r={25} />

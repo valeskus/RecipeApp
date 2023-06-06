@@ -1,12 +1,15 @@
 import React from 'react';
-import {View, StatusBar} from 'react-native';
-import {styles} from './styles';
-import {CategoryCards} from './components/CategoryCards';
-import {Search} from '../../components/Search';
-import {useCategoryListControler} from './useCategoryListControler';
+import { View, StatusBar } from 'react-native';
+
+import { Search } from '@components/Search';
+
+import { styles } from './styles';
+import { CategoryCards } from './components/CategoryCards';
+import { useCategoryListController } from './useCategoryListController';
 
 export function CategoriesList(): JSX.Element {
-  const {handleSearch} = useCategoryListControler();
+  const { handleSearch } = useCategoryListController();
+
   return (
     <View style={styles.categoriesScreenContainer}>
       <StatusBar />

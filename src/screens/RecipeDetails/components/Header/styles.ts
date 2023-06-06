@@ -1,5 +1,6 @@
-import {StyleSheet} from 'react-native';
-import {Colors} from '../../../../UI/Colors';
+import { StyleSheet } from 'react-native';
+
+import { Colors } from '@UI/Colors';
 
 export const styles = StyleSheet.create({
   header: {
@@ -8,7 +9,7 @@ export const styles = StyleSheet.create({
     zIndex: 10,
     top: 40,
   },
-  headerWraper: {
+  headerWrapper: {
     backgroundColor: Colors.shadow,
     flex: 1,
     position: 'absolute',

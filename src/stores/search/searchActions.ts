@@ -1,4 +1,4 @@
-import {Dispatch} from 'redux';
+import { Dispatch } from 'redux';
 
 export enum SearchActions {
   SET = '@search/set',
@@ -6,7 +6,7 @@ export enum SearchActions {
 
 const actionSetSearchTerm = (searchTerm: string) => ({
   type: SearchActions.SET,
-  payload: {searchTerm},
+  payload: { searchTerm },
 });
 
 export const setSearchTerm = (searchTerm: string, dispatch: Dispatch) => {

@@ -1,11 +1,13 @@
 import * as Redux from 'redux';
+
 import {
   BaseRecipeModel,
   FilterModel,
   RecipeListModel,
   SortOptionModel,
 } from '../../models';
-import {RecipesActions} from './recipesActions';
+
+import { RecipesActions } from './recipesActions';
 
 export interface RecipesStoreState {
   recipes: Array<BaseRecipeModel>;
@@ -19,13 +21,13 @@ const initialState: RecipesStoreState = {
   sortOptions: [],
 };
 
-export function recipesesReducer(
+export function recipesReducer(
   state = initialState,
   action: Redux.AnyAction,
 ) {
   switch (action.type) {
     case RecipesActions.GET: {
-      const {recipes, filters, sortOptions} = action.payload as RecipeListModel;
+      const { recipes, filters, sortOptions } = action.payload as RecipeListModel;
 
       return {
         ...state,
@@ -34,6 +36,7 @@ export function recipesesReducer(
         sortOptions,
       };
     }
+
     default:
       return state;
   }

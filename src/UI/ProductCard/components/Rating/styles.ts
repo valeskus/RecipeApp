@@ -1,14 +1,15 @@
-import {StyleSheet} from 'react-native';
-import {Colors} from '../../../Colors';
+import { StyleSheet } from 'react-native';
+
+import { Colors } from '../../../Colors';
 
 export const styles = StyleSheet.create({
-  productCardRaitingItem: {
+  productCardRatingItem: {
     width: '100%',
     height: 20,
     position: 'absolute',
     zIndex: 10,
   },
-  productCardRaitingContainer: {
+  productCardRatingContainer: {
     width: 100,
     height: 20,
     flexDirection: 'row',
@@ -16,7 +17,7 @@ export const styles = StyleSheet.create({
     backgroundColor: Colors.tertiary,
     position: 'relative',
   },
-  raitingWraper: {
+  ratingWrapper: {
     height: 20,
     backgroundColor: Colors.rating,
   },

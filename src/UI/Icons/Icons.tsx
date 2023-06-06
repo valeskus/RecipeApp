@@ -13,7 +13,7 @@ export const Icons = {
   carbs: require('../../../assets/carbs.png'),
   proteins: require('../../../assets/proteins.png'),
   fats: require('../../../assets/fats.png'),
-  kcal: require('../../../assets/kcal.png'),
+  kCal: require('../../../assets/kCal.png'),
   rating: require('../../../assets/rating.png'),
   dot: require('../../../assets/dot.png'),
   time: require('../../../assets/clock.png'),

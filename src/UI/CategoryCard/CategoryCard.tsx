@@ -1,6 +1,7 @@
 import * as React from 'react';
-import {Image, Pressable, StyleProp, ViewStyle, Text} from 'react-native';
-import {styles} from './styles';
+import { Image, Pressable, StyleProp, ViewStyle, Text } from 'react-native';
+
+import { styles } from './styles';
 
 interface Props {
   image: string;
@@ -18,12 +19,13 @@ export function CategoryCard({
   return (
     <Pressable
       onPress={onPress}
-      style={({pressed}) => [
+      style={({ pressed }) => [
         styles.categoryContainer,
         pressed && styles.cardPressed,
         pressableStyle,
-      ]}>
-      <Image source={{uri: image}} style={styles.categoryCardImage} />
+      ]}
+    >
+      <Image source={{ uri: image }} style={styles.categoryCardImage} />
       <Text style={styles.categoryCardTitle}>{title}</Text>
     </Pressable>
   );

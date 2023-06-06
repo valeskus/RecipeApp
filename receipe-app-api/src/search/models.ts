@@ -1,7 +1,7 @@
 export interface BaseRecipeModel {
   id: string;
   title: string;
-  kcal: number;
+  kCal: number;
   time: string;
   rating: number;
   image: string;

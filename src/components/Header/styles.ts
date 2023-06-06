@@ -1,5 +1,6 @@
-import {StyleSheet} from 'react-native';
-import {Colors} from '../../UI/Colors';
+import { StyleSheet } from 'react-native';
+
+import { Colors } from '@UI/Colors';
 
 export const styles = StyleSheet.create({
   headerContainer: {
@@ -18,7 +19,7 @@ export const styles = StyleSheet.create({
   },
 
   buttonPressed: {
-    transform: [{scale: 0.9}],
+    transform: [{ scale: 0.9 }],
   },
   buttonImage: {
     width: '100%',
@@ -33,7 +34,7 @@ export const styles = StyleSheet.create({
     left: 10,
     zIndex: 1,
   },
-  headerRightContinaer: {
+  headerRightContainer: {
     justifyContent: 'center',
     position: 'absolute',
     right: 10,

@@ -1,6 +1,8 @@
-import {Dispatch} from 'redux';
-import * as RecipesApi from '../../api/recipes.api';
-import {RecipeListModel} from '../../models';
+import { Dispatch } from 'redux';
+
+import * as RecipesApi from '@api/recipes.api';
+
+import { RecipeListModel } from '../../models';
 
 export enum RecipesActions {
   GET = '@recipes/get',

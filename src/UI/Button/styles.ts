@@ -1,5 +1,6 @@
-import {StyleSheet} from 'react-native';
-import {Colors} from '../Colors';
+import { StyleSheet } from 'react-native';
+
+import { Colors } from '../Colors';
 
 export const styles = StyleSheet.create({
   buttonImage: {
@@ -15,7 +16,7 @@ export const styles = StyleSheet.create({
     shadowColor: Colors.shadow,
     shadowOpacity: 0.5,
     shadowRadius: 5,
-    shadowOffset: {width: 0, height: 0},
+    shadowOffset: { width: 0, height: 0 },
     elevation: 8,
     justifyContent: 'center',
     position: 'relative',
@@ -28,6 +29,6 @@ export const styles = StyleSheet.create({
     position: 'absolute',
   },
   buttonPressed: {
-    transform: [{scale: 0.9}],
+    transform: [{ scale: 0.9 }],
   },
 });

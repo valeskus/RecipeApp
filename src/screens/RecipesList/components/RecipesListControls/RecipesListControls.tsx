@@ -1,8 +1,10 @@
 import React from 'react';
-import {View} from 'react-native';
-import {styles} from './styles';
-import {Button} from '../../../../UI/Button';
-import {useButtonBarController} from './hooks';
+import { View } from 'react-native';
+
+import { Button } from '@UI/Button';
+
+import { styles } from './styles';
+import { useButtonBarController } from './hooks';
 
 interface Props {
   onCardTypeChange: (type: 'grid' | 'linear') => void;
@@ -13,8 +15,9 @@ export function RecipesListControls({
   onCardTypeChange,
   gridType,
 }: Props): JSX.Element {
-  const {changeType, handleFilterPress, handleSortPress} =
+  const { changeType, handleFilterPress, handleSortPress } =
     useButtonBarController(onCardTypeChange, gridType);
+
   return (
     <View style={styles.buttonBarContainer}>
       <Button icon="filter" onPress={handleFilterPress} />

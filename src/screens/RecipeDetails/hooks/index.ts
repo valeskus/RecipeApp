@@ -1,2 +1,2 @@
 export * from './usePrescriptionCardController';
-export * from './useNutrientsContoller';
+export * from './useNutrientsController';
