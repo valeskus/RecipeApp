@@ -2,6 +2,7 @@ import React from 'react';
 import {Image, Pressable, StyleProp, ViewStyle, Text, View} from 'react-native';
 import {styles} from './styles';
 import {Rating} from '../components/Rating';
+import {Icons} from '../../Icons';
 
 interface Props {
   image: string;
@@ -39,10 +40,10 @@ export function ProductCardLine({
           <Rating rating={rating} />
         </View>
         <View style={styles.productCardLineItem}>
-          <Text style={styles.productCardLineDetailsItem}>
-            Kcal: {calories}
-          </Text>
-          <Text style={styles.productCardLineDetailsItem}>Time: {time}</Text>
+          <Image source={Icons.kcal} style={styles.icon} />
+          <Text style={styles.productCardLineDetailsItem}>{calories} kcal</Text>
+          <Image source={Icons.time} style={styles.icon} />
+          <Text style={styles.productCardLineDetailsItem}>{time}</Text>
         </View>
       </View>
     </Pressable>

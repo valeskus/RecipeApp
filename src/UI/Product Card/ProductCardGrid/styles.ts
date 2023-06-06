@@ -39,4 +39,19 @@ export const styles = StyleSheet.create({
   cardPressed: {
     transform: [{scale: 0.9}],
   },
+  note: {
+    color: Colors.secondary,
+    fontSize: 13,
+    fontWeight: '300',
+  },
+  productCardDetailsItemBox: {
+    flexDirection: 'row',
+    alignItems: 'flex-end',
+    marginBottom: 5,
+  },
+  icon: {
+    width: 17,
+    height: 17,
+    marginRight: 3,
+  },
 });

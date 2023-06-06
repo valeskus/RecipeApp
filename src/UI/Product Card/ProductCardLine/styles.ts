@@ -45,4 +45,9 @@ export const styles = StyleSheet.create({
     flex: 1,
     flexWrap: 'wrap',
   },
+  icon: {
+    width: 17,
+    height: 17,
+    marginRight: 3,
+  },
 });
