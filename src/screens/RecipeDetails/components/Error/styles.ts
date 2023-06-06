@@ -4,7 +4,7 @@ import {Colors} from '../../../../UI/Colors';
 export const styles = StyleSheet.create({
   buttonTitle: {
     fontSize: 18,
-    color: Colors.secondary,
+    color: Colors.background,
     fontWeight: '600',
   },
   title: {
@@ -22,21 +22,22 @@ export const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: Colors.background,
   },
   pressed: {
     transform: [{scale: 0.9}],
   },
   icon: {
-    width: 70,
-    height: 70,
+    width: 100,
+    height: 100,
     marginBottom: 20,
   },
   button: {
     borderRadius: 15,
     padding: 15,
-    backgroundColor: Colors.background,
+    backgroundColor: Colors.secondary,
     shadowColor: Colors.shadow,
-    shadowOpacity: 0.2,
+    shadowOpacity: 0.4,
     shadowRadius: 5,
     shadowOffset: {width: 0, height: 0},
     elevation: 8,

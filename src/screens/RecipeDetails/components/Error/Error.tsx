@@ -1,13 +1,12 @@
 import React from 'react';
 import {Image, Pressable, SafeAreaView, Text} from 'react-native';
-import {} from 'react-native-svg';
 import {styles} from './styles';
 import {Icons} from '../../../../UI/Icons';
 
 export function Error(): JSX.Element {
   return (
     <SafeAreaView style={styles.errorContainer}>
-      <Image source={Icons.cancel} style={styles.icon} />
+    <Image source={Icons.errorRecipe} style={styles.icon} />
       <Text style={styles.title}>Ooops...</Text>
       <Text style={styles.message}>Something went wrong!</Text>
 

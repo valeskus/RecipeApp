@@ -19,4 +19,6 @@ export const Icons = {
   time: require('../../../assets/clock.png'),
   leftArrow: require('../../../assets/leftArrow.png'),
   clean: require('../../../assets/clean.png'),
+  errorRecipe: require('../../../assets/errorRecipeDetails.png'),
+  error: require('../../../assets/error.png'),
 };
