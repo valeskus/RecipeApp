@@ -11,6 +11,7 @@
     "start:dev": "APP_ENV=development nest start --watch",
     "start:debug": "APP_ENV=development nest start --debug --watch",
     "start:prod": "APP_ENV=production node dist/main",
+    "lint:ts": "./node_modules/.bin/tsc --project tsconfig.json",
     "lint": "eslint ./src",
     "test": "jest",
     "test:watch": "jest --watch",
