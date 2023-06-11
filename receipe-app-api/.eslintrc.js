@@ -38,7 +38,8 @@ module.exports = {
         'srv',
         'len',
         'dto',
-        'virtuals'
+        'virtuals',
+        'localhost'
       ]
     }],
     'no-extra-semi': 'error',

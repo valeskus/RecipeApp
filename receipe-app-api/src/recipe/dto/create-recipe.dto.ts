@@ -10,6 +10,7 @@ import {
     ArrayNotEmpty,
     Min,
     Max,
+    ArrayUnique,
 } from 'class-validator';
 import { Type } from 'class-transformer';
 import { ApiProperty } from '@nestjs/swagger';
@@ -88,6 +89,7 @@ class CreateRecipe {
     })
     @IsNotEmpty({ each: true })
     @IsString({ each: true })
+    @ArrayUnique()
     @IsArray()
     readonly categories: Array<string>;
 

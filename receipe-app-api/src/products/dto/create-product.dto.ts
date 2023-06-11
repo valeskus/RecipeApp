@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsString, IsNumber, IsPositive, Matches } from 'class-validator';
+import { IsNotEmpty, IsString, IsNumber, Matches, Min } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 
 class CreateProduct {
@@ -16,7 +16,7 @@ class CreateProduct {
         description: 'Amount of kilo calories (per 100g)',
         required: true
     })
-    @IsPositive()
+    @Min(0)
     @IsNumber()
     readonly kCal: number;
 
@@ -25,7 +25,7 @@ class CreateProduct {
         description: 'Amount(g) of proteins (per 100g)',
         required: true
     })
-    @IsPositive()
+    @Min(0)
     @IsNumber()
     readonly proteins: number;
 
@@ -34,7 +34,7 @@ class CreateProduct {
         description: 'Amount(g) of proteins (per 100g)',
         required: true
     })
-    @IsPositive()
+    @Min(0)
     @IsNumber()
     readonly carbs: number;
 
@@ -43,7 +43,7 @@ class CreateProduct {
         description: 'Amount(g) of fats (per 100g)',
         required: true
     })
-    @IsPositive()
+    @Min(0)
     @IsNumber()
     readonly fats: number;
 
