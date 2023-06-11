@@ -68,9 +68,9 @@ export class Recipe {
     @Prop({ required: true })
     servingsCount: number;
 
-    // TODO: Examples
     @ApiProperty({
         description: 'List of cooking instructions',
+        type: [Instruction],
         required: true
     })
     @Prop({ required: true })
@@ -83,9 +83,9 @@ export class Recipe {
     @Prop({ required: true })
     macroNutrients: MacroNutrients;
 
-    // TODO: Examples
     @ApiProperty({
         description: 'Ingredients list',
+        type: [Ingredient],
         required: true,
     })
     @Prop({ required: true })
@@ -99,7 +99,13 @@ export class Recipe {
     @Prop({ required: true })
     categories: Array<string>;
 
-    // TODO: difficulty;
+    @ApiProperty({
+        example: 0,
+        description: 'Difficulty of the recipe (0-2)',
+        required: true,
+    })
+    @Prop({ required: true })
+    difficulty: 0 | 1 | 2;
 }
 
 export const RecipeSchema = SchemaFactory.createForClass(Recipe);

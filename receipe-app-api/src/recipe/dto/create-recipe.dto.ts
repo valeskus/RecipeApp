@@ -8,6 +8,8 @@ import {
     ValidateNested,
     IsArray,
     ArrayNotEmpty,
+    Min,
+    Max,
 } from 'class-validator';
 import { Type } from 'class-transformer';
 import { ApiProperty } from '@nestjs/swagger';
@@ -57,7 +59,7 @@ class CreateRecipe {
         required: true
     })
     @Matches(/^(ml|g)$/, {
-        message: 'Units should be either "ml" or "g"'
+        message: 'units should be either "ml" or "g"'
     })
     readonly units: 'ml' | 'g';
 
@@ -89,9 +91,9 @@ class CreateRecipe {
     @IsArray()
     readonly categories: Array<string>;
 
-    // TODO: Examples
     @ApiProperty({
         description: 'Ingredients list',
+        type: [IngredientDto],
         required: true,
     })
     @IsArray()
@@ -100,9 +102,9 @@ class CreateRecipe {
     @Type(() => IngredientDto)
     readonly ingredients: Array<IngredientDto>;
 
-    // TODO: Examples
     @ApiProperty({
         description: 'List of cooking instructions',
+        type: [InstructionDto],
         required: true
     })
     @IsArray()
@@ -111,7 +113,15 @@ class CreateRecipe {
     @Type(() => InstructionDto)
     readonly instructions: Array<InstructionDto>;
 
-    // TODO: difficulty
+    @ApiProperty({
+        example: 0,
+        description: 'Difficulty of the recipe (0-2)',
+        required: true,
+    })
+    @Max(2)
+    @Min(0)
+    @IsNumber()
+    readonly difficulty: 0 | 1 | 2;
 }
 
 export { CreateRecipe as CreateRecipeDto };
