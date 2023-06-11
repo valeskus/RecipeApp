@@ -1,0 +1,12 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo "Lint mobile app:"
+yarn lint:ts
+yarn lint
+
+echo "Lint app api:"
+cd ./receipe-app-api
+yarn lint:ts
+yarn lint
+cd ..
