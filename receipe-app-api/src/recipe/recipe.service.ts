@@ -1,71 +1,78 @@
-import { Injectable } from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
+import { InjectModel } from '@nestjs/mongoose';
+import { Model } from 'mongoose';
+import { isMongoId } from 'class-validator';
 
-import { DetailRecipeModel } from './models';
+import { ProductsService } from '../products/products.service';
+import { CategoriesService } from '../categories/categories.service';
 
-const ImageMock = 'https://picsum.photos/500/500';
+import { Recipe } from './schemas';
+import { CreateRecipeDto } from './dto';
 
 @Injectable()
 export class RecipeService {
-  async getRecipeById(id: string): Promise<DetailRecipeModel> {
-    await new Promise(resolve => setTimeout(resolve, 1500));
+  @InjectModel(Recipe.name) private recipeModel: Model<Recipe>;
+  @Inject(CategoriesService) private readonly categoriesService: CategoriesService;
+  @Inject(ProductsService) private readonly productsService: ProductsService;
 
-    /* eslint-disable */
-    return {
-      id: id,
-      title: 'Product 1 ',
-      image: ImageMock,
-      rating: 4,
-      kCal: 500,
-      weight: 1300,
-      time: '1:50',
-      description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim cras. Ac turpis egestas sed tempus.',
+  findOneByTitle(title: string): Promise<Recipe | null> {
+    return this.recipeModel.findOne({ title }).exec();
+  }
+
+  findOneById(id: string): Promise<Recipe | null> {
+    if (!isMongoId(id)) {
+      return Promise.resolve(null);
+    }
+
+    return this.recipeModel.findOne({ _id: id }).exec();
+  }
+
+  async create(createRecipeDto: CreateRecipeDto): Promise<Recipe> {
+    const found = await this.findOneByTitle(createRecipeDto.title);
+
+    if (found) {
+      throw new Error(`Recipe ${createRecipeDto.title} already exists`);
+    }
+
+    for (const category of createRecipeDto.categories) {
+      if (!await this.categoriesService.findOneByTitle(category)) {
+        throw new Error(`Category ${category} does not exist`);
+      }
+    }
+
+    let kCal = 0;
+    let fats = 0;
+    let carbs = 0;
+    let proteins = 0;
+    for (const ingredient of createRecipeDto.ingredients) {
+      const product = await this.productsService.findOneByTitle(ingredient.title);
+
+      if (!product) {
+        throw new Error(`Product ${ingredient.title} does not exist`);
+      }
+
+      const getNutritionFor = this.productsService.createGetterNutritionByAmount(ingredient.amount);
+
+      kCal += getNutritionFor(product.kCal);
+      fats += getNutritionFor(product.fats);
+      carbs += getNutritionFor(product.carbs);
+      proteins += getNutritionFor(product.proteins);
+
+      Object.assign(ingredient, {
+        units: product.units,
+      });
+    }
+
+    const createdRecipe = new this.recipeModel({
+      ...createRecipeDto,
+      kCal,
       macroNutrients: {
-        protein: 20,
-        carbs: 30,
-        fats: 10,
-      },
-      servingsCount: 3,
-      ingredients: [
-        {
-          id: 'i1',
-          title: 'Product 1',
-          description: '(lorem ipsum dolor sit amet)',
-          count: 200,
-          unit: 'g',
-        },
-        {
-          id: 'i2',
-          title: 'Product 2',
-          count: 1 / 2,
-          unit: 'cup',
-        },
-        {
-          id: 'i3',
-          title: 'Product 3',
-          count: 50,
-          unit: 'ml',
-        },
-      ],
-      instructions: [
-        {
-          id: 'in1',
-          description:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim cras. ',
-        },
-        {
-          id: 'in2',
-          description:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim cras. ',
-        },
-        {
-          id: 'in3',
-          image: ImageMock,
-          description:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim cras. ',
-        },
-      ],
-    };
-    /* eslint-enable */
+        fats,
+        carbs,
+        proteins
+      }
+    });
+
+    return createdRecipe.save();
   }
 }

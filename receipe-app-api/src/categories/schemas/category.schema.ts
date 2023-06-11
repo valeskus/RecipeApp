@@ -18,6 +18,8 @@ export class Category {
     })
     @Prop({ required: true })
     image: string;
+
+    // TODO: type: diet/meal
 }
 
 export const CategorySchema = SchemaFactory.createForClass(Category);

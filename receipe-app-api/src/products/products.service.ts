@@ -26,6 +26,12 @@ export class ProductsService {
     return this.productModel.findOne({ title }).exec();
   }
 
+  createGetterNutritionByAmount(amount: number) {
+    return (nutritionPer100: number) => {
+      return Number(((nutritionPer100 / 100) * amount).toFixed(2));
+    };
+  }
+
   async create(createProductDto: CreateProductDto): Promise<Product> {
     const found = await this.findOneByTitle(createProductDto.title);
 
