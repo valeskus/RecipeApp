@@ -2,36 +2,50 @@ import {StyleSheet} from 'react-native';
 import {Colors} from '../../../../UI/Colors';
 
 export const styles = StyleSheet.create({
-  buttonTitle: {
-    fontSize: 18,
-    color: Colors.background,
-    fontWeight: '600',
+  errorScreen: {
+    flex: 1,
+    backgroundColor: Colors.background,
   },
+  errorContainer:{
+    alignItems: 'center',
+    justifyContent: 'center', 
+    flex:1
+  },
+  headerButton:{
+    position:'absolute',
+    top: 40,
+    zIndex:10
+  },
+
+  icon: {
+    width: 100,
+    height: 100,
+    marginBottom: 20,
+  },
+
   title: {
     fontSize: 27,
     color: Colors.accent,
     marginBottom: 10,
     fontWeight: '600',
   },
+
   message: {
     fontSize: 18,
     color: Colors.primary,
     marginBottom: 20,
   },
-  errorContainer: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: Colors.background,
+
+  buttonTitle: {
+    fontSize: 18,
+    color: Colors.background,
+    fontWeight: '600',
   },
+
   pressed: {
     transform: [{scale: 0.9}],
   },
-  icon: {
-    width: 100,
-    height: 100,
-    marginBottom: 20,
-  },
+ 
   button: {
     borderRadius: 15,
     padding: 15,
@@ -43,4 +57,5 @@ export const styles = StyleSheet.create({
     elevation: 8,
     justifyContent: 'center',
   },
+  
 });
