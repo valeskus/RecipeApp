@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { Provider } from 'react-redux';
 import { Platform, SafeAreaView, UIManager } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
@@ -33,11 +34,12 @@ export type RootStackParamList = {
 const Stack = createNativeStackNavigator();
 declare global {
   namespace ReactNavigation {
-    interface RootParamList extends RootStackParamList {}
+    interface RootParamList extends RootStackParamList { }
   }
 }
 
 function App(): JSX.Element {
+
   return (
     <Provider store={store}>
       <NavigationContainer>
