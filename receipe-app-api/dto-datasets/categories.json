@@ -1,0 +1,57 @@
+[
+    {
+        "title": "Italian Cuisine",
+        "image": "https://picsum.photos/500/500",
+        "type": "meal"
+    },
+    {
+        "title": "Asian Fusion",
+        "image": "https://picsum.photos/500/500",
+        "type": "meal"
+    },
+    {
+        "title": "Comfort Food",
+        "image": "https://picsum.photos/500/500",
+        "type": "meal"
+    },
+    {
+        "title": "Vegetarian/Vegan Delights",
+        "image": "https://picsum.photos/500/500",
+        "type": "diet"
+    },
+    {
+        "title": "Seafood Specialties",
+        "image": "https://picsum.photos/500/500",
+        "type": "meal"
+    },
+    {
+        "title": "Chicken Dishes",
+        "image": "https://picsum.photos/500/500",
+        "type": "meal"
+    },
+    {
+        "title": "Healthy and Light",
+        "image": "https://picsum.photos/500/500",
+        "type": "diet"
+    },
+    {
+        "title": "International Street Food",
+        "image": "https://picsum.photos/500/500",
+        "type": "meal"
+    },
+    {
+        "title": "Baking and Pastry",
+        "image": "https://picsum.photos/500/500",
+        "type": "meal"
+    },
+    {
+        "title": "BBQ and Grilling",
+        "image": "https://picsum.photos/500/500",
+        "type": "meal"
+    },
+    {
+        "title": "Breakfast and Brunch",
+        "image": "https://picsum.photos/500/500",
+        "type": "meal"
+    }
+]

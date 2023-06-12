@@ -54,15 +54,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "380"
+									"value": "124"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"17c-p9DaAujDhUjZ5hWMa9YEsiKkNa4\""
+									"value": "W/\"7c-Y5q9rYnVYSMt2Q/qZBeBx+w8lIw\""
 								},
 								{
 									"key": "Date",
-									"value": "Sat, 10 Jun 2023 10:36:00 GMT"
+									"value": "Sun, 11 Jun 2023 11:31:54 GMT"
 								},
 								{
 									"key": "Connection",
@@ -74,7 +74,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"categories\": [\n        {\n            \"title\": \"test\",\n            \"image\": \"https://picsum.photos/500/500\",\n            \"id\": \"647b1a89fe5a96bbaa3c3721\"\n        },\n        {\n            \"title\": \"test 2\",\n            \"image\": \"https://picsum.photos/500/500\",\n            \"id\": \"647b1f9a20433d5710a972a9\"\n        },\n        {\n            \"title\": \"Lunch\",\n            \"image\": \"https://picsum.photos/500/500\",\n            \"id\": \"648451ae0a03863a3aa65a23\"\n        },\n        {\n            \"title\": \"Breakfast\",\n            \"image\": \"https://picsum.photos/500/500\",\n            \"id\": \"648452020a03863a3aa65a28\"\n        }\n    ]\n}"
+							"body": "{\n    \"categories\": [\n        {\n            \"title\": \"Breakfast\",\n            \"image\": \"https://picsum.photos/500/500\",\n            \"type\": \"meal\",\n            \"id\": \"6485b086ee5e3cbe693adba8\"\n        }\n    ]\n}"
 						}
 					]
 				},
@@ -85,7 +85,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"title\": \"Breakfast\",\n    \"image\": \"https://picsum.photos/500/500\"\n}",
+							"raw": "{\n    \"title\": \"Breakfast\",\n    \"image\": \"https://picsum.photos/500/500\",\n    \"type\": \"meal\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -110,7 +110,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"title\": \"Breakfast\",\n    \"image\": \"https://picsum.photos/500/500\"\n}",
+									"raw": "{\n    \"title\": \"Breakfast\",\n    \"image\": \"https://picsum.photos/500/500\",\n    \"type\": \"meal\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -141,15 +141,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "93"
+									"value": "107"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"5d-W372hRpsU8AeEe1FQJhAQaRM9Wk\""
+									"value": "W/\"6b-YR05SPqO6zkyglz05u0V5JbGg2g\""
 								},
 								{
 									"key": "Date",
-									"value": "Sat, 10 Jun 2023 10:35:46 GMT"
+									"value": "Sun, 11 Jun 2023 11:31:18 GMT"
 								},
 								{
 									"key": "Connection",
@@ -161,7 +161,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"title\": \"Breakfast\",\n    \"image\": \"https://picsum.photos/500/500\",\n    \"id\": \"648452020a03863a3aa65a28\"\n}"
+							"body": "{\n    \"title\": \"Breakfast\",\n    \"image\": \"https://picsum.photos/500/500\",\n    \"type\": \"meal\",\n    \"id\": \"6485b086ee5e3cbe693adba8\"\n}"
 						},
 						{
 							"name": "400",
@@ -170,7 +170,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"title\": \"Breakfast\",\n    \"image\": \"https://picsum.photos/500/500\"\n}",
+									"raw": "{\n    \"title\": \"Breakfast\",\n    \"image\": \"https://picsum.photos/500/500\",\n    \"type\": \"meal\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -209,7 +209,7 @@
 								},
 								{
 									"key": "Date",
-									"value": "Sat, 10 Jun 2023 10:36:25 GMT"
+									"value": "Sun, 11 Jun 2023 11:31:31 GMT"
 								},
 								{
 									"key": "Connection",
@@ -242,7 +242,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "648451ae0a03863a3aa65a23",
+									"value": "6484939e6a30977910dd7747",
 									"description": "Id of the category"
 								}
 							]
@@ -266,7 +266,7 @@
 									"variable": [
 										{
 											"key": "id",
-											"value": "648451ae0a03863a3aa65a23",
+											"value": "6484939e6a30977910dd7747",
 											"description": "Id of the category"
 										}
 									]
@@ -419,15 +419,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "104"
+									"value": "146"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"68-PE33L23dEXGywSYKRuvi1JLKQOA\""
+									"value": "W/\"92-Q7BZev37FDM16yBvzsar5nnlCsQ\""
 								},
 								{
 									"key": "Date",
-									"value": "Sat, 10 Jun 2023 10:40:06 GMT"
+									"value": "Sun, 11 Jun 2023 11:32:56 GMT"
 								},
 								{
 									"key": "Connection",
@@ -439,7 +439,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"products\": [\n        {\n            \"title\": \"test\",\n            \"kCal\": 1,\n            \"proteins\": 1,\n            \"carbs\": 1,\n            \"fats\": 1,\n            \"id\": \"647b590374939d8153c0398f\"\n        }\n    ]\n}"
+							"body": "{\n    \"products\": [\n        {\n            \"title\": \"Maine CoonWheat flour\",\n            \"kCal\": 12,\n            \"proteins\": 13.33,\n            \"carbs\": 716.31,\n            \"fats\": 22.5,\n            \"units\": \"g\",\n            \"id\": \"6485b0c7ee5e3cbe693adbad\"\n        }\n    ]\n}"
 						}
 					]
 				},
@@ -450,7 +450,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"title\": \"Maine CoonWheat flour\",\n    \"kCal\": 364,\n    \"proteins\": 10.33,\n    \"carbs\": 76.31,\n    \"fats\": 2.5\n}",
+							"raw": "{\n    \"title\": \"Maine CoonWheat flour\",\n    \"kCal\": 12,\n    \"proteins\": 13.33,\n    \"carbs\": 716.31,\n    \"fats\": 22.5,\n    \"units\": \"g\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -469,73 +469,13 @@
 					},
 					"response": [
 						{
-							"name": "201",
-							"originalRequest": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"title\": \"Maine CoonWheat flour\",\n    \"kCal\": 364,\n    \"proteins\": 10.33,\n    \"carbs\": 76.31,\n    \"fats\": 2.5\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{BASE_URL}}/products",
-									"host": [
-										"{{BASE_URL}}"
-									],
-									"path": [
-										"products"
-									]
-								}
-							},
-							"status": "Created",
-							"code": 201,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "X-Powered-By",
-									"value": "Express"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "118"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"76-DqT7ccRJh2LfaN5eTJOKrAY+FCk\""
-								},
-								{
-									"key": "Date",
-									"value": "Sat, 10 Jun 2023 10:41:11 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"title\": \"Maine CoonWheat flour\",\n    \"kCal\": 364,\n    \"proteins\": 10.33,\n    \"carbs\": 76.31,\n    \"fats\": 2.5,\n    \"id\": \"648453470a03863a3aa65a32\"\n}"
-						},
-						{
 							"name": "400",
 							"originalRequest": {
 								"method": "POST",
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"title\": \"Maine CoonWheat flour\",\n    \"kCal\": 364,\n    \"proteins\": 10.33,\n    \"carbs\": 76.31,\n    \"fats\": 2.5\n}",
+									"raw": "{\n    \"title\": \"Maine CoonWheat flour\",\n    \"kCal\": 364,\n    \"proteins\": 10.33,\n    \"carbs\": 76.31,\n    \"fats\": 2.5,\n    \"units\": \"g\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -587,6 +527,66 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"statusCode\": 400,\n    \"message\": \"Product Maine CoonWheat flour already exists\",\n    \"error\": \"Bad Request\"\n}"
+						},
+						{
+							"name": "201",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\": \"Maine CoonWheat flour\",\n    \"kCal\": 12,\n    \"proteins\": 13.33,\n    \"carbs\": 716.31,\n    \"fats\": 22.5,\n    \"units\": \"g\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/products",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"products"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "131"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"83-x7sOcWCtsFISDKojhxQ8vDRSqXc\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 11 Jun 2023 11:32:23 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"title\": \"Maine CoonWheat flour\",\n    \"kCal\": 12,\n    \"proteins\": 13.33,\n    \"carbs\": 716.31,\n    \"fats\": 22.5,\n    \"units\": \"g\",\n    \"id\": \"6485b0c7ee5e3cbe693adbad\"\n}"
 						}
 					]
 				},
@@ -607,70 +607,12 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "648453470a03863a3aa65a32"
+									"value": "6485b0c7ee5e3cbe693adbad"
 								}
 							]
 						}
 					},
 					"response": [
-						{
-							"name": "200",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{BASE_URL}}/products/:id",
-									"host": [
-										"{{BASE_URL}}"
-									],
-									"path": [
-										"products",
-										":id"
-									],
-									"variable": [
-										{
-											"key": "id",
-											"value": "648453470a03863a3aa65a32"
-										}
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "X-Powered-By",
-									"value": "Express"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "118"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"76-DqT7ccRJh2LfaN5eTJOKrAY+FCk\""
-								},
-								{
-									"key": "Date",
-									"value": "Sat, 10 Jun 2023 10:42:06 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"title\": \"Maine CoonWheat flour\",\n    \"kCal\": 364,\n    \"proteins\": 10.33,\n    \"carbs\": 76.31,\n    \"fats\": 2.5,\n    \"id\": \"648453470a03863a3aa65a32\"\n}"
-						},
 						{
 							"name": "404",
 							"originalRequest": {
@@ -728,6 +670,357 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"Product not found\",\n    \"error\": \"Not Found\"\n}"
+						},
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/products/:id",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"products",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "6485b0c7ee5e3cbe693adbad"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "131"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"83-x7sOcWCtsFISDKojhxQ8vDRSqXc\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 11 Jun 2023 11:33:11 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"title\": \"Maine CoonWheat flour\",\n    \"kCal\": 12,\n    \"proteins\": 13.33,\n    \"carbs\": 716.31,\n    \"fats\": 22.5,\n    \"units\": \"g\",\n    \"id\": \"6485b0c7ee5e3cbe693adbad\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Recipe",
+			"item": [
+				{
+					"name": "Create a recipe",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Lasagna\",\n    \"time\": 10,\n    \"amount\": 200,\n    \"units\": \"g\",\n    \"description\": \"Description of Lasagna\",\n    \"servingsCount\": 1,\n    \"categories\": [\"Breakfast\"],\n    \"image\": \"https://picsum.photos/500/500\",\n    \"ingredients\": [{\n        \"title\": \"Maine CoonWheat flour\",\n        \"amount\": 124\n    }],\n    \"instructions\": [{\n        \"description\": \"Lasagna instruction\",\n        \"image\": \"https://picsum.photos/500/500\"\n    }],\n    \"difficulty\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/recipe",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"recipe"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "201",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\": \"Lasagna\",\n    \"time\": 10,\n    \"amount\": 200,\n    \"units\": \"g\",\n    \"description\": \"Description of Lasagna\",\n    \"servingsCount\": 1,\n    \"categories\": [\"Breakfast\"],\n    \"image\": \"https://picsum.photos/500/500\",\n    \"ingredients\": [{\n        \"title\": \"Maine CoonWheat flour\",\n        \"amount\": 124\n    }],\n    \"instructions\": [{\n        \"description\": \"Lasagna instruction\",\n        \"image\": \"https://picsum.photos/500/500\"\n    }],\n    \"difficulty\": 1\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/recipe",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"recipe"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "471"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1d7-jzmfZWFb6JfN5eWEhhtRfR46oYs\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 11 Jun 2023 11:34:53 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"time\": 10,\n    \"title\": \"Lasagna\",\n    \"image\": \"https://picsum.photos/500/500\",\n    \"amount\": 200,\n    \"units\": \"g\",\n    \"kCal\": 14.88,\n    \"description\": \"Description of Lasagna\",\n    \"servingsCount\": 1,\n    \"instructions\": [\n        {\n            \"description\": \"Lasagna instruction\",\n            \"image\": \"https://picsum.photos/500/500\"\n        }\n    ],\n    \"macroNutrients\": {\n        \"proteins\": 16.53,\n        \"carbs\": 888.22,\n        \"fats\": 27.9\n    },\n    \"ingredients\": [\n        {\n            \"title\": \"Maine CoonWheat flour\",\n            \"amount\": 124,\n            \"units\": \"g\"\n        }\n    ],\n    \"categories\": [\n        \"Breakfast\"\n    ],\n    \"difficulty\": 1,\n    \"id\": \"6485b15cee5e3cbe693adbb5\"\n}"
+						},
+						{
+							"name": "400",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\": \"Lasagna\",\n    \"time\": 10,\n    \"amount\": 200,\n    \"units\": \"g\",\n    \"description\": \"Description of Lasagna\",\n    \"servingsCount\": 1,\n    \"categories\": [\"Breakfast\"],\n    \"image\": \"https://picsum.photos/500/500\",\n    \"ingredients\": [{\n        \"title\": \"Maine CoonWheat flour\",\n        \"amount\": 124\n    }],\n    \"instructions\": [{\n        \"description\": \"Lasagna instruction\",\n        \"image\": \"https://picsum.photos/500/500\"\n    }],\n    \"difficulty\": 1\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/recipe",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"recipe"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "82"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"52-WslaBHNp6FoCWN30JJ3Ebi8KVP0\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 11 Jun 2023 11:35:06 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 400,\n    \"message\": \"Recipe Lasagna already exists\",\n    \"error\": \"Bad Request\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get recipe by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/recipe/:id",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"recipe",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6485b15cee5e3cbe693adbb5"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/recipe/:id",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"recipe",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "6485b15cee5e3cbe693adbb5"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "471"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1d7-jzmfZWFb6JfN5eWEhhtRfR46oYs\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 11 Jun 2023 11:35:28 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"time\": 10,\n    \"title\": \"Lasagna\",\n    \"image\": \"https://picsum.photos/500/500\",\n    \"amount\": 200,\n    \"units\": \"g\",\n    \"kCal\": 14.88,\n    \"description\": \"Description of Lasagna\",\n    \"servingsCount\": 1,\n    \"instructions\": [\n        {\n            \"description\": \"Lasagna instruction\",\n            \"image\": \"https://picsum.photos/500/500\"\n        }\n    ],\n    \"macroNutrients\": {\n        \"proteins\": 16.53,\n        \"carbs\": 888.22,\n        \"fats\": 27.9\n    },\n    \"ingredients\": [\n        {\n            \"title\": \"Maine CoonWheat flour\",\n            \"amount\": 124,\n            \"units\": \"g\"\n        }\n    ],\n    \"categories\": [\n        \"Breakfast\"\n    ],\n    \"difficulty\": 1,\n    \"id\": \"6485b15cee5e3cbe693adbb5\"\n}"
+						},
+						{
+							"name": "404",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/recipe/:id",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"recipe",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "6485b15cee5e3cbe693adbb52"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "67"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"43-+xEVJayc2vHAVkX7Y3u3i2K2i3g\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 11 Jun 2023 11:35:40 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"Recipe not found\",\n    \"error\": \"Not Found\"\n}"
 						}
 					]
 				}

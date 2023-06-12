@@ -18,6 +18,14 @@ export class Category {
     })
     @Prop({ required: true })
     image: string;
+
+    @ApiProperty({
+        example: 'diet',
+        description: 'Type of the category',
+        required: true
+    })
+    @Prop({ required: true })
+    type: 'diet' | 'meal';
 }
 
 export const CategorySchema = SchemaFactory.createForClass(Category);

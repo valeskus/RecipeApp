@@ -1,0 +1,426 @@
+[
+    {
+        "title": "Chocolate Bar",
+        "kCal": 250,
+        "proteins": 4,
+        "carbs": 35,
+        "fats": 11,
+        "units": "g"
+    },
+    {
+        "title": "Sour Apple Candy",
+        "kCal": 60,
+        "proteins": 0,
+        "carbs": 15,
+        "fats": 0,
+        "units": "g"
+    },
+    {
+        "title": "Whole Wheat Bread",
+        "kCal": 80,
+        "proteins": 3,
+        "carbs": 15,
+        "fats": 1,
+        "units": "g"
+    },
+    {
+        "title": "Banana",
+        "kCal": 96,
+        "proteins": 1.2,
+        "carbs": 23,
+        "fats": 0.2,
+        "units": "g"
+    },
+    {
+        "title": "Greek Yogurt",
+        "kCal": 130,
+        "proteins": 10,
+        "carbs": 4,
+        "fats": 8,
+        "units": "g"
+    },
+    {
+        "title": "Almonds",
+        "kCal": 160,
+        "proteins": 6,
+        "carbs": 6,
+        "fats": 14,
+        "units": "g"
+    },
+    {
+        "title": "Orange Juice",
+        "kCal": 110,
+        "proteins": 2,
+        "carbs": 26,
+        "fats": 0.5,
+        "units": "ml"
+    },
+    {
+        "title": "Cheddar Cheese",
+        "kCal": 113,
+        "proteins": 7,
+        "carbs": 0.4,
+        "fats": 9,
+        "units": "g"
+    },
+    {
+        "title": "Roasted Chicken Breast",
+        "kCal": 165,
+        "proteins": 31,
+        "carbs": 0,
+        "fats": 3.6,
+        "units": "g"
+    },
+    {
+        "title": "Steak",
+        "kCal": 250,
+        "proteins": 26,
+        "carbs": 0,
+        "fats": 17,
+        "units": "g"
+    },
+    {
+        "title": "Apple",
+        "kCal": 52,
+        "proteins": 0.3,
+        "carbs": 14,
+        "fats": 0.2,
+        "units": "g"
+    },
+    {
+        "title": "Cucumber",
+        "kCal": 16,
+        "proteins": 0.6,
+        "carbs": 3.6,
+        "fats": 0.1,
+        "units": "g"
+    },
+    {
+        "title": "Broccoli",
+        "kCal": 55,
+        "proteins": 3.7,
+        "carbs": 11.2,
+        "fats": 0.6,
+        "units": "g"
+    },
+    {
+        "title": "Salmon",
+        "kCal": 206,
+        "proteins": 22,
+        "carbs": 0,
+        "fats": 13,
+        "units": "g"
+    },
+    {
+        "title": "Milk",
+        "kCal": 60,
+        "proteins": 3.3,
+        "carbs": 4.8,
+        "fats": 3.6,
+        "units": "ml"
+    },
+    {
+        "title": "Carrot",
+        "kCal": 41,
+        "proteins": 0.9,
+        "carbs": 10,
+        "fats": 0.2,
+        "units": "g"
+    },
+    {
+        "title": "Eggs",
+        "kCal": 78,
+        "proteins": 6,
+        "carbs": 0.6,
+        "fats": 5,
+        "units": "g"
+    },
+    {
+        "title": "Peanut Butter",
+        "kCal": 190,
+        "proteins": 8,
+        "carbs": 7,
+        "fats": 16,
+        "units": "g"
+    },
+    {
+        "title": "Tomato",
+        "kCal": 18,
+        "proteins": 0.9,
+        "carbs": 3.9,
+        "fats": 0.2,
+        "units": "g"
+    },
+    {
+        "title": "Grapes",
+        "kCal": 69,
+        "proteins": 0.7,
+        "carbs": 18,
+        "fats": 0.2,
+        "units": "g"
+    },
+    {
+        "title": "Potato",
+        "kCal": 77,
+        "proteins": 2,
+        "carbs": 17,
+        "fats": 0.1,
+        "units": "g"
+    },
+    {
+        "title": "Honey",
+        "kCal": 304,
+        "proteins": 0.3,
+        "carbs": 82,
+        "fats": 0,
+        "units": "g"
+    },
+    {
+        "title": "Watermelon",
+        "kCal": 30,
+        "proteins": 0.6,
+        "carbs": 8,
+        "fats": 0.2,
+        "units": "g"
+    },
+    {
+        "title": "Avocado",
+        "kCal": 160,
+        "proteins": 2,
+        "carbs": 9,
+        "fats": 15,
+        "units": "g"
+    },
+    {
+        "title": "Lettuce",
+        "kCal": 5,
+        "proteins": 0.5,
+        "carbs": 1,
+        "fats": 0.1,
+        "units": "g"
+    },
+    {
+        "title": "Yogurt",
+        "kCal": 150,
+        "proteins": 5,
+        "carbs": 17,
+        "fats": 8,
+        "units": "g"
+    },
+    {
+        "title": "Corn",
+        "kCal": 96,
+        "proteins": 3.4,
+        "carbs": 21,
+        "fats": 1.5,
+        "units": "g"
+    },
+    {
+        "title": "Peach",
+        "kCal": 39,
+        "proteins": 0.9,
+        "carbs": 9.5,
+        "fats": 0.3,
+        "units": "g"
+    },
+    {
+        "title": "Bell Pepper",
+        "kCal": 31,
+        "proteins": 0.9,
+        "carbs": 6,
+        "fats": 0.3,
+        "units": "g"
+    },
+    {
+        "title": "Mango",
+        "kCal": 60,
+        "proteins": 0.8,
+        "carbs": 15,
+        "fats": 0.4,
+        "units": "g"
+    },
+    {
+        "title": "Blueberries",
+        "kCal": 57,
+        "proteins": 0.7,
+        "carbs": 14,
+        "fats": 0.3,
+        "units": "g"
+    },
+    {
+        "title": "Blackberries",
+        "kCal": 43,
+        "proteins": 1.4,
+        "carbs": 10,
+        "fats": 0.4,
+        "units": "g"
+    },
+    {
+        "title": "Strawberries",
+        "kCal": 29,
+        "proteins": 0.7,
+        "carbs": 7,
+        "fats": 0.3,
+        "units": "g"
+    },
+    {
+        "title": "Raspberries",
+        "kCal": 53,
+        "proteins": 1.2,
+        "carbs": 12,
+        "fats": 0.7,
+        "units": "g"
+    },
+    {
+        "title": "Pineapple",
+        "kCal": 50,
+        "proteins": 0.5,
+        "carbs": 13,
+        "fats": 0.1,
+        "units": "g"
+    },
+    {
+        "title": "Cantaloupe",
+        "kCal": 34,
+        "proteins": 0.8,
+        "carbs": 8,
+        "fats": 0.2,
+        "units": "g"
+    },
+    {
+        "title": "Kiwi",
+        "kCal": 41,
+        "proteins": 0.8,
+        "carbs": 9,
+        "fats": 0.4,
+        "units": "g"
+    },
+    {
+        "title": "Pears",
+        "kCal": 57,
+        "proteins": 0.4,
+        "carbs": 15,
+        "fats": 0.1,
+        "units": "g"
+    },
+    {
+        "title": "Plums",
+        "kCal": 46,
+        "proteins": 0.7,
+        "carbs": 11,
+        "fats": 0.3,
+        "units": "g"
+    },
+    {
+        "title": "Apricots",
+        "kCal": 48,
+        "proteins": 0.5,
+        "carbs": 12,
+        "fats": 0.1,
+        "units": "g"
+    },
+    {
+        "title": "Pine Nuts",
+        "kCal": 673,
+        "proteins": 13,
+        "carbs": 13,
+        "fats": 68,
+        "units": "g"
+    },
+    {
+        "title": "Cashews",
+        "kCal": 553,
+        "proteins": 18,
+        "carbs": 30,
+        "fats": 44,
+        "units": "g"
+    },
+    {
+        "title": "Hazelnuts",
+        "kCal": 628,
+        "proteins": 15,
+        "carbs": 17,
+        "fats": 61,
+        "units": "g"
+    },
+    {
+        "title": "Walnuts",
+        "kCal": 654,
+        "proteins": 15,
+        "carbs": 14,
+        "fats": 65,
+        "units": "g"
+    },
+    {
+        "title": "Pistachios",
+        "kCal": 562,
+        "proteins": 20,
+        "carbs": 28,
+        "fats": 46,
+        "units": "g"
+    },
+    {
+        "title": "Macadamia Nuts",
+        "kCal": 718,
+        "proteins": 8,
+        "carbs": 14,
+        "fats": 76,
+        "units": "g"
+    },
+    {
+        "title": "Brazil Nuts",
+        "kCal": 656,
+        "proteins": 14,
+        "carbs": 12,
+        "fats": 66,
+        "units": "g"
+    },
+    {
+        "title": "Coconut",
+        "kCal": 354,
+        "proteins": 3.3,
+        "carbs": 15,
+        "fats": 33,
+        "units": "g"
+    },
+    {
+        "title": "Quinoa",
+        "kCal": 120,
+        "proteins": 4.4,
+        "carbs": 21,
+        "fats": 1.9,
+        "units": "g"
+    },
+    {
+        "title": "Brown Rice",
+        "kCal": 216,
+        "proteins": 4.5,
+        "carbs": 45,
+        "fats": 1.8,
+        "units": "g"
+    },
+    {
+        "title": "Oats",
+        "kCal": 389,
+        "proteins": 16.9,
+        "carbs": 66,
+        "fats": 6.9,
+        "units": "g"
+    },
+    {
+        "title": "Quail Eggs",
+        "kCal": 158,
+        "proteins": 13,
+        "carbs": 0.6,
+        "fats": 11,
+        "units": "g"
+    },
+    {
+        "title": "Tofu",
+        "kCal": 144,
+        "proteins": 15,
+        "carbs": 3.9,
+        "fats": 8,
+        "units": "g"
+    }
+]

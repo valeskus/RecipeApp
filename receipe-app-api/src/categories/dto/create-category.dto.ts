@@ -1,4 +1,4 @@
-import { IsString, IsNotEmpty, IsUrl } from 'class-validator';
+import { IsString, IsNotEmpty, IsUrl, Matches } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 
 class CreateCategory {
@@ -18,6 +18,16 @@ class CreateCategory {
     })
     @IsUrl()
     readonly image: string;
+
+    @ApiProperty({
+        example: 'diet',
+        description: 'Type of the category',
+        required: true
+    })
+    @Matches(/^(diet|meal)$/, {
+        message: 'type should be either "diet" or "meal"'
+    })
+    readonly type: 'diet' | 'meal';
 }
 
 export { CreateCategory as CreateCategoryDto };
