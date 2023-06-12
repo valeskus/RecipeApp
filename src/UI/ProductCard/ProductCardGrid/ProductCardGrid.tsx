@@ -5,6 +5,8 @@ import { Rating } from '../components/Rating';
 
 import { styles } from './styles';
 
+import { Icons } from '@UI/Icons';
+
 interface Props {
   image: string;
   title: string;
@@ -39,8 +41,15 @@ export function ProductCardGrid({
           {title}
         </Text>
         <Rating rating={rating} />
-        <Text style={styles.productCardDetailsItem}>Kcal: {calories}</Text>
-        <Text style={styles.productCardDetailsItem}>Time: {time}</Text>
+        <View style={styles.productCardDetailsItemBox}>
+          <Image source={Icons.kCal} style={styles.icon} />
+          <Text style={styles.productCardDetailsItem}>{calories} kcal</Text>
+          <Text style={styles.note}> / 100g</Text>
+        </View>
+        <View style={styles.productCardDetailsItemBox}>
+          <Image source={Icons.time} style={styles.icon} />
+          <Text style={styles.productCardDetailsItem}>{time}</Text>
+        </View>
       </View>
     </Pressable>
   );
