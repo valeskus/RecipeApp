@@ -39,7 +39,6 @@ declare global {
 }
 
 function App(): JSX.Element {
-
   return (
     <Provider store={store}>
       <NavigationContainer>
