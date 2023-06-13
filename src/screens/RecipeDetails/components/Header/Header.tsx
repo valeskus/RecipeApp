@@ -22,7 +22,6 @@ export function Header({ scrollYRef }: Props): JSX.Element {
   }, []);
 
   return (
-
     <View style={styles.header}>
       <Animated.View style={[styles.headerWrapper, { opacity: headerOpacity }]} />
       <View style={styles.headerLeftButton}>
