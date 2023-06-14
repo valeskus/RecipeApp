@@ -6,14 +6,15 @@ export const styles = StyleSheet.create({
   header: {
     position: 'absolute',
     flexDirection: 'row',
+    paddingTop: 40,
     zIndex: 10,
-    top: 40,
   },
   headerWrapper: {
     backgroundColor: Colors.shadow,
-    flex: 1,
     position: 'absolute',
-    width: '100%',
+    top: 0,
+    right: 0,
+    left: 0,
     height: 115,
     opacity: 0,
     borderBottomRightRadius: 30,
