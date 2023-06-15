@@ -2,7 +2,9 @@ import * as Redux from 'redux';
 
 import { ErrorsActions } from './errorsActions';
 
-export interface ErrorsStoreState { }
+export interface ErrorsStoreState {
+  error: any;
+}
 
 const initialState: ErrorsStoreState = {
   error: null,

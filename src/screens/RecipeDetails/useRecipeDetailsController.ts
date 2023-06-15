@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { RouteProp, useRoute } from '@react-navigation/native';
 
 import * as RecipeDetailsStore from '@stores/recipeDetails';
+import * as ErrorsStore from '@stores/errors';
 
 import {
   NutrientsSection,
@@ -12,7 +13,7 @@ import {
 
 export const useRecipeDetailsController = () => {
   const [isLoading, setLoading] = useState(false);
-  const [isError, setError] = useState(false);
+  // const [isError, setError] = useState(false);
 
   const { params } =
     useRoute<RouteProp<ReactNavigation.RootParamList, 'RecipeDetails'>>();
@@ -23,9 +24,11 @@ export const useRecipeDetailsController = () => {
   });
 
   const { recipe } = RecipeDetailsStore.useRecipeDetailsStore();
+  const { error } = ErrorsStore.useErrorsStore();
 
   const getRecipe = RecipeDetailsStore.useGetRecipeDetails();
   const resetRecipe = RecipeDetailsStore.useResetRecipeDetails();
+  const resetError = ErrorsStore.useResetErrors();
   const fetchData = async () => {
     try {
       setLoading(true);
@@ -33,9 +36,8 @@ export const useRecipeDetailsController = () => {
       await getRecipe(params.id);
 
       setLoading(false);
-    } catch (error) {
+    } catch (err) {
       setLoading(false);
-      setError(true);
     }
   };
 
@@ -43,7 +45,7 @@ export const useRecipeDetailsController = () => {
     fetchData();
 
     return () => {
-      setError(false);
+      resetError();
       resetRecipe();
     };
   }, []);
@@ -71,6 +73,6 @@ export const useRecipeDetailsController = () => {
     prescriptionCardActiveSection: PrescriptionCard.activeSection,
     servingsCount: PrescriptionCard.servingsCount,
     isLoading,
-    isError,
+    error,
   };
 };
