@@ -1,12 +1,15 @@
 import React from 'react';
 import { Image, Pressable, SafeAreaView, Text, View } from 'react-native';
-import { styles } from './styles';
+
 import { Icons } from '../../../../UI/Icons';
 import { Button } from '../../../../UI/Button';
+
+import { styles } from './styles';
 import { useErrorController } from './useErrorController';
 
 export function Error(): JSX.Element {
-const {onGoBack,onTryAgain} = useErrorController()
+  const { onGoBack, onTryAgain } = useErrorController();
+
   return (
     <SafeAreaView style={styles.errorScreen}>
       <View style={styles.headerButton}>
@@ -17,7 +20,8 @@ const {onGoBack,onTryAgain} = useErrorController()
         <Text style={styles.title}>Ooops...</Text>
         <Text style={styles.message}>Something went wrong!</Text>
         <Pressable onPress={onTryAgain}
-          style={({ pressed }) => [styles.button, pressed && styles.pressed]}>
+          style={({ pressed }) => [styles.button, pressed && styles.pressed]}
+        >
           <Text style={styles.buttonTitle}>Please, try again!</Text>
         </Pressable>
       </View>

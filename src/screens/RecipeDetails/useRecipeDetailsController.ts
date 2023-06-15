@@ -1,4 +1,4 @@
-import { useCallback, useEffect,useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { RouteProp, useRoute } from '@react-navigation/native';
 
 import * as RecipeDetailsStore from '@stores/recipeDetails';
@@ -14,7 +14,7 @@ export const useRecipeDetailsController = () => {
   const [isLoading, setLoading] = useState(false);
   const [isError, setError] = useState(false);
 
-  const {params} =
+  const { params } =
     useRoute<RouteProp<ReactNavigation.RootParamList, 'RecipeDetails'>>();
 
   const PrescriptionCard = usePrescriptionCardController();

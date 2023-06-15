@@ -1,10 +1,11 @@
 import * as Redux from 'redux';
+
 import { ErrorsActions } from './errorsActions';
 
 export interface ErrorsStoreState { }
 
 const initialState: ErrorsStoreState = {
-  error: null
+  error: null,
 };
 
 export function errorsReducer(
@@ -17,15 +18,17 @@ export function errorsReducer(
 
       return {
         ...state,
-        error
+        error,
       };
     }
+
     case ErrorsActions.RESSET: {
 
       return {
-        ...initialState
+        ...initialState,
       };
     }
+
     default:
       return state;
   }

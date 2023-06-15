@@ -9,7 +9,7 @@ import { useCategoryListController } from './useCategoryListController';
 
 export function CategoriesList(): JSX.Element {
   const { handleSearch } = useCategoryListController();
-  
+
   return (
     <View style={styles.categoriesScreenContainer}>
       <StatusBar />

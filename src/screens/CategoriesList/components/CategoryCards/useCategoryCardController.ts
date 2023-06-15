@@ -1,12 +1,12 @@
-import {useNavigation} from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
+import { useCallback, useEffect, useState } from 'react';
+
 import * as CategoriesStore from '../../../../stores/categories';
 import * as SearchStore from '../../../../stores/search';
 
-import {useCallback, useEffect, useState} from 'react';
-
-export const useCategoryCardControler = () => {
+export const useCategoryCardController = () => {
   const [isLoading, setLoading] = useState(false);
-  const {categories} = CategoriesStore.useCategoriesStore();
+  const { categories } = CategoriesStore.useCategoriesStore();
 
   const getCategories = CategoriesStore.useGetCategories();
 
