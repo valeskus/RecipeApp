@@ -20,21 +20,21 @@ const actionResetRecipe = () => ({
   payload: {},
 });
 
-// const actionError = (error: unknown) => {
-//   return {
-//     type: RecipeDetailsActions.ERROR,
-//     payload: error,
-//   };
-// };
+const actionError = (error: unknown) => {
+  return {
+    type: RecipeDetailsActions.ERROR,
+    payload: error,
+  };
+};
 
 export const getRecipeDetails = async (id: string, dispatch: Dispatch) => {
-  // try {
-  const recipe = await RecipesApi.getRecipeById(id);
+  try {
+    const recipe = await RecipesApi.getRecipeById(id);
 
-  dispatch(actionGetRecipe(recipe));
-  // } catch (error) {
-  //   dispatch(actionError(error));
-  // }
+    dispatch(actionGetRecipe(recipe));
+  } catch (error) {
+    dispatch(actionError(error));
+  }
 };
 
 export const resetRecipeDetails = (dispatch: Dispatch) => {
