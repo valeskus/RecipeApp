@@ -6,13 +6,14 @@ import { Search } from '@components/Search';
 import { styles } from './styles';
 import { CategoryCards } from './components/CategoryCards';
 import { useCategoryListController } from './useCategoryListController';
+import { Error } from './components/Error';
 
 export function CategoriesList(): JSX.Element {
   const { handleSearch, categories, isLoading, error } = useCategoryListController();
 
   return (
     <View style={styles.categoriesScreenContainer}>
-      {error && <View />}
+      {error && <Error/>}
       {!error && (<><StatusBar />
         <View style={styles.searchContainer}>
           <Search onSearch={handleSearch} />
