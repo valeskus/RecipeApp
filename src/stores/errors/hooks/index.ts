@@ -1,1 +1,1 @@
-export * from './useRessetErrors';
+export * from './useResetErrors';

@@ -1,4 +1,4 @@
-import { configureStore, combineReducers, applyMiddleware } from '@reduxjs/toolkit';
+import { configureStore, combineReducers } from '@reduxjs/toolkit';
 
 import { categoriesReducer } from './categories/categoriesReducer';
 import { recipesReducer } from './recipes/recipesReducer';

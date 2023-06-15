@@ -1,14 +1,14 @@
 import * as React from 'react';
 import * as Redux from 'react-redux';
 
-import { ressetErrors } from '../errorsActions';
+import { resetErrors } from '../errorsActions';
 
-export const useRessetErrors = () => {
+export const useResetErrors = () => {
   const dispatch = Redux.useDispatch();
 
   return React.useCallback(
     () => {
-      ressetErrors(dispatch);
+      resetErrors(dispatch);
     },
     [dispatch],
   );

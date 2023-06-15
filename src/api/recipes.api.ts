@@ -23,6 +23,6 @@ export const searchRecipes = async (
 
 export const getRecipeById = async (id: string): Promise<DetailRecipeModel> => {
   const result = await client.get<DetailRecipeModel>(`/recipe/${id}`);
-  // return result.data;
-  throw 'error';
+
+  return result.data;
 };
