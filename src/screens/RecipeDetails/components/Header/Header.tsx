@@ -7,19 +7,28 @@ import { Button } from '@UI/Button';
 import { styles } from './styles';
 
 interface Props {
-  scrollYRef: any;
+  scrollYRef?: any;
+  isError: boolean;
 }
 
-export function Header({ scrollYRef }: Props): JSX.Element {
+export function Header({ scrollYRef, isError }: Props): JSX.Element {
+
+  const navigation = useNavigation();
+  const onGoBack = useCallback(() => {
+    navigation.goBack();
+  }, []);
+
+  if (isError) {
+    return  (<View style={styles.header}>
+      <Button icon="leftArrow" onPress={onGoBack} />
+    </View>);
+  }
+
   const headerOpacity = scrollYRef.current.interpolate({
     inputRange: [190, 280, 310, 350],
     outputRange: [0, 0.2, 0.5, 0.5],
     extrapolateLeft: 'clamp',
   });
-  const navigation = useNavigation();
-  const onGoBack = useCallback(() => {
-    navigation.goBack();
-  }, []);
 
   return (
     <View style={styles.header}>
