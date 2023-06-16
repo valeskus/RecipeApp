@@ -13,7 +13,6 @@ import {
 
 export const useRecipeDetailsController = () => {
   const [isLoading, setLoading] = useState(false);
-  // const [isError, setError] = useState(false);
 
   const { params } =
     useRoute<RouteProp<ReactNavigation.RootParamList, 'RecipeDetails'>>();
@@ -30,15 +29,12 @@ export const useRecipeDetailsController = () => {
   const resetRecipe = RecipeDetailsStore.useResetRecipeDetails();
   const resetError = ErrorsStore.useResetErrors();
   const fetchData = async () => {
-    try {
-      setLoading(true);
 
-      await getRecipe(params.id);
+    setLoading(true);
 
-      setLoading(false);
-    } catch (err) {
-      setLoading(false);
-    }
+    await getRecipe(params.id);
+
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -73,6 +69,6 @@ export const useRecipeDetailsController = () => {
     prescriptionCardActiveSection: PrescriptionCard.activeSection,
     servingsCount: PrescriptionCard.servingsCount,
     isLoading,
-    error,
+    isError: !!error,
   };
 };

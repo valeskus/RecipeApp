@@ -40,6 +40,6 @@ export const useCategoryListController = () => {
     handleSearch,
     categories,
     isLoading,
-    error,
+    isError: !!error,
   };
 };

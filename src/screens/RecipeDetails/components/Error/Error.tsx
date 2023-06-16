@@ -1,8 +1,8 @@
 import React from 'react';
 import { Image, Pressable, SafeAreaView, Text, View } from 'react-native';
 
-import { Icons } from '../../../../UI/Icons';
-import { Button } from '../../../../UI/Button';
+import { Button } from '@UI/Button';
+import { Icons } from '@UI/Icons';
 
 import { styles } from './styles';
 import { useErrorController } from './useErrorController';

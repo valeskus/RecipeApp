@@ -1,8 +1,8 @@
 import { Dispatch } from 'redux';
 
 export enum ErrorsActions {
-  RESSET = '@error/reset',
-  SET = '@set/error',
+  RESET = '@error/reset',
+  SET = '@error/set',
 }
 
 const actionError = (error: unknown) => ({
@@ -10,7 +10,7 @@ const actionError = (error: unknown) => ({
   payload: error,
 });
 const actionResetError = () => ({
-  type: ErrorsActions.RESSET,
+  type: ErrorsActions.RESET,
 });
 
 export const setError =  (

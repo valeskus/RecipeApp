@@ -7,7 +7,7 @@ export interface ErrorsStoreState {
 }
 
 const initialState: ErrorsStoreState = {
-  error: null,
+  error: undefined,
 };
 
 export function errorsReducer(
@@ -24,7 +24,7 @@ export function errorsReducer(
       };
     }
 
-    case ErrorsActions.RESSET: {
+    case ErrorsActions.RESET: {
 
       return {
         ...initialState,

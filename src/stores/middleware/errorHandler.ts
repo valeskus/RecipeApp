@@ -5,15 +5,10 @@ import { setError } from '../errors/errorsActions';
 export const errorHandler: Middleware = () => (
   next: Dispatch,
 ) => (action: any) => {
-  try {
-    next(action);
+  next(action);
 
-    if (action.type.includes('error')) {
-      setError(action.payload, next);
-    }
-
-  } catch (err) {
-    setError(err, next);
+  if (action.type.includes('error')) {
+    setError(action.payload, next);
   }
 
 };

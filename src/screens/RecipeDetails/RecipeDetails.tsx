@@ -37,9 +37,8 @@ export function RecipeDetails(): JSX.Element {
     nutrientsActiveSection,
     prescriptionCardActiveSection,
     servingsCount,
-
     isLoading,
-    error,
+    isError,
   } = useRecipeDetailsController();
 
   const scrollYRef = useRef(new Animated.Value(0));
@@ -48,7 +47,7 @@ export function RecipeDetails(): JSX.Element {
     return <RecipeDetailsSkeleton />;
   }
 
-  if (error || !recipe) {
+  if (isError || !recipe) {
     return <Error />;
   }
 

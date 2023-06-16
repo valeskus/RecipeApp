@@ -9,16 +9,18 @@ import { useCategoryListController } from './useCategoryListController';
 import { Error } from './components/Error';
 
 export function CategoriesList(): JSX.Element {
-  const { handleSearch, categories, isLoading, error } = useCategoryListController();
+  const { handleSearch, categories, isLoading, isError } = useCategoryListController();
+  if (isError) {
+    return <Error />;
+  }
 
   return (
     <View style={styles.categoriesScreenContainer}>
-      {error && <Error/>}
-      {!error && (<><StatusBar />
-        <View style={styles.searchContainer}>
-          <Search onSearch={handleSearch} />
-        </View>
-        <CategoryCards categories={categories} isLoading={isLoading} /></>)}
+      <StatusBar />
+      <View style={styles.searchContainer}>
+        <Search onSearch={handleSearch} />
+      </View>
+      <CategoryCards categories={categories} isLoading={isLoading} />
     </View>
   );
 }
