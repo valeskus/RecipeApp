@@ -16,7 +16,7 @@ const actionGetCategories = (payload: CategoryListModel) => ({
 
 const actionError = (error: unknown) => ({
   type: CategoriesActions.ERROR,
-  payload: error,
+  payload: { getCategories: error },
 });
 
 export const getCategories = async (dispatch: Dispatch) => {

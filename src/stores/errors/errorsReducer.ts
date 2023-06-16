@@ -3,11 +3,15 @@ import * as Redux from 'redux';
 import { ErrorsActions } from './errorsActions';
 
 export interface ErrorsStoreState {
-  error: any;
+  getCategories: unknown;
+  getRecipes: unknown;
+  getRecipeDetails: unknown;
 }
 
 const initialState: ErrorsStoreState = {
-  error: undefined,
+  getCategories: undefined,
+  getRecipes: undefined,
+  getRecipeDetails: undefined,
 };
 
 export function errorsReducer(
@@ -20,7 +24,7 @@ export function errorsReducer(
 
       return {
         ...state,
-        error,
+        ...error,
       };
     }
 

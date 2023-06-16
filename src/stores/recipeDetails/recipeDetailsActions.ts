@@ -22,7 +22,7 @@ const actionResetRecipe = () => ({
 
 const actionError = (error: unknown) => ({
   type: RecipeDetailsActions.ERROR,
-  payload: error,
+  payload: { getRecipeDetails: error },
 }
 );
 

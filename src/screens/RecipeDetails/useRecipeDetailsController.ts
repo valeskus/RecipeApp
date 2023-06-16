@@ -23,8 +23,7 @@ export const useRecipeDetailsController = () => {
   });
 
   const { recipe } = RecipeDetailsStore.useRecipeDetailsStore();
-  const { error } = ErrorsStore.useErrorsStore();
-
+  const isError = ErrorsStore.useGetErrorFor('getRecipeDetails');
   const getRecipe = RecipeDetailsStore.useGetRecipeDetails();
   const resetRecipe = RecipeDetailsStore.useResetRecipeDetails();
   const resetError = ErrorsStore.useResetErrors();
@@ -69,6 +68,5 @@ export const useRecipeDetailsController = () => {
     prescriptionCardActiveSection: PrescriptionCard.activeSection,
     servingsCount: PrescriptionCard.servingsCount,
     isLoading,
-    isError: !!error,
-  };
+    isError  };
 };

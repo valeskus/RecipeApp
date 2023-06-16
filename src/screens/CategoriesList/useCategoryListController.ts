@@ -10,7 +10,7 @@ export const useCategoryListController = () => {
   const { categories } = CategoriesStore.useCategoriesStore();
 
   const getCategories = CategoriesStore.useGetCategories();
-  const { error } = ErrorsStore.useErrorsStore();
+  const isError = ErrorsStore.useGetErrorFor('getCategories');
 
   const navigation = useNavigation();
 
@@ -40,6 +40,5 @@ export const useCategoryListController = () => {
     handleSearch,
     categories,
     isLoading,
-    isError: !!error,
-  };
+    isError  };
 };

@@ -16,8 +16,7 @@ const actionGetRecipes = (payload: RecipeListModel) => ({
 
 const actionError = (error: unknown) => ({
   type: RecipesActions.ERROR,
-  payload: error,
-});
+  payload: { getRecipes: error } });
 
 export const getRecipes = async (
   options: RecipesApi.SearchOptions,
