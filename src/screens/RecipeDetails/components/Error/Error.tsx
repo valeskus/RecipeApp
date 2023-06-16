@@ -1,8 +1,9 @@
 import React from 'react';
-import { Image, Pressable, SafeAreaView, Text, View } from 'react-native';
+import { Image, SafeAreaView, Text, View } from 'react-native';
 
 import { Button } from '@UI/Button';
 import { Icons } from '@UI/Icons';
+import { RectangleButton } from '@UI/RectangleButton';
 
 import { styles } from './styles';
 import { useErrorController } from './useErrorController';
@@ -19,11 +20,7 @@ export function Error(): JSX.Element {
         <Image source={Icons.errorRecipe} style={styles.icon} />
         <Text style={styles.title}>Ooops...</Text>
         <Text style={styles.message}>Something went wrong!</Text>
-        <Pressable onPress={onTryAgain}
-          style={({ pressed }) => [styles.button, pressed && styles.pressed]}
-        >
-          <Text style={styles.buttonTitle}>Please, try again!</Text>
-        </Pressable>
+        <RectangleButton onPress={onTryAgain} text="Please, try again!"/>
       </View>
 
     </SafeAreaView>

@@ -36,27 +36,4 @@ export const styles = StyleSheet.create({
     color: Colors.primary,
     marginBottom: 20,
   },
-
-  buttonTitle: {
-    fontSize: 18,
-    color: Colors.background,
-    fontWeight: '600',
-  },
-
-  pressed: {
-    transform: [{ scale: 0.9 }],
-  },
-
-  button: {
-    borderRadius: 15,
-    padding: 15,
-    backgroundColor: Colors.secondary,
-    shadowColor: Colors.shadow,
-    shadowOpacity: 0.4,
-    shadowRadius: 5,
-    shadowOffset: { width: 0, height: 0 },
-    elevation: 8,
-    justifyContent: 'center',
-  },
-
 });
