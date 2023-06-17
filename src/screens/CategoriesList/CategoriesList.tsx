@@ -9,9 +9,9 @@ import { useCategoryListController } from './useCategoryListController';
 import { Error } from './components/Error';
 
 export function CategoriesList(): JSX.Element {
-  const { handleSearch, categories, isLoading, isError } = useCategoryListController();
+  const { handleSearch, categories, isLoading, isError, fetchData } = useCategoryListController();
   if (isError) {
-    return <Error />;
+    return <Error onRetry={fetchData} />;
   }
 
   return (

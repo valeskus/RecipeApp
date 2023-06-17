@@ -68,5 +68,7 @@ export const useRecipeDetailsController = () => {
     prescriptionCardActiveSection: PrescriptionCard.activeSection,
     servingsCount: PrescriptionCard.servingsCount,
     isLoading,
-    isError  };
+    isError,
+    fetchData,
+  };
 };

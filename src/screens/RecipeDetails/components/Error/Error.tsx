@@ -7,11 +7,12 @@ import { RectangleButton } from '@UI/RectangleButton';
 import { Header } from '../Header';
 
 import { styles } from './styles';
-import { useErrorController } from './useErrorController';
 
-export function Error(): JSX.Element {
-  const { onTryAgain } = useErrorController();
+interface Props {
+  onRetry: () => void;
+}
 
+export function Error({ onRetry }: Props): JSX.Element {
   return (
     <SafeAreaView style={styles.errorScreen}>
       <Header isError={true} />
@@ -19,7 +20,7 @@ export function Error(): JSX.Element {
         <Image source={Icons.errorRecipe} style={styles.icon} />
         <Text style={styles.title}>Ooops...</Text>
         <Text style={styles.message}>Something went wrong!</Text>
-        <RectangleButton onPress={onTryAgain} text="Please, try again!"/>
+        <RectangleButton onPress={onRetry} text="Please, try again!" />
       </View>
 
     </SafeAreaView>
