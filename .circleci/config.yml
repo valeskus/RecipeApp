@@ -1,0 +1,22 @@
+version: 2.1
+orbs:
+  node: circleci/node@5.0.2
+
+jobs:
+  quality-gates:
+    executor: node/default
+    steps:
+      - checkout
+      - node/install-packages:
+          pkg-manager: yarn
+      - run:
+          name: "Lint mobile app:"
+          command: "yarn lint && yarn lint:ts"
+      - run:
+          name: "Lint app api:"
+          command: "cd ./receipe-app-api && yarn lint && yarn lint:ts"
+
+workflows:
+  pr-workflow:
+    jobs:
+      - quality-gates
