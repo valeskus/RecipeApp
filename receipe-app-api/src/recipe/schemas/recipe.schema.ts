@@ -5,7 +5,15 @@ import { MacroNutrients } from './macro-nutrients.schema';
 import { Instruction } from './instruction.schema';
 import { Ingredient } from './ingredient.schema';
 
-@Schema()
+@Schema({
+    toJSON: {
+        virtuals: true,
+        versionKey: false,
+        transform: (doc, ret) => {
+            delete ret._id;
+        }
+    }
+})
 export class Recipe {
     @ApiProperty({
         example: 5,
@@ -110,10 +118,4 @@ export class Recipe {
 
 export const RecipeSchema = SchemaFactory.createForClass(Recipe);
 
-RecipeSchema.set('toJSON', {
-    virtuals: true,
-    versionKey: false,
-    transform: (doc, ret) => {
-        delete ret._id;
-    }
-});
+RecipeSchema.index({ title: 'text', categories: 'text' });

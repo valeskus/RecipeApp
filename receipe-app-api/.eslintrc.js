@@ -39,7 +39,8 @@ module.exports = {
         'len',
         'dto',
         'virtuals',
-        'localhost'
+        'localhost',
+        'enum'
       ]
     }],
     'no-extra-semi': 'error',

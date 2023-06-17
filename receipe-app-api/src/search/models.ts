@@ -1,30 +1,8 @@
-export interface BaseRecipeModel {
-  id: string;
-  title: string;
-  kCal: number;
-  time: string;
-  rating: number;
-  image: string;
-}
-
-export interface SortOptionModel {
-  label: string;
-  id: string;
-}
-
-export interface FilterValueModel {
-  label: string;
-  id: string;
-}
-
-export interface FilterModel {
-  id: string;
-  title: string;
-  values: Array<FilterValueModel>;
-}
-
-export interface RecipeListModel {
-  recipes: Array<BaseRecipeModel>;
-  filters: Array<FilterModel>;
-  sortOptions: Array<SortOptionModel>;
+export enum SortOptions {
+    RELEVANCE = 'relevance',
+    TIME_ASC = 'time',
+    ALPHABETICALLY_ASC = 'alphabetically',
+    ALPHABETICALLY_DESC = '-alphabetically',
+    CALORIES_ASC = 'calories',
+    CALORIES_DESC = '-calories',
 }

@@ -1,7 +1,15 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { ApiProperty } from '@nestjs/swagger';
 
-@Schema()
+@Schema({
+    toJSON: {
+        virtuals: true,
+        versionKey: false,
+        transform: (doc, ret) => {
+            delete ret._id;
+        }
+    }
+})
 export class Category {
     @ApiProperty({
         example: 'Lunch',
@@ -29,11 +37,3 @@ export class Category {
 }
 
 export const CategorySchema = SchemaFactory.createForClass(Category);
-
-CategorySchema.set('toJSON', {
-    virtuals: true,
-    versionKey: false,
-    transform: (doc, ret) => {
-        delete ret._id;
-    }
-});

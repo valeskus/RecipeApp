@@ -1,177 +1,91 @@
 import { Injectable } from '@nestjs/common';
+import { Model, PipelineStage } from 'mongoose';
+import { InjectModel } from '@nestjs/mongoose';
 
-import { RecipeListModel } from './models';
+import { Recipe, RecipeSchema } from '../recipe/schemas';
 
-const ImageMock = 'https://picsum.photos/500/500';
+import { SearchDto, RecipeListItemDto, SearchResultsDto } from './dto';
+import { SortOptions } from './models';
 
-const filters = [
-  {
-    id: 'filter1',
-    title: 'Filter 1',
-    values: [
-      {
-        label: 'variant 1',
-        id: 'variant1',
-      },
-      {
-        label: 'variant 2',
-        id: 'variant2',
-      },
-      {
-        label: 'variant 3',
-        id: 'variant3',
-      },
-      {
-        label: 'variant 4',
-        id: 'variant4',
-      },
-    ],
-  },
-  {
-    id: 'filter2',
-    title: 'Filter 2',
-    values: [
-      {
-        label: 'variant 2.1',
-        id: 'variant2.1',
-      },
-      {
-        label: 'variant 2.2',
-        id: 'variant2.2',
-      },
-    ],
-  },
-  {
-    id: 'filter3',
-    title: 'Filter 3',
-    values: [
-      {
-        label: 'variant 3.1',
-        id: 'variant3.1',
-      },
-      {
-        label: 'variant 3.2',
-        id: 'variant3.2',
-      },
-      {
-        label: 'variant 3.3',
-        id: 'variant3.3',
-      },
-      {
-        label: 'variant 3.4',
-        id: 'variant3.4',
-      },
-    ],
-  },
-  {
-    id: 'filter4',
-    title: 'Filter 4',
-    values: [
-      {
-        label: 'variant 4.1',
-        id: 'variant4.1',
-      },
-      {
-        label: 'variant 4.2',
-        id: 'variant4.2',
-      },
-      {
-        label: 'variant 4.3',
-        id: 'variant4.3',
-      },
-      {
-        label: 'variant 4.4',
-        id: 'variant4.4',
-      },
-    ],
-  },
-];
-const sortOptions = [
-  {
-    label: 'Sort 1',
-    id: 'sort1',
-  },
-  {
-    label: 'Sort 2',
-    id: 'sort2',
-  },
-];
+const recipeListItemDto = new RecipeListItemDto({
+    image: '',
+    time: 0,
+    title: '',
+    kCal: 0
+});
+
+const unsetList = Object.keys(RecipeSchema.obj).filter((key) => {
+    return !recipeListItemDto.hasOwnProperty(key);
+});
 
 @Injectable()
 export class SearchService {
-  async findBySearch(searchTerm: string): Promise<RecipeListModel> {
-    await new Promise(resolve => setTimeout(resolve, 1500));
+    @InjectModel(Recipe.name) private recipeModel: Model<Recipe>;
 
-    if (searchTerm === 'empty') {
-      return {
-        recipes: [],
-        filters: [],
-        sortOptions: [],
-      };
+    private getSortPipelineBySortOption(sortOption: SortOptions): PipelineStage.Sort['$sort'] {
+        switch (sortOption) {
+            case SortOptions.RELEVANCE: {
+                return {
+                    score: { $meta: "textScore" }
+                };
+            }
+
+            case SortOptions.ALPHABETICALLY_ASC: {
+                return {
+                    title: 1
+                };
+            }
+
+            case SortOptions.ALPHABETICALLY_DESC: {
+                return {
+                    title: -1
+                };
+            }
+
+            case SortOptions.TIME_ASC: {
+                return {
+                    time: 1
+                };
+            }
+
+            case SortOptions.CALORIES_ASC: {
+                return {
+                    kCal: 1
+                };
+            }
+
+            case SortOptions.CALORIES_DESC: {
+                return {
+                    kCal: -1
+                };
+            }
+        }
     }
 
-    if (searchTerm === '1 recipe') {
-      return {
-        recipes: [
-          {
-            id: '1',
-            title: 'Product 1',
-            image: ImageMock,
-            rating: 4,
-            kCal: 500,
-            time: '1:50',
-          },
-        ],
-        filters,
-        sortOptions,
-      };
-    }
+    async search(params: SearchDto): Promise<SearchResultsDto> {
+        const mainAggregation = this.recipeModel.aggregate([
+            { $match: { $text: { $search: params.search } } },
+            {
+                $unset: [
+                    '_id',
+                    '__v',
+                    ...unsetList
+                ]
+            },
+            { $sort: this.getSortPipelineBySortOption(params.sort) }
+        ]);
 
-    return {
-      recipes: [
-        {
-          id: '1',
-          title: 'Product 1',
-          image: ImageMock,
-          rating: 4,
-          kCal: 500,
-          time: '1:50',
-        },
-        {
-          id: '2',
-          title: 'Product 2',
-          image: ImageMock,
-          rating: 3,
-          kCal: 500,
-          time: '1:50',
-        },
-        {
-          id: '3',
-          title: 'Product 3',
-          image: ImageMock,
-          rating: 1,
-          kCal: 500,
-          time: '1:50',
-        },
-        {
-          id: '4',
-          title: 'Product 4',
-          image: ImageMock,
-          rating: 4.5,
-          kCal: 500,
-          time: '1:50',
-        },
-        {
-          id: '5',
-          title: 'Product 5',
-          image: ImageMock,
-          rating: 1.5,
-          kCal: 500,
-          time: '1:50',
-        },
-      ],
-      filters,
-      sortOptions,
-    };
-  }
+        const recipes = await mainAggregation.exec();
+        const { total } = (await mainAggregation.count('total').exec())[0];
+
+        return new SearchResultsDto({
+            recipes,
+            total,
+            sortOptions: Object.values(SortOptions).map((value) => ({
+                value,
+                isActive: value === params.sort
+            })),
+            filters: []
+        });
+    }
 }
