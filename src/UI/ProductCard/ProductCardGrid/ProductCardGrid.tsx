@@ -1,11 +1,11 @@
 import React from 'react';
 import { Image, Pressable, StyleProp, ViewStyle, Text, View } from 'react-native';
 
+import { Icons } from '@UI/Icons';
+
 import { Rating } from '../components/Rating';
 
 import { styles } from './styles';
-
-import { Icons } from '@UI/Icons';
 
 interface Props {
   image: string;
