@@ -26,7 +26,7 @@ export const useRecipeDetailsController = () => {
   const isError = ErrorsStore.useGetErrorFor('getRecipeDetails');
   const getRecipe = RecipeDetailsStore.useGetRecipeDetails();
   const resetRecipe = RecipeDetailsStore.useResetRecipeDetails();
-  const resetError = ErrorsStore.useResetErrors();
+  const resetError = ErrorsStore.useResetErrors('GetRecipeDetails');
   const fetchData = async () => {
 
     setLoading(true);
@@ -40,8 +40,9 @@ export const useRecipeDetailsController = () => {
     fetchData();
 
     return () => {
-      resetError();
       resetRecipe();
+      resetError();
+
     };
   }, []);
   const onPrescriptionCardSectionChange = useCallback(

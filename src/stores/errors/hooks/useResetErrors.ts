@@ -3,12 +3,12 @@ import * as Redux from 'react-redux';
 
 import { resetErrors } from '../errorsActions';
 
-export const useResetErrors = () => {
+export const useResetErrors = (errorKey: string) => {
   const dispatch = Redux.useDispatch();
 
   return React.useCallback(
     () => {
-      resetErrors(dispatch);
+      resetErrors(dispatch, errorKey);
     },
     [dispatch],
   );

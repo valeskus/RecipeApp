@@ -17,14 +17,12 @@ const actionGetRecipe = (payload: DetailRecipeModel) => ({
 
 const actionResetRecipe = () => ({
   type: RecipeDetailsActions.RESET,
-  payload: {},
 });
 
-const actionError = (error: unknown) => ({
+const actionError = (error: unknown, key: string) => ({
   type: RecipeDetailsActions.ERROR,
-  payload: { getRecipeDetails: error },
-}
-);
+  payload: { [key]: error },
+});
 
 export const getRecipeDetails = async (id: string, dispatch: Dispatch) => {
   try {
@@ -32,7 +30,7 @@ export const getRecipeDetails = async (id: string, dispatch: Dispatch) => {
 
     dispatch(actionGetRecipe(recipe));
   } catch (error) {
-    dispatch(actionError(error));
+    dispatch(actionError(error, 'getRecipeDetails'));
   }
 };
 

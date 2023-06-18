@@ -3,16 +3,10 @@ import * as Redux from 'redux';
 import { ErrorsActions } from './errorsActions';
 
 export interface ErrorsStoreState {
-  getCategories: unknown;
-  getRecipes: unknown;
-  getRecipeDetails: unknown;
+  [errorKey: string]: unknown;
 }
 
-const initialState: ErrorsStoreState = {
-  getCategories: undefined,
-  getRecipes: undefined,
-  getRecipeDetails: undefined,
-};
+const initialState: ErrorsStoreState = {};
 
 export function errorsReducer(
   state = initialState,
@@ -29,9 +23,11 @@ export function errorsReducer(
     }
 
     case ErrorsActions.RESET: {
+      const { errorKey } = action.payload;
+      const filteredState = Object.fromEntries(Object.entries(state).filter(key => key[0] === errorKey));
 
       return {
-        ...initialState,
+        ...filteredState,
       };
     }
 

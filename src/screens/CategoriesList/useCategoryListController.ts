@@ -14,7 +14,7 @@ export const useCategoryListController = () => {
 
   const navigation = useNavigation();
 
-  const resetError = ErrorsStore.useResetErrors();
+  const resetError = ErrorsStore.useResetErrors('getCategories');
 
   const handleSearch = useCallback(() => {
     navigation.navigate('Recipes');

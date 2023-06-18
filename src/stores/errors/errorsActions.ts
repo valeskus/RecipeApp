@@ -9,8 +9,9 @@ const actionError = (error: unknown) => ({
   type: ErrorsActions.SET,
   payload: error,
 });
-const actionResetError = () => ({
+const actionResetError = (errorKey: string) => ({
   type: ErrorsActions.RESET,
+  payload: errorKey,
 });
 
 export const setError =  (
@@ -21,7 +22,7 @@ export const setError =  (
 };
 
 export const resetErrors =  (
-  dispatch: Dispatch,
+  dispatch: Dispatch, errorKey: string,
 ) => {
-  dispatch(actionResetError());
+  dispatch(actionResetError(errorKey));
 };

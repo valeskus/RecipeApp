@@ -7,7 +7,7 @@ export const errorHandler: Middleware = () => (
 ) => (action: any) => {
   next(action);
 
-  if (action.type.includes('error')) {
+  if (action.type.includes('error') && !action.type.includes('reset')) {
     setError(action.payload, next);
   }
 
