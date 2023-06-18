@@ -5,7 +5,7 @@ export enum ErrorsActions {
   SET = '@error/set',
 }
 
-const actionError = (error: unknown) => ({
+const actionSetError = (error: unknown) => ({
   type: ErrorsActions.SET,
   payload: error,
 });
@@ -18,7 +18,7 @@ export const setError =  (
   error: unknown,
   dispatch: Dispatch,
 ) => {
-  dispatch(actionError(error));
+  dispatch(actionSetError(error));
 };
 
 export const resetErrors =  (

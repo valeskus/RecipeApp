@@ -2,15 +2,14 @@ import { useNavigation } from '@react-navigation/native';
 import { useCallback, useEffect, useState } from 'react';
 
 import * as ErrorsStore from '@stores/errors';
-
-import * as CategoriesStore from '../../stores/categories';
+import * as CategoriesStore from '@stores/categories';
 
 export const useCategoryListController = () => {
   const [isLoading, setLoading] = useState(false);
   const { categories } = CategoriesStore.useCategoriesStore();
 
   const getCategories = CategoriesStore.useGetCategories();
-  const isError = ErrorsStore.useGetErrorFor('getCategories');
+  const errorGetCategories = ErrorsStore.useGetErrorFor('getCategories');
 
   const navigation = useNavigation();
 
@@ -40,7 +39,7 @@ export const useCategoryListController = () => {
     handleSearch,
     categories,
     isLoading,
-    isError,
+    isError: !!errorGetCategories,
     fetchData,
   };
 };

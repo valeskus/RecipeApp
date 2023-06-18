@@ -8,27 +8,27 @@ import { styles } from './styles';
 
 interface Props {
   scrollYRef?: any;
-  isError: boolean;
+  hideRightButton?: boolean;
 }
 
-export function Header({ scrollYRef, isError }: Props): JSX.Element {
-
+export function Header({ scrollYRef, hideRightButton }: Props): JSX.Element {
   const navigation = useNavigation();
   const onGoBack = useCallback(() => {
     navigation.goBack();
   }, []);
 
-  if (isError) {
+  if (hideRightButton) {
     return  (<View style={styles.header}>
       <Button icon="leftArrow" onPress={onGoBack} />
     </View>);
   }
 
-  const headerOpacity = scrollYRef.current.interpolate({
+  const headerOpacity = scrollYRef ? scrollYRef.current.interpolate({
     inputRange: [190, 280, 310, 350],
     outputRange: [0, 0.2, 0.5, 0.5],
     extrapolateLeft: 'clamp',
-  });
+  }) : 1;
+  //TODO opacity
 
   return (
     <View style={styles.header}>

@@ -12,11 +12,6 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     flex: 1,
   },
-  headerButton: {
-    position: 'absolute',
-    top: 40,
-    zIndex: 10,
-  },
 
   icon: {
     width: 100,

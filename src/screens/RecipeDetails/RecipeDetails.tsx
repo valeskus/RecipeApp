@@ -60,7 +60,7 @@ export function RecipeDetails(): JSX.Element {
 
   return (
     <SafeAreaView style={styles.detailsScreenContainer}>
-      <Header scrollYRef={scrollYRef} isError={false} />
+      <Header scrollYRef={scrollYRef} />
       <Animated.Image
         source={{ uri: recipe.image }}
         style={[styles.image, { transform: [{ scale }] }]}
@@ -122,6 +122,5 @@ export function RecipeDetails(): JSX.Element {
         </View>
       </Animated.ScrollView>
     </SafeAreaView>
-
   );
 }

@@ -23,16 +23,13 @@ export const useRecipeDetailsController = () => {
   });
 
   const { recipe } = RecipeDetailsStore.useRecipeDetailsStore();
-  const isError = ErrorsStore.useGetErrorFor('getRecipeDetails');
+  const errorGetRecipeDetails = ErrorsStore.useGetErrorFor('getRecipeDetails');
   const getRecipe = RecipeDetailsStore.useGetRecipeDetails();
   const resetRecipe = RecipeDetailsStore.useResetRecipeDetails();
   const resetError = ErrorsStore.useResetErrors('GetRecipeDetails');
   const fetchData = async () => {
-
     setLoading(true);
-
     await getRecipe(params.id);
-
     setLoading(false);
   };
 
@@ -42,7 +39,6 @@ export const useRecipeDetailsController = () => {
     return () => {
       resetRecipe();
       resetError();
-
     };
   }, []);
   const onPrescriptionCardSectionChange = useCallback(
@@ -69,7 +65,7 @@ export const useRecipeDetailsController = () => {
     prescriptionCardActiveSection: PrescriptionCard.activeSection,
     servingsCount: PrescriptionCard.servingsCount,
     isLoading,
-    isError,
+    isError: !!errorGetRecipeDetails,
     fetchData,
   };
 };

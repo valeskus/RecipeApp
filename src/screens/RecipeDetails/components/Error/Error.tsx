@@ -15,14 +15,13 @@ interface Props {
 export function Error({ onRetry }: Props): JSX.Element {
   return (
     <SafeAreaView style={styles.errorScreen}>
-      <Header isError={true} />
+      <Header hideRightButton={true} />
       <View style={styles.errorContainer}>
         <Image source={Icons.errorRecipe} style={styles.icon} />
         <Text style={styles.title}>Ooops...</Text>
         <Text style={styles.message}>Something went wrong!</Text>
         <RectangleButton onPress={onRetry} text="Please, try again!" />
       </View>
-
     </SafeAreaView>
   );
 }
