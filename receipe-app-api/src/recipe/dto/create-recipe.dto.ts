@@ -65,7 +65,7 @@ class CreateRecipe {
     readonly units: 'ml' | 'g';
 
     @ApiProperty({
-        example: "This lasagna recipe takes a little work, but it is so satisfying and filling that it's worth it!",
+        example: 'This lasagna recipe takes a little work, but it is so satisfying and filling that it\'s worth it!',
         description: 'Description of the recipe',
         required: true,
     })

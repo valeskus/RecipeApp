@@ -12,6 +12,13 @@ import { ApiProperty } from '@nestjs/swagger';
 })
 export class Category {
     @ApiProperty({
+        example: '6485e97f2fe21ff4fba5f7e4',
+        description: 'Id of the category',
+        required: true
+    })
+    readonly id: string;
+
+    @ApiProperty({
         example: 'Lunch',
         description: 'Name of the category',
         required: true

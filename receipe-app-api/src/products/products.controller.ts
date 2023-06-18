@@ -17,7 +17,7 @@ export class ProductsController {
   @Get()
   @ApiOperation({ summary: 'Get all products' })
   @ApiOkResponse({
-    description: "Retrieves all products",
+    description: 'Retrieves all products',
     type: GetAllProductsDto
   })
   async findAll(): Promise<GetAllProductsDto> {
@@ -31,7 +31,7 @@ export class ProductsController {
   @Get(':id')
   @ApiOperation({ summary: 'Get product by id' })
   @ApiOkResponse({
-    description: "Returns a product by given id",
+    description: 'Returns a product by given id',
     type: Product
   })
   async findOneById(@Param('id') id: string): Promise<Product> {
@@ -47,7 +47,7 @@ export class ProductsController {
   @Post()
   @ApiOperation({ summary: 'Create product' })
   @ApiOkResponse({
-    description: "Creates a product by given fields",
+    description: 'Creates a product by given fields',
     type: Product
   })
   async create(@Body() createProductDto: CreateProductDto): Promise<Product> {

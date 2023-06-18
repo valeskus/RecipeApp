@@ -16,6 +16,13 @@ import { Ingredient } from './ingredient.schema';
 })
 export class Recipe {
     @ApiProperty({
+        example: '6485e97f2fe21ff4fba5f7e4',
+        description: 'Id of the recipe',
+        required: true
+    })
+    readonly id: string;
+
+    @ApiProperty({
         example: 5,
         description: 'Time of cooking (minutes)',
         required: true
@@ -28,7 +35,7 @@ export class Recipe {
         description: 'Title of the recipe',
         required: true
     })
-    @Prop({ required: true })
+    @Prop({ required: true, index: true })
     title: string;
 
     @ApiProperty({
@@ -63,7 +70,7 @@ export class Recipe {
     kCal: number;
 
     @ApiProperty({
-        example: "This lasagna recipe takes a little work, but it is so satisfying and filling that it's worth it!",
+        example: 'This lasagna recipe takes a little work, but it is so satisfying and filling that it\'s worth it!',
         description: 'Description of the recipe',
     })
     @Prop({ required: true })
@@ -104,7 +111,7 @@ export class Recipe {
         description: 'Categories the recipe belongs to',
         required: true,
     })
-    @Prop({ required: true })
+    @Prop({ required: true, index: true })
     categories: Array<string>;
 
     @ApiProperty({
@@ -117,5 +124,3 @@ export class Recipe {
 }
 
 export const RecipeSchema = SchemaFactory.createForClass(Recipe);
-
-RecipeSchema.index({ title: 'text', categories: 'text' });

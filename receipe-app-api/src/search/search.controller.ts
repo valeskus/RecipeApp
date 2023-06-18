@@ -12,7 +12,7 @@ export class SearchController {
   @Get()
   @ApiOperation({ summary: 'Search for recipes' })
   @ApiOkResponse({
-    description: "Returns a list of found recipes",
+    description: 'Returns a list of found recipes',
     type: SearchResultsDto
   })
   search(@Query() searchDto: SearchDto) {

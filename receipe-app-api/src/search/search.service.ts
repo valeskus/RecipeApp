@@ -26,7 +26,7 @@ export class SearchService {
         switch (sortOption) {
             case SortOptions.RELEVANCE: {
                 return {
-                    score: { $meta: "textScore" }
+                    score: { $meta: 'textScore' }
                 };
             }
 
@@ -64,19 +64,20 @@ export class SearchService {
 
     async search(params: SearchDto): Promise<SearchResultsDto> {
         const mainAggregation = this.recipeModel.aggregate([
-            { $match: { $text: { $search: params.search } } },
-            {
-                $unset: [
-                    '_id',
-                    '__v',
-                    ...unsetList
-                ]
-            },
+            { $match: { $or: [
+                { $text: { $search: params.search } },
+                // If no matches found, proceed partial match for the beginning of the title
+                { title: new RegExp(`^${params.search}`, 'ig') },
+            ] } },
+            { $addFields: { id: '$_id' } },
+            { $unset: ['_id', '__v', ...unsetList] },
             { $sort: this.getSortPipelineBySortOption(params.sort) }
         ]);
 
         const recipes = await mainAggregation.exec();
-        const { total } = (await mainAggregation.count('total').exec())[0];
+        const totalAggregationResult = await mainAggregation.count('total').exec();
+
+        const { total } = totalAggregationResult.length ? totalAggregationResult[0] : { total: 0 };
 
         return new SearchResultsDto({
             recipes,

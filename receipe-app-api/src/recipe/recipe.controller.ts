@@ -13,7 +13,7 @@ export class RecipeController {
   @Get(':id')
   @ApiOperation({ summary: 'Get recipe by id' })
   @ApiOkResponse({
-    description: "Returns a recipe by given id",
+    description: 'Returns a recipe by given id',
     type: Recipe
   })
   async findOneById(@Param('id') id: string): Promise<Recipe> {
@@ -29,7 +29,7 @@ export class RecipeController {
   @Post()
   @ApiOperation({ summary: 'Create recipe' })
   @ApiOkResponse({
-    description: "Creates a recipe by given fields",
+    description: 'Creates a recipe by given fields',
     type: Recipe
   })
   async create(@Body() createRecipeDto: CreateRecipeDto): Promise<Recipe> {

@@ -1,5 +1,5 @@
-import { ApiProperty } from "@nestjs/swagger";
-import { IsNotEmpty, IsNumber, IsPositive, IsString } from "class-validator";
+import { ApiProperty } from '@nestjs/swagger';
+import { IsNotEmpty, IsNumber, IsPositive, IsString } from 'class-validator';
 
 class Ingredient {
     @ApiProperty({
@@ -18,7 +18,7 @@ class Ingredient {
     })
     @IsPositive()
     @IsNumber()
-    amount: number;
+    readonly amount: number;
 }
 
 export { Ingredient as IngredientDto };

@@ -1,7 +1,7 @@
-import { ApiProperty } from "@nestjs/swagger";
+import { ApiProperty } from '@nestjs/swagger';
 
-import { RecipeListItemDto } from "./recipe-list-item.dto";
-import { SortOptionDto } from "./sort-option.dto";
+import { RecipeListItemDto } from './recipe-list-item.dto';
+import { SortOptionDto } from './sort-option.dto';
 
 class SearchResults {
     constructor(params: SearchResults) {

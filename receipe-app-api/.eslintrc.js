@@ -40,7 +40,8 @@ module.exports = {
         'dto',
         'virtuals',
         'localhost',
-        'enum'
+        'enum',
+        'ig'
       ]
     }],
     'no-extra-semi': 'error',
@@ -88,6 +89,7 @@ module.exports = {
         requireLast: false,
       },
     }],
+    'quotes': ['error', 'single'],
     'max-lines': ['error', 200],
     'import/no-default-export': 'error',
     'import/prefer-default-export': 'off',

@@ -17,7 +17,7 @@ export class CategoriesController {
   @Get()
   @ApiOperation({ summary: 'Get all categories' })
   @ApiOkResponse({
-    description: "Retrieves all categories",
+    description: 'Retrieves all categories',
     type: GetAllCategoriesDto
   })
   async findAll(): Promise<GetAllCategoriesDto> {
@@ -31,7 +31,7 @@ export class CategoriesController {
   @Get(':id')
   @ApiOperation({ summary: 'Get category by id' })
   @ApiOkResponse({
-    description: "Returns a category by given id",
+    description: 'Returns a category by given id',
     type: Category
   })
   async findOneById(@Param('id') id: string): Promise<Category> {
@@ -47,7 +47,7 @@ export class CategoriesController {
   @Post()
   @ApiOperation({ summary: 'Create category' })
   @ApiOkResponse({
-    description: "Creates a category by given fields",
+    description: 'Creates a category by given fields',
     type: Category
   })
   async create(@Body() createCategoryDto: CreateCategoryDto) {
