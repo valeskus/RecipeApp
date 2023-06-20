@@ -6,7 +6,7 @@ import { CategoryCard } from '@UI/CategoryCard';
 import { CategoryModel } from '../../../../models';
 import { CategoryListSkeleton } from '../CategoryListSkeleton';
 
-import { useCategoryCardController } from './useCategoryCardController';
+import { useCategoryCardsController } from './useCategoryCardsController';
 import { styles } from './styles';
 
 interface Props {
@@ -37,7 +37,7 @@ const getRenderItem =
   };
 
 export function CategoryCards({ categories, isLoading }: Props): JSX.Element {
-  const { onPress } = useCategoryCardController();
+  const { onPress } = useCategoryCardsController();
 
   return (
     <>

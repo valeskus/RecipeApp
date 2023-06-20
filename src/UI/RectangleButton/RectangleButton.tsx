@@ -4,7 +4,7 @@ import { Pressable, Text } from 'react-native';
 import { styles } from './styles';
 
 interface Props {
-  onPress: () => any;
+  onPress: () => unknown;
   text: string;
 }
 export function RectangleButton({
@@ -20,7 +20,6 @@ export function RectangleButton({
       ]}
     >
       <Text style={styles.buttonTitle}>{text}</Text>
-
     </Pressable>
 
   );

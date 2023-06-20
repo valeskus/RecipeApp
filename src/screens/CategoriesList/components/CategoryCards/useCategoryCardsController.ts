@@ -1,9 +1,9 @@
 import { useNavigation } from '@react-navigation/native';
 import { useCallback } from 'react';
 
-import * as SearchStore from '../../../../stores/search';
+import * as SearchStore from '@stores/search';
 
-export const useCategoryCardController = () => {
+export const useCategoryCardsController = () => {
 
   const navigation = useNavigation();
 
