@@ -1,0 +1,1 @@
+{"version":3,"file":"get-all-products.dto.js","sourceRoot":"","sources":["../../../src/products/dto/get-all-products.dto.ts"],"names":[],"mappings":";;;;;;;;;;;;AAAA,6CAA8C;AAE9C,wCAAqC;AAErC,MAAM,cAAc;CAOnB;AADY;IALR,IAAA,qBAAW,EAAC;QACT,WAAW,EAAE,kBAAkB;QAC/B,QAAQ,EAAE,IAAI;QACd,IAAI,EAAE,CAAC,iBAAO,CAAC;KAClB,CAAC;8BACiB,KAAK;gDAAU;AAGX,2CAAiB"}

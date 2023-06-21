@@ -28,7 +28,7 @@ export const styles = StyleSheet.create({
     color: Colors.borderTextSecondary,
     fontSize: 14,
   },
-  ingredientsListItemCount: {
+  ingredientsListItemAmount: {
     color: Colors.text,
     fontSize: 18,
   },

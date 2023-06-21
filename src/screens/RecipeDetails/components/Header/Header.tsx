@@ -12,6 +12,7 @@ interface Props {
 }
 
 export function Header({ scrollYRef, hideRightButton }: Props): JSX.Element {
+
   const navigation = useNavigation();
   const onGoBack = useCallback(() => {
     navigation.goBack();

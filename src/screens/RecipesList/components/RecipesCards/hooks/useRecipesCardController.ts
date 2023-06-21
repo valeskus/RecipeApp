@@ -32,8 +32,7 @@ export const useRecipeCardController = (
         id: 'EMPTY',
         title: '',
         kCal: 0,
-        time: '',
-        rating: 0,
+        time: 0,
         image: '',
       },
     ];

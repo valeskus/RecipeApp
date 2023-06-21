@@ -8,15 +8,15 @@ import { styles } from './styles';
 interface Props {
   title: string;
   description?: string;
-  count: string;
-  unit: string;
+  amount: string;
+  units: string;
 }
 
 export function IngredientsListItem({
   title,
-  count,
+  amount,
   description,
-  unit,
+  units,
 }: Props): JSX.Element {
   return (
     <View style={styles.ingredientsListItemContainer}>
@@ -30,8 +30,8 @@ export function IngredientsListItem({
             </Text>
           )}
         </View>
-        <Text style={styles.ingredientsListItemCount}>{count} </Text>
-        <Text style={styles.ingredientsListItemCount}>{unit}</Text>
+        <Text style={styles.ingredientsListItemAmount}>{amount} </Text>
+        <Text style={styles.ingredientsListItemAmount}>{units}</Text>
       </View>
     </View>
   );
