@@ -19,6 +19,7 @@ class Search {
     @ApiProperty({
         example: SortOptions.RELEVANCE,
         enum: SortOptions,
+        default: SortOptions.RELEVANCE,
         description: 'Sort criteria',
         required: false,
     })
@@ -77,6 +78,26 @@ class Search {
     @Transform(({ value }) => value.toString().split('|'))
     @IsOptional()
     readonly dietType?: Array<string>;
+
+    @ApiProperty({
+        example: 0,
+        default: 0,
+        description: 'Pagination offset',
+        required: false,
+    })
+    @Transform(({ value }) => Number(value))
+    @IsOptional()
+    readonly offset: number = 0;
+
+    @ApiProperty({
+        example: 10,
+        default: 10,
+        description: 'Pagination page size',
+        required: false,
+    })
+    @Transform(({ value }) => Number(value))
+    @IsOptional()
+    readonly pageSize: number = 10;
 }
 
 export { Search as SearchDto };

@@ -81,8 +81,9 @@ export class SearchAggregation extends Array<PipelineStage> {
                         mealTypeAggregation.filter,
                         dietTypeAggregation.filter,
                     ]
-                }
+                },
             },
+            sortAggregation.pipelineStage,
             {
                 $facet: {
                     ...caloriesAggregation.facet,
@@ -93,7 +94,8 @@ export class SearchAggregation extends Array<PipelineStage> {
                     recipes: [
                         { $addFields: { id: '$_id' } },
                         { $unset: ['_id', '__v', ...unsetList] },
-                        sortAggregation.pipelineStage,
+                        { $skip: inputFilters.offset },
+                        { $limit: inputFilters.pageSize }
                     ],
                     totals: [
                         { $count: 'total' }
