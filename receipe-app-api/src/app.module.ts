@@ -9,7 +9,7 @@ import { SearchModule } from './search/search.module';
 import { ProductsModule } from './products/products.module';
 
 // eslint-disable-next-line max-len
-const DBUrl = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}/?retryWrites=true&w=majority`;
+const DBUrl = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}/?retryWrites=true`;
 
 @Module({
   imports: [

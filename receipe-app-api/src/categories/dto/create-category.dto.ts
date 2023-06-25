@@ -1,5 +1,7 @@
-import { IsString, IsNotEmpty, IsUrl, Matches } from 'class-validator';
+import { IsString, IsNotEmpty, IsUrl, IsEnum } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
+
+import { CategoryType } from '../models';
 
 class CreateCategory {
     @ApiProperty({
@@ -20,14 +22,13 @@ class CreateCategory {
     readonly image: string;
 
     @ApiProperty({
-        example: 'diet',
+        example: CategoryType.DIET,
+        enum: CategoryType,
         description: 'Type of the category',
         required: true
     })
-    @Matches(/^(diet|meal)$/, {
-        message: 'type should be either "diet" or "meal"'
-    })
-    readonly type: 'diet' | 'meal';
+    @IsEnum(CategoryType)
+    readonly type: CategoryType;
 }
 
 export { CreateCategory as CreateCategoryDto };

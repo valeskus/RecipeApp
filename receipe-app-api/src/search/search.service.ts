@@ -1,92 +1,43 @@
 import { Injectable } from '@nestjs/common';
-import { Model, PipelineStage } from 'mongoose';
+import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
 
-import { Recipe, RecipeSchema } from '../recipe/schemas';
+import { Recipe } from '../recipe/schemas';
 
-import { SearchDto, RecipeListItemDto, SearchResultsDto } from './dto';
-import { SortOptions } from './models';
-
-const recipeListItemDto = new RecipeListItemDto({
-    image: '',
-    time: 0,
-    title: '',
-    kCal: 0
-});
-
-const unsetList = Object.keys(RecipeSchema.obj).filter((key) => {
-    return !recipeListItemDto.hasOwnProperty(key);
-});
+import { SearchDto, SearchResultsDto, FiltersDto, SortOptionsDto } from './dto';
+import { SearchAggregation, SearchAggregationResult } from './aggregations';
 
 @Injectable()
 export class SearchService {
     @InjectModel(Recipe.name) private recipeModel: Model<Recipe>;
 
-    private getSortPipelineBySortOption(sortOption: SortOptions): PipelineStage.Sort['$sort'] {
-        switch (sortOption) {
-            case SortOptions.RELEVANCE: {
-                return {
-                    score: { $meta: 'textScore' }
-                };
-            }
-
-            case SortOptions.ALPHABETICALLY_ASC: {
-                return {
-                    title: 1
-                };
-            }
-
-            case SortOptions.ALPHABETICALLY_DESC: {
-                return {
-                    title: -1
-                };
-            }
-
-            case SortOptions.TIME_ASC: {
-                return {
-                    time: 1
-                };
-            }
-
-            case SortOptions.CALORIES_ASC: {
-                return {
-                    kCal: 1
-                };
-            }
-
-            case SortOptions.CALORIES_DESC: {
-                return {
-                    kCal: -1
-                };
-            }
-        }
-    }
-
     async search(params: SearchDto): Promise<SearchResultsDto> {
-        const mainAggregation = this.recipeModel.aggregate([
-            { $match: { $or: [
-                { $text: { $search: params.search } },
-                // If no matches found, proceed partial match for the beginning of the title
-                { title: new RegExp(`^${params.search}`, 'ig') },
-            ] } },
-            { $addFields: { id: '$_id' } },
-            { $unset: ['_id', '__v', ...unsetList] },
-            { $sort: this.getSortPipelineBySortOption(params.sort) }
-        ]);
-
-        const recipes = await mainAggregation.exec();
-        const totalAggregationResult = await mainAggregation.count('total').exec();
-
-        const { total } = totalAggregationResult.length ? totalAggregationResult[0] : { total: 0 };
+        const [{
+            recipes,
+            totals,
+            difficulty,
+            calories,
+            mealType,
+            dietType,
+            totalTime
+        }] = await this.recipeModel.aggregate<SearchAggregationResult>(new SearchAggregation({
+            inputFilters: params,
+        })).exec();
 
         return new SearchResultsDto({
+            filters: new FiltersDto({
+                inputFilters: params,
+                calories,
+                totalTime,
+                difficulty,
+                mealType,
+                dietType,
+            }),
             recipes,
-            total,
-            sortOptions: Object.values(SortOptions).map((value) => ({
-                value,
-                isActive: value === params.sort
-            })),
-            filters: []
+            total: totals[0]?.total || 0,
+            sortOptions: new SortOptionsDto({
+                appliedSort: params.sort
+            })
         });
     }
 }

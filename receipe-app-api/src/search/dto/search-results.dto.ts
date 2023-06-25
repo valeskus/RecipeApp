@@ -2,6 +2,7 @@ import { ApiProperty } from '@nestjs/swagger';
 
 import { RecipeListItemDto } from './recipe-list-item.dto';
 import { SortOptionDto } from './sort-option.dto';
+import { FiltersDto } from './filters.dto';
 
 class SearchResults {
     constructor(params: SearchResults) {
@@ -33,10 +34,11 @@ class SearchResults {
     readonly sortOptions: Array<SortOptionDto>;
 
     @ApiProperty({
-        description: 'TBD',
+        description: 'List of applicable filters',
+        type: [FiltersDto],
         required: true
     })
-    readonly filters: Array<unknown>;
+    readonly filters: FiltersDto;
 }
 
 export { SearchResults as SearchResultsDto };

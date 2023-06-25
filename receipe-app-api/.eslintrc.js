@@ -41,7 +41,9 @@ module.exports = {
         'virtuals',
         'localhost',
         'enum',
-        'ig'
+        'ig',
+        'lte',
+        'cond'
       ]
     }],
     'no-extra-semi': 'error',

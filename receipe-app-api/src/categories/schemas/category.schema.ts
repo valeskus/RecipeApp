@@ -1,6 +1,8 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { ApiProperty } from '@nestjs/swagger';
 
+import { CategoryType } from '../models';
+
 @Schema({
     toJSON: {
         virtuals: true,
@@ -35,12 +37,13 @@ export class Category {
     image: string;
 
     @ApiProperty({
-        example: 'diet',
+        example: CategoryType.DIET,
+        enum: CategoryType,
         description: 'Type of the category',
         required: true
     })
     @Prop({ required: true })
-    type: 'diet' | 'meal';
+    type: CategoryType;
 }
 
 export const CategorySchema = SchemaFactory.createForClass(Category);

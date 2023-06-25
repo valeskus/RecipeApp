@@ -4,6 +4,7 @@ import { ApiProperty } from '@nestjs/swagger';
 import { MacroNutrients } from './macro-nutrients.schema';
 import { Instruction } from './instruction.schema';
 import { Ingredient } from './ingredient.schema';
+import { ShortCategory } from './short-category.schema';
 
 @Schema({
     toJSON: {
@@ -35,7 +36,7 @@ export class Recipe {
         description: 'Title of the recipe',
         required: true
     })
-    @Prop({ required: true, index: true })
+    @Prop({ required: true })
     title: string;
 
     @ApiProperty({
@@ -107,12 +108,12 @@ export class Recipe {
     ingredients: Array<Ingredient>;
 
     @ApiProperty({
-        example: ['Breakfast', 'Main dish'],
+        type: [ShortCategory],
         description: 'Categories the recipe belongs to',
         required: true,
     })
-    @Prop({ required: true, index: true })
-    categories: Array<string>;
+    @Prop({ required: true })
+    categories: Array<ShortCategory>;
 
     @ApiProperty({
         example: 0,
@@ -124,3 +125,12 @@ export class Recipe {
 }
 
 export const RecipeSchema = SchemaFactory.createForClass(Recipe);
+
+RecipeSchema.index({ title: 'text', 'categories.title': 'text' });
+RecipeSchema.index({
+    title: 1,
+    time: 1,
+    difficulty: 1,
+    kCal: 1,
+    'categories.title': 1,
+});

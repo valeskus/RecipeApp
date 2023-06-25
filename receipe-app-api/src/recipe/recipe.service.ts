@@ -6,7 +6,7 @@ import { isMongoId } from 'class-validator';
 import { ProductsService } from '../products/products.service';
 import { CategoriesService } from '../categories/categories.service';
 
-import { Recipe } from './schemas';
+import { Recipe, ShortCategory } from './schemas';
 import { CreateRecipeDto } from './dto';
 
 @Injectable()
@@ -34,10 +34,18 @@ export class RecipeService {
       throw new Error(`Recipe ${createRecipeDto.title} already exists`);
     }
 
-    for (const category of createRecipeDto.categories) {
-      if (!await this.categoriesService.findOneByTitle(category)) {
-        throw new Error(`Category ${category} does not exist`);
+    const categories: Array<ShortCategory> = [];
+    for (const categoryTitle of createRecipeDto.categories) {
+      const category = await this.categoriesService.findOneByTitle(categoryTitle);
+
+      if (!category) {
+        throw new Error(`Category ${categoryTitle} does not exist`);
       }
+
+      categories.push({
+        title: category.title,
+        type: category.type
+      });
     }
 
     let kCal = 0;
@@ -66,6 +74,7 @@ export class RecipeService {
     const createdRecipe = new this.recipeModel({
       ...createRecipeDto,
       kCal,
+      categories,
       macroNutrients: {
         fats,
         carbs,

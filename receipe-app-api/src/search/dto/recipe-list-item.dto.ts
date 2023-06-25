@@ -11,6 +11,13 @@ class RecipeListItem {
     }
 
     @ApiProperty({
+        example: '6485e97f2fe21ff4fba5f7e4',
+        description: 'Id of the recipe',
+        required: true
+    })
+    readonly id: string;
+
+    @ApiProperty({
         example: 5,
         description: 'Time of cooking (minutes)',
         required: true

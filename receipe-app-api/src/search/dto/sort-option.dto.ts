@@ -3,6 +3,11 @@ import { ApiProperty } from '@nestjs/swagger';
 import { SortOptions } from '../models';
 
 class SortOption {
+    constructor(params: SortOption) {
+        this.value = params.value;
+        this.isActive = params.isActive;
+    }
+
     @ApiProperty({
         description: 'Sort value',
         example: SortOptions.ALPHABETICALLY_ASC,
