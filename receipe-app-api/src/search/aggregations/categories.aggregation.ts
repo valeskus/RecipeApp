@@ -1,14 +1,16 @@
 import { FilterQuery, PipelineStage } from 'mongoose';
 
+import { CategoryType } from '../../categories/models';
+
 interface CategoriesAggregationParams {
     appliedFilter?: Array<string>;
-    facetName: string;
+    type: CategoryType;
 }
 
 export class CategoriesAggregation {
-    private facetName = '';
+    private type = '';
 
-    constructor({ appliedFilter, facetName }: CategoriesAggregationParams) {
+    constructor({ appliedFilter, type }: CategoriesAggregationParams) {
         if (appliedFilter) {
             this.filter = {
                 $and: appliedFilter.map((item) => ({
@@ -17,17 +19,17 @@ export class CategoriesAggregation {
             };
         }
 
-        this.facetName = facetName;
+        this.type = type;
     }
 
     public filter: FilterQuery<unknown> = {};
 
     public get facet(): Record<string, Array<PipelineStage.FacetPipelineStage>> {
         return {
-            [this.facetName]: [
+            [`${this.type}Type`]: [
                 { $unwind: '$categories' },
                 { $sortByCount: '$categories' },
-                { $match: { '_id.type': 'meal' } },
+                { $match: { '_id.type': this.type } },
                 { $addFields: { value: '$_id.title' } },
                 { $unset: ['_id'] }
             ]

@@ -1,5 +1,6 @@
 import { PipelineStage } from 'mongoose';
 
+import { CategoryType } from '../../categories/models';
 import { RecipeSchema } from '../../recipe/schemas';
 import { RecipeListItemDto, SearchDto } from '../dto';
 import { Calories, Difficulty, Facet, TotalTime } from '../models';
@@ -54,12 +55,12 @@ export class SearchAggregation extends Array<PipelineStage> {
 
         const mealTypeAggregation = new CategoriesAggregation({
             appliedFilter: inputFilters.mealType,
-            facetName: 'mealType'
+            type: CategoryType.MEAL,
         });
 
         const dietTypeAggregation = new CategoriesAggregation({
-            appliedFilter: inputFilters.mealType,
-            facetName: 'dietType'
+            appliedFilter: inputFilters.dietType,
+            type: CategoryType.DIET,
         });
 
         const sortAggregation = new SortAggregation({
