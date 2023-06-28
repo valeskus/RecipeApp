@@ -8,7 +8,7 @@ export const useResetErrors = (errorKey: string) => {
 
   return React.useCallback(
     () => {
-      resetErrors(dispatch, errorKey);
+      resetErrors(errorKey, dispatch);
     },
     [dispatch],
   );

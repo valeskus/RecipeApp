@@ -13,7 +13,6 @@ export const useCategoryCardsController = () => {
     setSearchTerm(categoryTitle);
 
     return navigation.navigate('Recipes');
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return {

@@ -24,10 +24,10 @@ export function errorsReducer(
 
     case ErrorsActions.RESET: {
       const { errorKey } = action.payload;
-      const filteredState = Object.fromEntries(Object.entries(state).filter(key => key[0] === errorKey));
+      delete state[errorKey];
 
       return {
-        ...filteredState,
+        ...state,
       };
     }
 
