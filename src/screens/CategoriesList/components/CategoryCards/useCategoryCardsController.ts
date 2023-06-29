@@ -12,7 +12,7 @@ export const useCategoryCardsController = () => {
   const onPress = useCallback((categoryTitle: string) => {
     setSearchTerm(categoryTitle);
 
-    return navigation.navigate('Recipes');
+    navigation.navigate('Recipes');
   }, []);
 
   return {

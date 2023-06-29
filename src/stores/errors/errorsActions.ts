@@ -5,7 +5,7 @@ export enum ErrorsActions {
   SET = '@error/set',
 }
 
-const actionSetError = (errorData: { [key: string]: unknown }) => ({
+const actionSetError = (errorData: Record<string, unknown>) => ({
   type: ErrorsActions.SET,
   payload: errorData,
 });
@@ -14,14 +14,14 @@ const actionResetError = (errorKey: string) => ({
   payload: { errorKey },
 });
 
-export const setError =  (
-  errorData: { [key: string]: unknown },
+export const setError = (
+  errorData:  Record<string, unknown>,
   dispatch: Dispatch,
 ) => {
   dispatch(actionSetError(errorData));
 };
 
-export const resetErrors =  (errorKey: string,
+export const resetErrors = (errorKey: string,
   dispatch: Dispatch,
 ) => {
   dispatch(actionResetError(errorKey));
