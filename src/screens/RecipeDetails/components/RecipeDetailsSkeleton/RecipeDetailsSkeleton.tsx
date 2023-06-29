@@ -1,6 +1,5 @@
 import React from 'react';
 import ContentLoader, { Circle, Rect } from 'react-content-loader/native';
-// import { SafeAreaView } from 'react-native';
 
 import { Colors } from '@UI/Colors';
 
@@ -14,8 +13,8 @@ export function RecipeDetailsSkeleton(): JSX.Element {
       height={'100%'}
     >
       <Rect x="0" y="0" rx="0" ry="0" width="100%" height="100%" />
-      <Circle cx={'9.5%'} cy={60} r={25} />
-      <Circle cx={'90.5%'} cy={60} r={25} />
+      <Circle cx={'9.5%'} cy={80} r={25} />
+      <Circle cx={'90.5%'} cy={80} r={25} />
 
       <Rect x="-16%" y="320" rx="60" ry="60" width="116%" height="100%" />
       <Rect x="3%" y="370" rx="4" ry="4" width="47%" height="25" />

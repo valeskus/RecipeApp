@@ -1,5 +1,4 @@
 import { DetailRecipeModel, RecipeListModel } from '../models';
-// import { recipeMock } from '../mockData';
 
 import { client } from './client.api';
 
@@ -27,8 +26,3 @@ export const getRecipeById = async (id: string): Promise<DetailRecipeModel> => {
 
   return result.data;
 };
-// export const getRecipeById =  (id: string) => {
-//   return recipeMock;
-
-//   // return result.data;
-// };

@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { Animated, Dimensions, Text, View, SafeAreaView } from 'react-native';
+import { Animated, Dimensions, Text, View } from 'react-native';
 
 import { Tabs } from '@UI/Tabs';
 import { Counter } from '@UI/Counter';
@@ -59,7 +59,7 @@ export function RecipeDetails(): JSX.Element {
   });
 
   return (
-    <SafeAreaView style={styles.detailsScreenContainer}>
+    <View style={styles.detailsScreenContainer}>
       <Header scrollYRef={scrollYRef} />
       <Animated.Image
         source={{ uri: recipe.image }}
@@ -121,6 +121,6 @@ export function RecipeDetails(): JSX.Element {
           </Tabs>
         </View>
       </Animated.ScrollView>
-    </SafeAreaView>
+    </View>
   );
 }
