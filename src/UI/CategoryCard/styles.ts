@@ -9,10 +9,12 @@ export const styles = StyleSheet.create({
     alignSelf: 'center',
     borderTopRightRadius: 20,
     borderTopLeftRadius: 20,
+    flex: 1,
   },
   categoryContainer: {
     borderRadius: 20,
     flex: 1,
+    height: 185,
     backgroundColor: Colors.background,
     shadowColor: Colors.shadow,
     shadowOpacity: 0.5,

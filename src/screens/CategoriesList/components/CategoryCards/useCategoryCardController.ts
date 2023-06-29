@@ -4,7 +4,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 import * as CategoriesStore from '@stores/categories';
 import * as SearchStore from '@stores/search';
 
-export const useCategoryCardsController = () => {
+export const useCategoryCardController = () => {
   const [isLoading, setLoading] = useState(false);
   const { categories } = CategoriesStore.useCategoriesStore();
 
