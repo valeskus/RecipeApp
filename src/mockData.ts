@@ -9,7 +9,7 @@ export const recipeMock = {
   description: 'This lasagna recipe takes a little work, but it is so satisfying and filling that it s worth it!',
   servingsCount: 2,
   instructions: [
-    {
+    { id: 'string',
       description: 'Gather all your ingredients',
       image: 'https://picsum.photos/500/500',
     },
@@ -21,6 +21,7 @@ export const recipeMock = {
   },
   ingredients: [
     {
+      id: 'string',
       title: 'Meat',
       amount: 200,
       units: 'g',
