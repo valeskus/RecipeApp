@@ -43,9 +43,12 @@ export function ProductCardLine({
         <View style={styles.productCardLineItem}>
           <Rating rating={rating} />
         </View>
-        <View style={styles.productCardLineItem}>
+        <View style={styles.productCardDetailsItemBox}>
           <Image source={Icons.kCal} style={styles.icon} />
           <Text style={styles.productCardLineDetailsItem}>{calories} kcal</Text>
+          <Text style={styles.note}> / 100g</Text>
+        </View>
+        <View style={styles.productCardDetailsItemBox}>
           <Image source={Icons.time} style={styles.icon} />
           <Text style={styles.productCardLineDetailsItem}>{time}</Text>
         </View>

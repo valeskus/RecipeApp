@@ -36,19 +36,26 @@ export const styles = StyleSheet.create({
   productCardLineDetailsItem: {
     fontSize: 15,
     color: Colors.text,
-    marginRight: 10,
   },
   cardPressed: {
     transform: [{ scale: 0.9 }],
   },
   productCardLineItem: {
-    flexDirection: 'row',
     flex: 1,
-    flexWrap: 'wrap',
   },
   icon: {
     width: 17,
     height: 17,
     marginRight: 3,
+  },
+  note: {
+    color: Colors.secondary,
+    fontSize: 13,
+    fontWeight: '300',
+  },
+  productCardDetailsItemBox: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 5,
   },
 });
