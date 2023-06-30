@@ -32,7 +32,6 @@ export interface BaseRecipeModel {
   title: string;
   kCal: number;
   time: string;
-  rating: number;
   image: string;
 }
 
