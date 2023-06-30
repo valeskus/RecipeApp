@@ -14,7 +14,7 @@ export const styles = StyleSheet.create({
   categoryContainer: {
     borderRadius: 20,
     flex: 1,
-    height: 185,
+    minHeight: 185,
     backgroundColor: Colors.background,
     shadowColor: Colors.shadow,
     shadowOpacity: 0.5,
@@ -30,6 +30,7 @@ export const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
     color: Colors.primary,
+    flex: 3,
   },
 
   cardPressed: {
