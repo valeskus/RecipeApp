@@ -3,14 +3,13 @@ import { ScrollView, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { PickListItem } from '@UI/PickListItem';
-import { Button } from '@UI/Button';
 
 import { useSortController } from './useSortController';
 import { styles } from './styles';
 
 export function Sort(): JSX.Element {
-  const { onSelectPress, sortOptions,
-    // onSortChange
+  const { sortOptions,
+    onSortChange,
   } =
     useSortController();
 
@@ -26,15 +25,12 @@ export function Sort(): JSX.Element {
               label={sort.value}
               key={index}
               isActive={sort.isActive}
-              onChange={() => {}}
+              onChange={onSortChange}
             />
           );
         })}
       </ScrollView>
       <View style={[styles.footerOffset, { height: footerOffset }]} />
-      <View style={[styles.selectButtonContainer, { bottom: footerOffset }]}>
-        <Button icon="select" onPress={onSelectPress} />
-      </View>
     </View>
   );
 }

@@ -7,8 +7,7 @@ import { styles } from './styles';
 
 interface Props {
   label: string;
-  onChange: (isActive: boolean, value: string) => void;
-  // activeId: string;
+  onChange: (value: string) => void;
   isActive: boolean;
 }
 
@@ -19,7 +18,7 @@ export function PickListItem({
 }: Props): JSX.Element {
 
   const setActive = useCallback((): void => {
-    onChange(!!isActive, label);
+    onChange(label);
   },
   [onChange, isActive],
   );

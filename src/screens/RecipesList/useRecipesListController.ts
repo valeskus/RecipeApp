@@ -21,12 +21,9 @@ export const useRecipeListController = () => {
 
   const handleSearch = useCallback(async () => {
     setLoading(true);
-    // const options: SearchOptions = {
-    //   search,
-    // };
     await getRecipes({ search, sort });
     setLoading(false);
-  }, [getRecipes, search]);
+  }, [getRecipes, search, sort]);
 
   useEffect(() => {
     handleSearch();
