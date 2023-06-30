@@ -13,7 +13,7 @@ interface Props extends UseSearchControllerParams {}
 
 export function Search({ onSearch }: Props): JSX.Element {
   const {
-    searchTerm,
+    search,
     searchInputRef,
     handleChange,
     handleSearch,
@@ -27,18 +27,18 @@ export function Search({ onSearch }: Props): JSX.Element {
         placeholder="Search"
         style={styles.searchBarInput}
         onChangeText={handleChange}
-        value={searchTerm}
+        value={search}
         ref={searchInputRef}
         autoCapitalize="none"
       />
-      {searchTerm && (
+      {search && (
         <Pressable
           onPress={handleResetSearchInput}
           style={({ pressed }) => [
             styles.resetSearchIconContainer,
             pressed && styles.searchPress,
           ]}
-          disabled={!searchTerm}
+          disabled={!search}
         >
           <Image source={Icons.cancel} style={styles.resetSearchIcon} />
         </Pressable>
@@ -50,7 +50,7 @@ export function Search({ onSearch }: Props): JSX.Element {
           styles.searchBarIconContainer,
           pressed && styles.searchPress,
         ]}
-        disabled={!searchTerm}
+        disabled={!search}
       >
         <Image source={Icons.search} style={styles.searchBarIcon} />
       </Pressable>

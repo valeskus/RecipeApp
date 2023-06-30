@@ -8,7 +8,6 @@ export const useSortController = () => {
   const navigation = useNavigation();
 
   const { sortOptions } = RecipesStore.useRecipesStore();
-  // console.log(sortOptions);
 
   // const onSortChange = useCallback((isActive: boolean, value: string) => {
 

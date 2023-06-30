@@ -2,21 +2,25 @@ import * as Redux from 'redux';
 
 import { SearchActions } from './searchActions';
 
-export interface SearchTermState {
-  searchTerm: string;
+export interface SearchState {
+  search: string;
+  sort: string;
 }
 
-const initialState: SearchTermState = {
-  searchTerm: '',
+const initialState: SearchState = {
+  search: '',
+  sort: 'relevance',
 };
 
 export function searchReducer(state = initialState, action: Redux.AnyAction) {
+
   switch (action.type) {
     case SearchActions.SET: {
-      const { searchTerm } = action.payload;
+      const { search, sort } = action.payload;
 
       return {
-        searchTerm,
+        search,
+        sort: sort || state.sort,
       };
     }
 

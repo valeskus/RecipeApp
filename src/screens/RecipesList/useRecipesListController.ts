@@ -3,7 +3,7 @@ import React, { useCallback, useEffect } from 'react';
 import * as RecipesStore from '@stores/recipes';
 import * as SearchStore from '@stores/search';
 
-import { SearchOptions } from '@api/recipes.api';
+// import { SearchOptions } from '@api/recipes.api';
 
 import { useGridTypes } from './hooks';
 
@@ -11,7 +11,7 @@ export const useRecipeListController = () => {
   const { gridType, onChangeCardType } = useGridTypes();
 
   const { recipes } = RecipesStore.useRecipesStore();
-  const { searchTerm } = SearchStore.useSearchStore();
+  const { search, sort } = SearchStore.useSearchStore();
 
   const [isLoading, setLoading] = React.useState(false);
 
@@ -21,13 +21,12 @@ export const useRecipeListController = () => {
 
   const handleSearch = useCallback(async () => {
     setLoading(true);
-    const options: SearchOptions = {
-      search: searchTerm,
-      sort: 'relevance',
-    };
-    await getRecipes(options);
+    // const options: SearchOptions = {
+    //   search,
+    // };
+    await getRecipes({ search, sort });
     setLoading(false);
-  }, [getRecipes, searchTerm]);
+  }, [getRecipes, search]);
 
   useEffect(() => {
     handleSearch();

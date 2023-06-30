@@ -26,7 +26,7 @@ const getRenderItem =
       return params.gridType === 'grid' ? (
         <ProductCardGrid
           title={item.title}
-          rating={item.rating}
+          // rating={item.rating}
           calories={item.kCal}
           time={item.time}
           image={item.image}

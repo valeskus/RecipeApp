@@ -1,15 +1,6 @@
-import { DetailRecipeModel, RecipeListModel } from '../models';
+import { DetailRecipeModel, RecipeListModel, SearchOptions } from '../models';
 
 import { client } from './client.api';
-
-export interface SearchOptions {
-  search: string;
-  sort: string; // Reference SortOptionModel.id
-  filter?: Array<{
-    key: string; // Reference FilterModel.id
-    value: string; // Reference FilterValueModel.id
-  }>;
-}
 
 export const searchRecipes = async (
   options: SearchOptions,

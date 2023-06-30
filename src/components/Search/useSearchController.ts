@@ -8,14 +8,13 @@ export interface UseSearchControllerParams {
 }
 
 export const useSearchController = (params: UseSearchControllerParams) => {
-  const { searchTerm } = SearchStore.useSearchStore();
-  const setSearchTerm = SearchStore.useSearchTerm();
-
+  const { search } = SearchStore.useSearchStore();
+  const setSearchTerm = SearchStore.useSetSearch();
   const searchInputRef: RefObject<TextInput> = createRef();
 
   const handleChange = useCallback(
     (nextValue: string) => {
-      setSearchTerm(nextValue);
+      setSearchTerm({ search: nextValue });
     },
     [setSearchTerm],
   );
@@ -24,7 +23,7 @@ export const useSearchController = (params: UseSearchControllerParams) => {
   }, [params]);
 
   const handleResetSearchInput = useCallback(() => {
-    setSearchTerm('');
+    setSearchTerm({ search: '' });
   }, [setSearchTerm]);
 
   const handlePress = useCallback(() => {
@@ -32,7 +31,7 @@ export const useSearchController = (params: UseSearchControllerParams) => {
   }, []);
 
   return {
-    searchTerm,
+    search,
     searchInputRef,
     handleChange,
     handleSearch,
