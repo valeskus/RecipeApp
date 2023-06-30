@@ -6,7 +6,6 @@ export const styles = StyleSheet.create({
   header: {
     position: 'absolute',
     flexDirection: 'row',
-    // paddingTop: 40,
     zIndex: 10,
     height: 115,
     width: '100%',
