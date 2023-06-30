@@ -36,6 +36,7 @@ export const styles = StyleSheet.create({
   productCardLineDetailsItem: {
     fontSize: 15,
     color: Colors.text,
+    width: '60%',
   },
   cardPressed: {
     transform: [{ scale: 0.9 }],
