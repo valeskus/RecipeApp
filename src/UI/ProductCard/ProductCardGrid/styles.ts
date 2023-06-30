@@ -31,7 +31,8 @@ export const styles = StyleSheet.create({
   },
   productCardDetails: {
     flex: 2,
-    padding: 10,
+    paddingVertical: 10,
+    paddingHorizontal: 8,
   },
   productCardDetailsItem: {
     fontSize: 15,
@@ -42,7 +43,7 @@ export const styles = StyleSheet.create({
   },
   note: {
     color: Colors.secondary,
-    fontSize: 13,
+    fontSize: 12,
     fontWeight: '300',
   },
   productCardDetailsItemBox: {
