@@ -4,9 +4,25 @@ import { ApiProperty } from '@nestjs/swagger';
 import { MacroNutrients } from './macro-nutrients.schema';
 import { Instruction } from './instruction.schema';
 import { Ingredient } from './ingredient.schema';
+import { ShortCategory } from './short-category.schema';
 
-@Schema()
+@Schema({
+    toJSON: {
+        virtuals: true,
+        versionKey: false,
+        transform: (doc, ret) => {
+            delete ret._id;
+        }
+    }
+})
 export class Recipe {
+    @ApiProperty({
+        example: '6485e97f2fe21ff4fba5f7e4',
+        description: 'Id of the recipe',
+        required: true
+    })
+    readonly id: string;
+
     @ApiProperty({
         example: 5,
         description: 'Time of cooking (minutes)',
@@ -55,7 +71,7 @@ export class Recipe {
     kCal: number;
 
     @ApiProperty({
-        example: "This lasagna recipe takes a little work, but it is so satisfying and filling that it's worth it!",
+        example: 'This lasagna recipe takes a little work, but it is so satisfying and filling that it\'s worth it!',
         description: 'Description of the recipe',
     })
     @Prop({ required: true })
@@ -92,12 +108,12 @@ export class Recipe {
     ingredients: Array<Ingredient>;
 
     @ApiProperty({
-        example: ['Breakfast', 'Main dish'],
+        type: [ShortCategory],
         description: 'Categories the recipe belongs to',
         required: true,
     })
     @Prop({ required: true })
-    categories: Array<string>;
+    categories: Array<ShortCategory>;
 
     @ApiProperty({
         example: 0,
@@ -110,10 +126,11 @@ export class Recipe {
 
 export const RecipeSchema = SchemaFactory.createForClass(Recipe);
 
-RecipeSchema.set('toJSON', {
-    virtuals: true,
-    versionKey: false,
-    transform: (doc, ret) => {
-        delete ret._id;
-    }
+RecipeSchema.index({ title: 'text', 'categories.title': 'text' });
+RecipeSchema.index({
+    title: 1,
+    time: 1,
+    difficulty: 1,
+    kCal: 1,
+    'categories.title': 1,
 });

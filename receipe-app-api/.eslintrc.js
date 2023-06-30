@@ -39,7 +39,11 @@ module.exports = {
         'len',
         'dto',
         'virtuals',
-        'localhost'
+        'localhost',
+        'enum',
+        'ig',
+        'lte',
+        'cond'
       ]
     }],
     'no-extra-semi': 'error',
@@ -87,6 +91,7 @@ module.exports = {
         requireLast: false,
       },
     }],
+    'quotes': ['error', 'single'],
     'max-lines': ['error', 200],
     'import/no-default-export': 'error',
     'import/prefer-default-export': 'off',

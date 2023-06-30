@@ -1,8 +1,23 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { ApiProperty } from '@nestjs/swagger';
 
-@Schema()
+@Schema({
+    toJSON: {
+        virtuals: true,
+        versionKey: false,
+        transform: (doc, ret) => {
+            delete ret._id;
+        }
+    }
+})
 export class Product {
+    @ApiProperty({
+        example: '6485e97f2fe21ff4fba5f7e4',
+        description: 'Id of the product',
+        required: true
+    })
+    readonly id: string;
+
     @ApiProperty({
         example: 'Maine CoonWheat flour',
         description: 'Title of the product',
@@ -47,11 +62,3 @@ export class Product {
 }
 
 export const ProductSchema = SchemaFactory.createForClass(Product);
-
-ProductSchema.set('toJSON', {
-    virtuals: true,
-    versionKey: false,
-    transform: (doc, ret) => {
-        delete ret._id;
-    }
-});

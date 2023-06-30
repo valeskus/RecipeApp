@@ -1,30 +1,38 @@
-export interface BaseRecipeModel {
-  id: string;
-  title: string;
-  kCal: number;
-  time: string;
-  rating: number;
-  image: string;
+export enum SortOptions {
+    RELEVANCE = 'relevance',
+    TIME_ASC = 'time',
+    ALPHABETICALLY_ASC = 'alphabetically',
+    ALPHABETICALLY_DESC = '-alphabetically',
+    CALORIES_ASC = 'calories',
+    CALORIES_DESC = '-calories',
 }
 
-export interface SortOptionModel {
-  label: string;
-  id: string;
+export enum Difficulty {
+    hard = 2,
+    normal = 1,
+    easy = 0
 }
 
-export interface FilterValueModel {
-  label: string;
-  id: string;
+export enum Calories {
+    lte100 = 'lte100',
+    lte250 = 'lte250',
+    lte500 = 'lte500',
+    lte750 = 'lte750',
+    lte1000 = 'lte1000',
+    gt1000 = 'gt1000',
 }
 
-export interface FilterModel {
-  id: string;
-  title: string;
-  values: Array<FilterValueModel>;
+export enum TotalTime {
+    lte20 = 'lte20',
+    lte30 = 'lte30',
+    lte45 = 'lte45',
+    lte60 = 'lte60',
+    gt60 = 'gt60',
 }
 
-export interface RecipeListModel {
-  recipes: Array<BaseRecipeModel>;
-  filters: Array<FilterModel>;
-  sortOptions: Array<SortOptionModel>;
+export interface Filter<T> {
+    value: T;
+    count: number;
 }
+
+export type Facet<T> = Array<Filter<T>>;
