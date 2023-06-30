@@ -9,7 +9,9 @@ import { useSortController } from './useSortController';
 import { styles } from './styles';
 
 export function Sort(): JSX.Element {
-  const { onSelectPress, sortOptions, onSortChange, activeSortId } =
+  const { onSelectPress, sortOptions,
+    // onSortChange
+  } =
     useSortController();
 
   const { bottom } = useSafeAreaInsets();
@@ -18,14 +20,13 @@ export function Sort(): JSX.Element {
   return (
     <View style={styles.modalContainer}>
       <ScrollView>
-        {sortOptions.map(sort => {
+        {sortOptions.map((sort, index) => {
           return (
             <PickListItem
-              label={sort.label}
-              id={sort.id}
-              key={sort.id}
-              activeId={activeSortId}
-              onChange={onSortChange}
+              label={sort.value}
+              key={index}
+              isActive={sort.isActive}
+              onChange={() => {}}
             />
           );
         })}

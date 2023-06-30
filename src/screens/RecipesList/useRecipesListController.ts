@@ -22,7 +22,8 @@ export const useRecipeListController = () => {
   const handleSearch = useCallback(async () => {
     setLoading(true);
     const options: SearchOptions = {
-      searchTerm,
+      search: searchTerm,
+      sort: 'relevance',
     };
     await getRecipes(options);
     setLoading(false);

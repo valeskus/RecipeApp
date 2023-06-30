@@ -7,32 +7,27 @@ import { styles } from './styles';
 
 interface Props {
   label: string;
-  id: string;
-  onChange: (id: string) => void;
-  activeId: string;
+  onChange: (isActive: boolean, value: string) => void;
+  // activeId: string;
+  isActive: boolean;
 }
 
 export function PickListItem({
   label,
-  id,
   onChange,
-  activeId,
+  isActive,
 }: Props): JSX.Element {
-  const setActive = useCallback(
-    (activeElement: string): void => {
-      if (activeId === activeElement) {
-        return onChange('');
-      }
 
-      onChange(id);
-    },
-    [onChange, id, activeId],
+  const setActive = useCallback((): void => {
+    onChange(!!isActive, label);
+  },
+  [onChange, isActive],
   );
 
   return (
     <View style={styles.pickListItemContainer}>
-      <Pressable onPress={() => setActive(id)} style={styles.pick}>
-        {activeId === id && (
+      <Pressable onPress={setActive} style={styles.pick}>
+        {isActive && (
           <Image source={Icons.dot} style={styles.pickActive} />
         )}
       </Pressable>

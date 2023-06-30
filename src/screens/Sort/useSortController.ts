@@ -1,33 +1,34 @@
-import React, { useCallback } from 'react';
+import { useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
 
 import * as RecipesStore from '@stores/recipes';
 
 export const useSortController = () => {
-  const [activeSortId, setActiveSortId] = React.useState('');
+  // const [updateSort, setUpdateSort] = React.useState([]);
   const navigation = useNavigation();
 
   const { sortOptions } = RecipesStore.useRecipesStore();
+  // console.log(sortOptions);
 
-  const onSortChange = useCallback(
-    (id: string) => {
-      if (activeSortId === id) {
-        return setActiveSortId('');
-      }
+  // const onSortChange = useCallback((isActive: boolean, value: string) => {
 
-      setActiveSortId(id);
-    },
-    [activeSortId],
-  );
+  //   // return sort;
+  // },
+  // [sortOptions],
+  // );
 
   const onSelectPress = () => {
     navigation.goBack();
   };
 
+  useEffect(() => {
+
+  }, []);
+
   return {
     onSelectPress,
-    onSortChange,
+    // onSortChange,
     sortOptions,
-    activeSortId,
+    // activeSortId,
   };
 };

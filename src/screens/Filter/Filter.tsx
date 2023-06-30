@@ -9,7 +9,10 @@ import { useFilterController } from './useFilterController';
 import { styles } from './styles';
 
 export function Filter(): JSX.Element {
-  const { onSelectPress, onFilterChange, filters } = useFilterController();
+  const { onSelectPress,
+    // onFilterChange,
+    filters,
+  } = useFilterController();
 
   const { bottom } = useSafeAreaInsets();
   const footerOffset = bottom || 20;
@@ -23,8 +26,8 @@ export function Filter(): JSX.Element {
               filter={filter}
               index={index}
               key={filter.id}
-              id={filter.id}
-              onChange={onFilterChange}
+              // id={filter.id}
+              // onChange={onFilterChange}
             />
           );
         })}

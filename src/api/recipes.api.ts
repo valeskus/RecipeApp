@@ -3,8 +3,8 @@ import { DetailRecipeModel, RecipeListModel } from '../models';
 import { client } from './client.api';
 
 export interface SearchOptions {
-  searchTerm: string;
-  sort?: string; // Reference SortOptionModel.id
+  search: string;
+  sort: string; // Reference SortOptionModel.id
   filter?: Array<{
     key: string; // Reference FilterModel.id
     value: string; // Reference FilterValueModel.id
