@@ -38,23 +38,17 @@ const keyExtractor: FlatListProps<CategoryModel>['keyExtractor'] = item =>
 export function CategoryCards(): JSX.Element {
   const { onPress, isLoading, data } = useCategoryCardsController();
 
-  const commonProps = {
-    style: styles.offset,
-    data,
-    renderItem: getRenderItem({
-      onPress,
-    }),
-    keyExtractor,
-  };
-
   return (
     <>
       {isLoading && <CategoryListSkeleton />}
       {!isLoading && (
         <FlatList
-          {...commonProps}
+          data={data}
+          style={styles.offset}
+          renderItem={getRenderItem({ onPress })}
           contentContainerStyle={styles.categoryCardsContainer}
           numColumns={2}
+          keyExtractor={keyExtractor}
         />
       )}
     </>
