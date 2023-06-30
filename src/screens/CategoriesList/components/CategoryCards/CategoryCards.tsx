@@ -17,7 +17,6 @@ const getRenderItem =
   (params: RenderItemParams): ListRenderItem<CategoryModel> => {
     const Card: ListRenderItem<CategoryModel> = ({ item }) => {
       if (item.id === 'EMPTY') {
-
         return <View style={styles.cardPlaceholder} />;
       }
 
