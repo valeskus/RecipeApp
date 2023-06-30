@@ -8,7 +8,6 @@ export const styles = StyleSheet.create({
     backgroundColor: Colors.background,
     alignItems: 'center',
     justifyContent: 'center',
-    top: -40,
   },
 
   icon: {
