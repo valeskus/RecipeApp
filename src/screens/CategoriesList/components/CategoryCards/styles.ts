@@ -12,6 +12,7 @@ export const styles = StyleSheet.create({
   },
   cardPlaceholder: {
     flex: 1,
+    margin: 10,
   },
   loader: {
     alignSelf: 'center',
