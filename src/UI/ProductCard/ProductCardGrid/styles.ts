@@ -28,6 +28,7 @@ export const styles = StyleSheet.create({
     marginBottom: 2,
     fontSize: 18,
     color: Colors.primary,
+    flex: 1,
   },
   productCardDetails: {
     flex: 2,
@@ -50,6 +51,7 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'flex-end',
     marginBottom: 5,
+    flex: 1,
   },
   icon: {
     width: 17,
