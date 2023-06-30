@@ -42,7 +42,7 @@ export function ProductCardGrid({
         </View>
         <View style={styles.productCardDetailsItemBox}>
           <Image source={Icons.kCal} style={styles.icon} />
-          <Text style={styles.productCardDetailsItem}>{calories} kcal</Text>
+          <Text style={styles.productCardDetailsItem} numberOfLines={1}>{calories} kcal</Text>
           <Text style={styles.note}> / 100g</Text>
         </View>
       </View>
