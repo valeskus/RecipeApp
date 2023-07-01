@@ -17,18 +17,11 @@ export function Header({ scrollYRef, hideRightButton }: Props): JSX.Element {
     navigation.goBack();
   }, []);
 
-  if (hideRightButton) {
-    return  (<View style={styles.header}>
-      <Button icon="leftArrow" onPress={onGoBack} />
-    </View>);
-  }
-
-  const headerOpacity = scrollYRef ? scrollYRef.current.interpolate({
+  const headerOpacity = scrollYRef?.current?.interpolate({
     inputRange: [190, 280, 310, 350],
     outputRange: [0, 0.2, 0.5, 0.5],
     extrapolateLeft: 'clamp',
-  }) : 1;
-  //TODO opacity
+  }) || 0.2;
 
   return (
     <View style={styles.header}>
@@ -36,9 +29,11 @@ export function Header({ scrollYRef, hideRightButton }: Props): JSX.Element {
       <View style={styles.headerLeftButton}>
         <Button icon="leftArrow" onPress={onGoBack} />
       </View>
-      <View style={styles.headerRightButton}>
-        <Button icon="like" onPress={() => {}} />
-      </View>
+      {!hideRightButton && (
+        <View style={styles.headerRightButton}>
+          <Button icon="like" onPress={() => { }} />
+        </View>
+      )}
     </View>
   );
 }
