@@ -36,11 +36,14 @@ export function ProductCardLine({
         <Text numberOfLines={2} style={styles.productCardTitle}>
           {title}
         </Text>
-        <View style={styles.productCardLineItem}>
-          <Image source={Icons.kCal} style={styles.icon} />
-          <Text style={styles.productCardLineDetailsItem}>{calories} kcal</Text>
+        <View style={styles.productCardDetailsItemBox}>
           <Image source={Icons.time} style={styles.icon} />
           <Text style={styles.productCardLineDetailsItem}>{time}</Text>
+        </View>
+        <View style={styles.productCardDetailsItemBox}>
+          <Image source={Icons.kCal} style={styles.icon} />
+          <Text style={styles.productCardLineDetailsItem} numberOfLines={1}>{calories} kcal</Text>
+          <Text style={styles.note}> / 100g</Text>
         </View>
       </View>
     </Pressable>

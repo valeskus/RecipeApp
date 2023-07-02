@@ -28,27 +28,31 @@ export const styles = StyleSheet.create({
     marginBottom: 2,
     fontSize: 18,
     color: Colors.primary,
+    flex: 1,
   },
   productCardDetails: {
     flex: 2,
-    padding: 10,
+    paddingVertical: 10,
+    paddingHorizontal: 8,
   },
   productCardDetailsItem: {
     fontSize: 15,
     color: Colors.text,
+    width: '50%',
   },
   cardPressed: {
     transform: [{ scale: 0.9 }],
   },
   note: {
     color: Colors.secondary,
-    fontSize: 13,
     fontWeight: '300',
+    fontSize: 12,
   },
   productCardDetailsItemBox: {
     flexDirection: 'row',
     alignItems: 'flex-end',
     marginBottom: 5,
+    flex: 1,
   },
   icon: {
     width: 17,
