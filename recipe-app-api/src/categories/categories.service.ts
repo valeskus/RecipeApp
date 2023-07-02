@@ -26,13 +26,7 @@ export class CategoriesService {
     return this.categoryModel.findOne({ title }).exec();
   }
 
-  async create(createCategoryDto: CreateCategoryDto): Promise<Category> {
-    const found = await this.findOneByTitle(createCategoryDto.title);
-
-    if (found) {
-      throw new Error(`Category ${createCategoryDto.title} already exists`);
-    }
-
+  create(createCategoryDto: CreateCategoryDto): Promise<Category> {
     const createdCategory = new this.categoryModel(createCategoryDto);
 
     return createdCategory.save();

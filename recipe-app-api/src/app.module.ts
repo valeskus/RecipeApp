@@ -7,6 +7,7 @@ import { RecipeModule } from './recipe/recipe.module';
 import { CategoriesModule } from './categories/categories.module';
 import { SearchModule } from './search/search.module';
 import { ProductsModule } from './products/products.module';
+import { TranslationModule } from './translation/translation.module';
 
 // eslint-disable-next-line max-len
 const DBUrl = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}/?retryWrites=true`;
@@ -17,7 +18,8 @@ const DBUrl = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@$
     RecipeModule,
     CategoriesModule,
     SearchModule,
-    ProductsModule
+    ProductsModule,
+    TranslationModule
   ],
   controllers: [AppController],
   providers: [AppService],

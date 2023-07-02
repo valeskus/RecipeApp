@@ -8,12 +8,13 @@ import {
     ValidateNested,
     IsArray,
     ArrayNotEmpty,
-    Min,
-    Max,
     ArrayUnique,
+    IsEnum,
 } from 'class-validator';
 import { Type } from 'class-transformer';
 import { ApiProperty } from '@nestjs/swagger';
+
+import { Difficulty } from '../models';
 
 import { IngredientDto } from './ingredient.dto';
 import { InstructionDto } from './instruction.dto';
@@ -116,14 +117,13 @@ class CreateRecipe {
     readonly instructions: Array<InstructionDto>;
 
     @ApiProperty({
-        example: 0,
+        example: Difficulty.easy,
         description: 'Difficulty of the recipe (0-2)',
         required: true,
     })
-    @Max(2)
-    @Min(0)
+    @IsEnum(Difficulty)
     @IsNumber()
-    readonly difficulty: 0 | 1 | 2;
+    readonly difficulty: Difficulty;
 }
 
 export { CreateRecipe as CreateRecipeDto };
