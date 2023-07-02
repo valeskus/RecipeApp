@@ -1,1 +1,0 @@
-{"version":3,"file":"get-all-categories.dto.js","sourceRoot":"","sources":["../../../src/categories/dto/get-all-categories.dto.ts"],"names":[],"mappings":";;;;;;;;;;;;AAAA,6CAA8C;AAE9C,wCAAsC;AAEtC,MAAM,gBAAgB;CAOrB;AADY;IALR,IAAA,qBAAW,EAAC;QACT,WAAW,EAAE,oBAAoB;QACjC,QAAQ,EAAE,IAAI;QACd,IAAI,EAAE,CAAC,kBAAQ,CAAC;KACnB,CAAC;8BACmB,KAAK;oDAAW;AAGZ,+CAAmB"}
