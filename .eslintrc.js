@@ -133,6 +133,11 @@ module.exports = {
           'pattern': '@components/**',
           'group': 'external',
           'position': 'after'
+        },
+        {
+          'pattern': '@managers/**',
+          'group': 'external',
+          'position': 'after'
         }
       ],
       'pathGroupsExcludedImportTypes': ['builtin'],
