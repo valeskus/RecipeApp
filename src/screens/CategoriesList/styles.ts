@@ -6,7 +6,6 @@ export const styles = StyleSheet.create({
   categoriesScreenContainer: {
     flex: 1,
     paddingHorizontal: 10,
-
     flexDirection: 'column',
     backgroundColor: Colors.background,
   },

@@ -15,6 +15,10 @@ interface Props {
   categories: Array<CategoryModel>;
 }
 
+interface Props {
+  categories: Array<CategoryModel>;
+}
+
 const getRenderItem =
   (params: RenderItemParams): ListRenderItem<CategoryModel> => {
     const Card: ListRenderItem<CategoryModel> = ({ item }) => {
@@ -38,7 +42,7 @@ const keyExtractor: FlatListProps<CategoryModel>['keyExtractor'] = item =>
   item.id;
 
 export function CategoryCards({ categories }: Props): JSX.Element {
-  const { onPress,  data } = useCategoryCardsController(categories);
+  const { onPress, data } = useCategoryCardsController(categories);
 
   return (
     <FlatList
