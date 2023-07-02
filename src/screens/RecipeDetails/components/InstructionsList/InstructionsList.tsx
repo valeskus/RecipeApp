@@ -19,7 +19,7 @@ export function InstructionsList({ instructions }: Props): JSX.Element {
             image={item.image}
             description={item.description}
             count={index + 1}
-            key={item.id}
+            key={index}
           />
         );
       })}

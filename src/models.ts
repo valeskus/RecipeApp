@@ -14,14 +14,12 @@ export interface MacroNutrientsModel {
 }
 
 export interface IngredientModel {
-  id: string;
   title: string;
   amount: number;
   units: string;
 }
 
 export interface InstructionModel {
-  id: string;
   image?: string;
   description: string;
 }

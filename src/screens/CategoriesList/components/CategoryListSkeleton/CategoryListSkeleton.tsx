@@ -16,15 +16,15 @@ export function CategoryListSkeleton(): JSX.Element {
       <Rect x="53%" y="10" rx="20" ry="20" width="43%" height="135" />
       <Rect x="53%" y="155" rx="4" ry="4" width="43%" height="13" />
 
-      <Rect x="3%" y="200" rx="20" ry="20" width="43%" height="135" />
-      <Rect x="3%" y="345" rx="4" ry="4" width="43%" height="13" />
-      <Rect x="53%" y="200" rx="20" ry="20" width="43%" height="135" />
-      <Rect x="53%" y="345" rx="4" ry="4" width="43%" height="13" />
+      <Rect x="3%" y="210" rx="20" ry="20" width="43%" height="135" />
+      <Rect x="3%" y="355" rx="4" ry="4" width="43%" height="13" />
+      <Rect x="53%" y="210" rx="20" ry="20" width="43%" height="135" />
+      <Rect x="53%" y="355" rx="4" ry="4" width="43%" height="13" />
 
-      <Rect x="3%" y="390" rx="20" ry="20" width="43%" height="135" />
-      <Rect x="3%" y="535" rx="4" ry="4" width="43%" height="13" />
-      <Rect x="53%" y="390" rx="20" ry="20" width="43%" height="135" />
-      <Rect x="53%" y="535" rx="4" ry="4" width="43%" height="13" />
+      <Rect x="3%" y="410" rx="20" ry="20" width="43%" height="135" />
+      <Rect x="3%" y="565" rx="4" ry="4" width="43%" height="13" />
+      <Rect x="53%" y="410" rx="20" ry="20" width="43%" height="135" />
+      <Rect x="53%" y="565" rx="4" ry="4" width="43%" height="13" />
     </ContentLoader>
   );
 }
