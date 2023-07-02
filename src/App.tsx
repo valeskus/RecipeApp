@@ -33,7 +33,7 @@ export type RootStackParamList = {
 const Stack = createNativeStackNavigator();
 declare global {
   namespace ReactNavigation {
-    interface RootParamList extends RootStackParamList {}
+    interface RootParamList extends RootStackParamList { }
   }
 }
 

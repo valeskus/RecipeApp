@@ -18,6 +18,7 @@ import {
   PrescriptionCardSection,
 } from './hooks';
 import { NutrientsValue } from './components/NutrientsValue';
+import { Error } from './components/Error';
 
 const { height } = Dimensions.get('screen');
 
@@ -36,11 +37,19 @@ export function RecipeDetails(): JSX.Element {
     nutrientsActiveSection,
     prescriptionCardActiveSection,
     servingsCount,
+    isLoading,
+    isError,
+    fetchData,
   } = useRecipeDetailsController();
+
   const scrollYRef = useRef(new Animated.Value(0));
 
-  if (!recipe) {
+  if (isLoading) {
     return <RecipeDetailsSkeleton />;
+  }
+
+  if (isError || !recipe) {
+    return <Error onRetry={fetchData} />;
   }
 
   const scale = scrollYRef.current.interpolate({
@@ -56,7 +65,6 @@ export function RecipeDetails(): JSX.Element {
         source={{ uri: recipe.image }}
         style={[styles.image, { transform: [{ scale }] }]}
       />
-
       <Animated.ScrollView
         style={styles.detailsScreen}
         scrollEventThrottle={16}

@@ -6,9 +6,13 @@ import { CategoryCard } from '@UI/CategoryCard';
 import { CategoryModel } from '../../../../models';
 import { CategoryListSkeleton } from '../CategoryListSkeleton';
 
-import { useCategoryCardController } from './useCategoryCardController';
+import { useCategoryCardsController } from './useCategoryCardsController';
 import { styles } from './styles';
 
+interface Props {
+  categories: Array<CategoryModel>;
+  isLoading: boolean;
+}
 interface RenderItemParams {
   onPress: (categoryTitle: string) => void;
 }
@@ -32,8 +36,8 @@ const getRenderItem =
     return Card;
   };
 
-export function CategoryCards(): JSX.Element {
-  const { onPress, isLoading, categories } = useCategoryCardController();
+export function CategoryCards({ categories, isLoading }: Props): JSX.Element {
+  const { onPress } = useCategoryCardsController();
 
   return (
     <>

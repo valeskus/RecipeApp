@@ -14,9 +14,9 @@ const actionGetRecipes = (payload: RecipeListModel) => ({
   payload,
 });
 
-const actionError = (error: unknown) => ({
+const actionError = (key: string, error: unknown) => ({
   type: RecipesActions.ERROR,
-  payload: error,
+  payload: { [key]: error },
 });
 
 export const getRecipes = async (
@@ -27,6 +27,6 @@ export const getRecipes = async (
     const recipeList = await RecipesApi.searchRecipes(options);
     dispatch(actionGetRecipes(recipeList));
   } catch (error) {
-    dispatch(actionError(error));
+    dispatch(actionError('getRecipes', error));
   }
 };
