@@ -1,5 +1,6 @@
 import * as Redux from 'redux';
 
+import { TimeManager } from '../../managers/TimeManager';
 import {
   BaseRecipeModel,
   FilterModel,
@@ -28,10 +29,15 @@ export function recipesReducer(
   switch (action.type) {
     case RecipesActions.GET: {
       const { recipes, filters, sortOptions } = action.payload as RecipeListModel;
+      const recipesUpdateTime = recipes.map((recipe) => {
+        const timeInHours = TimeManager.getHours(recipe.time);
+
+        return { ...recipe, time: timeInHours };
+      });
 
       return {
         ...state,
-        recipes,
+        recipesUpdateTime,
         filters,
         sortOptions,
       };
