@@ -4,13 +4,16 @@ import { FlatList, FlatListProps, ListRenderItem, View } from 'react-native';
 import { CategoryCard } from '@UI/CategoryCard';
 
 import { CategoryModel } from '../../../../models';
-import { CategoryListSkeleton } from '../CategoryListSkeleton';
 
 import { useCategoryCardsController } from './useCategoryCardsController';
 import { styles } from './styles';
 
 interface RenderItemParams {
   onPress: (categoryTitle: string) => void;
+}
+
+interface Props {
+  categories: Array<CategoryModel>;
 }
 
 const getRenderItem =
@@ -35,22 +38,17 @@ const getRenderItem =
 const keyExtractor: FlatListProps<CategoryModel>['keyExtractor'] = item =>
   item.id;
 
-export function CategoryCards(): JSX.Element {
-  const { onPress, isLoading, data } = useCategoryCardsController();
+export function CategoryCards({ categories }: Props): JSX.Element {
+  const { onPress, data } = useCategoryCardsController(categories);
 
   return (
-    <>
-      {isLoading && <CategoryListSkeleton />}
-      {!isLoading && (
-        <FlatList
-          data={data}
-          style={styles.offset}
-          renderItem={getRenderItem({ onPress })}
-          contentContainerStyle={styles.categoryCardsContainer}
-          numColumns={2}
-          keyExtractor={keyExtractor}
-        />
-      )}
-    </>
+    <FlatList
+      data={data}
+      style={styles.offset}
+      renderItem={getRenderItem({ onPress })}
+      contentContainerStyle={styles.categoryCardsContainer}
+      numColumns={2}
+      keyExtractor={keyExtractor}
+    />
   );
 }

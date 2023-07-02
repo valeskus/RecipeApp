@@ -1,24 +1,13 @@
 import { useNavigation } from '@react-navigation/native';
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useMemo } from 'react';
 
-import * as CategoriesStore from '@stores/categories';
 import * as SearchStore from '@stores/search';
 
-export const useCategoryCardsController = () => {
-  const [isLoading, setLoading] = useState(false);
-  const { categories } = CategoriesStore.useCategoriesStore();
+import { CategoryModel } from 'src/models';
 
-  const getCategories = CategoriesStore.useGetCategories();
+export const useCategoryCardsController = (categories: Array<CategoryModel>) => {
 
   const navigation = useNavigation();
-
-  useEffect(() => {
-    setLoading(true);
-
-    getCategories().then(() => {
-      setLoading(false);
-    });
-  }, []);
 
   const setSearchTerm = SearchStore.useSearchTerm();
 
@@ -46,7 +35,6 @@ export const useCategoryCardsController = () => {
 
   return {
     onPress,
-    isLoading,
     data,
   };
 };
