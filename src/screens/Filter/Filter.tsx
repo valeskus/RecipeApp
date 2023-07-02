@@ -9,7 +9,7 @@ import { useFilterController } from './useFilterController';
 import { styles } from './styles';
 
 export function Filter(): JSX.Element {
-  const { onSelectPress, onFilterChange, filters } = useFilterController();
+  const { onSelectPress, filters } = useFilterController();
 
   const { bottom } = useSafeAreaInsets();
   const footerOffset = bottom || 20;
@@ -17,15 +17,9 @@ export function Filter(): JSX.Element {
   return (
     <View style={styles.modalContainer}>
       <ScrollView>
-        {filters.map((filter, index) => {
+        {filters.map(() => {
           return (
-            <FilterItem
-              filter={filter}
-              index={index}
-              key={filter.id}
-              id={filter.id}
-              onChange={onFilterChange}
-            />
+            <FilterItem />
           );
         })}
       </ScrollView>

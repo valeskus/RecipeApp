@@ -1,44 +1,11 @@
-import React, { useCallback } from 'react';
-import { View, Text } from 'react-native';
-
-import { PickListItem } from '@UI/PickListItem';
-
-import { FilterModel } from '../../../../models';
+import React from 'react';
+import { View } from 'react-native';
 
 import { styles } from './styles';
 
-interface Props {
-  filter: FilterModel;
-  index: number;
-  id: string;
-  onChange: (filterId: string, valueId: string) => void;
-}
-
-export function FilterItem({ filter, index, id, onChange }: Props): JSX.Element {
-  const [selectedId, setSelectedId] = React.useState('');
-  const handleSelectedValue = useCallback(
-    (valueId: string) => {
-      setSelectedId(valueId);
-
-      return onChange(id, selectedId);
-    },
-    [id, selectedId, onChange],
-  );
+export function FilterItem(): JSX.Element {
 
   return (
-    <View style={styles.filterScreenContainer}>
-      <Text>{`${index + 1}. ${filter.title}`}</Text>
-      {filter.values.map(value => {
-        return (
-          <PickListItem
-            label={value.label}
-            key={value.id}
-            id={value.id}
-            onChange={handleSelectedValue}
-            activeId={selectedId}
-          />
-        );
-      })}
-    </View>
+    <View style={styles.filterScreenContainer} />
   );
 }

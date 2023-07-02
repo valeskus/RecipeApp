@@ -44,8 +44,8 @@ export interface DetailRecipeModel extends BaseRecipeModel {
 }
 
 export interface SortOptionModel {
-  label: string;
-  id: string;
+  value: string;
+  isActive: boolean;
 }
 
 export interface FilterValueModel {
@@ -63,4 +63,12 @@ export interface RecipeListModel {
   recipes: Array<BaseRecipeModel>;
   filters: Array<FilterModel>;
   sortOptions: Array<SortOptionModel>;
+}
+export interface SearchOptions {
+  searchTerm: string;
+  sort?: string;
+  filter?: Array<{
+    key: string;
+    value: string;
+  }>;
 }
