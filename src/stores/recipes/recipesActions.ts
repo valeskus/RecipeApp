@@ -2,7 +2,7 @@ import { Dispatch } from 'redux';
 
 import * as RecipesApi from '@api/recipes.api';
 
-import { RecipeListModel } from '../../models';
+import { RecipeListModel, SearchOptions } from '../../models';
 
 export enum RecipesActions {
   GET = '@recipes/get',
@@ -20,7 +20,7 @@ const actionError = (key: string, error: unknown) => ({
 });
 
 export const getRecipes = async (
-  options: RecipesApi.SearchOptions,
+  options: SearchOptions,
   dispatch: Dispatch,
 ) => {
   try {

@@ -1,16 +1,16 @@
 import * as React from 'react';
 import * as Redux from 'react-redux';
 
-import { getRecipes } from '../recipesActions';
+import { setSearch } from '../searchActions';
 
 import { SearchOptions } from 'src/models';
 
-export const useGetRecipeList = () => {
+export const useSetSearch = () => {
   const dispatch = Redux.useDispatch();
 
   return React.useCallback(
-    async (options: SearchOptions) => {
-      await getRecipes(options, dispatch);
+    (searchOptions: SearchOptions) => {
+      setSearch(searchOptions, dispatch);
     },
     [dispatch],
   );

@@ -1,2 +1,2 @@
 export * from './useSearchStore';
-export * from './useSetSearchTerm';
+export * from './useSetSearch';

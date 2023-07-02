@@ -3,15 +3,13 @@ import React, { useCallback, useEffect } from 'react';
 import * as RecipesStore from '@stores/recipes';
 import * as SearchStore from '@stores/search';
 
-import { SearchOptions } from '@api/recipes.api';
-
 import { useGridTypes } from './hooks';
 
 export const useRecipeListController = () => {
   const { gridType, onChangeCardType } = useGridTypes();
 
   const { recipes } = RecipesStore.useRecipesStore();
-  const { searchTerm } = SearchStore.useSearchStore();
+  const searchOptions = SearchStore.useSearchStore();
 
   const [isLoading, setLoading] = React.useState(false);
 
@@ -21,12 +19,9 @@ export const useRecipeListController = () => {
 
   const handleSearch = useCallback(async () => {
     setLoading(true);
-    const options: SearchOptions = {
-      searchTerm,
-    };
-    await getRecipes(options);
+    await getRecipes(searchOptions);
     setLoading(false);
-  }, [getRecipes, searchTerm]);
+  }, [getRecipes, searchOptions]);
 
   useEffect(() => {
     handleSearch();
