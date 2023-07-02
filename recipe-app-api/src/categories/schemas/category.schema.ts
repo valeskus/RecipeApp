@@ -1,7 +1,9 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { ApiProperty } from '@nestjs/swagger';
 
+import { Translatable } from '../../translation/models';
 import { CategoryType } from '../models';
+
+import { CategoryTranslations, TranslatedCategory } from './translations';
 
 @Schema({
     toJSON: {
@@ -12,36 +14,18 @@ import { CategoryType } from '../models';
         }
     }
 })
-export class Category {
-    @ApiProperty({
-        example: '6485e97f2fe21ff4fba5f7e4',
-        description: 'Id of the category',
-        required: true
-    })
+export class Category extends TranslatedCategory implements Translatable<TranslatedCategory> {
     readonly id: string;
 
-    @ApiProperty({
-        example: 'Lunch',
-        description: 'Name of the category',
-        required: true
-    })
-    @Prop({ required: true })
-    title: string;
+    @Prop({
+        required: true,
+        type: CategoryTranslations
+     })
+    translations: CategoryTranslations;
 
-    @ApiProperty({
-        example: 'https://picsum.photos/500/500',
-        description: 'Url for the image of the category',
-        required: true
-    })
     @Prop({ required: true })
     image: string;
 
-    @ApiProperty({
-        example: CategoryType.DIET,
-        enum: CategoryType,
-        description: 'Type of the category',
-        required: true
-    })
     @Prop({ required: true })
     type: CategoryType;
 }

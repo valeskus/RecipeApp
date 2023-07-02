@@ -1,14 +1,14 @@
 import { ApiProperty } from '@nestjs/swagger';
 
-import { Category } from '../schemas';
+import { GetCategoryDto } from './get-category.dto';
 
 class GetAllCategories {
     @ApiProperty({
         description: 'List of categories',
         required: true,
-        type: [Category]
+        type: [GetCategoryDto]
     })
-    readonly categories: Array<Category>;
+    readonly categories: Array<GetCategoryDto>;
 }
 
 export { GetAllCategories as GetAllCategoriesDto };

@@ -1,6 +1,8 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { ApiProperty } from '@nestjs/swagger';
 
+import { Difficulty } from '../models';
+
 import { MacroNutrients } from './macro-nutrients.schema';
 import { Instruction } from './instruction.schema';
 import { Ingredient } from './ingredient.schema';
@@ -116,12 +118,12 @@ export class Recipe {
     categories: Array<ShortCategory>;
 
     @ApiProperty({
-        example: 0,
+        example: Difficulty.easy,
         description: 'Difficulty of the recipe (0-2)',
         required: true,
     })
     @Prop({ required: true })
-    difficulty: 0 | 1 | 2;
+    difficulty: Difficulty;
 }
 
 export const RecipeSchema = SchemaFactory.createForClass(Recipe);
