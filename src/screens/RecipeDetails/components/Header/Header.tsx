@@ -1,11 +1,10 @@
 import React, { useCallback } from 'react';
-import { Animated, View } from 'react-native';
+import { Animated, View, SafeAreaView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 import { Button } from '@UI/Button';
 
 import { styles } from './styles';
-
 interface Props {
   scrollYRef?: any;
   hideRightButton?: boolean;
@@ -24,7 +23,7 @@ export function Header({ scrollYRef, hideRightButton }: Props): JSX.Element {
   }) || 0.2;
 
   return (
-    <View style={styles.header}>
+    <SafeAreaView style={styles.header}>
       <Animated.View style={[styles.headerWrapper, { opacity: headerOpacity }]} />
       <View style={styles.headerLeftButton}>
         <Button icon="leftArrow" onPress={onGoBack} />
@@ -34,6 +33,6 @@ export function Header({ scrollYRef, hideRightButton }: Props): JSX.Element {
           <Button icon="like" onPress={() => { }} />
         </View>
       )}
-    </View>
+    </SafeAreaView>
   );
 }

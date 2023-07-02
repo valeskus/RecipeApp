@@ -3,16 +3,13 @@ import { Image, Pressable, StyleProp, ViewStyle, Text, View } from 'react-native
 
 import { Icons } from '@UI/Icons';
 
-import { Rating } from '../components/Rating';
-
 import { styles } from './styles';
 
 interface Props {
   image: string;
   title: string;
   calories: number;
-  time: string;
-  rating: number;
+  time: number;
   onPress: () => void;
   pressableStyle?: StyleProp<ViewStyle>;
 }
@@ -22,7 +19,6 @@ export function ProductCardLine({
   title,
   calories,
   time,
-  rating,
   onPress,
   pressableStyle,
 }: Props): JSX.Element {
@@ -40,9 +36,6 @@ export function ProductCardLine({
         <Text numberOfLines={2} style={styles.productCardTitle}>
           {title}
         </Text>
-        <View style={styles.productCardLineItem}>
-          <Rating rating={rating} />
-        </View>
         <View style={styles.productCardLineItem}>
           <Image source={Icons.kCal} style={styles.icon} />
           <Text style={styles.productCardLineDetailsItem}>{calories} kcal</Text>

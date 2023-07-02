@@ -14,7 +14,7 @@ export const styles = StyleSheet.create({
   },
   image: {
     width: '100%',
-    height: 400,
+    height: 450,
     resizeMode: 'cover',
     position: 'absolute',
     zIndex: 1,

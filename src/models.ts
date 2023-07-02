@@ -8,7 +8,7 @@ export interface CategoryListModel {
 }
 
 export interface MacroNutrientsModel {
-  protein: number;
+  proteins: number;
   carbs: number;
   fats: number;
 }
@@ -16,9 +16,8 @@ export interface MacroNutrientsModel {
 export interface IngredientModel {
   id: string;
   title: string;
-  description?: string;
-  count: number;
-  unit: string;
+  amount: number;
+  units: string;
 }
 
 export interface InstructionModel {
@@ -31,15 +30,14 @@ export interface BaseRecipeModel {
   id: string;
   title: string;
   kCal: number;
-  time: string;
-  rating: number;
+  time: number;
   image: string;
 }
 
 export interface DetailRecipeModel extends BaseRecipeModel {
   description: string;
   servingsCount: number;
-  weight: number;
+  amount: number;
   macroNutrients: MacroNutrientsModel;
   ingredients: Array<IngredientModel>;
   instructions: Array<InstructionModel>;

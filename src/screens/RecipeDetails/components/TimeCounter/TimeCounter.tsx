@@ -6,7 +6,7 @@ import { Icons } from '@UI/Icons';
 import { styles } from './styles';
 
 interface Props {
-  time: string;
+  time: number;
 }
 
 export function TimeCounter({ time }: Props): JSX.Element {
