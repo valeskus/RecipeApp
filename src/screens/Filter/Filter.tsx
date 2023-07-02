@@ -10,7 +10,6 @@ import { styles } from './styles';
 
 export function Filter(): JSX.Element {
   const { onSelectPress,
-    // onFilterChange,
     filters,
   } = useFilterController();
 
@@ -26,8 +25,6 @@ export function Filter(): JSX.Element {
               filter={filter}
               index={index}
               key={filter.id}
-              // id={filter.id}
-              // onChange={onFilterChange}
             />
           );
         })}
