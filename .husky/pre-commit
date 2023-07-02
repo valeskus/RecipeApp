@@ -6,7 +6,7 @@ yarn lint:ts
 yarn lint
 
 echo "Lint app api:"
-cd ./receipe-app-api
+cd ./recipe-app-api
 yarn lint:ts
 yarn lint
 cd ..
