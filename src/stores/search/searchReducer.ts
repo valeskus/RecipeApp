@@ -3,12 +3,12 @@ import * as Redux from 'redux';
 import { SearchActions } from './searchActions';
 
 export interface SearchState {
-  search: string;
+  searchTerm: string;
   sort: string;
 }
 
 const initialState: SearchState = {
-  search: '',
+  searchTerm: '',
   sort: 'relevance',
 };
 
@@ -16,10 +16,10 @@ export function searchReducer(state = initialState, action: Redux.AnyAction) {
 
   switch (action.type) {
     case SearchActions.SET: {
-      const { search, sort } = action.payload;
+      const { searchTerm, sort } = action.payload;
 
       return {
-        search,
+        searchTerm,
         sort: sort || state.sort,
       };
     }

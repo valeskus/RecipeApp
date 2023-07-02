@@ -67,10 +67,10 @@ export interface RecipeListModel {
 }
 
 export interface SearchOptions {
-  search: string;
-  sort?: string; // Reference SortOptionModel.id
+  searchTerm: string;
+  sort?: string;
   filter?: Array<{
-    key: string; // Reference FilterModel.id
-    value: string; // Reference FilterValueModel.id
+    key: string;
+    value: string;
   }>;
 }

@@ -6,7 +6,8 @@ export const searchRecipes = async (
   options: SearchOptions,
 ): Promise<RecipeListModel> => {
   const result = await client.get<RecipeListModel>('/search', {
-    params: options,
+    params: { search: options.searchTerm,
+      sort: options.sort },
   });
 
   return result.data;
