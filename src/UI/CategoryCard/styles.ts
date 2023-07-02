@@ -9,7 +9,6 @@ export const styles = StyleSheet.create({
     alignSelf: 'center',
     borderTopRightRadius: 20,
     borderTopLeftRadius: 20,
-    flex: 1,
   },
   categoryContainer: {
     borderRadius: 20,
@@ -21,7 +20,7 @@ export const styles = StyleSheet.create({
     shadowRadius: 5,
     shadowOffset: { width: 0, height: 0 },
     elevation: 8,
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     flexDirection: 'column',
     margin: 10,
   },
@@ -30,7 +29,6 @@ export const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
     color: Colors.primary,
-    flex: 3,
   },
 
   cardPressed: {
