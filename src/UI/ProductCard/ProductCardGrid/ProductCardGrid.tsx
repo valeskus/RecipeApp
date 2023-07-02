@@ -37,13 +37,13 @@ export function ProductCardGrid({
           {title}
         </Text>
         <View style={styles.productCardDetailsItemBox}>
+          <Image source={Icons.time} style={styles.icon} />
+          <Text style={styles.productCardDetailsItem}>{time}</Text>
+        </View>
+        <View style={styles.productCardDetailsItemBox}>
           <Image source={Icons.kCal} style={styles.icon} />
           <Text style={styles.productCardDetailsItem} numberOfLines={1}>{calories} kcal</Text>
           <Text style={styles.note}> / 100g</Text>
-        </View>
-        <View style={styles.productCardDetailsItemBox}>
-          <Image source={Icons.time} style={styles.icon} />
-          <Text style={styles.productCardDetailsItem}>{time}</Text>
         </View>
       </View>
     </Pressable>
