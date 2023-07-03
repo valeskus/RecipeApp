@@ -1,24 +1,27 @@
-import { Body, Controller, Get, NotFoundException, Param, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  NotFoundException,
+  Param,
+  Post
+} from '@nestjs/common';
 import {
   ApiOperation,
   ApiOkResponse,
   ApiTags,
 } from '@nestjs/swagger';
 
-import { Languages } from '../translation/models';
-import { TranslationService } from '../translation/translation.service';
-import { Language } from '../translation/language.decorator';
+import { TranslationContext } from '../translation/translation-context.decorator';
 
 import { CategoriesService } from './categories.service';
-import { CreateCategoryDto, GetAllCategoriesDto } from './dto';
-import { GetCategoryDto } from './dto/get-category.dto';
+import { CreateCategoryDto, GetAllCategoriesDto, GetCategoryDto } from './dto';
 
 @ApiTags('Categories')
 @Controller('categories')
 export class CategoriesController {
   constructor(
     private readonly categoriesService: CategoriesService,
-    private readonly translationService: TranslationService,
   ) { }
 
   @Get()
@@ -27,11 +30,13 @@ export class CategoriesController {
     description: 'Retrieves all categories',
     type: GetAllCategoriesDto
   })
-  async findAll(@Language() language: Languages): Promise<GetAllCategoriesDto> {
+  async findAll(
+    @TranslationContext() translationContext: TranslationContext
+  ): Promise<GetAllCategoriesDto> {
     const categories = await this.categoriesService.findAll();
 
     return {
-      categories: categories.map((category) => this.translationService.getTranslated(category, language))
+      categories: categories.map((category) => translationContext.getTranslated<GetCategoryDto>(category))
     };
   }
 
@@ -41,14 +46,17 @@ export class CategoriesController {
     description: 'Returns a category by given id',
     type: GetCategoryDto
   })
-  async findOneById(@Param('id') id: string, @Language() language: Languages): Promise<GetCategoryDto> {
+  async findOneById(
+    @Param('id') id: string,
+    @TranslationContext() translationContext: TranslationContext
+  ): Promise<GetCategoryDto> {
     const category = await this.categoriesService.findOneById(id);
 
     if (!category) {
       throw new NotFoundException('Category not found');
     }
 
-    return this.translationService.getTranslated<GetCategoryDto>(category, language);
+    return translationContext.getTranslated<GetCategoryDto>(category);
   }
 
   @Post()
@@ -57,6 +65,6 @@ export class CategoriesController {
     description: 'Creates a category by given fields',
   })
   async create(@Body() createCategoryDto: CreateCategoryDto) {
-      await this.categoriesService.create(createCategoryDto);
+    await this.categoriesService.create(createCategoryDto);
   }
 }
