@@ -15,7 +15,9 @@ export class MongoExceptionFilter implements ExceptionFilter {
 
         const [key] = Object.keys(exception.keyValue);
 
-        const baseError = new BadRequestException(`Item ${key} with value ${exception.keyValue[key]} already exists`);
+        const baseError = new BadRequestException(
+          `Item '${key}' with value '${exception.keyValue[key]}' already exists`
+        );
 
         httpAdapter.reply(context.getResponse(), baseError.getResponse(), baseError.getStatus());
       }

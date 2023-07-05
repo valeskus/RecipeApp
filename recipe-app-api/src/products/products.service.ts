@@ -32,13 +32,7 @@ export class ProductsService {
     };
   }
 
-  async create(createProductDto: CreateProductDto): Promise<Product> {
-    const found = await this.findOneByTitle(createProductDto.title);
-
-    if (found) {
-      throw new Error(`Product ${createProductDto.title} already exists`);
-    }
-
+  create(createProductDto: CreateProductDto): Promise<Product> {
     const createdProduct = new this.productModel(createProductDto);
 
     return createdProduct.save();

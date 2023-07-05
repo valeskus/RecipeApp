@@ -1,5 +1,4 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document } from 'mongoose';
 
 import { TranslationsSchemaOf } from '../../translation/schemas';
 import { CategoryType } from '../models';
@@ -7,7 +6,7 @@ import { CategoryType } from '../models';
 Schema({
   _id: false,
 });
-class TranslatableCategoryItems extends Document {
+class TranslatableCategoryItems {
   @Prop({ required: true, unique: true })
   title: string;
 }
@@ -22,7 +21,7 @@ class TranslatableCategoryItems extends Document {
   }
 })
 export class Category extends TranslationsSchemaOf(TranslatableCategoryItems) {
-  override readonly id: string;
+  readonly id: string;
 
   @Prop({ required: true })
   image: string;

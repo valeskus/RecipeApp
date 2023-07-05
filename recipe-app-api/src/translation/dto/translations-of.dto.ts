@@ -5,10 +5,11 @@ import { Type as ClassType } from '@nestjs/common';
 
 import { Languages, Translatable, Translations } from '../models';
 
-export function TranslationsDtoOf<T extends ClassType, R = InstanceType<T>>(TranslatableItem: T) {
+export function TranslationsDtoOf<T extends ClassType<object>, R = InstanceType<T>>(TranslatableItem: T) {
   class ItemTranslations implements Translations<R> {
     @ApiProperty({
       description: 'Particular translations',
+      type: TranslatableItem,
       required: true
     })
     @ValidateNested()
