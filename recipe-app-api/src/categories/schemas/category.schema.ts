@@ -1,33 +1,34 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { Document } from 'mongoose';
 
-import { Translatable } from '../../translation/models';
+import { TranslationsSchemaOf } from '../../translation/schemas';
 import { CategoryType } from '../models';
 
-import { CategoryTranslations, TranslatedCategory } from './translations';
+Schema({
+  _id: false,
+});
+class TranslatableCategoryItems extends Document {
+  @Prop({ required: true, unique: true })
+  title: string;
+}
 
 @Schema({
-    toJSON: {
-        virtuals: true,
-        versionKey: false,
-        transform: (doc, ret) => {
-            delete ret._id;
-        }
+  toJSON: {
+    virtuals: true,
+    versionKey: false,
+    transform: (doc, ret) => {
+      delete ret._id;
     }
+  }
 })
-export class Category extends TranslatedCategory implements Translatable<TranslatedCategory> {
-    readonly id: string;
+export class Category extends TranslationsSchemaOf(TranslatableCategoryItems) {
+  override readonly id: string;
 
-    @Prop({
-        required: true,
-        type: CategoryTranslations
-     })
-    translations: CategoryTranslations;
+  @Prop({ required: true })
+  image: string;
 
-    @Prop({ required: true })
-    image: string;
-
-    @Prop({ required: true })
-    type: CategoryType;
+  @Prop({ required: true })
+  type: CategoryType;
 }
 
 export const CategorySchema = SchemaFactory.createForClass(Category);

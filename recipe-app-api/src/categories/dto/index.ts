@@ -1,3 +1,3 @@
 export * from './create-category.dto';
-export * from './get-all-categories.dto';
-export * from './get-category.dto';
+export * from './all-categories.dto';
+export * from './category.dto';

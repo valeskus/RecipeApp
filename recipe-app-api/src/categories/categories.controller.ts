@@ -15,7 +15,7 @@ import {
 import { TranslationContext } from '../translation/translation-context.decorator';
 
 import { CategoriesService } from './categories.service';
-import { CreateCategoryDto, GetAllCategoriesDto, GetCategoryDto } from './dto';
+import { CreateCategoryDto, AllCategoriesDto, CategoryDto } from './dto';
 
 @ApiTags('Categories')
 @Controller('categories')
@@ -28,15 +28,15 @@ export class CategoriesController {
   @ApiOperation({ summary: 'Get all categories' })
   @ApiOkResponse({
     description: 'Retrieves all categories',
-    type: GetAllCategoriesDto
+    type: AllCategoriesDto
   })
   async findAll(
     @TranslationContext() translationContext: TranslationContext
-  ): Promise<GetAllCategoriesDto> {
+  ): Promise<AllCategoriesDto> {
     const categories = await this.categoriesService.findAll();
 
     return {
-      categories: categories.map((category) => translationContext.getTranslated<GetCategoryDto>(category))
+      categories: categories.map((category) => translationContext.getTranslated<CategoryDto>(category))
     };
   }
 
@@ -44,19 +44,19 @@ export class CategoriesController {
   @ApiOperation({ summary: 'Get category by id' })
   @ApiOkResponse({
     description: 'Returns a category by given id',
-    type: GetCategoryDto
+    type: CategoryDto
   })
   async findOneById(
     @Param('id') id: string,
     @TranslationContext() translationContext: TranslationContext
-  ): Promise<GetCategoryDto> {
+  ): Promise<CategoryDto> {
     const category = await this.categoriesService.findOneById(id);
 
     if (!category) {
       throw new NotFoundException('Category not found');
     }
 
-    return translationContext.getTranslated<GetCategoryDto>(category);
+    return translationContext.getTranslated<CategoryDto>(category);
   }
 
   @Post()

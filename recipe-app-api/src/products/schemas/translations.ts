@@ -5,7 +5,7 @@ import { Languages, Translations } from '../../translation/models';
 Schema({
     _id: false,
 });
-export class TranslatedCategory {
+export class TranslatedProduct {
     @Prop({ required: true, unique: true })
     title: string;
 }
@@ -13,7 +13,7 @@ export class TranslatedCategory {
 Schema({
     _id: false,
 });
-export class CategoryTranslations implements Translations<TranslatedCategory> {
+export class ProductTranslations implements Translations<TranslatedProduct> {
     @Prop({ required: true })
-    [Languages.UA]: TranslatedCategory;
+    [Languages.UA]: TranslatedProduct;
 }
