@@ -3,3 +3,8 @@ export enum Difficulty {
     normal = 1,
     easy = 0
 }
+
+export enum Units {
+    ML = 'ml',
+    G = 'g'
+}

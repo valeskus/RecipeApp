@@ -1,91 +1,27 @@
 import {
     IsNotEmpty,
     IsString,
-    IsNumber,
-    IsPositive,
-    IsUrl,
-    Matches,
     ValidateNested,
     IsArray,
     ArrayNotEmpty,
     ArrayUnique,
-    IsEnum,
 } from 'class-validator';
 import { Type } from 'class-transformer';
-import { ApiProperty } from '@nestjs/swagger';
+import { ApiProperty, OmitType } from '@nestjs/swagger';
 
-import { Difficulty } from '../models';
+import { RecipeDataObject } from './recipe-data-object';
+import { InstructionDataObject } from './instruction-data-object';
+import { IngredientDataObject } from './ingredient-data-object';
 
-import { IngredientDto } from './ingredient.dto';
-import { InstructionDto } from './instruction.dto';
+class CreateInstructionDto extends InstructionDataObject {}
 
-class CreateRecipe {
+class PutIngredientDto extends OmitType(IngredientDataObject, ['title']) {}
+
+class CreateRecipe extends OmitType(RecipeDataObject, ['id']) {
     @ApiProperty({
-        example: 'Lasagna',
-        description: 'Title of the recipe',
-        required: true
-    })
-    @IsNotEmpty()
-    @IsString()
-    readonly title: string;
-
-    @ApiProperty({
-        example: 5,
-        description: 'Time of cooking (minutes)',
-        required: true
-    })
-    @IsPositive()
-    @IsNumber()
-    readonly time: number;
-
-    @ApiProperty({
-        example: 'https://picsum.photos/500/500',
-        description: 'Url for the image of the recipe',
-        required: true
-    })
-    @IsUrl()
-    readonly image: string;
-
-    @ApiProperty({
-        example: 200,
-        description: 'Amount of the finished dish (units)',
-        required: true
-    })
-    @IsPositive()
-    @IsNumber()
-    readonly amount: number;
-
-    @ApiProperty({
-        example: 'ml',
-        description: 'Measurement units of amount',
-        required: true
-    })
-    @Matches(/^(ml|g)$/, {
-        message: 'units should be either "ml" or "g"'
-    })
-    readonly units: 'ml' | 'g';
-
-    @ApiProperty({
-        example: 'This lasagna recipe takes a little work, but it is so satisfying and filling that it\'s worth it!',
-        description: 'Description of the recipe',
-        required: true,
-    })
-    @IsNotEmpty()
-    @IsString()
-    readonly description: string;
-
-    @ApiProperty({
-        example: 2,
-        description: 'Number of servings for full dish amount',
-        required: true,
-    })
-    @IsPositive()
-    @IsNumber()
-    readonly servingsCount: number;
-
-    @ApiProperty({
-        example: ['Breakfast', 'Main dish'],
-        description: 'Categories the recipe belongs to',
+        example: ['6485e97f2fe21ff4fba5f7e4', '6485e37f2fe21ff4fba5f7e4'],
+        description: 'Categories ids the recipe belongs to',
+        type: [String],
         required: true,
     })
     @IsNotEmpty({ each: true })
@@ -96,34 +32,25 @@ class CreateRecipe {
 
     @ApiProperty({
         description: 'Ingredients list',
-        type: [IngredientDto],
+        type: [PutIngredientDto],
         required: true,
     })
     @IsArray()
     @ArrayNotEmpty()
     @ValidateNested({ each: true })
-    @Type(() => IngredientDto)
-    readonly ingredients: Array<IngredientDto>;
+    @Type(() => PutIngredientDto)
+    readonly ingredients: Array<PutIngredientDto>;
 
     @ApiProperty({
         description: 'List of cooking instructions',
-        type: [InstructionDto],
+        type: [CreateInstructionDto],
         required: true
     })
     @IsArray()
     @ArrayNotEmpty()
     @ValidateNested({ each: true })
-    @Type(() => InstructionDto)
-    readonly instructions: Array<InstructionDto>;
-
-    @ApiProperty({
-        example: Difficulty.easy,
-        description: 'Difficulty of the recipe (0-2)',
-        required: true,
-    })
-    @IsEnum(Difficulty)
-    @IsNumber()
-    readonly difficulty: Difficulty;
+    @Type(() => CreateInstructionDto)
+    readonly instructions: Array<CreateInstructionDto>;
 }
 
 export { CreateRecipe as CreateRecipeDto };

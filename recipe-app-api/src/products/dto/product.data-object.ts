@@ -61,6 +61,7 @@ export class ProductDataObject extends TranslationsDtoOf(TranslatableProductItem
 
     @ApiProperty({
         example: Units.ML,
+        enum: Units,
         description: 'Measurement units',
         required: true
     })

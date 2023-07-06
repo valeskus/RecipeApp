@@ -1,13 +1,8 @@
 import { Injectable, Param, PipeTransform } from '@nestjs/common';
 
-import { Translatable, Translated } from './models';
 import { TranslationService } from './translation.service';
 
-export interface TranslationContext {
-  getTranslated<R, T extends Translated<T> = Translated<R>>(
-    translatable: Translatable<T> & R,
-  ): Translated<T> & R;
-}
+export type TranslationContext = Pick<TranslationService, 'getTranslated'>;
 
 @Injectable()
 class TranslationContextPipe implements PipeTransform {

@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import { Document } from 'mongoose';
 
 import { Translatable, Translated, Languages, DEFAULT_LANGUAGE } from './models';
 
@@ -10,21 +11,37 @@ export class TranslationService {
     this.language = nextLanguage;
   }
 
-  getTranslated<R, T extends Translated<T> = Translated<R>>(
+  withLanguage = (language: Languages) => {
+    const prevLanguage = this.language;
+
+    this.setCurrentLanguage(language);
+
+    return async <T>(operation: () => Promise<T> | T) => {
+      const result = await operation();
+
+      this.setCurrentLanguage(prevLanguage);
+
+      return result;
+    };
+  };
+
+  getTranslated = <R, T extends Translated<T> = Translated<R>>(
     translatable: Translatable<T> & R,
-  ): Translated<T> & R {
+  ): Translated<T> & Omit<R, 'translations'> => {
+
+    const translatableConverted = translatable instanceof Document
+      ? translatable.toJSON() as Partial<Translatable<T>> & R
+      : { ...translatable };
 
     if (this.language !== DEFAULT_LANGUAGE) {
-      Object.assign(translatable, {
+      Object.assign(translatableConverted, {
         // TODO: remove optional when all collections will contain translations
-        ...translatable.translations?.[this.language] || {},
+        ...translatableConverted.translations?.[this.language] || {},
       });
     }
 
-    Object.assign(translatable, {
-      translations: undefined
-    });
+    delete translatableConverted.translations;
 
-    return translatable;
-  }
+    return translatableConverted;
+  };
 }

@@ -10,13 +10,19 @@ export function TranslationsDtoOf<T extends ClassType<object>, R = InstanceType<
     @ApiProperty({
       description: 'Particular translations',
       type: TranslatableItem,
-      required: true
+      title: TranslatableItem.name,
+      required: true,
     })
     @ValidateNested()
     @Type(() => TranslatableItem)
     @IsDefined()
     readonly [Languages.UA]: R;
   }
+
+  Object.defineProperty(ItemTranslations, 'name', {
+    writable: true,
+    value: ItemTranslations.name + TranslatableItem.name,
+  });
 
   class TranslationsContainer extends TranslatableItem implements Translatable<R> {
     @ApiProperty({
