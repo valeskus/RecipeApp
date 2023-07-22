@@ -1,6 +1,6 @@
-import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { Prop, Schema, SchemaFactory, SchemaOptions } from '@nestjs/mongoose';
+import { IndexDefinition } from 'mongoose';
 
-import { TranslationsSchemaOf } from '../../translation/schemas';
 import { Difficulty, Units } from '../models';
 
 import { MacroNutrients } from './macro-nutrients.schema';
@@ -8,11 +8,10 @@ import { ShortCategory } from './short-category.schema';
 import { Instruction } from './instruction.schema';
 import { Ingredient } from './ingredient.schema';
 
-Schema({
-    _id: false,
-});
-class TranslatableRecipeItems {
-    @Prop({ required: true, unique: true })
+export class Recipe {
+    readonly id: string;
+
+    @Prop({ required: true, unique: true, index: 1 })
     title: string;
 
     @Prop({ required: true })
@@ -27,21 +26,7 @@ class TranslatableRecipeItems {
     @Prop({ required: true })
     categories: Array<ShortCategory>;
 
-}
-
-@Schema({
-    toJSON: {
-        virtuals: true,
-        versionKey: false,
-        transform: (doc, ret) => {
-            delete ret._id;
-        }
-    }
-})
-export class Recipe extends TranslationsSchemaOf(TranslatableRecipeItems) {
-    readonly id: string;
-
-    @Prop({ required: true })
+    @Prop({ required: true, index: 1 })
     time: number;
 
     @Prop({ required: true })
@@ -53,7 +38,7 @@ export class Recipe extends TranslationsSchemaOf(TranslatableRecipeItems) {
     @Prop({ required: true })
     units: Units;
 
-    @Prop({ required: true })
+    @Prop({ required: true, index: 1 })
     kCal: number;
 
     @Prop({ required: true })
@@ -62,18 +47,33 @@ export class Recipe extends TranslationsSchemaOf(TranslatableRecipeItems) {
     @Prop({ required: true })
     macroNutrients: MacroNutrients;
 
-    @Prop({ required: true })
+    @Prop({ required: true, index: 1 })
     difficulty: Difficulty;
 }
 
-export const RecipeSchema = SchemaFactory.createForClass(Recipe);
+const schemaOptions: SchemaOptions = {
+    autoIndex: true,
+    toJSON: {
+        virtuals: true,
+        versionKey: false,
+        transform: (doc, ret) => {
+            delete ret._id;
+        }
+    }
+};
 
-// TODO: fix when search will be ready
-// RecipeSchema.index({ title: 'text', 'categories.title': 'text' });
-// RecipeSchema.index({
-//     title: 1,
-//     time: 1,
-//     difficulty: 1,
-//     kCal: 1,
-//     'categories.title': 1,
-// });
+@Schema(schemaOptions)
+export class RecipeEN extends Recipe { }
+@Schema(schemaOptions)
+export class RecipeUA extends Recipe { }
+
+export const RecipeSchemaUA = SchemaFactory.createForClass(RecipeUA);
+export const RecipeSchemaEN = SchemaFactory.createForClass(RecipeEN);
+
+const textIndex: IndexDefinition = {
+    title: 'text',
+    'categories.title': 'text',
+};
+
+RecipeSchemaUA.index(textIndex);
+RecipeSchemaEN.index(textIndex);

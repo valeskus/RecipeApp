@@ -15,7 +15,7 @@ export class PreferredLanguageInterceptor implements NestInterceptor {
 
     const preferredLanguage = request.headers['accept-language'];
 
-    if (!preferredLanguage) {
+    if (!preferredLanguage || preferredLanguage === '*') {
       this.translationService.setCurrentLanguage(Languages.EN);
 
       return next.handle();

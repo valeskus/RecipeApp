@@ -11,6 +11,18 @@ export class TranslationService {
     this.language = nextLanguage;
   }
 
+  getCurrentLanguage() {
+    return this.language;
+  }
+
+  isDefault() {
+    return this.language === DEFAULT_LANGUAGE;
+  }
+
+  forCurrentLanguage<T>(items: Record<Languages, () => T>) {
+    return items[this.language]();
+  }
+
   withLanguage = (language: Languages) => {
     const prevLanguage = this.language;
 
@@ -33,7 +45,8 @@ export class TranslationService {
       ? translatable.toJSON() as Partial<Translatable<T>> & R
       : { ...translatable };
 
-    if (this.language !== DEFAULT_LANGUAGE) {
+    if (!this.isDefault()) {
+
       Object.assign(translatableConverted, {
         // TODO: remove optional when all collections will contain translations
         ...translatableConverted.translations?.[this.language] || {},

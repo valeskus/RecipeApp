@@ -7,7 +7,7 @@ Schema({
   _id: false,
 });
 class TranslatableCategoryItems {
-  @Prop({ required: true, unique: true })
+  @Prop({ required: true, unique: true, index: 1 })
   title: string;
 }
 

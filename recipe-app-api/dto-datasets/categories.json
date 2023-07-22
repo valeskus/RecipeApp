@@ -2,56 +2,111 @@
     {
         "title": "Italian Cuisine",
         "image": "https://picsum.photos/500/500",
-        "type": "meal"
+        "type": "meal",
+        "translations": {
+            "ua": {
+                "title": "Італійська кухня"
+            }
+        }
     },
     {
         "title": "Asian Fusion",
         "image": "https://picsum.photos/500/500",
-        "type": "meal"
+        "type": "meal",
+        "translations": {
+            "ua": {
+                "title": "Азіатський ф'южн"
+            }
+        }
     },
     {
         "title": "Comfort Food",
         "image": "https://picsum.photos/500/500",
-        "type": "meal"
+        "type": "meal",
+        "translations": {
+            "ua": {
+                "title": "Комфортна їжа"
+            }
+        }
     },
     {
         "title": "Vegetarian/Vegan Delights",
         "image": "https://picsum.photos/500/500",
-        "type": "diet"
+        "type": "diet",
+        "translations": {
+            "ua": {
+                "title": "Вегетаріанські/веганські насолоди"
+            }
+        }
     },
     {
         "title": "Seafood Specialties",
         "image": "https://picsum.photos/500/500",
-        "type": "meal"
+        "type": "meal",
+        "translations": {
+            "ua": {
+                "title": "Фірмові страви з морепродуктів"
+            }
+        }
     },
     {
         "title": "Chicken Dishes",
         "image": "https://picsum.photos/500/500",
-        "type": "meal"
+        "type": "meal",
+        "translations": {
+            "ua": {
+                "title": "Страви з курки"
+            }
+        }
     },
     {
         "title": "Healthy and Light",
         "image": "https://picsum.photos/500/500",
-        "type": "diet"
+        "type": "diet",
+        "translations": {
+            "ua": {
+                "title": "Здоровий і легкий"
+            }
+        }
     },
     {
         "title": "International Street Food",
         "image": "https://picsum.photos/500/500",
-        "type": "meal"
+        "type": "meal",
+        "translations": {
+            "ua": {
+                "title": "Міжнародна вулична їжа"
+            }
+        }
     },
     {
         "title": "Baking and Pastry",
         "image": "https://picsum.photos/500/500",
-        "type": "meal"
+        "type": "meal",
+        "translations": {
+            "ua": {
+                "title": "Випічка та кондитерські вироби"
+            }
+        }
     },
     {
         "title": "BBQ and Grilling",
         "image": "https://picsum.photos/500/500",
-        "type": "meal"
+        "type": "meal",
+        "translations": {
+            "ua": {
+                "title": "Барбекю та гриль"
+            }
+        }
     },
     {
         "title": "Breakfast and Brunch",
         "image": "https://picsum.photos/500/500",
-        "type": "meal"
+        "type": "meal",
+        "translations": {
+            "ua": {
+                "title": "Сніданок і пізній сніданок"
+            }
+        }
     }
 ]

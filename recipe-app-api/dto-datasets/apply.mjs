@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
-import categories from './categories.json' assert { type: "json" };
-import products from './products.json' assert { type: "json" };
-import recipes from './recipes.json' assert { type: "json" };
+import categoriesJSON from './categories.json' assert { type: 'json' };
+import productsJSON from './products.json' assert { type: 'json' };
+import recipesJSON from './recipes.json' assert { type: 'json' };
 
 const requestOptions = {
     method: 'POST',
@@ -18,19 +18,51 @@ const add = async (path, items) => {
             body: JSON.stringify(item),
         });
 
-        const result = await response.json();
-
-        if (result.statusCode >= 400) {
+        if (response.status >= 400) {
             console.error(item);
-            throw new Error(result.message);
+            throw new Error((await response.json()).message);
         }
 
-        console.log(item.title, " added");
+        console.log(item.title, ' added');
     }
 };
 
 (async () => {
-    await add("http://localhost:3000/categories", categories);
-    await add("http://localhost:3000/products", products);
-    await add("http://localhost:3000/recipe", recipes);
+    await add('http://localhost:3000/categories', categoriesJSON);
+    await add('http://localhost:3000/products', productsJSON);
+
+    const allCategoriesRequest = await fetch('http://localhost:3000/categories', { method: 'GET' });
+    const { categories } = await allCategoriesRequest.json();
+
+    const allProductsRequest = await fetch('http://localhost:3000/products', { method: 'GET' });
+    const { products } = await allProductsRequest.json();
+
+    const recipesWithIds = recipesJSON.map((recipe) => {
+        return {
+            ...recipe,
+            categories: recipe.categories.map((categoryTitle) => {
+                const targetCategory = categories.find((category) => category.title === categoryTitle);
+
+                if (targetCategory) {
+                    return targetCategory.id;
+                }
+
+                return undefined;
+            }).filter(Boolean),
+            ingredients: recipe.ingredients.map((recipeIngredient) => {
+                const targetProduct = products.find((product) => product.title === recipeIngredient.title);
+
+                if (targetProduct) {
+                    return {
+                        id: targetProduct.id,
+                        amount: recipeIngredient.amount,
+                    };
+                }
+
+                return undefined;
+            }).filter(Boolean),
+        };
+    });
+
+    await add('http://localhost:3000/recipe', recipesWithIds);
 })();

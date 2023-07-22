@@ -5,7 +5,12 @@
         "proteins": 4,
         "carbs": 35,
         "fats": 11,
-        "units": "g"
+        "units": "g",
+        "translations": {
+            "ua": {
+                "title": "Плитка шоколаду"
+            }
+        }
     },
     {
         "title": "Sour Apple Candy",
@@ -13,7 +18,12 @@
         "proteins": 0,
         "carbs": 15,
         "fats": 0,
-        "units": "g"
+        "units": "g",
+        "translations": {
+            "ua": {
+                "title": "Цукерки з кислих яблук"
+            }
+        }
     },
     {
         "title": "Whole Wheat Bread",
@@ -21,7 +31,12 @@
         "proteins": 3,
         "carbs": 15,
         "fats": 1,
-        "units": "g"
+        "units": "g",
+        "translations": {
+            "ua": {
+                "title": "Цільнозерновий хліб"
+            }
+        }
     },
     {
         "title": "Banana",
@@ -29,7 +44,12 @@
         "proteins": 1.2,
         "carbs": 23,
         "fats": 0.2,
-        "units": "g"
+        "units": "g",
+        "translations": {
+            "ua": {
+                "title": "Банан"
+            }
+        }
     },
     {
         "title": "Greek Yogurt",
@@ -37,7 +57,12 @@
         "proteins": 10,
         "carbs": 4,
         "fats": 8,
-        "units": "g"
+        "units": "g",
+        "translations": {
+            "ua": {
+                "title": "Грецький йогурт"
+            }
+        }
     },
     {
         "title": "Almonds",
@@ -45,7 +70,12 @@
         "proteins": 6,
         "carbs": 6,
         "fats": 14,
-        "units": "g"
+        "units": "g",
+        "translations": {
+            "ua": {
+                "title": "мигдаль"
+            }
+        }
     },
     {
         "title": "Orange Juice",
@@ -53,7 +83,12 @@
         "proteins": 2,
         "carbs": 26,
         "fats": 0.5,
-        "units": "ml"
+        "units": "ml",
+        "translations": {
+            "ua": {
+                "title": "Апельсиновий сік"
+            }
+        }
     },
     {
         "title": "Cheddar Cheese",
@@ -61,7 +96,12 @@
         "proteins": 7,
         "carbs": 0.4,
         "fats": 9,
-        "units": "g"
+        "units": "g",
+        "translations": {
+            "ua": {
+                "title": "сир чеддер"
+            }
+        }
     },
     {
         "title": "Roasted Chicken Breast",
@@ -69,7 +109,12 @@
         "proteins": 31,
         "carbs": 0,
         "fats": 3.6,
-        "units": "g"
+        "units": "g",
+        "translations": {
+            "ua": {
+                "title": "Смажена куряча грудка"
+            }
+        }
     },
     {
         "title": "Steak",
@@ -77,7 +122,12 @@
         "proteins": 26,
         "carbs": 0,
         "fats": 17,
-        "units": "g"
+        "units": "g",
+        "translations": {
+            "ua": {
+                "title": "стейк"
+            }
+        }
     },
     {
         "title": "Apple",
@@ -85,7 +135,12 @@
         "proteins": 0.3,
         "carbs": 14,
         "fats": 0.2,
-        "units": "g"
+        "units": "g",
+        "translations": {
+            "ua": {
+                "title": "Яблуко"
+            }
+        }
     },
     {
         "title": "Cucumber",
@@ -93,7 +148,12 @@
         "proteins": 0.6,
         "carbs": 3.6,
         "fats": 0.1,
-        "units": "g"
+        "units": "g",
+        "translations": {
+            "ua": {
+                "title": "огірок"
+            }
+        }
     },
     {
         "title": "Broccoli",
@@ -101,7 +161,12 @@
         "proteins": 3.7,
         "carbs": 11.2,
         "fats": 0.6,
-        "units": "g"
+        "units": "g",
+        "translations": {
+            "ua": {
+                "title": "Брокколі"
+            }
+        }
     },
     {
         "title": "Salmon",
@@ -109,7 +174,12 @@
         "proteins": 22,
         "carbs": 0,
         "fats": 13,
-        "units": "g"
+        "units": "g",
+        "translations": {
+            "ua": {
+                "title": "Лосось"
+            }
+        }
     },
     {
         "title": "Milk",
@@ -117,7 +187,12 @@
         "proteins": 3.3,
         "carbs": 4.8,
         "fats": 3.6,
-        "units": "ml"
+        "units": "ml",
+        "translations": {
+            "ua": {
+                "title": "молоко"
+            }
+        }
     },
     {
         "title": "Carrot",
@@ -125,7 +200,12 @@
         "proteins": 0.9,
         "carbs": 10,
         "fats": 0.2,
-        "units": "g"
+        "units": "g",
+        "translations": {
+            "ua": {
+                "title": "Морква"
+            }
+        }
     },
     {
         "title": "Eggs",
@@ -133,7 +213,12 @@
         "proteins": 6,
         "carbs": 0.6,
         "fats": 5,
-        "units": "g"
+        "units": "g",
+        "translations": {
+            "ua": {
+                "title": "Яйця"
+            }
+        }
     },
     {
         "title": "Peanut Butter",
@@ -141,7 +226,12 @@
         "proteins": 8,
         "carbs": 7,
         "fats": 16,
-        "units": "g"
+        "units": "g",
+        "translations": {
+            "ua": {
+                "title": "Арахісове масло"
+            }
+        }
     },
     {
         "title": "Tomato",
@@ -149,7 +239,12 @@
         "proteins": 0.9,
         "carbs": 3.9,
         "fats": 0.2,
-        "units": "g"
+        "units": "g",
+        "translations": {
+            "ua": {
+                "title": "помідор"
+            }
+        }
     },
     {
         "title": "Grapes",
@@ -157,7 +252,12 @@
         "proteins": 0.7,
         "carbs": 18,
         "fats": 0.2,
-        "units": "g"
+        "units": "g",
+        "translations": {
+            "ua": {
+                "title": "Виноград"
+            }
+        }
     },
     {
         "title": "Potato",
@@ -165,7 +265,12 @@
         "proteins": 2,
         "carbs": 17,
         "fats": 0.1,
-        "units": "g"
+        "units": "g",
+        "translations": {
+            "ua": {
+                "title": "Картопля"
+            }
+        }
     },
     {
         "title": "Honey",
@@ -173,7 +278,12 @@
         "proteins": 0.3,
         "carbs": 82,
         "fats": 0,
-        "units": "g"
+        "units": "g",
+        "translations": {
+            "ua": {
+                "title": "Мед"
+            }
+        }
     },
     {
         "title": "Watermelon",
@@ -181,7 +291,12 @@
         "proteins": 0.6,
         "carbs": 8,
         "fats": 0.2,
-        "units": "g"
+        "units": "g",
+        "translations": {
+            "ua": {
+                "title": "Кавун"
+            }
+        }
     },
     {
         "title": "Avocado",
@@ -189,7 +304,12 @@
         "proteins": 2,
         "carbs": 9,
         "fats": 15,
-        "units": "g"
+        "units": "g",
+        "translations": {
+            "ua": {
+                "title": "авокадо"
+            }
+        }
     },
     {
         "title": "Lettuce",
@@ -197,7 +317,12 @@
         "proteins": 0.5,
         "carbs": 1,
         "fats": 0.1,
-        "units": "g"
+        "units": "g",
+        "translations": {
+            "ua": {
+                "title": "листя салату"
+            }
+        }
     },
     {
         "title": "Yogurt",
@@ -205,7 +330,12 @@
         "proteins": 5,
         "carbs": 17,
         "fats": 8,
-        "units": "g"
+        "units": "g",
+        "translations": {
+            "ua": {
+                "title": "Йогурт"
+            }
+        }
     },
     {
         "title": "Corn",
@@ -213,7 +343,12 @@
         "proteins": 3.4,
         "carbs": 21,
         "fats": 1.5,
-        "units": "g"
+        "units": "g",
+        "translations": {
+            "ua": {
+                "title": "Кукурудза"
+            }
+        }
     },
     {
         "title": "Peach",
@@ -221,7 +356,12 @@
         "proteins": 0.9,
         "carbs": 9.5,
         "fats": 0.3,
-        "units": "g"
+        "units": "g",
+        "translations": {
+            "ua": {
+                "title": "Персиковий"
+            }
+        }
     },
     {
         "title": "Bell Pepper",
@@ -229,7 +369,12 @@
         "proteins": 0.9,
         "carbs": 6,
         "fats": 0.3,
-        "units": "g"
+        "units": "g",
+        "translations": {
+            "ua": {
+                "title": "Перець"
+            }
+        }
     },
     {
         "title": "Mango",
@@ -237,7 +382,12 @@
         "proteins": 0.8,
         "carbs": 15,
         "fats": 0.4,
-        "units": "g"
+        "units": "g",
+        "translations": {
+            "ua": {
+                "title": "Манго"
+            }
+        }
     },
     {
         "title": "Blueberries",
@@ -245,7 +395,12 @@
         "proteins": 0.7,
         "carbs": 14,
         "fats": 0.3,
-        "units": "g"
+        "units": "g",
+        "translations": {
+            "ua": {
+                "title": "Чорниця"
+            }
+        }
     },
     {
         "title": "Blackberries",
@@ -253,7 +408,12 @@
         "proteins": 1.4,
         "carbs": 10,
         "fats": 0.4,
-        "units": "g"
+        "units": "g",
+        "translations": {
+            "ua": {
+                "title": "Ожина"
+            }
+        }
     },
     {
         "title": "Strawberries",
@@ -261,7 +421,12 @@
         "proteins": 0.7,
         "carbs": 7,
         "fats": 0.3,
-        "units": "g"
+        "units": "g",
+        "translations": {
+            "ua": {
+                "title": "Полуниця"
+            }
+        }
     },
     {
         "title": "Raspberries",
@@ -269,7 +434,12 @@
         "proteins": 1.2,
         "carbs": 12,
         "fats": 0.7,
-        "units": "g"
+        "units": "g",
+        "translations": {
+            "ua": {
+                "title": "Малина"
+            }
+        }
     },
     {
         "title": "Pineapple",
@@ -277,7 +447,12 @@
         "proteins": 0.5,
         "carbs": 13,
         "fats": 0.1,
-        "units": "g"
+        "units": "g",
+        "translations": {
+            "ua": {
+                "title": "Ананас"
+            }
+        }
     },
     {
         "title": "Cantaloupe",
@@ -285,7 +460,12 @@
         "proteins": 0.8,
         "carbs": 8,
         "fats": 0.2,
-        "units": "g"
+        "units": "g",
+        "translations": {
+            "ua": {
+                "title": "Канталупа"
+            }
+        }
     },
     {
         "title": "Kiwi",
@@ -293,7 +473,12 @@
         "proteins": 0.8,
         "carbs": 9,
         "fats": 0.4,
-        "units": "g"
+        "units": "g",
+        "translations": {
+            "ua": {
+                "title": "Ківі"
+            }
+        }
     },
     {
         "title": "Pears",
@@ -301,7 +486,12 @@
         "proteins": 0.4,
         "carbs": 15,
         "fats": 0.1,
-        "units": "g"
+        "units": "g",
+        "translations": {
+            "ua": {
+                "title": "груші"
+            }
+        }
     },
     {
         "title": "Plums",
@@ -309,7 +499,12 @@
         "proteins": 0.7,
         "carbs": 11,
         "fats": 0.3,
-        "units": "g"
+        "units": "g",
+        "translations": {
+            "ua": {
+                "title": "Сливи"
+            }
+        }
     },
     {
         "title": "Apricots",
@@ -317,7 +512,12 @@
         "proteins": 0.5,
         "carbs": 12,
         "fats": 0.1,
-        "units": "g"
+        "units": "g",
+        "translations": {
+            "ua": {
+                "title": "Абрикоси"
+            }
+        }
     },
     {
         "title": "Pine Nuts",
@@ -325,7 +525,12 @@
         "proteins": 13,
         "carbs": 13,
         "fats": 68,
-        "units": "g"
+        "units": "g",
+        "translations": {
+            "ua": {
+                "title": "Кедрові горіхи"
+            }
+        }
     },
     {
         "title": "Cashews",
@@ -333,7 +538,12 @@
         "proteins": 18,
         "carbs": 30,
         "fats": 44,
-        "units": "g"
+        "units": "g",
+        "translations": {
+            "ua": {
+                "title": "Кешью"
+            }
+        }
     },
     {
         "title": "Hazelnuts",
@@ -341,7 +551,12 @@
         "proteins": 15,
         "carbs": 17,
         "fats": 61,
-        "units": "g"
+        "units": "g",
+        "translations": {
+            "ua": {
+                "title": "лісові горіхи"
+            }
+        }
     },
     {
         "title": "Walnuts",
@@ -349,7 +564,12 @@
         "proteins": 15,
         "carbs": 14,
         "fats": 65,
-        "units": "g"
+        "units": "g",
+        "translations": {
+            "ua": {
+                "title": "Волоські горіхи"
+            }
+        }
     },
     {
         "title": "Pistachios",
@@ -357,7 +577,12 @@
         "proteins": 20,
         "carbs": 28,
         "fats": 46,
-        "units": "g"
+        "units": "g",
+        "translations": {
+            "ua": {
+                "title": "Фісташки"
+            }
+        }
     },
     {
         "title": "Macadamia Nuts",
@@ -365,7 +590,12 @@
         "proteins": 8,
         "carbs": 14,
         "fats": 76,
-        "units": "g"
+        "units": "g",
+        "translations": {
+            "ua": {
+                "title": "Горіхи макадамії"
+            }
+        }
     },
     {
         "title": "Brazil Nuts",
@@ -373,7 +603,12 @@
         "proteins": 14,
         "carbs": 12,
         "fats": 66,
-        "units": "g"
+        "units": "g",
+        "translations": {
+            "ua": {
+                "title": "Бразильські горіхи"
+            }
+        }
     },
     {
         "title": "Coconut",
@@ -381,7 +616,12 @@
         "proteins": 3.3,
         "carbs": 15,
         "fats": 33,
-        "units": "g"
+        "units": "g",
+        "translations": {
+            "ua": {
+                "title": "Кокос"
+            }
+        }
     },
     {
         "title": "Quinoa",
@@ -389,7 +629,12 @@
         "proteins": 4.4,
         "carbs": 21,
         "fats": 1.9,
-        "units": "g"
+        "units": "g",
+        "translations": {
+            "ua": {
+                "title": "Кіноа"
+            }
+        }
     },
     {
         "title": "Brown Rice",
@@ -397,7 +642,12 @@
         "proteins": 4.5,
         "carbs": 45,
         "fats": 1.8,
-        "units": "g"
+        "units": "g",
+        "translations": {
+            "ua": {
+                "title": "Коричневий рис"
+            }
+        }
     },
     {
         "title": "Oats",
@@ -405,7 +655,12 @@
         "proteins": 16.9,
         "carbs": 66,
         "fats": 6.9,
-        "units": "g"
+        "units": "g",
+        "translations": {
+            "ua": {
+                "title": "Овес"
+            }
+        }
     },
     {
         "title": "Quail Eggs",
@@ -413,7 +668,12 @@
         "proteins": 13,
         "carbs": 0.6,
         "fats": 11,
-        "units": "g"
+        "units": "g",
+        "translations": {
+            "ua": {
+                "title": "Перепелині яйця"
+            }
+        }
     },
     {
         "title": "Tofu",
@@ -421,6 +681,11 @@
         "proteins": 15,
         "carbs": 3.9,
         "fats": 8,
-        "units": "g"
+        "units": "g",
+        "translations": {
+            "ua": {
+                "title": "Тофу"
+            }
+        }
     }
 ]

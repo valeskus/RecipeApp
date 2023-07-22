@@ -1,7 +1,7 @@
 import { Body, Controller, Get, NotFoundException, Param, Post } from '@nestjs/common';
 import { ApiOkResponse, ApiOperation, ApiTags } from '@nestjs/swagger';
 
-import { TranslationContext } from '../translation/translation-context.decorator';
+import { AcceptLanguageHeader } from '../translation/accept-language-header-swagger.decorator';
 
 import { RecipeService } from './recipe.service';
 import { CreateRecipeDto, RecipeDto } from './dto';
@@ -12,6 +12,7 @@ export class RecipeController {
   constructor(private readonly recipeService: RecipeService) { }
 
   @Get(':id')
+  @AcceptLanguageHeader()
   @ApiOperation({ summary: 'Get recipe by id' })
   @ApiOkResponse({
     description: 'Returns a recipe by given id',
@@ -19,15 +20,14 @@ export class RecipeController {
   })
   async findOneById(
     @Param('id') id: string,
-    @TranslationContext() translationContext: TranslationContext
-    ): Promise<RecipeDto> {
+  ): Promise<RecipeDto> {
     const recipe = await this.recipeService.findOneById(id);
 
     if (!recipe) {
       throw new NotFoundException('Recipe not found');
     }
 
-    return translationContext.getTranslated<RecipeDto>(recipe);
+    return recipe;
   }
 
   @Post()

@@ -7,7 +7,7 @@ Schema({
     _id: false,
 });
 class TranslatableProductItems {
-    @Prop({ required: true, unique: true })
+    @Prop({ required: true, unique: true, index: 1 })
     title: string;
 }
 
