@@ -48,7 +48,6 @@ export class TranslationService {
     if (!this.isDefault()) {
 
       Object.assign(translatableConverted, {
-        // TODO: remove optional when all collections will contain translations
         ...translatableConverted.translations?.[this.language] || {},
       });
     }
