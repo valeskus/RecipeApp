@@ -3,6 +3,8 @@ import { Image, Pressable, StyleProp, ViewStyle, Text, View } from 'react-native
 
 import { Icons } from '@UI/Icons';
 
+import { TimeManager } from '@managers/TimeManager';
+
 import { styles } from './styles';
 
 interface Props {
@@ -40,7 +42,7 @@ export function ProductCardLine({
           <Image source={Icons.kCal} style={styles.icon} />
           <Text style={styles.productCardLineDetailsItem}>{calories} kcal</Text>
           <Image source={Icons.time} style={styles.icon} />
-          <Text style={styles.productCardLineDetailsItem}>{time}</Text>
+          <Text style={styles.productCardLineDetailsItem}>{TimeManager.getHours(time)}</Text>
         </View>
       </View>
     </Pressable>

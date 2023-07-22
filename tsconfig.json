@@ -6,7 +6,9 @@
       "@UI/*": ["./src/UI/*"],
       "@stores/*": ["./src/stores/*"],
       "@components/*": ["./src/components/*"],
-      "@api/*": ["./src/api/*"]
+      "@api/*": ["./src/api/*"],
+      "@managers/*": ["./src/managers/*"]
+
     },  
   },
   "include": ["./src"]
