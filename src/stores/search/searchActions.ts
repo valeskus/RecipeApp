@@ -1,6 +1,6 @@
 import { Dispatch } from 'redux';
 
-import { SearchOptions } from 'src/models';
+import { SearchOptions } from '@api/recipes.api';
 
 export enum SearchActions {
   SET = '@search/set',

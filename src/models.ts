@@ -64,11 +64,3 @@ export interface RecipeListModel {
   filters: Array<FilterModel>;
   sortOptions: Array<SortOptionModel>;
 }
-export interface SearchOptions {
-  searchTerm: string;
-  sort?: string;
-  filter?: Array<{
-    key: string;
-    value: string;
-  }>;
-}

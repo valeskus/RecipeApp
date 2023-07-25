@@ -1,9 +1,9 @@
 import * as React from 'react';
 import * as Redux from 'react-redux';
 
-import { getRecipes } from '../recipesActions';
+import { SearchOptions } from '@api/recipes.api';
 
-import { SearchOptions } from 'src/models';
+import { getRecipes } from '../recipesActions';
 
 export const useGetRecipeList = () => {
   const dispatch = Redux.useDispatch();

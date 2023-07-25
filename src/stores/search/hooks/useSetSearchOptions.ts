@@ -1,8 +1,9 @@
 import * as React from 'react';
 import * as Redux from 'react-redux';
 
+import { SearchOptions } from '@api/recipes.api';
+
 import { setSearch } from '../searchActions';
-import { SearchOptions } from '../../../models';
 
 export const useSetSearchOptions = () => {
   const dispatch = Redux.useDispatch();
