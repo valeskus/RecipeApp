@@ -7,10 +7,10 @@ export const useCategoryCardsController = () => {
 
   const navigation = useNavigation();
 
-  const setSearchTerm = SearchStore.useSetSearchOptions();
+  const setSearchOptions = SearchStore.useSetSearchOptions();
 
   const onPress = useCallback((categoryTitle: string) => {
-    setSearchTerm({ searchTerm: categoryTitle });
+    setSearchOptions({ searchTerm: categoryTitle });
 
     navigation.navigate('Recipes');
   }, []);

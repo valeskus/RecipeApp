@@ -15,7 +15,7 @@ const initialState: SearchState = {
 export function searchReducer(state = initialState, action: Redux.AnyAction) {
 
   switch (action.type) {
-    case SearchActions.SET: {
+    case SearchActions.SET_OPTIONS: {
       const { searchTerm, sort } = action.payload;
 
       return {

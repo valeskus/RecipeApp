@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from 'react';
+import { useCallback } from 'react';
 import { useNavigation } from '@react-navigation/native';
 
 import * as RecipesStore from '@stores/recipes';
@@ -9,19 +9,15 @@ export const useSortController = () => {
   const navigation = useNavigation();
 
   const { sortOptions } = RecipesStore.useRecipesStore();
-  const setSearch = SearchStore.useSetSearchOptions();
+  const setSearchOptions = SearchStore.useSetSearchOptions();
   const { searchTerm } = SearchStore.useSearchStore();
 
   const onSortChange = useCallback((value: string) => {
-    setSearch({ searchTerm, sort: value });
+    setSearchOptions({ searchTerm, sort: value });
     navigation.goBack();
   },
   [sortOptions],
   );
-
-  useEffect(() => {
-
-  }, []);
 
   return {
     onSortChange,
