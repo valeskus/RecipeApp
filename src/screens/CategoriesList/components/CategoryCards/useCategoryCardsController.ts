@@ -3,7 +3,7 @@ import { useCallback, useMemo } from 'react';
 
 import * as SearchStore from '@stores/search';
 
-import { CategoryModel } from 'src/models';
+import { CategoryModel } from '../../../../models';
 
 export const useCategoryCardsController = (categories: Array<CategoryModel>) => {
 
