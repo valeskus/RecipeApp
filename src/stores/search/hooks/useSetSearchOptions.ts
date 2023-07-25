@@ -2,10 +2,9 @@ import * as React from 'react';
 import * as Redux from 'react-redux';
 
 import { setSearch } from '../searchActions';
+import { SearchOptions } from '../../../models';
 
-import { SearchOptions } from 'src/models';
-
-export const useSetSearch = () => {
+export const useSetSearchOptions = () => {
   const dispatch = Redux.useDispatch();
 
   return React.useCallback(
