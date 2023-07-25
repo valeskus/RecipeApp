@@ -20,7 +20,7 @@ export function PickListItem({
   const setActive = useCallback((): void => {
     onChange(label);
   },
-  [onChange, isActive],
+  [onChange],
   );
 
   return (
