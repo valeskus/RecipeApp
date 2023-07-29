@@ -29,13 +29,13 @@ export function IngredientsList({
       </View>
       <Text style={styles.itemsCounter}>{ingredients.length} items</Text>
 
-      {ingredients.map(item => {
+      {ingredients.map((item, index) => {
         return (
           <IngredientsListItem
             title={item.title}
             amount={setIngredientCount(item.amount)}
             units={item.units}
-            key={item.id}
+            key={index}
           />
         );
       })}

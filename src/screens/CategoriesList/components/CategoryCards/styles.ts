@@ -4,7 +4,6 @@ export const styles = StyleSheet.create({
   categoryCardsContainer: {
     width: '100%',
     paddingBottom: 60,
-    // justifyContent: 'center',
     justifyContent: 'space-between',
   },
   offset: {
@@ -13,6 +12,7 @@ export const styles = StyleSheet.create({
   },
   cardPlaceholder: {
     flex: 1,
+    margin: 10,
   },
   loader: {
     alignSelf: 'center',

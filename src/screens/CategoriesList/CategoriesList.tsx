@@ -7,6 +7,7 @@ import { styles } from './styles';
 import { CategoryCards } from './components/CategoryCards';
 import { useCategoryListController } from './useCategoryListController';
 import { Error } from './components/Error';
+import { CategoryListSkeleton } from './components/CategoryListSkeleton';
 
 export function CategoriesList(): JSX.Element {
   const { handleSearch, categories, isLoading, isError, fetchData } = useCategoryListController();
@@ -20,7 +21,8 @@ export function CategoriesList(): JSX.Element {
       <View style={styles.searchContainer}>
         <Search onSearch={handleSearch} />
       </View>
-      <CategoryCards categories={categories} isLoading={isLoading} />
+      {isLoading && <CategoryListSkeleton />}
+      {!isLoading && <CategoryCards categories={categories} />}
     </View>
   );
 }
