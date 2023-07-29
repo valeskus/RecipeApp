@@ -1,33 +1,26 @@
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
 import { useNavigation } from '@react-navigation/native';
 
 import * as RecipesStore from '@stores/recipes';
+import * as SearchStore from '@stores/search';
 
 export const useSortController = () => {
-  const [activeSortId, setActiveSortId] = React.useState('');
+
   const navigation = useNavigation();
 
   const { sortOptions } = RecipesStore.useRecipesStore();
+  const setSearchOptions = SearchStore.useSetSearchOptions();
+  const { searchTerm } = SearchStore.useSearchStore();
 
-  const onSortChange = useCallback(
-    (id: string) => {
-      if (activeSortId === id) {
-        return setActiveSortId('');
-      }
-
-      setActiveSortId(id);
-    },
-    [activeSortId],
+  const onSortChange = useCallback((value: string) => {
+    setSearchOptions({ searchTerm, sort: value });
+    navigation.goBack();
+  },
+  [sortOptions],
   );
 
-  const onSelectPress = () => {
-    navigation.goBack();
-  };
-
   return {
-    onSelectPress,
     onSortChange,
     sortOptions,
-    activeSortId,
   };
 };

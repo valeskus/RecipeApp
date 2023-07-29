@@ -1,14 +1,16 @@
 import { Dispatch } from 'redux';
 
+import { SearchOptions } from '@api/recipes.api';
+
 export enum SearchActions {
-  SET = '@search/set',
+  SET_OPTIONS = '@search/set_options',
 }
 
-const actionSetSearchTerm = (searchTerm: string) => ({
-  type: SearchActions.SET,
-  payload: { searchTerm },
+const actionSetSearchOptions = (searchOptions: SearchOptions) => ({
+  type: SearchActions.SET_OPTIONS,
+  payload: searchOptions,
 });
 
-export const setSearchTerm = (searchTerm: string, dispatch: Dispatch) => {
-  dispatch(actionSetSearchTerm(searchTerm));
+export const setSearchOptions = (searchOptions: SearchOptions, dispatch: Dispatch) => {
+  dispatch(actionSetSearchOptions(searchOptions));
 };
