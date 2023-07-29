@@ -44,7 +44,8 @@ module.exports = {
         'ig',
         'lte',
         'cond',
-        'ua'
+        'ua',
+        'uri'
       ]
     }],
     'no-extra-semi': 'error',

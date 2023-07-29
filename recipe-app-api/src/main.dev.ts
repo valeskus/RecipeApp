@@ -1,22 +1,16 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 require('dotenv').config({ path: `./env/.${process.env.APP_ENV}.env` });
 
-import { HttpAdapterHost, NestFactory } from '@nestjs/core';
-import { ValidationPipe } from '@nestjs/common';
+import { NestFactory } from '@nestjs/core';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 
 import { AppModule } from './app.module';
-import { MongoExceptionFilter } from './exception-filters/mongo.exception-filter';
+import { bootstrap } from './bootstrap';
 
-async function bootstrap() {
+async function run() {
   const app = await NestFactory.create(AppModule);
-  app.useGlobalPipes(new ValidationPipe({
-    transform: true,
-  }));
 
-  const { httpAdapter } = app.get(HttpAdapterHost);
-
-  app.useGlobalFilters(new MongoExceptionFilter({ httpAdapter }));
+  bootstrap(app);
 
   const config = new DocumentBuilder()
     .setTitle('Recipe app')
@@ -28,4 +22,4 @@ async function bootstrap() {
   await app.listen(3000);
 }
 
-bootstrap();
+run();

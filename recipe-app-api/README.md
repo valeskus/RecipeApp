@@ -1,73 +1,63 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# Development
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
-
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
-
-## Description
-
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
-
-## Installation
-
+* Install dependencies
 ```bash
-$ yarn install
+yarn install
 ```
 
-## Running the app
-
+* Create `.development.env` file in `env` directory
+* Populate the env file with development variables (see `env/.sample.env` for the list of variables to be defined)
+* Start dev server
 ```bash
-# development
-$ yarn run start
+yarn start:dev
+```
+**NOTE: You should see no errors in the console otherwise consider server didn't start**
+* Use `http://localhost:3000/` as the base URL
 
-# watch mode
-$ yarn run start:dev
+# Swagger
 
-# production mode
-$ yarn run start:prod
+Swagger runs upon `yarn start:dev`.\
+The URL is `http://localhost:3000/api`
+
+# Environments
+
+The application can serve 2 databases: `production` and `staging`.\
+`production` database should not be used during development, but only for deployments.\
+`staging` database should be used only for development.\
+Each database can be accessed via the dedicated credentials, provided in `.env` files. In case credentials are not valid for any reason, the application won't be able to access the data.
+
+
+# Deployment
+
+This project uses [Firebase Cloud Functions](https://firebase.google.com/docs/functions) as a deployment platform
+
+* Install dependencies
+```bash
+yarn install
 ```
 
-## Test
-
+* Create `.env` file in the root directory
+* Populate the env file with production variables (see `env/.sample.env` for the list of variables to be defined)
+* Login to Firebase and follow the instructions
 ```bash
-# unit tests
-$ yarn run test
-
-# e2e tests
-$ yarn run test:e2e
-
-# test coverage
-$ yarn run test:cov
+./node_modules/.bin/firebase login
 ```
 
-## Support
+* Verify the future deployment by running the command
+```bash
+yarn firebase:dry-run
+```
+**NOTE: You should see no errors in the console otherwise consider the deployment candidate is broken**
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+**NOTE: Firebase CLI provides a local URL which should be used for verification of the deployment candidate**
 
-## Stay in touch
+* Deploy
+```bash
+yarn firebase:deploy
+```
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+**NOTE: You should see no errors in the console otherwise consider the deployment has failed**
 
-## License
+* Verify function on the [Firebase dashboard](https://console.firebase.google.com/project/recipe-app-api-27fd0/functions)
 
-Nest is [MIT licensed](LICENSE).
+* Verify https://us-central1-recipe-app-api-27fd0.cloudfunctions.net/api is accessible
