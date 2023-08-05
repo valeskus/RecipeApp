@@ -1,3 +1,5 @@
+export { Difficulty } from '../recipe/models';
+
 export enum SortOptions {
     RELEVANCE = 'relevance',
     TIME_ASC = 'time',
@@ -5,12 +7,6 @@ export enum SortOptions {
     ALPHABETICALLY_DESC = '-alphabetically',
     CALORIES_ASC = 'calories',
     CALORIES_DESC = '-calories',
-}
-
-export enum Difficulty {
-    hard = 2,
-    normal = 1,
-    easy = 0
 }
 
 export enum Calories {

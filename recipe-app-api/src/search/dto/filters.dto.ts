@@ -65,14 +65,14 @@ class Filters {
 
     @ApiProperty({
         description: 'List of applicable filters by meal type category',
-        type: [String],
+        type: [FilterDto],
         required: true
     })
     readonly mealType: Array<FilterDto<string>>;
 
     @ApiProperty({
         description: 'List of applicable filters by diet type category',
-        type: [String],
+        type: [FilterDto],
         required: true
     })
     readonly dietType: Array<FilterDto<string>>;

@@ -43,7 +43,8 @@ module.exports = {
         'enum',
         'ig',
         'lte',
-        'cond'
+        'cond',
+        'ua'
       ]
     }],
     'no-extra-semi': 'error',

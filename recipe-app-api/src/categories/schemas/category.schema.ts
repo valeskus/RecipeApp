@@ -1,49 +1,33 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { ApiProperty } from '@nestjs/swagger';
 
+import { TranslationsSchemaOf } from '../../translation/schemas';
 import { CategoryType } from '../models';
 
+Schema({
+  _id: false,
+});
+class TranslatableCategoryItems {
+  @Prop({ required: true, unique: true, index: 1 })
+  title: string;
+}
+
 @Schema({
-    toJSON: {
-        virtuals: true,
-        versionKey: false,
-        transform: (doc, ret) => {
-            delete ret._id;
-        }
+  toJSON: {
+    virtuals: true,
+    versionKey: false,
+    transform: (doc, ret) => {
+      delete ret._id;
     }
+  }
 })
-export class Category {
-    @ApiProperty({
-        example: '6485e97f2fe21ff4fba5f7e4',
-        description: 'Id of the category',
-        required: true
-    })
-    readonly id: string;
+export class Category extends TranslationsSchemaOf(TranslatableCategoryItems) {
+  readonly id: string;
 
-    @ApiProperty({
-        example: 'Lunch',
-        description: 'Name of the category',
-        required: true
-    })
-    @Prop({ required: true })
-    title: string;
+  @Prop({ required: true })
+  image: string;
 
-    @ApiProperty({
-        example: 'https://picsum.photos/500/500',
-        description: 'Url for the image of the category',
-        required: true
-    })
-    @Prop({ required: true })
-    image: string;
-
-    @ApiProperty({
-        example: CategoryType.DIET,
-        enum: CategoryType,
-        description: 'Type of the category',
-        required: true
-    })
-    @Prop({ required: true })
-    type: CategoryType;
+  @Prop({ required: true })
+  type: CategoryType;
 }
 
 export const CategorySchema = SchemaFactory.createForClass(Category);

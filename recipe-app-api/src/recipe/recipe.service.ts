@@ -1,22 +1,31 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
+import { Model, Types } from 'mongoose';
 import { isMongoId } from 'class-validator';
 
 import { ProductsService } from '../products/products.service';
 import { CategoriesService } from '../categories/categories.service';
+import { Languages } from '../translation/models';
+import { TranslationService } from '../translation/translation.service';
+import { Product } from '../products/schemas';
+import { Category } from '../categories/schemas';
 
-import { Recipe, ShortCategory } from './schemas';
+import { RecipeUA, RecipeEN, Recipe, ShortCategory, Ingredient } from './schemas';
 import { CreateRecipeDto } from './dto';
 
 @Injectable()
 export class RecipeService {
-  @InjectModel(Recipe.name) private recipeModel: Model<Recipe>;
+  @InjectModel(RecipeUA.name) private recipeModelUA: Model<Recipe>;
+  @InjectModel(RecipeEN.name) private recipeModelEN: Model<Recipe>;
   @Inject(CategoriesService) private readonly categoriesService: CategoriesService;
   @Inject(ProductsService) private readonly productsService: ProductsService;
+  @Inject(TranslationService) private readonly translationService: TranslationService;
 
   findOneByTitle(title: string): Promise<Recipe | null> {
-    return this.recipeModel.findOne({ title }).exec();
+    return this.translationService.forCurrentLanguage({
+      ua: () => this.recipeModelUA.findOne({ title }).exec(),
+      en: () => this.recipeModelEN.findOne({ title }).exec(),
+    });
   }
 
   findOneById(id: string): Promise<Recipe | null> {
@@ -24,27 +33,25 @@ export class RecipeService {
       return Promise.resolve(null);
     }
 
-    return this.recipeModel.findOne({ _id: id }).exec();
+    return this.translationService.forCurrentLanguage({
+      ua: () => this.recipeModelUA.findOne({ _id: id }).exec(),
+      en: () => this.recipeModelEN.findOne({ _id: id }).exec(),
+    });
   }
 
-  async create(createRecipeDto: CreateRecipeDto): Promise<Recipe> {
-    const found = await this.findOneByTitle(createRecipeDto.title);
-
-    if (found) {
-      throw new Error(`Recipe ${createRecipeDto.title} already exists`);
-    }
-
-    const categories: Array<ShortCategory> = [];
-    for (const categoryTitle of createRecipeDto.categories) {
-      const category = await this.categoriesService.findOneByTitle(categoryTitle);
+  async create(createRecipeDto: CreateRecipeDto): Promise<void> {
+    const categories: Array<ShortCategory & Pick<Category, 'translations'>> = [];
+    for (const categoryId of createRecipeDto.categories) {
+      const category = await this.categoriesService.findOneById(categoryId);
 
       if (!category) {
-        throw new Error(`Category ${categoryTitle} does not exist`);
+        throw new Error(`Category ${categoryId} does not exist`);
       }
 
       categories.push({
         title: category.title,
-        type: category.type
+        type: category.type,
+        translations: category.translations,
       });
     }
 
@@ -52,11 +59,13 @@ export class RecipeService {
     let fats = 0;
     let carbs = 0;
     let proteins = 0;
+    const ingredients: Array<Ingredient & Pick<Product, 'translations'>> = [];
+
     for (const ingredient of createRecipeDto.ingredients) {
-      const product = await this.productsService.findOneByTitle(ingredient.title);
+      const product = await this.productsService.findOneById(ingredient.id);
 
       if (!product) {
-        throw new Error(`Product ${ingredient.title} does not exist`);
+        throw new Error(`Product ${ingredient.id} does not exist`);
       }
 
       const getNutritionFor = this.productsService.createGetterNutritionByAmount(ingredient.amount);
@@ -69,19 +78,48 @@ export class RecipeService {
       Object.assign(ingredient, {
         units: product.units,
       });
+
+      ingredients.push({
+        title: product.title,
+        amount: ingredient.amount,
+        units: product.units,
+        translations: product.translations
+      });
     }
 
-    const createdRecipe = new this.recipeModel({
-      ...createRecipeDto,
-      kCal,
-      categories,
-      macroNutrients: {
-        fats,
-        carbs,
-        proteins
-      }
+    const _id = new Types.ObjectId();
+
+    const createWithLanguage = () => ({
+      ...this.translationService.getTranslated({
+        _id,
+        kCal,
+        macroNutrients: {
+          fats,
+          carbs,
+          proteins
+        },
+        ...createRecipeDto,
+      }),
+      instructions: createRecipeDto.instructions.map(this.translationService.getTranslated),
+      ingredients: ingredients.map(this.translationService.getTranslated),
+      categories: categories.map(this.translationService.getTranslated)
     });
 
-    return createdRecipe.save();
+    const recipeUA = new this.recipeModelUA<Omit<Recipe, 'id'>>({
+      ...await this.translationService.withLanguage(Languages.UA)(() => ({
+        ...createWithLanguage()
+      })),
+    });
+
+    const recipeEN = new this.recipeModelEN<Omit<Recipe, 'id'>>({
+      ...await this.translationService.withLanguage(Languages.EN)(() => ({
+        ...createWithLanguage()
+      })),
+    });
+
+    await Promise.all([
+      recipeUA.save(),
+      recipeEN.save()
+    ]);
   }
 }

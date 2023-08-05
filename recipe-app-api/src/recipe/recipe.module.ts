@@ -6,9 +6,17 @@ import { ProductsModule } from '../products/products.module';
 
 import { RecipeController } from './recipe.controller';
 import { RecipeService } from './recipe.service';
-import { Recipe, RecipeSchema } from './schemas';
+import {
+  RecipeUA,
+  RecipeSchemaUA,
+  RecipeEN,
+  RecipeSchemaEN
+} from './schemas';
 
-const MongooseRecipeModule = MongooseModule.forFeature([{ name: Recipe.name, schema: RecipeSchema }]);
+const MongooseRecipeModule = MongooseModule.forFeature([
+  { name: RecipeUA.name, schema: RecipeSchemaUA },
+  { name: RecipeEN.name, schema: RecipeSchemaEN },
+]);
 
 @Module({
   imports: [

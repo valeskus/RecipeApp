@@ -1,7 +1,19 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsNotEmpty, IsNumber, IsPositive, IsString } from 'class-validator';
+import { IsMongoId, IsNotEmpty, IsNumber, IsPositive, IsString } from 'class-validator';
 
-class Ingredient {
+export class IngredientDataObject {
+    @ApiProperty({
+        example: '6485e97f2fe21ff4fba5f7e4',
+        description: 'Id of the product',
+        required: true
+    })
+    @IsMongoId({
+        message: ({ value }) => `Invalid product id ${value}`
+    })
+    @IsNotEmpty()
+    @IsString()
+    readonly id: string;
+
     @ApiProperty({
         example: 'Meat',
         description: 'Name of the ingredient',
@@ -20,5 +32,3 @@ class Ingredient {
     @IsNumber()
     readonly amount: number;
 }
-
-export { Ingredient as IngredientDto };

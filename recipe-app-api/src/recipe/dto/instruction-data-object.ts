@@ -1,7 +1,9 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsNotEmpty, IsOptional, IsString, IsUrl } from 'class-validator';
 
-class Instruction {
+import { TranslationsDtoOf } from '../../translation/dto';
+
+class TranslatableInstructionItems {
     @ApiProperty({
         example: 'Gather all your ingredients',
         description: 'Instruction text',
@@ -10,7 +12,9 @@ class Instruction {
     @IsNotEmpty()
     @IsString()
     readonly description: string;
+}
 
+export class InstructionDataObject extends TranslationsDtoOf(TranslatableInstructionItems) {
     @ApiProperty({
         example: 'https://picsum.photos/500/500',
         description: 'Image for instruction',
@@ -20,5 +24,3 @@ class Instruction {
     @IsOptional()
     readonly image: number;
 }
-
-export { Instruction as InstructionDto };

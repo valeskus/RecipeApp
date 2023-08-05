@@ -1,7 +1,6 @@
 import { PipelineStage } from 'mongoose';
 
 import { CategoryType } from '../../categories/models';
-import { RecipeSchema } from '../../recipe/schemas';
 import { RecipeListItemDto, SearchDto } from '../dto';
 import { Calories, Difficulty, Facet, TotalTime } from '../models';
 
@@ -15,21 +14,9 @@ interface SearchAggregationParams {
     inputFilters: SearchDto;
 }
 
-const recipeListItemDto = new RecipeListItemDto({
-    image: '',
-    time: 0,
-    title: '',
-    kCal: 0,
-    id: '',
-});
-
-const unsetList = Object.keys(RecipeSchema.obj).filter((key) => {
-    return !recipeListItemDto.hasOwnProperty(key);
-});
-
 export interface SearchAggregationResult {
     recipes: Array<RecipeListItemDto>;
-    totals: [{ total: number }];
+    pageData: [{ total: number }];
     difficulty: Facet<Difficulty>;
     totalTime: Facet<TotalTime>;
     calories: Facet<Calories>;
@@ -84,7 +71,6 @@ export class SearchAggregation extends Array<PipelineStage> {
                     ]
                 },
             },
-            sortAggregation.pipelineStage,
             {
                 $facet: {
                     ...caloriesAggregation.facet,
@@ -93,16 +79,16 @@ export class SearchAggregation extends Array<PipelineStage> {
                     ...mealTypeAggregation.facet,
                     ...dietTypeAggregation.facet,
                     recipes: [
-                        { $addFields: { id: '$_id' } },
-                        { $unset: ['_id', '__v', ...unsetList] },
+                        sortAggregation.pipelineStage,
+                        ...RecipeListItemDto.mongoAggregationConstructor(),
                         { $skip: inputFilters.offset },
-                        { $limit: inputFilters.pageSize }
+                        { $limit: inputFilters.pageSize },
                     ],
-                    totals: [
-                        { $count: 'total' }
+                    pageData: [
+                        { $count: 'total' },
                     ],
                 }
-            }
+            },
         ];
 
         data.forEach((item, index) => this[index] = item);
