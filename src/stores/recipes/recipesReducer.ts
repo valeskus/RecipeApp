@@ -11,13 +11,19 @@ import { RecipesActions } from './recipesActions';
 
 export interface RecipesStoreState {
   recipes: Array<BaseRecipeModel>;
-  filters: Array<FilterModel>;
+  filters: FilterModel;
   sortOptions: Array<SortOptionModel>;
 }
 
 const initialState: RecipesStoreState = {
   recipes: [],
-  filters: [],
+  filters: {
+    calories: [],
+    dietType: [],
+    difficulty: [],
+    mealType: [],
+    totalTime: [],
+  },
   sortOptions: [],
 };
 

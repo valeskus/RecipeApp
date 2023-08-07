@@ -52,9 +52,17 @@ export interface FilterValueModel {
 }
 
 export interface FilterModel {
-  id: string;
-  title: string;
-  values: Array<FilterValueModel>;
+  calories: Array<FilterItemValueModel>;
+  dietType: Array<FilterItemValueModel>;
+  difficulty: Array<FilterItemValueModel>;
+  mealType: Array<FilterItemValueModel>;
+  totalTime: Array<FilterItemValueModel>;
+}
+
+export interface FilterItemValueModel {
+  value: string;
+  count: number;
+  isActive: boolean;
 }
 
 export interface RecipeListModel {
