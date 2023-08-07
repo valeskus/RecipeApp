@@ -45,12 +45,6 @@ export interface SortOptionModel {
   value: string;
   isActive: boolean;
 }
-
-export interface FilterValueModel {
-  label: string;
-  id: string;
-}
-
 export interface FilterModel {
   calories: Array<FilterItemValueModel>;
   dietType: Array<FilterItemValueModel>;
