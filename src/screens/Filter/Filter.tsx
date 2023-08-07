@@ -4,6 +4,8 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Button } from '@UI/Button';
 
+import { FilterModel } from '../../models';
+
 import { FilterItem } from './components/FilterItem';
 import { useFilterController } from './useFilterController';
 import { styles } from './styles';
@@ -17,9 +19,9 @@ export function Filter(): JSX.Element {
   return (
     <View style={styles.modalContainer}>
       <ScrollView>
-        {filters.map(() => {
+        {Object.keys(filters).map((filter, index) => {
           return (
-            <FilterItem />
+            <FilterItem key={index} filter={filter} values={filters[filter as keyof FilterModel]}/>
           );
         })}
       </ScrollView>
