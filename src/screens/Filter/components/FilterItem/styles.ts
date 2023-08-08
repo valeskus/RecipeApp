@@ -8,7 +8,8 @@ export const styles = StyleSheet.create({
     padding: 10,
   },
   filterLabel: {
-    fontSize: 18,
+    fontSize: 20,
+    fontWeight: '600',
     color: Colors.text,
   },
 });
