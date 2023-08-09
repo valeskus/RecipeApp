@@ -9,21 +9,20 @@ import {
 
 import { RecipesActions } from './recipesActions';
 
+interface FiltersItemModel {
+  name: string;
+  values: [];
+}
+
 export interface RecipesStoreState {
   recipes: Array<BaseRecipeModel>;
-  filters: FilterModel;
+  filters: Array<FiltersItemModel>;
   sortOptions: Array<SortOptionModel>;
 }
 
 const initialState: RecipesStoreState = {
   recipes: [],
-  filters: {
-    calories: [],
-    dietType: [],
-    difficulty: [],
-    mealType: [],
-    totalTime: [],
-  },
+  filters: [],
   sortOptions: [],
 };
 
@@ -34,11 +33,14 @@ export function recipesReducer(
   switch (action.type) {
     case RecipesActions.GET: {
       const { recipes, filters, sortOptions } = action.payload as RecipeListModel;
+      const filtersArray = Object.keys(filters).map((key) => {
+        return { name: key, values: filters[key as keyof FilterModel] };
+      });
 
       return {
         ...state,
         recipes,
-        filters,
+        filters: filtersArray,
         sortOptions,
       };
     }

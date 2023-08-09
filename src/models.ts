@@ -61,6 +61,6 @@ export interface FilterItemValueModel {
 
 export interface RecipeListModel {
   recipes: Array<BaseRecipeModel>;
-  filters: Array<FilterModel>;
+  filters: FilterModel;
   sortOptions: Array<SortOptionModel>;
 }
