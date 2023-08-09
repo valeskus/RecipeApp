@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text } from 'react-native';
 
 import { PickListItem } from '@UI/PickListItem';
-import { FilterLabelsMapModel, FilterLabelsMap } from '@UI/FilterLabelsMap';
+import { FilterLabelsMapModel, FilterLabelsMap, FilterValuesMap, FilterValuesMapModel } from '@UI/FilterMap';
 
 import { styles } from './styles';
 
@@ -14,12 +14,17 @@ interface Props {
 }
 
 export function FilterItem({ filterName, values }: Props): JSX.Element {
-
   return (
     <View style={styles.filterScreenContainer}>
       <Text style={styles.filterLabel}>{FilterLabelsMap[filterName as keyof FilterLabelsMapModel]} :</Text>
       {values.map((value, index) => {
-        return <PickListItem key={index} label={value.value} isActive={value.isActive} onChange={() => {}}/>;
+        return (
+          <PickListItem
+            key={index}
+            label={FilterValuesMap[value.value as keyof FilterValuesMapModel] || value.value}
+            isActive={value.isActive} onChange={() => { }}
+          />
+        );
       })}
     </View>
   );
