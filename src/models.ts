@@ -43,18 +43,23 @@ export interface DetailRecipeModel extends BaseRecipeModel {
 
 export interface SortOptionModel {
   value: string;
+  title: string;
   isActive: boolean;
 }
+
+interface FilterValue {
+  title: string;
+  multiple: boolean;
+  items: Array<FilterItemValueModel>;
+}
+
 export interface FilterModel {
-  calories: Array<FilterItemValueModel>;
-  dietType: Array<FilterItemValueModel>;
-  difficulty: Array<FilterItemValueModel>;
-  mealType: Array<FilterItemValueModel>;
-  totalTime: Array<FilterItemValueModel>;
+  [filterName: string]: FilterValue;
 }
 
 export interface FilterItemValueModel {
   value: string;
+  title: string;
   count: number;
   isActive: boolean;
 }

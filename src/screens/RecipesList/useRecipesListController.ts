@@ -25,7 +25,7 @@ export const useRecipeListController = () => {
 
   useEffect(() => {
     handleSearch();
-  }, []);
+  }, [searchOptions.sort]);
 
   return {
     gridType,

@@ -13,7 +13,8 @@ class SortOptions extends Array<SortOptionDto> {
         Object.values(SortOptionsModel).forEach((value, index) => {
             this[index] = new SortOptionDto({
                 value,
-                isActive: value === appliedSort
+                isActive: value === appliedSort,
+                title: value
             });
         });
     }

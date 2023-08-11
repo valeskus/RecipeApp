@@ -6,6 +6,7 @@ class SortOption {
     constructor(params: SortOption) {
         this.value = params.value;
         this.isActive = params.isActive;
+        this.title = params.title;
     }
 
     @ApiProperty({
@@ -15,6 +16,13 @@ class SortOption {
         required: true
     })
     readonly value: string;
+
+    @ApiProperty({
+        description: 'Sort title (translatable)',
+        example: 'by relevance',
+        required: true
+    })
+    readonly title: string;
 
     @ApiProperty({
         description: 'Indicator whether the sort value is applied',

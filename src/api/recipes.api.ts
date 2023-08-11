@@ -15,8 +15,14 @@ export const searchRecipes = async (
   options: SearchOptions,
 ): Promise<RecipeListModel> => {
   const result = await client.get<RecipeListModel>('/search', {
-    params: { search: options.searchTerm,
-      sort: options.sort },
+    params: {
+      search: options.searchTerm,
+      sort: options.sort,
+      ...(options.filter || []).reduce((prev, { key, value }) => ({
+        ...prev,
+        [key]: value,
+      }), {}),
+    },
   });
 
   return result.data;

@@ -1,27 +1,28 @@
 import { ApiProperty } from '@nestjs/swagger';
 
+import { FilterValueDto } from './filterValue.dto';
+
 class Filter<T> {
     @ApiProperty({
-        examples: ['lte20', 'Breakfast and Brunch|Comfort Food', '1'],
-        description: 'Value of filter',
-        type: String,
+        description: 'List of applicable filter value',
+        type: [FilterValueDto],
         required: true
     })
-    readonly value: T;
+    readonly items: Array<FilterValueDto<T>>;
 
     @ApiProperty({
-        example: 10,
-        description: 'Number of recipes applicable to this filter',
+        example: 'Calories',
+        description: 'Title of the filter value (translatable)',
         required: true
     })
-    readonly count: number;
+    readonly title: string;
 
     @ApiProperty({
         example: true,
-        description: 'Indicator whether the filter is applied to the recipes list',
+        description: 'Whether the filter receives single value or multiple values',
         required: true
     })
-    readonly isActive: boolean;
+    readonly multiple: boolean;
 }
 
 export { Filter as FilterDto };

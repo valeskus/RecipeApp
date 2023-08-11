@@ -3,7 +3,6 @@ import * as Redux from 'redux';
 import {
   BaseRecipeModel,
   FilterItemValueModel,
-  FilterModel,
   RecipeListModel,
   SortOptionModel,
 } from '../../models';
@@ -34,9 +33,9 @@ export function recipesReducer(
   switch (action.type) {
     case RecipesActions.GET: {
       const { recipes, filters, sortOptions } = action.payload as RecipeListModel;
-      const filtersArray = Object.keys(filters).map((key) => {
-        return { name: key, values: filters[key as keyof FilterModel] };
-      });
+
+      const filtersArray = Object.values(filters)
+        .map(({ title, items }) => ({ name: title, values: items }));
 
       return {
         ...state,

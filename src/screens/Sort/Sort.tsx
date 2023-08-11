@@ -8,7 +8,8 @@ import { useSortController } from './useSortController';
 import { styles } from './styles';
 
 export function Sort(): JSX.Element {
-  const { sortOptions,
+  const {
+    sortOptions,
     onSortChange,
   } = useSortController();
 
@@ -18,12 +19,13 @@ export function Sort(): JSX.Element {
   return (
     <View style={styles.modalContainer}>
       <ScrollView>
-        {sortOptions.map((sort, index) => {
+        {sortOptions.map(({ value, title, isActive }) => {
           return (
             <PickListItem
-              label={sort.value}
-              key={index}
-              isActive={sort.isActive}
+              value={value}
+              label={title}
+              key={value}
+              isActive={isActive}
               onChange={onSortChange}
             />
           );
