@@ -2,6 +2,7 @@ import * as Redux from 'redux';
 
 import {
   BaseRecipeModel,
+  FilterItemValueModel,
   FilterModel,
   RecipeListModel,
   SortOptionModel,
@@ -11,7 +12,7 @@ import { RecipesActions } from './recipesActions';
 
 interface FiltersItemModel {
   name: string;
-  values: [];
+  values: Array<FilterItemValueModel>;
 }
 
 export interface RecipesStoreState {

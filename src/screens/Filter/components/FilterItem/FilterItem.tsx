@@ -2,7 +2,8 @@ import React from 'react';
 import { View, Text } from 'react-native';
 
 import { PickListItem } from '@UI/PickListItem';
-import { FilterLabelsMapModel, FilterLabelsMap, FilterValuesMap, FilterValuesMapModel } from '@UI/FilterMap';
+
+import { FilterLabelsMapModel, FilterLabelsMap, FilterValuesMap, FilterValuesMapModel } from '../../FilterMap';
 
 import { styles } from './styles';
 
