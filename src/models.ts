@@ -43,22 +43,29 @@ export interface DetailRecipeModel extends BaseRecipeModel {
 
 export interface SortOptionModel {
   value: string;
+  title: string;
   isActive: boolean;
 }
 
-export interface FilterValueModel {
-  label: string;
-  id: string;
+interface FilterValue {
+  title: string;
+  multiple: boolean;
+  items: Array<FilterItemValueModel>;
 }
 
 export interface FilterModel {
-  id: string;
+  [filterName: string]: FilterValue;
+}
+
+export interface FilterItemValueModel {
+  value: string;
   title: string;
-  values: Array<FilterValueModel>;
+  count: number;
+  isActive: boolean;
 }
 
 export interface RecipeListModel {
   recipes: Array<BaseRecipeModel>;
-  filters: Array<FilterModel>;
+  filters: FilterModel;
   sortOptions: Array<SortOptionModel>;
 }

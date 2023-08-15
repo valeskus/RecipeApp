@@ -1,11 +1,32 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, Text } from 'react-native';
+
+import { PickListItem } from '@UI/PickListItem';
 
 import { styles } from './styles';
 
-export function FilterItem(): JSX.Element {
+import { FilterItemValueModel } from 'src/models';
 
+interface Props {
+  filterName: string;
+  values: Array<FilterItemValueModel>;
+}
+
+export function FilterItem({ filterName, values }: Props): JSX.Element {
   return (
-    <View style={styles.filterScreenContainer} />
+    <View style={styles.filterScreenContainer}>
+      <Text style={styles.filterLabel}>{filterName} :</Text>
+      {values.map(({ value, title, isActive, count }) => {
+        return (
+          <PickListItem
+            key={value}
+            label={`${title} (${count})`}
+            value={value}
+            isActive={isActive}
+            onChange={() => { }}
+          />
+        );
+      })}
+    </View>
   );
 }

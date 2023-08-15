@@ -39,7 +39,10 @@ module.exports = {
         'uri',
         'axios',
         'tsx',
-        'dotenv'
+        'dotenv',
+        'kcal',
+        'lte',
+        'gte'
       ]
     }],
     'import/no-unresolved': ['error', {ignore: ['@env']}],

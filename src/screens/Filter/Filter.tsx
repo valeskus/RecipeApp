@@ -17,11 +17,11 @@ export function Filter(): JSX.Element {
   return (
     <View style={styles.modalContainer}>
       <ScrollView>
-        {filters.map(() => {
-          return (
-            <FilterItem />
-          );
-        })}
+        {filters
+          .filter((filter) => !!filter.values.length)
+          .map((filter) => (
+            <FilterItem key={filter.name} filterName={filter.name} values={filter.values}/>
+          ))}
       </ScrollView>
       <View style={[styles.footerOffset, { height: footerOffset }]} />
       <View style={[styles.selectButtonContainer, { bottom: footerOffset }]}>

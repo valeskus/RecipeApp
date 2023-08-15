@@ -2,16 +2,21 @@ import * as Redux from 'redux';
 
 import {
   BaseRecipeModel,
-  FilterModel,
+  FilterItemValueModel,
   RecipeListModel,
   SortOptionModel,
 } from '../../models';
 
 import { RecipesActions } from './recipesActions';
 
+interface FiltersItemModel {
+  name: string;
+  values: Array<FilterItemValueModel>;
+}
+
 export interface RecipesStoreState {
   recipes: Array<BaseRecipeModel>;
-  filters: Array<FilterModel>;
+  filters: Array<FiltersItemModel>;
   sortOptions: Array<SortOptionModel>;
 }
 
@@ -29,10 +34,13 @@ export function recipesReducer(
     case RecipesActions.GET: {
       const { recipes, filters, sortOptions } = action.payload as RecipeListModel;
 
+      const filtersArray = Object.values(filters)
+        .map(({ title, items }) => ({ name: title, values: items }));
+
       return {
         ...state,
         recipes,
-        filters,
+        filters: filtersArray,
         sortOptions,
       };
     }

@@ -7,20 +7,22 @@ import { styles } from './styles';
 
 interface Props {
   label: string;
+  value: string;
   isActive: boolean;
   onChange: (value: string) => void;
 }
 
 export function PickListItem({
   label,
+  value,
   onChange,
   isActive,
 }: Props): JSX.Element {
 
   const setActive = useCallback((): void => {
-    onChange(label);
+    onChange(value);
   },
-  [onChange],
+  [onChange, value],
   );
 
   return (
