@@ -1,19 +1,37 @@
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
 import { useNavigation } from '@react-navigation/native';
 
 import * as RecipesStore from '@stores/recipes';
+import * as SearchStore from '@stores/search';
 
 export const useFilterController = () => {
-  const [filterList, setFilterList] = React.useState([{}]);
   const navigation = useNavigation();
 
   const { filters } = RecipesStore.useRecipesStore();
+  const setSearchOptions = SearchStore.useSetSearchOptions();
+  const searchOptions = SearchStore.useSearchStore();
 
   const onFilterChange = useCallback(
-    (filterId: string, valueId: string) => {
-      return setFilterList([...filterList, { key: filterId, value: valueId }]);
+    (filterName: string, value: string) => {
+
+      const searchOptionsFilters =  searchOptions.filter.filter((item) => item.key !== filterName);
+
+      if (!value) {
+        return setSearchOptions({
+          searchTerm: searchOptions.searchTerm,
+          sort: searchOptions.sort,
+          filter: [...searchOptionsFilters],
+        });
+      }
+
+      setSearchOptions({
+        searchTerm: searchOptions.searchTerm,
+        sort: searchOptions.sort,
+        filter: [...searchOptionsFilters, { key: filterName, value: value }],
+      });
+
     },
-    [filterList],
+    [searchOptions.filter],
   );
 
   const onSelectPress = () => {
