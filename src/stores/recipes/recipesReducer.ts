@@ -36,9 +36,9 @@ export function recipesReducer(
     case RecipesActions.GET: {
       const { recipes, filters, sortOptions } = action.payload as RecipeListModel;
 
-      const filtersArray = Object.values(filters)
-        .map(({ title, items, multiple }, index) => ({ title,
-          name: Object.keys(filters)[index], values: items, multiple }));
+      const filtersArray = Object.entries(filters).map((item) => (
+        { title: item[1].title, name: item[0], values: item[1].items, multiple: item[1].multiple }),
+      );
 
       return {
         ...state,
