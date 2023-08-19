@@ -23,8 +23,6 @@ export const useFilterController = () => {
       }
 
       setSearchOptions({
-        searchTerm: searchOptions.searchTerm,
-        sort: searchOptions.sort,
         filter: [...searchOptionsFilters, { key: filterName, value: value }],
       });
 

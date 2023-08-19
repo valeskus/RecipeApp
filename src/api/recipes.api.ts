@@ -3,7 +3,7 @@ import { DetailRecipeModel, RecipeListModel } from '../models';
 import { client } from './client.api';
 
 export interface SearchOptions {
-  searchTerm?: string;
+  searchTerm: string;
   sort?: string;
   filter?: Array<{
     key: string;
