@@ -2,7 +2,6 @@ import { ApiProperty } from '@nestjs/swagger';
 
 import { Calories, Difficulty, Facet, TotalTime } from '../models';
 
-import { FilterValueDto } from './filterValue.dto';
 import { SearchDto } from './search.dto';
 import { FilterDto } from './filter.dto';
 
@@ -13,53 +12,81 @@ interface FiltersData {
     mealType: Facet<string>;
     dietType: Facet<string>;
     inputFilters: SearchDto;
+    translate: (selector: string) => string;
 }
 
 const filterOutEmpty = <T>(list: Facet<T>) => {
     return list.filter((item) => item.count);
 };
 
-const singleFilterTransformation = <T>(list: Facet<T>, appliedFilter?: T) => {
+const singleFilterTransformation = <T extends string | number>(
+    translate: FiltersData['translate'],
+    list: Facet<T>,
+    appliedFilter?: T
+) => {
     return filterOutEmpty(list).map((item) => ({
-            ...item,
-            isActive: appliedFilter === item.value,
-            title: String(item.value),
-        }));
+        ...item,
+        isActive: appliedFilter === item.value,
+        title: translate(item.value.toString()),
+    }));
 };
 
-const multipleFilterTransformation = <T>(list: Facet<T>, appliedFilter?: Array<T>) => {
+const multipleFilterTransformation = <T>(
+    list: Facet<T>,
+    appliedFilter?: Array<T>
+) => {
     return filterOutEmpty(list).map((item) => ({
-            ...item,
-            title: item.value,
-            isActive: appliedFilter?.includes(item.value) || false
-        }));
+        ...item,
+        title: item.value,
+        isActive: appliedFilter?.includes(item.value) || false
+    }));
 };
 
 class Filters {
-    constructor(params: FiltersData) {
+    constructor({
+        translate,
+        calories,
+        inputFilters,
+        totalTime,
+        difficulty,
+        mealType,
+        dietType
+    }: FiltersData) {
         this.calories = {
-            title: 'calories',
-            items: singleFilterTransformation(params.calories, params.inputFilters.calories),
+            title: translate('search.filter.calories.name'),
+            items: singleFilterTransformation(
+                (value: string) => translate(`search.filter.calories.query.${value}`),
+                calories,
+                inputFilters.calories
+            ),
             multiple: false,
         };
         this.totalTime = {
-            title: 'total time',
-            items: singleFilterTransformation(params.totalTime, params.inputFilters.totalTime),
+            title: translate('search.filter.total_time.name'),
+            items: singleFilterTransformation(
+                (value: string) => translate(`search.filter.total_time.query.${value}`),
+                totalTime,
+                inputFilters.totalTime
+            ),
             multiple: false,
         };
         this.difficulty = {
-            title: 'difficulty',
-            items: singleFilterTransformation(params.difficulty, params.inputFilters.difficulty),
+            title: translate('search.filter.difficulty.name'),
+            items: singleFilterTransformation(
+                (value: string) => translate(`search.filter.difficulty.query.${value}`),
+                difficulty,
+                inputFilters.difficulty
+            ),
             multiple: false,
         };
         this.mealType = {
-            title: 'meal type',
-            items: multipleFilterTransformation(params.mealType, params.inputFilters.mealType),
+            title: translate('search.filter.meal_type.name'),
+            items: multipleFilterTransformation(mealType, inputFilters.mealType),
             multiple: true,
         };
         this.dietType = {
-            title: 'diet type',
-            items: multipleFilterTransformation(params.dietType, params.inputFilters.dietType),
+            title: translate('search.filter.diet_type.name'),
+            items: multipleFilterTransformation(dietType, inputFilters.dietType),
             multiple: true,
         };
     }

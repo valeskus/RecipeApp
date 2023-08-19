@@ -6,7 +6,6 @@ import {
 } from '@nestjs/swagger';
 
 import { TranslationContext } from '../translation/translation-context.decorator';
-import { AcceptLanguageHeader } from '../translation/accept-language-header-swagger.decorator';
 
 import { ProductsService } from './products.service';
 import { CreateProductDto, AllProductsDto, ProductDto } from './dto';
@@ -19,7 +18,6 @@ export class ProductsController {
   ) { }
 
   @Get()
-  @AcceptLanguageHeader()
   @ApiOperation({ summary: 'Get all products' })
   @ApiOkResponse({
     description: 'Retrieves all products',
@@ -36,7 +34,6 @@ export class ProductsController {
   }
 
   @Get(':id')
-  @AcceptLanguageHeader()
   @ApiOperation({ summary: 'Get product by id' })
   @ApiOkResponse({
     description: 'Returns a product by given id',
