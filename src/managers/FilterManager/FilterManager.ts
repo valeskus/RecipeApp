@@ -1,29 +1,28 @@
-export class FiltersValuesManager {
+export class FilterValuesManager {
   static getRawValues(queryString: string) {
     if (!queryString) {
       return [];
     }
 
-    return queryString.replaceAll('|', ',').split(',');
-
+    return queryString.split('|');
   }
 
   static getQueryValues(rawValues: Array<string>) {
-    return rawValues.toString().replaceAll(',', '|');
+    return rawValues.join(',').replaceAll(',', '|');
   }
 
   static getAppliedFiltersString(baseString: string, nextRawValueString: string, multiple: boolean) {
-    const rawValues = FiltersValuesManager.getRawValues(baseString);
+    const rawValues = FilterValuesManager.getRawValues(baseString);
 
     if (rawValues.includes(nextRawValueString)) {
-      return FiltersValuesManager.getQueryValues(rawValues.filter((value) => value !== nextRawValueString));
+      return FilterValuesManager.getQueryValues(rawValues.filter((value) => value !== nextRawValueString));
     }
 
     if (multiple) {
-      return FiltersValuesManager.getQueryValues([...rawValues, nextRawValueString]);
+      return FilterValuesManager.getQueryValues([...rawValues, nextRawValueString]);
     }
 
-    return FiltersValuesManager.getQueryValues([nextRawValueString]);
+    return FilterValuesManager.getQueryValues([nextRawValueString]);
   }
 
 }

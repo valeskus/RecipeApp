@@ -17,9 +17,11 @@ export const useFilterController = () => {
       const searchOptionsFilters =  searchOptions.filter.filter((item) => item.key !== filterName);
 
       if (!value) {
-        return setSearchOptions({
+        setSearchOptions({
           filter: searchOptionsFilters,
         });
+
+        return;
       }
 
       setSearchOptions({

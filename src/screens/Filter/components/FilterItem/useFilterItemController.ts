@@ -2,7 +2,7 @@ import { useCallback } from 'react';
 
 import * as SearchStore from '@stores/search';
 
-import { FiltersValuesManager } from '@managers/FilterManager';
+import { FilterValuesManager } from '@managers/FilterManager';
 
 import { FilterItemValueModel } from '../../../../models';
 
@@ -20,11 +20,12 @@ export const useFilterItemController = (params: UseFilterItemControllerParams) =
 
   const handleChange = useCallback((value: string) => {
 
-    const previousValue = searchOptions.filter.filter((item) => item.key === params.filterName);
-    params.onFilterChange(params.filterName,
-      FiltersValuesManager.getAppliedFiltersString(previousValue[0]?.value, value, params.multiple));
+    const previousValue = searchOptions.filter.find((item) => item.key === params.filterName);
 
-  }, [params.values, params.multiple, searchOptions.filter]);
+    params.onFilterChange(params.filterName,
+      FilterValuesManager.getAppliedFiltersString(previousValue?.value || '', value, params.multiple));
+
+  }, [params, searchOptions.filter]);
 
   return {
     handleChange,
