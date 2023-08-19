@@ -18,9 +18,7 @@ export const useFilterController = () => {
 
       if (!value) {
         return setSearchOptions({
-          searchTerm: searchOptions.searchTerm,
-          sort: searchOptions.sort,
-          filter: [...searchOptionsFilters],
+          filter: searchOptionsFilters,
         });
       }
 
