@@ -8,7 +8,7 @@ export class FilterValuesManager {
   }
 
   static getQueryValues(rawValues: Array<string>) {
-    return rawValues.join(',').replaceAll(',', '|');
+    return rawValues.join('|');
   }
 
   static getAppliedFiltersString(baseString: string, nextRawValueString: string, multiple: boolean) {
