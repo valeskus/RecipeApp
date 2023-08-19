@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
 
-import { FilterItemValueModel } from 'src/models';
+import { FilterItemValueModel } from '../../../../models';
 
 export interface UseFilterItemControllerParams {
   filterTitle: string;
@@ -12,31 +12,33 @@ export interface UseFilterItemControllerParams {
 
 export const useFilterItemController = (params: UseFilterItemControllerParams) => {
 
-  const onMultipleFilterChange = useCallback((value: string, previousValueString: string) => {
-    if (previousValueString.includes(value)) {
+  const onMultipleFilterChange = useCallback((value: string, previousValues: Array<string>) => {
 
-      return params.onFilterChange(params.filterName, previousValueString.split(',')
+    if (previousValues.length === 0) {
+      return params.onFilterChange(params.filterName, value);
+    }
+
+    if (previousValues.includes(value)) {
+
+      return params.onFilterChange(params.filterName, previousValues
         .filter((item) => item !== value).toString().replaceAll(',', '|'));
     }
 
-    const currentValuesString = previousValueString ? previousValueString.replaceAll(',', '|') + `|${value}` : value;
-
-    return params.onFilterChange(params.filterName, currentValuesString);
+    return params.onFilterChange(params.filterName, previousValues.toString().replaceAll(',', '|') + `|${value}`);
   }, [params.multiple]);
 
   const handleChange = useCallback((value: string) => {
-    const previousValueString = params.values.filter((v) => v.isActive === true)
-      .map((item) => item.value)
-      .toString();
+    const previousValueArray = params.values.filter((previousValue) => previousValue.isActive === true)
+      .map((item) => item.value);
 
-    if (previousValueString == value) {
+    if (previousValueArray[0] === `${value}`) {
       return params.onFilterChange(params.filterName, '');
     }
 
     params.onFilterChange(params.filterName, value);
 
     if (params.multiple) {
-      onMultipleFilterChange(value, previousValueString);
+      onMultipleFilterChange(value, previousValueArray);
     }
   }, [params.values, params.multiple]);
 
