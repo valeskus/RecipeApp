@@ -1,5 +1,9 @@
 import { useCallback } from 'react';
 
+import * as SearchStore from '@stores/search';
+
+import { FiltersValuesManager } from '@managers/FilterManager';
+
 import { FilterItemValueModel } from '../../../../models';
 
 export interface UseFilterItemControllerParams {
@@ -12,35 +16,15 @@ export interface UseFilterItemControllerParams {
 
 export const useFilterItemController = (params: UseFilterItemControllerParams) => {
 
-  const onMultipleFilterChange = useCallback((value: string, previousValues: Array<string>) => {
-
-    if (previousValues.length === 0) {
-      return params.onFilterChange(params.filterName, value);
-    }
-
-    if (previousValues.includes(value)) {
-
-      return params.onFilterChange(params.filterName, previousValues
-        .filter((item) => item !== value).toString().replaceAll(',', '|'));
-    }
-
-    return params.onFilterChange(params.filterName, previousValues.toString().replaceAll(',', '|') + `|${value}`);
-  }, [params.multiple]);
+  const searchOptions = SearchStore.useSearchStore();
 
   const handleChange = useCallback((value: string) => {
-    const previousValueArray = params.values.filter((previousValue) => previousValue.isActive === true)
-      .map((item) => item.value);
 
-    if (previousValueArray[0] === `${value}`) {
-      return params.onFilterChange(params.filterName, '');
-    }
+    const previousValue = searchOptions.filter.filter((item) => item.key === params.filterName);
+    params.onFilterChange(params.filterName,
+      FiltersValuesManager.getAppliedFiltersString(previousValue[0]?.value, value, params.multiple));
 
-    params.onFilterChange(params.filterName, value);
-
-    if (params.multiple) {
-      onMultipleFilterChange(value, previousValueArray);
-    }
-  }, [params.values, params.multiple]);
+  }, [params.values, params.multiple, searchOptions.filter]);
 
   return {
     handleChange,
