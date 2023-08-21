@@ -9,7 +9,7 @@ import { useFilterController } from './useFilterController';
 import { styles } from './styles';
 
 export function Filter(): JSX.Element {
-  const { onSelectPress, filters } = useFilterController();
+  const { onSelectPress, filters, onFilterChange } = useFilterController();
 
   const { bottom } = useSafeAreaInsets();
   const footerOffset = bottom || 20;
@@ -20,7 +20,14 @@ export function Filter(): JSX.Element {
         {filters
           .filter((filter) => !!filter.values.length)
           .map((filter) => (
-            <FilterItem key={filter.name} filterName={filter.name} values={filter.values}/>
+            <FilterItem
+              key={filter.title}
+              filterTitle={filter.title}
+              filterName={filter.name}
+              values={filter.values}
+              multiple={filter.multiple}
+              onFilterChange={onFilterChange}
+            />
           ))}
       </ScrollView>
       <View style={[styles.footerOffset, { height: footerOffset }]} />

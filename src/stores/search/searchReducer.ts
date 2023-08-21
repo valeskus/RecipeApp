@@ -26,7 +26,7 @@ export function searchReducer(state = initialState, action: Redux.AnyAction) {
       const { searchTerm, sort, filter } = action.payload as SearchOptions;
 
       return {
-        searchTerm,
+        searchTerm: searchTerm || state.searchTerm,
         filter: filter || state.filter,
         sort: sort || state.sort,
       };

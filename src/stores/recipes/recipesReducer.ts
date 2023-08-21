@@ -11,7 +11,9 @@ import { RecipesActions } from './recipesActions';
 
 interface FiltersItemModel {
   name: string;
+  title: string;
   values: Array<FilterItemValueModel>;
+  multiple: boolean;
 }
 
 export interface RecipesStoreState {
@@ -34,8 +36,10 @@ export function recipesReducer(
     case RecipesActions.GET: {
       const { recipes, filters, sortOptions } = action.payload as RecipeListModel;
 
-      const filtersArray = Object.values(filters)
-        .map(({ title, items }) => ({ name: title, values: items }));
+      const filtersArray = Object.entries(filters).map(([name, filter]) => {
+
+        return { title: filter.title, name, values: filter.items, multiple: filter.multiple };
+      });
 
       return {
         ...state,

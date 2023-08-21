@@ -4,26 +4,24 @@ import { View, Text } from 'react-native';
 import { PickListItem } from '@UI/PickListItem';
 
 import { styles } from './styles';
+import { useFilterItemController, UseFilterItemControllerParams } from './useFilterItemController';
 
-import { FilterItemValueModel } from 'src/models';
+interface Props extends UseFilterItemControllerParams {}
 
-interface Props {
-  filterName: string;
-  values: Array<FilterItemValueModel>;
-}
+export function FilterItem(props: Props): JSX.Element {
+  const { handleChange } = useFilterItemController(props);
 
-export function FilterItem({ filterName, values }: Props): JSX.Element {
   return (
     <View style={styles.filterScreenContainer}>
-      <Text style={styles.filterLabel}>{filterName} :</Text>
-      {values.map(({ value, title, isActive, count }) => {
+      <Text style={styles.filterLabel}>{props.filterTitle} :</Text>
+      {props.values.map(({ value, title, isActive, count }) => {
         return (
           <PickListItem
             key={value}
             label={`${title} (${count})`}
             value={value}
             isActive={isActive}
-            onChange={() => { }}
+            onChange={handleChange}
           />
         );
       })}
