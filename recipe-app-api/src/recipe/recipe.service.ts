@@ -89,7 +89,7 @@ export class RecipeService {
 
     const _id = new Types.ObjectId();
 
-    const createWithLanguage = () => ({
+    const createWithLanguage = (language: Languages) => ({
       ...this.translationService.getTranslated({
         _id,
         kCal,
@@ -99,23 +99,15 @@ export class RecipeService {
           proteins
         },
         ...createRecipeDto,
-      }),
-      instructions: createRecipeDto.instructions.map(this.translationService.getTranslated),
-      ingredients: ingredients.map(this.translationService.getTranslated),
-      categories: categories.map(this.translationService.getTranslated)
+      }, language),
+      instructions: createRecipeDto.instructions.map((item) => this.translationService.getTranslated(item, language)),
+      ingredients: ingredients.map((item) => this.translationService.getTranslated(item, language)),
+      categories: categories.map((item) => this.translationService.getTranslated(item, language))
     });
 
-    const recipeUA = new this.recipeModelUA<Omit<Recipe, 'id'>>({
-      ...await this.translationService.withLanguage(Languages.UA)(() => ({
-        ...createWithLanguage()
-      })),
-    });
+    const recipeUA = new this.recipeModelUA<Omit<Recipe, 'id'>>(createWithLanguage(Languages.UA));
 
-    const recipeEN = new this.recipeModelEN<Omit<Recipe, 'id'>>({
-      ...await this.translationService.withLanguage(Languages.EN)(() => ({
-        ...createWithLanguage()
-      })),
-    });
+    const recipeEN = new this.recipeModelEN<Omit<Recipe, 'id'>>(createWithLanguage(Languages.EN));
 
     await Promise.all([
       recipeUA.save(),

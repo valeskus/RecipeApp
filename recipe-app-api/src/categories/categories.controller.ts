@@ -13,7 +13,6 @@ import {
 } from '@nestjs/swagger';
 
 import { TranslationContext } from '../translation/translation-context.decorator';
-import { AcceptLanguageHeader } from '../translation/accept-language-header-swagger.decorator';
 
 import { CategoriesService } from './categories.service';
 import { CreateCategoryDto, AllCategoriesDto, CategoryDto } from './dto';
@@ -42,7 +41,6 @@ export class CategoriesController {
   }
 
   @Get(':id')
-  @AcceptLanguageHeader()
   @ApiOperation({ summary: 'Get category by id' })
   @ApiOkResponse({
     description: 'Returns a category by given id',

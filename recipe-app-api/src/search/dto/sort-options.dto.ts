@@ -4,17 +4,18 @@ import { SortOptionDto } from './sort-option.dto';
 
 interface SortOptionsParams {
     appliedSort: SortOptionsModel;
+    translate: (selector: string) => string;
 }
 
 class SortOptions extends Array<SortOptionDto> {
-    constructor({ appliedSort }: SortOptionsParams) {
+    constructor({ appliedSort, translate }: SortOptionsParams) {
         super();
 
         Object.values(SortOptionsModel).forEach((value, index) => {
             this[index] = new SortOptionDto({
                 value,
                 isActive: value === appliedSort,
-                title: value
+                title: translate(`search.sort.${value}`)
             });
         });
     }

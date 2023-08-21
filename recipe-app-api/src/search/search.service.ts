@@ -40,11 +40,13 @@ export class SearchService {
                 difficulty,
                 mealType,
                 dietType,
+                translate: this.translationService.t
             }),
             recipes,
             total: pageData[0]?.total || 0,
             sortOptions: new SortOptionsDto({
-                appliedSort: params.sort
+                appliedSort: params.sort,
+                translate: this.translationService.t,
             })
         });
     }

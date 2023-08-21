@@ -1,8 +1,6 @@
 import { Body, Controller, Get, NotFoundException, Param, Post } from '@nestjs/common';
 import { ApiOkResponse, ApiOperation, ApiTags } from '@nestjs/swagger';
 
-import { AcceptLanguageHeader } from '../translation/accept-language-header-swagger.decorator';
-
 import { RecipeService } from './recipe.service';
 import { CreateRecipeDto, RecipeDto } from './dto';
 
@@ -12,7 +10,6 @@ export class RecipeController {
   constructor(private readonly recipeService: RecipeService) { }
 
   @Get(':id')
-  @AcceptLanguageHeader()
   @ApiOperation({ summary: 'Get recipe by id' })
   @ApiOkResponse({
     description: 'Returns a recipe by given id',

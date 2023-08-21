@@ -45,7 +45,9 @@ module.exports = {
         'lte',
         'cond',
         'ua',
-        'uri'
+        'uri',
+        'resolvers',
+        'lang'
       ]
     }],
     'no-extra-semi': 'error',

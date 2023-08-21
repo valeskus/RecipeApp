@@ -6,6 +6,7 @@ import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 
 import { AppModule } from './app.module';
 import { bootstrap } from './bootstrap';
+import { AcceptLanguageHeaderParameter } from './translation/accept-language-header-swagger.parameter';
 
 async function run() {
   const app = await NestFactory.create(AppModule);
@@ -15,6 +16,9 @@ async function run() {
   const config = new DocumentBuilder()
     .setTitle('Recipe app')
     .setDescription('The recipe API description')
+    .addGlobalParameters({
+      ...AcceptLanguageHeaderParameter
+    })
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
