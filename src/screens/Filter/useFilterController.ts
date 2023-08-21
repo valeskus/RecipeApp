@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import { useCallback, useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
 
 import * as RecipesStore from '@stores/recipes';
@@ -10,6 +10,11 @@ export const useFilterController = () => {
   const { filters } = RecipesStore.useRecipesStore();
   const setSearchOptions = SearchStore.useSetSearchOptions();
   const searchOptions = SearchStore.useSearchStore();
+  const getRecipes = RecipesStore.useGetRecipeList();
+
+  const handleSearch = useCallback(async () => {
+    await getRecipes(searchOptions);
+  }, [searchOptions]);
 
   const onFilterChange = useCallback(
     (filterName: string, value: string) => {
@@ -35,6 +40,10 @@ export const useFilterController = () => {
   const onSelectPress = () => {
     navigation.goBack();
   };
+
+  useEffect(() => {
+    handleSearch();
+  }, [searchOptions.filter]);
 
   return {
     onSelectPress,
