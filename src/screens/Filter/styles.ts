@@ -28,4 +28,7 @@ export const styles = StyleSheet.create({
     borderTopEndRadius: 30,
     borderTopStartRadius: 30,
   },
+  filterList: {
+    marginBottom: 10,
+  },
 });

@@ -7,16 +7,18 @@ import { Button } from '@UI/Button';
 import { FilterItem } from './components/FilterItem';
 import { useFilterController } from './useFilterController';
 import { styles } from './styles';
+import { FilterSkeleton } from './components/FilterSkeleton';
 
 export function Filter(): JSX.Element {
-  const { onSelectPress, filters, onFilterChange } = useFilterController();
+  const { onSelectPress, filters, onFilterChange, isLoading } = useFilterController();
 
   const { bottom } = useSafeAreaInsets();
   const footerOffset = bottom || 20;
 
   return (
     <View style={styles.modalContainer}>
-      <ScrollView>
+      {isLoading && <FilterSkeleton/>}
+      {!isLoading && (<ScrollView style={styles.filterList}>
         {filters
           .filter((filter) => !!filter.values.length)
           .map((filter) => (
@@ -30,6 +32,7 @@ export function Filter(): JSX.Element {
             />
           ))}
       </ScrollView>
+      )}
       <View style={[styles.footerOffset, { height: footerOffset }]} />
       <View style={[styles.selectButtonContainer, { bottom: footerOffset }]}>
         <Button icon="select" onPress={onSelectPress} />
