@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native';
-import { useCallback, useMemo } from 'react';
+import { useCallback, useEffect, useMemo } from 'react';
 
 import * as SearchStore from '@stores/search';
 
@@ -55,7 +55,12 @@ export const useRecipeCardController = (
     }
 
     setSearchOptions({ offset: searchOptions.offset + 8, pageSize: 8 });
-  }, [params.recipes, searchOptions.offset]);
+  }, [params.recipes, searchOptions.offset, params.total]);
+
+  useEffect(() => {
+    return () =>
+      setSearchOptions({ offset: 0 });
+  }, []);
 
   return {
     onPress,

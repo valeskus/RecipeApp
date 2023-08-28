@@ -23,9 +23,13 @@ export const useRecipeListController = () => {
     setLoading(false);
   }, [getRecipes, searchOptions]);
 
+  const handleUpdateRecipeList = useCallback(async () => {
+    await getRecipes(searchOptions);
+  }, [getRecipes, searchOptions]);
+
   useEffect(() => {
-    handleSearch();
-  }, [searchOptions.sort]);
+    handleUpdateRecipeList();
+  }, [searchOptions.sort, searchOptions.offset]);
 
   return {
     gridType,
