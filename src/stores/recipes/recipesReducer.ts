@@ -20,12 +20,14 @@ export interface RecipesStoreState {
   recipes: Array<BaseRecipeModel>;
   filters: Array<FiltersItemModel>;
   sortOptions: Array<SortOptionModel>;
+  total: number;
 }
 
 const initialState: RecipesStoreState = {
   recipes: [],
   filters: [],
   sortOptions: [],
+  total: 0,
 };
 
 export function recipesReducer(
@@ -34,16 +36,18 @@ export function recipesReducer(
 ) {
   switch (action.type) {
     case RecipesActions.GET: {
-      const { recipes, filters, sortOptions } = action.payload as RecipeListModel;
+      const { recipes, filters, sortOptions, total } = action.payload as RecipeListModel;
 
       const filtersArray = Object.entries(filters).map(([name, filter]) => {
 
         return { title: filter.title, name, values: filter.items, multiple: filter.multiple };
       });
 
+      const recipesList = state.total === total ? state.recipes.concat(recipes) : recipes;
+
       return {
         ...state,
-        recipes,
+        recipes: recipesList,
         filters: filtersArray,
         sortOptions,
       };

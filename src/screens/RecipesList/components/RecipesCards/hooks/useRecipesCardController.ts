@@ -8,6 +8,7 @@ import { BaseRecipeModel } from '../../../../../models';
 export interface UseRecipeCardControllerParams {
   recipes: Array<BaseRecipeModel>;
   gridType: 'linear' | 'grid';
+  total: number;
 }
 
 export const useRecipeCardController = (
@@ -43,7 +44,13 @@ export const useRecipeCardController = (
   }, [params.recipes, params.gridType]);
 
   const onScrollPage = useCallback(() => {
-    if (params.recipes.length === 0) {
+    if (params.recipes.length === 0 || params.recipes.length === params.total) {
+      return;
+    }
+
+    if (params.recipes.length < searchOptions.pageSize || searchOptions.offset > params.total) {
+      setSearchOptions({ offset: searchOptions.offset, pageSize: 8 });
+
       return;
     }
 

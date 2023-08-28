@@ -8,7 +8,7 @@ import { useGridTypes } from './hooks';
 export const useRecipeListController = () => {
   const { gridType, onChangeCardType } = useGridTypes();
 
-  const { recipes } = RecipesStore.useRecipesStore();
+  const { recipes, total } = RecipesStore.useRecipesStore();
   const searchOptions = SearchStore.useSearchStore();
 
   const [isLoading, setLoading] = React.useState(false);
@@ -32,6 +32,7 @@ export const useRecipeListController = () => {
     isLoading,
     isRecipesListEmpty,
     recipes,
+    total,
     onChangeCardType,
     handleSearch,
   };

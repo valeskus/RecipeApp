@@ -68,6 +68,7 @@ export interface RecipeListModel {
   recipes: Array<BaseRecipeModel>;
   filters: FilterModel;
   sortOptions: Array<SortOptionModel>;
+  total: number;
 }
 
 export interface SearchOptionsModel {
