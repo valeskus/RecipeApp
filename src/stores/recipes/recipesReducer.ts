@@ -43,7 +43,7 @@ export function recipesReducer(
         return { title: filter.title, name, values: filter.items, multiple: filter.multiple };
       });
 
-      const recipesList = state.total === total ? state.recipes.concat(recipes) : recipes;
+      const recipesList = [...state.recipes, ...recipes];
 
       return {
         ...state,
