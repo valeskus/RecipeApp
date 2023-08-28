@@ -77,4 +77,6 @@ export interface SearchOptionsModel {
     key: string;
     value: string;
   }>;
+  offset?: number;
+  pageSize?: number;
 }
