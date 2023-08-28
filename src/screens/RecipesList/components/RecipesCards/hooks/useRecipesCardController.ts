@@ -1,5 +1,7 @@
 import { useNavigation } from '@react-navigation/native';
-import { useMemo } from 'react';
+import { useCallback, useMemo } from 'react';
+
+import * as SearchStore from '@stores/search';
 
 import { BaseRecipeModel } from '../../../../../models';
 
@@ -12,6 +14,8 @@ export const useRecipeCardController = (
   params: UseRecipeCardControllerParams,
 ) => {
   const navigation = useNavigation();
+  const searchOptions = SearchStore.useSearchStore();
+  const setSearchOptions = SearchStore.useSetSearchOptions();
 
   const onPress = (id: string) => {
     navigation.navigate('RecipeDetails', { id });
@@ -38,8 +42,17 @@ export const useRecipeCardController = (
     ];
   }, [params.recipes, params.gridType]);
 
+  const onScrollPage = useCallback(() => {
+    if (params.recipes.length === 0) {
+      return;
+    }
+
+    setSearchOptions({ offset: searchOptions.offset + 8, pageSize: 8 });
+  }, [params.recipes, searchOptions.offset]);
+
   return {
     onPress,
     data,
+    onScrollPage,
   };
 };
