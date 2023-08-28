@@ -50,6 +50,7 @@ export function recipesReducer(
         recipes: recipesList,
         filters: filtersArray,
         sortOptions,
+        total,
       };
     }
 
