@@ -8,7 +8,8 @@ import { useGridTypes } from './hooks';
 export const useRecipeListController = () => {
   const { gridType, onChangeCardType } = useGridTypes();
 
-  const { recipes } = RecipesStore.useRecipesStore();
+  const { recipes, total } = RecipesStore.useRecipesStore();
+
   const searchOptions = SearchStore.useSearchStore();
 
   const [isLoading, setLoading] = React.useState(false);
@@ -21,11 +22,15 @@ export const useRecipeListController = () => {
     setLoading(true);
     await getRecipes(searchOptions);
     setLoading(false);
-  }, [getRecipes, searchOptions]);
+  }, [searchOptions]);
+
+  const handleOffset = useCallback(async () => {
+    await getRecipes(searchOptions);
+  }, [searchOptions]);
 
   useEffect(() => {
-    handleSearch();
-  }, [searchOptions.sort]);
+    handleOffset();
+  }, [searchOptions.offset, searchOptions.sort]);
 
   return {
     gridType,
@@ -34,5 +39,6 @@ export const useRecipeListController = () => {
     recipes,
     onChangeCardType,
     handleSearch,
+    total,
   };
 };

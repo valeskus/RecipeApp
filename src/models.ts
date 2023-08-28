@@ -66,8 +66,11 @@ export interface FilterItemValueModel {
 
 export interface RecipeListModel {
   recipes: Array<BaseRecipeModel>;
+  total: number;
   filters: FilterModel;
   sortOptions: Array<SortOptionModel>;
+  offset?: number;
+  pageSize?: number;
 }
 
 export interface SearchOptionsModel {
@@ -77,4 +80,6 @@ export interface SearchOptionsModel {
     key: string;
     value: string;
   }>;
+  offset?: number;
+  pageSize?: number;
 }

@@ -15,7 +15,7 @@ export const useSearchController = (params: UseSearchControllerParams) => {
 
   const handleChange = useCallback(
     (nextValue: string) => {
-      setSearchOptions({ searchTerm: nextValue });
+      setSearchOptions({ searchTerm: nextValue, offset: 0  });
     },
     [setSearchOptions],
   );
@@ -24,7 +24,7 @@ export const useSearchController = (params: UseSearchControllerParams) => {
   }, [params]);
 
   const handleResetSearchInput = useCallback(() => {
-    setSearchOptions({ searchTerm: '' });
+    setSearchOptions({ searchTerm: '', offset: 0 });
   }, [setSearchOptions]);
 
   const handlePress = useCallback(() => {

@@ -14,6 +14,7 @@ interface Props extends UseRecipeCardControllerParams { }
 interface RenderItemParams {
   onPress: (id: string) => void;
   gridType: UseRecipeCardControllerParams['gridType'];
+  total: number;
 }
 
 const getRenderItem =
@@ -48,8 +49,8 @@ const getRenderItem =
 const keyExtractor: FlatListProps<BaseRecipeModel>['keyExtractor'] = item =>
   item.id;
 
-export function RecipesCards({ gridType, recipes }: Props): JSX.Element {
-  const { onPress, data } = useRecipeCardController({ recipes, gridType });
+export function RecipesCards({ gridType, recipes, total }: Props): JSX.Element {
+  const { onPress, data, onSetPageSize } = useRecipeCardController({ recipes, gridType, total });
 
   const commonProps = {
     style: styles.offset,
@@ -57,6 +58,7 @@ export function RecipesCards({ gridType, recipes }: Props): JSX.Element {
     renderItem: getRenderItem({
       onPress,
       gridType,
+      total,
     }),
     keyExtractor,
   };
@@ -68,6 +70,8 @@ export function RecipesCards({ gridType, recipes }: Props): JSX.Element {
         contentContainerStyle={styles.recipesCardsContainer}
         numColumns={2}
         key="grid-list"
+        onEndReachedThreshold={0.1}
+        onEndReached={onSetPageSize}
       />
     );
   }

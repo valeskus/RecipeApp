@@ -9,6 +9,8 @@ export interface SearchOptions {
     key: string;
     value: string;
   }>;
+  offset?: number;
+  pageSize?: number;
 }
 
 export const searchRecipes = async (
@@ -18,6 +20,8 @@ export const searchRecipes = async (
     params: {
       search: options.searchTerm,
       sort: options.sort,
+      offset: options.offset,
+      pageSize: options.pageSize,
       ...(options.filter || []).reduce((prev, { key, value }) => ({
         ...prev,
         [key]: value,
