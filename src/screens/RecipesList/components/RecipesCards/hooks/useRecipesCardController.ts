@@ -48,7 +48,7 @@ export const useRecipeCardController = (
       return;
     }
 
-    setSearchOptions({ offset: searchOptions.offset + 8, pageSize: 8 });
+    setSearchOptions({ offset: searchOptions.offset + 8 });
   }, [params.recipes, searchOptions.offset, params.total]);
 
   return {
