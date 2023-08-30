@@ -16,9 +16,10 @@ export const useSearchController = (params: UseSearchControllerParams) => {
 
   const handleChange = useCallback(
     (nextValue: string) => {
+      resetSearchOptions();
       setSearchOptions({ searchTerm: nextValue });
     },
-    [setSearchOptions],
+    [],
   );
   const handleSearch = useCallback(() => {
     params.onSearch();
@@ -26,7 +27,7 @@ export const useSearchController = (params: UseSearchControllerParams) => {
 
   const handleResetSearchInput = useCallback(() => {
     resetSearchOptions();
-  }, [resetSearchOptions]);
+  }, []);
 
   const handlePress = useCallback(() => {
     searchInputRef.current?.focus();
