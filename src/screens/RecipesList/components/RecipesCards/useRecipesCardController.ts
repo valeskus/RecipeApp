@@ -3,7 +3,7 @@ import { useCallback, useMemo } from 'react';
 
 import * as SearchStore from '@stores/search';
 
-import { BaseRecipeModel } from '../../../../../models';
+import { BaseRecipeModel } from '../../../../models';
 
 export interface UseRecipeCardControllerParams {
   recipes: Array<BaseRecipeModel>;

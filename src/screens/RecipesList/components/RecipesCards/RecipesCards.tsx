@@ -7,7 +7,7 @@ import { ProductCardGrid } from '@UI/ProductCard/ProductCardGrid';
 import { BaseRecipeModel } from '../../../../models';
 
 import { styles } from './styles';
-import { UseRecipeCardControllerParams, useRecipeCardController } from './hooks';
+import { UseRecipeCardControllerParams, useRecipeCardController } from './useRecipesCardController';
 
 interface Props extends UseRecipeCardControllerParams { }
 
