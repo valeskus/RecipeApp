@@ -9,11 +9,16 @@ export const useRecipeListController = () => {
   const { gridType, onChangeCardType } = useGridTypes();
 
   const { recipes, total } = RecipesStore.useRecipesStore();
-  const searchOptions = SearchStore.useSearchStore();
-
-  const [isLoading, setLoading] = React.useState(false);
 
   const getRecipes = RecipesStore.useGetRecipeList();
+
+  const resetRecipes = RecipesStore.useResetRecipeList();
+
+  const searchOptions = SearchStore.useSearchStore();
+
+  const resetSearchOptions = SearchStore.useResetSearchOptions();
+
+  const [isLoading, setLoading] = React.useState(false);
 
   const isRecipesListEmpty = recipes.length === 0;
 
@@ -29,7 +34,14 @@ export const useRecipeListController = () => {
 
   useEffect(() => {
     handleUpdateRecipeList();
-  }, [searchOptions.sort, searchOptions.offset]);
+  }, [searchOptions.sort, searchOptions.offset, searchOptions.searchTerm]);
+
+  useEffect(() => {
+    return () => {
+      resetSearchOptions();
+      resetRecipes();
+    };
+  }, []);
 
   return {
     gridType,

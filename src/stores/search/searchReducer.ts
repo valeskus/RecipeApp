@@ -39,6 +39,10 @@ export function searchReducer(state = initialState, action: Redux.AnyAction) {
       };
     }
 
+    case SearchActions.RESET_OPTIONS: {
+      return initialState;
+    }
+
     default:
       return state;
   }

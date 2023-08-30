@@ -42,7 +42,6 @@ export function recipesReducer(
 
         return { title: filter.title, name, values: filter.items, multiple: filter.multiple };
       });
-
       const recipesList = [...state.recipes, ...recipes];
 
       return {
@@ -52,6 +51,10 @@ export function recipesReducer(
         sortOptions,
         total,
       };
+    }
+
+    case RecipesActions.RESET: {
+      return initialState;
     }
 
     default:
