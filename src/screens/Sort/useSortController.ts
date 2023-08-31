@@ -10,10 +10,9 @@ export const useSortController = () => {
 
   const { sortOptions } = RecipesStore.useRecipesStore();
   const setSearchOptions = SearchStore.useSetSearchOptions();
-  const { searchTerm } = SearchStore.useSearchStore();
 
   const onSortChange = useCallback((value: string) => {
-    setSearchOptions({ searchTerm, sort: value });
+    setSearchOptions({ sort: value });
     navigation.goBack();
   },
   [sortOptions],

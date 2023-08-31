@@ -42,11 +42,10 @@ export function recipesReducer(
 
         return { title: filter.title, name, values: filter.items, multiple: filter.multiple };
       });
-      const recipesList = [...state.recipes, ...recipes];
 
       return {
         ...state,
-        recipes: recipesList,
+        recipes: [...state.recipes, ...recipes],
         filters: filtersArray,
         sortOptions,
         total,
