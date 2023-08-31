@@ -84,7 +84,7 @@ export function RecipesCards({ gridType, recipes, total }: Props): JSX.Element {
         styles.recipesCardsContainer,
         styles.centeredLineCard,
       ]}
-      onEndReachedThreshold={0}
+      onEndReachedThreshold={0.3}
       onEndReached={onEndReached}
     />
   );
