@@ -5,11 +5,11 @@ import { Icons } from '@UI/Icons';
 
 import { styles } from './styles';
 import {
+  SearchControllerParams,
   useSearchController,
-  UseSearchControllerParams,
 } from './useSearchController';
 
-interface Props extends UseSearchControllerParams {}
+interface Props extends SearchControllerParams {}
 
 export function Search({ onSearch }: Props): JSX.Element {
   const {

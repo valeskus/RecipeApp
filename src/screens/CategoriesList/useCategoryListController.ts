@@ -17,6 +17,7 @@ export const useCategoryListController = () => {
 
   const handleSearch = useCallback(() => {
     navigation.navigate('Recipes');
+
   }, []);
 
   const fetchData = async () => {

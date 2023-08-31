@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 
 import * as RecipesStore from '@stores/recipes';
 import * as SearchStore from '@stores/search';
@@ -18,16 +18,7 @@ export const useRecipeListController = () => {
 
   const resetSearchOptions = SearchStore.useResetSearchOptions();
 
-  const [isLoading, setLoading] = React.useState(false);
-
   const isRecipesListEmpty = recipes.length === 0;
-
-  const handleSearch = useCallback(async () => {
-    setLoading(true);
-    resetRecipes();
-    await getRecipes(searchOptions);
-    setLoading(false);
-  }, [getRecipes, searchOptions]);
 
   const handleUpdateRecipeList = useCallback(async () => {
     await getRecipes(searchOptions);
@@ -35,7 +26,7 @@ export const useRecipeListController = () => {
 
   useEffect(() => {
     handleUpdateRecipeList();
-  }, [searchOptions.sort, searchOptions.offset]);
+  }, [searchOptions.sort, searchOptions.offset, searchOptions.searchTerm]);
 
   useEffect(() => {
     return () => {
@@ -46,11 +37,11 @@ export const useRecipeListController = () => {
 
   return {
     gridType,
-    isLoading,
+    isLoading: false,
     isRecipesListEmpty,
     recipes,
     total,
     onChangeCardType,
-    handleSearch,
+    resetRecipes,
   };
 };

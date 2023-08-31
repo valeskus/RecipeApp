@@ -28,13 +28,12 @@ export function searchReducer(state = initialState, action: Redux.AnyAction) {
   switch (action.type) {
     case SearchActions.SET_OPTIONS: {
       const { searchTerm, sort, filter, offset } = action.payload as SearchOptionsModel;
-      const offsetValue = (offset || offset === 0) ? offset : state.offset;
 
       return {
         searchTerm: searchTerm || state.searchTerm,
         filter: filter || state.filter,
         sort: sort || state.sort,
-        offset: offsetValue,
+        offset: offset || state.offset,
         pageSize: state.pageSize,
       };
     }

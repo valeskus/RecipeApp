@@ -1,14 +1,15 @@
-import { RefObject, createRef, useCallback } from 'react';
+import { RefObject, createRef, useCallback, useState } from 'react';
 import { TextInput } from 'react-native';
 
 import * as SearchStore from '@stores/search';
 
-export interface UseSearchControllerParams {
+export interface SearchControllerParams {
   onSearch: () => void;
 }
 
-export const useSearchController = (params: UseSearchControllerParams) => {
+export const useSearchController = (params: SearchControllerParams) => {
   const { searchTerm } = SearchStore.useSearchStore();
+  const [pendingSearchTerm, setPendingSearchTerm] = useState(searchTerm);
   const setSearchOptions = SearchStore.useSetSearchOptions();
   const resetSearchOptions = SearchStore.useResetSearchOptions();
 
@@ -16,17 +17,20 @@ export const useSearchController = (params: UseSearchControllerParams) => {
 
   const handleChange = useCallback(
     (nextValue: string) => {
-      resetSearchOptions();
-      setSearchOptions({ searchTerm: nextValue });
+      setPendingSearchTerm(nextValue);
     },
     [],
   );
   const handleSearch = useCallback(() => {
+    resetSearchOptions();
     params.onSearch();
-  }, [params]);
+
+    setSearchOptions({ searchTerm: pendingSearchTerm });
+
+  }, [pendingSearchTerm, params.onSearch]);
 
   const handleResetSearchInput = useCallback(() => {
-    resetSearchOptions();
+    setPendingSearchTerm('');
   }, []);
 
   const handlePress = useCallback(() => {
@@ -34,7 +38,7 @@ export const useSearchController = (params: UseSearchControllerParams) => {
   }, []);
 
   return {
-    searchTerm,
+    searchTerm: pendingSearchTerm,
     searchInputRef,
     handleChange,
     handleSearch,
