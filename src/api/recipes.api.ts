@@ -2,6 +2,7 @@ import { DetailRecipeModel, RecipeListModel } from '../models';
 
 import { client } from './client.api';
 
+export const PAGE_SIZE = 8;
 export interface SearchOptions {
   searchTerm: string;
   sort?: string;
@@ -9,8 +10,7 @@ export interface SearchOptions {
     key: string;
     value: string;
   }>;
-  offset?: number;
-  pageSize?: number;
+  offset: number;
 }
 
 export const searchRecipes = async (
@@ -21,7 +21,7 @@ export const searchRecipes = async (
       search: options.searchTerm,
       sort: options.sort,
       offset: options.offset,
-      pageSize: options.pageSize,
+      pageSize: PAGE_SIZE,
       ...(options.filter || []).reduce((prev, { key, value }) => ({
         ...prev,
         [key]: value,

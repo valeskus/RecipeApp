@@ -2,8 +2,6 @@ import * as Redux from 'redux';
 
 import { SearchActions } from './searchActions';
 
-export const PAGE_SIZE = 8;
-
 export interface SearchOptionsModel {
   searchTerm?: string;
   sort?: string;
@@ -12,7 +10,6 @@ export interface SearchOptionsModel {
     value: string;
   }>;
   offset?: number;
-  pageSize?: number;
 }
 export interface SearchState {
   searchTerm: string;
@@ -22,7 +19,6 @@ export interface SearchState {
     value: string;
   }>;
   offset: number;
-  pageSize: number;
 }
 
 const initialState: SearchState = {
@@ -30,7 +26,6 @@ const initialState: SearchState = {
   sort: 'relevance',
   filter: [],
   offset: 0,
-  pageSize: PAGE_SIZE,
 };
 
 export function searchReducer(state = initialState, action: Redux.AnyAction) {
@@ -44,7 +39,6 @@ export function searchReducer(state = initialState, action: Redux.AnyAction) {
         filter: filter || state.filter,
         sort: sort || state.sort,
         offset: offset || state.offset,
-        pageSize: state.pageSize,
       };
     }
 

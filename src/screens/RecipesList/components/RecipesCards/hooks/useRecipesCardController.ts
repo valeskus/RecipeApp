@@ -2,7 +2,8 @@ import { useNavigation } from '@react-navigation/native';
 import { useCallback, useMemo } from 'react';
 
 import * as SearchStore from '@stores/search';
-import { PAGE_SIZE } from '@stores/search/searchReducer';
+
+import { PAGE_SIZE } from '@api/recipes.api';
 
 import { BaseRecipeModel } from '../../../../../models';
 
@@ -44,7 +45,7 @@ export const useRecipeCardController = (
     ];
   }, [params.recipes, params.gridType]);
 
-  const onScrollPage = useCallback(() => {
+  const onEndReached = useCallback(() => {
     if (params.recipes.length === params.total) {
       return;
     }
@@ -55,6 +56,6 @@ export const useRecipeCardController = (
   return {
     onPress,
     data,
-    onScrollPage,
+    onEndReached,
   };
 };
