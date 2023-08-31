@@ -5,13 +5,13 @@ import * as SearchStore from '@stores/search';
 
 import { BaseRecipeModel } from '../../../../models';
 
-export interface UseRecipeCardControllerParams {
+export interface UseRecipeCardsControllerParams {
   recipes: Array<BaseRecipeModel>;
   gridType: 'linear' | 'grid';
 }
 
-export const useRecipeCardController = (
-  params: UseRecipeCardControllerParams,
+export const useRecipeCardsController = (
+  params: UseRecipeCardsControllerParams,
 ) => {
   const navigation = useNavigation();
   const paginate = SearchStore.usePagination();

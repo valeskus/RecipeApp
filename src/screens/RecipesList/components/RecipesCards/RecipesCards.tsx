@@ -7,13 +7,13 @@ import { ProductCardGrid } from '@UI/ProductCard/ProductCardGrid';
 import { BaseRecipeModel } from '../../../../models';
 
 import { styles } from './styles';
-import { UseRecipeCardControllerParams, useRecipeCardController } from './useRecipesCardController';
+import { UseRecipeCardsControllerParams, useRecipeCardsController } from './useRecipesCardsController';
 
-interface Props extends UseRecipeCardControllerParams { }
+interface Props extends UseRecipeCardsControllerParams { }
 
 interface RenderItemParams {
   onPress: (id: string) => void;
-  gridType: UseRecipeCardControllerParams['gridType'];
+  gridType: UseRecipeCardsControllerParams['gridType'];
 }
 
 const getRenderItem =
@@ -49,7 +49,7 @@ const keyExtractor: FlatListProps<BaseRecipeModel>['keyExtractor'] = item =>
   item.id;
 
 export function RecipesCards({ gridType, recipes }: Props): JSX.Element {
-  const { onPress, data, onEndReached } = useRecipeCardController({ recipes, gridType });
+  const { onPress, data, onEndReached } = useRecipeCardsController({ recipes, gridType });
 
   const commonProps = {
     style: styles.offset,
