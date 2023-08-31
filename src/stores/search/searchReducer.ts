@@ -32,12 +32,21 @@ export function searchReducer(state = initialState, action: Redux.AnyAction) {
 
   switch (action.type) {
     case SearchActions.SET_OPTIONS: {
-      const { searchTerm, sort, filter, offset } = action.payload as SearchOptionsModel;
+      const { searchTerm, sort, filter } = action.payload as SearchOptionsModel;
 
       return {
+        ...state,
         searchTerm: searchTerm || state.searchTerm,
         filter: filter || state.filter,
         sort: sort || state.sort,
+      };
+    }
+
+    case SearchActions.PAGINATE:{
+      const { offset } = action.payload as SearchOptionsModel;
+
+      return {
+        ...state,
         offset: offset || state.offset,
       };
     }

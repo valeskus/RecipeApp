@@ -3,8 +3,6 @@ import { useCallback, useMemo } from 'react';
 
 import * as SearchStore from '@stores/search';
 
-import { PAGE_SIZE } from '@api/recipes.api';
-
 import { BaseRecipeModel } from '../../../../../models';
 
 export interface UseRecipeCardControllerParams {
@@ -18,7 +16,7 @@ export const useRecipeCardController = (
 ) => {
   const navigation = useNavigation();
   const searchOptions = SearchStore.useSearchStore();
-  const setSearchOptions = SearchStore.useSetSearchOptions();
+  const paginate = SearchStore.usePagination();
 
   const onPress = (id: string) => {
     navigation.navigate('RecipeDetails', { id });
@@ -46,11 +44,7 @@ export const useRecipeCardController = (
   }, [params.recipes, params.gridType]);
 
   const onEndReached = useCallback(() => {
-    if (params.recipes.length === params.total) {
-      return;
-    }
-
-    setSearchOptions({ offset: searchOptions.offset + PAGE_SIZE });
+    paginate({ arrayLength: params.recipes.length, total: params.total, offset: searchOptions.offset });
   }, [params.recipes, searchOptions.offset, params.total]);
 
   return {
