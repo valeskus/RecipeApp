@@ -1,6 +1,6 @@
 import { Dispatch } from 'redux';
 
-import { SearchOptionsModel } from '../../models';
+import { SearchOptionsModel } from './searchReducer';
 
 export enum SearchActions {
   SET_OPTIONS = '@search/set_options',

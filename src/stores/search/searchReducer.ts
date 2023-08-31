@@ -1,9 +1,19 @@
 import * as Redux from 'redux';
 
-import { SearchOptionsModel } from '../../models';
-
 import { SearchActions } from './searchActions';
 
+export const PAGE_SIZE = 8;
+
+export interface SearchOptionsModel {
+  searchTerm?: string;
+  sort?: string;
+  filter?: Array<{
+    key: string;
+    value: string;
+  }>;
+  offset?: number;
+  pageSize?: number;
+}
 export interface SearchState {
   searchTerm: string;
   sort: string;
@@ -20,7 +30,7 @@ const initialState: SearchState = {
   sort: 'relevance',
   filter: [],
   offset: 0,
-  pageSize: 8,
+  pageSize: PAGE_SIZE,
 };
 
 export function searchReducer(state = initialState, action: Redux.AnyAction) {

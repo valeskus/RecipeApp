@@ -70,14 +70,3 @@ export interface RecipeListModel {
   sortOptions: Array<SortOptionModel>;
   total: number;
 }
-
-export interface SearchOptionsModel {
-  searchTerm?: string;
-  sort?: string;
-  filter?: Array<{
-    key: string;
-    value: string;
-  }>;
-  offset?: number;
-  pageSize?: number;
-}

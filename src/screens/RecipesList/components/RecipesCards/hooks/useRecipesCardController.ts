@@ -2,6 +2,7 @@ import { useNavigation } from '@react-navigation/native';
 import { useCallback, useMemo } from 'react';
 
 import * as SearchStore from '@stores/search';
+import { PAGE_SIZE } from '@stores/search/searchReducer';
 
 import { BaseRecipeModel } from '../../../../../models';
 
@@ -48,7 +49,7 @@ export const useRecipeCardController = (
       return;
     }
 
-    setSearchOptions({ offset: searchOptions.offset + 8 });
+    setSearchOptions({ offset: searchOptions.offset + PAGE_SIZE });
   }, [params.recipes, searchOptions.offset, params.total]);
 
   return {
