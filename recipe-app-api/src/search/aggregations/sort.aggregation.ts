@@ -2,7 +2,8 @@ const getSortPipelineBySortOption = (sortOption: SortOptions): PipelineStage.Sor
     switch (sortOption) {
         case SortOptions.RELEVANCE: {
             return {
-                score: { $meta: 'textScore' }
+                score: { $meta: 'textScore' },
+                title: 1
             };
         }
 
