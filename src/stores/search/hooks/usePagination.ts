@@ -22,6 +22,6 @@ export const usePagination = () => {
 
       setSearchOptions({ offset }, dispatch);
     },
-    [dispatch],
+    [dispatch, recipes, total ],
   );
 };

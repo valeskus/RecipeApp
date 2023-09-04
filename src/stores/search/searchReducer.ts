@@ -31,7 +31,6 @@ export function searchReducer(state = initialState, action: Redux.AnyAction) {
         filter: filter || state.filter,
         sort: sort || state.sort,
         offset: offset || state.offset,
-
       };
     }
 

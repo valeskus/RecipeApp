@@ -1,5 +1,3 @@
-import { PAGE_SIZE } from '@stores/search';
-
 import { DetailRecipeModel, RecipeListModel } from '../models';
 
 import { client } from './client.api';
@@ -11,6 +9,7 @@ export interface SearchOptions {
     value: string;
   }>;
   offset: number;
+  pageSize: number;
 }
 
 export const searchRecipes = async (
@@ -21,7 +20,7 @@ export const searchRecipes = async (
       search: options.searchTerm,
       sort: options.sort,
       offset: options.offset,
-      pageSize: PAGE_SIZE,
+      pageSize: options.pageSize,
       ...(options.filter || []).reduce((prev, { key, value }) => ({
         ...prev,
         [key]: value,
