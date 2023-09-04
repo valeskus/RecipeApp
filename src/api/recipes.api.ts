@@ -1,8 +1,8 @@
+import { PAGE_SIZE } from '@stores/search';
+
 import { DetailRecipeModel, RecipeListModel } from '../models';
 
 import { client } from './client.api';
-
-export const PAGE_SIZE = 8;
 export interface SearchOptions {
   searchTerm: string;
   sort?: string;
