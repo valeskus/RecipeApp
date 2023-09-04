@@ -1,22 +1,24 @@
 import * as React from 'react';
 import * as Redux from 'react-redux';
 
-import { PaginateOptions } from '../searchActions';
+import * as RecipesStore from '@stores/recipes';
+
 import { setSearchOptions } from '../searchActions';
 
 export const PAGE_SIZE = 10;
 
 export const usePagination = () => {
   const dispatch = Redux.useDispatch();
+  const { recipes, total } = RecipesStore.useRecipesStore();
 
   return React.useCallback(
-    (options: PaginateOptions) => {
+    (offsetValue: number) => {
 
-      if (options.arrayLength === options.total) {
+      if (recipes.length === total) {
         return;
       }
 
-      const offset = options.offset + PAGE_SIZE;
+      const offset = offsetValue + PAGE_SIZE;
 
       setSearchOptions({ offset }, dispatch);
     },

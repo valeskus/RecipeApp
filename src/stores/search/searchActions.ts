@@ -8,11 +8,6 @@ export interface SearchOptionsModel {
   }>;
   offset?: number;
 }
-export interface PaginateOptions {
-  arrayLength: number;
-  total: number;
-  offset: number;
-}
 
 export enum SearchActions {
   SET_OPTIONS = '@search/set_options',

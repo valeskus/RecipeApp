@@ -44,7 +44,7 @@ export const useRecipeCardController = (
   }, [params.recipes, params.gridType]);
 
   const onEndReached = useCallback(() => {
-    paginate({ arrayLength: params.recipes.length, total: params.total, offset: searchOptions.offset });
+    paginate(searchOptions.offset);
   }, [params.recipes, searchOptions.offset, params.total]);
 
   return {
