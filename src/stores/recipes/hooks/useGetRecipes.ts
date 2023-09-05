@@ -9,7 +9,7 @@ export const useGetRecipeList = () => {
   const dispatch = Redux.useDispatch();
 
   return React.useCallback(
-    async (options: SearchOptions) => {
+    async (options: Omit<SearchOptions, 'pageSize'>) => {
       await getRecipes(options, dispatch);
     },
     [dispatch],

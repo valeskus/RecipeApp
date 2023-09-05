@@ -21,7 +21,7 @@ export const useRecipeListController = () => {
   const isRecipesListEmpty = recipes.length === 0;
 
   const handleUpdateRecipeList = useCallback(async () => {
-    await getRecipes({ ...searchOptions, pageSize: SearchStore.PAGE_SIZE });
+    await getRecipes(searchOptions);
   }, [getRecipes, searchOptions]);
 
   useEffect(() => {

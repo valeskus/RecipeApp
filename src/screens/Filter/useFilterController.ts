@@ -15,7 +15,7 @@ export const useFilterController = () => {
 
   const handleSearch = useCallback(async () => {
     setLoading(true);
-    await getRecipes({ ...searchOptions, pageSize: SearchStore.PAGE_SIZE });
+    await getRecipes(searchOptions);
     setLoading(false);
 
   }, [searchOptions]);

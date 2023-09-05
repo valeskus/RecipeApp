@@ -5,7 +5,7 @@ import * as RecipesStore from '@stores/recipes';
 
 import { setSearchOptions } from '../searchActions';
 
-export const PAGE_SIZE = 10;
+const PAGE_SIZE = 10;
 
 export const usePagination = () => {
   const dispatch = Redux.useDispatch();

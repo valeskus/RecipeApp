@@ -8,8 +8,8 @@ export interface SearchOptions {
     key: string;
     value: string;
   }>;
-  offset: number;
-  pageSize: number;
+  offset?: number;
+  pageSize?: number;
 }
 
 export const searchRecipes = async (
