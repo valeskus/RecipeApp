@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from 'react';
+import { useEffect } from 'react';
 
 import * as RecipesStore from '@stores/recipes';
 import * as SearchStore from '@stores/search';
@@ -20,12 +20,8 @@ export const useRecipeListController = () => {
 
   const isRecipesListEmpty = recipes.length === 0;
 
-  const handleUpdateRecipeList = useCallback(async () => {
-    await getRecipes(searchOptions);
-  }, [getRecipes, searchOptions]);
-
   useEffect(() => {
-    handleUpdateRecipeList();
+    getRecipes(searchOptions);
   }, [searchOptions.sort, searchOptions.offset, searchOptions.searchTerm]);
 
   useEffect(() => {

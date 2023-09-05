@@ -13,7 +13,8 @@ export const useSortController = () => {
   const resetRecipes = RecipesStore.useResetRecipeList();
 
   const onSortChange = useCallback((value: string) => {
-    setSearchOptions({ sort: value });
+    setSearchOptions({ sort: value, offset: 0,
+    });
     resetRecipes();
     navigation.goBack();
   },

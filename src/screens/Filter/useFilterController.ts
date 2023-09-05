@@ -37,6 +37,7 @@ export const useFilterController = () => {
 
       setSearchOptions({
         filter: [...searchOptionsFilters, { key: filterName, value: value }],
+        offset: 0,
       });
 
     },
