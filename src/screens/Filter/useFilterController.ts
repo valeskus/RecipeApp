@@ -12,9 +12,11 @@ export const useFilterController = () => {
   const setSearchOptions = SearchStore.useSetSearchOptions();
   const searchOptions = SearchStore.useSearchStore();
   const getRecipes = RecipesStore.useGetRecipeList();
+  const resetRecipes = RecipesStore.useResetRecipeList();
 
   const handleSearch = useCallback(async () => {
     setLoading(true);
+    resetRecipes();
     await getRecipes(searchOptions);
     setLoading(false);
 
