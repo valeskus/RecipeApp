@@ -8,7 +8,6 @@ import { BaseRecipeModel } from '../../../../../models';
 export interface UseRecipeCardControllerParams {
   recipes: Array<BaseRecipeModel>;
   gridType: 'linear' | 'grid';
-  total: number;
 }
 
 export const useRecipeCardController = (

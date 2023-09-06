@@ -17,7 +17,6 @@ export function RecipesList(): JSX.Element {
     isRecipesListEmpty,
     recipes,
     onChangeCardType,
-    total,
     resetRecipes,
   } = useRecipeListController();
 
@@ -35,7 +34,7 @@ export function RecipesList(): JSX.Element {
       <View style={styles.blurContainer} />
       {isLoading && <RecipeListSkeleton />}
       {!isLoading && isRecipesListEmpty && <RecipesListMessage />}
-      {!isLoading && <RecipesCards gridType={gridType} recipes={recipes} total={total}/>}
+      {!isLoading && <RecipesCards gridType={gridType} recipes={recipes}/>}
     </View>
   );
 }

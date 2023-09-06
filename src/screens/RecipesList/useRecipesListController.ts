@@ -9,7 +9,7 @@ export const useRecipeListController = () => {
   const { gridType, onChangeCardType } = useGridTypes();
   const [isLoading, setLoading] = useState(false);
 
-  const { recipes, total } = RecipesStore.useRecipesStore();
+  const { recipes } = RecipesStore.useRecipesStore();
 
   const getRecipes = RecipesStore.useGetRecipeList();
 
@@ -52,7 +52,6 @@ export const useRecipeListController = () => {
     isLoading,
     isRecipesListEmpty,
     recipes,
-    total,
     onChangeCardType,
     resetRecipes,
   };

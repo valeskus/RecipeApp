@@ -14,7 +14,6 @@ interface Props extends UseRecipeCardControllerParams { }
 interface RenderItemParams {
   onPress: (id: string) => void;
   gridType: UseRecipeCardControllerParams['gridType'];
-  total: number;
 }
 
 const getRenderItem =
@@ -49,8 +48,8 @@ const getRenderItem =
 const keyExtractor: FlatListProps<BaseRecipeModel>['keyExtractor'] = item =>
   item.id;
 
-export function RecipesCards({ gridType, recipes, total }: Props): JSX.Element {
-  const { onPress, data, onEndReached } = useRecipeCardController({ recipes, gridType, total });
+export function RecipesCards({ gridType, recipes }: Props): JSX.Element {
+  const { onPress, data, onEndReached } = useRecipeCardController({ recipes, gridType });
 
   const commonProps = {
     style: styles.offset,
@@ -58,9 +57,10 @@ export function RecipesCards({ gridType, recipes, total }: Props): JSX.Element {
     renderItem: getRenderItem({
       onPress,
       gridType,
-      total,
     }),
     keyExtractor,
+    onEndReachedThreshold: 0.3,
+    onEndReached: onEndReached,
   };
 
   if (gridType === 'grid') {
@@ -70,8 +70,6 @@ export function RecipesCards({ gridType, recipes, total }: Props): JSX.Element {
         contentContainerStyle={styles.recipesCardsContainer}
         numColumns={2}
         key="grid-list"
-        onEndReachedThreshold={0.3}
-        onEndReached={onEndReached}
       />
     );
   }
@@ -84,8 +82,6 @@ export function RecipesCards({ gridType, recipes, total }: Props): JSX.Element {
         styles.recipesCardsContainer,
         styles.centeredLineCard,
       ]}
-      onEndReachedThreshold={0.3}
-      onEndReached={onEndReached}
     />
   );
 }
