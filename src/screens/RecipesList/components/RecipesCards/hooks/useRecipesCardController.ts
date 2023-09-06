@@ -43,7 +43,7 @@ export const useRecipeCardController = (
 
   const onEndReached = useCallback(() => {
     paginate();
-  }, [params.recipes]);
+  }, [paginate]);
 
   return {
     onPress,
