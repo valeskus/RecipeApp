@@ -23,6 +23,6 @@ export const usePagination = () => {
 
       setSearchOptions({ offset: offset + PAGE_SIZE }, dispatch);
     },
-    [dispatch, recipes, total],
+    [dispatch, recipes, total, offset],
   );
 };

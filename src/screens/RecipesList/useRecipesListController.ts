@@ -33,7 +33,7 @@ export const useRecipeListController = () => {
   }, [searchOptions.sort, searchOptions.searchTerm]);
 
   useEffect(() => {
-    if (searchOptions.offset === 0) {
+    if (!searchOptions.offset) {
       return;
     }
 
