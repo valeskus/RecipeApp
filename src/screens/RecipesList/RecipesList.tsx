@@ -17,13 +17,13 @@ export function RecipesList(): JSX.Element {
     isRecipesListEmpty,
     recipes,
     onChangeCardType,
-    handleSearch,
+    resetRecipes,
   } = useRecipeListController();
 
   return (
     <View style={styles.recipesScreenContainer}>
       <View style={styles.searchMenuContainer}>
-        <Search onSearch={handleSearch} />
+        <Search onSearch={resetRecipes}/>
         {!isLoading && !isRecipesListEmpty && (
           <RecipesListControls
             onCardTypeChange={onChangeCardType}
@@ -34,7 +34,7 @@ export function RecipesList(): JSX.Element {
       <View style={styles.blurContainer} />
       {isLoading && <RecipeListSkeleton />}
       {!isLoading && isRecipesListEmpty && <RecipesListMessage />}
-      {!isLoading && <RecipesCards gridType={gridType} recipes={recipes} />}
+      {!isLoading && <RecipesCards gridType={gridType} recipes={recipes}/>}
     </View>
   );
 }

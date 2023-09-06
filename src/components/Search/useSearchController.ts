@@ -1,38 +1,48 @@
-import { RefObject, createRef, useCallback } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { TextInput } from 'react-native';
 
 import * as SearchStore from '@stores/search';
 
-export interface UseSearchControllerParams {
+export interface SearchControllerParams {
   onSearch: () => void;
 }
 
-export const useSearchController = (params: UseSearchControllerParams) => {
+export const useSearchController = (params: SearchControllerParams) => {
   const { searchTerm } = SearchStore.useSearchStore();
+  const [pendingSearchTerm, setPendingSearchTerm] = useState(searchTerm);
   const setSearchOptions = SearchStore.useSetSearchOptions();
+  const resetSearchOptions = SearchStore.useResetSearchOptions();
 
-  const searchInputRef: RefObject<TextInput> = createRef();
+  const searchInputRef = useRef<TextInput>(null);
 
   const handleChange = useCallback(
     (nextValue: string) => {
-      setSearchOptions({ searchTerm: nextValue });
+      setPendingSearchTerm(nextValue);
     },
-    [setSearchOptions],
+    [],
   );
   const handleSearch = useCallback(() => {
+    resetSearchOptions();
     params.onSearch();
-  }, [params]);
+
+    setSearchOptions({ searchTerm: pendingSearchTerm });
+
+  }, [pendingSearchTerm, params.onSearch]);
 
   const handleResetSearchInput = useCallback(() => {
-    setSearchOptions({ searchTerm: '' });
-  }, [setSearchOptions]);
+    setPendingSearchTerm('');
+  }, []);
 
   const handlePress = useCallback(() => {
     searchInputRef.current?.focus();
   }, []);
 
+  useEffect(() => {
+    setPendingSearchTerm(searchTerm);
+  }, [searchTerm]);
+
   return {
-    searchTerm,
+    searchTerm: pendingSearchTerm,
     searchInputRef,
     handleChange,
     handleSearch,

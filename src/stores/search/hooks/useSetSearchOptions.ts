@@ -1,8 +1,7 @@
 import * as React from 'react';
 import * as Redux from 'react-redux';
 
-import { setSearchOptions } from '../searchActions';
-import { SearchOptionsModel } from '../../../models';
+import { SearchOptionsModel, setSearchOptions } from '../searchActions';
 
 export const useSetSearchOptions = () => {
   const dispatch = Redux.useDispatch();

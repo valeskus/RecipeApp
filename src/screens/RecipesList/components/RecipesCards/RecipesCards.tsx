@@ -49,7 +49,7 @@ const keyExtractor: FlatListProps<BaseRecipeModel>['keyExtractor'] = item =>
   item.id;
 
 export function RecipesCards({ gridType, recipes }: Props): JSX.Element {
-  const { onPress, data } = useRecipeCardController({ recipes, gridType });
+  const { onPress, data, onEndReached } = useRecipeCardController({ recipes, gridType });
 
   const commonProps = {
     style: styles.offset,
@@ -59,6 +59,8 @@ export function RecipesCards({ gridType, recipes }: Props): JSX.Element {
       gridType,
     }),
     keyExtractor,
+    onEndReachedThreshold: 0.3,
+    onEndReached: onEndReached,
   };
 
   if (gridType === 'grid') {

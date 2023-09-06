@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 import * as RecipesStore from '@stores/recipes';
 import * as SearchStore from '@stores/search';
@@ -7,25 +7,45 @@ import { useGridTypes } from './hooks';
 
 export const useRecipeListController = () => {
   const { gridType, onChangeCardType } = useGridTypes();
+  const [isLoading, setLoading] = useState(false);
 
   const { recipes } = RecipesStore.useRecipesStore();
-  const searchOptions = SearchStore.useSearchStore();
-
-  const [isLoading, setLoading] = React.useState(false);
 
   const getRecipes = RecipesStore.useGetRecipeList();
 
+  const resetRecipes = RecipesStore.useResetRecipeList();
+
+  const searchOptions = SearchStore.useSearchStore();
+
+  const resetSearchOptions = SearchStore.useResetSearchOptions();
+
   const isRecipesListEmpty = recipes.length === 0;
 
-  const handleSearch = useCallback(async () => {
+  const updateRecipesList = useCallback(async () => {
     setLoading(true);
     await getRecipes(searchOptions);
     setLoading(false);
-  }, [getRecipes, searchOptions]);
+
+  }, [isLoading, searchOptions]);
 
   useEffect(() => {
-    handleSearch();
-  }, [searchOptions.sort]);
+    updateRecipesList();
+  }, [searchOptions.sort, searchOptions.searchTerm]);
+
+  useEffect(() => {
+    if (!searchOptions.offset) {
+      return;
+    }
+
+    getRecipes(searchOptions);
+  }, [searchOptions.offset]);
+
+  useEffect(() => {
+    return () => {
+      resetSearchOptions();
+      resetRecipes();
+    };
+  }, []);
 
   return {
     gridType,
@@ -33,6 +53,6 @@ export const useRecipeListController = () => {
     isRecipesListEmpty,
     recipes,
     onChangeCardType,
-    handleSearch,
+    resetRecipes,
   };
 };

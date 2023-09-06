@@ -20,12 +20,14 @@ export interface RecipesStoreState {
   recipes: Array<BaseRecipeModel>;
   filters: Array<FiltersItemModel>;
   sortOptions: Array<SortOptionModel>;
+  total: number;
 }
 
 const initialState: RecipesStoreState = {
   recipes: [],
   filters: [],
   sortOptions: [],
+  total: 0,
 };
 
 export function recipesReducer(
@@ -34,7 +36,7 @@ export function recipesReducer(
 ) {
   switch (action.type) {
     case RecipesActions.GET: {
-      const { recipes, filters, sortOptions } = action.payload as RecipeListModel;
+      const { recipes, filters, sortOptions, total } = action.payload as RecipeListModel;
 
       const filtersArray = Object.entries(filters).map(([name, filter]) => {
 
@@ -43,10 +45,15 @@ export function recipesReducer(
 
       return {
         ...state,
-        recipes,
+        recipes: [...state.recipes, ...recipes],
         filters: filtersArray,
         sortOptions,
+        total,
       };
+    }
+
+    case RecipesActions.RESET: {
+      return initialState;
     }
 
     default:

@@ -1,5 +1,7 @@
 import { useNavigation } from '@react-navigation/native';
-import { useMemo } from 'react';
+import { useCallback, useMemo } from 'react';
+
+import * as SearchStore from '@stores/search';
 
 import { BaseRecipeModel } from '../../../../../models';
 
@@ -12,6 +14,7 @@ export const useRecipeCardController = (
   params: UseRecipeCardControllerParams,
 ) => {
   const navigation = useNavigation();
+  const paginate = SearchStore.usePagination();
 
   const onPress = (id: string) => {
     navigation.navigate('RecipeDetails', { id });
@@ -38,8 +41,13 @@ export const useRecipeCardController = (
     ];
   }, [params.recipes, params.gridType]);
 
+  const onEndReached = useCallback(() => {
+    paginate();
+  }, [paginate]);
+
   return {
     onPress,
     data,
+    onEndReached,
   };
 };
