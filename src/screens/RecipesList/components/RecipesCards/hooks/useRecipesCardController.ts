@@ -15,7 +15,6 @@ export const useRecipeCardController = (
   params: UseRecipeCardControllerParams,
 ) => {
   const navigation = useNavigation();
-  const searchOptions = SearchStore.useSearchStore();
   const paginate = SearchStore.usePagination();
 
   const onPress = (id: string) => {
@@ -44,8 +43,8 @@ export const useRecipeCardController = (
   }, [params.recipes, params.gridType]);
 
   const onEndReached = useCallback(() => {
-    paginate(searchOptions.offset);
-  }, [params.recipes, searchOptions.offset, params.total]);
+    paginate();
+  }, [params.recipes]);
 
   return {
     onPress,

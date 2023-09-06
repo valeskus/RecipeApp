@@ -5,23 +5,24 @@ import * as RecipesStore from '@stores/recipes';
 
 import { setSearchOptions } from '../searchActions';
 
+import { useSearchStore } from './useSearchStore';
+
 const PAGE_SIZE = 10;
 
 export const usePagination = () => {
   const dispatch = Redux.useDispatch();
   const { recipes, total } = RecipesStore.useRecipesStore();
+  const { offset } = useSearchStore();
 
   return React.useCallback(
-    (offsetValue: number) => {
+    () => {
 
       if (recipes.length === total) {
         return;
       }
 
-      const offset = offsetValue + PAGE_SIZE;
-
-      setSearchOptions({ offset }, dispatch);
+      setSearchOptions({ offset: offset + PAGE_SIZE }, dispatch);
     },
-    [dispatch, recipes, total ],
+    [dispatch, recipes, total],
   );
 };
