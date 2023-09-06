@@ -1,4 +1,4 @@
-import { RefObject, createRef, useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { TextInput } from 'react-native';
 
 import * as SearchStore from '@stores/search';
@@ -13,7 +13,8 @@ export const useSearchController = (params: SearchControllerParams) => {
   const setSearchOptions = SearchStore.useSetSearchOptions();
   const resetSearchOptions = SearchStore.useResetSearchOptions();
 
-  const searchInputRef: RefObject<TextInput> = createRef();
+  const searchInputRef = useRef<TextInput>(null);
+
   const handleChange = useCallback(
     (nextValue: string) => {
       setPendingSearchTerm(nextValue);
