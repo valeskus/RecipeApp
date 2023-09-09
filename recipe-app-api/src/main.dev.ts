@@ -2,9 +2,8 @@
 require('dotenv').config({ path: `./env/.${process.env.APP_ENV}.env` });
 
 import * as path from 'path';
-import { writeFileSync } from 'fs';
+import { readFileSync, writeFileSync } from 'fs';
 
-import * as yaml from 'yaml';
 import { NestFactory } from '@nestjs/core';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 
@@ -27,13 +26,11 @@ async function run() {
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
 
-  const outputPath = path.resolve(process.cwd(), 'swagger/swagger.json');
-  writeFileSync(outputPath, JSON.stringify(document), { encoding: 'utf8',  });
+  const htmlFile = path.resolve(process.cwd(), 'swagger/index.html');
+  const contentRaw = readFileSync(htmlFile);
 
-  const yamlString = yaml.stringify(document, {});
-  const outputPath2 = path.resolve(process.cwd(), 'swagger/swagger.yaml');
-
-  writeFileSync(outputPath2, yamlString);
+  const content = contentRaw.toString().replace(/SPEC_PLACEHOLDER/g, JSON.stringify(document));
+  writeFileSync(htmlFile, content, { encoding: 'utf8' });
 
   await app.listen(3000);
 }
