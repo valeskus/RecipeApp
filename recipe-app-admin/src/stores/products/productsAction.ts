@@ -5,7 +5,7 @@ import { ProductPostModel, ProductsListModel } from '../../models';
 
 export enum ProductsActions {
   GET = '@products/get',
-  POST = '@products/post',
+  ERROR = '@products/error',
 }
 
 const actionGetProducts = (payload: ProductsListModel) => ({
@@ -13,19 +13,26 @@ const actionGetProducts = (payload: ProductsListModel) => ({
   payload,
 });
 
-const actionAddProduct = (payload: any) => ({
-  type: ProductsActions.POST,
-  payload,
+const actionError = (key: string, error: unknown) => ({
+  type: ProductsActions.ERROR,
+  payload: { [key]: error },
 });
 
 export const getProducts = async (dispatch: Dispatch) => {
-  const productsList = await ProductsApi.getProducts();
+  try {
+    const productsList = await ProductsApi.getProducts();
 
-  dispatch(actionGetProducts(productsList));
+    dispatch(actionGetProducts(productsList));
+  } catch (error) {
+    dispatch(actionError('getProducts', error));
+  }
 
 };
 
 export const addProduct = async (product: ProductPostModel, dispatch: Dispatch) => {
-  const result = await ProductsApi.postProduct(product);
-  dispatch(actionAddProduct(result));
+  try {
+    await ProductsApi.postProduct(product);
+  } catch (error) {
+    dispatch(actionError('postProduct', error));
+  }
 };

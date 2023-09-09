@@ -5,7 +5,6 @@ import { categoriesReducer } from './categories/categoriesReducer';
 
 const rootReducer = combineReducers({
   categories: categoriesReducer,
-  //   recipes: recipesReducer,
   products: productsReducer,
 });
 

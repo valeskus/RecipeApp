@@ -5,7 +5,7 @@ import { CategoryListModel, CategoryPostModel } from '../../models';
 
 export enum CategoriesActions {
   GET = '@categories/get',
-  POST = '@categories/post',
+  ERROR = '@categories/error',
 }
 
 const actionGetCategories = (payload: CategoryListModel) => ({
@@ -13,20 +13,27 @@ const actionGetCategories = (payload: CategoryListModel) => ({
   payload,
 });
 
-const actionAddCategories = () => ({
-  type: CategoriesActions.POST,
+const actionError = (key: string, error: unknown) => ({
+  type: CategoriesActions.ERROR,
+  payload: { [key]: error },
 });
 
 export const getCategories = async (dispatch: Dispatch) => {
-  const categoryList = await CategoriesApi.getCategories();
+  try {
+    const categoryList = await CategoriesApi.getCategories();
 
-  dispatch(actionGetCategories(categoryList));
+    dispatch(actionGetCategories(categoryList));
+  } catch (error) {
+    dispatch(actionError('getCategories', error));
+  }
 
 };
 
 export const addCategory = async (category: CategoryPostModel, dispatch: Dispatch) => {
-  await CategoriesApi.getCategories();
-
-  dispatch(actionAddCategories());
+  try {
+    await CategoriesApi.postCategory(category);
+  } catch (error) {
+    dispatch(actionError('postCategory', error));
+  }
 
 };

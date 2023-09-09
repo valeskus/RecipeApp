@@ -16,24 +16,6 @@ export interface CategoryPostModel {
   image: string;
   type: 'diet' | 'meal';
 }
-
-export interface MacroNutrientsModel {
-  proteins: number;
-  carbs: number;
-  fats: number;
-}
-
-export interface IngredientModel {
-  title: string;
-  amount: number;
-  units: string;
-}
-
-export interface InstructionModel {
-  image?: string;
-  description: string;
-}
-
 export interface BaseRecipeModel {
   id: string;
   title: string;
@@ -42,45 +24,40 @@ export interface BaseRecipeModel {
   image: string;
 }
 
-export interface DetailRecipeModel extends BaseRecipeModel {
+export interface RecipePostModel {
+  title: string;
   description: string;
-  servingsCount: number;
+  translations: {
+    ua: {
+      title: string;
+      description: string;
+    };
+    time: number;
+    image: string;
+    amount: number;
+    units: 'ml' | 'g';
+    servingsCount: number;
+    difficulty: 1 | 2 | 3;
+    categories: Array<string>;
+    ingredients: Array<IngredientItem>;
+    instructions: Array<InstructionItem>;
+  };
+}
+
+export interface IngredientItem {
+  id: string;
   amount: number;
-  macroNutrients: MacroNutrientsModel;
-  ingredients: Array<IngredientModel>;
-  instructions: Array<InstructionModel>;
 }
 
-export interface SortOptionModel {
-  value: string;
-  title: string;
-  isActive: boolean;
+export interface InstructionItem {
+  description: string;
+  translations: {
+    ua: {
+      description: string;
+    };
+  };
+  image?: string;
 }
-
-interface FilterValue {
-  title: string;
-  multiple: boolean;
-  items: Array<FilterItemValueModel>;
-}
-
-export interface FilterModel {
-  [filterName: string]: FilterValue;
-}
-
-export interface FilterItemValueModel {
-  value: string;
-  title: string;
-  count: number;
-  isActive: boolean;
-}
-
-export interface RecipeListModel {
-  recipes: Array<BaseRecipeModel>;
-  filters: FilterModel;
-  sortOptions: Array<SortOptionModel>;
-  total: number;
-}
-
 export interface ProductModel {
   id: string;
   title: string;
