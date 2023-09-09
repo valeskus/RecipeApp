@@ -72,15 +72,15 @@ export interface RecipeListModel {
 }
 
 export interface ProductModel {
-  id:string;
-title:string;
-kCal:number;
-proteins:number;
-carbs: number;
-fats: number;
-units: "g" | "ml";
+  id: string;
+  title: string;
+  kCal: number;
+  proteins: number;
+  carbs: number;
+  fats: number;
+  units: "g" | "ml";
 }
 
 export interface ProductsListModel {
-  products:Array<ProductModel>
+  products: Array<ProductModel>
 }

@@ -23,13 +23,6 @@ export function productsReducer(
                 products: products || state.products,
             };
         }
-        case ProductsActions.POST: {
-            const product = action.payload as ProductModel;
-            return {
-                ...state,
-                products: [...state.products, product],
-            };
-        }
 
         default:
             return state;

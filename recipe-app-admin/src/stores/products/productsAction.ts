@@ -1,6 +1,6 @@
 import { Dispatch } from 'redux';
 import * as ProductsApi from '../../api/products.api';
-import { ProductModel, ProductsListModel } from '../../models';
+import { ProductsListModel } from '../../models';
 
 
 export enum ProductsActions {
@@ -13,10 +13,6 @@ const actionGetProducts = (payload: ProductsListModel) => ({
     payload
 });
 
-const actionAddProduct = (payload: ProductModel) => ({
-    type: ProductsActions.POST,
-    payload
-});
 
 export const getProducts = async (dispatch: Dispatch) => {
     try {
@@ -28,13 +24,9 @@ export const getProducts = async (dispatch: Dispatch) => {
     }
 };
 
-export const addProduct = async (product: ProductModel, dispatch: Dispatch) => {
+export const addProduct = async (product: ProductsApi.ProductItemModel, dispatch: Dispatch) => {
     try {
-        const productItem = await ProductsApi.postProduct(product);
-        if (!productItem) {
-            return
-        }
-        dispatch(actionAddProduct(productItem));
+     await ProductsApi.postProduct(product);
     } catch (error) {
         console.log(error)
     }
