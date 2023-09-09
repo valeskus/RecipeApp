@@ -7,14 +7,14 @@ export interface CategoryListModel {
   categories: Array<CategoryModel>;
 }
 export interface CategoryPostModel {
-  title: string,
+  title: string;
   translations: {
-      ua: {
-          title: string
-      }
-  },
-  image: string,
-  type: "diet"|"meal"
+    ua: {
+      title: string;
+    };
+  };
+  image: string;
+  type: 'diet' | 'meal';
 }
 
 export interface MacroNutrientsModel {
@@ -88,11 +88,11 @@ export interface ProductModel {
   proteins: number;
   carbs: number;
   fats: number;
-  units: "g" | "ml";
+  units: 'g' | 'ml';
 }
 
 export interface ProductsListModel {
-  products: Array<ProductModel>
+  products: Array<ProductModel>;
 }
 
 export interface ProductPostModel {
@@ -101,10 +101,10 @@ export interface ProductPostModel {
   proteins: number;
   carbs: number;
   fats: number;
-  units: "g" | "ml";
+  units: 'g' | 'ml';
   translations: {
     ua: {
       title: string;
-    }
-  },
+    };
+  };
 }

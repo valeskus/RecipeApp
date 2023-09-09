@@ -1,10 +1,11 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
+
 import { productsReducer } from './products/productsReducer';
 import { categoriesReducer } from './categories/categoriesReducer';
 
 const rootReducer = combineReducers({
   categories: categoriesReducer,
-//   recipes: recipesReducer,
+  //   recipes: recipesReducer,
   products: productsReducer,
 });
 
