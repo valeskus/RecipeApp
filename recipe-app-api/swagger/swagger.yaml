@@ -1,0 +1,961 @@
+openapi: 3.0.0
+paths:
+  /recipe/{id}:
+    get:
+      operationId: RecipeController_findOneById
+      summary: Get recipe by id
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: string
+        - in: header
+          name: Accept-language
+          schema:
+            enum:
+              - ua
+              - en
+          description: Preferable language for the resource
+      responses:
+        "200":
+          description: Returns a recipe by given id
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Recipe"
+      tags: &a1
+        - Recipe
+  /recipe:
+    post:
+      operationId: RecipeController_create
+      summary: Create recipe
+      parameters:
+        - in: header
+          name: Accept-language
+          schema:
+            enum:
+              - ua
+              - en
+          description: Preferable language for the resource
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateRecipe"
+      responses:
+        "200":
+          description: Creates a recipe by given fields
+      tags: *a1
+  /categories:
+    get:
+      operationId: CategoriesController_findAll
+      summary: Get all categories
+      parameters:
+        - in: header
+          name: Accept-language
+          schema:
+            enum:
+              - ua
+              - en
+          description: Preferable language for the resource
+      responses:
+        "200":
+          description: Retrieves all categories
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AllCategories"
+      tags: &a2
+        - Categories
+    post:
+      operationId: CategoriesController_create
+      summary: Create category
+      parameters:
+        - in: header
+          name: Accept-language
+          schema:
+            enum:
+              - ua
+              - en
+          description: Preferable language for the resource
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateCategory"
+      responses:
+        "200":
+          description: Creates a category by given fields
+      tags: *a2
+  /categories/{id}:
+    get:
+      operationId: CategoriesController_findOneById
+      summary: Get category by id
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: string
+        - in: header
+          name: Accept-language
+          schema:
+            enum:
+              - ua
+              - en
+          description: Preferable language for the resource
+      responses:
+        "200":
+          description: Returns a category by given id
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Category"
+      tags: *a2
+  /products:
+    get:
+      operationId: ProductsController_findAll
+      summary: Get all products
+      parameters:
+        - in: header
+          name: Accept-language
+          schema:
+            enum:
+              - ua
+              - en
+          description: Preferable language for the resource
+      responses:
+        "200":
+          description: Retrieves all products
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AllProducts"
+      tags: &a3
+        - Products
+    post:
+      operationId: ProductsController_create
+      summary: Create product
+      parameters:
+        - in: header
+          name: Accept-language
+          schema:
+            enum:
+              - ua
+              - en
+          description: Preferable language for the resource
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateProduct"
+      responses:
+        "200":
+          description: Creates a product by given fields
+      tags: *a3
+  /products/{id}:
+    get:
+      operationId: ProductsController_findOneById
+      summary: Get product by id
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: string
+        - in: header
+          name: Accept-language
+          schema:
+            enum:
+              - ua
+              - en
+          description: Preferable language for the resource
+      responses:
+        "200":
+          description: Returns a product by given id
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Product"
+      tags: *a3
+  /search:
+    get:
+      operationId: SearchController_search
+      summary: Search for recipes
+      parameters:
+        - name: search
+          required: true
+          in: query
+          example: Banana
+          description: Search term
+          schema:
+            type: string
+        - name: sort
+          required: false
+          in: query
+          example: relevance
+          description: Sort criteria
+          schema:
+            default: relevance
+            enum:
+              - relevance
+              - time
+              - alphabetically
+              - -alphabetically
+              - calories
+              - -calories
+            type: string
+        - name: difficulty
+          required: false
+          in: query
+          example: 0
+          description: Filter by difficulty
+          schema:
+            enum:
+              - 2
+              - 1
+              - 0
+            type: number
+        - name: totalTime
+          required: false
+          in: query
+          example: gt60
+          description: Filter by time range
+          schema:
+            enum:
+              - lte20
+              - lte30
+              - lte45
+              - lte60
+              - gt60
+            type: string
+        - name: calories
+          required: false
+          in: query
+          example: gt1000
+          description: Filter by calories range
+          schema:
+            enum:
+              - lte100
+              - lte250
+              - lte500
+              - lte750
+              - lte1000
+              - gt1000
+            type: string
+        - name: mealType
+          required: false
+          in: query
+          example: Breakfast and Brunch|Comfort Food
+          description: Filter by meal types. Multiple items separated by "|"
+          schema:
+            format: item|item|...
+            type: string
+        - name: dietType
+          required: false
+          in: query
+          example: Healthy and Light|Comfort Food
+          description: Filter by diet types. Multiple items separated by "|"
+          schema:
+            format: item|item|...
+            type: string
+        - name: offset
+          required: false
+          in: query
+          example: 0
+          description: Pagination offset
+          schema:
+            default: 0
+            type: number
+        - name: pageSize
+          required: false
+          in: query
+          example: 10
+          description: Pagination page size
+          schema:
+            default: 10
+            type: number
+        - in: header
+          name: Accept-language
+          schema:
+            enum:
+              - ua
+              - en
+          description: Preferable language for the resource
+      responses:
+        "200":
+          description: Returns a list of found recipes
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SearchResults"
+      tags:
+        - Search
+info:
+  title: Recipe app
+  description: The recipe API description
+  version: 1.0.0
+  contact: {}
+tags: []
+servers: []
+components:
+  schemas:
+    GetIngredientDto:
+      type: object
+      properties:
+        title:
+          type: string
+          example: Meat
+          description: Name of the ingredient
+        amount:
+          type: number
+          example: 200
+          description: Amount of the ingredient according to product measurement units
+        units:
+          type: string
+          example: g
+          enum:
+            - ml
+            - g
+          description: Measurement units
+      required:
+        - title
+        - amount
+        - units
+    GetInstructionDto:
+      type: object
+      properties:
+        description:
+          type: string
+          example: Gather all your ingredients
+          description: Instruction text
+        image:
+          type: number
+          example: https://picsum.photos/500/500
+          description: Image for instruction
+      required:
+        - description
+    CategoryDto:
+      type: object
+      properties:
+        title:
+          type: string
+          example: Lunch
+          description: Name of the category
+        type:
+          type: string
+          example: diet
+          enum:
+            - diet
+            - meal
+          description: Type of the category
+      required:
+        - title
+        - type
+    MacroNutrients:
+      type: object
+      properties:
+        proteins:
+          type: number
+          example: 200
+          description: Amount(g) of proteins (for full amount)
+        carbs:
+          type: number
+          example: 10.33
+          description: Amount(g) of carbs (for full amount)
+        fats:
+          type: number
+          example: 13
+          description: Amount(g) of fats (for full amount)
+      required:
+        - proteins
+        - carbs
+        - fats
+    Recipe:
+      type: object
+      properties:
+        title:
+          type: string
+          example: Lasagna
+          description: Title of the recipe
+        description:
+          type: string
+          example: This lasagna recipe takes a little work, but it is so satisfying and
+            filling that it's worth it!
+          description: Description of the recipe
+        id:
+          type: string
+          example: 6485e97f2fe21ff4fba5f7e4
+          description: Id of the recipe
+        time:
+          type: number
+          example: 5
+          description: Time of cooking (minutes)
+        image:
+          type: string
+          example: https://picsum.photos/500/500
+          description: Url for the image of the recipe
+        amount:
+          type: number
+          example: 200
+          description: Amount of the finished dish (units)
+        units:
+          type: string
+          example: ml
+          description: Measurement units of amount
+          enum: &a4
+            - ml
+            - g
+        servingsCount:
+          type: number
+          example: 2
+          description: Number of servings for full dish amount
+        difficulty:
+          type: number
+          example: 0
+          enum: &a5
+            - 2
+            - 1
+            - 0
+          description: Difficulty of the recipe (0-2)
+        kCal:
+          type: number
+          example: 364
+          description: Amount of kilo calories (for full amount)
+        ingredients:
+          description: Ingredients list
+          type: array
+          items:
+            $ref: "#/components/schemas/GetIngredientDto"
+        instructions:
+          description: List of cooking instructions
+          type: array
+          items:
+            $ref: "#/components/schemas/GetInstructionDto"
+        categories:
+          description: Categories the recipe belongs to
+          type: array
+          items:
+            $ref: "#/components/schemas/CategoryDto"
+        macroNutrients:
+          description: Macro nutrients list
+          allOf:
+            - $ref: "#/components/schemas/MacroNutrients"
+      required:
+        - title
+        - description
+        - id
+        - time
+        - image
+        - amount
+        - units
+        - servingsCount
+        - difficulty
+        - kCal
+        - ingredients
+        - instructions
+        - categories
+        - macroNutrients
+    TranslatableRecipeItems:
+      type: object
+      properties:
+        title:
+          type: string
+          example: Lasagna
+          description: Title of the recipe
+        description:
+          type: string
+          example: This lasagna recipe takes a little work, but it is so satisfying and
+            filling that it's worth it!
+          description: Description of the recipe
+      required:
+        - title
+        - description
+    ItemTranslationsTranslatableRecipeItems:
+      type: object
+      properties:
+        ua:
+          description: Particular translations
+          title: TranslatableRecipeItems
+          allOf:
+            - $ref: "#/components/schemas/TranslatableRecipeItems"
+      required:
+        - ua
+    PutIngredientDto:
+      type: object
+      properties:
+        id:
+          type: string
+          example: 6485e97f2fe21ff4fba5f7e4
+          description: Id of the product
+        amount:
+          type: number
+          example: 200
+          description: Amount of the ingredient according to product measurement units
+      required:
+        - id
+        - amount
+    TranslatableInstructionItems:
+      type: object
+      properties:
+        description:
+          type: string
+          example: Gather all your ingredients
+          description: Instruction text
+      required:
+        - description
+    ItemTranslationsTranslatableInstructionItems:
+      type: object
+      properties:
+        ua:
+          description: Particular translations
+          title: TranslatableInstructionItems
+          allOf:
+            - $ref: "#/components/schemas/TranslatableInstructionItems"
+      required:
+        - ua
+    CreateInstructionDto:
+      type: object
+      properties:
+        description:
+          type: string
+          example: Gather all your ingredients
+          description: Instruction text
+        translations:
+          description: Object with translations
+          allOf:
+            - $ref: "#/components/schemas/ItemTranslationsTranslatableInstructionItems"
+        image:
+          type: number
+          example: https://picsum.photos/500/500
+          description: Image for instruction
+      required:
+        - description
+        - translations
+    CreateRecipe:
+      type: object
+      properties:
+        title:
+          type: string
+          example: Lasagna
+          description: Title of the recipe
+        description:
+          type: string
+          example: This lasagna recipe takes a little work, but it is so satisfying and
+            filling that it's worth it!
+          description: Description of the recipe
+        translations:
+          description: Object with translations
+          allOf:
+            - $ref: "#/components/schemas/ItemTranslationsTranslatableRecipeItems"
+        time:
+          type: number
+          example: 5
+          description: Time of cooking (minutes)
+        image:
+          type: string
+          example: https://picsum.photos/500/500
+          description: Url for the image of the recipe
+        amount:
+          type: number
+          example: 200
+          description: Amount of the finished dish (units)
+        units:
+          type: string
+          example: ml
+          description: Measurement units of amount
+          enum: *a4
+        servingsCount:
+          type: number
+          example: 2
+          description: Number of servings for full dish amount
+        difficulty:
+          type: number
+          example: 0
+          enum: *a5
+          description: Difficulty of the recipe (0-2)
+        categories:
+          example:
+            - 6485e97f2fe21ff4fba5f7e4
+            - 6485e37f2fe21ff4fba5f7e4
+          description: Categories ids the recipe belongs to
+          type: array
+          items:
+            type: string
+        ingredients:
+          description: Ingredients list
+          type: array
+          items:
+            $ref: "#/components/schemas/PutIngredientDto"
+        instructions:
+          description: List of cooking instructions
+          type: array
+          items:
+            $ref: "#/components/schemas/CreateInstructionDto"
+      required:
+        - title
+        - description
+        - translations
+        - time
+        - image
+        - amount
+        - units
+        - servingsCount
+        - difficulty
+        - categories
+        - ingredients
+        - instructions
+    Category:
+      type: object
+      properties:
+        title:
+          type: string
+          example: Lunch
+          description: Name of the category
+        id:
+          type: string
+          example: 6485e97f2fe21ff4fba5f7e4
+          description: Id of the category
+        image:
+          type: string
+          example: https://picsum.photos/500/500
+          description: Url for the image of the category
+        type:
+          type: string
+          example: diet
+          enum: &a6
+            - diet
+            - meal
+          description: Type of the category
+      required:
+        - title
+        - id
+        - image
+        - type
+    AllCategories:
+      type: object
+      properties:
+        categories:
+          description: List of categories
+          type: array
+          items:
+            $ref: "#/components/schemas/Category"
+      required:
+        - categories
+    TranslatableCategoryItems:
+      type: object
+      properties:
+        title:
+          type: string
+          example: Lunch
+          description: Name of the category
+      required:
+        - title
+    ItemTranslationsTranslatableCategoryItems:
+      type: object
+      properties:
+        ua:
+          description: Particular translations
+          title: TranslatableCategoryItems
+          allOf:
+            - $ref: "#/components/schemas/TranslatableCategoryItems"
+      required:
+        - ua
+    CreateCategory:
+      type: object
+      properties:
+        title:
+          type: string
+          example: Lunch
+          description: Name of the category
+        translations:
+          description: Object with translations
+          allOf:
+            - $ref: "#/components/schemas/ItemTranslationsTranslatableCategoryItems"
+        image:
+          type: string
+          example: https://picsum.photos/500/500
+          description: Url for the image of the category
+        type:
+          type: string
+          example: diet
+          enum: *a6
+          description: Type of the category
+      required:
+        - title
+        - translations
+        - image
+        - type
+    Product:
+      type: object
+      properties:
+        title:
+          type: string
+          example: Maine CoonWheat flour
+          description: Title of the product
+        id:
+          type: string
+          example: 6485e97f2fe21ff4fba5f7e4
+          description: Id of the product
+        kCal:
+          type: number
+          example: 364
+          description: Amount of kilo calories (per 100g)
+        proteins:
+          type: number
+          example: 10.33
+          description: Amount(g) of proteins (per 100g)
+        carbs:
+          type: number
+          example: 76.31
+          description: Amount(g) of proteins (per 100g)
+        fats:
+          type: number
+          example: 2.5
+          description: Amount(g) of fats (per 100g)
+        units:
+          type: string
+          example: ml
+          enum: &a7
+            - ml
+            - g
+          description: Measurement units
+      required:
+        - title
+        - id
+        - kCal
+        - proteins
+        - carbs
+        - fats
+        - units
+    AllProducts:
+      type: object
+      properties:
+        products:
+          description: List of products
+          type: array
+          items:
+            $ref: "#/components/schemas/Product"
+      required:
+        - products
+    TranslatableProductItems:
+      type: object
+      properties:
+        title:
+          type: string
+          example: Maine CoonWheat flour
+          description: Title of the product
+      required:
+        - title
+    ItemTranslationsTranslatableProductItems:
+      type: object
+      properties:
+        ua:
+          description: Particular translations
+          title: TranslatableProductItems
+          allOf:
+            - $ref: "#/components/schemas/TranslatableProductItems"
+      required:
+        - ua
+    CreateProduct:
+      type: object
+      properties:
+        title:
+          type: string
+          example: Maine CoonWheat flour
+          description: Title of the product
+        translations:
+          description: Object with translations
+          allOf:
+            - $ref: "#/components/schemas/ItemTranslationsTranslatableProductItems"
+        kCal:
+          type: number
+          example: 364
+          description: Amount of kilo calories (per 100g)
+        proteins:
+          type: number
+          example: 10.33
+          description: Amount(g) of proteins (per 100g)
+        carbs:
+          type: number
+          example: 76.31
+          description: Amount(g) of proteins (per 100g)
+        fats:
+          type: number
+          example: 2.5
+          description: Amount(g) of fats (per 100g)
+        units:
+          type: string
+          example: ml
+          enum: *a7
+          description: Measurement units
+      required:
+        - title
+        - translations
+        - kCal
+        - proteins
+        - carbs
+        - fats
+        - units
+    RecipeListItem:
+      type: object
+      properties:
+        title:
+          type: string
+          example: Lasagna
+          description: Title of the recipe
+        id:
+          type: string
+          example: 6485e97f2fe21ff4fba5f7e4
+          description: Id of the recipe
+        time:
+          type: number
+          example: 5
+          description: Time of cooking (minutes)
+        image:
+          type: string
+          example: https://picsum.photos/500/500
+          description: Url for the image of the recipe
+        kCal:
+          type: number
+          example: 364
+          description: Amount of kilo calories (for full amount)
+      required:
+        - title
+        - id
+        - time
+        - image
+        - kCal
+    SortOption:
+      type: object
+      properties:
+        value:
+          type: string
+          description: Sort value
+          example: alphabetically
+          enum:
+            - relevance
+            - time
+            - alphabetically
+            - -alphabetically
+            - calories
+            - -calories
+        title:
+          type: string
+          description: Sort title (translatable)
+          example: by relevance
+        isActive:
+          type: boolean
+          description: Indicator whether the sort value is applied
+          example: true
+      required:
+        - value
+        - title
+        - isActive
+    FilterValue:
+      type: object
+      properties:
+        value:
+          type: string
+          examples:
+            - lte20
+            - Breakfast and Brunch|Comfort Food
+            - "1"
+          description: Value of filter
+        count:
+          type: number
+          example: 10
+          description: Number of recipes applicable to this filter
+        isActive:
+          type: boolean
+          example: true
+          description: Indicator whether the filter is applied to the recipes list
+        title:
+          type: string
+          example: Less then or equal 20
+          description: Title of the filter value (translatable)
+      required:
+        - value
+        - count
+        - isActive
+        - title
+    Filter:
+      type: object
+      properties:
+        items:
+          description: List of applicable filter value
+          type: array
+          items:
+            $ref: "#/components/schemas/FilterValue"
+        title:
+          type: string
+          example: Calories
+          description: Title of the filter value (translatable)
+        multiple:
+          type: boolean
+          example: true
+          description: Whether the filter receives single value or multiple values
+      required:
+        - items
+        - title
+        - multiple
+    Filters:
+      type: object
+      properties:
+        calories:
+          description: List of applicable filters by calories
+          allOf:
+            - $ref: "#/components/schemas/Filter"
+        totalTime:
+          description: List of applicable filters by cooking time
+          allOf:
+            - $ref: "#/components/schemas/Filter"
+        difficulty:
+          description: List of applicable filters by difficulty
+          allOf:
+            - $ref: "#/components/schemas/Filter"
+        mealType:
+          description: List of applicable filters by meal type category
+          allOf:
+            - $ref: "#/components/schemas/Filter"
+        dietType:
+          description: List of applicable filters by diet type category
+          allOf:
+            - $ref: "#/components/schemas/Filter"
+      required:
+        - calories
+        - totalTime
+        - difficulty
+        - mealType
+        - dietType
+    SearchResults:
+      type: object
+      properties:
+        recipes:
+          description: List of recipes
+          type: array
+          items:
+            $ref: "#/components/schemas/RecipeListItem"
+        total:
+          type: number
+          example: 5
+          description: Total number of found recipes
+        sortOptions:
+          description: List of applicable sort options
+          type: array
+          items:
+            $ref: "#/components/schemas/SortOption"
+        filters:
+          description: List of applicable filters
+          type: array
+          items:
+            $ref: "#/components/schemas/Filters"
+      required:
+        - recipes
+        - total
+        - sortOptions
+        - filters

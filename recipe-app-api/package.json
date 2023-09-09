@@ -7,9 +7,15 @@
   "license": "MIT",
   "scripts": {
     "build": "nest build",
-    "start:dev": "APP_ENV=development nest start --watch",
-    "firebase:deploy": "./node_modules/.bin/firebase deploy --only functions",
-    "firebase:dry-run": "yarn build && ./node_modules/.bin/firebase emulators:start --only functions",
+    "start:admin:staging": "API_ENV=admin APP_ENV=admin.staging nest start --watch",
+    "firebase:copy-env:staging": "cp ./env/.staging.env .env.staging",
+    "firebase:copy-env:production": "cp ./env/.production.env .env.production",
+    "firebase:use:staging": "./node_modules/.bin/firebase use staging && yarn firebase:copy-env:staging",
+    "firebase:use:production": "./node_modules/.bin/firebase use production && yarn firebase:copy-env:production",
+    "firebase:deploy:staging": "yarn firebase:use:staging && ./node_modules/.bin/firebase deploy --only functions",
+    "firebase:deploy:production": "yarn firebase:use:production && ./node_modules/.bin/firebase deploy --only functions",
+    "firebase:dry-run:staging": "yarn build && yarn firebase:use:staging && ./node_modules/.bin/firebase emulators:start --only functions",
+    "firebase:dry-run:production": "yarn build && yarn firebase:use:production && ./node_modules/.bin/firebase emulators:start --only functions",
     "lint:ts": "./node_modules/.bin/tsc --project tsconfig.json",
     "lint": "eslint ./src"
   },

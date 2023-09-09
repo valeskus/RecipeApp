@@ -1,7 +1,5 @@
 import { Module } from '@nestjs/common';
 
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { RecipeModule } from './recipe/recipe.module';
 import { CategoriesModule } from './categories/categories.module';
 import { SearchModule } from './search/search.module';
@@ -18,9 +16,7 @@ import { MongoModule } from './mongo/mongo.module';
     ProductsModule,
     TranslationModule
   ],
-  controllers: [AppController],
-  providers: [
-    AppService,
-  ],
+  controllers: [],
+  providers: [],
 })
 export class AppModule { }

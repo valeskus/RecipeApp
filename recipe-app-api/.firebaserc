@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "recipe-app-api-27fd0"
-  }
+    "staging": "recipe-app-api-staging-c3f37",
+    "production": "recipe-app-api-27fd0"
+  },
+  "targets": {},
+  "etags": {}
 }

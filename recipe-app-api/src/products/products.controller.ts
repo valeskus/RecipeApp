@@ -1,15 +1,17 @@
-import { Body, Controller, Get, NotFoundException, Param, Post } from '@nestjs/common';
+import { Body, Controller, Get, NotFoundException, Param, Post, UseGuards } from '@nestjs/common';
 import {
   ApiOperation,
   ApiOkResponse,
   ApiTags,
 } from '@nestjs/swagger';
 
+import { AdminApiGuard } from '../guards/admin-api.guard';
 import { TranslationContext } from '../translation/translation-context.decorator';
 
 import { ProductsService } from './products.service';
 import { CreateProductDto, AllProductsDto, ProductDto } from './dto';
 
+@UseGuards(AdminApiGuard)
 @ApiTags('Products')
 @Controller('products')
 export class ProductsController {

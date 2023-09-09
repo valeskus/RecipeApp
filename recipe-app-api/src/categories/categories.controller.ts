@@ -4,7 +4,8 @@ import {
   Get,
   NotFoundException,
   Param,
-  Post
+  Post,
+  UseGuards
 } from '@nestjs/common';
 import {
   ApiOperation,
@@ -12,6 +13,7 @@ import {
   ApiTags,
 } from '@nestjs/swagger';
 
+import { AdminApiGuard } from '../guards/admin-api.guard';
 import { TranslationContext } from '../translation/translation-context.decorator';
 
 import { CategoriesService } from './categories.service';
@@ -40,6 +42,7 @@ export class CategoriesController {
     };
   }
 
+  @UseGuards(AdminApiGuard)
   @Get(':id')
   @ApiOperation({ summary: 'Get category by id' })
   @ApiOkResponse({
@@ -59,6 +62,7 @@ export class CategoriesController {
     return translationContext.getTranslated<CategoryDto>(category);
   }
 
+  @UseGuards(AdminApiGuard)
   @Post()
   @ApiOperation({ summary: 'Create category' })
   @ApiOkResponse({

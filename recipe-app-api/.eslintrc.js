@@ -47,7 +47,8 @@ module.exports = {
         'ua',
         'uri',
         'resolvers',
-        'lang'
+        'lang',
+        'utf8'
       ]
     }],
     'no-extra-semi': 'error',
