@@ -1,6 +1,9 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 require('dotenv').config({ path: `./env/.${process.env.APP_ENV}.env` });
 
+import * as path from 'path';
+import { readFileSync, writeFileSync } from 'fs';
+
 import { NestFactory } from '@nestjs/core';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 
@@ -22,6 +25,12 @@ async function run() {
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
+
+  const htmlFile = path.resolve(process.cwd(), 'swagger/index.html');
+  const contentRaw = readFileSync(htmlFile);
+
+  const content = contentRaw.toString().replace(/SPEC_PLACEHOLDER/g, JSON.stringify(document));
+  writeFileSync(htmlFile, content, { encoding: 'utf8' });
 
   await app.listen(3000);
 }
