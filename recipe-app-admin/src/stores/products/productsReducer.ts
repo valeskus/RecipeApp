@@ -4,28 +4,34 @@ import { ProductsActions } from './productsAction';
 import { ProductModel, ProductsListModel } from '../../models';
 
 export interface ProductsStoreState {
-  products: Array<ProductModel>;
+    products: Array<ProductModel>;
 }
 
 const initialState: ProductsStoreState = {
-  products: [],
+    products: [],
 };
 
 export function productsReducer(
-  state = initialState,
-  action: Redux.AnyAction,
+    state = initialState,
+    action: Redux.AnyAction,
 ): ProductsStoreState {
-  switch (action.type) {
-    case ProductsActions.GET: {
-      const { products } = action.payload as ProductsListModel;
+    switch (action.type) {
+        case ProductsActions.GET: {
+            const { products } = action.payload as ProductsListModel;
 
-      return {
-        ...state,
-        products,
-      };
+            return {
+                products: products || state.products,
+            };
+        }
+        case ProductsActions.POST: {
+            const product = action.payload as ProductModel;
+            return {
+                ...state,
+                products: [...state.products, product],
+            };
+        }
+
+        default:
+            return state;
     }
-
-    default:
-      return state;
-  }
 }

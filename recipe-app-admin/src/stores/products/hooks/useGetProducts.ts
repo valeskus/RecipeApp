@@ -3,7 +3,7 @@ import * as Redux from 'react-redux';
 
 import { getProducts } from '../productsAction';
 
-export const useGetCategories = () => {
+export const useGetProducts = () => {
   const dispatch = Redux.useDispatch();
 
   return React.useCallback(async () => {

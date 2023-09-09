@@ -1,24 +1,41 @@
 import { Dispatch } from 'redux';
 import * as ProductsApi from '../../api/products.api';
-import { ProductsListModel } from '../../models';
+import { ProductModel, ProductsListModel } from '../../models';
 
 
 export enum ProductsActions {
-  GET = '@products/get',
-  POST = '@products/post',
+    GET = '@products/get',
+    POST = '@products/post',
 }
 
 const actionGetProducts = (payload: ProductsListModel) => ({
-  type: ProductsActions.GET,
-  payload
+    type: ProductsActions.GET,
+    payload
+});
+
+const actionAddProduct = (payload: ProductModel) => ({
+    type: ProductsActions.POST,
+    payload
 });
 
 export const getProducts = async (dispatch: Dispatch) => {
-  try {
-    const productsList = await ProductsApi.getProducts();
+    try {
+        const productsList = await ProductsApi.getProducts();
 
-    dispatch(actionGetProducts(productsList));
-  } catch (error) {
-console.log(error)
-  }
+        dispatch(actionGetProducts(productsList));
+    } catch (error) {
+        console.log(error)
+    }
+};
+
+export const addProduct = async (product: ProductModel, dispatch: Dispatch) => {
+    try {
+        const productItem = await ProductsApi.postProduct(product);
+        if (!productItem) {
+            return
+        }
+        dispatch(actionAddProduct(productItem));
+    } catch (error) {
+        console.log(error)
+    }
 };
