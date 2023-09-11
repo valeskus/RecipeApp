@@ -52,7 +52,8 @@ module.exports = {
         'Multer',
         'validators',
         'jpeg',
-        'firebase'
+        'firebase',
+        'cors',
       ]
     }],
     'no-extra-semi': 'error',

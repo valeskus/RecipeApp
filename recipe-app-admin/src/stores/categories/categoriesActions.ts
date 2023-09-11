@@ -1,39 +1,23 @@
-import { Dispatch } from 'redux';
+import { AnyAction, createAction } from '@reduxjs/toolkit';
+import { Dispatch } from 'react';
 
 import * as CategoriesApi from '../../api/categories.api';
-import { CategoryListModel, CategoryPostModel } from '../../models';
 
-export enum CategoriesActions {
-  GET = '@categories/get',
-  ERROR = '@categories/error',
+import { getCategories } from './categoriesSlice';
+interface Error {
+  key: string;
+  error: unknown;
 }
 
-const actionGetCategories = (payload: CategoryListModel) => ({
-  type: CategoriesActions.GET,
-  payload,
-});
+export const setError = createAction<Error>('categories/error');
 
-const actionError = (key: string, error: unknown) => ({
-  type: CategoriesActions.ERROR,
-  payload: { [key]: error },
-});
-
-export const getCategories = async (dispatch: Dispatch) => {
+export const getCategoriesList = async (dispatch: Dispatch<AnyAction>) => {
   try {
     const categoryList = await CategoriesApi.getCategories();
 
-    dispatch(actionGetCategories(categoryList));
+    dispatch(getCategories(categoryList));
   } catch (error) {
-    dispatch(actionError('getCategories', error));
-  }
-
-};
-
-export const addCategory = async (category: CategoryPostModel, dispatch: Dispatch) => {
-  try {
-    await CategoriesApi.postCategory(category);
-  } catch (error) {
-    dispatch(actionError('postCategory', error));
+    dispatch(setError({ key: 'getCategories', error }));
   }
 
 };

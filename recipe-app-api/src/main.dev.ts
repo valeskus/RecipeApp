@@ -31,6 +31,7 @@ async function run() {
 
   const content = contentRaw.toString().replace(/var spec = {.*}/g, 'var spec = ' + JSON.stringify(document));
   writeFileSync(htmlFile, content, { encoding: 'utf8' });
+  app.enableCors();
 
   await app.listen(3000);
 }

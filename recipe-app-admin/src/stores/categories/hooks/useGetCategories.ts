@@ -1,12 +1,12 @@
 import * as React from 'react';
-import * as Redux from 'react-redux';
+import { Dispatch } from 'react';
+import { AnyAction } from 'redux';
 
-import { getCategories } from '../categoriesActions';
+import { getCategoriesList } from '../categoriesActions';
 
 export const useGetCategories = () => {
-  const dispatch = Redux.useDispatch();
 
-  return React.useCallback(async () => {
-    await getCategories(dispatch);
-  }, [dispatch]);
+  return React.useCallback(async (dispatch: Dispatch<AnyAction>) => {
+    await getCategoriesList(dispatch);
+  }, []);
 };

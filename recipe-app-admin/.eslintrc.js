@@ -43,7 +43,9 @@ module.exports = {
         'kcal',
         'lte',
         'gte',
-        'ua'
+        'ua',
+        'reduxjs',
+        'Perf'
       ]
     }],
     'import/no-unresolved': ['error', {ignore: ['@env']}],
@@ -73,7 +75,6 @@ module.exports = {
       logical: 'parens',
       prop: 'parens',
     }],
-    'no-console': 'error',
     'no-return-await': 'off',
     '@typescript-eslint/await-thenable': 'error',
     '@typescript-eslint/no-redeclare': 'off',

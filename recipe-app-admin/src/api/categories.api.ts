@@ -12,9 +12,9 @@ export const postCategory = async (body: CategoryPostModel): Promise<any> => {
   const result = await client.post('/categories',
     {
       body: JSON.stringify(body),
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      // headers: {
+      //   'Content-Type': 'application/json',
+      // },
     });
 
   return result.data;

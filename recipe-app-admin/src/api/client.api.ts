@@ -1,8 +1,9 @@
 import axios from 'axios';
-import { API_URL } from '@env';
 
 export const client = axios.create({
-  baseURL: API_URL,
+  baseURL: 'http://localhost:3000',
   headers: {
-    'Accept-Language': 'en'  },
+    'Accept-Language': 'en',
+  },
+
 });

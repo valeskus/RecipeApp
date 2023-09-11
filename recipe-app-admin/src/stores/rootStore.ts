@@ -1,13 +1,10 @@
-import { configureStore, combineReducers } from '@reduxjs/toolkit';
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
 
-import { productsReducer } from './products/productsReducer';
-import { categoriesReducer } from './categories/categoriesReducer';
+import { categoriesSlice } from './categories/categoriesSlice';
 
 const rootReducer = combineReducers({
-  categories: categoriesReducer,
-  products: productsReducer,
+  categories: categoriesSlice.reducer,
 });
 
-export type RootStore = ReturnType<typeof rootReducer>;
-
 export const store = configureStore({ reducer: rootReducer });
+export type RootStore = ReturnType<typeof store.getState>;
