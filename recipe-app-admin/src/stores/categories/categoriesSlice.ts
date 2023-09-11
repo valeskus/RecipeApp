@@ -1,31 +1,39 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 
-import { CategoryListModel, CategoryModel } from '../../models';
+// import { CategoryListModel, CategoryModel } from '../../models';
 
-export interface CategoryStoreState {
-  categories: Array<CategoryModel>;
-}
+import { CATEGORIES, CategoriesListModel, CategoriesStateType } from './types';
 
-const initialState: CategoryStoreState = {
-  categories: [],
+const categoriesInitialState: CategoriesStateType = {
+  categories: {
+    data: null,
+    error: '',
+    isLoading: false,
+  },
 };
 
 export const categoriesSlice = createSlice({
-  name: 'categories',
-  initialState,
+  name: CATEGORIES,
+  initialState: categoriesInitialState,
   reducers: {
-    getCategories(state, action: PayloadAction<CategoryListModel>) {
-      // state.categories = action.payload.categories;
-      const { categories } =  action.payload;
+    getCategories: (state: CategoriesStateType) => {
+      state.categories.isLoading = true;
+      state.categories.error = '';
+    },
+    getCategoriesSuccessAction: (state: CategoriesStateType,
+      { payload: categories }: PayloadAction<CategoriesListModel>) => {
+      state.categories.isLoading = false;
 
-      return {
-        categories,
-      };
+      state.categories.data = categories.categories;
+
+    },
+    getCategoriesErrorAction: (state: CategoriesStateType, { payload: error }: PayloadAction<unknown>) => {
+      state.categories.isLoading = false;
+      state.categories.error = error;
     },
 
   },
 });
 
-export const { getCategories } = categoriesSlice.actions;
-// export default categoriesSlice.reducer;
+export const { getCategories, getCategoriesErrorAction, getCategoriesSuccessAction } = categoriesSlice.actions;
