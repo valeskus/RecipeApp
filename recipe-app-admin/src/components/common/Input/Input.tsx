@@ -10,7 +10,7 @@ interface Props {
 export function Input(props: Props): JSX.Element {
   return (
     <div className="input-container">
-      <label htmlFor="search">{props.label}</label>
+      <label className="input-label">{props.label}</label>
       <input
         onChange={(e) => {
 				  props.onChange(e.target.value);

@@ -1,14 +1,32 @@
-import React from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-import { Button } from './components/common/Button';
+import { CategoryForm } from './components/Categories';
+import { Header } from './components/Header';
 
-export function App() {
+export function App(): JSX.Element {
 
   return (
-    <div className="App" >
-      <Button title="Category" onClick={() => {}}/>
-      <Button title="Product" onClick={() => {}}/>
-      <Button title="Recipe" onClick={() => {}}/>
-    </div>
+    <BrowserRouter>
+      <Header/>
+      <Routes>
+        <Route
+          path="/categoryForm"
+          element={<CategoryForm />}
+        />
+      </Routes>
+      {/* <Routes>
+        <Route
+          path="/categoryForm"
+          element={<CategoryForm />}
+        />
+      </Routes>
+      <Routes>
+        <Route
+          path="/categoryForm"
+          element={<CategoryForm />}
+        />
+      </Routes> */}
+
+    </BrowserRouter>
   );
 }

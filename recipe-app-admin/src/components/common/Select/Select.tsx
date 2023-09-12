@@ -11,7 +11,7 @@ export function Select({ label, value, optionArray, id, placeholder, onChange }:
   //TODO: options array type
   return (
     <div className="select-container">
-      <label htmlFor="search">{label}</label>
+      <label className="select-label">{label}</label>
       <select
         onChange={(e) => {
           onChange(e.target.value);
@@ -20,9 +20,11 @@ export function Select({ label, value, optionArray, id, placeholder, onChange }:
         id={id}
         className="select"
         placeholder={placeholder}
-      >{optionArray.map((option) => {
-        return <option value={option}>{option}</option>;
-      })
+      >
+        <option value={'-'}>{'---'}</option>;
+        {optionArray.map((option, index) => {
+          return <option value={option} key={index}>{option}</option>;
+        })
         }
       </select>
     </div>
