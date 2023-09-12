@@ -5,12 +5,11 @@ import { Button } from '../common/Button';
 import { Input } from '../common/Input';
 import { Select } from '../common/Select';
 import './ProductForm.style.css';
-import { ProductPostModel, ProductsStateType } from '../../stores/product/types';
+import { ProductPostModel } from '../../stores/product/types';
 import { postProducts } from '../../stores/product/productsSlice';
-import { useGetProducts, useProductsStore } from '../../stores/product/hooks';
+import { useGetProducts } from '../../stores/product/hooks';
 
 export function ProductForm(): JSX.Element {
-  const { products }: ProductsStateType = useProductsStore();
   const dispatch = Redux.useDispatch();
 
   const getProducts = useGetProducts();
@@ -19,10 +18,8 @@ export function ProductForm(): JSX.Element {
   }, []);
 
   //TODO product state
-  console.log(products.data);
   const product: ProductPostModel = {
-    // eslint-disable-next-line spellcheck/spell-checker
-    title: 'Alaska pollock (raw)',
+    title: 'Arugula',
     kCal: 75,
     proteins: 16.7,
     carbs: 0,
@@ -30,7 +27,7 @@ export function ProductForm(): JSX.Element {
     units: 'ml',
     translations: {
       ua: {
-        title: 'Мінтай(сирий)',
+        title: 'Рукола',
       },
     },
   };

@@ -9,13 +9,7 @@ export const getProducts = async (): Promise<{}> => {
 };
 
 export const postProduct = async (body: ProductPostModel): Promise<any> => {
-  const result = await client.post('/products',
-    {
-      body: JSON.stringify(body),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
+  const result = await client.post('/products', body);
 
   return result;
 };

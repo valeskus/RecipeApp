@@ -1,10 +1,12 @@
 import { AxiosResponse } from 'axios';
 import { put,  takeLatest } from 'redux-saga/effects';
+import { PayloadAction } from '@reduxjs/toolkit';
 
 import * as ProductsApi from '../../api/products.api';
 
-import { getProductsSuccessAction, getProducts, getProductsErrorAction } from './productsSlice';
-import { ProductsListModel } from './types';
+import { getProductsSuccessAction, getProducts, getProductsErrorAction,
+  postProducts, postProductsSuccessAction, postProductsyErrorAction } from './productsSlice';
+import { ProductPostModel, ProductsListModel } from './types';
 
 export function* getProductsSaga() {
   try {
@@ -21,15 +23,15 @@ export function* watchGetProducts() {
 
 //TODO:  How get i arguments here?
 
-// export function* postCategorySaga({ payload: category }: PayloadAction<CategoryPostModel>) {
-//   try {
-//     const response: AxiosResponse<string> = yield CategoriesApi.postCategory(category);
-//     yield put(postCategorySuccessAction(response.statusText));
-//   } catch (error) {
-//     yield put(postCategoryErrorAction(error));
-//   }
-// }
+export function* postCategorySaga({ payload: product }: PayloadAction<ProductPostModel>) {
+  try {
+    const response: AxiosResponse<string> = yield ProductsApi.postProduct(product);
+    yield put(postProductsSuccessAction(response.statusText));
+  } catch (error) {
+    yield put(postProductsyErrorAction(error));
+  }
+}
 
-// export function* watchPostCategory() {
-//   yield takeLatest(postCategory.type, postCategorySaga);
-// }
+export function* watchPostProduct() {
+  yield takeLatest(postProducts.type, postCategorySaga);
+}
