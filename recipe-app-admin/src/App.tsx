@@ -21,10 +21,10 @@ export function App() {
   }, [create.status]);
 
   const category: CategoryPostModel = {
-    title: 'Snack',
+    title: 'Dessert',
     translations: {
       ua: {
-        title: 'Закуска',
+        title: 'Десерт',
       },
     },
     image: 'https://picsum.photos/500/500',

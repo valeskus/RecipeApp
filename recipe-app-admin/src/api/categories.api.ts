@@ -8,10 +8,9 @@ export const getCategories = async (): Promise<{ data: CategoryListModel }> => {
   return result;
 };
 
-export const postCategory = async (body: CategoryPostModel): Promise<any> => {
+export const postCategory = async (body: CategoryPostModel): Promise<{}> => {
   const result = await client.post('/categories', body,
   );
-  console.log(result);
 
   return result;
 };

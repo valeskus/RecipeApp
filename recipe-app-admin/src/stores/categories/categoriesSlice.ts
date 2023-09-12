@@ -35,8 +35,8 @@ export const categoriesSlice = createSlice({
       state.categories.isLoading = false;
       state.categories.error = error;
     },
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    postCategory: (state: CategoriesStateType, { payload: category }: PayloadAction<CategoryPostModel>) => {
+
+    postCategory: (state: CategoriesStateType, {}: PayloadAction<CategoryPostModel>) => {
       state.create.isLoading = true;
       state.create.error = '';
     },
