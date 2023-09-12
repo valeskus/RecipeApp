@@ -1,7 +1,8 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-import { CategoryForm } from './components/Categories';
+import { CategoryForm } from './components/CategoryForm';
 import { Header } from './components/Header';
+import { ProductForm } from './components/ProductForm';
 
 export function App(): JSX.Element {
 
@@ -14,13 +15,13 @@ export function App(): JSX.Element {
           element={<CategoryForm />}
         />
       </Routes>
-      {/* <Routes>
+      <Routes>
         <Route
-          path="/categoryForm"
-          element={<CategoryForm />}
+          path="/productForm"
+          element={<ProductForm />}
         />
       </Routes>
-      <Routes>
+      {/* <Routes>
         <Route
           path="/categoryForm"
           element={<CategoryForm />}

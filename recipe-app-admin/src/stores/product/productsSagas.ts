@@ -15,7 +15,7 @@ export function* getProductsSaga() {
   }
 }
 
-export function* watchGetCategories() {
+export function* watchGetProducts() {
   yield takeLatest(getProducts.type, getProductsSaga);
 }
 
