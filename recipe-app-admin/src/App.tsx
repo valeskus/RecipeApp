@@ -3,25 +3,42 @@ import * as Redux from 'react-redux';
 
 import { useCategoriesStore } from './stores/categories';
 import { CategoriesStateType } from './stores/categories/types';
-import { getCategories } from './stores/categories/categoriesSlice';
+import { getCategories, postCategory } from './stores/categories/categoriesSlice';
+import { CategoryPostModel } from './stores/categories/types';
 
 export function App() {
-  const { categories }: CategoriesStateType = useCategoriesStore();
+  const {  create }: CategoriesStateType = useCategoriesStore();
   const dispatch = Redux.useDispatch();
 
   React.useEffect(() => {
     dispatch(getCategories());
   }, []);
 
+  React.useEffect(() => {
+    if (create.status === 'Created') {
+      alert('Created successful!');
+    }
+  }, [create.status]);
+
+  const category: CategoryPostModel = {
+    title: 'Snack',
+    translations: {
+      ua: {
+        title: 'Закуска',
+      },
+    },
+    image: 'https://picsum.photos/500/500',
+    type: 'meal',
+  };
+
+  const onSend = () => {
+    dispatch(postCategory(category));
+  };
+
   return (
     <div className="App" >
-      <p>'Categories'</p>
-      {categories.isLoading ? (<h1>'Loading'</h1>) : categories.data ? (
-        categories.data.map((category) => {
-          return (<p key={category.id}>{category.title}</p>);
-        })
-      ) : (<h1>'empty'</h1>)
-      }
+      <p >'Categories'</p>
+      <button onClick={onSend}>SEND</button>
       <p>'HELLO'</p>
     </div>
   );
