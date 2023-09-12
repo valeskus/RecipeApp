@@ -1,8 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 
-// import { CategoryListModel, CategoryModel } from '../../models';
-
 import { CATEGORIES, CategoriesListModel, CategoriesStateType } from './types';
 
 const categoriesInitialState: CategoriesStateType = {

@@ -24,4 +24,3 @@ export type CategoriesStateType = {
 };
 
 export const CATEGORIES = 'categories';
-export type CATEGORIES = typeof CATEGORIES;
