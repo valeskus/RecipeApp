@@ -34,11 +34,6 @@ export type CategoryCreateState = {
 export type CategoriesStateType = {
   categories: CategoriesModelState;
   create: CategoryCreateState;
-  // Later, we can add other sub-states like:
-  // list,
-  // create,
-  // update,
-  // remove
 };
 
 export const CATEGORIES = 'categories';

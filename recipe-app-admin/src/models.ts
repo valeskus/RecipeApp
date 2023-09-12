@@ -23,7 +23,6 @@ export interface BaseRecipeModel {
   time: number;
   image: string;
 }
-
 export interface RecipePostModel {
   title: string;
   description: string;
