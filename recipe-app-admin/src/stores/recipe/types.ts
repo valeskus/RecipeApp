@@ -7,12 +7,12 @@ export type RecipeCreateState = {
 
 export type RecipePostModel = {
   title: string;
-  time: 0;
+  time: number;
   image: string;
-  amount: 0;
+  amount: number;
   units: 'g' | 'ml';
   description: string;
-  servingsCount: 0;
+  servingsCount: number;
   instructions: [
     {
       description: string;
@@ -28,10 +28,9 @@ export type RecipePostModel = {
   categories: Array<string>;
   ingredients: [
     {
-      title: string;
+      id: string;
       amount: number;
     },
-    {},
   ];
   translations: {
     ua: {

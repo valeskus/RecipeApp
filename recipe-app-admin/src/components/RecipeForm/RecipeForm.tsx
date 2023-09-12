@@ -17,38 +17,39 @@ export function RecipeForm(): JSX.Element {
   //TODO product state
   const recipe: RecipePostModel = {
     title: 'TEST',
-    time: 0,
-    image: '',
-    amount: 0,
-    units: 'g',
-    description: '',
-    servingsCount: 0,
-    instructions: [
-      {
-        description: '',
-        image: '',
-        translations: {
-          ua: {
-            description: '',
-          },
-        },
-      },
-    ],
-    difficulty: 1,
-    categories: ['Lunch'],
-    ingredients: [
-      {
-        title: '',
-        amount: 0,
-      },
-      {},
-    ],
+    description: "This lasagna recipe takes a little work, but it is so satisfying and filling that it's worth it!",
     translations: {
       ua: {
-        title: '',
-        description: '',
+        title: 'Lasagna',
+        description: "This lasagna recipe takes a little work, but it is so satisfying and filling that it's worth it!",
       },
     },
+    time: 5,
+    image: 'https://picsum.photos/500/500',
+    amount: 200,
+    units: 'ml',
+    servingsCount: 2,
+    difficulty: 0,
+    categories: [
+      '65003f424da9dc435e8a30d1',
+    ],
+    ingredients: [
+      {
+        id: '64e0a686b09d1e88b0558b02',
+        amount: 200,
+      },
+    ],
+    instructions: [
+      {
+        description: 'Gather all your ingredients',
+        translations: {
+          ua: {
+            description: 'Gather all your ingredients',
+          },
+        },
+        image: 'https://picsum.photos/500/500',
+      },
+    ],
   };
 
   const onSend = () => {
