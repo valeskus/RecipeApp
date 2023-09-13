@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import * as Redux from 'react-redux';
 
 import { RecipePostModel } from '../../stores/recipe/types';
@@ -6,10 +6,25 @@ import { postRecipe } from '../../stores/recipe/recipeSlice';
 import { useGetProducts, useProductsStore } from '../../stores/product/hooks';
 import { useCategoriesStore, useGetCategories } from '../../stores/categories';
 import { OptionsManager } from '../managers/OptionsManager';
+import { OptionModel } from '../common/Select/Select';
 
 export const useRecipeFormController = () => {
   const [ingredientsFormArray, setIngredientsFormArray] = useState<Array<number>>([1]);
   const [instructionsFormArray, setInstructionsFormArray] = useState<Array<number>>([1]);
+  const [title, setTitle] = useState<string>('');
+  const [titleUA, setTitleUA] = useState<string>('');
+  const [description, setDescription] = useState<string>('');
+  const [descriptionUA, setDescriptionUA] = useState<string>('');
+  const [units, setUnits] = useState<'g' | 'ml'>('g');
+  const [image, setImage] = useState<string>('');
+  const [time, setTime] = useState<number>(0);
+  const [amount, setAmount] = useState<number>(0);
+  const [servingsCount, setServingsCount] = useState<number>(0);
+  const [difficulty, setDifficulty] = useState<number >(0);
+  const [categoriesArray, setCategoriesArray] = useState<Array<string>>([]);
+  // const [ingredient, setIngredient] = useState();
+
+  // const [instructions, setInstructions] = useState<number>(0);
 
   const dispatch = Redux.useDispatch();
   const getProducts = useGetProducts();
@@ -23,56 +38,103 @@ export const useRecipeFormController = () => {
   const productsValue = OptionsManager.getProductOptionsArray(products);
   const categoriesValue = OptionsManager.getCategoriesOptionsArray(categories);
 
-  React.useEffect(() => {
+  useEffect(() => {
     getCategories(dispatch);
     getProducts(dispatch);
   }, []);
 
-  //TODO product state
-  const recipe: RecipePostModel = {
-    title: 'TEST',
-    description: "This lasagna recipe takes a little work, but it is so satisfying and filling that it's worth it!",
-    translations: {
-      ua: {
-        title: 'Lasagna',
-        description: "This lasagna recipe takes a little work, but it is so satisfying and filling that it's worth it!",
-      },
-    },
-    time: 5,
-    image: 'https://picsum.photos/500/500',
-    amount: 200,
-    units: 'ml',
-    servingsCount: 2,
-    difficulty: 0,
-    categories: [
-      '65003f424da9dc435e8a30d1',
-    ],
-    ingredients: [
-      {
-        id: '64e0a686b09d1e88b0558b02',
-        amount: 200,
-      },
-    ],
-    instructions: [
-      {
-        description: 'Gather all your ingredients',
-        translations: {
-          ua: {
-            description: 'Gather all your ingredients',
-          },
-        },
-        image: 'https://picsum.photos/500/500',
-      },
-    ],
-  };
+  const handleTitle = useCallback((value: string) => {
+    setTitle(value);
+  }, [setTitle]);
 
-  const onSend = () => {
-    if (!recipe) {
-      return alert('Please,check data');
+  const handleUATitle = useCallback((value: string) => {
+    setTitleUA(value);
+  }, [setTitleUA]);
+
+  const handleDescription = useCallback((value: string) => {
+    setDescription(value);
+  }, [setDescription]);
+
+  const handleDescriptionUA = useCallback((value: string) => {
+    setDescriptionUA(value);
+  }, [setDescriptionUA]);
+
+  const handleUnits = useCallback(({ value }: OptionModel) => {
+    if (value !== 'g' || 'ml') {
+      return;
     }
 
+    setUnits(value);
+  }, [setUnits]);
+
+  const handleImage = useCallback((value: string) => {
+    setImage(value);
+  }, [setImage]);
+
+  const handleTime = useCallback((value: string) => {
+    setTime(+value);
+  }, [setTime]);
+
+  const handleAmount = useCallback((value: string) => {
+    setAmount(+value);
+  }, [setAmount]);
+
+  const handleServingsCount = useCallback((value: string) => {
+    setServingsCount(+value);
+  }, [setServingsCount]);
+  //TODO type
+  const handleDifficulty = useCallback(({ value }: OptionModel) => {
+    if (+value !==  0 || 1 || 2) {
+      return;
+    }
+
+    setDifficulty(+value);
+  }, [setDifficulty]);
+
+  const handleCategoryArray = useCallback((value: Array<string>) => {
+    setCategoriesArray(value);
+  }, [setCategoriesArray]);
+
+  const onSend = useCallback(() => {
+    const recipe: RecipePostModel = {
+      title,
+      description,
+      translations: {
+        ua: {
+          title: titleUA,
+          description: descriptionUA,
+        },
+      },
+      time,
+      image,
+      amount,
+      units,
+      servingsCount,
+      difficulty,
+      categories: categoriesArray,
+      ingredients: [
+        {
+          id: '64e0a686b09d1e88b0558b02',
+          amount: 200,
+        },
+      ],
+      instructions: [
+        {
+          description: 'Gather all your ingredients',
+          translations: {
+            ua: {
+              description: 'Gather all your ingredients',
+            },
+          },
+          image: 'https://picsum.photos/500/500',
+        },
+      ],
+    };
+
     dispatch(postRecipe(recipe));
-  };
+  }, [title, titleUA, description, descriptionUA, time, image,  units,
+    servingsCount,
+    difficulty]);
 
   const onAddIngredientForm = useCallback(() => {
     setIngredientsFormArray([...ingredientsFormArray, ingredientsFormArray.length + 1 ]);
@@ -82,20 +144,26 @@ export const useRecipeFormController = () => {
     setInstructionsFormArray([...instructionsFormArray, instructionsFormArray.length + 1 ]);
   }, [instructionsFormArray, setInstructionsFormArray]);
 
-  const handleMultiple = useCallback((e: any) => {
-    console.log(e);
-  }, []);
-
   return {
     unitsValue,
     difficultyValue,
     categoriesValue,
-    handleMultiple,
     ingredientsFormArray,
     productsValue,
     onAddIngredientForm,
     instructionsFormArray,
     onAddInstructionForm,
     onSend,
+    handleTitle,
+    handleUATitle,
+    handleDescription,
+    handleDescriptionUA,
+    handleUnits,
+    handleImage,
+    handleTime,
+    handleAmount,
+    handleServingsCount,
+    handleDifficulty,
+    handleCategoryArray,
   };
 };

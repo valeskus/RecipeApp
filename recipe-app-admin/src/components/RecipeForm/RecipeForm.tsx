@@ -12,34 +12,46 @@ export function RecipeForm(): JSX.Element {
   const { unitsValue,
     difficultyValue,
     categoriesValue,
-    handleMultiple,
     ingredientsFormArray,
     productsValue,
     onAddIngredientForm,
     instructionsFormArray,
     onAddInstructionForm,
     onSend,
+    handleTitle,
+    handleUATitle,
+    handleDescription,
+    handleDescriptionUA,
+    handleUnits,
+    handleImage,
+    handleTime,
+    handleAmount,
+    handleServingsCount,
+    handleDifficulty,
+    handleCategoryArray,
   } = useRecipeFormController();
 
   return (
     <div className="recipeFormContainer">
       <div className="formsContainer">
-        <Input label="Title :" type="text" placeholder="Title" onChange={() => { }} />
-        <Input label="Title UA:" type="text" placeholder="Назва" onChange={() => { }} />
-        <Input label="Description:" type="text" placeholder="Description" onChange={() => { }} />
-        <Input label="Description UA:" type="text" placeholder="опис" onChange={() => { }} />
+        <Input label="Title :" type="text" placeholder="Title" onChange={handleTitle} />
+        <Input label="Title UA:" type="text" placeholder="Назва" onChange={handleUATitle} />
+        <Input label="Description:" type="text" placeholder="Description" onChange={handleDescription} />
+        <Input label="Description UA:" type="text" placeholder="опис" onChange={handleDescriptionUA} />
         <SelectComponent label="Units:"
-          placeholder="units" multiple={false} options={unitsValue} onChange={() => { }}
+          placeholder="units" multiple={false} options={unitsValue} onChange={handleUnits}
         />
-        <Input label="Image:" type="url" placeholder="image url" onChange={() => { }} />
-        <Input label="Time:" type="number" placeholder="time in minutes" onChange={() => { }} />
-        <Input label="Amount:" type="number" placeholder="amount" onChange={() => { }} />
-        <Input label="Servings Count:" type="number" placeholder="number of servings count" onChange={() => { }} />
+        <Input label="Image:" type="url" placeholder="image url" onChange={handleImage} />
+        <Input label="Time:" type="number" placeholder="time in minutes" onChange={handleTime} />
+        <Input label="Amount:" type="number" placeholder="amount" onChange={handleAmount} />
+        <Input label="Servings Count:" type="number"
+          placeholder="number of servings count" onChange={handleServingsCount}
+        />
         <SelectComponent label="Difficulty:" placeholder="---" multiple={false}
-          options={difficultyValue} onChange={() => { }}
+          options={difficultyValue} onChange={handleDifficulty}
         />
         <SelectComponent label="Categories:" placeholder="---" multiple={ true}
-          options={categoriesValue} onChange={handleMultiple}
+          options={categoriesValue} onChange={handleCategoryArray}
         />
       </div>
       <div className="dynamicFormContainer">
