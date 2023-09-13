@@ -4,11 +4,12 @@ import './RecipeForm.style.css';
 
 import { Button } from '../common/Button';
 import { Input } from '../common/Input';
-import { Select } from '../common/Select';
 import { RecipePostModel } from '../../stores/recipe/types';
 import { postRecipe } from '../../stores/recipe/recipeSlice';
 import { useGetProducts, useProductsStore } from '../../stores/product/hooks';
 import { useCategoriesStore, useGetCategories } from '../../stores/categories';
+import { SelectComponent } from '../common/Select/Select';
+import { OptionsManager } from '../managers/OptionsManager';
 
 import { IngredientForm } from './components/IngredientForm';
 import { InstructionForm } from './components/InstructionForm';
@@ -23,29 +24,11 @@ export function RecipeForm(): JSX.Element {
   const { products } = useProductsStore();
   const { categories } = useCategoriesStore();
 
-  const productsTitleArray = useCallback(() => {
-    const array = products.data?.map((product) => {
-      return { id: product.id, title: product.title };
-    });
-
-    if (!array) {
-      return [{ id: '0', title: 'Empty' }];
-    }
-
-    return array;
-  }, [products.data]);
-
-  const categoriesTitleArray = useCallback(() => {
-    const array = categories.data?.map((product) => {
-      return { id: product.id, title: product.title };
-    });
-
-    if (!array) {
-      return [{ id: '0', title: 'Empty' }];
-    }
-
-    return array;
-  }, [categories.data]);
+  //TODO this value is string but you need number
+  const difficultyValue = OptionsManager.getOptionsArray(['0', '1', '2']);
+  const unitsValue = OptionsManager.getOptionsArray(['ml', 'g']);
+  const productsValue = OptionsManager.getProductOptionsArray(products);
+  const categoriesValue = OptionsManager.getCategoriesOptionsArray(categories);
 
   React.useEffect(() => {
     getCategories(dispatch);
@@ -116,20 +99,22 @@ export function RecipeForm(): JSX.Element {
       <Input label="Title UA:" type="text" placeholder="Назва" onChange={() => { }} />
       <Input label="Description:" type="text" placeholder="Description" onChange={() => { }} />
       <Input label="Description UA:" type="text" placeholder="опис" onChange={() => { }} />
-      <Select label="Units:"  placeholder="---" optionArray={['ml', 'g']} onChange={() => { }} />
+      <SelectComponent label="Units:"  placeholder="units" multiple={false} options={unitsValue} onChange={() => { }}/>
       <Input label="Image:" type="url" placeholder="image url" onChange={() => { }} />
       <Input label="Time:" type="number" placeholder="time in minutes" onChange={() => { }} />
       <Input label="Amount:" type="number" placeholder="amount" onChange={() => { }} />
       <Input label="Servings Count:" type="number" placeholder="number of servings count" onChange={() => { }} />
-      <Select label="Difficulty:" placeholder="---" optionArray={[0, 1, 2]} onChange={() => { }} />
-      <Select label="Categories:" placeholder="---" multiple={ true}
-        optionArrayWithId={categoriesTitleArray()} onChange={handleMultiple}
+      <SelectComponent label="Difficulty:" placeholder="---" multiple={false}
+        options={difficultyValue} onChange={() => { }}
+      />
+      <SelectComponent label="Categories:" placeholder="---" multiple={ true}
+        options={categoriesValue} onChange={handleMultiple}
       />
 
       <div className="dynamicFormContainer">
         <div  className="dynamicForm">
           {ingredientsFormArray.map((index) => {
-            return <IngredientForm products={productsTitleArray()} key={index}/>;
+            return <IngredientForm products={productsValue} key={index}/>;
           })}
           <Button title="+" onClick={onAddIngredientForm} />
         </div>

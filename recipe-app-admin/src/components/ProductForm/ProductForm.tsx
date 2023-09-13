@@ -3,14 +3,16 @@ import * as Redux from 'react-redux';
 
 import { Button } from '../common/Button';
 import { Input } from '../common/Input';
-import { Select } from '../common/Select';
+import { SelectComponent } from '../common/Select';
 import './ProductForm.style.css';
 import { ProductPostModel } from '../../stores/product/types';
 import { postProducts } from '../../stores/product/productsSlice';
 import { useGetProducts } from '../../stores/product/hooks';
+import { OptionsManager } from '../managers/OptionsManager';
 
 export function ProductForm(): JSX.Element {
   const dispatch = Redux.useDispatch();
+  const unitsValue = OptionsManager.getOptionsArray(['ml', 'g']);
 
   const getProducts = useGetProducts();
   React.useEffect(() => {
@@ -48,7 +50,7 @@ export function ProductForm(): JSX.Element {
       <Input label="Proteins :" type="number" placeholder="proteins" onChange={() => { }} />
       <Input label="Carbs :" type="number" placeholder="carbs" onChange={() => { }} />
       <Input label="Fats :" type="number" placeholder="fats" onChange={() => { }} />
-      <Select label="Units:" placeholder="---" optionArray={['ml', 'g']} onChange={() => { }} />
+      <SelectComponent label="Units:" placeholder="units" multiple={false} options={unitsValue} onChange={() => { }}/>
       <Button title="Submit" onClick={onSend} />
     </div>
   );

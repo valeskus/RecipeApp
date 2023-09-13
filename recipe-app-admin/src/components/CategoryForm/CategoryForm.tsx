@@ -5,12 +5,15 @@ import {  postCategory } from '../../stores/categories/categoriesSlice';
 import { CategoriesStateType, CategoryPostModel } from '../../stores/categories/types';
 import { Button } from '../common/Button';
 import { Input } from '../common/Input';
-import { Select } from '../common/Select';
+import { SelectComponent } from '../common/Select';
 import './CategoryForm.style.css';
 import { useCategoriesStore } from '../../stores/categories';
+import { OptionsManager } from '../managers/OptionsManager';
 
 export function CategoryForm(): JSX.Element {
   const {  create }: CategoriesStateType = useCategoriesStore();
+
+  const unitsValue = OptionsManager.getOptionsArray(['ml', 'g']);
 
   React.useEffect(() => {
     if (create.status === 'Created') {
@@ -50,7 +53,7 @@ export function CategoryForm(): JSX.Element {
       <Input label="Title :" type="text" placeholder="Title" onChange={() => {}}/>
       <Input label="Title UA:" type="text" placeholder="Назва" onChange={() => {}}/>
       <Input label="Image :" type="url" placeholder="Image URL" onChange={() => {}}/>
-      <Select label="Type:" placeholder="---" optionArray={['meal', 'diet']} onChange={() => {}}/>
+      <SelectComponent label="Type:" multiple={false} placeholder="type"options={unitsValue} onChange={() => {}}/>
       <Button title="Submit" onClick={onSend}/>
     </div>
   );
