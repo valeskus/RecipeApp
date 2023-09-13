@@ -2,11 +2,13 @@ import './Select.style.css';
 
 // eslint-disable-next-line import/no-extraneous-dependencies
 import Select from 'react-select';
-
+export interface OptionModel {
+  value: string; label: string;
+}
 interface Props {
   label: string;
   multiple: boolean;
-  options: Array<{ value: string; label: string }>;
+  options: Array<OptionModel>;
   placeholder: string;
   onChange: (e: any) => void;
 }

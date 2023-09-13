@@ -5,7 +5,7 @@ interface Props {
   type: string;
   id?: string;
   placeholder: string;
-  onChange: (e: any) => void;
+  onChange: (value: string) => void | ((value: number) => void);
 }
 export function Input(props: Props): JSX.Element {
   return (
