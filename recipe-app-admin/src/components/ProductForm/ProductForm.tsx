@@ -1,46 +1,12 @@
-import React from 'react';
-import * as Redux from 'react-redux';
-
 import { Button } from '../common/Button';
 import { Input } from '../common/Input';
 import { SelectComponent } from '../common/Select';
+
 import './ProductForm.style.css';
-import { ProductPostModel } from '../../stores/product/types';
-import { postProducts } from '../../stores/product/productsSlice';
-import { useGetProducts } from '../../stores/product/hooks';
-import { OptionsManager } from '../managers/OptionsManager';
+import { useProductFormController } from './useProductFormController';
 
 export function ProductForm(): JSX.Element {
-  const dispatch = Redux.useDispatch();
-  const unitsValue = OptionsManager.getOptionsArray(['ml', 'g']);
-
-  const getProducts = useGetProducts();
-  React.useEffect(() => {
-    getProducts(dispatch);
-  }, []);
-
-  //TODO product state
-  const product: ProductPostModel = {
-    title: 'Arugula',
-    kCal: 75,
-    proteins: 16.7,
-    carbs: 0,
-    fats: 0.8,
-    units: 'ml',
-    translations: {
-      ua: {
-        title: 'Рукола',
-      },
-    },
-  };
-
-  const onSend = () => {
-    if (!product) {
-      return alert('Please,check data');
-    }
-
-    dispatch(postProducts(product));
-  };
+  const { unitsValue, onSend } = useProductFormController();
 
   return (
     <div className="productFormContainer">

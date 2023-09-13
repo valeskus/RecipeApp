@@ -1,22 +1,11 @@
-import { useNavigate } from 'react-router-dom';
 import './Header.style.css';
 
 import { Button } from '../common/Button';
 
+import { useHeaderController } from './useHeaderController';
+
 export function Header(): JSX.Element {
-  let navigate = useNavigate();
-
-  const openCategoryForm = () => {
-    return navigate('/categoryForm');
-  };
-
-  const openProductForm = () => {
-    return navigate('/productForm');
-  };
-
-  const openRecipeForm = () => {
-    return navigate('/recipeForm');
-  };
+  const { openCategoryForm, openProductForm, openRecipeForm } = useHeaderController();
 
   return (
     <div className="header-container ">
