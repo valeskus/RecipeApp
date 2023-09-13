@@ -53,6 +53,10 @@ export function CategoryForm(): JSX.Element {
   const dispatch = Redux.useDispatch();
 
   const onSend = useCallback(() => {
+    if (!title || !titleUA || !type) {
+      return  alert('please check the entered data');
+    }
+
     const category: CategoryPostModel = {
       title: title,
       translations: {
