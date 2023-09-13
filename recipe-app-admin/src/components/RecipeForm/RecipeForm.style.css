@@ -1,13 +1,24 @@
-.productFormContainer{
-margin: 0 auto;
-display: flex;
-flex-direction: column;
+.recipeFormContainer {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.formsContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .dynamicFormContainer {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: center;
+
 }
 
 .dynamicForm {
@@ -17,4 +28,5 @@ flex-direction: column;
     margin: 30px;
     padding: 10px;
     border: 1px dotted rgb(66, 103, 172);
+    border-radius: 10px;
 }
