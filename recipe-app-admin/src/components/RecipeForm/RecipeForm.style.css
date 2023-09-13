@@ -1,0 +1,14 @@
+.dynamicFormContainer {
+    display: flex;
+    flex-direction: row;
+}
+
+.dynamicForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 30px;
+    margin-left: 30px;
+    padding: 10px;
+    border: 1px dotted rgb(66, 103, 172);
+}
