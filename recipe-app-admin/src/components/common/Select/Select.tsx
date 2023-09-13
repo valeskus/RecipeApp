@@ -12,7 +12,6 @@ interface Props {
 }
 
 export function SelectComponent({ label, multiple, options, placeholder, onChange }: Props) {
-  //TODO: options array type
   return (
     <div className="select-container">
       <label className="select-label">{label}</label>

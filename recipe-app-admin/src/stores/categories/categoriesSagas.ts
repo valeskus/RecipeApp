@@ -21,8 +21,6 @@ export function* watchGetCategories() {
   yield takeLatest(getCategories.type, getCategoriesSaga);
 }
 
-//TODO:  How get i arguments here?
-
 export function* postCategorySaga({ payload: category }: PayloadAction<CategoryPostModel>) {
   try {
     const response: AxiosResponse<string> = yield CategoriesApi.postCategory(category);
