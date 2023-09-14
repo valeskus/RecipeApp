@@ -22,9 +22,9 @@ export const useCategoryFormController = () => {
     }
 
     if (create.error) {
-      alert(create.error);
+      alert(create.error.message);
     }
-  }, [create.status]);
+  }, [create.status, create.error]);
 
   const handleTitle = useCallback((value: string) => {
     setTitle(value);
@@ -49,9 +49,6 @@ export const useCategoryFormController = () => {
   const dispatch = Redux.useDispatch();
 
   const onSend = useCallback(() => {
-    if (!title || !titleUA || !type) {
-      return  alert('please check the entered data');
-    }
 
     const category: CategoryPostModel = {
       title: title,

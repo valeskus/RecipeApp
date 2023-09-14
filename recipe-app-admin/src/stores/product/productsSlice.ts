@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
+import { AxiosError } from 'axios';
 
 import { PRODUCTS, ProductPostModel, ProductsListModel, ProductsStateType } from './types';
 
@@ -31,9 +32,9 @@ export const productsSlice = createSlice({
       state.products.data = products.products;
 
     },
-    getProductsErrorAction: (state: ProductsStateType, { payload: error }: PayloadAction<unknown>) => {
+    getProductsErrorAction: (state: ProductsStateType, { payload: error }: PayloadAction<AxiosError>) => {
       state.products.isLoading = false;
-      state.products.error = error;
+      state.products.error = error.response?.data;
     },
 
     postProducts: (state: ProductsStateType, {}: PayloadAction<ProductPostModel>) => {
@@ -44,9 +45,9 @@ export const productsSlice = createSlice({
       state.create.isLoading = false;
       state.create.status = status;
     },
-    postProductsyErrorAction: (state: ProductsStateType, { payload: error }: PayloadAction<unknown>) => {
+    postProductsyErrorAction: (state: ProductsStateType, { payload: error }: PayloadAction<AxiosError>) => {
       state.create.isLoading = false;
-      state.create.error = error;
+      state.create.error = error.response?.data;
     },
 
   },

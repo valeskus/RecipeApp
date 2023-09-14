@@ -1,10 +1,10 @@
-import React, { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import * as Redux from 'react-redux';
 
 import './ProductForm.style.css';
-import { ProductPostModel } from '../../stores/product/types';
+import { ProductPostModel, ProductsStateType } from '../../stores/product/types';
 import { postProducts } from '../../stores/product/productsSlice';
-import { useGetProducts } from '../../stores/product/hooks';
+import { useGetProducts, useProductsStore } from '../../stores/product/hooks';
 import { OptionsManager } from '../managers/OptionsManager';
 import { OptionModel } from '../common/Select/Select';
 
@@ -21,6 +21,7 @@ export const  useProductFormController = () => {
   const unitsValue = OptionsManager.getOptionsArray(['ml', 'g']);
 
   const getProducts = useGetProducts();
+  const { create }: ProductsStateType = useProductsStore();
 
   const handleTitle = useCallback((value: string) => {
     setTitle(value);
@@ -54,9 +55,19 @@ export const  useProductFormController = () => {
     setUnits(value);
   }, [setUnits]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     getProducts(dispatch);
   }, []);
+
+  useEffect(() => {
+    if (create.status === 'Created') {
+      alert('Created successful!');
+    }
+
+    if (create.error) {
+      alert(create.error.message);
+    }
+  }, [create.status, create.error]);
 
   const onSend = useCallback(() => {
     const product: ProductPostModel = {

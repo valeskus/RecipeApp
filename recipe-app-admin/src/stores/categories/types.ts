@@ -27,7 +27,7 @@ export type CategoriesModelState = {
 
 export type CategoryCreateState = {
   status: string;
-  error: unknown | string;
+  error: any;
   isLoading: boolean;
 };
 

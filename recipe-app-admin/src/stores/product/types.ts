@@ -1,3 +1,4 @@
+
 export type ProductModel = {
   id: string;
   title: string;
@@ -34,7 +35,7 @@ export type ProductsModelState = {
 
 export type ProductCreateState = {
   status: string;
-  error: unknown | string;
+  error:  any ;
   isLoading: boolean;
 };
 

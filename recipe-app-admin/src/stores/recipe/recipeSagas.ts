@@ -1,4 +1,4 @@
-import { AxiosResponse } from 'axios';
+import { AxiosError, AxiosResponse } from 'axios';
 import { put,  takeLatest } from 'redux-saga/effects';
 import { PayloadAction } from '@reduxjs/toolkit';
 
@@ -12,7 +12,7 @@ export function* postCategorySaga({ payload: recipe }: PayloadAction<RecipePostM
     const response: AxiosResponse<string> = yield RecipesApi.postRecipe(recipe);
     yield put(postRecipeSuccessAction(response.statusText));
   } catch (error) {
-    yield put(postRecipeErrorAction(error));
+    yield put(postRecipeErrorAction(error as AxiosError));
   }
 }
 

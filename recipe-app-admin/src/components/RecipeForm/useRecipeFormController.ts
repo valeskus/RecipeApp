@@ -1,12 +1,13 @@
 import { useCallback, useEffect, useState } from 'react';
 import * as Redux from 'react-redux';
 
-import { RecipePostModel } from '../../stores/recipe/types';
+import { RecipePostModel, RecipeStateType } from '../../stores/recipe/types';
 import { postRecipe } from '../../stores/recipe/recipeSlice';
 import { useGetProducts, useProductsStore } from '../../stores/product/hooks';
 import { useCategoriesStore, useGetCategories } from '../../stores/categories';
 import { OptionsManager } from '../managers/OptionsManager';
 import { OptionModel } from '../common/Select/Select';
+import { useRecipesStore } from '../../stores/recipe/hooks';
 
 export const useRecipeFormController = () => {
   const [ingredientsFormArray, setIngredientsFormArray] = useState<Array<number>>([1]);
@@ -31,6 +32,7 @@ export const useRecipeFormController = () => {
   const getCategories = useGetCategories();
   const { products } = useProductsStore();
   const { categories } = useCategoriesStore();
+  const { create }: RecipeStateType = useRecipesStore();
 
   //TODO this value is string but you need number
   const difficultyValue = OptionsManager.getOptionsArray(['0', '1', '2']);
@@ -42,6 +44,16 @@ export const useRecipeFormController = () => {
     getCategories(dispatch);
     getProducts(dispatch);
   }, []);
+
+  useEffect(() => {
+    if (create.status === 'Created') {
+      alert('Created successful!');
+    }
+
+    if (create.error) {
+      alert(create.error.message);
+    }
+  }, [create.status, create.error]);
 
   const handleTitle = useCallback((value: string) => {
     setTitle(value);

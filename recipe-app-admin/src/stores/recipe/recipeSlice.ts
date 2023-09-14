@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
+import { AxiosError } from 'axios';
 
 import { RECIPES, RecipePostModel, RecipeStateType } from './types';
 
@@ -23,9 +24,9 @@ export const recipesSlice = createSlice({
       state.create.isLoading = false;
       state.create.status = status;
     },
-    postRecipeErrorAction: (state: RecipeStateType, { payload: error }: PayloadAction<unknown>) => {
+    postRecipeErrorAction: (state: RecipeStateType, { payload: error }: PayloadAction<AxiosError>) => {
       state.create.isLoading = false;
-      state.create.error = error;
+      state.create.error = error.response?.data;
     },
 
   },

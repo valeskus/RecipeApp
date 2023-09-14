@@ -1,7 +1,7 @@
 
 export type RecipeCreateState = {
   status: string;
-  error: unknown | string;
+  error: any;
   isLoading: boolean;
 };
 

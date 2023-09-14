@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
+import { AxiosError } from 'axios';
 
 import { CATEGORIES, CategoriesListModel, CategoriesStateType, CategoryPostModel } from './types';
 
@@ -31,9 +32,9 @@ export const categoriesSlice = createSlice({
       state.categories.data = categories.categories;
 
     },
-    getCategoriesErrorAction: (state: CategoriesStateType, { payload: error }: PayloadAction<unknown>) => {
+    getCategoriesErrorAction: (state: CategoriesStateType, { payload: error }: PayloadAction<AxiosError>) => {
       state.categories.isLoading = false;
-      state.categories.error = error;
+      state.categories.error = error.response?.data;
     },
 
     postCategory: (state: CategoriesStateType, {}: PayloadAction<CategoryPostModel>) => {
@@ -44,9 +45,9 @@ export const categoriesSlice = createSlice({
       state.create.isLoading = false;
       state.create.status = status;
     },
-    postCategoryErrorAction: (state: CategoriesStateType, { payload: error }: PayloadAction<unknown>) => {
+    postCategoryErrorAction: (state: CategoriesStateType, { payload: error }: PayloadAction<AxiosError>) => {
       state.create.isLoading = false;
-      state.create.error = error;
+      state.create.error = error.response?.data;
     },
 
   },

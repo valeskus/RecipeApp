@@ -1,4 +1,4 @@
-import { AxiosResponse } from 'axios';
+import { AxiosError, AxiosResponse } from 'axios';
 import { put,  takeLatest } from 'redux-saga/effects';
 import { PayloadAction } from '@reduxjs/toolkit';
 
@@ -13,7 +13,7 @@ export function* getCategoriesSaga() {
     const response: AxiosResponse<CategoriesListModel> = yield CategoriesApi.getCategories();
     yield put(getCategoriesSuccessAction(response.data));
   } catch (error) {
-    yield put(getCategoriesErrorAction(error));
+    yield put(getCategoriesErrorAction(error as AxiosError));
   }
 }
 
@@ -26,7 +26,7 @@ export function* postCategorySaga({ payload: category }: PayloadAction<CategoryP
     const response: AxiosResponse<string> = yield CategoriesApi.postCategory(category);
     yield put(postCategorySuccessAction(response.statusText));
   } catch (error) {
-    yield put(postCategoryErrorAction(error));
+    yield put(postCategoryErrorAction(error as AxiosError));
   }
 }
 
