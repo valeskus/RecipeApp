@@ -13,12 +13,20 @@
     justify-content: center;
 }
 
+.formItems{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: baseline;
+    flex: 1;
+    min-width: 350px;
+}
+
 .dynamicFormContainer {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-
 }
 
 .dynamicForm {

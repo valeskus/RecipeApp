@@ -34,22 +34,27 @@ export function RecipeForm(): JSX.Element {
   return (
     <div className="recipeFormContainer">
       <div className="formsContainer">
-        <Input label="Title :" type="text" placeholder="Title" onChange={handleTitle} />
-        <Input label="Title UA:" type="text" placeholder="Назва" onChange={handleUATitle} />
-        <Input label="Description:" type="text" placeholder="Description" onChange={handleDescription} />
-        <Input label="Description UA:" type="text" placeholder="опис" onChange={handleDescriptionUA} />
-        <SelectComponent label="Units:"
-          placeholder="units" multiple={false} options={unitsValue} onChange={handleUnits}
-        />
-        <Input label="Image:" type="url" placeholder="image url" onChange={handleImage} />
-        <Input label="Time:" type="number" placeholder="time in minutes" onChange={handleTime} />
-        <Input label="Amount:" type="number" placeholder="amount" onChange={handleAmount} />
-        <Input label="Servings Count:" type="number"
-          placeholder="number of servings count" onChange={handleServingsCount}
-        />
-        <SelectComponent label="Difficulty:" placeholder="---" multiple={false}
-          options={difficultyValue} onChange={handleDifficulty}
-        />
+        <div className="formItems">
+          <Input label="Title :" type="text" placeholder="Title" onChange={handleTitle} />
+          <Input label="Title UA:" type="text" placeholder="Назва" onChange={handleUATitle} />
+          <Input label="Description:" type="text" placeholder="Description" onChange={handleDescription} />
+          <Input label="Description UA:" type="text" placeholder="опис" onChange={handleDescriptionUA} />
+          <SelectComponent label="Units:"
+            placeholder="units" multiple={false} options={unitsValue} onChange={handleUnits}
+          />
+        </div>
+        <div className="formItems">
+          <Input label="Image:" type="url" placeholder="image url" onChange={handleImage} />
+          <Input label="Time:" type="number" placeholder="time in minutes" onChange={handleTime} />
+          <Input label="Amount:" type="number" placeholder="amount" onChange={handleAmount} />
+          <Input label="Servings Count:" type="number"
+            placeholder="number of servings count" onChange={handleServingsCount}
+          />
+          <SelectComponent label="Difficulty:" placeholder="---" multiple={false}
+            options={difficultyValue} onChange={handleDifficulty}
+          />
+        </div>
+
         <SelectComponent label="Categories:" placeholder="---" multiple={ true}
           options={categoriesValue} onChange={handleCategoryArray}
         />
