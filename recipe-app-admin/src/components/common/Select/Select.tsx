@@ -9,11 +9,12 @@ interface Props {
   label: string;
   multiple: boolean;
   options: Array<OptionModel>;
+  value?: OptionModel;
   placeholder: string;
   onChange: (e: any) => void;
 }
 
-export function SelectComponent({ label, multiple, options, placeholder, onChange }: Props) {
+export function SelectComponent({ label, multiple, options, value, placeholder, onChange }: Props) {
   return (
     <div className="select-container">
       <label className="select-label">{label}</label>
@@ -23,6 +24,7 @@ export function SelectComponent({ label, multiple, options, placeholder, onChang
         onChange={onChange}
         placeholder={placeholder}
         className="select"
+        value={value}
       />
     </div>
   );

@@ -1,0 +1,13 @@
+.ingredientsShowContainer{
+    display: flex;
+    flex-direction: column;
+    min-width: 370px;
+    align-items: center;
+    font-size: 1em;
+    align-items: center;
+}
+
+.showAreaContainer{
+    display: flex;
+    flex-direction: row;
+}

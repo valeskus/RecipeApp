@@ -7,14 +7,15 @@ import { SelectComponent } from '../common/Select/Select';
 import { IngredientForm } from './components/IngredientForm';
 import { InstructionForm } from './components/InstructionForm';
 import { useRecipeFormController } from './useRecipeFormController';
+import { ShowIngredientsArea } from './components/ShowIngredientsArea';
 
 export function RecipeForm(): JSX.Element {
   const { unitsValue,
     difficultyValue,
     categoriesValue,
-    ingredientsFormArray,
+    ingredients,
     productsValue,
-    onAddIngredientForm,
+    removeIngredient,
     instructionsFormArray,
     onAddInstructionForm,
     onSend,
@@ -29,6 +30,7 @@ export function RecipeForm(): JSX.Element {
     handleServingsCount,
     handleDifficulty,
     handleCategoryArray,
+    onAddIngredient,
   } = useRecipeFormController();
 
   return (
@@ -61,16 +63,14 @@ export function RecipeForm(): JSX.Element {
       </div>
       <div className="dynamicFormContainer">
         <div  className="dynamicForm">
-          {ingredientsFormArray.map((index) => {
-            return <IngredientForm products={productsValue} key={index}/>;
-          })}
-          <Button title="+" onClick={onAddIngredientForm} />
+          <IngredientForm products={productsValue} onAdd={onAddIngredient}/>
+          <ShowIngredientsArea currentProducts={ingredients} products={productsValue} onRemove={removeIngredient}/>
         </div>
         <div className="dynamicForm">
           {instructionsFormArray.map((index) => {
             return <InstructionForm key={index}/>;
           })}
-          <Button title="+" onClick={onAddInstructionForm} />
+          <Button title="+" onClick={onAddInstructionForm}/>
         </div>
       </div>
       <Button title="Submit" onClick={onSend} />

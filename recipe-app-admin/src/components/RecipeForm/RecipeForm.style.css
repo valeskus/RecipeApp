@@ -24,14 +24,15 @@
 
 .dynamicFormContainer {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
+    align-items: baseline;
 }
 
 .dynamicForm {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     margin: 30px;
     padding: 10px;

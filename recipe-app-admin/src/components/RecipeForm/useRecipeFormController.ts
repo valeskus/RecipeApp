@@ -8,6 +8,7 @@ import { useCategoriesStore, useGetCategories } from '../../stores/categories';
 import { OptionsManager } from '../managers/OptionsManager';
 import { OptionModel } from '../common/Select/Select';
 import { useRecipesStore } from '../../stores/recipe/hooks';
+import { IngredientItem } from '../../models';
 
 export const useRecipeFormController = () => {
   const [ingredientsFormArray, setIngredientsFormArray] = useState<Array<number>>([1]);
@@ -23,9 +24,9 @@ export const useRecipeFormController = () => {
   const [servingsCount, setServingsCount] = useState<number>(0);
   const [difficulty, setDifficulty] = useState<number >(0);
   const [categoriesArray, setCategoriesArray] = useState<Array<string>>([]);
-  // const [ingredient, setIngredient] = useState();
+  const [ingredients, setIngredients] = useState<Array<IngredientItem>>([]);
 
-  // const [instructions, setInstructions] = useState<number>(0);
+  // const [instructions, setInstructions] = useState<>();
 
   const dispatch = Redux.useDispatch();
   const getProducts = useGetProducts();
@@ -34,7 +35,6 @@ export const useRecipeFormController = () => {
   const { categories } = useCategoriesStore();
   const { create }: RecipeStateType = useRecipesStore();
 
-  //TODO this value is string but you need number
   const difficultyValue = OptionsManager.getOptionsArray(['0', '1', '2']);
   const unitsValue = OptionsManager.getOptionsArray(['ml', 'g']);
   const productsValue = OptionsManager.getProductOptionsArray(products);
@@ -94,7 +94,7 @@ export const useRecipeFormController = () => {
   const handleServingsCount = useCallback((value: string) => {
     setServingsCount(+value);
   }, [setServingsCount]);
-  //TODO type
+
   const handleDifficulty = useCallback(({ value }: OptionModel) => {
     if (+value !==  0 || 1 || 2) {
       return;
@@ -106,6 +106,11 @@ export const useRecipeFormController = () => {
   const handleCategoryArray = useCallback((value: Array<string>) => {
     setCategoriesArray(value);
   }, [setCategoriesArray]);
+
+  const onAddIngredient = useCallback((ingredientItem: IngredientItem) => {
+    setIngredients([...ingredients, ingredientItem]);
+    console.log([...ingredients, ingredientItem]);
+  }, [ingredients]);
 
   const onSend = useCallback(() => {
     const recipe: RecipePostModel = {
@@ -124,12 +129,7 @@ export const useRecipeFormController = () => {
       servingsCount,
       difficulty,
       categories: categoriesArray,
-      ingredients: [
-        {
-          id: '64e0a686b09d1e88b0558b02',
-          amount: 200,
-        },
-      ],
+      ingredients,
       instructions: [
         {
           description: 'Gather all your ingredients',
@@ -145,8 +145,7 @@ export const useRecipeFormController = () => {
 
     dispatch(postRecipe(recipe));
   }, [title, titleUA, description, descriptionUA, time, image,  units,
-    servingsCount,
-    difficulty]);
+    servingsCount, difficulty, ingredients]);
 
   const onAddIngredientForm = useCallback(() => {
     setIngredientsFormArray([...ingredientsFormArray, ingredientsFormArray.length + 1 ]);
@@ -156,11 +155,21 @@ export const useRecipeFormController = () => {
     setInstructionsFormArray([...instructionsFormArray, instructionsFormArray.length + 1 ]);
   }, [instructionsFormArray, setInstructionsFormArray]);
 
+  const removeIngredient = useCallback((id: string) => {
+    console.log('UP');
+    const updateIngredients =  ingredients.filter((ingredient) => {
+      return ingredient.id !== id;
+    });
+    setIngredients(updateIngredients);
+  }, [ingredients]);
+
   return {
     unitsValue,
     difficultyValue,
     categoriesValue,
     ingredientsFormArray,
+    ingredients,
+    products,
     productsValue,
     onAddIngredientForm,
     instructionsFormArray,
@@ -177,5 +186,7 @@ export const useRecipeFormController = () => {
     handleServingsCount,
     handleDifficulty,
     handleCategoryArray,
+    onAddIngredient,
+    removeIngredient,
   };
 };

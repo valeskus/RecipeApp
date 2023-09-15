@@ -13,25 +13,21 @@ export type RecipePostModel = {
   units: 'g' | 'ml';
   description: string;
   servingsCount: number;
-  instructions: [
-    {
-      description: string;
-      image: string;
-      translations: {
-        ua: {
-          description: string;
-        };
+  instructions: Array<{
+    description: string;
+    image: string;
+    translations: {
+      ua: {
+        description: string;
       };
-    },
-  ];
+    };
+  }>;
   difficulty: number;
   categories: Array<string>;
-  ingredients: [
-    {
-      id: string;
-      amount: number;
-    },
-  ];
+  ingredients: Array <{
+    id: string;
+    amount: number;
+  }>;
   translations: {
     ua: {
       title: string;
