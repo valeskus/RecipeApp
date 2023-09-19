@@ -33,9 +33,11 @@
 .dynamicForm {
     display: flex;
     flex-direction: row;
-    align-items: center;
     margin: 30px;
     padding: 10px;
     border: 1px dotted rgb(66, 103, 172);
     border-radius: 10px;
+    width: 100%;
+    align-items: flex-start;
+
 }

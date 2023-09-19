@@ -14,10 +14,9 @@ export function RecipeForm(): JSX.Element {
     difficultyValue,
     categoriesValue,
     ingredients,
+    productsList,
     productsValue,
     removeIngredient,
-    instructionsFormArray,
-    onAddInstructionForm,
     onSend,
     handleTitle,
     handleUATitle,
@@ -63,14 +62,12 @@ export function RecipeForm(): JSX.Element {
       </div>
       <div className="dynamicFormContainer">
         <div  className="dynamicForm">
-          <IngredientForm products={productsValue} onAdd={onAddIngredient}/>
+          <IngredientForm products={productsList} onAdd={onAddIngredient}/>
           <ShowIngredientsArea currentProducts={ingredients} products={productsValue} onRemove={removeIngredient}/>
         </div>
         <div className="dynamicForm">
-          {instructionsFormArray.map((index) => {
-            return <InstructionForm key={index}/>;
-          })}
-          <Button title="+" onClick={onAddInstructionForm}/>
+          <InstructionForm />;
+          <Button title="+" onClick={() => {}}/>
         </div>
       </div>
       <Button title="Submit" onClick={onSend} />

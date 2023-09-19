@@ -18,7 +18,7 @@ export function ShowIngredientsArea({ currentProducts, products, onRemove }: Pro
         <div key ={index} className="showAreaContainer">
           <h3 className="showAreaTitle">{ item.title}:         </h3>
           <h3 className="showAreaAmount">{item.amount}</h3>
-          <Button title={'X'}
+          <Button title={'delete'}
             value={item.id}
             onClick={removeIngredient}
           />

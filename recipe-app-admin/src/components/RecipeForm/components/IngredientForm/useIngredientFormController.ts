@@ -5,7 +5,7 @@ import { OptionModel } from '../../../common/Select/Select';
 
 export const useIngredientFormController = (onAdd: (value: IngredientItem) => void) => {
   const [ingredient, setIngredient] = useState<OptionModel>();
-  const [amount, setAmount] = useState<string>();
+  const [amount, setAmount] = useState<string>('');
 
   const handleIngredient = useCallback((ingredientItem: OptionModel) => {
     setIngredient(ingredientItem);

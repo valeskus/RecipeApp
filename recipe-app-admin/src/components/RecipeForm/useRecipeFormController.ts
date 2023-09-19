@@ -11,8 +11,6 @@ import { useRecipesStore } from '../../stores/recipe/hooks';
 import { IngredientItem } from '../../models';
 
 export const useRecipeFormController = () => {
-  const [ingredientsFormArray, setIngredientsFormArray] = useState<Array<number>>([1]);
-  const [instructionsFormArray, setInstructionsFormArray] = useState<Array<number>>([1]);
   const [title, setTitle] = useState<string>('');
   const [titleUA, setTitleUA] = useState<string>('');
   const [description, setDescription] = useState<string>('');
@@ -30,8 +28,8 @@ export const useRecipeFormController = () => {
 
   const dispatch = Redux.useDispatch();
   const getProducts = useGetProducts();
-  const getCategories = useGetCategories();
   const { products } = useProductsStore();
+  const getCategories = useGetCategories();
   const { categories } = useCategoriesStore();
   const { create }: RecipeStateType = useRecipesStore();
 
@@ -40,10 +38,17 @@ export const useRecipeFormController = () => {
   const productsValue = OptionsManager.getProductOptionsArray(products);
   const categoriesValue = OptionsManager.getCategoriesOptionsArray(categories);
 
+  const [productsList, setProductsList] = useState<Array<OptionModel>>([{
+    value: '', label: '',
+  }]);
+
   useEffect(() => {
     getCategories(dispatch);
     getProducts(dispatch);
   }, []);
+  useEffect(() => {
+    setProductsList(productsValue);
+  }, [products]);
 
   useEffect(() => {
     if (create.status === 'Created') {
@@ -109,8 +114,9 @@ export const useRecipeFormController = () => {
 
   const onAddIngredient = useCallback((ingredientItem: IngredientItem) => {
     setIngredients([...ingredients, ingredientItem]);
-    console.log([...ingredients, ingredientItem]);
-  }, [ingredients]);
+    setProductsList(productsList.filter((product) => product.value !== ingredientItem.id));
+
+  }, [ingredients, productsList]);
 
   const onSend = useCallback(() => {
     const recipe: RecipePostModel = {
@@ -147,33 +153,27 @@ export const useRecipeFormController = () => {
   }, [title, titleUA, description, descriptionUA, time, image,  units,
     servingsCount, difficulty, ingredients]);
 
-  const onAddIngredientForm = useCallback(() => {
-    setIngredientsFormArray([...ingredientsFormArray, ingredientsFormArray.length + 1 ]);
-  }, [ingredientsFormArray, setIngredientsFormArray]);
-
-  const onAddInstructionForm = useCallback(() => {
-    setInstructionsFormArray([...instructionsFormArray, instructionsFormArray.length + 1 ]);
-  }, [instructionsFormArray, setInstructionsFormArray]);
-
   const removeIngredient = useCallback((id: string) => {
-    console.log('UP');
     const updateIngredients =  ingredients.filter((ingredient) => {
       return ingredient.id !== id;
     });
     setIngredients(updateIngredients);
+    const removedProduct = productsValue.find((product) => product.value === id);
+    if (!removedProduct) {
+      return;
+    }
+
+    setProductsList([...productsList, removedProduct]);
   }, [ingredients]);
 
   return {
     unitsValue,
     difficultyValue,
     categoriesValue,
-    ingredientsFormArray,
     ingredients,
     products,
+    productsList,
     productsValue,
-    onAddIngredientForm,
-    instructionsFormArray,
-    onAddInstructionForm,
     onSend,
     handleTitle,
     handleUATitle,

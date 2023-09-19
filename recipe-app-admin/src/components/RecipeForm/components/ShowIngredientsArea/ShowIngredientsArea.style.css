@@ -4,7 +4,9 @@
     min-width: 370px;
     align-items: center;
     font-size: 1em;
-    align-items: center;
+    align-items: start;
+    flex:1;
+    padding-left: 40px;
 }
 
 .showAreaContainer{

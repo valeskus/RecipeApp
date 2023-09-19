@@ -16,16 +16,14 @@ export function IngredientForm({ products, onAdd }: Props): JSX.Element {
     handleAmount, addChanges, amount, ingredient } = useIngredientFormController(onAdd);
 
   return (
-    <div>
-      <div className="ingredientFormContainer">
-        <h2>Ingredient Form :</h2>
-        <SelectComponent label="Product:" placeholder="product"
-          multiple={false} options={products} onChange={handleIngredient}
-          value={ingredient}
-        />
-        <Input label="Amount:" type="number" placeholder="amount" value={`${amount}`} onChange={handleAmount} />
-        <Button title="ok" onClick={addChanges} />
-      </div>
+    <div className="ingredientFormContainer">
+      <h2>Ingredient Form :</h2>
+      <SelectComponent label="Product:" placeholder="product"
+        multiple={false} options={products} onChange={handleIngredient}
+        value={ingredient}
+      />
+      <Input label="Amount:" type="number" placeholder="amount" value={`${amount}`} onChange={handleAmount} />
+      <Button title="OK" onClick={addChanges} />
     </div>
   );
 }
