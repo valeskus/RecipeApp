@@ -8,7 +8,9 @@
 
 .showInstructionItemContainer {
     display: flex;
-    border: 1px solid gainsboro
+    border: 1px solid gainsboro;
+    margin-bottom: 5px;
+    padding: 5px;
 }
 
 .showInstructionItem {

@@ -56,10 +56,11 @@ export function RecipeForm(): JSX.Element {
             options={difficultyValue} onChange={handleDifficulty}
           />
         </div>
-
-        <SelectComponent label="Categories:" placeholder="---" multiple={ true}
-          options={categoriesValue} onChange={handleCategoryArray}
-        />
+        <div className="formItems">
+          <SelectComponent label="Categories:" placeholder="---" multiple={ true}
+            options={categoriesValue} onChange={handleCategoryArray}
+          />
+        </div>
       </div>
       <div className="dynamicFormContainer">
         <div  className="dynamicForm">

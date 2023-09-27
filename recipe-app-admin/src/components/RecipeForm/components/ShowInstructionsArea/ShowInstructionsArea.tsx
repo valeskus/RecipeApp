@@ -1,6 +1,3 @@
-/* eslint-disable max-len */
-/* eslint-disable spellcheck/spell-checker */
-
 import './ShowInstructionsArea.style.css';
 import { Button } from '../../../common/Button';
 import { InstructionItem } from '../../../../models';
@@ -8,6 +5,24 @@ import { InstructionItem } from '../../../../models';
 export function ShowInstructionsArea(): JSX.Element {
   const arr: Array<InstructionItem> = [
 
+    { description: 'description',
+
+      translations: {
+        ua: {
+          description: 'Опис',
+        },
+      },
+      image: 'image',
+    },
+    { description: 'description',
+
+      translations: {
+        ua: {
+          description: 'Опис',
+        },
+      },
+      image: 'image',
+    },
     { description: 'description',
 
       translations: {
