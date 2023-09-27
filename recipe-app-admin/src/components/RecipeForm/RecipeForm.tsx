@@ -8,6 +8,7 @@ import { IngredientForm } from './components/IngredientForm';
 import { InstructionForm } from './components/InstructionForm';
 import { useRecipeFormController } from './useRecipeFormController';
 import { ShowIngredientsArea } from './components/ShowIngredientsArea';
+import { ShowInstructionsArea } from './components/ShowInstructionsArea';
 
 export function RecipeForm(): JSX.Element {
   const { unitsValue,
@@ -66,8 +67,8 @@ export function RecipeForm(): JSX.Element {
           <ShowIngredientsArea currentProducts={ingredients} products={productsValue} onRemove={removeIngredient}/>
         </div>
         <div className="dynamicForm">
-          <InstructionForm />;
-          <Button title="+" onClick={() => {}}/>
+          <InstructionForm />
+          <ShowInstructionsArea/>
         </div>
       </div>
       <Button title="Submit" onClick={onSend} />

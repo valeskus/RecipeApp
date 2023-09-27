@@ -16,8 +16,8 @@ export function ShowIngredientsArea({ currentProducts, products, onRemove }: Pro
     arrayWithTitle().map((item, index) => {
       return (
         <div key ={index} className="showAreaContainer">
-          <h3 className="showAreaTitle">{ item.title}:         </h3>
-          <h3 className="showAreaAmount">{item.amount}</h3>
+          <h3 className="showAreaTitle">{item.title}:</h3>
+          <p className="showAreaAmount">{item.amount}</p>
           <Button title={'delete'}
             value={item.id}
             onClick={removeIngredient}
