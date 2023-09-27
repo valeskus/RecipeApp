@@ -12,17 +12,20 @@ export function App(): JSX.Element {
       <Header/>
       <Routes>
         <Route
+          path="/"
+          element={<div><p>Hello</p></div>}
+        />
+
+        <Route
           path="/categoryForm"
           element={<CategoryForm />}
         />
-      </Routes>
-      <Routes>
+
         <Route
           path="/productForm"
           element={<ProductForm />}
         />
-      </Routes>
-      <Routes>
+
         <Route
           path="/recipeForm"
           element={<RecipeForm />}
