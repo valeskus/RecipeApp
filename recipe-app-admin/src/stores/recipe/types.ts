@@ -15,7 +15,7 @@ export type RecipePostModel = {
   servingsCount: number;
   instructions: Array<{
     description: string;
-    image: string;
+    image?: string;
     translations: {
       ua: {
         description: string;

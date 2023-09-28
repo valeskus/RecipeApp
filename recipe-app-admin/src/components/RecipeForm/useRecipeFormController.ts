@@ -8,7 +8,7 @@ import { useCategoriesStore, useGetCategories } from '../../stores/categories';
 import { OptionsManager } from '../managers/OptionsManager';
 import { OptionModel } from '../common/Select/Select';
 import { useRecipesStore } from '../../stores/recipe/hooks';
-import { IngredientItem } from '../../models';
+import { IngredientItem, InstructionItem } from '../../models';
 
 export const useRecipeFormController = () => {
   const [title, setTitle] = useState<string>('');
@@ -23,8 +23,7 @@ export const useRecipeFormController = () => {
   const [difficulty, setDifficulty] = useState<number >(0);
   const [categoriesArray, setCategoriesArray] = useState<Array<string>>([]);
   const [ingredients, setIngredients] = useState<Array<IngredientItem>>([]);
-
-  // const [instructions, setInstructions] = useState<>();
+  const [instructions, setInstructions] = useState<Array<InstructionItem>>([]);
 
   const dispatch = Redux.useDispatch();
   const getProducts = useGetProducts();
@@ -108,16 +107,41 @@ export const useRecipeFormController = () => {
     setDifficulty(+value);
   }, [setDifficulty]);
 
-  const handleCategoryArray = useCallback((value: Array<string>) => {
-    setCategoriesArray(value);
+  const handleCategoryArray = useCallback((arrayOfCategories: Array<OptionModel>) => {
+    const stringArray = arrayOfCategories.map((item) => {
+      return item.value;
+    });
+    setCategoriesArray(stringArray);
   }, [setCategoriesArray]);
 
   const onAddIngredient = useCallback((ingredientItem: IngredientItem) => {
     setIngredients([...ingredients, ingredientItem]);
     setProductsList(productsList.filter((product) => product.value !== ingredientItem.id));
-
   }, [ingredients, productsList]);
 
+  const removeIngredient = useCallback((id: string) => {
+    const updateIngredients =  ingredients.filter((ingredient) => {
+      return ingredient.id !== id;
+    });
+    setIngredients(updateIngredients);
+    const removedProduct = productsValue.find((product) => product.value === id);
+    if (!removedProduct) {
+      return;
+    }
+
+    setProductsList([...productsList, removedProduct]);
+  }, [ingredients]);
+
+  const onAddInstruction = useCallback((instructionItem: InstructionItem) => {
+    setInstructions([...instructions, instructionItem]);
+  }, [instructions]);
+
+  const removeInstruction = useCallback((itemDescription: string) => {
+    const updateInstructions =  instructions.filter((instruction) => {
+      return instruction.description !== itemDescription;
+    });
+    setInstructions(updateInstructions);
+  }, [ingredients]);
   const onSend = useCallback(() => {
     const recipe: RecipePostModel = {
       title,
@@ -136,41 +160,19 @@ export const useRecipeFormController = () => {
       difficulty,
       categories: categoriesArray,
       ingredients,
-      instructions: [
-        {
-          description: 'Gather all your ingredients',
-          translations: {
-            ua: {
-              description: 'Gather all your ingredients',
-            },
-          },
-          image: 'https://picsum.photos/500/500',
-        },
-      ],
+      instructions,
     };
 
     dispatch(postRecipe(recipe));
-  }, [title, titleUA, description, descriptionUA, time, image,  units,
-    servingsCount, difficulty, ingredients]);
-
-  const removeIngredient = useCallback((id: string) => {
-    const updateIngredients =  ingredients.filter((ingredient) => {
-      return ingredient.id !== id;
-    });
-    setIngredients(updateIngredients);
-    const removedProduct = productsValue.find((product) => product.value === id);
-    if (!removedProduct) {
-      return;
-    }
-
-    setProductsList([...productsList, removedProduct]);
-  }, [ingredients]);
+  }, [title, titleUA, description, descriptionUA, categoriesArray, time, image,  units,
+    servingsCount, difficulty, ingredients, instructions]);
 
   return {
     unitsValue,
     difficultyValue,
     categoriesValue,
     ingredients,
+    instructions,
     products,
     productsList,
     productsValue,
@@ -187,6 +189,8 @@ export const useRecipeFormController = () => {
     handleDifficulty,
     handleCategoryArray,
     onAddIngredient,
+    onAddInstruction,
     removeIngredient,
+    removeInstruction,
   };
 };

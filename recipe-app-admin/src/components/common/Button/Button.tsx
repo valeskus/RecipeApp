@@ -5,15 +5,17 @@ interface Props {
   title: string;
   onClick: MouseEventHandler<HTMLButtonElement>;
   value?: string;
+  disabled?: boolean;
 }
 
-export function Button({ title, onClick, value }: Props): JSX.Element {
+export function Button({ title, onClick, value, disabled }: Props): JSX.Element {
   return (
     <button
       type={'button'}
       onClick={onClick}
       className="button"
       value={value}
+      disabled ={disabled}
     >
       {title}
     </button>

@@ -15,9 +15,9 @@ export function RecipeForm(): JSX.Element {
     difficultyValue,
     categoriesValue,
     ingredients,
+    instructions,
     productsList,
     productsValue,
-    removeIngredient,
     onSend,
     handleTitle,
     handleUATitle,
@@ -31,6 +31,9 @@ export function RecipeForm(): JSX.Element {
     handleDifficulty,
     handleCategoryArray,
     onAddIngredient,
+    onAddInstruction,
+    removeIngredient,
+    removeInstruction,
   } = useRecipeFormController();
 
   return (
@@ -68,8 +71,8 @@ export function RecipeForm(): JSX.Element {
           <ShowIngredientsArea currentProducts={ingredients} products={productsValue} onRemove={removeIngredient}/>
         </div>
         <div className="dynamicForm">
-          <InstructionForm />
-          <ShowInstructionsArea/>
+          <InstructionForm onChange = {onAddInstruction}/>
+          <ShowInstructionsArea onRemove={removeInstruction} instructions={instructions}/>
         </div>
       </div>
       <Button title="Submit" onClick={onSend} />

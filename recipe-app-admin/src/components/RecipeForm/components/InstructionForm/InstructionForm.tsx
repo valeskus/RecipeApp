@@ -2,24 +2,33 @@ import { Button } from '../../../common/Button';
 import { Input } from '../../../common/Input';
 
 import './InstructionForm.style.css';
-import { useInstructionsFormController } from './useInstructionsFormController';
+import { InstructionsFormControllerParams, useInstructionsFormController } from './useInstructionsFormController';
 
-interface Props {
-}
+interface Props extends InstructionsFormControllerParams {}
 
-export function InstructionForm({}: Props): JSX.Element {
+export function InstructionForm(props: Props): JSX.Element {
   const { handleDescription,
     handleDescriptionUA,
     handleImage,
-  } = useInstructionsFormController();
+    addChanges,
+    description,
+    descriptionUA,
+    image,
+  } = useInstructionsFormController(props);
 
   return (
     <div className="instructionFormContainer">
       <h2>Instruction Form :</h2>
-      <Input label="Description:" type="text" placeholder="description" onChange={handleDescription} />
-      <Input label="Description UA:" type="text" placeholder="інструкція" onChange={handleDescriptionUA} />
-      <Input label="Image:" type="url" placeholder="image url" onChange={handleImage} />
-      <Button title="OK" onClick={() => {}} />
+      <Input label="Description:" type="text" placeholder="description"
+        onChange={handleDescription}  value={description}
+      />
+      <Input label="Description UA:" type="text" placeholder="інструкція"
+        onChange={handleDescriptionUA} value={descriptionUA}
+      />
+      <Input label="Image:" type="url" placeholder="image url"
+        onChange={handleImage}  value={image}
+      />
+      <Button title="OK" onClick={addChanges} />
     </div>
   );
 }

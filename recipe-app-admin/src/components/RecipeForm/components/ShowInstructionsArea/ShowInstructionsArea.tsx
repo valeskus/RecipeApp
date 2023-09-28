@@ -1,43 +1,19 @@
 import './ShowInstructionsArea.style.css';
 import { Button } from '../../../common/Button';
-import { InstructionItem } from '../../../../models';
 
-export function ShowInstructionsArea(): JSX.Element {
-  const arr: Array<InstructionItem> = [
+import { ShowInstructionsAreaControllerParams,
+  useShowInstructionsAreaController } from './useShowInstructionsAreaController';
 
-    { description: 'description',
+interface Props extends ShowInstructionsAreaControllerParams {}
 
-      translations: {
-        ua: {
-          description: 'Опис',
-        },
-      },
-      image: 'image',
-    },
-    { description: 'description',
+export function ShowInstructionsArea(props: Props): JSX.Element {
 
-      translations: {
-        ua: {
-          description: 'Опис',
-        },
-      },
-      image: 'image',
-    },
-    { description: 'description',
-
-      translations: {
-        ua: {
-          description: 'Опис',
-        },
-      },
-      image: 'image',
-    },
-  ];
+  const { removeInstruction } = useShowInstructionsAreaController(props);
 
   return (
     <div className="showInstructionsContainer">
       {
-    arr.map((item, index) => {
+    props.instructions.map((item, index) => {
       return (
         <div key ={index} className="showInstructionItemContainer">
           <div>
@@ -48,8 +24,8 @@ export function ShowInstructionsArea(): JSX.Element {
             <p className="showInstructionContent">{item.translations.ua.description}</p>
             {item.image && <p className="showInstructionContent">{item.image}</p>}
 
-            <Button title={'delete'}
-              onClick={() => {}}
+            <Button title={'delete'} value={item.description}
+              onClick={removeInstruction}
             />
           </div>
 
