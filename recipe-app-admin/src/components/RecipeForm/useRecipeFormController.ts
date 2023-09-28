@@ -164,6 +164,8 @@ export const useRecipeFormController = () => {
     };
 
     dispatch(postRecipe(recipe));
+    setTitle(''); setTitleUA(''); setDescription(''); setDescriptionUA(''); setAmount(0);
+    setImage(''); setIngredients([]); setInstructions([]); setServingsCount(0); setTime(0);
   }, [title, titleUA, description, descriptionUA, categoriesArray, time, image,  units,
     servingsCount, difficulty, ingredients, instructions]);
 
@@ -192,5 +194,7 @@ export const useRecipeFormController = () => {
     onAddInstruction,
     removeIngredient,
     removeInstruction,
+    title, titleUA, description, descriptionUA, time, image,
+    servingsCount, amount,
   };
 };

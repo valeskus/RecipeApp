@@ -9,7 +9,7 @@ interface Props {
   label: string;
   multiple: boolean;
   options: Array<OptionModel>;
-  value?: OptionModel;
+  value?: OptionModel | null;
   placeholder: string;
   onChange: (e: any) => void;
 }

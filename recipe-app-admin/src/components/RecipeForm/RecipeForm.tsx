@@ -34,33 +34,45 @@ export function RecipeForm(): JSX.Element {
     onAddInstruction,
     removeIngredient,
     removeInstruction,
+    title,
+    titleUA,
+    description,
+    descriptionUA,
+    time,
+    amount,
+    image,
+    servingsCount,
   } = useRecipeFormController();
 
   return (
     <div className="recipeFormContainer">
       <div className="formsContainer">
         <div className="formItems">
-          <Input label="Title :" type="text" placeholder="Title" onChange={handleTitle} />
-          <Input label="Title UA:" type="text" placeholder="Назва" onChange={handleUATitle} />
-          <Input label="Description:" type="text" placeholder="Description" onChange={handleDescription} />
-          <Input label="Description UA:" type="text" placeholder="опис" onChange={handleDescriptionUA} />
+          <Input label="Title :" type="text" placeholder="Title" onChange={handleTitle} value={title}/>
+          <Input label="Title UA:" type="text" placeholder="Назва" onChange={handleUATitle}  value={titleUA}/>
+          <Input label="Description:" type="text" placeholder="Description"
+            onChange={handleDescription}  value={description}
+          />
+          <Input label="Description UA:" type="text" placeholder="опис"
+            onChange={handleDescriptionUA} value={descriptionUA}
+          />
           <SelectComponent label="Units:"
             placeholder="units" multiple={false} options={unitsValue} onChange={handleUnits}
           />
         </div>
         <div className="formItems">
-          <Input label="Image:" type="url" placeholder="image url" onChange={handleImage} />
-          <Input label="Time:" type="number" placeholder="time in minutes" onChange={handleTime} />
-          <Input label="Amount:" type="number" placeholder="amount" onChange={handleAmount} />
+          <Input label="Image:" type="url" placeholder="image url" onChange={handleImage} value={image}/>
+          <Input label="Time:" type="number" placeholder="time in minutes" onChange={handleTime} value={`${time}`}/>
+          <Input label="Amount:" type="number" placeholder="amount" onChange={handleAmount} value={`${amount}`}/>
           <Input label="Servings Count:" type="number"
-            placeholder="number of servings count" onChange={handleServingsCount}
+            placeholder="number of servings count" onChange={handleServingsCount} value={`${servingsCount}`}
           />
           <SelectComponent label="Difficulty:" placeholder="---" multiple={false}
             options={difficultyValue} onChange={handleDifficulty}
           />
         </div>
         <div className="formItems">
-          <SelectComponent label="Categories:" placeholder="---" multiple={ true}
+          <SelectComponent label="Categories:" placeholder="---" multiple={true}
             options={categoriesValue} onChange={handleCategoryArray}
           />
         </div>
