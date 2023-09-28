@@ -15,6 +15,7 @@ interface Props {
 }
 
 export function SelectComponent({ label, multiple, options, value, placeholder, onChange }: Props) {
+
   return (
     <div className="select-container">
       <label className="select-label">{label}</label>
@@ -25,6 +26,7 @@ export function SelectComponent({ label, multiple, options, value, placeholder, 
         placeholder={placeholder}
         className="select"
         value={value}
+        isClearable={true}
       />
     </div>
   );
