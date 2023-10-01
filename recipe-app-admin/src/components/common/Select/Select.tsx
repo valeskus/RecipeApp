@@ -9,12 +9,13 @@ interface Props {
   label: string;
   multiple: boolean;
   options: Array<OptionModel>;
-  value?: OptionModel | null;
+  value?: OptionModel | null | Array<OptionModel>;
   placeholder: string;
   onChange: (e: any) => void;
+  onBlur?: () => void;
 }
 
-export function SelectComponent({ label, multiple, options, value, placeholder, onChange }: Props) {
+export function SelectComponent({ label, multiple, options, value, placeholder, onChange, onBlur }: Props) {
 
   return (
     <div className="select-container">
@@ -27,6 +28,7 @@ export function SelectComponent({ label, multiple, options, value, placeholder, 
         className="select"
         value={value}
         isClearable={true}
+        onBlur={onBlur}
       />
     </div>
   );

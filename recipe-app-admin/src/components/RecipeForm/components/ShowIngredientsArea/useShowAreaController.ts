@@ -22,7 +22,6 @@ export const useShowIngredientsAreaController = ({
   }, [currentProducts, products]);
 
   const removeIngredient = useCallback((e: any) => {
-    console.log(e.target.value);
     onRemove(e.target.value);
   }, [onRemove]);
 

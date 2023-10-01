@@ -22,6 +22,8 @@ export const useRecipeFormController = () => {
   const { categories } = useCategoriesStore();
   const { create }: RecipeStateType = useRecipesStore();
 
+  const [status, setStatus] = useState<string>(create.status);
+
   const productsValue = OptionsManager.getProductOptionsArray(products);
   const categoriesValue = OptionsManager.getCategoriesOptionsArray(categories);
 
@@ -33,18 +35,21 @@ export const useRecipeFormController = () => {
     getCategories(dispatch);
     getProducts(dispatch);
   }, []);
+
   useEffect(() => {
     setProductsList(productsValue);
   }, [products]);
 
   const handleGeneralForm = useCallback((generalFormValue: Omit<RecipePostModel, 'ingredients' | 'instructions'>) => {
     setGeneralForm(generalFormValue);
-    console.log(1, generalFormValue);
   }, [setGeneralForm]);
 
   useEffect(() => {
+    setStatus(create.status);
     if (create.status === 'Created') {
       alert('Created successful!');
+      setIngredients([]);
+      setInstructions([]);
     }
 
     if (create.error) {
@@ -93,7 +98,7 @@ export const useRecipeFormController = () => {
 
     dispatch(postRecipe(recipe));
 
-  }, [ ingredients, instructions]);
+  }, [ generalForm, ingredients, instructions]);
 
   return {
     categoriesValue,
@@ -108,5 +113,6 @@ export const useRecipeFormController = () => {
     removeIngredient,
     removeInstruction,
     handleGeneralForm,
+    status,
   };
 };

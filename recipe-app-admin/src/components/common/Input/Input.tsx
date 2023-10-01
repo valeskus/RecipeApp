@@ -6,6 +6,7 @@ interface Props {
   id?: string;
   placeholder: string;
   onChange: (value: (string)) => void ;
+  onBlur?: () => void ;
 }
 export function Input(props: Props): JSX.Element {
   return (
@@ -20,6 +21,7 @@ export function Input(props: Props): JSX.Element {
         id={props.id}
         className="input"
         placeholder={props.placeholder}
+        onBlur={props.onBlur}
       />
     </div>
   );

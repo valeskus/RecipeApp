@@ -15,6 +15,7 @@ export function RecipeForm(): JSX.Element {
     instructions,
     productsList,
     productsValue,
+    status,
     onSend,
     onAddIngredient,
     onAddInstruction,
@@ -25,7 +26,7 @@ export function RecipeForm(): JSX.Element {
 
   return (
     <div className="recipeFormContainer">
-      <GeneralInfoForm onChange={handleGeneralForm}/>
+      <GeneralInfoForm onChange={handleGeneralForm} status={status}/>
       <div className="dynamicFormContainer">
         <div  className="dynamicForm">
           <IngredientForm products={productsList} onAdd={onAddIngredient}/>
