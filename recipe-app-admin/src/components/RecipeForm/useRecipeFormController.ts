@@ -11,19 +11,9 @@ import { useRecipesStore } from '../../stores/recipe/hooks';
 import { IngredientItem, InstructionItem } from '../../models';
 
 export const useRecipeFormController = () => {
-  const [title, setTitle] = useState<string>('');
-  const [titleUA, setTitleUA] = useState<string>('');
-  const [description, setDescription] = useState<string>('');
-  const [descriptionUA, setDescriptionUA] = useState<string>('');
-  const [units, setUnits] = useState<'g' | 'ml'>('g');
-  const [image, setImage] = useState<string>('');
-  const [time, setTime] = useState<number>(0);
-  const [amount, setAmount] = useState<number>(0);
-  const [servingsCount, setServingsCount] = useState<number>(0);
-  const [difficulty, setDifficulty] = useState<number >(0);
-  const [categoriesArray, setCategoriesArray] = useState<Array<string>>([]);
   const [ingredients, setIngredients] = useState<Array<IngredientItem>>([]);
   const [instructions, setInstructions] = useState<Array<InstructionItem>>([]);
+  const [generalForm, setGeneralForm] = useState<Omit<RecipePostModel, 'ingredients' | 'instructions'>>();
 
   const dispatch = Redux.useDispatch();
   const getProducts = useGetProducts();
@@ -32,8 +22,6 @@ export const useRecipeFormController = () => {
   const { categories } = useCategoriesStore();
   const { create }: RecipeStateType = useRecipesStore();
 
-  const difficultyValue = OptionsManager.getOptionsArray(['0', '1', '2']);
-  const unitsValue = OptionsManager.getOptionsArray(['ml', 'g']);
   const productsValue = OptionsManager.getProductOptionsArray(products);
   const categoriesValue = OptionsManager.getCategoriesOptionsArray(categories);
 
@@ -49,6 +37,11 @@ export const useRecipeFormController = () => {
     setProductsList(productsValue);
   }, [products]);
 
+  const handleGeneralForm = useCallback((generalFormValue: Omit<RecipePostModel, 'ingredients' | 'instructions'>) => {
+    setGeneralForm(generalFormValue);
+    console.log(1, generalFormValue);
+  }, [setGeneralForm]);
+
   useEffect(() => {
     if (create.status === 'Created') {
       alert('Created successful!');
@@ -58,61 +51,6 @@ export const useRecipeFormController = () => {
       alert(create.error.message);
     }
   }, [create.status, create.error]);
-
-  const handleTitle = useCallback((value: string) => {
-    setTitle(value);
-  }, [setTitle]);
-
-  const handleUATitle = useCallback((value: string) => {
-    setTitleUA(value);
-  }, [setTitleUA]);
-
-  const handleDescription = useCallback((value: string) => {
-    setDescription(value);
-  }, [setDescription]);
-
-  const handleDescriptionUA = useCallback((value: string) => {
-    setDescriptionUA(value);
-  }, [setDescriptionUA]);
-
-  const handleUnits = useCallback(({ value }: OptionModel) => {
-    if (value !== 'g' || 'ml') {
-      return;
-    }
-
-    setUnits(value);
-  }, [setUnits]);
-
-  const handleImage = useCallback((value: string) => {
-    setImage(value);
-  }, [setImage]);
-
-  const handleTime = useCallback((value: string) => {
-    setTime(+value);
-  }, [setTime]);
-
-  const handleAmount = useCallback((value: string) => {
-    setAmount(+value);
-  }, [setAmount]);
-
-  const handleServingsCount = useCallback((value: string) => {
-    setServingsCount(+value);
-  }, [setServingsCount]);
-
-  const handleDifficulty = useCallback(({ value }: OptionModel) => {
-    if (+value !==  0 || 1 || 2) {
-      return;
-    }
-
-    setDifficulty(+value);
-  }, [setDifficulty]);
-
-  const handleCategoryArray = useCallback((arrayOfCategories: Array<OptionModel>) => {
-    const stringArray = arrayOfCategories.map((item) => {
-      return item.value;
-    });
-    setCategoriesArray(stringArray);
-  }, [setCategoriesArray]);
 
   const onAddIngredient = useCallback((ingredientItem: IngredientItem) => {
     setIngredients([...ingredients, ingredientItem]);
@@ -143,35 +81,21 @@ export const useRecipeFormController = () => {
     setInstructions(updateInstructions);
   }, [ingredients]);
   const onSend = useCallback(() => {
+    if (!generalForm) {
+      return;
+    }
+
     const recipe: RecipePostModel = {
-      title,
-      description,
-      translations: {
-        ua: {
-          title: titleUA,
-          description: descriptionUA,
-        },
-      },
-      time,
-      image,
-      amount,
-      units,
-      servingsCount,
-      difficulty,
-      categories: categoriesArray,
+      ...generalForm,
       ingredients,
       instructions,
     };
 
     dispatch(postRecipe(recipe));
-    setTitle(''); setTitleUA(''); setDescription(''); setDescriptionUA(''); setAmount(0);
-    setImage(''); setIngredients([]); setInstructions([]); setServingsCount(0); setTime(0);
-  }, [title, titleUA, description, descriptionUA, categoriesArray, time, image,  units,
-    servingsCount, difficulty, ingredients, instructions]);
+
+  }, [ ingredients, instructions]);
 
   return {
-    unitsValue,
-    difficultyValue,
     categoriesValue,
     ingredients,
     instructions,
@@ -179,22 +103,10 @@ export const useRecipeFormController = () => {
     productsList,
     productsValue,
     onSend,
-    handleTitle,
-    handleUATitle,
-    handleDescription,
-    handleDescriptionUA,
-    handleUnits,
-    handleImage,
-    handleTime,
-    handleAmount,
-    handleServingsCount,
-    handleDifficulty,
-    handleCategoryArray,
     onAddIngredient,
     onAddInstruction,
     removeIngredient,
     removeInstruction,
-    title, titleUA, description, descriptionUA, time, image,
-    servingsCount, amount,
+    handleGeneralForm,
   };
 };
