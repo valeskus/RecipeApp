@@ -6,6 +6,7 @@ import { ProductForm } from './components/ProductForm';
 import { RecipeForm } from './components/RecipeForm';
 import { FormManager } from './components/common/FormManager';
 import { MainPage } from './components/MainPage';
+import { CategoriesArrayForm } from './components/CategoryForm/components/CateroriesArrayForm';
 
 export function App(): JSX.Element {
 
@@ -26,6 +27,11 @@ export function App(): JSX.Element {
         <Route
           path="/categoryForm"
           element={<CategoryForm />}
+        />
+
+        <Route
+          path="/categoriesArrayForm"
+          element={<CategoriesArrayForm />}
         />
 
         <Route
