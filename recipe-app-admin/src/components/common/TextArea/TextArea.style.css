@@ -1,0 +1,10 @@
+.textArea-container{
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+}
+
+.textArea{
+    width: 100%;
+    height: 300px;
+}
