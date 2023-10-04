@@ -23,7 +23,7 @@ export function IngredientForm({ products, onAdd }: Props): JSX.Element {
         value={ingredient}
       />
       <Input label="Amount:" type="number" placeholder="amount (g/ml)" value={`${amount}`} onChange={handleAmount} />
-      <Button title="OK" onClick={addChanges} />
+      <Button title="OK" onClick={addChanges} disabled={!amount || !ingredient}/>
     </div>
   );
 }

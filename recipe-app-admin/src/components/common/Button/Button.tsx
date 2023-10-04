@@ -13,7 +13,7 @@ export function Button({ title, onClick, value, disabled }: Props): JSX.Element 
     <button
       type={'button'}
       onClick={onClick}
-      className="button"
+      className={[disabled && 'disabled', 'button'].join(' ')}
       value={value}
       disabled ={disabled}
     >

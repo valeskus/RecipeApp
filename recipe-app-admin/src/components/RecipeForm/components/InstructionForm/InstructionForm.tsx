@@ -28,7 +28,9 @@ export function InstructionForm(props: Props): JSX.Element {
       <Input label="Image:" type="url" placeholder="image url"
         onChange={handleImage}  value={image}
       />
-      <Button title="OK" onClick={addChanges} />
+      <Button title="OK" onClick={addChanges} disabled={   !description ||
+    !descriptionUA}
+      />
     </div>
   );
 }

@@ -5,9 +5,10 @@ interface Props {
   onClick: MouseEventHandler<HTMLButtonElement>;
   value?: string;
   icon?: string;
+  big?: boolean;
 }
 
-export function IconButton({  onClick, value, icon }: Props): JSX.Element {
+export function IconButton({  onClick, value, icon, big }: Props): JSX.Element {
   return (
     <button
       type={'button'}
@@ -15,7 +16,7 @@ export function IconButton({  onClick, value, icon }: Props): JSX.Element {
       className="icon-button-container"
       value={value}
     >
-      { icon &&  <img className= "button-icon" src={icon} alt="home" />
+      { icon &&  <img className= {[big ? 'big-icon' : 'icon'].join(' ')} src={icon} alt="home" />
 }    </button>
   );
 }

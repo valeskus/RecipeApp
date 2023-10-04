@@ -1,5 +1,7 @@
 import './ShowInstructionsArea.style.css';
-import { Button } from '../../../common/Button';
+
+import { Icons } from '../../../../Icons';
+import { IconButton } from '../../../common/IconButton';
 
 import { ShowInstructionsAreaControllerParams,
   useShowInstructionsAreaController } from './useShowInstructionsAreaController';
@@ -24,7 +26,8 @@ export function ShowInstructionsArea(props: Props): JSX.Element {
             <p className="showInstructionContent">{item.translations.ua.description}</p>
             {item.image && <p className="showInstructionContent">{item.image}</p>}
 
-            <Button title={'delete'} value={item.description}
+            <IconButton icon={Icons.bin}
+              value={item.description}
               onClick={removeInstruction}
             />
           </div>

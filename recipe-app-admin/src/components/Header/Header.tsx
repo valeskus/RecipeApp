@@ -15,7 +15,7 @@ export function Header(): JSX.Element {
     <div className="header-container">
       {/* eslint-disable-next-line spellcheck/spell-checker */}
       {location.pathname !== '/' && (<div className="header-buttons">
-        <IconButton  onClick={openMainPage} icon={Icons.home}/>
+        <IconButton  onClick={openMainPage} icon={Icons.home} big={true}/>
       </div>) }
       <p className="logo">Recipe App</p>
     </div>

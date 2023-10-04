@@ -12,10 +12,11 @@
 .showAreaContainer{
     display: flex;
     flex-direction: row;
+    align-items: center;
 }
 
 .showAreaAmount{
-    font-size: 1em;
+    font-size: 1.1em;
     align-self: center;
     padding-left: 5px;
 }

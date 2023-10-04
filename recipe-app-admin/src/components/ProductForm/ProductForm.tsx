@@ -18,13 +18,17 @@ export function ProductForm(): JSX.Element {
 
   return (
     <div className="productFormContainer">
-      <Input label="Title :" type="text" placeholder="Title" onChange={handleTitle} />
-      <Input label="Title UA:" type="text" placeholder="Назва" onChange={handleUATitle} />
-      <Input label="kCal :" type="number" placeholder="kCal" onChange={handleKCal} />
-      <Input label="Proteins :" type="number" placeholder="proteins" onChange={handleProteins} />
-      <Input label="Carbs :" type="number" placeholder="carbs" onChange={handleCarbs} />
-      <Input label="Fats :" type="number" placeholder="fats" onChange={handleFats} />
-      <SelectComponent label="Units:" placeholder="units" multiple={false} options={unitsValue} onChange={handleUnits}/>
+      <div className="product-form">
+        <Input label="Title :" type="text" placeholder="Title" onChange={handleTitle} />
+        <Input label="Title UA:" type="text" placeholder="Назва" onChange={handleUATitle} />
+        <Input label="kCal :" type="number" placeholder="kCal" onChange={handleKCal} />
+        <Input label="Proteins :" type="number" placeholder="proteins" onChange={handleProteins} />
+        <Input label="Carbs :" type="number" placeholder="carbs" onChange={handleCarbs} />
+        <Input label="Fats :" type="number" placeholder="fats" onChange={handleFats} />
+        <SelectComponent label="Units:" placeholder="units" multiple={false} options={unitsValue}
+          onChange={handleUnits}
+        />
+      </div>
       <Button title="Submit" onClick={onSend} />
     </div>
   );

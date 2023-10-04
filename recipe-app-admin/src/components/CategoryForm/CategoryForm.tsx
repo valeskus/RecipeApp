@@ -10,10 +10,12 @@ export function CategoryForm(): JSX.Element {
 
   return (
     <div className="categoryFormContainer">
-      <Input label="Title :" type="text" placeholder="Title" onChange={handleTitle}/>
-      <Input label="Title UA:" type="text" placeholder="Назва" onChange={handleUATitle}/>
-      <Input label="Image :" type="url" placeholder="Image URL" onChange={handleImage}/>
-      <SelectComponent label="Type:" multiple={false} placeholder="type"options={typesValue} onChange={handleType}/>
+      <div className="category-form">
+        <Input label="Title :" type="text" placeholder="Title" onChange={handleTitle}/>
+        <Input label="Title UA:" type="text" placeholder="Назва" onChange={handleUATitle}/>
+        <Input label="Image :" type="url" placeholder="Image URL" onChange={handleImage}/>
+        <SelectComponent label="Type:" multiple={false} placeholder="type"options={typesValue} onChange={handleType}/>
+      </div>
       <Button title="Submit" onClick={onSend}/>
     </div>
   );

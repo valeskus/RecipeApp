@@ -1,6 +1,12 @@
 .categoryFormContainer{
     display: flex;
     flex-direction: column;
-    flex:1;
     align-items: center;
+    margin-top: 30px;
+}
+
+.category-form{
+    display: flex;
+    flex-direction: column;
+    width: 50vw;
 }

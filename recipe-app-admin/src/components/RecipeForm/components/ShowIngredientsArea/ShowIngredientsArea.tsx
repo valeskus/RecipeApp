@@ -1,6 +1,7 @@
 
 import './ShowIngredientsArea.style.css';
-import { Button } from '../../../common/Button';
+import { IconButton } from '../../../common/IconButton';
+import { Icons } from '../../../../Icons';
 
 import { ShowIngredientsAreaControllerParams, useShowIngredientsAreaController } from './useShowAreaController';
 
@@ -18,7 +19,7 @@ export function ShowIngredientsArea({ currentProducts, products, onRemove }: Pro
         <div key ={index} className="showAreaContainer">
           <h3 className="showAreaTitle">{item.title}:</h3>
           <p className="showAreaAmount">{item.amount}</p>
-          <Button title={'delete'}
+          <IconButton icon={Icons.bin}
             value={item.id}
             onClick={removeIngredient}
           />
