@@ -2,7 +2,8 @@ import './Header.style.css';
 
 import { useLocation } from 'react-router-dom';
 
-import { Button } from '../common/Button';
+import { Icons } from '../../Icons';
+import { IconButton } from '../common/IconButton';
 
 import { useHeaderController } from './useHeaderController';
 
@@ -14,7 +15,7 @@ export function Header(): JSX.Element {
     <div className="header-container">
       {/* eslint-disable-next-line spellcheck/spell-checker */}
       {location.pathname !== '/' && (<div className="header-buttons">
-        <Button title="#x1F3E0" onClick={openMainPage} />
+        <IconButton  onClick={openMainPage} icon={Icons.home}/>
       </div>) }
       <p className="logo">Recipe App</p>
     </div>
