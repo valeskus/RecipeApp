@@ -1,20 +1,21 @@
 import { useNavigate } from 'react-router-dom';
 
-import { Button } from '../common/Button';
+import  './MainPage.style.css';
+import { ButtonLink } from '../common/ButtonLink';
 
 export function MainPage(): JSX.Element {
   let navigate = useNavigate();
 
-  return (<div>
-    <Button title="Category" onClick={() =>
+  return (<div className="mainContainer">
+    <ButtonLink title="Category" onClick={() =>
       navigate('/formManager', { state: { formByItem: 'categoryForm', formByArray: 'recipeForm' } })
     }
     />
-    <Button title="Product" onClick={() =>
+    <ButtonLink title="Product" onClick={() =>
       navigate('/formManager', { state: { formByItem: 'productForm', formByArray: 'recipeForm' } })
     }
     />
-    <Button title="Recipe" onClick={() =>
+    <ButtonLink title="Recipe" onClick={() =>
       navigate('/formManager', { state: { formByItem: 'recipeForm', formByArray: 'recipeForm' } })
     }
     />

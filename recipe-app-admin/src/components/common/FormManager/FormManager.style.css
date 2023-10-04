@@ -1,0 +1,12 @@
+.formManagerContainer{
+    display: flex;
+    height: 100vh;
+}
+
+.formManagerItems{
+    display: flex;
+    flex: 1;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+}
