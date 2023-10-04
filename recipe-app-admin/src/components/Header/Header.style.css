@@ -2,5 +2,18 @@
     background-color: #282c34;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
+  }
+
+  .header-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex:5
+  }
+
+  .logo{
+    color:white;
+    flex:1;
+    text-align: center;
   }

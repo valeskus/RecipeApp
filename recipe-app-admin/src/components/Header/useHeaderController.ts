@@ -3,21 +3,11 @@ import { useNavigate } from 'react-router-dom';
 export const useHeaderController = () => {
   let navigate = useNavigate();
 
-  const openCategoryForm = () => {
-    return navigate('/categoryForm');
-  };
-
-  const openProductForm = () => {
-    return navigate('/productForm');
-  };
-
-  const openRecipeForm = () => {
-    return navigate('/recipeForm');
+  const openMainPage = () => {
+    return navigate('/');
   };
 
   return {
-    openCategoryForm,
-    openProductForm,
-    openRecipeForm,
+    openMainPage,
   };
 };
