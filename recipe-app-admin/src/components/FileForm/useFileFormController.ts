@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { CategoryPostModel } from '../../stores/categories/types';
@@ -9,6 +9,7 @@ import { useCategoriesStore } from '../../stores/categories';
 import { useProductsStore } from '../../stores/product/hooks';
 
 export const useFileFormController = () => {
+  const [fileData, setFileData] = useState({});
   const dispatch = useDispatch();
   const categoryState = useCategoriesStore();
   const productState = useProductsStore();
@@ -50,6 +51,9 @@ export const useFileFormController = () => {
   }, []);
 
   const handleJSON = useCallback((e: any) => {
+    if (!e.target.files[0]) {
+      return;
+    }
 
     const fileReader = new FileReader();
     fileReader.readAsText(e.target.files[0], 'UTF-8');
@@ -60,12 +64,19 @@ export const useFileFormController = () => {
       }
 
       const parseValue = JSON.parse(event.target?.result?.toString());
-
-      setFileValue(Object.keys(parseValue).join(''), parseValue);
+      setFileData(parseValue);
     };
 
   }, []);
 
-  return { handleJSON };
+  const onClick = useCallback(() => {
+    setFileValue(Object.keys(fileData).join(''), fileData);
+
+  }, [fileData]);
+
+  return {
+    handleJSON,
+    onClick,
+  };
 
 };

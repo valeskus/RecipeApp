@@ -7,11 +7,9 @@ interface Props {
 
 export function FileInput({ label, onChange }: Props): JSX.Element {
   return (
-    <div className="textArea-container">
+    <div className="fileInput-container">
       <label>{label}</label>
-
-      <input type="file" className="textArea" onChange={onChange}/>
-
+      <input type="file" id="file-upload" className="fileInput" onChange={onChange}/>
     </div>
   );
 
