@@ -4,7 +4,6 @@ import { CategoryForm } from './components/CategoryForm';
 import { Header } from './components/Header';
 import { ProductForm } from './components/ProductForm';
 import { RecipeForm } from './components/RecipeForm';
-import { FormManager } from './components/common/FormManager';
 import { MainPage } from './components/MainPage';
 import { FileForm } from './components/FileForm';
 
@@ -20,17 +19,12 @@ export function App(): JSX.Element {
         />
 
         <Route
-          path="/formManager"
-          element={<FormManager />}
-        />
-
-        <Route
           path="/categoryForm"
           element={<CategoryForm />}
         />
 
         <Route
-          path="/FileForm"
+          path="/fileForm"
           element={<FileForm />}
         />
 
