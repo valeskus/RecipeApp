@@ -1,6 +1,6 @@
 import './RecipeForm.style.css';
 
-import { Button } from '../common/Button';
+import { Button } from '../common/buttons';
 
 import { IngredientForm } from './components/IngredientForm';
 import { InstructionForm } from './components/InstructionForm';

@@ -2,7 +2,7 @@ import { useLocation, useNavigate  } from 'react-router-dom';
 import { useCallback, useEffect } from 'react';
 
 import './FormManager.style.css';
-import { ButtonLink } from '../ButtonLink';
+import { ButtonLink } from '../buttons';
 
 export function FormManager(): JSX.Element {
   const navigation = useNavigate();

@@ -3,7 +3,7 @@ import './Header.style.css';
 import { useLocation } from 'react-router-dom';
 
 import { Icons } from '../../Icons';
-import { IconButton } from '../common/IconButton';
+import { IconButton } from '../common/buttons';
 
 import { useHeaderController } from './useHeaderController';
 

@@ -1,5 +1,5 @@
-import { Button } from '../../../common/Button';
-import { Input } from '../../../common/Input';
+import { Button } from '../../../common/buttons';
+import { Input } from '../../../common/inputs';
 
 import './InstructionForm.style.css';
 import { InstructionsFormControllerParams, useInstructionsFormController } from './useInstructionsFormController';

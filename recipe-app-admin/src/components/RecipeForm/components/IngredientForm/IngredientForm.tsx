@@ -1,6 +1,6 @@
 import { IngredientItem } from '../../../../models';
-import { Button } from '../../../common/Button';
-import { Input } from '../../../common/Input';
+import { Button } from '../../../common/buttons';
+import { Input } from '../../../common/inputs';
 import { SelectComponent } from '../../../common/Select';
 
 import './IngredientForm.style.css';

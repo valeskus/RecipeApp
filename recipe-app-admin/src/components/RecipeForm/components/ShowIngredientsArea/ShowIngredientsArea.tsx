@@ -1,6 +1,6 @@
 
 import './ShowIngredientsArea.style.css';
-import { IconButton } from '../../../common/IconButton';
+import { IconButton } from '../../../common/buttons';
 import { Icons } from '../../../../Icons';
 
 import { ShowIngredientsAreaControllerParams, useShowIngredientsAreaController } from './useShowAreaController';

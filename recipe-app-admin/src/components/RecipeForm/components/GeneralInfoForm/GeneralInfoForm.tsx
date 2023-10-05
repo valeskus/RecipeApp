@@ -1,6 +1,6 @@
 import './GeneralInfoForm.style.css';
 
-import { Input } from '../../../common/Input';
+import { Input } from '../../../common/inputs';
 import { SelectComponent } from '../../../common/Select';
 
 import { GeneralInfoFormControllerParams, useGeneralInfoFormController } from './useGeneralInfoFormController';

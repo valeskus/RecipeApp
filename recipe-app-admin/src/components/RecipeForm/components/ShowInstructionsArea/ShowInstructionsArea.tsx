@@ -1,7 +1,7 @@
 import './ShowInstructionsArea.style.css';
 
 import { Icons } from '../../../../Icons';
-import { IconButton } from '../../../common/IconButton';
+import { IconButton } from '../../../common/buttons';
 
 import { ShowInstructionsAreaControllerParams,
   useShowInstructionsAreaController } from './useShowInstructionsAreaController';

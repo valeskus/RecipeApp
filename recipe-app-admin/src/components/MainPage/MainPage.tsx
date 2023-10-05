@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 
 import  './MainPage.style.css';
-import { ButtonLink } from '../common/ButtonLink';
+import { ButtonLink } from '../common/buttons';
 
 export function MainPage(): JSX.Element {
   let navigate = useNavigate();

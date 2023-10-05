@@ -1,4 +1,4 @@
-import { FileInput } from '../common/FileInput';
+import { FileInput } from '../common/inputs';
 
 import './FileForm.style.css';
 import { useFileFormController } from './useFileFormController';
