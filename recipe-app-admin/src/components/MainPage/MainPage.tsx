@@ -8,15 +8,15 @@ export function MainPage(): JSX.Element {
 
   return (<div className="mainContainer">
     <ButtonLink title="Category" onClick={() =>
-      navigate('/formManager', { state: { formByItem: 'categoryForm', formByArray: 'categoriesArrayForm' } })
+      navigate('/formManager', { state: { formByItem: 'categoryForm', formByArray: 'fileForm' } })
     }
     />
     <ButtonLink title="Product" onClick={() =>
-      navigate('/formManager', { state: { formByItem: 'productForm', formByArray: 'recipeForm' } })
+      navigate('/formManager', { state: { formByItem: 'productForm', formByArray: 'fileForm' } })
     }
     />
     <ButtonLink title="Recipe" onClick={() =>
-      navigate('/formManager', { state: { formByItem: 'recipeForm', formByArray: 'recipeForm' } })
+      navigate('/recipeForm')
     }
     />
   </div>);
