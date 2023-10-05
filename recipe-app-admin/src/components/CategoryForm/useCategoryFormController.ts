@@ -19,6 +19,9 @@ export const useCategoryFormController = () => {
   useEffect(() => {
     if (create.status === 'Created') {
       alert('Created successful!');
+      setTitle('');
+      setTitleUA('');
+      setImage('');
     }
 
     if (create.error) {
@@ -71,5 +74,8 @@ export const useCategoryFormController = () => {
     typesValue,
     onSend,
     handleType,
+    title,
+    titleUA,
+    image,
   };
 };
