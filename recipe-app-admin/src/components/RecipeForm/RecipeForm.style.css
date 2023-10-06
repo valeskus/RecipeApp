@@ -12,6 +12,8 @@
     flex-wrap: wrap;
     justify-content: center;
     margin-top: 30px;
+    margin-right: 10px;
+    margin-left: 10px;
 }
 
 .formItems{
@@ -28,6 +30,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-right: 10px;
+    margin-left: 10px;
 }
 
 .dynamicForm {

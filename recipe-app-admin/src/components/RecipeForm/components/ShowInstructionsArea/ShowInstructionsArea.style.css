@@ -1,8 +1,10 @@
 .showInstructionsContainer {
     display: flex;
-    flex: 1;
+    flex: 1 1;
     flex-direction: column;
     padding: 5px;
+    width: 50vw;
+    min-width: 250px;
 }
 
 .showInstructionItemContainer {
