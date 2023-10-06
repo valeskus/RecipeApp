@@ -16,7 +16,6 @@ export const  useProductFormController = () => {
   const [carbs, setCarbs] = useState<string>('');
   const [fats, setFats] = useState<string>('');
   const [units, setUnits] = useState<'g' | 'ml'>('g');
-  const [isLoading, setLoading] = useState<boolean>(false);
   const [status, setStatus] = useState<string>('');
 
   const dispatch = Redux.useDispatch();
@@ -70,18 +69,15 @@ export const  useProductFormController = () => {
       setProteins('');
       setCarbs('');
       setFats('');
-      setLoading(false);
     }
 
     if (create.error) {
       setStatus(create.error.message);
-      setLoading(false);
     }
   }, [create.status, create.error]);
 
   const onSend = useCallback(() => {
     setStatus('');
-    setLoading(true);
 
     const product: ProductPostModel = {
       title: title,
@@ -116,7 +112,7 @@ export const  useProductFormController = () => {
     proteins,
     carbs,
     fats,
-    isLoading,
+    isLoading: create.isLoading,
     status,
   };
 };

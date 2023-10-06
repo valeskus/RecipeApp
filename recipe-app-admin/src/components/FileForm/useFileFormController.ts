@@ -10,7 +10,6 @@ import { useProductsStore } from '../../stores/product/hooks';
 
 export const useFileFormController = () => {
   const [fileData, setFileData] = useState({});
-  const [isLoading, setLoading] = useState<boolean>(false);
   const [status, setStatus] = useState<string>('');
 
   const dispatch = useDispatch();
@@ -21,13 +20,10 @@ export const useFileFormController = () => {
 
     if (productState.create.status === 'Created') {
       setStatus('Created successful!');
-      setLoading(false);
     }
 
     if (productState.create.error) {
-
       setStatus(productState.create.error.message);
-      setLoading(false);
     }
   }, [productState.create]);
 
@@ -35,13 +31,10 @@ export const useFileFormController = () => {
 
     if (categoryState.create.status === 'Created') {
       setStatus('Created successful!');
-      setLoading(false);
     }
 
     if (categoryState.create.error) {
-
       setStatus(categoryState.create.error.message);
-      setLoading(false);
     }
   }, [categoryState.create]);
 
@@ -69,7 +62,7 @@ export const useFileFormController = () => {
         break;
       case 'categories products': setProducts(fileValue);setCategories(fileValue);
         break;
-      default:  setStatus('Please select the correct file!'); setLoading(false);
+      default:  setStatus('Please select the correct file!');
     }
   }, []);
 
@@ -98,7 +91,6 @@ export const useFileFormController = () => {
 
   const onClick = useCallback(() => {
     setStatus('');
-    setLoading(true);
     setFileValue(Object.keys(fileData).join(' '), fileData);
   }, [fileData]);
 
@@ -106,7 +98,7 @@ export const useFileFormController = () => {
     handleJSON,
     onClick,
     status,
-    isLoading,
+    isLoading: categoryState.create.isLoading || productState.create.isLoading,
   };
 
 };

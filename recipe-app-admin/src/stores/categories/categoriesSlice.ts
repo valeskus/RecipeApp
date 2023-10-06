@@ -50,8 +50,14 @@ export const categoriesSlice = createSlice({
       state.create.error = error.response?.data;
     },
 
+    resetCategoryStateAction: (state: CategoriesStateType) => {
+      state.create.status = '';
+      state.create.error = '';
+    },
+
   },
 });
 
 export const { getCategories, getCategoriesErrorAction, getCategoriesSuccessAction,
-  postCategory, postCategorySuccessAction, postCategoryErrorAction } = categoriesSlice.actions;
+  postCategory, postCategorySuccessAction, postCategoryErrorAction,
+  resetCategoryStateAction } = categoriesSlice.actions;

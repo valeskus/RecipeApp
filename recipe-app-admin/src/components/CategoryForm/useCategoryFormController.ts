@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import * as Redux from 'react-redux';
 
 import {  postCategory } from '../../stores/categories/categoriesSlice';
+import {  resetCategoryStateAction } from '../../stores/categories/categoriesSlice';
 import { CategoriesStateType, CategoryPostModel } from '../../stores/categories/types';
 import { useCategoriesStore } from '../../stores/categories';
 import { OptionsManager } from '../managers/OptionsManager';
@@ -12,7 +13,6 @@ export const useCategoryFormController = () => {
   const [titleUA, setTitleUA] = useState<string>('');
   const [image, setImage] = useState<string>('');
   const [type, setType] = useState<'meal' | 'diet'>('meal');
-  const [isLoading, setLoading] = useState<boolean>(false);
   const [status, setStatus] = useState<string>('');
 
   const { create }: CategoriesStateType = useCategoriesStore();
@@ -24,12 +24,11 @@ export const useCategoryFormController = () => {
       setTitle('');
       setTitleUA('');
       setImage('');
-      setLoading(false);
+      resetCategoryStateAction();
     }
 
     if (create.error) {
       setStatus(create.error.message);
-      setLoading(false);
     }
   }, [create.status, create.error]);
 
@@ -68,7 +67,6 @@ export const useCategoryFormController = () => {
       type: type,
     };
     dispatch(postCategory(category));
-    setLoading(true);
 
   }, [title, titleUA, image, type]);
 
@@ -82,7 +80,7 @@ export const useCategoryFormController = () => {
     title,
     titleUA,
     image,
-    isLoading,
+    isLoading: create.isLoading,
     status,
   };
 };

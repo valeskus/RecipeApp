@@ -15,7 +15,6 @@ export const useRecipeFormController = () => {
   const [ingredients, setIngredients] = useState<Array<IngredientItem>>([]);
   const [instructions, setInstructions] = useState<Array<InstructionItem>>([]);
   const [generalForm, setGeneralForm] = useState<Omit<RecipePostModel, 'ingredients' | 'instructions'>>();
-  const [isLoading, setLoading] = useState<boolean>(false);
 
   const dispatch = Redux.useDispatch();
   const getProducts = useGetProducts();
@@ -51,12 +50,10 @@ export const useRecipeFormController = () => {
       setStatus('Created successful!');
       setIngredients([]);
       setInstructions([]);
-      setLoading(false);
     }
 
     if (create.error) {
       setStatus(create.error.message);
-      setLoading(false);
     }
 
   }, [create.status, create.error]);
@@ -90,7 +87,6 @@ export const useRecipeFormController = () => {
     setInstructions(updateInstructions);
   }, [ingredients]);
   const onSend = useCallback(() => {
-    setLoading(true);
     setStatus('');
     if (!generalForm) {
       return;
@@ -120,6 +116,6 @@ export const useRecipeFormController = () => {
     removeInstruction,
     handleGeneralForm,
     status,
-    isLoading,
+    isLoading: create.isLoading,
   };
 };
