@@ -12,20 +12,24 @@ export const useCategoryFormController = () => {
   const [titleUA, setTitleUA] = useState<string>('');
   const [image, setImage] = useState<string>('');
   const [type, setType] = useState<'meal' | 'diet'>('meal');
+  const [isLoading, setLoading] = useState<boolean>(false);
+  const [status, setStatus] = useState<string>('');
 
   const { create }: CategoriesStateType = useCategoriesStore();
   const typesValue = OptionsManager.getOptionsArray(['meal', 'diet']);
 
   useEffect(() => {
     if (create.status === 'Created') {
-      alert('Created successful!');
+      setStatus('Created successful!');
       setTitle('');
       setTitleUA('');
       setImage('');
+      setLoading(false);
     }
 
     if (create.error) {
-      alert(create.error.message);
+      setStatus(create.error.message);
+      setLoading(false);
     }
   }, [create.status, create.error]);
 
@@ -52,7 +56,7 @@ export const useCategoryFormController = () => {
   const dispatch = Redux.useDispatch();
 
   const onSend = useCallback(() => {
-
+    setStatus('');
     const category: CategoryPostModel = {
       title: title,
       translations: {
@@ -63,8 +67,9 @@ export const useCategoryFormController = () => {
       image: image,
       type: type,
     };
-
     dispatch(postCategory(category));
+    setLoading(true);
+
   }, [title, titleUA, image, type]);
 
   return {
@@ -77,5 +82,7 @@ export const useCategoryFormController = () => {
     title,
     titleUA,
     image,
+    isLoading,
+    status,
   };
 };

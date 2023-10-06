@@ -11,9 +11,11 @@ import { useRecipesStore } from '../../stores/recipe/hooks';
 import { IngredientItem, InstructionItem } from '../../models';
 
 export const useRecipeFormController = () => {
+
   const [ingredients, setIngredients] = useState<Array<IngredientItem>>([]);
   const [instructions, setInstructions] = useState<Array<InstructionItem>>([]);
   const [generalForm, setGeneralForm] = useState<Omit<RecipePostModel, 'ingredients' | 'instructions'>>();
+  const [isLoading, setLoading] = useState<boolean>(false);
 
   const dispatch = Redux.useDispatch();
   const getProducts = useGetProducts();
@@ -45,16 +47,18 @@ export const useRecipeFormController = () => {
   }, [setGeneralForm]);
 
   useEffect(() => {
-    setStatus(create.status);
     if (create.status === 'Created') {
-      alert('Created successful!');
+      setStatus('Created successful!');
       setIngredients([]);
       setInstructions([]);
+      setLoading(false);
     }
 
     if (create.error) {
-      alert(create.error.message);
+      setStatus(create.error.message);
+      setLoading(false);
     }
+
   }, [create.status, create.error]);
 
   const onAddIngredient = useCallback((ingredientItem: IngredientItem) => {
@@ -86,6 +90,8 @@ export const useRecipeFormController = () => {
     setInstructions(updateInstructions);
   }, [ingredients]);
   const onSend = useCallback(() => {
+    setLoading(true);
+    setStatus('');
     if (!generalForm) {
       return;
     }
@@ -114,5 +120,6 @@ export const useRecipeFormController = () => {
     removeInstruction,
     handleGeneralForm,
     status,
+    isLoading,
   };
 };

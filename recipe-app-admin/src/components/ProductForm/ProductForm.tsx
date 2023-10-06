@@ -1,5 +1,7 @@
 import { Button } from '../common/buttons';
+import { FormStatus } from '../common/FormStatus';
 import { Input } from '../common/inputs';
+import { Loader } from '../common/Loader';
 import { SelectComponent } from '../common/Select';
 
 import './ProductForm.style.css';
@@ -20,10 +22,13 @@ export function ProductForm(): JSX.Element {
     kCal,
     proteins,
     carbs,
-    fats } = useProductFormController();
+    fats,
+    isLoading,
+    status } = useProductFormController();
 
   return (
     <div className="productFormContainer">
+      {isLoading && <Loader/>}
       <div className="product-form">
         <Input label="Title :" type="text" placeholder="Title" onChange={handleTitle} value={title}/>
         <Input label="Title UA:" type="text" placeholder="Назва" onChange={handleUATitle} value={titleUA}/>
@@ -35,6 +40,7 @@ export function ProductForm(): JSX.Element {
           onChange={handleUnits}
         />
       </div>
+      <FormStatus status={status}/>
       <Button title="Submit" onClick={onSend} />
     </div>
   );

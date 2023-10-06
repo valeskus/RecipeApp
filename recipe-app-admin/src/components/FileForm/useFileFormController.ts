@@ -10,21 +10,40 @@ import { useProductsStore } from '../../stores/product/hooks';
 
 export const useFileFormController = () => {
   const [fileData, setFileData] = useState({});
+  const [isLoading, setLoading] = useState<boolean>(false);
+  const [status, setStatus] = useState<string>('');
+
   const dispatch = useDispatch();
   const categoryState = useCategoriesStore();
   const productState = useProductsStore();
 
   useEffect(() => {
-    const create = productState.create || categoryState.create;
 
-    if (create.status === 'Created') {
-      alert('Created successful!');
+    if (productState.create.status === 'Created') {
+      setStatus('Created successful!');
+      setLoading(false);
     }
 
-    if (create.error) {
-      alert(create.error.message);
+    if (productState.create.error) {
+
+      setStatus(productState.create.error.message);
+      setLoading(false);
     }
-  }, [productState.create, categoryState.create]);
+  }, [productState.create]);
+
+  useEffect(() => {
+
+    if (categoryState.create.status === 'Created') {
+      setStatus('Created successful!');
+      setLoading(false);
+    }
+
+    if (categoryState.create.error) {
+
+      setStatus(categoryState.create.error.message);
+      setLoading(false);
+    }
+  }, [categoryState.create]);
 
   const setCategories = useCallback(({ categories }: { categories: [] }) => {
     categories.map((category: CategoryPostModel) => {
@@ -46,7 +65,11 @@ export const useFileFormController = () => {
         break;
       case 'products': setProducts(fileValue);
         break;
-      default: console.log('error');
+      case 'products categories': setProducts(fileValue);setCategories(fileValue);
+        break;
+      case 'categories products': setProducts(fileValue);setCategories(fileValue);
+        break;
+      default:  setStatus('Please select the correct file!'); setLoading(false);
     }
   }, []);
 
@@ -63,20 +86,27 @@ export const useFileFormController = () => {
         return;
       }
 
-      const parseValue = JSON.parse(event.target?.result?.toString());
-      setFileData(parseValue);
+      try {
+        const parseValue = JSON.parse(event.target?.result?.toString());
+        setFileData(parseValue);
+      } catch (error: unknown) {
+        setStatus('Please select the correct file! You only need the JSON file!');
+      }
     };
 
   }, []);
 
   const onClick = useCallback(() => {
-    setFileValue(Object.keys(fileData).join(''), fileData);
-
+    setStatus('');
+    setLoading(true);
+    setFileValue(Object.keys(fileData).join(' '), fileData);
   }, [fileData]);
 
   return {
     handleJSON,
     onClick,
+    status,
+    isLoading,
   };
 
 };

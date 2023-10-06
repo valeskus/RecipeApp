@@ -1,0 +1,12 @@
+.redColor{
+    color: rgb(255, 0, 25)
+}
+
+.greenColor{
+    color: #0cda0c
+}
+
+.status-text{
+    font-size: 1em;
+    font-weight: bold;
+}

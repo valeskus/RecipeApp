@@ -16,6 +16,8 @@ export const  useProductFormController = () => {
   const [carbs, setCarbs] = useState<string>('');
   const [fats, setFats] = useState<string>('');
   const [units, setUnits] = useState<'g' | 'ml'>('g');
+  const [isLoading, setLoading] = useState<boolean>(false);
+  const [status, setStatus] = useState<string>('');
 
   const dispatch = Redux.useDispatch();
   const unitsValue = OptionsManager.getOptionsArray(['ml', 'g']);
@@ -61,21 +63,26 @@ export const  useProductFormController = () => {
 
   useEffect(() => {
     if (create.status === 'Created') {
+      setStatus('Created successful!');
       setTitle('');
       setTitleUA('');
       setKCal('');
       setProteins('');
       setCarbs('');
       setFats('');
-      alert('Created successful!');
+      setLoading(false);
     }
 
     if (create.error) {
-      alert(create.error.message);
+      setStatus(create.error.message);
+      setLoading(false);
     }
   }, [create.status, create.error]);
 
   const onSend = useCallback(() => {
+    setStatus('');
+    setLoading(true);
+
     const product: ProductPostModel = {
       title: title,
       kCal: +kCal,
@@ -109,5 +116,7 @@ export const  useProductFormController = () => {
     proteins,
     carbs,
     fats,
+    isLoading,
+    status,
   };
 };

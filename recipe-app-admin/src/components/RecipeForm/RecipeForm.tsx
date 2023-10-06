@@ -1,6 +1,8 @@
 import './RecipeForm.style.css';
 
 import { Button } from '../common/buttons';
+import { Loader } from '../common/Loader';
+import { FormStatus } from '../common/FormStatus';
 
 import { IngredientForm } from './components/IngredientForm';
 import { InstructionForm } from './components/InstructionForm';
@@ -16,6 +18,7 @@ export function RecipeForm(): JSX.Element {
     productsList,
     productsValue,
     status,
+    isLoading,
     onSend,
     onAddIngredient,
     onAddInstruction,
@@ -26,6 +29,7 @@ export function RecipeForm(): JSX.Element {
 
   return (
     <div className="recipeFormContainer">
+      {isLoading && <Loader/>}
       <GeneralInfoForm onChange={handleGeneralForm} status={status}/>
       <div className="dynamicFormContainer">
         <div  className="dynamicForm">
@@ -37,6 +41,7 @@ export function RecipeForm(): JSX.Element {
           <ShowInstructionsArea onRemove={removeInstruction} instructions={instructions}/>
         </div>
       </div>
+      <FormStatus status={status}/>
       <Button title="Submit" onClick={onSend} />
     </div>
   );

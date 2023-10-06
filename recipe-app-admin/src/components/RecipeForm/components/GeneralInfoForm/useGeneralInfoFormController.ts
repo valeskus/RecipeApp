@@ -37,7 +37,7 @@ export const useGeneralInfoFormController = (params: GeneralInfoFormControllerPa
   }, []);
 
   useEffect(() => {
-    if (params.status === 'Created') {
+    if (params.status.includes('Created successful!')) {
       setTitle('');
       setTitleUA('');
       setDescription('');
@@ -103,9 +103,6 @@ export const useGeneralInfoFormController = (params: GeneralInfoFormControllerPa
   }, [setDifficulty]);
 
   const handleCategoryArray = useCallback((arrayOfCategories: Array<OptionModel>) => {
-    // const stringArray = arrayOfCategories.map((item) => {
-    //   return item.value;
-    // });
     setCategoriesArray(arrayOfCategories);
   }, [setCategoriesArray]);
 
