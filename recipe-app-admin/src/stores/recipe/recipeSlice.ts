@@ -28,8 +28,12 @@ export const recipesSlice = createSlice({
       state.create.isLoading = false;
       state.create.error = error.response?.data;
     },
+    resetRecipeStatus: (state: RecipeStateType) => {
+      state.create.status = '';
+      state.create.error = '';
+    },
 
   },
 });
 
-export const { postRecipe, postRecipeSuccessAction, postRecipeErrorAction } = recipesSlice.actions;
+export const { postRecipe, postRecipeSuccessAction, postRecipeErrorAction, resetRecipeStatus } = recipesSlice.actions;

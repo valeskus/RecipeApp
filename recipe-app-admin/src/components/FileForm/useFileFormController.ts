@@ -5,14 +5,16 @@ import { CategoryPostModel } from '../../stores/categories/types';
 import {  postCategory } from '../../stores/categories/categoriesSlice';
 import {  postProducts } from '../../stores/product/productsSlice';
 import { ProductPostModel } from '../../stores/product/types';
-import { useCategoriesStore } from '../../stores/categories';
-import { useProductsStore } from '../../stores/product/hooks';
+import { useCategoriesStore, useResetCategoriesStatus } from '../../stores/categories';
+import { useProductsStore, useResetProductStatus } from '../../stores/product/hooks';
 
 export const useFileFormController = () => {
   const [fileData, setFileData] = useState({});
   const [status, setStatus] = useState<string>('');
 
   const dispatch = useDispatch();
+  const resetCategoryStatus = useResetCategoriesStatus();
+  const resetProductStatus = useResetProductStatus();
   const categoryState = useCategoriesStore();
   const productState = useProductsStore();
 
@@ -37,6 +39,13 @@ export const useFileFormController = () => {
       setStatus(categoryState.create.error.message);
     }
   }, [categoryState.create]);
+
+  useEffect(() => {
+    return () => {
+      resetCategoryStatus(dispatch);
+      resetProductStatus(dispatch);
+    };
+  }, []);
 
   const setCategories = useCallback(({ categories }: { categories: [] }) => {
     categories.map((category: CategoryPostModel) => {

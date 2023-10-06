@@ -4,7 +4,7 @@ import * as Redux from 'react-redux';
 import './ProductForm.style.css';
 import { ProductPostModel, ProductsStateType } from '../../stores/product/types';
 import { postProducts } from '../../stores/product/productsSlice';
-import { useGetProducts, useProductsStore } from '../../stores/product/hooks';
+import { useGetProducts, useProductsStore, useResetProductStatus } from '../../stores/product/hooks';
 import { OptionsManager } from '../managers/OptionsManager';
 import { OptionModel } from '../common/Select/Select';
 
@@ -19,6 +19,7 @@ export const  useProductFormController = () => {
   const [status, setStatus] = useState<string>('');
 
   const dispatch = Redux.useDispatch();
+  const reset = useResetProductStatus();
   const unitsValue = OptionsManager.getOptionsArray(['ml', 'g']);
 
   const getProducts = useGetProducts();
@@ -58,6 +59,10 @@ export const  useProductFormController = () => {
 
   useEffect(() => {
     getProducts(dispatch);
+
+    return () => {
+      reset(dispatch);
+    };
   }, []);
 
   useEffect(() => {

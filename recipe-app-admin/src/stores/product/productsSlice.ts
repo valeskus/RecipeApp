@@ -49,9 +49,13 @@ export const productsSlice = createSlice({
       state.create.isLoading = false;
       state.create.error = error.response?.data;
     },
+    resetProductStatus: (state: ProductsStateType) => {
+      state.create.status = '';
+      state.create.error = '';
+    },
 
   },
 });
 
 export const { getProducts, getProductsSuccessAction, getProductsErrorAction,
-  postProducts, postProductsSuccessAction, postProductsyErrorAction } = productsSlice.actions;
+  postProducts, postProductsSuccessAction, postProductsyErrorAction, resetProductStatus } = productsSlice.actions;

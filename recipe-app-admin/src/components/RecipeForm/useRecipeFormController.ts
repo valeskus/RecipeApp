@@ -7,7 +7,7 @@ import { useGetProducts, useProductsStore } from '../../stores/product/hooks';
 import { useCategoriesStore, useGetCategories } from '../../stores/categories';
 import { OptionsManager } from '../managers/OptionsManager';
 import { OptionModel } from '../common/Select/Select';
-import { useRecipesStore } from '../../stores/recipe/hooks';
+import { useRecipesStore, useResetRecipeStatus } from '../../stores/recipe/hooks';
 import { IngredientItem, InstructionItem } from '../../models';
 
 export const useRecipeFormController = () => {
@@ -17,6 +17,7 @@ export const useRecipeFormController = () => {
   const [generalForm, setGeneralForm] = useState<Omit<RecipePostModel, 'ingredients' | 'instructions'>>();
 
   const dispatch = Redux.useDispatch();
+  const reset = useResetRecipeStatus();
   const getProducts = useGetProducts();
   const { products } = useProductsStore();
   const getCategories = useGetCategories();
@@ -35,6 +36,10 @@ export const useRecipeFormController = () => {
   useEffect(() => {
     getCategories(dispatch);
     getProducts(dispatch);
+
+    return () => {
+      reset(dispatch);
+    };
   }, []);
 
   useEffect(() => {

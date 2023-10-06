@@ -2,11 +2,11 @@ import { useCallback, useEffect, useState } from 'react';
 import * as Redux from 'react-redux';
 
 import {  postCategory } from '../../stores/categories/categoriesSlice';
-import {  resetCategoryStateAction } from '../../stores/categories/categoriesSlice';
 import { CategoriesStateType, CategoryPostModel } from '../../stores/categories/types';
 import { useCategoriesStore } from '../../stores/categories';
 import { OptionsManager } from '../managers/OptionsManager';
 import { OptionModel } from '../common/Select/Select';
+import { useResetCategoriesStatus } from '../../stores/categories/hooks/useResetCategoriesStatus';
 
 export const useCategoryFormController = () => {
   const [title, setTitle] = useState<string>('');
@@ -17,20 +17,26 @@ export const useCategoryFormController = () => {
 
   const { create }: CategoriesStateType = useCategoriesStore();
   const typesValue = OptionsManager.getOptionsArray(['meal', 'diet']);
-
+  const dispatch = Redux.useDispatch();
+  const reset = useResetCategoriesStatus();
   useEffect(() => {
     if (create.status === 'Created') {
       setStatus('Created successful!');
       setTitle('');
       setTitleUA('');
       setImage('');
-      resetCategoryStateAction();
     }
 
     if (create.error) {
       setStatus(create.error.message);
     }
   }, [create.status, create.error]);
+
+  useEffect(() => {
+    return  () => {
+      reset(dispatch);
+    };
+  }, []);
 
   const handleTitle = useCallback((value: string) => {
     setTitle(value);
@@ -51,8 +57,6 @@ export const useCategoryFormController = () => {
 
     setType(typeValue.value);
   }, [setType]);
-
-  const dispatch = Redux.useDispatch();
 
   const onSend = useCallback(() => {
     setStatus('');
