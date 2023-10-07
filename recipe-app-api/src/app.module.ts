@@ -6,6 +6,7 @@ import { SearchModule } from './search/search.module';
 import { ProductsModule } from './products/products.module';
 import { TranslationModule } from './translation/translation.module';
 import { MongoModule } from './mongo/mongo.module';
+import { ImagesModule } from './images/images.module';
 
 @Module({
   imports: [
@@ -14,7 +15,8 @@ import { MongoModule } from './mongo/mongo.module';
     CategoriesModule,
     SearchModule,
     ProductsModule,
-    TranslationModule
+    TranslationModule,
+    ImagesModule
   ],
   controllers: [],
   providers: [],
