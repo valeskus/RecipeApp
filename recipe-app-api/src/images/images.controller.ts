@@ -18,7 +18,9 @@ import { FileInterceptor } from '@nestjs/platform-express';
 import { AdminApiGuard } from '../guards/admin-api.guard';
 
 import { ImagesService } from './images.service';
-import { DimensionsValidator } from './dimensions.validator';
+import { DimensionsValidator } from './validators/dimensions.validator';
+import { UploadedImageDto } from './dto/uploaded-image.dto';
+import { ImagesDto } from './dto/images.dto';
 
 @ApiTags('Images')
 @Controller('images')
@@ -32,6 +34,7 @@ export class ImagesController {
     @ApiOperation({ summary: 'Get list of images' })
     @ApiOkResponse({
         description: 'Returns the list of images',
+        type: ImagesDto
     })
     get() {
         return this.imagesService.get();
@@ -42,6 +45,7 @@ export class ImagesController {
     @ApiOperation({ summary: 'Upload image' })
     @ApiOkResponse({
         description: 'Uploads image to outer storage',
+        type: UploadedImageDto
     })
     @UseInterceptors(FileInterceptor('image'))
     upload(

@@ -1,6 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { getDownloadURL, getStorage } from 'firebase-admin/storage';
 
+import { UploadedImage } from './dto/uploaded-image.dto';
+
 @Injectable()
 export class ImagesService {
   private get bucket() {
@@ -19,16 +21,16 @@ export class ImagesService {
 
   async get() {
     const [files] = await this.bucket.getFiles();
-    const urlItems: Array<string> = [];
+    const urlItems: Array<UploadedImage> = [];
 
     for (const file of files) {
-      urlItems.push(
-        await getDownloadURL(file)
-      );
+      urlItems.push({
+        url: await getDownloadURL(file)
+      });
     }
 
     return {
-      items: urlItems
+      images: urlItems
     };
   }
 }

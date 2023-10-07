@@ -29,7 +29,7 @@ async function run() {
   const htmlFile = path.resolve(process.cwd(), 'swagger/index.html');
   const contentRaw = readFileSync(htmlFile);
 
-  const content = contentRaw.toString().replace(/SPEC_PLACEHOLDER/g, JSON.stringify(document));
+  const content = contentRaw.toString().replace(/var spec = {.*}/g, 'var spec = ' + JSON.stringify(document));
   writeFileSync(htmlFile, content, { encoding: 'utf8' });
 
   await app.listen(3000);
