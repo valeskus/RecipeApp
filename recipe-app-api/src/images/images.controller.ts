@@ -12,6 +12,8 @@ import {
     ApiOperation,
     ApiOkResponse,
     ApiTags,
+    ApiBody,
+    ApiConsumes,
 } from '@nestjs/swagger';
 import { FileInterceptor } from '@nestjs/platform-express';
 
@@ -21,6 +23,7 @@ import { ImagesService } from './images.service';
 import { DimensionsValidator } from './validators/dimensions.validator';
 import { UploadedImageDto } from './dto/uploaded-image.dto';
 import { ImagesDto } from './dto/images.dto';
+import { UploadImageDto } from './dto/upload-image.dto';
 
 @ApiTags('Images')
 @Controller('images')
@@ -36,7 +39,7 @@ export class ImagesController {
         description: 'Returns the list of images',
         type: ImagesDto
     })
-    get() {
+    get(): Promise<ImagesDto> {
         return this.imagesService.get();
     }
 
@@ -46,6 +49,10 @@ export class ImagesController {
     @ApiOkResponse({
         description: 'Uploads image to outer storage',
         type: UploadedImageDto
+    })
+    @ApiConsumes('multipart/form-data')
+    @ApiBody({
+        type: UploadImageDto
     })
     @UseInterceptors(FileInterceptor('image'))
     upload(
@@ -66,7 +73,7 @@ export class ImagesController {
                     errorHttpStatusCode: HttpStatus.UNPROCESSABLE_ENTITY
                 }),
         ) uploadedFile: Express.Multer.File
-    ) {
+    ): Promise<UploadedImageDto> {
         return this.imagesService.upload(uploadedFile);
     }
 }
