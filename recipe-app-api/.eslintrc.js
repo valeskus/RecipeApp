@@ -48,7 +48,11 @@ module.exports = {
         'uri',
         'resolvers',
         'lang',
-        'utf8'
+        'utf8',
+        'Multer',
+        'validators',
+        'jpeg',
+        'firebase'
       ]
     }],
     'no-extra-semi': 'error',
