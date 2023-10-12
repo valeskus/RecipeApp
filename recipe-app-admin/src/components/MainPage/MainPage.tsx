@@ -7,21 +7,30 @@ export function MainPage(): JSX.Element {
   let navigate = useNavigate();
 
   return (<div className="mainContainer">
-    <ButtonLink title="Category" onClick={() =>
-      navigate('/categoryForm')
+    <div className="mainContainer-box">
+      <ButtonLink title="Category" onClick={() =>
+        navigate('/categoryForm')
     }
-    />
-    <ButtonLink title="Product" onClick={() =>
-      navigate('/productForm')
+      />
+      <ButtonLink title="Product" onClick={() =>
+        navigate('/productForm')
     }
-    />
-    <ButtonLink title="Recipe" onClick={() =>
-      navigate('/recipeForm')
+      />
+      <ButtonLink title="Recipe" onClick={() =>
+        navigate('/recipeForm')
     }
-    />
-    <ButtonLink title="File" onClick={() =>
-      navigate('/fileForm')
+      />
+    </div>
+    <div className="mainContainer-box">
+      <ButtonLink title="File" onClick={() =>
+        navigate('/fileForm')
     }
-    />
+      />
+      <ButtonLink title="Image" onClick={() =>
+        navigate('/fileForm')
+    }
+      />
+    </div>
+
   </div>);
 }
