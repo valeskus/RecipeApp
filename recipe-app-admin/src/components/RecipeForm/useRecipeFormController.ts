@@ -9,6 +9,7 @@ import { OptionsManager } from '../managers/OptionsManager';
 import { OptionModel } from '../common/Select/Select';
 import { useRecipesStore, useResetRecipeStatus } from '../../stores/recipe/hooks';
 import { IngredientItem, InstructionItem } from '../../models';
+import { useResetImageStatus } from '../../stores/images/hooks/useResetImageStatus';
 
 export const useRecipeFormController = () => {
 
@@ -18,6 +19,7 @@ export const useRecipeFormController = () => {
 
   const dispatch = Redux.useDispatch();
   const reset = useResetRecipeStatus();
+  const resetImageStatus = useResetImageStatus();
   const getProducts = useGetProducts();
   const { products } = useProductsStore();
   const getCategories = useGetCategories();
@@ -39,6 +41,7 @@ export const useRecipeFormController = () => {
 
     return () => {
       reset(dispatch);
+      resetImageStatus(dispatch);
     };
   }, []);
 
@@ -55,6 +58,7 @@ export const useRecipeFormController = () => {
       setStatus('Created successful!');
       setIngredients([]);
       setInstructions([]);
+      resetImageStatus(dispatch);
     }
 
     if (create.error) {

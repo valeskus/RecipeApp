@@ -1,7 +1,9 @@
 import './GeneralInfoForm.style.css';
 
-import { Input } from '../../../common/inputs';
+import {  Input } from '../../../common/inputs';
 import { SelectComponent } from '../../../common/Select';
+// import { FormStatus } from '../../../common/FormStatus';
+import { ImageInputsBox } from '../../../common/ImageInputsBox';
 
 import { GeneralInfoFormControllerParams, useGeneralInfoFormController } from './useGeneralInfoFormController';
 
@@ -17,6 +19,7 @@ export function GeneralInfoForm(props: Props): JSX.Element {
     handleDescriptionUA,
     handleUnits,
     handleImage,
+    // handleImageFile,
     handleTime,
     handleAmount,
     handleServingsCount,
@@ -28,7 +31,8 @@ export function GeneralInfoForm(props: Props): JSX.Element {
     descriptionUA,
     time,
     amount,
-    image,
+    // image,
+    // imageStatus,
     servingsCount,
     categoriesArray,
     onChangeInput,
@@ -57,9 +61,9 @@ export function GeneralInfoForm(props: Props): JSX.Element {
         />
       </div>
       <div className="formItems">
-        <Input label="Image:" type="url" placeholder="image url" onChange={handleImage} onBlur={onChangeInput}
-          value={image}
-        />
+
+        <ImageInputsBox onChange={handleImage}/>
+
         <Input label="Time:" type="number" placeholder="time in minutes" onChange={handleTime} onBlur={onChangeInput}
           value={`${time}`}
         />

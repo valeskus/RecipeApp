@@ -7,8 +7,6 @@ import { useCategoriesStore } from '../../stores/categories';
 import { OptionsManager } from '../managers/OptionsManager';
 import { OptionModel } from '../common/Select/Select';
 import { useResetCategoriesStatus } from '../../stores/categories/hooks/useResetCategoriesStatus';
-import { postImage } from '../../stores/images/imagesSlice';
-import { useImagesStore } from '../../stores/images/hooks';
 import { useResetImageStatus } from '../../stores/images/hooks/useResetImageStatus';
 
 export const useCategoryFormController = () => {
@@ -17,10 +15,8 @@ export const useCategoryFormController = () => {
   const [image, setImage] = useState<string>('');
   const [type, setType] = useState<'meal' | 'diet'>('meal');
   const [status, setStatus] = useState<string>('');
-  const [imageStatus, setImageStatus] = useState<string>('');
 
   const { create }: CategoriesStateType = useCategoriesStore();
-  const ImagesStore = useImagesStore();
 
   const typesValue = OptionsManager.getOptionsArray(['meal', 'diet']);
   const dispatch = Redux.useDispatch();
@@ -33,7 +29,6 @@ export const useCategoryFormController = () => {
       setTitle('');
       setTitleUA('');
       setImage('');
-      setImageStatus('');
     }
 
     if (create.error) {
@@ -48,14 +43,6 @@ export const useCategoryFormController = () => {
     };
   }, []);
 
-  useEffect(() => {
-    if (ImagesStore.create.url) {
-      setImage(ImagesStore.create.url);
-      setImageStatus('Uploaded');
-    }
-
-  }, [ImagesStore.create.url]);
-
   const handleTitle = useCallback((value: string) => {
     setTitle(value);
   }, [setTitle]);
@@ -67,18 +54,6 @@ export const useCategoryFormController = () => {
   const handleImage = useCallback((value: string) => {
     setImage(value);
   }, [setImage]);
-
-  const handleImageFile = useCallback((e: any) => {
-    if (!e.target.files[0]) {
-      return;
-    }
-
-    let formData = new FormData();
-    formData.append('image', e.target.files[0]);
-    setImageStatus('pending...');
-    dispatch(postImage(formData));
-
-  }, []);
 
   const handleType = useCallback((typeValue: OptionModel) => {
     if (typeValue.value !== ('meal' || 'diet')) {
@@ -108,7 +83,6 @@ export const useCategoryFormController = () => {
     handleTitle,
     handleUATitle,
     handleImage,
-    handleImageFile,
     typesValue,
     onSend,
     handleType,
@@ -117,6 +91,5 @@ export const useCategoryFormController = () => {
     image,
     isLoading: create.isLoading,
     status,
-    imageStatus,
   };
 };
