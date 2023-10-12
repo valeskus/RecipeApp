@@ -23,8 +23,8 @@ export function* watchGetImages() {
 
 export function* postImageSaga({ payload: image }: PayloadAction<FormData>) {
   try {
-    const response: AxiosResponse<string> = yield ImagesApi.postImage(image);
-    yield put(postImageSuccessAction(response.statusText));
+    const response: AxiosResponse<{ url: string }> = yield ImagesApi.postImage(image);
+    yield put(postImageSuccessAction({ image: response.data, status: response.statusText }));
   } catch (error) {
     yield put(postImageErrorAction(error as AxiosError<unknown, any>));
   }

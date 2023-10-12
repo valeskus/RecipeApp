@@ -1,6 +1,13 @@
 import { ImageModel } from '../../models';
 
-export type ImageCreateDeleteState = {
+export type ImageCreateState = {
+  status: string;
+  url: string;
+  error:  any ;
+  isLoading: boolean;
+};
+
+export type ImageDeleteState = {
   status: string;
   error:  any ;
   isLoading: boolean;
@@ -14,8 +21,8 @@ export type ImagesModelState = {
 
 export type ImagesStateType = {
   images: ImagesModelState;
-  create: ImageCreateDeleteState;
-  delete: ImageCreateDeleteState;
+  create: ImageCreateState;
+  delete: ImageDeleteState;
 };
 
 export const IMAGES = 'images';

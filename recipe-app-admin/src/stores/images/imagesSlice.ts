@@ -14,6 +14,7 @@ const imagesInitialState: ImagesStateType = {
   },
   create: {
     status: '',
+    url: '',
     error: '',
     isLoading: false,
   },
@@ -48,9 +49,11 @@ export const imagesSlice = createSlice({
       state.create.isLoading = true;
       state.create.error = '';
     },
-    postImageSuccessAction: (state: ImagesStateType, { payload: status }: PayloadAction<string>) => {
+    postImageSuccessAction: (state: ImagesStateType, { payload }: PayloadAction<{
+      image: { url: string }; status: string; }>) => {
       state.create.isLoading = false;
-      state.create.status = status;
+      state.create.status = payload.status;
+      state.create.url = payload.image.url;
     },
     postImageErrorAction: (state: ImagesStateType, { payload: error }: PayloadAction<AxiosError>) => {
       state.create.isLoading = false;
