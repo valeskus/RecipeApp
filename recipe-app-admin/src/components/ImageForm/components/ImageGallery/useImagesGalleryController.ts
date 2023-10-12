@@ -8,11 +8,11 @@ export const useImagesGalleryController = () => {
 
   const getImages = useGetImages();
   const dispatch = useDispatch();
-  const { images } = useImagesStore();
+  const { images, create } = useImagesStore();
 
   useEffect(() => {
     getImages(dispatch);
-  }, []);
+  }, [create]);
 
   const onCopyUrl = useCallback(async (imageUrl: string) => {
     try {

@@ -4,7 +4,7 @@ import { AxiosError } from 'axios';
 
 import { ImageListModel } from '../../models';
 
-import { IMAGES, ImagePostModel, ImagesStateType } from './types';
+import { IMAGES, ImagesStateType } from './types';
 
 const imagesInitialState: ImagesStateType = {
   images: {
@@ -44,7 +44,7 @@ export const imagesSlice = createSlice({
       state.images.error = error.response?.data;
     },
 
-    postImage: (state: ImagesStateType, {}: PayloadAction<ImagePostModel>) => {
+    postImage: (state: ImagesStateType, {}: PayloadAction<FormData>) => {
       state.create.isLoading = true;
       state.create.error = '';
     },

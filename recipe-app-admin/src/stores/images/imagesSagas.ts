@@ -7,7 +7,6 @@ import * as ImagesApi from '../../api/images.api';
 
 import { getImages, getImagesErrorAction, getImagesSuccessAction,
   postImage, postImageErrorAction, postImageSuccessAction } from './imagesSlice';
-import { ImagePostModel } from './types';
 
 export function* getImagesSaga() {
   try {
@@ -22,7 +21,7 @@ export function* watchGetImages() {
   yield takeLatest(getImages.type, getImagesSaga);
 }
 
-export function* postImageSaga({ payload: image }: PayloadAction<ImagePostModel>) {
+export function* postImageSaga({ payload: image }: PayloadAction<FormData>) {
   try {
     const response: AxiosResponse<string> = yield ImagesApi.postImage(image);
     yield put(postImageSuccessAction(response.statusText));

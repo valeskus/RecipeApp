@@ -1,3 +1,4 @@
+import { ImageModel } from '../../models';
 
 export type ImageCreateDeleteState = {
   status: string;
@@ -5,12 +6,8 @@ export type ImageCreateDeleteState = {
   isLoading: boolean;
 };
 
-export type ImagePostModel = {
-  url: string;
-};
-
 export type ImagesModelState = {
-  data: Array<ImagePostModel> | null;
+  data: Array<ImageModel> | null;
   error: unknown | string;
   isLoading: boolean;
 };

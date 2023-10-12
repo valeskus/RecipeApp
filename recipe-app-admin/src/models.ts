@@ -92,3 +92,7 @@ export interface ImageListModel {
     },
   ];
 }
+
+export type ImageModel = {
+  url: string;
+};
