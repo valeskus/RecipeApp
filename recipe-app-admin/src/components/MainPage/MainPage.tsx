@@ -27,7 +27,7 @@ export function MainPage(): JSX.Element {
     }
       />
       <ButtonLink title="Image" onClick={() =>
-        navigate('/fileForm')
+        navigate('/imageForm')
     }
       />
     </div>

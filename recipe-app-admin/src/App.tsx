@@ -6,6 +6,7 @@ import { ProductForm } from './components/ProductForm';
 import { RecipeForm } from './components/RecipeForm';
 import { MainPage } from './components/MainPage';
 import { FileForm } from './components/FileForm';
+import { ImageForm } from './components/ImageForm';
 
 export function App(): JSX.Element {
 
@@ -37,6 +38,11 @@ export function App(): JSX.Element {
           path="/recipeForm"
           element={<RecipeForm />}
         />
+        <Route
+          path="/imageForm"
+          element={<ImageForm />}
+        />
+
       </Routes>
 
     </BrowserRouter>

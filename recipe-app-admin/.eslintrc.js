@@ -45,7 +45,9 @@ module.exports = {
         'gte',
         'ua',
         'reduxjs',
-        'Perf'
+        'Perf',
+        'jpg',
+        'jpeg',
       ]
     }],
     'import/no-unresolved': ['error', {ignore: ['@env']}],
