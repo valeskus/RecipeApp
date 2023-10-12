@@ -73,6 +73,7 @@ export const imagesSlice = createSlice({
     },
     resetImageStatus: (state: ImagesStateType) => {
       state.create.status = '';
+      state.create.url = '';
       state.create.error = '';
     },
 
