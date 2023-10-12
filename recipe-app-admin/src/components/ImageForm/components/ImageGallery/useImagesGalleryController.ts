@@ -1,11 +1,9 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { useGetImages, useImagesStore } from '../../../../stores/images/hooks';
 
 export const useImagesGalleryController = () => {
-  const [copySuccess, setCopySuccess] = useState('');
-
   const getImages = useGetImages();
   const dispatch = useDispatch();
   const { images, create } = useImagesStore();
@@ -17,9 +15,9 @@ export const useImagesGalleryController = () => {
   const onCopyUrl = useCallback(async (imageUrl: string) => {
     try {
       await navigator.clipboard.writeText(imageUrl);
-      setCopySuccess('Copied!');
+      alert('Copied!');
     } catch (err) {
-      setCopySuccess('Failed to copy!');
+      alert('Failed to copy!');
     }
   }, []);
 
@@ -27,6 +25,5 @@ export const useImagesGalleryController = () => {
     images: images.data,
     isLoading: images.isLoading,
     onCopyUrl,
-    copySuccess,
   };
 };
