@@ -7,7 +7,7 @@ import { useImagesStore } from '../../stores/images/hooks';
 import { useResetImageStatus } from '../../stores/images/hooks/useResetImageStatus';
 
 export const useImageFormController = () => {
-  const [imageData, setImageData] = useState<FormData | null>(null);
+  const [imageData, setImageData] = useState <Array<FormData>>([]);
   const [status, setStatus] = useState<string>('');
 
   const dispatch = useDispatch();
@@ -15,20 +15,40 @@ export const useImageFormController = () => {
 
   const reset = useResetImageStatus();
 
+  const onSend = useCallback(() => {
+    setStatus('');
+    if (!imageData) {
+      return;
+    }
+
+    imageData.map((data: FormData) => {
+      dispatch(postImage(data));
+
+      return;
+    });
+  }, [imageData]);
+
   const handleChange = useCallback((e: any) => {
     if (!e.target.files[0]) {
       return;
     }
 
-    let formData = new FormData();
-    formData.append('image', e.target.files[0]);
-    setImageData(formData);
-  }, []);
+    const formDataArray: Array<FormData> = [];
+    Object.values(e.target.files).map((file: any) => {
+      let formData = new FormData();
+      formData.append('image', file);
+      formDataArray.push(formData);
+
+      return;
+    });
+    setImageData(formDataArray);
+
+  }, [imageData]);
 
   useEffect(() => {
     if (create.status === 'Created') {
       setStatus('Created successful!');
-      setImageData(null);
+      setImageData([]);
     }
 
     if (create.error) {
@@ -37,20 +57,10 @@ export const useImageFormController = () => {
   }, [create.status, create.error]);
 
   useEffect(() => {
-
     return () => {
       reset(dispatch);
     };
   }, []);
-
-  const onSend = useCallback(() => {
-    setStatus('');
-    if (!imageData) {
-      return;
-    }
-
-    dispatch(postImage(imageData));
-  }, [imageData]);
 
   return {
     status,
