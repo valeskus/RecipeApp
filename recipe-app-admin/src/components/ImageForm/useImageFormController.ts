@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { ImagesStateType } from '../../stores/images/types';
 import { postImage } from '../../stores/images/imagesSlice';
 import { useImagesStore } from '../../stores/images/hooks';
+import { useResetImageStatus } from '../../stores/images/hooks/useResetImageStatus';
 
 export const useImageFormController = () => {
   const [imageData, setImageData] = useState<FormData | null>(null);
@@ -11,6 +12,8 @@ export const useImageFormController = () => {
 
   const dispatch = useDispatch();
   const { create }: ImagesStateType = useImagesStore();
+
+  const reset = useResetImageStatus();
 
   const handleChange = useCallback((e: any) => {
     if (!e.target.files[0]) {
@@ -32,6 +35,13 @@ export const useImageFormController = () => {
       setStatus(create.error.message);
     }
   }, [create.status, create.error]);
+
+  useEffect(() => {
+
+    return () => {
+      reset(dispatch);
+    };
+  }, []);
 
   const onSend = useCallback(() => {
     setStatus('');

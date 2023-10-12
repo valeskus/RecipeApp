@@ -68,10 +68,14 @@ export const imagesSlice = createSlice({
       state.delete.isLoading = false;
       state.delete.error = error.response?.data;
     },
+    resetImageStatus: (state: ImagesStateType) => {
+      state.create.status = '';
+      state.create.error = '';
+    },
 
   },
 });
 
 export const { getImages, getImagesSuccessAction, getImagesErrorAction,
   postImage, postImageSuccessAction, postImageErrorAction, deleteImages,
-  deleteImagesSuccessAction, deleteImagesErrorAction } = imagesSlice.actions;
+  deleteImagesSuccessAction, deleteImagesErrorAction, resetImageStatus } = imagesSlice.actions;
