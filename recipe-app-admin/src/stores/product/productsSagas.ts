@@ -21,7 +21,7 @@ export function* watchGetProducts() {
   yield takeLatest(getProducts.type, getProductsSaga);
 }
 
-export function* postCategorySaga({ payload: product }: PayloadAction<ProductPostModel>) {
+export function* postProductSaga({ payload: product }: PayloadAction<ProductPostModel>) {
   try {
     const response: AxiosResponse<string> = yield ProductsApi.postProduct(product);
     yield put(postProductsSuccessAction(response.statusText));
@@ -31,5 +31,5 @@ export function* postCategorySaga({ payload: product }: PayloadAction<ProductPos
 }
 
 export function* watchPostProduct() {
-  yield takeLatest(postProducts.type, postCategorySaga);
+  yield takeLatest(postProducts.type, postProductSaga);
 }

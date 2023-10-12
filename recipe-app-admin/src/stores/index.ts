@@ -6,6 +6,7 @@ import { categoriesSlice } from './categories/categoriesSlice';
 import { rootSaga } from './root-saga';
 import { productsSlice } from './product/productsSlice';
 import { recipesSlice } from './recipe/recipeSlice';
+import { imagesSlice } from './images/imagesSlice';
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
   categories: categoriesSlice.reducer,
   products: productsSlice.reducer,
   recipes: recipesSlice.reducer,
+  images: imagesSlice.reducer,
 });
 
 export const store = configureStore({ reducer: rootReducer, middleware: [sagaMiddleware] });

@@ -84,3 +84,11 @@ export interface ProductPostModel {
     };
   };
 }
+
+export interface ImageListModel {
+  images: [
+    {
+      url: 'https://picsum.photos/500/500';
+    },
+  ];
+}
