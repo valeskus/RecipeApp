@@ -8,19 +8,6 @@ const recipeInitialState: RecipeStateType = {
   status: '',
   error: '',
   isLoading: false,
-
-  recipeImage: {
-    status: '',
-    error: '',
-    isLoading: false,
-    url: '',
-  },
-  instructionImage: {
-    status: '',
-    error: '',
-    isLoading: false,
-    url: '',
-  },
 };
 
 export const recipesSlice = createSlice({
@@ -39,32 +26,6 @@ export const recipesSlice = createSlice({
       state.isLoading = false;
       state.error = error.message;
     },
-    postRecipeImage: (state: RecipeStateType, {}: PayloadAction<FormData>) => {
-      state.recipeImage.isLoading = true;
-      state.error = '';
-    },
-    postRecipeImageSuccessAction: (state: RecipeStateType, { payload }: PayloadAction<{
-      image: { url: string }; status: string; }>) => {
-      state.recipeImage.isLoading = false;
-      state.recipeImage.url = payload.image.url;
-    },
-    postRecipeImageErrorAction: (state: RecipeStateType, { payload: error }: PayloadAction<AxiosError>) => {
-      state.recipeImage.isLoading = false;
-      state.error = error.message;
-    },
-    postInstructionImage: (state: RecipeStateType, {}: PayloadAction<FormData>) => {
-      state.instructionImage.isLoading = true;
-      state.instructionImage.error = '';
-    },
-    postInstructionImageSuccessAction: (state: RecipeStateType, { payload }: PayloadAction<{
-      image: { url: string }; status: string; }>) => {
-      state.instructionImage.isLoading = false;
-      state.instructionImage.url = payload.image.url;
-    },
-    postInstructionImageErrorAction: (state: RecipeStateType, { payload: error }: PayloadAction<AxiosError>) => {
-      state.instructionImage.isLoading = false;
-      state.instructionImage.error = error.response?.data;
-    },
     resetRecipeStatus: (state: RecipeStateType) => {
       state.status = '';
       state.error = '';
@@ -74,5 +35,4 @@ export const recipesSlice = createSlice({
 });
 
 export const { postRecipe, postRecipeSuccessAction, postRecipeErrorAction, resetRecipeStatus,
-  postRecipeImage, postRecipeImageSuccessAction, postRecipeImageErrorAction,
-  postInstructionImage, postInstructionImageSuccessAction, postInstructionImageErrorAction } = recipesSlice.actions;
+} = recipesSlice.actions;

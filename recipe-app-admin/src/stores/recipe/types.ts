@@ -33,18 +33,6 @@ export type RecipeStateType = {
   status: number | string;
   error: string ;
   isLoading: boolean;
-  recipeImage: {
-    status: string;
-    error: string | unknown;
-    isLoading: boolean;
-    url: string;
-  };
-  instructionImage: {
-    status: string;
-    error: string | unknown;
-    isLoading: boolean;
-    url: string;
-  };
 };
 
 export const RECIPES = 'recipes';

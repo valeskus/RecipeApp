@@ -3,11 +3,11 @@ import { useDispatch } from 'react-redux';
 
 import { useAddImageStore } from '../../../stores/addImage/hooks';
 import { postImage } from '../../../stores/addImage/AddImageSlice';
-import { postInstructionImage, postRecipeImage } from '../../../stores/recipe/recipeSlice';
-import { useRecipesStore } from '../../../stores/recipe/hooks';
+import { postInstructionImage } from '../../../stores/addInstructionImage/AddInstructionImageSlice';
+import { useAddInstructionImageStore } from '../../../stores/addInstructionImage/hooks';
 
 export interface ImageInputsControllerParams {
-  component: 'recipe' | 'instruction' | 'image';
+  component:  'instruction' | 'image';
   image: string;
   onChange: (image: string) => void;
 }
@@ -17,13 +17,12 @@ export const useImageInputsController = (params: ImageInputsControllerParams) =>
   const [imageStatus, setImageStatus] = useState<string>('');
 
   const AddImageStore = useAddImageStore();
-  const RecipesStore = useRecipesStore();
+  const AddInstructionsImageStore = useAddInstructionImageStore();
 
   const dispatch = useDispatch();
 
   const chooseAction = useCallback((data: FormData) => {
     switch (params.component) {
-      case 'recipe': return dispatch(postRecipeImage(data));
       case 'instruction': return dispatch(postInstructionImage(data));
       case 'image': return dispatch(postImage(data));
     }
@@ -50,46 +49,24 @@ export const useImageInputsController = (params: ImageInputsControllerParams) =>
   }, [params.component, AddImageStore.url, AddImageStore.error]);
 
   useEffect(() => {
-    if (params.component !== 'recipe') {
-      return;
-    }
-
-    if (!RecipesStore.recipeImage.url) {
-      return;
-    }
-
-    if (RecipesStore.recipeImage.url) {
-      setImage(RecipesStore.recipeImage.url);
-      params. onChange(RecipesStore.recipeImage.url);
-      setImageStatus('Uploaded');
-    }
-
-    if (RecipesStore.recipeImage.error) {
-      setImageStatus(RecipesStore.recipeImage.error.toString());
-    }
-
-  }, [params.component, RecipesStore.recipeImage]);
-
-  useEffect(() => {
     if (params.component !== 'instruction') {
       return;
     }
 
-    if (!RecipesStore.instructionImage.url) {
+    if (!AddInstructionsImageStore.url) {
       return;
     }
 
-    if (RecipesStore.instructionImage.url) {
-      // setImage(RecipesStore.instructionImage.url);
-      params. onChange(RecipesStore.instructionImage.url);
+    if (AddInstructionsImageStore.url) {
+      params. onChange(AddInstructionsImageStore.url);
       setImageStatus('Uploaded');
     }
 
-    if (RecipesStore.instructionImage.error) {
-      setImageStatus(RecipesStore.instructionImage.error.toString());
+    if (AddInstructionsImageStore.error) {
+      setImageStatus(AddInstructionsImageStore.error.toString());
     }
 
-  }, [params.component, RecipesStore.instructionImage]);
+  }, [params.component, AddInstructionsImageStore]);
 
   useEffect(() => {
 

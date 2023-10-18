@@ -2,9 +2,10 @@ import { all, fork } from 'redux-saga/effects';
 
 import { watchGetCategories, watchPostCategory } from './categories';
 import { watchGetProducts, watchPostProduct } from './product';
-import { watchPostInstructionImage, watchPostRecipe, watchPostRecipeImage } from './recipe';
+import { watchPostRecipe } from './recipe';
 import { watchGetImages } from './images';
 import { watchPostImage } from './addImage';
+import { watchPostInstructionImage } from './addInstructionImage';
 
 export const rootSaga = function* () {
   yield all([
@@ -13,9 +14,8 @@ export const rootSaga = function* () {
     fork(watchGetProducts),
     fork(watchPostProduct),
     fork(watchPostRecipe),
-    fork(watchPostRecipeImage),
-    fork(watchPostInstructionImage),
     fork(watchGetImages),
     fork(watchPostImage),
+    fork(watchPostInstructionImage),
   ]);
 };
