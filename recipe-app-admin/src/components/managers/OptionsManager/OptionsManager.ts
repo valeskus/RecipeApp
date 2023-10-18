@@ -1,5 +1,4 @@
-import {  CategoryModel } from '../../../stores/types';
-import { ProductsModelState } from '../../../stores/types';
+import {  CategoryModel, ProductModel } from '../../../stores/types';
 
 export class OptionsManager {
   static getOptionsArray(array: Array<string>) {
@@ -12,8 +11,8 @@ export class OptionsManager {
     });
   }
 
-  static getProductOptionsArray(products: ProductsModelState) {
-    const array = products.data?.map((product) => {
+  static getProductOptionsArray(products: Array<ProductModel>) {
+    const array = products.map((product) => {
       return { value: product.id, label: product.title };
     });
 

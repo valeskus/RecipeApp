@@ -125,22 +125,16 @@ export type  ProductsListModel = {
   products: Array<ProductModel>;
 };
 
-export type ProductsModelState = {
-  data: Array<ProductModel> | null;
-  error: unknown | string;
-  isLoading: boolean;
-};
-
-export type ProductCreateState = {
-  status: string;
+export type CreateProductStateType = {
+  status: number;
   error:  any ;
   isLoading: boolean;
 };
 
 export type ProductsStateType = {
-  products: ProductsModelState;
-  create: ProductCreateState;
-
+  products: Array<ProductModel> ;
+  error: unknown | string;
+  isLoading: boolean;
 };
 
 export const PRODUCTS = 'products';

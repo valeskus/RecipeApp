@@ -1,2 +1,2 @@
-export * from './useCreateCategoriesStore';
-export * from './useResetCategoriesStatus';
+export * from './useCreateCategoryStore';
+export * from './useResetCategoryState';

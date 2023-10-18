@@ -2,33 +2,33 @@ import { useCallback, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { CategoryPostModel } from '../../stores/types';
-import {  postCategory, useCreateCategoriesStore, useResetCategoriesState } from '../../stores/createCategory';
-import {  postProducts } from '../../stores/product/productsSlice';
+import {  postCategory, useCreateCategoryStore, useResetCategoryState } from '../../stores/createCategory';
+import {  postProducts } from '../../stores/createProduct';
 import { ProductPostModel } from '../../stores/types';
 import { useCategoriesStore } from '../../stores/categories';
-import { useProductsStore, useResetProductStatus } from '../../stores/product/hooks';
+import { useCreateProductStore, useResetProductState } from '../../stores/createProduct/hooks';
 
 export const useFileFormController = () => {
   const [fileData, setFileData] = useState({});
   const [status, setStatus] = useState<string>('');
 
   const dispatch = useDispatch();
-  const resetCategoryStatus = useResetCategoriesState();
-  const resetProductStatus = useResetProductStatus();
+  const resetCategoryStatus = useResetCategoryState();
+  const resetProductStatus = useResetProductState();
   const categoryState = useCategoriesStore();
-  const createCategoryStore = useCreateCategoriesStore();
-  const productState = useProductsStore();
+  const createCategoryStore = useCreateCategoryStore();
+  const createProductState = useCreateProductStore();
 
   useEffect(() => {
 
-    if (productState.create.status === 'Created') {
+    if (createProductState.status === 201) {
       setStatus('Created successful!');
     }
 
-    if (productState.create.error) {
-      setStatus(productState.create.error.message);
+    if (createProductState.error) {
+      setStatus(createProductState.error);
     }
-  }, [productState.create]);
+  }, [createProductState]);
 
   useEffect(() => {
 
@@ -108,7 +108,7 @@ export const useFileFormController = () => {
     handleJSON,
     onClick,
     status,
-    isLoading: categoryState.isLoading || productState.create.isLoading,
+    isLoading: categoryState.isLoading || createProductState.isLoading,
   };
 
 };

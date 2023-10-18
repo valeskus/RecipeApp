@@ -1,9 +1,9 @@
 import { useCallback, useEffect, useState } from 'react';
 import * as Redux from 'react-redux';
 
-import {  postCategory, useResetCategoriesState } from '../../stores/createCategory';
+import {  postCategory, useResetCategoryState } from '../../stores/createCategory';
 import {  CategoryPostModel } from '../../stores/types';
-import { useCreateCategoriesStore } from '../../stores/createCategory';
+import { useCreateCategoryStore } from '../../stores/createCategory';
 import { OptionsManager } from '../managers/OptionsManager';
 import { OptionModel } from '../common/Select/Select';
 import { useResetAddImageState } from '../../stores/addImage/hooks';
@@ -17,9 +17,9 @@ export const useCategoryFormController = () => {
 
   const typesValue = OptionsManager.getOptionsArray(['meal', 'diet']);
   const dispatch = Redux.useDispatch();
-  const reset = useResetCategoriesState();
+  const reset = useResetCategoryState();
   const resetImageStatus = useResetAddImageState();
-  const CreateCategoryStore = useCreateCategoriesStore();
+  const CreateCategoryStore = useCreateCategoryStore();
   useEffect(() => {
     if (CreateCategoryStore.status === 200) {
       setStatus('Created successful!');

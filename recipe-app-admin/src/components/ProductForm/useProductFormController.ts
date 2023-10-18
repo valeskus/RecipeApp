@@ -2,11 +2,12 @@ import { useCallback, useEffect, useState } from 'react';
 import * as Redux from 'react-redux';
 
 import './ProductForm.style.css';
-import { ProductPostModel, ProductsStateType } from '../../stores/types';
-import { postProducts } from '../../stores/product/productsSlice';
-import { useGetProducts, useProductsStore, useResetProductStatus } from '../../stores/product/hooks';
+import { ProductPostModel } from '../../stores/types';
+import { postProducts } from '../../stores/createProduct/createProductSlice';
+import { useGetProducts } from '../../stores/product/hooks';
 import { OptionsManager } from '../managers/OptionsManager';
 import { OptionModel } from '../common/Select/Select';
+import { useCreateProductStore, useResetProductState } from '../../stores/createProduct/hooks';
 
 export const  useProductFormController = () => {
   const [title, setTitle] = useState<string>('');
@@ -19,11 +20,11 @@ export const  useProductFormController = () => {
   const [status, setStatus] = useState<string>('');
 
   const dispatch = Redux.useDispatch();
-  const reset = useResetProductStatus();
+  const reset = useResetProductState();
   const unitsValue = OptionsManager.getOptionsArray(['ml', 'g']);
 
   const getProducts = useGetProducts();
-  const { create }: ProductsStateType = useProductsStore();
+  const CreateProductStore = useCreateProductStore();
 
   const handleTitle = useCallback((value: string) => {
     setTitle(value);
@@ -66,7 +67,7 @@ export const  useProductFormController = () => {
   }, []);
 
   useEffect(() => {
-    if (create.status === 'Created') {
+    if (CreateProductStore.status === 201) {
       setStatus('Created successful!');
       setTitle('');
       setTitleUA('');
@@ -76,10 +77,10 @@ export const  useProductFormController = () => {
       setFats('');
     }
 
-    if (create.error) {
-      setStatus(create.error.message);
+    if (CreateProductStore.error) {
+      setStatus(CreateProductStore.error);
     }
-  }, [create.status, create.error]);
+  }, [CreateProductStore.status, CreateProductStore.error]);
 
   const onSend = useCallback(() => {
     setStatus('');
@@ -117,7 +118,7 @@ export const  useProductFormController = () => {
     proteins,
     carbs,
     fats,
-    isLoading: create.isLoading,
+    isLoading: CreateProductStore.isLoading,
     status,
   };
 };
