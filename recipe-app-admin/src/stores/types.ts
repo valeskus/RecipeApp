@@ -81,7 +81,7 @@ export type CategoryPostModel = {
 
 export type CategoriesStateType = {
   categories: Array<CategoryModel> ;
-  error: string;
+  error: any;
   isLoading: boolean;
 };
 
@@ -133,7 +133,7 @@ export type CreateProductStateType = {
 
 export type ProductsStateType = {
   products: Array<ProductModel> ;
-  error: unknown | string;
+  error: any;
   isLoading: boolean;
 };
 

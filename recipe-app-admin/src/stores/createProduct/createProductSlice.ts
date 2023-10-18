@@ -1,6 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
-import { AxiosError } from 'axios';
 
 import { CreateProductStateType, PRODUCTS, ProductPostModel } from '../types';
 
@@ -22,9 +21,9 @@ export const createProductSlice = createSlice({
       state.isLoading = false;
       state.status = status;
     },
-    postProductsyErrorAction: (state: CreateProductStateType, { payload: error }: PayloadAction<AxiosError>) => {
+    postProductsyErrorAction: (state: CreateProductStateType, { payload: error }: PayloadAction<unknown>) => {
       state.isLoading = false;
-      state.error = error.message;
+      state.error = error;
     },
     resetProductState: (state: CreateProductStateType) => {
       state.status = NaN;
