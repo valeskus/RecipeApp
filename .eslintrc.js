@@ -3,6 +3,7 @@ module.exports = {
   extends: [
     'airbnb-typescript',
     'plugin:import/errors',
+    '@react-native',
   ],
   plugins: [
     'eslint-plugin-react',
@@ -29,6 +30,8 @@ module.exports = {
       }
   },
   rules: {
+    'react-hooks/exhaustive-deps': 0,
+    'prettier/prettier': 0,
     'spellcheck/spell-checker': ['error', {
       skipWords: [
         'redux',
