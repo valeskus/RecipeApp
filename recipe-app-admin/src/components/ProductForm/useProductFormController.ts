@@ -78,7 +78,7 @@ export const  useProductFormController = () => {
     }
 
     if (CreateProductStore.error) {
-      setStatus(CreateProductStore.error);
+      setStatus(CreateProductStore.error.response.data.message);
     }
   }, [CreateProductStore.status, CreateProductStore.error]);
 

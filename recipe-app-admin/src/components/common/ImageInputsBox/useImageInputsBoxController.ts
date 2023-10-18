@@ -44,7 +44,7 @@ export const useImageInputsController = (params: ImageInputsControllerParams) =>
     }
 
     if (AddImageStore.error) {
-      setImageStatus(AddImageStore.error.message);
+      setImageStatus(AddImageStore.error.response.data.message);
     }
   }, [params.component, AddImageStore.url, AddImageStore.error]);
 
@@ -63,7 +63,7 @@ export const useImageInputsController = (params: ImageInputsControllerParams) =>
     }
 
     if (AddInstructionsImageStore.error) {
-      setImageStatus(AddInstructionsImageStore.error.toString());
+      setImageStatus(AddInstructionsImageStore.error.response.data.message);
     }
 
   }, [params.component, AddInstructionsImageStore]);

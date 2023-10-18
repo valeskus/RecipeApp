@@ -26,7 +26,7 @@ export const useFileFormController = () => {
     }
 
     if (createProductState.error) {
-      setStatus(createProductState.error);
+      setStatus(createProductState.error.response.data.message);
     }
   }, [createProductState]);
 
@@ -37,7 +37,7 @@ export const useFileFormController = () => {
     }
 
     if (createCategoryStore.error) {
-      setStatus(createCategoryStore.error);
+      setStatus(createCategoryStore.error.response.data.message);
     }
   }, [createCategoryStore]);
 

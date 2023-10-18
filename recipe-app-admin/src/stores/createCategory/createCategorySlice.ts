@@ -24,7 +24,7 @@ export const createCategorySlice = createSlice({
     },
     postCategoryErrorAction: (state: CreateCategoriesStateType, { payload: error }: PayloadAction<AxiosError>) => {
       state.isLoading = false;
-      state.error = error.message;
+      state.error = error;
     },
 
     resetCategoryStateAction: (state: CreateCategoriesStateType) => {

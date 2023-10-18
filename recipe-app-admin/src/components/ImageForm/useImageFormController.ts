@@ -52,7 +52,7 @@ export const useImageFormController = () => {
     }
 
     if (AddImageStore.error) {
-      setStatus(AddImageStore.error.message);
+      setStatus(AddImageStore.error.response.data.message);
     }
   }, [AddImageStore.status, AddImageStore.error]);
 

@@ -87,7 +87,7 @@ export type CategoriesStateType = {
 
 export type CreateCategoriesStateType = {
   status: string | number;
-  error: string;
+  error: any;
   isLoading: boolean;
 };
 

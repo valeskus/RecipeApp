@@ -20,8 +20,9 @@ export const useCategoryFormController = () => {
   const reset = useResetCategoryState();
   const resetImageStatus = useResetAddImageState();
   const CreateCategoryStore = useCreateCategoryStore();
+
   useEffect(() => {
-    if (CreateCategoryStore.status === 200) {
+    if (CreateCategoryStore.status === 201) {
       setStatus('Created successful!');
       setTitle('');
       setTitleUA('');
@@ -29,7 +30,7 @@ export const useCategoryFormController = () => {
     }
 
     if (CreateCategoryStore.error) {
-      setStatus(CreateCategoryStore.error);
+      setStatus(CreateCategoryStore.error.response.data.message);
     }
   }, [CreateCategoryStore.status, CreateCategoryStore.error]);
 
