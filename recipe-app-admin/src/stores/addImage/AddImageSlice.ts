@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { AxiosError } from 'axios';
 
-import { AddImagesStateType, IMAGE } from './types';
+import { AddImagesStateType, IMAGE } from '../types';
 
 const imagesInitialState: AddImagesStateType = {
   url: '',

@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import * as Redux from 'react-redux';
 
-import { RecipePostModel } from '../../stores/recipe/types';
+import { RecipePostModel } from '../../stores/types';
 import { postRecipe } from '../../stores/recipe/recipeSlice';
 import { useGetProducts, useProductsStore } from '../../stores/product/hooks';
 import { useCategoriesStore, useGetCategories } from '../../stores/categories';
@@ -28,7 +28,7 @@ export const useRecipeFormController = () => {
 
   const [status, setStatus] = useState<string>('');
 
-  const productsValue = OptionsManager.getProductOptionsArray(products);
+  const productsValue: Array<OptionModel> = OptionsManager.getProductOptionsArray(products);
   const categoriesValue = OptionsManager.getCategoriesOptionsArray(categories);
 
   const [productsList, setProductsList] = useState<Array<OptionModel>>([{

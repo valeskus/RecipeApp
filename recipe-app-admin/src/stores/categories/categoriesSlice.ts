@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { AxiosError } from 'axios';
 
-import { CATEGORIES, CategoriesListModel, CategoriesStateType, CategoryPostModel } from './types';
+import { CATEGORIES, CategoriesListModel, CategoriesStateType, CategoryPostModel } from '../types';
 
 const categoriesInitialState: CategoriesStateType = {
   categories: {

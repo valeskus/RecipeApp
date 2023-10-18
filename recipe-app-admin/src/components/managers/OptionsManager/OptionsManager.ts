@@ -1,5 +1,5 @@
-import { CategoriesModelState } from '../../../stores/categories/types';
-import { ProductsModelState } from '../../../stores/product/types';
+import { CategoriesModelState } from '../../../stores/types';
+import { ProductsModelState } from '../../../stores/types';
 
 export class OptionsManager {
   static getOptionsArray(array: Array<string>) {

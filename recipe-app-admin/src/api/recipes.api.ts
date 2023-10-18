@@ -1,5 +1,5 @@
 
-import { RecipePostModel } from '../stores/recipe/types';
+import { RecipePostModel } from '../stores/types';
 
 import { client } from './client.api';
 

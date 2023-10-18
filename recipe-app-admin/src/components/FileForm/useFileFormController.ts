@@ -1,10 +1,10 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { CategoryPostModel } from '../../stores/categories/types';
+import { CategoryPostModel } from '../../stores/types';
 import {  postCategory } from '../../stores/categories/categoriesSlice';
 import {  postProducts } from '../../stores/product/productsSlice';
-import { ProductPostModel } from '../../stores/product/types';
+import { ProductPostModel } from '../../stores/types';
 import { useCategoriesStore, useResetCategoriesStatus } from '../../stores/categories';
 import { useProductsStore, useResetProductStatus } from '../../stores/product/hooks';
 

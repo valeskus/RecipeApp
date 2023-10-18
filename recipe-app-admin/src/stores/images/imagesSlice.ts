@@ -3,8 +3,7 @@ import type { PayloadAction } from '@reduxjs/toolkit';
 import { AxiosError } from 'axios';
 
 import { ImageListModel } from '../../models';
-
-import { IMAGES, ImagesStateType } from './types';
+import { IMAGES, ImagesStateType } from '../types';
 
 const imagesInitialState: ImagesStateType = {
   images: null,

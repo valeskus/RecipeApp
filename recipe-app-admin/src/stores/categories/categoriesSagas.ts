@@ -3,8 +3,8 @@ import { put,  takeLatest } from 'redux-saga/effects';
 import { PayloadAction } from '@reduxjs/toolkit';
 
 import * as CategoriesApi from '../../api/categories.api';
+import { CategoriesListModel, CategoryPostModel } from '../types';
 
-import { CategoriesListModel, CategoryPostModel } from './types';
 import { getCategoriesSuccessAction, getCategoriesErrorAction,
   getCategories, postCategory, postCategorySuccessAction, postCategoryErrorAction } from './categoriesSlice';
 

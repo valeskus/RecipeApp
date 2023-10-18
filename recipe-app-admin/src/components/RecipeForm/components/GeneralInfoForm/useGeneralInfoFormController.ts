@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import * as Redux from 'react-redux';
 
-import { RecipePostModel } from '../../../../stores/recipe/types';
+import { RecipePostModel } from '../../../../stores/types';
 import { useCategoriesStore, useGetCategories } from '../../../../stores/categories';
 import { OptionsManager } from '../../../managers/OptionsManager';
 import { OptionModel } from '../../../common/Select/Select';

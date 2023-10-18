@@ -3,10 +3,10 @@ import { put,  takeLatest } from 'redux-saga/effects';
 import { PayloadAction } from '@reduxjs/toolkit';
 
 import * as ProductsApi from '../../api/products.api';
+import { ProductPostModel, ProductsListModel } from '../types';
 
 import { getProductsSuccessAction, getProducts, getProductsErrorAction,
   postProducts, postProductsSuccessAction, postProductsyErrorAction } from './productsSlice';
-import { ProductPostModel, ProductsListModel } from './types';
 
 export function* getProductsSaga() {
   try {

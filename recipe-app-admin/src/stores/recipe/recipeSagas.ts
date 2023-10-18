@@ -3,9 +3,9 @@ import { put,  takeLatest } from 'redux-saga/effects';
 import { PayloadAction } from '@reduxjs/toolkit';
 
 import * as RecipesApi from '../../api/recipes.api';
+import { RecipePostModel } from '../types';
 
 import { postRecipe, postRecipeSuccessAction, postRecipeErrorAction } from './recipeSlice';
-import { RecipePostModel } from './types';
 
 export function* postRecipeSaga({ payload: recipe }: PayloadAction<RecipePostModel>) {
   try {

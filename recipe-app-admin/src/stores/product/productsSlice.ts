@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { AxiosError } from 'axios';
 
-import { PRODUCTS, ProductPostModel, ProductsListModel, ProductsStateType } from './types';
+import { PRODUCTS, ProductPostModel, ProductsListModel, ProductsStateType } from '../types';
 
 const productsInitialState: ProductsStateType = {
   products: {

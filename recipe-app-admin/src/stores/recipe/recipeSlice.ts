@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { AxiosError } from 'axios';
 
-import { RECIPES, RecipePostModel, RecipeStateType } from './types';
+import { RECIPES, RecipePostModel, RecipeStateType } from '../types';
 
 const recipeInitialState: RecipeStateType = {
   status: '',

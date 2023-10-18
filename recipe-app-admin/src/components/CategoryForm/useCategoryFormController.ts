@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import * as Redux from 'react-redux';
 
 import {  postCategory } from '../../stores/categories/categoriesSlice';
-import { CategoriesStateType, CategoryPostModel } from '../../stores/categories/types';
+import { CategoriesStateType, CategoryPostModel } from '../../stores/types';
 import { useCategoriesStore } from '../../stores/categories';
 import { OptionsManager } from '../managers/OptionsManager';
 import { OptionModel } from '../common/Select/Select';

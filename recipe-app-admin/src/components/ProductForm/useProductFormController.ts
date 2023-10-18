@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import * as Redux from 'react-redux';
 
 import './ProductForm.style.css';
-import { ProductPostModel, ProductsStateType } from '../../stores/product/types';
+import { ProductPostModel, ProductsStateType } from '../../stores/types';
 import { postProducts } from '../../stores/product/productsSlice';
 import { useGetProducts, useProductsStore, useResetProductStatus } from '../../stores/product/hooks';
 import { OptionsManager } from '../managers/OptionsManager';
