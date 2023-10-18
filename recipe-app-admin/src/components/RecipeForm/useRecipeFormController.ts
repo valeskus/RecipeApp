@@ -62,7 +62,7 @@ export const useRecipeFormController = () => {
     }
 
     if (RecipesStore.error) {
-      setStatus(RecipesStore.error.response.data.message);
+      setStatus(RecipesStore.error.data.message);
     }
   }, [RecipesStore.status, RecipesStore.error]);
 

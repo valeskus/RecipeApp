@@ -56,7 +56,7 @@ export type RecipePostModel = {
 
 export type RecipeStateType = {
   status: number | string;
-  error: string ;
+  error: any ;
   isLoading: boolean;
 };
 

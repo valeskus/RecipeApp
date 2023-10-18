@@ -24,7 +24,7 @@ export const recipesSlice = createSlice({
     },
     postRecipeErrorAction: (state: RecipeStateType, { payload: error }: PayloadAction<AxiosError>) => {
       state.isLoading = false;
-      state.error = error.message;
+      state.error = error.response;
     },
     resetRecipeStatus: (state: RecipeStateType) => {
       state.status = '';
