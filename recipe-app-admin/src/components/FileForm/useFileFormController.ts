@@ -2,10 +2,10 @@ import { useCallback, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { CategoryPostModel } from '../../stores/types';
-import {  postCategory } from '../../stores/categories/categoriesSlice';
+import {  postCategory, useCreateCategoriesStore, useResetCategoriesState } from '../../stores/createCategory';
 import {  postProducts } from '../../stores/product/productsSlice';
 import { ProductPostModel } from '../../stores/types';
-import { useCategoriesStore, useResetCategoriesStatus } from '../../stores/categories';
+import { useCategoriesStore } from '../../stores/categories';
 import { useProductsStore, useResetProductStatus } from '../../stores/product/hooks';
 
 export const useFileFormController = () => {
@@ -13,9 +13,10 @@ export const useFileFormController = () => {
   const [status, setStatus] = useState<string>('');
 
   const dispatch = useDispatch();
-  const resetCategoryStatus = useResetCategoriesStatus();
+  const resetCategoryStatus = useResetCategoriesState();
   const resetProductStatus = useResetProductStatus();
   const categoryState = useCategoriesStore();
+  const createCategoryStore = useCreateCategoriesStore();
   const productState = useProductsStore();
 
   useEffect(() => {
@@ -31,14 +32,14 @@ export const useFileFormController = () => {
 
   useEffect(() => {
 
-    if (categoryState.create.status === 'Created') {
+    if (createCategoryStore.status === 'Created') {
       setStatus('Created successful!');
     }
 
-    if (categoryState.create.error) {
-      setStatus(categoryState.create.error.message);
+    if (createCategoryStore.error) {
+      setStatus(createCategoryStore.error);
     }
-  }, [categoryState.create]);
+  }, [createCategoryStore]);
 
   useEffect(() => {
     return () => {
@@ -107,7 +108,7 @@ export const useFileFormController = () => {
     handleJSON,
     onClick,
     status,
-    isLoading: categoryState.create.isLoading || productState.create.isLoading,
+    isLoading: categoryState.isLoading || productState.create.isLoading,
   };
 
 };

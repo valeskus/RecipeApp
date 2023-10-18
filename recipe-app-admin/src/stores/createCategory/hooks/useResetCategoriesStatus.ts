@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { Dispatch } from 'redux';
 
-import { resetCategoryStateAction } from '../categoriesSlice';
+import { resetCategoryStateAction } from '../createCategorySlice';
 
-export const useResetCategoriesStatus = () => {
+export const useResetCategoriesState = () => {
 
   return React.useCallback((dispatch: Dispatch) => {
     dispatch(resetCategoryStateAction());

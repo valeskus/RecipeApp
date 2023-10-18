@@ -9,11 +9,13 @@ import { recipesSlice } from './recipe/recipeSlice';
 import { imagesSlice } from './images/imagesSlice';
 import { addImagesSlice } from './addImage';
 import { addInstructionImageSlice } from './addInstructionImage';
+import { createCategorySlice } from './createCategory';
 
 const sagaMiddleware = createSagaMiddleware();
 
 const rootReducer = combineReducers({
   categories: categoriesSlice.reducer,
+  createCategory: createCategorySlice.reducer,
   products: productsSlice.reducer,
   recipes: recipesSlice.reducer,
   images: imagesSlice.reducer,

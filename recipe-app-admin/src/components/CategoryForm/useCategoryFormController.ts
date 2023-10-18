@@ -1,12 +1,11 @@
 import { useCallback, useEffect, useState } from 'react';
 import * as Redux from 'react-redux';
 
-import {  postCategory } from '../../stores/categories/categoriesSlice';
-import { CategoriesStateType, CategoryPostModel } from '../../stores/types';
-import { useCategoriesStore } from '../../stores/categories';
+import {  postCategory, useResetCategoriesState } from '../../stores/createCategory';
+import {  CategoryPostModel } from '../../stores/types';
+import { useCreateCategoriesStore } from '../../stores/createCategory';
 import { OptionsManager } from '../managers/OptionsManager';
 import { OptionModel } from '../common/Select/Select';
-import { useResetCategoriesStatus } from '../../stores/categories/hooks/useResetCategoriesStatus';
 import { useResetAddImageState } from '../../stores/addImage/hooks';
 
 export const useCategoryFormController = () => {
@@ -16,25 +15,23 @@ export const useCategoryFormController = () => {
   const [type, setType] = useState<'meal' | 'diet'>('meal');
   const [status, setStatus] = useState<string>('');
 
-  const { create }: CategoriesStateType = useCategoriesStore();
-
   const typesValue = OptionsManager.getOptionsArray(['meal', 'diet']);
   const dispatch = Redux.useDispatch();
-  const reset = useResetCategoriesStatus();
+  const reset = useResetCategoriesState();
   const resetImageStatus = useResetAddImageState();
-
+  const CreateCategoryStore = useCreateCategoriesStore();
   useEffect(() => {
-    if (create.status === 'Created') {
+    if (CreateCategoryStore.status === 200) {
       setStatus('Created successful!');
       setTitle('');
       setTitleUA('');
       setImage('');
     }
 
-    if (create.error) {
-      setStatus(create.error.message);
+    if (CreateCategoryStore.error) {
+      setStatus(CreateCategoryStore.error);
     }
-  }, [create.status, create.error]);
+  }, [CreateCategoryStore.status, CreateCategoryStore.error]);
 
   useEffect(() => {
     return  () => {
@@ -89,7 +86,7 @@ export const useCategoryFormController = () => {
     title,
     titleUA,
     image,
-    isLoading: create.isLoading,
+    isLoading: CreateCategoryStore.isLoading,
     status,
   };
 };

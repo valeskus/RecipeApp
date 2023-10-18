@@ -79,25 +79,20 @@ export type CategoryPostModel = {
   type: 'diet' | 'meal';
 };
 
+export type CategoriesStateType = {
+  categories: Array<CategoryModel> ;
+  error: string;
+  isLoading: boolean;
+};
+
+export type CreateCategoriesStateType = {
+  status: string | number;
+  error: string;
+  isLoading: boolean;
+};
+
 export type  CategoriesListModel = {
   categories: Array<CategoryModel>;
-};
-
-export type CategoriesModelState = {
-  data: Array<CategoryModel> | null;
-  error: unknown | string;
-  isLoading: boolean;
-};
-
-export type CategoryCreateState = {
-  status: string;
-  error: any;
-  isLoading: boolean;
-};
-
-export type CategoriesStateType = {
-  categories: CategoriesModelState;
-  create: CategoryCreateState;
 };
 
 export const CATEGORIES = 'categories';
