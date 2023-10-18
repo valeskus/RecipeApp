@@ -31,7 +31,7 @@ export function GeneralInfoForm(props: Props): JSX.Element {
     descriptionUA,
     time,
     amount,
-    // image,
+    image,
     // imageStatus,
     servingsCount,
     categoriesArray,
@@ -62,7 +62,7 @@ export function GeneralInfoForm(props: Props): JSX.Element {
       </div>
       <div className="formItems">
 
-        <ImageInputsBox onChange={handleImage}/>
+        <ImageInputsBox onChange={handleImage} component="recipe" image={image}/>
 
         <Input label="Time:" type="number" placeholder="time in minutes" onChange={handleTime} onBlur={onChangeInput}
           value={`${time}`}

@@ -6,6 +6,7 @@ import { ImageListModel } from '../../models';
 
 import { IMAGES, ImagesStateType } from './types';
 
+// TODO created. Add two states
 const imagesInitialState: ImagesStateType = {
   images: {
     data: null,

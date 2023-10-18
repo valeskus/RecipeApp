@@ -5,10 +5,21 @@ import { AxiosError } from 'axios';
 import { RECIPES, RecipePostModel, RecipeStateType } from './types';
 
 const recipeInitialState: RecipeStateType = {
-  create: {
+  status: '',
+  error: '',
+  isLoading: false,
+
+  recipeImage: {
     status: '',
     error: '',
     isLoading: false,
+    url: '',
+  },
+  instructionImage: {
+    status: '',
+    error: '',
+    isLoading: false,
+    url: '',
   },
 };
 
@@ -17,23 +28,51 @@ export const recipesSlice = createSlice({
   initialState: recipeInitialState,
   reducers: {
     postRecipe: (state: RecipeStateType, {}: PayloadAction<RecipePostModel>) => {
-      state.create.isLoading = true;
-      state.create.error = '';
+      state.isLoading = true;
+      state.error = '';
     },
-    postRecipeSuccessAction: (state: RecipeStateType, { payload: status }: PayloadAction<string>) => {
-      state.create.isLoading = false;
-      state.create.status = status;
+    postRecipeSuccessAction: (state: RecipeStateType, { payload: status }: PayloadAction<number>) => {
+      state.isLoading = false;
+      state.status = status;
     },
     postRecipeErrorAction: (state: RecipeStateType, { payload: error }: PayloadAction<AxiosError>) => {
-      state.create.isLoading = false;
-      state.create.error = error.response?.data;
+      state.isLoading = false;
+      state.error = error.message;
+    },
+    postRecipeImage: (state: RecipeStateType, {}: PayloadAction<FormData>) => {
+      state.recipeImage.isLoading = true;
+      state.error = '';
+    },
+    postRecipeImageSuccessAction: (state: RecipeStateType, { payload }: PayloadAction<{
+      image: { url: string }; status: string; }>) => {
+      state.recipeImage.isLoading = false;
+      state.recipeImage.url = payload.image.url;
+    },
+    postRecipeImageErrorAction: (state: RecipeStateType, { payload: error }: PayloadAction<AxiosError>) => {
+      state.recipeImage.isLoading = false;
+      state.error = error.message;
+    },
+    postInstructionImage: (state: RecipeStateType, {}: PayloadAction<FormData>) => {
+      state.instructionImage.isLoading = true;
+      state.instructionImage.error = '';
+    },
+    postInstructionImageSuccessAction: (state: RecipeStateType, { payload }: PayloadAction<{
+      image: { url: string }; status: string; }>) => {
+      state.instructionImage.isLoading = false;
+      state.instructionImage.url = payload.image.url;
+    },
+    postInstructionImageErrorAction: (state: RecipeStateType, { payload: error }: PayloadAction<AxiosError>) => {
+      state.instructionImage.isLoading = false;
+      state.instructionImage.error = error.response?.data;
     },
     resetRecipeStatus: (state: RecipeStateType) => {
-      state.create.status = '';
-      state.create.error = '';
+      state.status = '';
+      state.error = '';
     },
 
   },
 });
 
-export const { postRecipe, postRecipeSuccessAction, postRecipeErrorAction, resetRecipeStatus } = recipesSlice.actions;
+export const { postRecipe, postRecipeSuccessAction, postRecipeErrorAction, resetRecipeStatus,
+  postRecipeImage, postRecipeImageSuccessAction, postRecipeImageErrorAction,
+  postInstructionImage, postInstructionImageSuccessAction, postInstructionImageErrorAction } = recipesSlice.actions;

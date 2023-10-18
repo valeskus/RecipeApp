@@ -1,5 +1,6 @@
 import './FileInput.style.css';
 
+//TODO value
 interface Props {
   label: string;
   onChange: (e: any) => void ;

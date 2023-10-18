@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import * as Redux from 'react-redux';
 
-import { RecipePostModel, RecipeStateType } from '../../stores/recipe/types';
+import { RecipePostModel } from '../../stores/recipe/types';
 import { postRecipe } from '../../stores/recipe/recipeSlice';
 import { useGetProducts, useProductsStore } from '../../stores/product/hooks';
 import { useCategoriesStore, useGetCategories } from '../../stores/categories';
@@ -24,9 +24,9 @@ export const useRecipeFormController = () => {
   const { products } = useProductsStore();
   const getCategories = useGetCategories();
   const { categories } = useCategoriesStore();
-  const { create }: RecipeStateType = useRecipesStore();
+  const RecipesStore = useRecipesStore();
 
-  const [status, setStatus] = useState<string>(create.status);
+  const [status, setStatus] = useState<string>('');
 
   const productsValue = OptionsManager.getProductOptionsArray(products);
   const categoriesValue = OptionsManager.getCategoriesOptionsArray(categories);
@@ -54,18 +54,20 @@ export const useRecipeFormController = () => {
   }, [setGeneralForm]);
 
   useEffect(() => {
-    if (create.status === 'Created') {
+    if (RecipesStore.status === 201) {
       setStatus('Created successful!');
       setIngredients([]);
       setInstructions([]);
       resetImageStatus(dispatch);
     }
 
-    if (create.error) {
-      setStatus(create.error.message);
+    if (RecipesStore.error) {
+      setStatus(RecipesStore.error);
+      console.log(RecipesStore.error);
     }
 
-  }, [create.status, create.error]);
+    console.log(RecipesStore.status);
+  }, [RecipesStore.status, RecipesStore.error]);
 
   const onAddIngredient = useCallback((ingredientItem: IngredientItem) => {
     setIngredients([...ingredients, ingredientItem]);
@@ -125,6 +127,6 @@ export const useRecipeFormController = () => {
     removeInstruction,
     handleGeneralForm,
     status,
-    isLoading: create.isLoading,
+    isLoading: RecipesStore.isLoading,
   };
 };

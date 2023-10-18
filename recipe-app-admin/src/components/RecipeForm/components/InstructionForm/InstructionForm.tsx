@@ -14,6 +14,7 @@ export function InstructionForm(props: Props): JSX.Element {
     addChanges,
     description,
     descriptionUA,
+    image,
   } = useInstructionsFormController(props);
 
   return (
@@ -25,7 +26,7 @@ export function InstructionForm(props: Props): JSX.Element {
       <TextArea label="Description UA:"
         onChange={handleDescriptionUA} value={descriptionUA}
       />
-      <ImageInputsBox onChange={handleImage} />
+      <ImageInputsBox onChange={handleImage} component="instruction" image={image}/>
 
       <Button title="OK" onClick={addChanges} disabled={!description ||
         !descriptionUA}

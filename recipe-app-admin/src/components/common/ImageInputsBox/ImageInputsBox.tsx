@@ -1,15 +1,14 @@
 import { FormStatus } from '../FormStatus';
 import { FileInput, Input } from '../inputs';
 
-import { useImageInputsController } from './useImageInputsBoxController';
+import { ImageInputsControllerParams, useImageInputsController } from './useImageInputsBoxController';
 
 import './ImageInputsBox.style.css';
-interface Props {
-  onChange: (image: string) => void;
+interface Props extends ImageInputsControllerParams {
 }
 
-export function ImageInputsBox({ onChange }: Props): JSX.Element {
-  const { image, handleImage, handleImageFile, imageStatus } = useImageInputsController(onChange);
+export function ImageInputsBox(props: Props): JSX.Element {
+  const { image, handleImage, handleImageFile, imageStatus } = useImageInputsController(props);
 
   return (
     <div className="multiForm-image-box">
