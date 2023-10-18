@@ -7,7 +7,7 @@ import { useCategoriesStore } from '../../stores/categories';
 import { OptionsManager } from '../managers/OptionsManager';
 import { OptionModel } from '../common/Select/Select';
 import { useResetCategoriesStatus } from '../../stores/categories/hooks/useResetCategoriesStatus';
-import { useResetImageStatus } from '../../stores/images/hooks/useResetImageStatus';
+import { useResetAddImageState } from '../../stores/addImage/hooks';
 
 export const useCategoryFormController = () => {
   const [title, setTitle] = useState<string>('');
@@ -21,7 +21,7 @@ export const useCategoryFormController = () => {
   const typesValue = OptionsManager.getOptionsArray(['meal', 'diet']);
   const dispatch = Redux.useDispatch();
   const reset = useResetCategoriesStatus();
-  const resetImageStatus = useResetImageStatus();
+  const resetImageStatus = useResetAddImageState();
 
   useEffect(() => {
     if (create.status === 'Created') {

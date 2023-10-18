@@ -1,19 +1,19 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { ImagesStateType } from '../../stores/images/types';
-import { postImage } from '../../stores/images/imagesSlice';
-import { useImagesStore } from '../../stores/images/hooks';
-import { useResetImageStatus } from '../../stores/images/hooks/useResetImageStatus';
+import { postImage } from '../../stores/addImage/AddImageSlice';
+import { useAddImageStore } from '../../stores/addImage/hooks';
+import { useResetAddImageState } from '../../stores/addImage/hooks';
 
 export const useImageFormController = () => {
   const [imageData, setImageData] = useState <Array<FormData>>([]);
   const [status, setStatus] = useState<string>('');
 
   const dispatch = useDispatch();
-  const { create }: ImagesStateType = useImagesStore();
 
-  const reset = useResetImageStatus();
+  const AddImageStore = useAddImageStore();
+
+  const reset = useResetAddImageState();
 
   const onSend = useCallback(() => {
     setStatus('');
@@ -46,15 +46,15 @@ export const useImageFormController = () => {
   }, [imageData]);
 
   useEffect(() => {
-    if (create.status === 'Created') {
+    if (AddImageStore.status === 'Created') {
       setStatus('Created successful!');
       setImageData([]);
     }
 
-    if (create.error) {
-      setStatus(create.error.message);
+    if (AddImageStore.error) {
+      setStatus(AddImageStore.error.message);
     }
-  }, [create.status, create.error]);
+  }, [AddImageStore.status, AddImageStore.error]);
 
   useEffect(() => {
     return () => {

@@ -3,7 +3,8 @@ import { all, fork } from 'redux-saga/effects';
 import { watchGetCategories, watchPostCategory } from './categories';
 import { watchGetProducts, watchPostProduct } from './product';
 import { watchPostInstructionImage, watchPostRecipe, watchPostRecipeImage } from './recipe';
-import { watchGetImages, watchPostImage } from './images';
+import { watchGetImages } from './images';
+import { watchPostImage } from './addImage';
 
 export const rootSaga = function* () {
   yield all([

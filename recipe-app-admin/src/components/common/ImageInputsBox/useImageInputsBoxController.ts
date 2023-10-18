@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { useImagesStore } from '../../../stores/images/hooks';
-import { postImage } from '../../../stores/images/imagesSlice';
+import { useAddImageStore } from '../../../stores/addImage/hooks';
+import { postImage } from '../../../stores/addImage/AddImageSlice';
 import { postInstructionImage, postRecipeImage } from '../../../stores/recipe/recipeSlice';
 import { useRecipesStore } from '../../../stores/recipe/hooks';
 
@@ -16,7 +16,7 @@ export const useImageInputsController = (params: ImageInputsControllerParams) =>
   const [image, setImage] = useState<string>(params.image);
   const [imageStatus, setImageStatus] = useState<string>('');
 
-  const ImagesStore = useImagesStore();
+  const AddImageStore = useAddImageStore();
   const RecipesStore = useRecipesStore();
 
   const dispatch = useDispatch();
@@ -34,20 +34,20 @@ export const useImageInputsController = (params: ImageInputsControllerParams) =>
       return;
     }
 
-    if (!ImagesStore.create.url) {
+    if (!AddImageStore.url) {
       return;
     }
 
-    if (ImagesStore.create.url) {
-      setImage(ImagesStore.create.url);
-      params. onChange(ImagesStore.create.url);
+    if (AddImageStore.url) {
+      setImage(AddImageStore.url);
+      params. onChange(AddImageStore.url);
       setImageStatus('Uploaded');
     }
 
-    if (ImagesStore.create.error) {
-      setImageStatus(ImagesStore.create.error.message);
+    if (AddImageStore.error) {
+      setImageStatus(AddImageStore.error.message);
     }
-  }, [params.component, ImagesStore.create.url, ImagesStore.create.error]);
+  }, [params.component, AddImageStore.url, AddImageStore.error]);
 
   useEffect(() => {
     if (params.component !== 'recipe') {

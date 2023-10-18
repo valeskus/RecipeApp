@@ -9,7 +9,7 @@ import { OptionsManager } from '../managers/OptionsManager';
 import { OptionModel } from '../common/Select/Select';
 import { useRecipesStore, useResetRecipeStatus } from '../../stores/recipe/hooks';
 import { IngredientItem, InstructionItem } from '../../models';
-import { useResetImageStatus } from '../../stores/images/hooks/useResetImageStatus';
+import { useResetAddImageState } from '../../stores/addImage/hooks/useResetAddImageState';
 
 export const useRecipeFormController = () => {
 
@@ -19,7 +19,7 @@ export const useRecipeFormController = () => {
 
   const dispatch = Redux.useDispatch();
   const reset = useResetRecipeStatus();
-  const resetImageStatus = useResetImageStatus();
+  const resetImageStatus = useResetAddImageState();
   const getProducts = useGetProducts();
   const { products } = useProductsStore();
   const getCategories = useGetCategories();
@@ -63,10 +63,7 @@ export const useRecipeFormController = () => {
 
     if (RecipesStore.error) {
       setStatus(RecipesStore.error);
-      console.log(RecipesStore.error);
     }
-
-    console.log(RecipesStore.status);
   }, [RecipesStore.status, RecipesStore.error]);
 
   const onAddIngredient = useCallback((ingredientItem: IngredientItem) => {

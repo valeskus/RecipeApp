@@ -1,16 +1,18 @@
 import { useCallback, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
+import { useAddImageStore } from '../../../../stores/addImage/hooks';
 import { useGetImages, useImagesStore } from '../../../../stores/images/hooks';
 
 export const useImagesGalleryController = () => {
   const getImages = useGetImages();
   const dispatch = useDispatch();
-  const { images, create } = useImagesStore();
+  const { images, isLoading } = useImagesStore();
+  const AddImageStore = useAddImageStore();
 
   useEffect(() => {
     getImages(dispatch);
-  }, [create]);
+  }, [AddImageStore]);
 
   const onCopyUrl = useCallback(async (imageUrl: string) => {
     try {
@@ -22,8 +24,8 @@ export const useImagesGalleryController = () => {
   }, []);
 
   return {
-    images: images.data,
-    isLoading: images.isLoading,
+    images: images,
+    isLoading,
     onCopyUrl,
   };
 };

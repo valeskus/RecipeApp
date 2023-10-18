@@ -1,12 +1,10 @@
 import { AxiosError, AxiosResponse } from 'axios';
 import { put,  takeLatest } from 'redux-saga/effects';
-import { PayloadAction } from '@reduxjs/toolkit';
 
 import { ImageListModel } from '../../models';
 import * as ImagesApi from '../../api/images.api';
 
-import { getImages, getImagesErrorAction, getImagesSuccessAction,
-  postImage, postImageErrorAction, postImageSuccessAction } from './imagesSlice';
+import { getImages, getImagesErrorAction, getImagesSuccessAction } from './imagesSlice';
 
 export function* getImagesSaga() {
   try {
@@ -19,17 +17,4 @@ export function* getImagesSaga() {
 
 export function* watchGetImages() {
   yield takeLatest(getImages.type, getImagesSaga);
-}
-
-export function* postImageSaga({ payload: image }: PayloadAction<FormData>) {
-  try {
-    const response: AxiosResponse<{ url: string }> = yield ImagesApi.postImage(image);
-    yield put(postImageSuccessAction({ image: response.data, status: response.statusText }));
-  } catch (error) {
-    yield put(postImageErrorAction(error as AxiosError<unknown, any>));
-  }
-}
-
-export function* watchPostImage() {
-  yield takeLatest(postImage.type, postImageSaga);
 }
