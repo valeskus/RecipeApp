@@ -5,7 +5,6 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { Header } from '@components/Header';
-import { SettingButton } from '@components/SettingButton';
 
 import { store } from './stores/rootStore';
 import { CategoriesList } from './screens/CategoriesList';
@@ -57,9 +56,6 @@ export function App(): JSX.Element {
               component={CategoriesList}
               options={{
                 title: 'Categories',
-                header: ({ options }) => (
-                  <Header options={options} headerLeft={<SettingButton />} />
-                ),
               }}
             />
             <Stack.Screen

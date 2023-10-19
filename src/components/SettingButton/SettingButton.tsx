@@ -14,7 +14,7 @@ export function SettingButton(): JSX.Element {
       onPress={onClearFilters}
       style={({ pressed }) => [styles.button, pressed && styles.buttonPressed]}
     >
-      <Image source={Icons.clean} style={styles.buttonImage} />
+      <Image source={Icons.setting} style={styles.buttonImage} />
     </Pressable>
   );
 }

@@ -32,12 +32,20 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     position: 'absolute',
     left: 10,
-    zIndex: 1,
+    zIndex: 10,
   },
   headerRightContainer: {
     justifyContent: 'center',
     position: 'absolute',
     right: 10,
+    zIndex: 1,
+  },
+  headerLeftContainer: {
+    width: 25,
+    height: 25,
+    justifyContent: 'center',
+    position: 'absolute',
+    left: 15,
     zIndex: 1,
   },
 });
