@@ -23,6 +23,8 @@ export const useCategoryListController = () => {
     setLoading(true);
    //TODO retry
 
+    resetError();
+
     await getCategories();
 
     setLoading(false);
