@@ -1,11 +1,12 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
 
-import { categoriesReducer } from './categories/categoriesReducer';
-import { recipesReducer } from './recipes/recipesReducer';
-import { recipeDetailsReducer } from './recipeDetails/recipeDetailsReducer';
-import { searchReducer } from './search/searchReducer';
+import { categoriesReducer } from './categories';
+import { recipesReducer } from './recipes';
+import { recipeDetailsReducer } from './recipeDetails';
+import { searchReducer } from './search';
 import { errorHandler } from './middleware/errorHandler';
-import { errorsReducer } from './errors/errorsReducer';
+import { errorsReducer } from './errors';
+import { languagesReducer } from './languages';
 
 const rootReducer = combineReducers({
   categories: categoriesReducer,
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
   recipeDetails: recipeDetailsReducer,
   search: searchReducer,
   errors: errorsReducer,
+  languages: languagesReducer,
 });
 
 export type RootStore = ReturnType<typeof rootReducer>;

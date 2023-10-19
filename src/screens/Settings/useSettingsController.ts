@@ -1,22 +1,32 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 import * as CategoriesStore from '@stores/categories';
-
-import { changeLanguage } from '@api/client.api';
+import { useLanguagesStore, useSetLanguage } from '@stores/languages';
 
 export const useSettingButtonController = () => {
-  const [isUA, setUA] = useState(true);
+  const [isUA, setUA] = useState<boolean | undefined>();
   const getCategories = CategoriesStore.useGetCategories();
+  const { language } = useLanguagesStore();
 
-  const onPressUA = useCallback(async() => {
+  const setLanguage = useSetLanguage();
+
+  useEffect(() => {
+    if (language === 'en') {
+      return setUA(false);
+    }
+
     setUA(true);
-    changeLanguage('ua');
+  }, [language]);
+
+  const onPressUA = useCallback(async () => {
+    setUA(true);
+    setLanguage('ua');
     await getCategories();
 
   }, []);
-  const onPressEN = useCallback(async() => {
+  const onPressEN = useCallback(async () => {
     setUA(false);
-    changeLanguage('en');
+    setLanguage('en');
     await getCategories();
 
   }, []);
