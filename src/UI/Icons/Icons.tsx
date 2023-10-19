@@ -22,5 +22,6 @@ export const Icons = {
   errorRecipe: require('../../../assets/errorRecipeDetails.png'),
   error: require('../../../assets/error.png'),
   setting: require('../../../assets/setting.png'),
-
+  ua: require('../../../assets/ua.png'),
+  en: require('../../../assets/en.png'),
 };

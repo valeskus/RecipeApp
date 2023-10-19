@@ -21,8 +21,6 @@ export const useCategoryListController = () => {
 
   const fetchData = async () => {
     setLoading(true);
-   //TODO retry
-
     resetError();
 
     await getCategories();

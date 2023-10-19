@@ -1,18 +1,41 @@
 import { StyleSheet } from 'react-native';
 
+import { Colors } from '@UI/Colors';
+
 export const styles = StyleSheet.create({
-  buttonPressed: {
-    transform: [{ scale: 0.9 }],
+  modalContainer: {
+    flex: 1,
+    paddingVertical: 10,
+    paddingHorizontal: 15,
+    backgroundColor: Colors.background,
+  },
+  selectButtonContainer: {
+    zIndex: 10,
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    position: 'absolute',
+    width: '100%',
+    right: 10,
+  },
+  footerOffset: {
+    backgroundColor: Colors.background,
+    bottom: 0,
+    left: 0,
+    right: 0,
+    position: 'absolute',
+    opacity: 0.8,
+    zIndex: 5,
+    borderTopEndRadius: 30,
+    borderTopStartRadius: 30,
   },
   buttonImage: {
-    width: '100%',
-    height: '100%',
-    alignSelf: 'center',
+    width: '60%',
+    height: '60%',
   },
-  button: {
-    width: 30,
-    height: 30,
-    top: 3,
-    right: 5,
+  label: {
+    margin: 10,
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: Colors.primary,
   },
 });

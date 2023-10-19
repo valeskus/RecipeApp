@@ -12,6 +12,7 @@ import { RecipesList } from './screens/RecipesList';
 import { Filter, ClearButton } from './screens/Filter';
 import { Sort } from './screens/Sort';
 import { RecipeDetails } from './screens/RecipeDetails';
+import { Settings } from './screens/Settings';
 
 if (
   Platform.OS === 'android' &&
@@ -22,6 +23,7 @@ if (
 
 export type RootStackParamList = {
   Categories: undefined;
+  Settings: undefined;
   Recipes: undefined;
   Sort: undefined;
   Filter: undefined;
@@ -84,6 +86,18 @@ export function App(): JSX.Element {
               title: 'Filter',
               header: ({ options }) => (
                 <Header options={options} headerRight={<ClearButton />} />
+              ),
+            }}
+          />
+
+          <Stack.Screen
+            name="Settings"
+            component={Settings}
+            options={{
+              presentation: 'modal',
+              title: 'Settings',
+              header: ({ options }) => (
+                <Header options={options} />
               ),
             }}
           />

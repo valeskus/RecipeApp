@@ -45,7 +45,9 @@ module.exports = {
         'dotenv',
         'kcal',
         'lte',
-        'gte'
+        'gte',
+        'ua',
+        'en'
       ]
     }],
     'import/no-unresolved': ['error', {ignore: ['@env']}],

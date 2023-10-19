@@ -18,7 +18,7 @@ export function Header({ options, headerRight }: Props): JSX.Element {
     navigation.goBack();
   }, []);
   const onPressSetting = useCallback(() => {
-    navigation.navigate('Recipes');
+  return  navigation.navigate('Settings');
   }, []);
 
   return (
