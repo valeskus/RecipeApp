@@ -10,9 +10,10 @@ import { styles } from './styles';
 interface Props {
   options: NativeStackNavigationOptions;
   headerRight?: React.ReactNode;
+  headerLeft?: React.ReactNode;
 }
 
-export function Header({ options, headerRight }: Props): JSX.Element {
+export function Header({ options, headerRight, headerLeft }: Props): JSX.Element {
   const navigation = useNavigation();
   const onGoBack = useCallback(() => {
     navigation.goBack();
@@ -31,6 +32,7 @@ export function Header({ options, headerRight }: Props): JSX.Element {
           <Image source={Icons.leftArrow} style={styles.buttonImage} />
         </Pressable>
       )}
+      <View style={styles.button}>{headerLeft}</View>
       <Text style={styles.headerTitle}>{options.title}</Text>
       <View style={styles.headerRightContainer}>{headerRight}</View>
     </View>
