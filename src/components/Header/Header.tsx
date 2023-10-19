@@ -5,8 +5,6 @@ import { useNavigation } from '@react-navigation/native';
 
 import { Icons } from '@UI/Icons';
 
-import { SettingButton } from '@components/SettingButton';
-
 import { styles } from './styles';
 
 interface Props {
@@ -18,6 +16,9 @@ export function Header({ options, headerRight }: Props): JSX.Element {
   const navigation = useNavigation();
   const onGoBack = useCallback(() => {
     navigation.goBack();
+  }, []);
+  const onPressSetting = useCallback(() => {
+    navigation.navigate('Recipes');
   }, []);
 
   return (
@@ -33,8 +34,17 @@ export function Header({ options, headerRight }: Props): JSX.Element {
           <Image source={Icons.leftArrow} style={styles.buttonImage} />
         </Pressable>
       )}
-      {!navigation.canGoBack() && (<View style={styles.headerLeftContainer}>
-        <SettingButton/></View>) }
+      {!navigation.canGoBack() && (
+        <Pressable
+          onPress={onPressSetting}
+          style={({ pressed }) => [
+            styles.headerLeftContainer,
+            pressed && styles.buttonPressed,
+          ]}
+        >
+          <Image source={Icons.setting} style={styles.buttonImage} />
+        </Pressable>)
+        }
 
       <Text style={styles.headerTitle}>{options.title}</Text>
       <View style={styles.headerRightContainer}>{headerRight}</View>

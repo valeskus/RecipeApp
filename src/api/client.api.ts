@@ -6,3 +6,10 @@ export const client = axios.create({
   headers: {
     'Accept-Language': 'en'  },
 });
+
+export const changeLanguage = (language: string) => {
+  Object.assign(client.defaults.headers.common, {
+    'Accept-Language': language,
+  }
+    );
+};
