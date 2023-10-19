@@ -10,6 +10,6 @@ export const useResetErrors = (errorKey: string) => {
     () => {
       resetErrors(errorKey, dispatch);
     },
-    [dispatch],
+    [dispatch, errorKey],
   );
 };

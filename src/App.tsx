@@ -37,7 +37,7 @@ declare global {
   }
 }
 
-function App(): JSX.Element {
+export function App(): JSX.Element {
   return (
     <Provider store={store}>
       <NavigationContainer>
@@ -98,5 +98,3 @@ function App(): JSX.Element {
     </Provider>
   );
 }
-
-export default App;
