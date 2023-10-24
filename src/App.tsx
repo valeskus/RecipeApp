@@ -5,6 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { Header } from '@components/Header';
+import { SettingsButton } from '@components/SettingsButton';
 
 import { store } from './stores/rootStore';
 import { CategoriesList } from './screens/CategoriesList';
@@ -12,6 +13,7 @@ import { RecipesList } from './screens/RecipesList';
 import { Filter, ClearButton } from './screens/Filter';
 import { Sort } from './screens/Sort';
 import { RecipeDetails } from './screens/RecipeDetails';
+import { Settings } from './screens/Settings';
 
 if (
   Platform.OS === 'android' &&
@@ -22,6 +24,7 @@ if (
 
 export type RootStackParamList = {
   Categories: undefined;
+  Settings: undefined;
   Recipes: undefined;
   Sort: undefined;
   Filter: undefined;
@@ -56,6 +59,11 @@ export function App(): JSX.Element {
               component={CategoriesList}
               options={{
                 title: 'Categories',
+                header: ({ options }) => (
+                  <SafeAreaView>
+                    <Header options={options} headerLeft={<SettingsButton />} />
+                  </SafeAreaView>
+                ),
               }}
             />
             <Stack.Screen
@@ -84,6 +92,18 @@ export function App(): JSX.Element {
               title: 'Filter',
               header: ({ options }) => (
                 <Header options={options} headerRight={<ClearButton />} />
+              ),
+            }}
+          />
+
+          <Stack.Screen
+            name="Settings"
+            component={Settings}
+            options={{
+              presentation: 'modal',
+              title: 'Settings',
+              header: ({ options }) => (
+                <Header options={options} />
               ),
             }}
           />
