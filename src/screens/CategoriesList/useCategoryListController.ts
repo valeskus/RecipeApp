@@ -3,16 +3,16 @@ import { useCallback, useEffect, useState } from 'react';
 
 import * as ErrorsStore from '@stores/errors';
 import * as CategoriesStore from '@stores/categories';
+import * as LanguagesStore from '@stores/languages';
 
 export const useCategoryListController = () => {
   const [isLoading, setLoading] = useState(false);
   const { categories } = CategoriesStore.useCategoriesStore();
+  const { language } = LanguagesStore.useLanguagesStore();
 
   const getCategories = CategoriesStore.useGetCategories();
   const errorGetCategories = ErrorsStore.useGetErrorFor('getCategories');
-
   const navigation = useNavigation();
-
   const resetError = ErrorsStore.useResetErrors('getCategories');
 
   const handleSearch = useCallback(() => {
@@ -21,7 +21,6 @@ export const useCategoryListController = () => {
 
   const fetchData = async () => {
     setLoading(true);
-    resetError();
 
     await getCategories();
 
@@ -34,7 +33,7 @@ export const useCategoryListController = () => {
     return () => {
       resetError();
     };
-  }, []);
+  }, [language]);
 
   return {
     handleSearch,

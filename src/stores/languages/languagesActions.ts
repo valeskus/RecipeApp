@@ -8,7 +8,7 @@ export enum LanguagesActions {
 
 const actionSetLanguages = (payload: string) => ({
     type: LanguagesActions.SET,
-    payload,
+    payload: { language: payload },
 });
 export const setLanguage = (language: string, dispatch: Dispatch) => {
         changeLanguage(language);

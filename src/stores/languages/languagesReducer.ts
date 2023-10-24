@@ -3,12 +3,11 @@ import * as Redux from 'redux';
 import { LanguagesActions } from './languagesActions';
 
 export interface LanguagesStoreState {
-  language: 'ua' | 'en';
+  language: 'ua' | 'en' | '';
 }
 
 const initialState: LanguagesStoreState = {
-  language: 'en',
-
+  language: '',
 };
 
 export function languagesReducer(
@@ -17,9 +16,11 @@ export function languagesReducer(
 ): LanguagesStoreState {
   switch (action.type) {
     case LanguagesActions.SET: {
+      const { language } = action.payload;
+
       return {
         ...state,
-        language: action.payload,
+        language,
       };
     }
 

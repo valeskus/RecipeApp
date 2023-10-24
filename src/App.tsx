@@ -5,6 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { Header } from '@components/Header';
+import { SettingsButton } from '@components/SettingsButton';
 
 import { store } from './stores/rootStore';
 import { CategoriesList } from './screens/CategoriesList';
@@ -58,6 +59,11 @@ export function App(): JSX.Element {
               component={CategoriesList}
               options={{
                 title: 'Categories',
+                header: ({ options }) => (
+                  <SafeAreaView>
+                    <Header options={options} headerLeft={<SettingsButton />} />
+                  </SafeAreaView>
+                ),
               }}
             />
             <Stack.Screen

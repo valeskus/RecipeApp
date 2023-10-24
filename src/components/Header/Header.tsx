@@ -10,20 +10,19 @@ import { styles } from './styles';
 interface Props {
   options: NativeStackNavigationOptions;
   headerRight?: React.ReactNode;
+  headerLeft?: React.ReactNode;
+
 }
 
-export function Header({ options, headerRight }: Props): JSX.Element {
+export function Header({ options, headerRight, headerLeft }: Props): JSX.Element {
   const navigation = useNavigation();
   const onGoBack = useCallback(() => {
     navigation.goBack();
   }, []);
-  const onPressSetting = useCallback(() => {
-  return  navigation.navigate('Settings');
-  }, []);
 
   return (
     <View style={styles.headerContainer}>
-      {navigation.canGoBack() && (
+      {!headerLeft && (
         <Pressable
           onPress={onGoBack}
           style={({ pressed }) => [
@@ -34,18 +33,8 @@ export function Header({ options, headerRight }: Props): JSX.Element {
           <Image source={Icons.leftArrow} style={styles.buttonImage} />
         </Pressable>
       )}
-      {!navigation.canGoBack() && (
-        <Pressable
-          onPress={onPressSetting}
-          style={({ pressed }) => [
-            styles.headerLeftContainer,
-            pressed && styles.buttonPressed,
-          ]}
-        >
-          <Image source={Icons.setting} style={styles.buttonImage} />
-        </Pressable>)
-        }
-
+      {headerLeft && <View style={styles.headerLeftContainer}>{headerLeft}</View>
+      }
       <Text style={styles.headerTitle}>{options.title}</Text>
       <View style={styles.headerRightContainer}>{headerRight}</View>
     </View>

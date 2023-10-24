@@ -1,12 +1,12 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
 
-import { categoriesReducer } from './categories';
-import { recipesReducer } from './recipes';
-import { recipeDetailsReducer } from './recipeDetails';
-import { searchReducer } from './search';
 import { errorHandler } from './middleware/errorHandler';
-import { errorsReducer } from './errors';
-import { languagesReducer } from './languages';
+import { languagesReducer } from './languages/languagesReducer';
+import { errorsReducer } from './errors/errorsReducer';
+import { searchReducer } from './search/searchReducer';
+import { recipeDetailsReducer } from './recipeDetails/recipeDetailsReducer';
+import { recipesReducer } from './recipes/recipesReducer';
+import { categoriesReducer } from './categories/categoriesReducer';
 
 const rootReducer = combineReducers({
   categories: categoriesReducer,
