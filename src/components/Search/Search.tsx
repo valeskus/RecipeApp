@@ -19,12 +19,13 @@ export function Search({ onSearch }: Props): JSX.Element {
     handleSearch,
     handleResetSearchInput,
     handlePress,
+    t,
   } = useSearchController({ onSearch });
 
   return (
     <Pressable style={styles.searchBarContainer} onPress={handlePress}>
       <TextInput
-        placeholder="Search"
+        placeholder={t('scope.search')}
         style={styles.searchBarInput}
         onChangeText={handleChange}
         value={searchTerm}

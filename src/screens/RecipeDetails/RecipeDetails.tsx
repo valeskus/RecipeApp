@@ -13,7 +13,6 @@ import { IngredientsList } from './components/IngredientsList ';
 import { InstructionsList } from './components/InstructionsList';
 import { RecipeDetailsSkeleton } from './components/RecipeDetailsSkeleton';
 import {
-  PrescriptionCardLabels,
   PrescriptionCardSection,
 } from './hooks';
 import { NutrientsValue } from './components/NutrientsValue';
@@ -35,6 +34,7 @@ export function RecipeDetails(): JSX.Element {
     isError,
     fetchData,
     nutritionLabelsMap,
+    t,
   } = useRecipeDetailsController();
 
   const scrollYRef = useRef(new Animated.Value(0));
@@ -95,7 +95,7 @@ export function RecipeDetails(): JSX.Element {
             onChange={onPrescriptionCardSectionChange}
           >
             <View
-              aria-label={PrescriptionCardLabels.Ingredients}
+              aria-label={t('scope.ingredients')}
               aria-id={PrescriptionCardSection.Ingredients}
             >
               <IngredientsList
@@ -108,7 +108,7 @@ export function RecipeDetails(): JSX.Element {
               />
             </View>
             <View
-              aria-label={PrescriptionCardLabels.Instructions}
+              aria-label={t('scope.instructions')}
               aria-id={PrescriptionCardSection.Instructions}
             >
               <InstructionsList instructions={recipe.instructions} />
