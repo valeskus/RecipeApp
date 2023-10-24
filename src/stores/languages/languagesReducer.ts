@@ -3,11 +3,11 @@ import * as Redux from 'redux';
 import { LanguagesActions } from './languagesActions';
 
 export interface LanguagesStoreState {
-  language: 'ua' | 'en' | '';
+  language: 'ua' | 'en' ;
 }
 
 const initialState: LanguagesStoreState = {
-  language: '',
+  language: 'en',
 };
 
 export function languagesReducer(

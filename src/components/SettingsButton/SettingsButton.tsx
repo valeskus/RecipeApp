@@ -7,11 +7,11 @@ import { styles } from './styles';
 import { useSettingsButtonController } from './useSettingsButtonController';
 
 export function SettingsButton(): JSX.Element {
-    const { onPressSetting } = useSettingsButtonController();
+    const { onPress } = useSettingsButtonController();
 
     return (
       <Pressable
-        onPress={onPressSetting}
+        onPress={onPress}
         style={({ pressed }) => [
                 pressed && styles.buttonPressed,
         ]}

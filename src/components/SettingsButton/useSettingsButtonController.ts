@@ -3,12 +3,12 @@ import { useCallback } from 'react';
 
 export const useSettingsButtonController = () => {
     const navigation = useNavigation();
-    const onPressSetting = useCallback(() => {
+
+    const onPress = useCallback(() => {
         navigation.navigate('Settings');
     }, []);
 
     return {
-        onPressSetting,
+        onPress,
     };
-
 };

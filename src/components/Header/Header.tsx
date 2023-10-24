@@ -11,7 +11,6 @@ interface Props {
   options: NativeStackNavigationOptions;
   headerRight?: React.ReactNode;
   headerLeft?: React.ReactNode;
-
 }
 
 export function Header({ options, headerRight, headerLeft }: Props): JSX.Element {
@@ -33,10 +32,11 @@ export function Header({ options, headerRight, headerLeft }: Props): JSX.Element
           <Image source={Icons.leftArrow} style={styles.buttonImage} />
         </Pressable>
       )}
-      {headerLeft && <View style={styles.headerLeftContainer}>{headerLeft}</View>
-      }
-      <Text style={styles.headerTitle}>{options.title}</Text>
-      <View style={styles.headerRightContainer}>{headerRight}</View>
+      {headerLeft && <View style={styles.headerLeftContainer}>{headerLeft}</View>}
+      <Text style={styles.headerTitle}>{options.title}
+      </Text>
+      <View style={styles.headerRightContainer}>{headerRight}
+      </View>
     </View>
   );
 }

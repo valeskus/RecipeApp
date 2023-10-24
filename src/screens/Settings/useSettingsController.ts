@@ -10,6 +10,7 @@ export const useSettingButtonController = () => {
   const onPressUA = useCallback(() => {
     setLanguage('ua');
   }, []);
+
   const onPressEN = useCallback(() => {
     setLanguage('en');
   }, []);
