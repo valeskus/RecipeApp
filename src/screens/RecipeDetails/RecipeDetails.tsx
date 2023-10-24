@@ -13,7 +13,6 @@ import { IngredientsList } from './components/IngredientsList ';
 import { InstructionsList } from './components/InstructionsList';
 import { RecipeDetailsSkeleton } from './components/RecipeDetailsSkeleton';
 import {
-  NutrientsUnitLabels,
   PrescriptionCardLabels,
   PrescriptionCardSection,
 } from './hooks';
@@ -21,11 +20,6 @@ import { NutrientsValue } from './components/NutrientsValue';
 import { Error } from './components/Error';
 
 const { height } = Dimensions.get('screen');
-
-const nutritionLabelsMap = Object.keys(NutrientsUnitLabels).map(id => ({
-  id,
-  label: (NutrientsUnitLabels as any)[id],
-}));
 
 export function RecipeDetails(): JSX.Element {
   const {
@@ -40,6 +34,7 @@ export function RecipeDetails(): JSX.Element {
     isLoading,
     isError,
     fetchData,
+    nutritionLabelsMap,
   } = useRecipeDetailsController();
 
   const scrollYRef = useRef(new Animated.Value(0));

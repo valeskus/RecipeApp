@@ -1,0 +1,25 @@
+{
+  "screenHeaderTitle": {
+    "categories": "Категорії",
+    "recipes": "Рецепти",
+    "filter":"Фільтрування",
+    "sort":"Сортування",
+    "settings":"Налаштування"
+  },
+  "scope":{
+    "search":"Пошук",
+    "language":"Мова",
+    "ingredients": "Інгредієнти",
+    "instructions": "Інструкція",
+    "serving": "Порція",
+    "allAmount": "Загалом",
+    "g": "г",
+    "items": "одиниць",
+    "kCal": "ккал",
+    "carbs": "вуглеводи",
+    "protein": "білки",
+    "fats": "жири",
+    "step": "Шаг",
+    "errorRecipe":"0 результатів за вашим запитом."
+  }
+}

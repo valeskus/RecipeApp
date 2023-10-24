@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 import { RouteProp, useRoute } from '@react-navigation/native';
+import { useTranslation } from 'react-i18next';
 
 import * as RecipeDetailsStore from '@stores/recipeDetails';
 import * as ErrorsStore from '@stores/errors';
@@ -27,6 +28,7 @@ export const useRecipeDetailsController = () => {
   const getRecipe = RecipeDetailsStore.useGetRecipeDetails();
   const resetRecipe = RecipeDetailsStore.useResetRecipeDetails();
   const resetError = ErrorsStore.useResetErrors('getRecipeDetails');
+  const { t } = useTranslation();
 
   const fetchData = useCallback(async () => {
     setLoading(true);
@@ -62,6 +64,20 @@ export const useRecipeDetailsController = () => {
     [],
   );
 
+  const nutritionLabelsMap = Object.keys(Nutrients.NutrientsUnitLabels).map(id => ({
+    id,
+    label: (Nutrients.NutrientsUnitLabels as any)[id],
+  }));
+  //   const nutritionLabelsMap = (t('scope.nutrientsUnitLabels', { returnObjects: true }) as Array<string>)
+  //   .map(label => ({
+  //   id: NutrientsUnitLabels,
+  //   label,
+ // label: (t('scope.nutrientsUnitLabels')as any)[id],
+  // }));
+// console.log(nutritionLabelsMap);
+
+// eslint-disable-next-line spellcheck/spell-checker
+// TODO margin on togle backgraund
   return {
     recipe,
     onServingsCountChange: PrescriptionCard.onCountChange,
@@ -74,5 +90,7 @@ export const useRecipeDetailsController = () => {
     isLoading,
     isError: !!errorGetRecipeDetails,
     fetchData,
+    nutritionLabelsMap,
+    t,
   };
 };

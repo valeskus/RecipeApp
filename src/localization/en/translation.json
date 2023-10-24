@@ -1,0 +1,25 @@
+{
+    "screenHeaderTitle": {
+        "categories": "Categories",
+        "recipes": "Recipes",
+        "filter": "Filter",
+        "sort": "Sort",
+        "settings": "Settings"
+    },
+    "scope":{
+        "search":"Search",
+        "language":"Language",
+        "ingredients": "",
+        "instructions": "",
+        "serving": "Serving",
+        "allAmount": "All Amount",
+        "g": "g",
+        "items": "items",
+        "kCal": "kCal",
+        "carbs": "carbs",
+        "protein": "protein",
+        "fats": "fats",
+        "step": "Step",
+        "errorRecipe":"0 results found for your search."
+    }
+}
