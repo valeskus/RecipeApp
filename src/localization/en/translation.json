@@ -9,8 +9,8 @@
     "scope":{
         "search":"Search",
         "language":"Language",
-        "ingredients": "",
-        "instructions": "",
+        "ingredients": "Ingredients",
+        "instructions": "Instructions",
         "serving": "Serving",
         "allAmount": "All Amount",
         "g": "g",
