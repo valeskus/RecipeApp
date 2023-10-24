@@ -9,12 +9,10 @@ export const changeLanguage = (language: string) => {
   if (!language) {
     return Object.assign(client.defaults.headers.common, {
       'Accept-Language': 'en',
-    }
-    );
+    });
   }
 
   return Object.assign(client.defaults.headers.common, {
     'Accept-Language': language,
-  }
-  );
+  });
 };

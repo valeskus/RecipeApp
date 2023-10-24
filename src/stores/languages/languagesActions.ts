@@ -6,9 +6,9 @@ export enum LanguagesActions {
     SET = '@languages/get',
 }
 
-const actionSetLanguages = (payload: 'ua'|'en') => ({
+const actionSetLanguages = (language: 'ua'|'en') => ({
     type: LanguagesActions.SET,
-    payload: { language: payload },
+    payload: { language },
 });
 export const setLanguage = (language:  'ua'|'en', dispatch: Dispatch) => {
         changeLanguage(language);
