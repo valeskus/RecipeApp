@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { Provider } from 'react-redux';
 import { Platform, SafeAreaView, UIManager } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useTranslation } from 'react-i18next';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { Header } from '@components/Header';
 import { SettingsButton } from '@components/SettingsButton';
@@ -43,6 +44,16 @@ declare global {
 
 export function App(): JSX.Element {
   const { t } = useTranslation();
+
+const getLanguage = useCallback(async() => {
+ await AsyncStorage.getItem('language');
+
+//TODO change language
+}, []);
+
+  useEffect(() => {
+    getLanguage();
+  }, []);
 
   return (
     <Provider store={store}>
