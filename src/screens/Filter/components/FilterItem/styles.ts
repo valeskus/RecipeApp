@@ -9,7 +9,8 @@ export const styles = StyleSheet.create({
   },
   filterLabel: {
     fontSize: 20,
-    fontWeight: '600',
+    fontFamily: 'Nunito',
+    fontWeight: '800',
     color: Colors.text,
   },
 });

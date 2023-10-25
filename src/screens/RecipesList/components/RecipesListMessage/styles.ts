@@ -15,6 +15,8 @@ export const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 15,
     color: Colors.text,
+    fontWeight: '500',
+    fontFamily: 'Montserrat',
   },
   textMessageAccent: {
     fontSize: 18,
@@ -24,6 +26,8 @@ export const styles = StyleSheet.create({
   icon: {
     width: 100,
     height: 100,
-    marginBottom: 20,
+    marginBottom: 10,
+    fontWeight: '700',
+    fontFamily: 'Nunito',
   },
 });

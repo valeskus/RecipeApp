@@ -18,11 +18,15 @@ export const styles = StyleSheet.create({
   listItemCount: {
     color: Colors.text,
     fontSize: 18,
+    fontWeight: '600',
+    fontFamily: 'Montserrat',
     alignSelf: 'flex-start',
     marginBottom: 15,
   },
   listItemDescription: {
     color: Colors.text,
+    fontWeight: '400',
+    fontFamily: 'Montserrat',
     marginBottom: 15,
     width: '100%',
   },

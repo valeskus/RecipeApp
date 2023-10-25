@@ -47,7 +47,9 @@ module.exports = {
         'lte',
         'gte',
         'ua',
-        'en'
+        'en',
+        'Nunito',
+        'Extrabold'
       ]
     }],
     'import/no-unresolved': ['error', {ignore: ['@env']}],

@@ -40,11 +40,14 @@ export const styles = StyleSheet.create({
   },
   title: {
     fontSize: 30,
-    fontWeight: '600',
+    fontWeight: '700',
+    fontFamily: 'Nunito',
     flex: 2,
     flexWrap: 'wrap',
   },
   description: {
     marginBottom: 20,
+    fontWeight: '400',
+    fontFamily: 'Montserrat',
   },
 });

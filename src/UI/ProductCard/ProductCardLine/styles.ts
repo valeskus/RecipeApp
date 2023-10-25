@@ -26,6 +26,8 @@ export const styles = StyleSheet.create({
   productCardTitle: {
     marginBottom: 2,
     fontSize: 18,
+    fontFamily: 'Nunito',
+    fontWeight: '700',
     color: Colors.primary,
     flex: 1,
   },
@@ -35,6 +37,8 @@ export const styles = StyleSheet.create({
   },
   productCardLineDetailsItem: {
     fontSize: 15,
+    fontFamily: 'Montserrat',
+    fontWeight: '400',
     color: Colors.text,
     width: '60%',
   },
@@ -54,6 +58,7 @@ export const styles = StyleSheet.create({
   note: {
     color: Colors.secondary,
     fontSize: 13,
+    fontFamily: 'Montserrat',
     fontWeight: '300',
   },
   productCardDetailsItemBox: {

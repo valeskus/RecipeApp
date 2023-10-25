@@ -23,7 +23,7 @@ export const styles = StyleSheet.create({
     fontSize: 27,
     color: Colors.accent,
     marginBottom: 10,
-    fontWeight: '600',
+    fontWeight: '800',
   },
 
   message: {

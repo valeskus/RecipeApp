@@ -18,12 +18,16 @@ export const styles = StyleSheet.create({
   },
   itemsCounter: {
     fontSize: 14,
+    fontWeight: '400',
+    fontFamily: 'Montserrat',
     color: Colors.borderTextSecondary,
     marginBottom: 15,
     paddingHorizontal: 5,
   },
   title: {
-    fontSize: 20,
+    fontSize: 21,
     flex: 1,
+    fontWeight: '500',
+    fontFamily: 'Nunito',
   },
 });

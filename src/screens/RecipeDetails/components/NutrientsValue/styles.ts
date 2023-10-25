@@ -18,7 +18,8 @@ export const styles = StyleSheet.create({
   },
   title: {
     fontSize: 15,
-    fontWeight: '600',
+    fontWeight: '500',
+    fontFamily: 'Montserrat',
   },
   column: {
     flex: 1,

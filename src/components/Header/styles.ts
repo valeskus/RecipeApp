@@ -13,8 +13,9 @@ export const styles = StyleSheet.create({
   headerTitle: {
     color: Colors.primary,
     fontSize: 25,
-    fontWeight: '600',
+    fontWeight: '800',
     textAlign: 'center',
+    fontFamily: 'Nunito',
     flex: 1,
   },
 

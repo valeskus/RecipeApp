@@ -23,6 +23,7 @@ export const styles = StyleSheet.create({
   },
   searchBarInput: {
     fontSize: 17,
+    fontFamily: 'Montserrat',
     padding: 0,
     color: Colors.text,
     width: '100%',

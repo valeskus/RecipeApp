@@ -30,9 +30,13 @@ export const styles = StyleSheet.create({
   selectItemTitle: {
     flex: 1,
     alignSelf: 'center',
+    fontWeight: '400',
+    fontFamily: 'Montserrat',
   },
   activeTitle: {
     color: Colors.background,
+    fontWeight: '600',
+    fontFamily: 'Montserrat',
   },
   moveRight: {
     left: '33%',

@@ -16,7 +16,8 @@ export const styles = StyleSheet.create({
   label: {
     margin: 10,
     fontSize: 18,
-    fontWeight: 'bold',
+    fontFamily: 'Montserrat',
+    fontWeight: '500',
     color: Colors.primary,
   },
 });

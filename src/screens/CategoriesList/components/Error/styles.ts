@@ -20,12 +20,15 @@ export const styles = StyleSheet.create({
     fontSize: 27,
     color: Colors.accent,
     marginBottom: 10,
-    fontWeight: '600',
+    fontWeight: '800',
+    fontFamily: 'Nunito',
   },
 
   message: {
     fontSize: 18,
     color: Colors.primary,
     marginBottom: 20,
+    fontWeight: '500',
+    fontFamily: 'Montserrat',
   },
 });

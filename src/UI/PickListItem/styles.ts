@@ -28,5 +28,7 @@ export const styles = StyleSheet.create({
     color: Colors.text,
     marginLeft: 5,
     fontSize: 17,
+    fontFamily: 'Montserrat',
+    fontWeight: '300',
   },
 });
