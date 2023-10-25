@@ -19,5 +19,11 @@ export const styles = StyleSheet.create({
   textMessageAccent: {
     fontSize: 18,
     marginBottom: 5,
+    color: Colors.accent,
+  },
+  icon: {
+    width: 100,
+    height: 100,
+    marginBottom: 20,
   },
 });
