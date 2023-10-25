@@ -7,10 +7,9 @@ import { Button } from '@UI/Button';
 import { styles } from './styles';
 interface Props {
   scrollYRef?: any;
-  hideRightButton?: boolean;
 }
 
-export function Header({ scrollYRef, hideRightButton }: Props): JSX.Element {
+export function Header({ scrollYRef }: Props): JSX.Element {
   const navigation = useNavigation();
   const onGoBack = useCallback(() => {
     navigation.goBack();
@@ -28,11 +27,6 @@ export function Header({ scrollYRef, hideRightButton }: Props): JSX.Element {
       <View style={styles.headerLeftButton}>
         <Button icon="leftArrow" onPress={onGoBack} />
       </View>
-      {!hideRightButton && (
-        <View style={styles.headerRightButton}>
-          <Button icon="like" onPress={() => { }} />
-        </View>
-      )}
     </SafeAreaView>
   );
 }
