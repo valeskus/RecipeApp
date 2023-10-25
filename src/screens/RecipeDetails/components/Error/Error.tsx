@@ -17,7 +17,7 @@ export function Error({ onRetry }: Props): JSX.Element {
     <SafeAreaView style={styles.errorScreen}>
       <Header hideRightButton={true} />
       <View style={styles.errorContainer}>
-        <Image source={Icons.errorRecipe} style={styles.icon} />
+        <Image source={Icons.pizza} style={styles.icon} />
         <Text style={styles.title}>Ooops...</Text>
         <Text style={styles.message}>Something went wrong!</Text>
         <RectangleButton onPress={onRetry} text="Please, try again!" />
