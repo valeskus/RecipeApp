@@ -1,11 +1,9 @@
 import { useCallback, useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
 
 import { LanguageManager } from '@managers/LanguageManager';
 
 export const useSettingButtonController = () => {
   const [language, setLanguage] = useState<'ua' | 'en'>();
-  const { t } = useTranslation();
 
   const onPressUA = useCallback(() => {
     setLanguage('ua');
@@ -30,6 +28,5 @@ export const useSettingButtonController = () => {
     onPressUA,
     onPressEN,
     language,
-    t,
   };
 };

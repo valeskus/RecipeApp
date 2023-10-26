@@ -1,6 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { TextInput } from 'react-native';
-import { useTranslation } from 'react-i18next';
 
 import * as SearchStore from '@stores/search';
 
@@ -13,7 +12,6 @@ export const useSearchController = (params: SearchControllerParams) => {
   const [pendingSearchTerm, setPendingSearchTerm] = useState(searchTerm);
   const setSearchOptions = SearchStore.useSetSearchOptions();
   const resetSearchOptions = SearchStore.useResetSearchOptions();
-  const { t } = useTranslation();
 
   const searchInputRef = useRef<TextInput>(null);
 
@@ -50,6 +48,5 @@ export const useSearchController = (params: SearchControllerParams) => {
     handleSearch,
     handleResetSearchInput,
     handlePress,
-    t,
   };
 };

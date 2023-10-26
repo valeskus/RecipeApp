@@ -1,14 +1,14 @@
 import { useNavigation } from '@react-navigation/native';
 import { useCallback, useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import * as ErrorsStore from '@stores/errors';
 import * as CategoriesStore from '@stores/categories';
-import * as LanguagesStore from '@stores/languages';
 
 export const useCategoryListController = () => {
   const [isLoading, setLoading] = useState(false);
   const { categories } = CategoriesStore.useCategoriesStore();
-  const { language } = LanguagesStore.useLanguagesStore();
+  const { i18n } = useTranslation();
 
   const getCategories = CategoriesStore.useGetCategories();
   const errorGetCategories = ErrorsStore.useGetErrorFor('getCategories');
@@ -37,7 +37,7 @@ export const useCategoryListController = () => {
     return () => {
       resetError();
     };
-  }, [language]);
+  }, [i18n.language]);
 
   return {
     handleSearch,

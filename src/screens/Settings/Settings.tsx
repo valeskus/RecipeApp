@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text } from 'react-native';
+import { useTranslation } from 'react-i18next';
 
 import { Button } from '@UI/Button';
 
@@ -7,7 +8,8 @@ import { styles } from './styles';
 import { useSettingButtonController } from './useSettingsController';
 
 export function Settings(): JSX.Element {
-  const { language, onPressUA, onPressEN, t } = useSettingButtonController();
+  const { language, onPressUA, onPressEN } = useSettingButtonController();
+  const { t } = useTranslation();
 
   return (
     <View style={styles.modalContainer}>

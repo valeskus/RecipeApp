@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import { Animated, Dimensions, Text, View } from 'react-native';
+import { useTranslation } from 'react-i18next';
 
 import { Tabs } from '@UI/Tabs';
 import { Counter } from '@UI/Counter';
@@ -34,8 +35,8 @@ export function RecipeDetails(): JSX.Element {
     isError,
     fetchData,
     nutritionLabelsMap,
-    t,
   } = useRecipeDetailsController();
+  const { t } = useTranslation();
 
   const scrollYRef = useRef(new Animated.Value(0));
 
