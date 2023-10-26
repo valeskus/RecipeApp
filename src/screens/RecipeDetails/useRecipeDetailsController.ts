@@ -68,16 +68,7 @@ export const useRecipeDetailsController = () => {
     id,
     label: (Nutrients.NutrientsUnitLabels as any)[id],
   }));
-  //   const nutritionLabelsMap = (t('scope.nutrientsUnitLabels', { returnObjects: true }) as Array<string>)
-  //   .map(label => ({
-  //   id: NutrientsUnitLabels,
-  //   label,
- // label: (t('scope.nutrientsUnitLabels')as any)[id],
-  // }));
-// console.log(nutritionLabelsMap);
 
-// eslint-disable-next-line spellcheck/spell-checker
-// TODO margin on togle backgraund
   return {
     recipe,
     onServingsCountChange: PrescriptionCard.onCountChange,

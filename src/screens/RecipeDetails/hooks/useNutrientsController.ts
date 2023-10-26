@@ -9,12 +9,6 @@ export enum NutrientsSection {
   AllServings = 'AllServings',
 }
 
-// export const NutrientsUnitLabels = {
-//   [NutrientsSection['100g']]: '100 g',
-//   [NutrientsSection.Serving]: '1 Serving',
-//   [NutrientsSection.AllServings]: 'All amount',
-// };
-
 const NutrientsSectionMap = {
   [NutrientsSection['100g']]: 'nutrientsFor100g',
   [NutrientsSection.Serving]: 'nutrientsForServing',

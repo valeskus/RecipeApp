@@ -7,7 +7,6 @@ import { useTranslation } from 'react-i18next';
 
 import { Header } from '@components/Header';
 import { SettingsButton } from '@components/SettingsButton';
-import { LanguageController } from '@components/LanguageController';
 
 import { store } from './stores/rootStore';
 import { CategoriesList } from './screens/CategoriesList';
@@ -47,7 +46,6 @@ export function App(): JSX.Element {
 
   return (
     <Provider store={store}>
-      <LanguageController />
       <NavigationContainer>
         <Stack.Navigator>
           <Stack.Group
