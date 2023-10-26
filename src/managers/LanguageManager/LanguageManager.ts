@@ -1,20 +1,26 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import i18n from 'i18next';
 
+import { changeLanguage } from '@api/client.api';
+
 export class LanguageManager {
-    static async setLanguage(language: 'ua' | 'en') {
-       await AsyncStorage.setItem('language', language);
-       i18n.changeLanguage(language);
-    }
+   static async setLanguage(language: 'ua' | 'en') {
+      changeLanguage(language);
 
-    static async getLanguage() {
-      const language =  await AsyncStorage.getItem('language');
+      await AsyncStorage.setItem('language', language);
+      i18n.changeLanguage(language);
+   }
 
-      return language as 'en'|'ua';
-    }
+   static async getLanguage() {
+      const language = await AsyncStorage.getItem('language');
 
-    static async initLanguage() {
+      return language as 'en' | 'ua';
+   }
+
+   static async initLanguage() {
       const language = await this.getLanguage();
+      changeLanguage(language);
+
       i18n.changeLanguage(language);
    }
 }
