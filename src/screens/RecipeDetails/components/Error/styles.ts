@@ -24,11 +24,14 @@ export const styles = StyleSheet.create({
     color: Colors.accent,
     marginBottom: 10,
     fontWeight: '800',
+    fontFamily: 'Nunito',
   },
 
   message: {
     fontSize: 18,
     color: Colors.primary,
     marginBottom: 20,
+    fontWeight: '500',
+    fontFamily: 'Montserrat',
   },
 });
