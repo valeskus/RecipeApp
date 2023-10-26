@@ -13,7 +13,7 @@ export function Settings(): JSX.Element {
 
   return (
     <View style={styles.modalContainer}>
-      <Text style={styles.label}>{t('scope.language')} :</Text>
+      <Text style={styles.label}>{t('settings.language')} :</Text>
       <Button icon="ua" active={language === 'ua'} onPress={onPressUA} iconStyle={styles.buttonImage} />
       <Button icon="en" active={language === 'en'} onPress={onPressEN} iconStyle={styles.buttonImage} />
     </View>

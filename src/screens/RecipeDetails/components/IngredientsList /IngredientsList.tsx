@@ -28,9 +28,9 @@ export function IngredientsList({
   return (
     <View style={styles.ingredientsContainer}>
       <View style={styles.header}>
-        <Text style={styles.title}>{t('scope.ingredients')}</Text>
+        <Text style={styles.title}>{t('recipeDetails.ingredients')}</Text>
       </View>
-      <Text style={styles.itemsCounter}>{ingredients.length} {t('scope.items')}</Text>
+      <Text style={styles.itemsCounter}>{ingredients.length} {t('recipeDetails.items')}</Text>
 
       {ingredients.map((item, index) => {
         return (

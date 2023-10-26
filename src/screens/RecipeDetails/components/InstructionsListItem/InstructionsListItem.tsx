@@ -23,7 +23,7 @@ export function InstructionsListItem({
     <View style={styles.ingredientsListItemContainer}>
       <Image source={Icons.dot} style={styles.listItemDot} />
       <View style={styles.listItemContentContainer}>
-        <Text style={styles.listItemCount}>{t('scope.step')} {count}</Text>
+        <Text style={styles.listItemCount}>{t('recipeDetails.step')} {count}</Text>
         {image && <Image source={{ uri: image }} style={styles.listItemImage} />}
         <Text style={styles.listItemDescription}>{description}</Text>
       </View>

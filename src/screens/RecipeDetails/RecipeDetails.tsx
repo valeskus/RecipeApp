@@ -96,7 +96,7 @@ export function RecipeDetails(): JSX.Element {
             onChange={onPrescriptionCardSectionChange}
           >
             <View
-              aria-label={t('scope.ingredients')}
+              aria-label={t('recipeDetails.ingredients')}
               aria-id={PrescriptionCardSection.Ingredients}
             >
               <IngredientsList
@@ -109,7 +109,7 @@ export function RecipeDetails(): JSX.Element {
               />
             </View>
             <View
-              aria-label={t('scope.instructions')}
+              aria-label={t('recipeDetails.instructions')}
               aria-id={PrescriptionCardSection.Instructions}
             >
               <InstructionsList instructions={recipe.instructions} />

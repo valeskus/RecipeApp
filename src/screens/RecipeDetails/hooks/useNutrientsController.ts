@@ -41,9 +41,9 @@ export const useNutrientsController = (params: UseNutrientsControllerParams) => 
   const { recipe } = RecipeDetailsStore.useRecipeDetailsStore();
 
   const NutrientsUnitLabels = {
-    [NutrientsSection['100g']]: `100 ${t('scope.g')}`,
-    [NutrientsSection.Serving]: `1 ${t('scope.serving')}`,
-    [NutrientsSection.AllServings]: t('scope.allAmount'),
+    [NutrientsSection['100g']]: `100 ${t('units.g')}`,
+    [NutrientsSection.Serving]: `1 ${t('recipeDetails.nutrients.serving')}`,
+    [NutrientsSection.AllServings]: t('recipeDetails.nutrients.allAmount'),
   };
 
   const nutrientsFor100g = useMemo(() => {

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Image, Text, View } from 'react-native';
+import { useTranslation } from 'react-i18next';
 
 import { RectangleButton } from '@UI/RectangleButton';
 import { Icons } from '@UI//Icons';
@@ -11,13 +12,14 @@ interface Props {
 }
 
 export function Error({ onRetry }: Props): JSX.Element {
+  const { t } = useTranslation();
 
   return (
     <View style={styles.errorScreen}>
       <Image source={Icons.error} style={styles.icon} />
-      <Text style={styles.title}>Ooops...</Text>
-      <Text style={styles.message}>Something went wrong!</Text>
-      <RectangleButton onPress={onRetry} text="Please, try again!"/>
+      <Text style={styles.title}>{t('errors.ooops')}...</Text>
+      <Text style={styles.message}>{t('errors.somethingWentWrong')}!</Text>
+      <RectangleButton onPress={onRetry} text={t('buttons.tryAgain')!}/>
     </View>
   );
 }

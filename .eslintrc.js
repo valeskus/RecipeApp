@@ -48,8 +48,7 @@ module.exports = {
         'gte',
         'ua',
         'en',
-        'Nunito',
-        'Extrabold'
+        'ooops'
       ]
     }],
     'import/no-unresolved': ['error', {ignore: ['@env']}],

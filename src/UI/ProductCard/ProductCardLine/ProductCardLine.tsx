@@ -47,8 +47,8 @@ export function ProductCardLine({
         </View>
         <View style={styles.productCardDetailsItemBox}>
           <Image source={Icons.kCal} style={styles.icon} />
-          <Text style={styles.productCardLineDetailsItem} numberOfLines={1}>{calories} {t('scope.kCal')}</Text>
-          <Text style={styles.note}> / 100 {t('scope.g')}</Text>
+          <Text style={styles.productCardLineDetailsItem} numberOfLines={1}>{calories} {t('units.kCal')}</Text>
+          <Text style={styles.note}> / 100 {t('units.g')}</Text>
         </View>
       </View>
     </Pressable>
