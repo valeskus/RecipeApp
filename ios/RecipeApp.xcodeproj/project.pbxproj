@@ -22,7 +22,6 @@
 		B68AFBF3FD2F41D19C177E7B /* MontserratSemibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 203A2CFA01D24E6286DB6E56 /* MontserratSemibold.ttf */; };
 		BB265258AD694B60AFBC1B63 /* MontserratRegular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 78ADCDD3F5D84750A04EDE51 /* MontserratRegular.ttf */; };
 		CEF1D2B5EA7C4D99B09CAD8A /* NunitoSemibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 51B0B876DDCD4EC1B5935C36 /* NunitoSemibold.ttf */; };
-		D7FA7C79AAA846649F0E173F /* MontserratSemibold-Yz368.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E6F907E11C674242AEF17BFC /* MontserratSemibold-Yz368.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,7 +59,6 @@
 		89C6BE57DB24E9ADA2F236DE /* Pods-RecipeApp-RecipeAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecipeApp-RecipeAppTests.release.xcconfig"; path = "Target Support Files/Pods-RecipeApp-RecipeAppTests/Pods-RecipeApp-RecipeAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		9955D25599904018B22CED3D /* NunitoRegular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = NunitoRegular.ttf; path = ../assets/fonts/NunitoRegular.ttf; sourceTree = "<group>"; };
 		BD9A830AE28D4CC18AE25C6D /* NunitoExtrabold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = NunitoExtrabold.ttf; path = ../assets/fonts/NunitoExtrabold.ttf; sourceTree = "<group>"; };
-		E6F907E11C674242AEF17BFC /* MontserratSemibold-Yz368.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "MontserratSemibold-Yz368.ttf"; path = "../assets/fonts/MontserratSemibold-Yz368.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -174,7 +172,6 @@
 				203A2CFA01D24E6286DB6E56 /* MontserratSemibold.ttf */,
 				BD9A830AE28D4CC18AE25C6D /* NunitoExtrabold.ttf */,
 				9955D25599904018B22CED3D /* NunitoRegular.ttf */,
-				E6F907E11C674242AEF17BFC /* MontserratSemibold-Yz368.ttf */,
 				54284956CA8A4E1A925CF282 /* MontserratBold.ttf */,
 				801E04EF42354FB791F9AFDC /* MontserratMedium.ttf */,
 				69DC06B9466F428BACCADCE5 /* NunitoBold.ttf */,
@@ -284,7 +281,6 @@
 				B68AFBF3FD2F41D19C177E7B /* MontserratSemibold.ttf in Resources */,
 				74C30E8933174832ADB0F301 /* NunitoExtrabold.ttf in Resources */,
 				B3480B3462E6434CA7540E16 /* NunitoRegular.ttf in Resources */,
-				D7FA7C79AAA846649F0E173F /* MontserratSemibold-Yz368.ttf in Resources */,
 				1FE6C58F17F3416D99707D52 /* MontserratBold.ttf in Resources */,
 				49D63468E8674816A2D69D36 /* MontserratMedium.ttf in Resources */,
 				14474BEBF2D945C8A91778C7 /* NunitoBold.ttf in Resources */,
