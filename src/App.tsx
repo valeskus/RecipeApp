@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Provider } from 'react-redux';
 import { Platform, SafeAreaView, UIManager } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
@@ -7,6 +7,8 @@ import { useTranslation } from 'react-i18next';
 
 import { Header } from '@components/Header';
 import { SettingsButton } from '@components/SettingsButton';
+
+import { LanguageManager } from '@managers/LanguageManager';
 
 import { store } from './stores/rootStore';
 import { CategoriesList } from './screens/CategoriesList';
@@ -43,6 +45,10 @@ declare global {
 
 export function App(): JSX.Element {
   const { t } = useTranslation();
+
+  useEffect(() => {
+    LanguageManager.initLanguage();
+  }, []);
 
   return (
     <Provider store={store}>
