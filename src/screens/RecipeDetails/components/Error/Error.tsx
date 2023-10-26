@@ -15,7 +15,7 @@ interface Props {
 export function Error({ onRetry }: Props): JSX.Element {
   return (
     <SafeAreaView style={styles.errorScreen}>
-      <Header hideRightButton={true} />
+      <Header/>
       <View style={styles.errorContainer}>
         <Image source={Icons.errorRecipe} style={styles.icon} />
         <Text style={styles.title}>Ooops...</Text>
