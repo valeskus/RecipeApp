@@ -48,7 +48,7 @@ export function RecipeDetails(): JSX.Element {
     return <RecipeDetailsSkeleton />;
   }
 
-  if (!isError || !recipe) {
+  if (isError || !recipe) {
     return <Error onRetry={fetchData} />;
   }
 
