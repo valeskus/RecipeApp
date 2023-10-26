@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, Text } from 'react-native';
 
 import { InstructionModel } from '../../../../models';
 import { InstructionsListItem } from '../InstructionsListItem';
@@ -13,6 +13,9 @@ interface Props {
 export function InstructionsList({ instructions }: Props): JSX.Element {
   return (
     <View style={styles.instructionsContainer}>
+      <View style={styles.header}>
+        <Text style={styles.title}>Instructions</Text>
+      </View>
       {instructions.map((item, index) => {
         return (
           <InstructionsListItem
