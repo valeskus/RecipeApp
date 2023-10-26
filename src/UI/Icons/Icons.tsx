@@ -20,6 +20,7 @@ export const Icons = {
   leftArrow: require('../../../assets/leftArrow.png'),
   clean: require('../../../assets/clean.png'),
   errorRecipe: require('../../../assets/errorRecipeDetails.png'),
+  pizza: require('../../../assets/pizza.png'),
   error: require('../../../assets/error.png'),
   setting: require('../../../assets/setting.png'),
   ua: require('../../../assets/ua.png'),
