@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 import * as RecipesStore from '@stores/recipes';
 import * as SearchStore from '@stores/search';
@@ -7,9 +7,8 @@ import { useGridTypes } from './hooks';
 
 export const useRecipeListController = () => {
   const { gridType, onChangeCardType } = useGridTypes();
-  const [isLoading, setLoading] = useState(false);
 
-  const { recipes } = RecipesStore.useRecipesStore();
+  const { recipes, isRecipesFetching } = RecipesStore.useRecipesStore();
 
   const getRecipes = RecipesStore.useGetRecipeList();
 
@@ -21,16 +20,19 @@ export const useRecipeListController = () => {
 
   const isRecipesListEmpty = recipes.length === 0;
 
-  const updateRecipesList = useCallback(async () => {
-    setLoading(true);
-    await getRecipes(searchOptions);
-    setLoading(false);
-
-  }, [isLoading, searchOptions]);
+  useEffect(() => {
+    getRecipes(searchOptions);
+  }, [searchOptions.sort, searchOptions.searchTerm]);
 
   useEffect(() => {
-    updateRecipesList();
-  }, [searchOptions.sort, searchOptions.searchTerm]);
+    if (!recipes.length) {
+      return;
+    }
+
+    resetRecipes();
+
+    getRecipes(searchOptions);
+  }, [searchOptions.filter]);
 
   useEffect(() => {
     if (!searchOptions.offset) {
@@ -49,7 +51,7 @@ export const useRecipeListController = () => {
 
   return {
     gridType,
-    isLoading,
+    isLoading: isRecipesFetching,
     isRecipesListEmpty,
     recipes,
     onChangeCardType,
