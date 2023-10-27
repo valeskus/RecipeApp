@@ -42,7 +42,7 @@ export const styles = StyleSheet.create({
     fontFamily: Fonts.secondary,
     fontWeight: '400',
     color: Colors.text,
-    width: '60%',
+    maxWidth: '50%',
   },
   cardPressed: {
     transform: [{ scale: 0.9 }],

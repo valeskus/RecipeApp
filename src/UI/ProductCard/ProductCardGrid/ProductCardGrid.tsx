@@ -38,7 +38,7 @@ export function ProductCardGrid({
     >
       <Image source={{ uri: image }} style={styles.productCardGridImage} />
       <View style={styles.productCardDetails}>
-        <Text numberOfLines={1} style={styles.productCardTitle}>
+        <Text numberOfLines={2} style={styles.productCardTitle}>
           {title}
         </Text>
         <View style={styles.productCardDetailsItemBox}>
