@@ -24,11 +24,11 @@ export function NutrientsValue({ nutrients }: Props): JSX.Element {
       <View style={styles.column}>
         <View style={styles.nutrientValue}>
           <Image style={styles.dotIcon} source={Icons.kCal} />
-          <Text style={styles.title}>{formatValue(nutrients.kCal)} {t('units.kCal')}</Text>
+          <Text style={styles.title} numberOfLines={2}>{formatValue(nutrients.kCal)} {t('units.kCal')}</Text>
         </View>
         <View style={styles.nutrientValue}>
           <Image style={styles.dotIcon} source={Icons.carbs} />
-          <Text style={styles.title}>
+          <Text style={styles.title} numberOfLines={2}>
             {formatValue(nutrients.carbs)} {t('units.g')} {t('recipeDetails.nutrients.carbs')}
           </Text>
         </View>
@@ -36,13 +36,15 @@ export function NutrientsValue({ nutrients }: Props): JSX.Element {
       <View style={styles.column}>
         <View style={styles.nutrientValue}>
           <Image style={styles.dotIcon} source={Icons.proteins} />
-          <Text style={styles.title}>
+          <Text style={styles.title} numberOfLines={2}>
             {formatValue(nutrients.protein)} {t('units.g')} {t('recipeDetails.nutrients.protein')}
+
           </Text>
         </View>
         <View style={styles.nutrientValue}>
           <Image style={styles.dotIcon} source={Icons.fats} />
-          <Text style={styles.title}>{formatValue(nutrients.fats)} {t('units.g')} {t('recipeDetails.nutrients.fats')}
+          <Text style={styles.title} numberOfLines={2}>
+            {formatValue(nutrients.fats)} {t('units.g')} {t('recipeDetails.nutrients.fats')}
           </Text>
         </View>
       </View>

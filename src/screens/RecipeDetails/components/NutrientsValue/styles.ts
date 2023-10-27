@@ -20,8 +20,9 @@ export const styles = StyleSheet.create({
   },
   title: {
     fontSize: 15,
-    fontWeight: '500',
     fontFamily: Fonts.secondary,
+    fontWeight: '600',
+    flexShrink: 1,
   },
   column: {
     flex: 1,

@@ -10,7 +10,7 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'flex-end',
-    paddingRight: 40,
+    paddingRight: 20,
   },
   timeIcon: {
     width: 25,

@@ -12,6 +12,7 @@ export const styles = StyleSheet.create({
     position: 'relative',
     borderRadius: 15,
     alignItems: 'center',
+    marginBottom: 10,
   },
   selectButton: {
     flex: 1,
