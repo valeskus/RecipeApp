@@ -14,8 +14,8 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'flex-end',
     position: 'absolute',
-    width: '100%',
     right: 10,
+    backgroundColor: 'red',
   },
   footerOffset: {
     backgroundColor: Colors.background,
