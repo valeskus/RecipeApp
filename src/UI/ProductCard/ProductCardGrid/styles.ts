@@ -8,7 +8,6 @@ export const styles = StyleSheet.create({
   productGridContainer: {
     flex: 1,
     borderRadius: 20,
-    height: 250,
     backgroundColor: Colors.background,
     shadowColor: Colors.shadow,
     shadowOpacity: 0.5,
@@ -21,18 +20,16 @@ export const styles = StyleSheet.create({
   productCardGridImage: {
     width: '100%',
     height: 120,
-    flex: 3,
     alignSelf: 'center',
     borderTopRightRadius: 20,
     borderTopLeftRadius: 20,
   },
   productCardTitle: {
-    marginBottom: 2,
+    marginBottom: 10,
     fontSize: 18,
     fontFamily: Fonts.primary,
     fontWeight: '700',
     color: Colors.primary,
-    flex: 3,
   },
   productCardDetails: {
     flex: 2,
@@ -46,6 +43,10 @@ export const styles = StyleSheet.create({
     color: Colors.text,
     maxWidth: '50%',
   },
+  productCardDetailsItemContainer: {
+    flex: 1,
+     justifyContent: 'flex-end',
+  },
   cardPressed: {
     transform: [{ scale: 0.9 }],
   },
@@ -58,7 +59,6 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'flex-end',
     marginBottom: 7,
-    flex: 1,
   },
   icon: {
     width: 17,
