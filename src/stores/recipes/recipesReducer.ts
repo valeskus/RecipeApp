@@ -21,6 +21,7 @@ export interface RecipesStoreState {
   filters: Array<FiltersItemModel>;
   sortOptions: Array<SortOptionModel>;
   total: number;
+  isRecipesFetching: boolean;
 }
 
 const initialState: RecipesStoreState = {
@@ -28,6 +29,7 @@ const initialState: RecipesStoreState = {
   filters: [],
   sortOptions: [],
   total: 0,
+  isRecipesFetching: false,
 };
 
 export function recipesReducer(
@@ -35,11 +37,19 @@ export function recipesReducer(
   action: Redux.AnyAction,
 ) {
   switch (action.type) {
+    case RecipesActions.RECIPIES_FETCHING: {
+      const { isRecipesFetching } = action.payload as { isRecipesFetching: boolean };
+
+      return {
+        ...state,
+        isRecipesFetching,
+      };
+    }
+
     case RecipesActions.GET: {
       const { recipes, filters, sortOptions, total } = action.payload as RecipeListModel;
 
       const filtersArray = Object.entries(filters).map(([name, filter]) => {
-
         return { title: filter.title, name, values: filter.items, multiple: filter.multiple };
       });
 
