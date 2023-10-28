@@ -67,7 +67,7 @@ export class ImagesController {
                 .addValidator(new DimensionsValidator({
                     minWidth: 500,
                     minHeight: 500,
-                    aspectRatio: 1
+                    allowedAspectRatios: ['1:1', '2:1']
                 }))
                 .build({
                     errorHttpStatusCode: HttpStatus.UNPROCESSABLE_ENTITY

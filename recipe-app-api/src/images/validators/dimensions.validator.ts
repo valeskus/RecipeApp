@@ -4,7 +4,7 @@ import sizeOf from 'image-size';
 interface ValidationOptions {
   minWidth: number;
   minHeight: number;
-  aspectRatio: number;
+  allowedAspectRatios: Array<string>;
 }
 
 export class DimensionsValidator extends FileValidator<ValidationOptions> {
@@ -16,8 +16,14 @@ export class DimensionsValidator extends FileValidator<ValidationOptions> {
     return Number(width) >= this.validationOptions.minWidth;
   };
 
-  private isValidRation = (height?: number, width?: number) => {
-    return Number(width) / Number(height) === this.validationOptions.aspectRatio;
+  private isValidRation = (width?: number, height?: number) => {
+    return this.validationOptions.allowedAspectRatios
+      .map((ratio) => {
+        const [width, height] = ratio.split(':');
+
+        return Number(width) / Number(height);
+      })
+      .includes(Number(width) / Number(height));
   };
 
   isValid(file?: Express.Multer.File): boolean {
@@ -44,7 +50,7 @@ export class DimensionsValidator extends FileValidator<ValidationOptions> {
     }
 
     if (!this.isValidRation(result.width, result.height)) {
-      return `Image aspect ration should be ${this.validationOptions.aspectRatio}`;
+      return `Image aspect ration should be one of ${this.validationOptions.allowedAspectRatios}`;
     }
 
     return '';
