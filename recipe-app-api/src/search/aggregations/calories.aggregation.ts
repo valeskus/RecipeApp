@@ -12,30 +12,29 @@ export class CaloriesAggregation extends RangedFacetAggregation<Calories> {
     }
 
     protected getFiltersData() {
-        // TODO: divide by 10
         return {
             [Calories.lte100]: {
-                value: 1000,
-                operator: '$lte',
+                value: 100,
+                operator: '$lte'
             },
             [Calories.lte250]: {
-                value: 2500,
+                value: 250,
                 operator: '$lte'
             },
             [Calories.lte500]: {
-                value: 5000,
+                value: 500,
                 operator: '$lte'
             },
             [Calories.lte750]: {
-                value: 7500,
+                value: 750,
                 operator: '$lte'
             },
             [Calories.lte1000]: {
-                value: 10000,
+                value: 1000,
                 operator: '$lte'
             },
             [Calories.gt1000]: {
-                value: 10000,
+                value: 1000,
                 operator: '$gt'
             },
         };

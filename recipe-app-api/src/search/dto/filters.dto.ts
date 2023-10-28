@@ -42,6 +42,28 @@ const multipleFilterTransformation = <T>(
     }));
 };
 
+const getSortedItemsByObject = <T extends { value: string }>(
+    items: Array<T>,
+    referenceObject: Record<string, string>): Array<T> => {
+    const sortedItems: typeof items = [];
+
+    Object.keys(referenceObject).forEach((key) => {
+        const item = items.find(({ value }) => value === key);
+
+        if (!item) {
+            return;
+        }
+
+        sortedItems.push(item);
+    });
+
+    return sortedItems;
+};
+
+const sortByValue = <T extends { value: string | number }>(currentItem: T, nextItem: T) => {
+    return currentItem.value > nextItem.value ? 1 : -1;
+};
+
 class Filters {
     constructor({
         translate,
@@ -56,7 +78,7 @@ class Filters {
             title: translate('search.filter.calories.name'),
             items: singleFilterTransformation(
                 (value: string) => translate(`search.filter.calories.query.${value}`),
-                calories,
+                getSortedItemsByObject(calories, Calories),
                 inputFilters.calories
             ),
             multiple: false,
@@ -65,7 +87,7 @@ class Filters {
             title: translate('search.filter.total_time.name'),
             items: singleFilterTransformation(
                 (value: string) => translate(`search.filter.total_time.query.${value}`),
-                totalTime,
+                getSortedItemsByObject(totalTime, TotalTime),
                 inputFilters.totalTime
             ),
             multiple: false,
@@ -74,19 +96,19 @@ class Filters {
             title: translate('search.filter.difficulty.name'),
             items: singleFilterTransformation(
                 (value: string) => translate(`search.filter.difficulty.query.${value}`),
-                difficulty,
+                difficulty.sort(sortByValue),
                 inputFilters.difficulty
             ),
             multiple: false,
         };
         this.mealType = {
             title: translate('search.filter.meal_type.name'),
-            items: multipleFilterTransformation(mealType, inputFilters.mealType),
+            items: multipleFilterTransformation(mealType.sort(sortByValue), inputFilters.mealType),
             multiple: true,
         };
         this.dietType = {
             title: translate('search.filter.diet_type.name'),
-            items: multipleFilterTransformation(dietType, inputFilters.dietType),
+            items: multipleFilterTransformation(dietType.sort(sortByValue), inputFilters.dietType),
             multiple: true,
         };
     }
