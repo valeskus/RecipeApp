@@ -1,6 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { RouteProp, useRoute } from '@react-navigation/native';
-import { useTranslation } from 'react-i18next';
 
 import * as RecipeDetailsStore from '@stores/recipeDetails';
 import * as ErrorsStore from '@stores/errors';
@@ -28,7 +27,6 @@ export const useRecipeDetailsController = () => {
   const getRecipe = RecipeDetailsStore.useGetRecipeDetails();
   const resetRecipe = RecipeDetailsStore.useResetRecipeDetails();
   const resetError = ErrorsStore.useResetErrors('getRecipeDetails');
-  const { t } = useTranslation();
 
   const fetchData = useCallback(async () => {
     setLoading(true);
@@ -84,6 +82,5 @@ export const useRecipeDetailsController = () => {
     isError: !!errorGetRecipeDetails,
     fetchData,
     nutritionLabelsMap,
-    t,
   };
 };
