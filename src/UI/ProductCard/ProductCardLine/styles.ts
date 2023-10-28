@@ -16,7 +16,7 @@ export const styles = StyleSheet.create({
     elevation: 8,
     justifyContent: 'center',
     flexDirection: 'row',
-    marginVertical: 8,
+    marginVertical: 5,
   },
   productCardLineImage: {
     flex: 2,
@@ -65,8 +65,11 @@ export const styles = StyleSheet.create({
   },
   productCardDetailsItemBox: {
     flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 5,
+    alignItems: 'flex-end',
+    marginBottom: 7,
+  },
+  productCardDetailsItemContainer: {
     flex: 1,
+     justifyContent: 'flex-end',
   },
 });
