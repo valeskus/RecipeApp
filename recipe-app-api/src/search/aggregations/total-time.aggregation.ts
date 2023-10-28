@@ -15,7 +15,7 @@ export class TotalTimeAggregation extends RangedFacetAggregation<TotalTime> {
         return {
             [TotalTime.lte20]: {
                 value: 20,
-                operator: '$lte',
+                operator: '$lte'
             },
             [TotalTime.lte30]: {
                 value: 30,
