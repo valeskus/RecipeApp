@@ -31,11 +31,14 @@ export const useRecipeDetailsController = () => {
   const fetchData = useCallback(async () => {
     setLoading(true);
 
-    resetError();
+    if (errorGetRecipeDetails) {
+      resetError();
+    }
+
     await getRecipe(params.id);
 
     setLoading(false);
-  }, [params.id]);
+  }, [params.id, errorGetRecipeDetails]);
 
   useEffect(() => {
     fetchData();
