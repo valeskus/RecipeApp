@@ -26,12 +26,16 @@ export const useRecipeDetailsController = () => {
   const errorGetRecipeDetails = ErrorsStore.useGetErrorFor('getRecipeDetails');
   const getRecipe = RecipeDetailsStore.useGetRecipeDetails();
   const resetRecipe = RecipeDetailsStore.useResetRecipeDetails();
-  const resetError = ErrorsStore.useResetErrors('GetRecipeDetails');
-  const fetchData = async () => {
+  const resetError = ErrorsStore.useResetErrors('getRecipeDetails');
+
+  const fetchData = useCallback(async () => {
     setLoading(true);
+
+    resetError();
     await getRecipe(params.id);
+
     setLoading(false);
-  };
+  }, [params.id]);
 
   useEffect(() => {
     fetchData();
