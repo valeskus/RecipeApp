@@ -10,10 +10,8 @@ export const useFilterController = () => {
   const { filters, isRecipesFetching } = RecipesStore.useRecipesStore();
   const setSearchOptions = SearchStore.useSetSearchOptions();
   const searchOptions = SearchStore.useSearchStore();
-
   const onFilterChange = useCallback(
     (filterName: string, value: string) => {
-
       const searchOptionsFilters = searchOptions.filter.filter((item) => item.key !== filterName);
 
       if (!value) {
