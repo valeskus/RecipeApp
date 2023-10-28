@@ -19,18 +19,17 @@ export class ImagesService {
     };
   }
 
-  async get() {
+  async get(): Promise<{ images: Array<UploadedImage> }> {
     const [files] = await this.bucket.getFiles();
-    const urlItems: Array<UploadedImage> = [];
 
-    for (const file of files) {
-      urlItems.push({
-        url: await getDownloadURL(file)
-      });
-    }
+    const filesSorted = files.sort((currentFile, nextFile) =>
+      currentFile.metadata.timeCreated > nextFile.metadata.timeCreated ? -1 : 1
+    );
 
     return {
-      images: urlItems
+      images: await Promise.all(
+        filesSorted.map(async (file) => ({ url: await getDownloadURL(file) }))
+      )
     };
   }
 }
