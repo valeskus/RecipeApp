@@ -1,6 +1,7 @@
 import { StyleSheet } from 'react-native';
 
 import { Colors } from '@UI/Colors';
+import { Fonts } from '@UI/Fonts';
 
 export const styles = StyleSheet.create({
   instructionsContainer: {
@@ -19,5 +20,7 @@ export const styles = StyleSheet.create({
   title: {
     fontSize: 20,
     flex: 1,
+    fontWeight: '500',
+    fontFamily: Fonts.primary,
   },
 });

@@ -1,5 +1,7 @@
 import { StyleSheet } from 'react-native';
 
+import { Fonts } from '@UI/Fonts';
+
 import { Colors } from '../Colors';
 
 export const styles = StyleSheet.create({
@@ -33,8 +35,9 @@ export const styles = StyleSheet.create({
   },
   count: {
     fontSize: 20,
+    fontFamily: Fonts.secondary,
+    fontWeight: '600',
     color: Colors.primary,
     marginHorizontal: 15,
-    fontWeight: '600',
   },
 });

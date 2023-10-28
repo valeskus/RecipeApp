@@ -1,5 +1,7 @@
 import { StyleSheet } from 'react-native';
 
+import { Fonts } from '@UI/Fonts';
+
 import { Colors } from '../../Colors';
 
 export const styles = StyleSheet.create({
@@ -27,6 +29,8 @@ export const styles = StyleSheet.create({
   productCardTitle: {
     marginBottom: 2,
     fontSize: 18,
+    fontFamily: Fonts.primary,
+    fontWeight: '700',
     color: Colors.primary,
     flex: 1,
   },
@@ -37,6 +41,8 @@ export const styles = StyleSheet.create({
   },
   productCardDetailsItem: {
     fontSize: 15,
+    fontFamily: Fonts.secondary,
+    fontWeight: '400',
     color: Colors.text,
     width: '50%',
   },
@@ -45,8 +51,8 @@ export const styles = StyleSheet.create({
   },
   note: {
     color: Colors.secondary,
-    fontWeight: '300',
     fontSize: 12,
+    fontFamily: Fonts.secondary,
   },
   productCardDetailsItemBox: {
     flexDirection: 'row',

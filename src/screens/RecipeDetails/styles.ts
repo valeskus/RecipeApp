@@ -1,6 +1,7 @@
 import { StyleSheet } from 'react-native';
 
 import { Colors } from '@UI/Colors';
+import { Fonts } from '@UI/Fonts';
 
 export const styles = StyleSheet.create({
   detailsScreenContainer: {
@@ -40,11 +41,14 @@ export const styles = StyleSheet.create({
   },
   title: {
     fontSize: 30,
-    fontWeight: '600',
+    fontWeight: '700',
+    fontFamily: Fonts.primary,
     flex: 2,
     flexWrap: 'wrap',
   },
   description: {
     marginBottom: 20,
+    fontWeight: '400',
+    fontFamily: Fonts.secondary,
   },
 });

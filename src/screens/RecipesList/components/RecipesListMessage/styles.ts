@@ -1,6 +1,7 @@
 import { StyleSheet } from 'react-native';
 
 import { Colors } from '@UI/Colors';
+import { Fonts } from '@UI/Fonts';
 
 export const styles = StyleSheet.create({
   textMessageContainer: {
@@ -15,15 +16,19 @@ export const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 15,
     color: Colors.text,
+    fontWeight: '500',
+    fontFamily: Fonts.secondary,
   },
   textMessageAccent: {
     fontSize: 18,
-    marginBottom: 5,
     color: Colors.accent,
+    marginBottom: 10,
+    fontWeight: '700',
+    fontFamily: Fonts.primary,
   },
   icon: {
     width: 100,
     height: 100,
-    marginBottom: 20,
+    marginBottom: 10,
   },
 });

@@ -1,6 +1,7 @@
 import { StyleSheet } from 'react-native';
 
 import { Colors } from '@UI/Colors';
+import { Fonts } from '@UI/Fonts';
 
 export const styles = StyleSheet.create({
   ingredientsListItemContainer: {
@@ -22,6 +23,8 @@ export const styles = StyleSheet.create({
   ingredientsListItemTitle: {
     color: Colors.text,
     fontSize: 18,
+    fontWeight: '500',
+    fontFamily: Fonts.secondary,
     alignSelf: 'flex-start',
   },
   ingredientsListItemDescription: {
@@ -31,6 +34,8 @@ export const styles = StyleSheet.create({
   ingredientsListItemAmount: {
     color: Colors.text,
     fontSize: 18,
+    fontWeight: '400',
+    fontFamily: Fonts.secondary,
   },
   ingredientsListItemDot: {
     width: 20,

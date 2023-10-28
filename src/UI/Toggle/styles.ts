@@ -1,5 +1,7 @@
 import { StyleSheet } from 'react-native';
 
+import { Fonts } from '@UI/Fonts';
+
 import { Colors } from '../Colors';
 
 export const styles = StyleSheet.create({
@@ -30,9 +32,13 @@ export const styles = StyleSheet.create({
   selectItemTitle: {
     flex: 1,
     alignSelf: 'center',
+    fontWeight: '400',
+    fontFamily: Fonts.secondary,
   },
   activeTitle: {
     color: Colors.background,
+    fontWeight: '600',
+    fontFamily: Fonts.secondary,
   },
   moveRight: {
     left: '33%',

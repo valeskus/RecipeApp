@@ -1,6 +1,7 @@
 import { StyleSheet } from 'react-native';
 
 import { Colors } from '@UI/Colors';
+import { Fonts } from '@UI/Fonts';
 
 export const styles = StyleSheet.create({
   headerContainer: {
@@ -13,8 +14,9 @@ export const styles = StyleSheet.create({
   headerTitle: {
     color: Colors.primary,
     fontSize: 25,
-    fontWeight: '600',
+    fontWeight: '800',
     textAlign: 'center',
+    fontFamily: Fonts.primary,
     flex: 1,
   },
 

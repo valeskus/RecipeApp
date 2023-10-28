@@ -1,12 +1,14 @@
 import { StyleSheet } from 'react-native';
 
 import { Colors } from '@UI/Colors';
+import { Fonts } from '@UI/Fonts';
 
 export const styles = StyleSheet.create({
   buttonTitle: {
     fontSize: 18,
     color: Colors.background,
-    fontWeight: '600',
+    fontWeight: '700',
+    fontFamily: Fonts.secondary,
   },
 
   pressed: {
