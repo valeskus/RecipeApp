@@ -14,20 +14,20 @@ module.exports = {
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
-      tsconfigRootDir: __dirname,
-      project: './tsconfig.json',
-      ecmaFeatures: {
-          jsx: true,
-          modules: true
-      }
+    tsconfigRootDir: __dirname,
+    project: './tsconfig.json',
+    ecmaFeatures: {
+      jsx: true,
+      modules: true
+    }
   },
   settings: {
-      react: {
-          version: 'detect'
-      },
-      'import/resolver': {
-          typescript: {}
-      }
+    react: {
+      version: 'detect'
+    },
+    'import/resolver': {
+      typescript: {}
+    }
   },
   rules: {
     'react-hooks/exhaustive-deps': 0,
@@ -48,10 +48,11 @@ module.exports = {
         'gte',
         'ua',
         'en',
-        'ooops'
+        'ooops',
+        'Nunito'
       ]
     }],
-    'import/no-unresolved': ['error', {ignore: ['@env']}],
+    'import/no-unresolved': ['error', { ignore: ['@env'] }],
     'no-extra-semi': 'error',
     'no-irregular-whitespace': 'error',
     'no-unexpected-multiline': 'error',
