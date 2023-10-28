@@ -39,7 +39,7 @@ export const styles = StyleSheet.create({
     marginRight: 10,
   },
   listItemImage: {
-    width: '70%',
+    width: '80%',
     height: 150,
     marginBottom: 15,
     borderRadius: 15,
