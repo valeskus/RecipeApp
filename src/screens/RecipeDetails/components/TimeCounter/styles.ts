@@ -20,6 +20,6 @@ export const styles = StyleSheet.create({
   time: {
     fontSize: 15,
     fontWeight: '600',
-  fontFamily: Fonts.secondary,
+    fontFamily: Fonts.secondary,
   },
 });

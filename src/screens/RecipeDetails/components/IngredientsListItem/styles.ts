@@ -24,7 +24,7 @@ export const styles = StyleSheet.create({
     color: Colors.text,
     fontSize: 18,
     fontWeight: '500',
-  fontFamily: Fonts.secondary,
+    fontFamily: Fonts.secondary,
     alignSelf: 'flex-start',
   },
   ingredientsListItemDescription: {
@@ -35,7 +35,7 @@ export const styles = StyleSheet.create({
     color: Colors.text,
     fontSize: 18,
     fontWeight: '400',
-  fontFamily: Fonts.secondary,
+    fontFamily: Fonts.secondary,
   },
   ingredientsListItemDot: {
     width: 20,

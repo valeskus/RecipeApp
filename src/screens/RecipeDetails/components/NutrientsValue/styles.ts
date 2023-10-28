@@ -21,7 +21,7 @@ export const styles = StyleSheet.create({
   title: {
     fontSize: 15,
     fontWeight: '500',
-  fontFamily: Fonts.secondary,
+    fontFamily: Fonts.secondary,
   },
   column: {
     flex: 1,

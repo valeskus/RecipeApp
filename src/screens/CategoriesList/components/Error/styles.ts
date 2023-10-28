@@ -22,7 +22,7 @@ export const styles = StyleSheet.create({
     color: Colors.accent,
     marginBottom: 10,
     fontWeight: '800',
-     fontFamily: Fonts.primary,
+    fontFamily: Fonts.primary,
   },
 
   message: {
@@ -30,6 +30,6 @@ export const styles = StyleSheet.create({
     color: Colors.primary,
     marginBottom: 20,
     fontWeight: '500',
-  fontFamily: Fonts.secondary,
+    fontFamily: Fonts.secondary,
   },
 });

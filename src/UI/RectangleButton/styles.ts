@@ -8,7 +8,7 @@ export const styles = StyleSheet.create({
     fontSize: 18,
     color: Colors.background,
     fontWeight: '700',
-  fontFamily: Fonts.secondary,
+    fontFamily: Fonts.secondary,
   },
 
   pressed: {

@@ -30,7 +30,7 @@ export const styles = StyleSheet.create({
     margin: 10,
     fontSize: 18,
     fontWeight: '800',
-     fontFamily: Fonts.primary,
+    fontFamily: Fonts.primary,
     color: Colors.primary,
   },
 

@@ -24,7 +24,7 @@ export const styles = StyleSheet.create({
   },
   searchBarInput: {
     fontSize: 17,
-  fontFamily: Fonts.secondary,
+    fontFamily: Fonts.secondary,
     padding: 0,
     color: Colors.text,
     width: '100%',

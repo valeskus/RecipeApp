@@ -33,12 +33,12 @@ export const styles = StyleSheet.create({
     flex: 1,
     alignSelf: 'center',
     fontWeight: '400',
-  fontFamily: Fonts.secondary,
+    fontFamily: Fonts.secondary,
   },
   activeTitle: {
     color: Colors.background,
     fontWeight: '600',
-  fontFamily: Fonts.secondary,
+    fontFamily: Fonts.secondary,
   },
   moveRight: {
     left: '33%',

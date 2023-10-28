@@ -10,7 +10,7 @@ export const styles = StyleSheet.create({
   },
   filterLabel: {
     fontSize: 20,
-     fontFamily: Fonts.primary,
+    fontFamily: Fonts.primary,
     fontWeight: '800',
     color: Colors.text,
   },

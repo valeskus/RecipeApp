@@ -17,7 +17,7 @@ export const styles = StyleSheet.create({
   label: {
     margin: 10,
     fontSize: 18,
-  fontFamily: Fonts.secondary,
+    fontFamily: Fonts.secondary,
     fontWeight: '500',
     color: Colors.primary,
   },

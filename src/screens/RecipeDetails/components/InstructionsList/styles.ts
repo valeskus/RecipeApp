@@ -21,6 +21,6 @@ export const styles = StyleSheet.create({
     fontSize: 20,
     flex: 1,
     fontWeight: '500',
-     fontFamily: Fonts.primary,
+    fontFamily: Fonts.primary,
   },
 });
