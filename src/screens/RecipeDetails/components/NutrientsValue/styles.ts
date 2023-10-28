@@ -1,5 +1,7 @@
 import { StyleSheet } from 'react-native';
 
+import { Fonts } from '@UI/Fonts';
+
 export const styles = StyleSheet.create({
   nutrientValuesContainer: {
     flexDirection: 'row',
@@ -19,7 +21,7 @@ export const styles = StyleSheet.create({
   title: {
     fontSize: 15,
     fontWeight: '500',
-    fontFamily: 'Montserrat',
+  fontFamily: Fonts.secondary,
   },
   column: {
     flex: 1,

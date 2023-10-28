@@ -1,6 +1,7 @@
 import { StyleSheet } from 'react-native';
 
 import { Colors } from '@UI/Colors';
+import { Fonts } from '@UI/Fonts';
 
 export const styles = StyleSheet.create({
   filterScreenContainer: {
@@ -9,7 +10,7 @@ export const styles = StyleSheet.create({
   },
   filterLabel: {
     fontSize: 20,
-    fontFamily: 'Nunito',
+     fontFamily: Fonts.primary,
     fontWeight: '800',
     color: Colors.text,
   },

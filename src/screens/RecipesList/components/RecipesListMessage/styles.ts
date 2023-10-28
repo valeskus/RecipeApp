@@ -1,6 +1,7 @@
 import { StyleSheet } from 'react-native';
 
 import { Colors } from '@UI/Colors';
+import { Fonts } from '@UI/Fonts';
 
 export const styles = StyleSheet.create({
   textMessageContainer: {
@@ -16,7 +17,7 @@ export const styles = StyleSheet.create({
     fontSize: 15,
     color: Colors.text,
     fontWeight: '500',
-    fontFamily: 'Montserrat',
+  fontFamily: Fonts.secondary,
   },
   textMessageAccent: {
     fontSize: 18,
@@ -28,6 +29,6 @@ export const styles = StyleSheet.create({
     height: 100,
     marginBottom: 10,
     fontWeight: '700',
-    fontFamily: 'Nunito',
+     fontFamily: Fonts.primary,
   },
 });

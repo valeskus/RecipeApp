@@ -1,5 +1,7 @@
 import { StyleSheet } from 'react-native';
 
+import { Fonts } from '@UI/Fonts';
+
 export const styles = StyleSheet.create({
   timeContainer: {
     flex: 1,
@@ -18,6 +20,6 @@ export const styles = StyleSheet.create({
   time: {
     fontSize: 15,
     fontWeight: '600',
-    fontFamily: 'Montserrat',
+  fontFamily: Fonts.secondary,
   },
 });

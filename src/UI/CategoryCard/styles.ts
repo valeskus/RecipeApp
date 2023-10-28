@@ -1,5 +1,7 @@
 import { StyleSheet } from 'react-native';
 
+import { Fonts } from '@UI/Fonts';
+
 import { Colors } from '../Colors';
 
 export const styles = StyleSheet.create({
@@ -28,7 +30,7 @@ export const styles = StyleSheet.create({
     margin: 10,
     fontSize: 18,
     fontWeight: '800',
-    fontFamily: 'Nunito',
+     fontFamily: Fonts.primary,
     color: Colors.primary,
   },
 

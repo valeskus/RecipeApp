@@ -1,6 +1,7 @@
 import { StyleSheet } from 'react-native';
 
 import { Colors } from '@UI/Colors';
+import { Fonts } from '@UI/Fonts';
 
 export const styles = StyleSheet.create({
   errorScreen: {
@@ -21,7 +22,7 @@ export const styles = StyleSheet.create({
     color: Colors.accent,
     marginBottom: 10,
     fontWeight: '800',
-    fontFamily: 'Nunito',
+     fontFamily: Fonts.primary,
   },
 
   message: {
@@ -29,6 +30,6 @@ export const styles = StyleSheet.create({
     color: Colors.primary,
     marginBottom: 20,
     fontWeight: '500',
-    fontFamily: 'Montserrat',
+  fontFamily: Fonts.secondary,
   },
 });
