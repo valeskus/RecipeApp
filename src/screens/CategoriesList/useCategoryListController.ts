@@ -22,7 +22,9 @@ export const useCategoryListController = () => {
   const fetchData = async () => {
     setLoading(true);
 
-    resetError();
+    if (errorGetCategories) {
+      resetError();
+    }
 
     await getCategories();
 
