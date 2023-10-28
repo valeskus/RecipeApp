@@ -32,15 +32,13 @@
     "settings": {
         "language": "Language"
     },
-    "buttons": {
-        "tryAgain": "Please, try again"
-    },
     "errors":{
         "recipes": {
             "errorMessage": "0 results found for your search.",
             "tryAnother":"Please try another search term"
         },
-        "somethingWentWrong": "Something went wrong",
-        "ooops":"Ooops"
+        "description": "Something went wrong",
+        "title":"Ooops",
+        "tryAgain": "Please, try again"
     }
 }

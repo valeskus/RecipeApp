@@ -32,15 +32,13 @@
   "settings": {
     "language": "Мова"
   },
-  "buttons": {
-    "tryAgain": "Спробувати ще раз"
-  },
   "errors": {
     "recipes": {
       "errorMessage": "0 результатів за вашим запитом",
       "tryAnother":"Будь ласка, змініть запит та спробуйте ще раз"
     },
-    "somethingWentWrong": "Щьось пішло не так",
-    "ooops": "Ууупс"
+    "description": "Щьось пішло не так",
+    "title": "Ууупс",
+    "tryAgain": "Спробувати ще раз"
   }
 }
