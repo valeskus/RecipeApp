@@ -18,7 +18,6 @@ LogBox.ignoreLogs([
 ]);
 
 StyleSheet.setStyleAttributePreprocessor('fontSize', (size) => {
-  console.log(222222)
   const newSize = size * scale;
   if (Platform.OS === 'ios') {
 
