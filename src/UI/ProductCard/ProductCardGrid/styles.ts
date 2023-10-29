@@ -1,6 +1,7 @@
 import { StyleSheet } from 'react-native';
 
 import { Fonts } from '@UI/Fonts';
+import { normalize } from '@UI/normalize';
 
 import { Colors } from '../../Colors';
 
@@ -45,7 +46,7 @@ export const styles = StyleSheet.create({
   },
   productCardDetailsItemContainer: {
     flex: 1,
-     justifyContent: 'flex-end',
+    justifyContent: 'flex-end',
   },
   cardPressed: {
     transform: [{ scale: 0.9 }],
@@ -57,12 +58,12 @@ export const styles = StyleSheet.create({
   },
   productCardDetailsItemBox: {
     flexDirection: 'row',
-    alignItems: 'flex-end',
+    alignItems: 'center',
     marginBottom: 7,
   },
   icon: {
-    width: 17,
-    height: 17,
+    width: normalize(17),
+    height: normalize(17),
     marginRight: 3,
   },
 });
