@@ -26,9 +26,9 @@ export const styles = StyleSheet.create({
   },
   productCardTitle: {
     marginBottom: 10,
-    fontSize: 18,
+    fontSize: 20,
     fontFamily: Fonts.primary,
-    fontWeight: '700',
+    fontWeight: '800',
     color: Colors.primary,
   },
   productCardDetails: {
@@ -37,7 +37,7 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 8,
   },
   productCardDetailsItem: {
-    fontSize: 15,
+    fontSize: 16,
     fontFamily: Fonts.secondary,
     fontWeight: '400',
     color: Colors.text,
@@ -52,7 +52,7 @@ export const styles = StyleSheet.create({
   },
   note: {
     color: Colors.secondary,
-    fontSize: 12,
+    fontSize: 14,
     fontFamily: Fonts.secondary,
   },
   productCardDetailsItemBox: {

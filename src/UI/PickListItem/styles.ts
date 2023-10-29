@@ -29,8 +29,8 @@ export const styles = StyleSheet.create({
   pickListItem: {
     color: Colors.text,
     marginLeft: 5,
-    fontSize: 17,
+    fontSize: 18,
     fontFamily: Fonts.secondary,
-    fontWeight: '300',
+    fontWeight: '500',
   },
 });

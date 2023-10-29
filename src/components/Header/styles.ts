@@ -13,8 +13,8 @@ export const styles = StyleSheet.create({
 
   headerTitle: {
     color: Colors.primary,
-    fontSize: 25,
-    fontWeight: '800',
+    fontSize: 28,
+    fontWeight: '900',
     textAlign: 'center',
     fontFamily: Fonts.primary,
     flex: 1,

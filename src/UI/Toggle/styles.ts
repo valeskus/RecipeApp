@@ -34,6 +34,7 @@ export const styles = StyleSheet.create({
     flex: 1,
     alignSelf: 'center',
     fontWeight: '400',
+    fontSize: 15,
     fontFamily: Fonts.secondary,
   },
   activeTitle: {
