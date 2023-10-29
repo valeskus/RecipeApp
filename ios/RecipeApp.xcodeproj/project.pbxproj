@@ -15,6 +15,7 @@
 		14474BEBF2D945C8A91778C7 /* NunitoBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 69DC06B9466F428BACCADCE5 /* NunitoBold.ttf */; };
 		1FE6C58F17F3416D99707D52 /* MontserratBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 54284956CA8A4E1A925CF282 /* MontserratBold.ttf */; };
 		49D63468E8674816A2D69D36 /* MontserratMedium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 801E04EF42354FB791F9AFDC /* MontserratMedium.ttf */; };
+		57A9DA4C42BD476E8DD00988 /* NunitoBlack.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2BA130BA634C412DA9AD6B1D /* NunitoBlack.ttf */; };
 		74C30E8933174832ADB0F301 /* NunitoExtrabold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BD9A830AE28D4CC18AE25C6D /* NunitoExtrabold.ttf */; };
 		7699B88040F8A987B510C191 /* libPods-RecipeApp-RecipeAppTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-RecipeApp-RecipeAppTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
@@ -45,7 +46,8 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = RecipeApp/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = RecipeApp/main.m; sourceTree = "<group>"; };
 		19F6CBCC0A4E27FBF8BF4A61 /* libPods-RecipeApp-RecipeAppTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RecipeApp-RecipeAppTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		203A2CFA01D24E6286DB6E56 /* MontserratSemibold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MontserratSemibold.ttf; path = ../assets/fonts/MontserratSemibold.ttf; sourceTree = "<group>"; };
+		203A2CFA01D24E6286DB6E56 /* MontserratSemibold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = MontserratSemibold.ttf; path = ../assets/fonts/MontserratSemibold.ttf; sourceTree = "<group>"; };
+		2BA130BA634C412DA9AD6B1D /* NunitoBlack.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = NunitoBlack.ttf; path = ../assets/fonts/NunitoBlack.ttf; sourceTree = "<group>"; };
 		3B4392A12AC88292D35C810B /* Pods-RecipeApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecipeApp.debug.xcconfig"; path = "Target Support Files/Pods-RecipeApp/Pods-RecipeApp.debug.xcconfig"; sourceTree = "<group>"; };
 		51B0B876DDCD4EC1B5935C36 /* NunitoSemibold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = NunitoSemibold.ttf; path = ../assets/fonts/NunitoSemibold.ttf; sourceTree = "<group>"; };
 		54284956CA8A4E1A925CF282 /* MontserratBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MontserratBold.ttf; path = ../assets/fonts/MontserratBold.ttf; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 				801E04EF42354FB791F9AFDC /* MontserratMedium.ttf */,
 				69DC06B9466F428BACCADCE5 /* NunitoBold.ttf */,
 				51B0B876DDCD4EC1B5935C36 /* NunitoSemibold.ttf */,
+				2BA130BA634C412DA9AD6B1D /* NunitoBlack.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -284,6 +287,7 @@
 				49D63468E8674816A2D69D36 /* MontserratMedium.ttf in Resources */,
 				14474BEBF2D945C8A91778C7 /* NunitoBold.ttf in Resources */,
 				CEF1D2B5EA7C4D99B09CAD8A /* NunitoSemibold.ttf in Resources */,
+				57A9DA4C42BD476E8DD00988 /* NunitoBlack.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
