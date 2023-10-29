@@ -12,6 +12,7 @@ export const useRecipeListController = () => {
   const { recipes } = RecipesStore.useRecipesStore();
 
   const getRecipes = RecipesStore.useGetRecipeList();
+  const updateFilter = RecipesStore.useFilterUpdate();
 
   const resetRecipes = RecipesStore.useResetRecipeList();
 
@@ -31,9 +32,7 @@ export const useRecipeListController = () => {
       return;
     }
 
-    resetRecipes();
-
-    getRecipes(searchOptions);
+    updateFilter(searchOptions);
   }, [searchOptions.filter]);
 
   useEffect(() => {

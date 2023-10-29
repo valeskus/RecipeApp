@@ -62,6 +62,22 @@ export function recipesReducer(
       };
     }
 
+    case RecipesActions.FILTER_UPDATE: {
+      const { recipes, filters, sortOptions, total } = action.payload as RecipeListModel;
+
+      const filtersArray = Object.entries(filters).map(([name, filter]) => {
+        return { title: filter.title, name, values: filter.items, multiple: filter.multiple };
+      });
+
+      return {
+        ...state,
+        recipes,
+        filters: filtersArray,
+        sortOptions,
+        total,
+      };
+    }
+
     case RecipesActions.RESET: {
       return initialState;
     }
