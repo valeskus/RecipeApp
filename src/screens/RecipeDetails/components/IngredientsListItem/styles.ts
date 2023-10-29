@@ -26,6 +26,7 @@ export const styles = StyleSheet.create({
     fontWeight: '500',
     fontFamily: Fonts.secondary,
     alignSelf: 'flex-start',
+    marginRight: 5,
   },
   ingredientsListItemDescription: {
     color: Colors.borderTextSecondary,
@@ -41,6 +42,6 @@ export const styles = StyleSheet.create({
     width: 20,
     height: 20,
     alignSelf: 'flex-start',
-    marginRight: 10,
+    marginRight: 5,
   },
 });

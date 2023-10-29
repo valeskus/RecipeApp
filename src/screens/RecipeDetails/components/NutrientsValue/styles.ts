@@ -1,6 +1,7 @@
 import { StyleSheet } from 'react-native';
 
 import { Fonts } from '@UI/Fonts';
+import { normalize } from '@UI/normalize';
 
 export const styles = StyleSheet.create({
   nutrientValuesContainer: {
@@ -13,6 +14,7 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: 5,
     paddingVertical: 10,
+    minHeight: normalize(55),
   },
   dotIcon: {
     width: 35,

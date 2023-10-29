@@ -27,6 +27,7 @@ export const styles = StyleSheet.create({
   listItemDescription: {
     color: Colors.text,
     fontWeight: '400',
+    fontSize: 15,
     fontFamily: Fonts.secondary,
     marginBottom: 15,
     width: '100%',

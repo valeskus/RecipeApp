@@ -1,6 +1,7 @@
 import { StyleSheet } from 'react-native';
 
 import { Fonts } from '@UI/Fonts';
+import { normalize } from '@UI/normalize';
 
 import { Colors } from '../Colors';
 
@@ -8,7 +9,6 @@ export const styles = StyleSheet.create({
   buttonContent: {
     fontSize: 18,
     color: Colors.primary,
-    textAlign: 'center',
     fontWeight: '600',
   },
   buttonPressed: {
@@ -16,8 +16,8 @@ export const styles = StyleSheet.create({
   },
   button: {
     borderRadius: 50,
-    width: 25,
-    height: 25,
+    width: normalize(25),
+    height: normalize(25),
     backgroundColor: Colors.background,
     shadowColor: Colors.shadow,
     shadowOpacity: 0.5,
@@ -25,6 +25,7 @@ export const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 0 },
     elevation: 8,
     position: 'relative',
+    alignItems: 'center',
   },
   counterContainer: {
     flexDirection: 'row',
@@ -38,6 +39,8 @@ export const styles = StyleSheet.create({
     fontFamily: Fonts.secondary,
     fontWeight: '600',
     color: Colors.primary,
-    marginHorizontal: 15,
+    marginHorizontal: 10,
+    minWidth: normalize(25),
+    textAlign: 'center',
   },
 });

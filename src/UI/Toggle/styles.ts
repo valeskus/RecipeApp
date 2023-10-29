@@ -22,7 +22,7 @@ export const styles = StyleSheet.create({
     backgroundColor: Colors.primary,
     borderRadius: 15,
     zIndex: 10,
-    paddingVertical: 21,
+    paddingVertical: 23,
   },
   selectItem: {
     width: '100%',
