@@ -1,5 +1,6 @@
 import React from 'react';
 import { Image, TextInput, Pressable } from 'react-native';
+import { useTranslation } from 'react-i18next';
 
 import { Icons } from '@UI/Icons';
 
@@ -20,11 +21,12 @@ export function Search({ onSearch }: Props): JSX.Element {
     handleResetSearchInput,
     handlePress,
   } = useSearchController({ onSearch });
+  const { t } = useTranslation();
 
   return (
     <Pressable style={styles.searchBarContainer} onPress={handlePress}>
       <TextInput
-        placeholder="Search"
+        placeholder={t('inputs.search.placeholder')}
         style={styles.searchBarInput}
         onChangeText={handleChange}
         value={searchTerm}

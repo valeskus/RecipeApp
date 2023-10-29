@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import { Animated, Dimensions, Text, View } from 'react-native';
+import { useTranslation } from 'react-i18next';
 
 import { Tabs } from '@UI/Tabs';
 import { Counter } from '@UI/Counter';
@@ -13,19 +14,12 @@ import { IngredientsList } from './components/IngredientsList ';
 import { InstructionsList } from './components/InstructionsList';
 import { RecipeDetailsSkeleton } from './components/RecipeDetailsSkeleton';
 import {
-  NutrientsUnitLabels,
-  PrescriptionCardLabels,
   PrescriptionCardSection,
 } from './hooks';
 import { NutrientsValue } from './components/NutrientsValue';
 import { Error } from './components/Error';
 
 const { height } = Dimensions.get('screen');
-
-const nutritionLabelsMap = Object.keys(NutrientsUnitLabels).map(id => ({
-  id,
-  label: (NutrientsUnitLabels as any)[id],
-}));
 
 export function RecipeDetails(): JSX.Element {
   const {
@@ -40,7 +34,9 @@ export function RecipeDetails(): JSX.Element {
     isLoading,
     isError,
     fetchData,
+    nutritionLabelsMap,
   } = useRecipeDetailsController();
+  const { t } = useTranslation();
 
   const scrollYRef = useRef(new Animated.Value(0));
 
@@ -100,7 +96,7 @@ export function RecipeDetails(): JSX.Element {
             onChange={onPrescriptionCardSectionChange}
           >
             <View
-              aria-label={PrescriptionCardLabels.Ingredients}
+              aria-label={t('recipeDetails.ingredients')}
               aria-id={PrescriptionCardSection.Ingredients}
             >
               <IngredientsList
@@ -113,7 +109,7 @@ export function RecipeDetails(): JSX.Element {
               />
             </View>
             <View
-              aria-label={PrescriptionCardLabels.Instructions}
+              aria-label={t('recipeDetails.instructions')}
               aria-id={PrescriptionCardSection.Instructions}
             >
               <InstructionsList instructions={recipe.instructions} />

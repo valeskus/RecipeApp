@@ -1,0 +1,44 @@
+{
+    "screenHeaderTitle": {
+        "categories": "Categories",
+        "recipes": "Recipes",
+        "filter": "Filter",
+        "sort": "Sort",
+        "settings": "Settings"
+    },
+    "recipeDetails": {
+        "nutrients": {
+            "allAmount": "All Amount",
+            "serving": "Serving",
+            "carbs": "carbs",
+            "protein": "protein",
+            "fats": "fats"
+        },
+        "ingredients": "Ingredients",
+        "instructions": "Instructions",
+        "items": "items",
+        "step": "Step"
+    },
+    "units": {
+        "g": "g",
+        "ml": "ml",
+        "kCal": "kCal"
+    },
+    "inputs": {
+        "search": {
+            "placeholder": "Search"
+        }
+    },
+    "settings": {
+        "language": "Language"
+    },
+    "errors":{
+        "recipes": {
+            "errorMessage": "0 results found for your search.",
+            "tryAnother":"Please try another search term"
+        },
+        "description": "Something went wrong",
+        "title":"Ooops",
+        "tryAgain": "Please, try again"
+    }
+}

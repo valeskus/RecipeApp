@@ -1,18 +1,27 @@
-import { useCallback } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
-import { useLanguagesStore, useSetLanguage } from '@stores/languages';
+import { LanguageManager } from '@managers/LanguageManager';
 
 export const useSettingButtonController = () => {
-  const { language } = useLanguagesStore();
-
-  const setLanguage = useSetLanguage();
+  const [language, setLanguage] = useState<'ua' | 'en'>();
 
   const onPressUA = useCallback(() => {
     setLanguage('ua');
+    LanguageManager.setLanguage('ua');
   }, []);
 
   const onPressEN = useCallback(() => {
     setLanguage('en');
+    LanguageManager.setLanguage('en');
+  }, []);
+
+  const initLanguage = useCallback(async() => {
+    const currentLanguage = await LanguageManager.getLanguage();
+    setLanguage(currentLanguage);
+  }, []);
+
+  useEffect(() => {
+    initLanguage();
   }, []);
 
   return {

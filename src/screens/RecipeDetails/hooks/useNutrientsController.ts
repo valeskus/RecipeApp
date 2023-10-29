@@ -1,4 +1,5 @@
 import { useCallback, useMemo, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import * as RecipeDetailsStore from '@stores/recipeDetails';
 
@@ -7,12 +8,6 @@ export enum NutrientsSection {
   Serving = 'Serving',
   AllServings = 'AllServings',
 }
-
-export const NutrientsUnitLabels = {
-  [NutrientsSection['100g']]: '100 g',
-  [NutrientsSection.Serving]: '1 Serving',
-  [NutrientsSection.AllServings]: 'All amount',
-};
 
 const NutrientsSectionMap = {
   [NutrientsSection['100g']]: 'nutrientsFor100g',
@@ -39,9 +34,17 @@ const fallbackNutrients: Nutrients = {
 };
 
 export const useNutrientsController = (params: UseNutrientsControllerParams) => {
+  const { t } = useTranslation();
+
   const [activeSection, setActiveSection] = useState(NutrientsSection['100g']);
 
   const { recipe } = RecipeDetailsStore.useRecipeDetailsStore();
+
+  const NutrientsUnitLabels = {
+    [NutrientsSection['100g']]: `100 ${t('units.g')}`,
+    [NutrientsSection.Serving]: `1 ${t('recipeDetails.nutrients.serving')}`,
+    [NutrientsSection.AllServings]: t('recipeDetails.nutrients.allAmount'),
+  };
 
   const nutrientsFor100g = useMemo(() => {
     if (!recipe) {
@@ -102,5 +105,6 @@ export const useNutrientsController = (params: UseNutrientsControllerParams) => 
     activeSection,
     changeSection,
     nutrients,
+    NutrientsUnitLabels,
   };
 };

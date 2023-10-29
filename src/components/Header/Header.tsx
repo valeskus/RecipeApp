@@ -15,6 +15,7 @@ interface Props {
 
 export function Header({ options, headerRight, headerLeft }: Props): JSX.Element {
   const navigation = useNavigation();
+
   const onGoBack = useCallback(() => {
     navigation.goBack();
   }, []);

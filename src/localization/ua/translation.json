@@ -1,0 +1,44 @@
+{
+  "screenHeaderTitle": {
+    "categories": "Категорії",
+    "recipes": "Рецепти",
+    "filter": "Фільтрування",
+    "sort": "Сортування",
+    "settings": "Налаштування"
+  },
+  "recipeDetails": {
+    "nutrients": {
+      "allAmount": "Загалом",
+      "serving": "Порція",
+      "carbs": "вуглеводів",
+      "protein": "білків",
+      "fats": "жирів"
+    },
+    "ingredients": "Інгредієнти",
+    "instructions": "Інструкція",
+    "items": "одиниць",
+    "step": "Шаг"
+  },
+  "units": {
+    "g": "г",
+    "ml": "мл",
+    "kCal": "ккал"
+  },
+  "inputs": {
+    "search": {
+      "placeholder": "Пошук"
+    }
+  },
+  "settings": {
+    "language": "Мова"
+  },
+  "errors": {
+    "recipes": {
+      "errorMessage": "0 результатів за вашим запитом",
+      "tryAnother":"Будь ласка, змініть запит та спробуйте ще раз"
+    },
+    "description": "Щьось пішло не так",
+    "title": "Ууупс",
+    "tryAgain": "Спробувати ще раз"
+  }
+}

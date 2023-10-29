@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { RouteProp, useRoute } from '@react-navigation/native';
 
 import * as RecipeDetailsStore from '@stores/recipeDetails';
@@ -62,6 +62,13 @@ export const useRecipeDetailsController = () => {
     [],
   );
 
+  const nutritionLabelsMap = useMemo(() => {
+    return Object.keys(Nutrients.NutrientsUnitLabels).map(id => ({
+      id,
+      label: (Nutrients.NutrientsUnitLabels as any)[id],
+    }));
+  }, [Nutrients.NutrientsUnitLabels]);
+
   return {
     recipe,
     onServingsCountChange: PrescriptionCard.onCountChange,
@@ -74,5 +81,6 @@ export const useRecipeDetailsController = () => {
     isLoading,
     isError: !!errorGetRecipeDetails,
     fetchData,
+    nutritionLabelsMap,
   };
 };
