@@ -17,8 +17,8 @@ export function Filter(): JSX.Element {
 
   return (
     <View style={styles.modalContainer}>
-      {isLoading && <FilterSkeleton/>}
-      {!isLoading && (<ScrollView style={styles.filterList}>
+      {isLoading && <FilterSkeleton />}
+      <ScrollView style={styles.filterList}>
         {filters
           .filter((filter) => !!filter.values.length)
           .map((filter) => (
@@ -32,7 +32,6 @@ export function Filter(): JSX.Element {
             />
           ))}
       </ScrollView>
-      )}
       <View style={[styles.footerOffset, { height: footerOffset }]} />
       <View style={[styles.selectButtonContainer, { bottom: footerOffset }]}>
         <Button icon="select" onPress={onSelectPress} />
