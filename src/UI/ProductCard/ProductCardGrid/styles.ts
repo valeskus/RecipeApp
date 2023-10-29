@@ -26,7 +26,7 @@ export const styles = StyleSheet.create({
   },
   productCardTitle: {
     marginBottom: 10,
-    fontSize: 20,
+    fontSize: 19,
     fontFamily: Fonts.primary,
     fontWeight: '800',
     color: Colors.primary,

@@ -11,7 +11,8 @@ export const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
-    padding: 10,
+    paddingHorizontal: 5,
+    paddingVertical: 10,
   },
   dotIcon: {
     width: 35,
