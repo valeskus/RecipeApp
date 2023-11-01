@@ -65,11 +65,11 @@ export const styles = StyleSheet.create({
   },
   productCardDetailsItemBox: {
     flexDirection: 'row',
-    alignItems: 'flex-end',
+    alignItems: 'center',
     marginBottom: 7,
   },
   productCardDetailsItemContainer: {
     flex: 1,
-     justifyContent: 'flex-end',
+    justifyContent: 'flex-end',
   },
 });

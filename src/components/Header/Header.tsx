@@ -27,14 +27,14 @@ export function Header({ options, headerRight, headerLeft, seasonAnimate }: Prop
         <Pressable
           onPress={onGoBack}
           style={({ pressed }) => [
-            styles.button,
+            styles.leftButton,
             pressed && styles.buttonPressed,
           ]}
         >
           <Image source={Icons.leftArrow} style={styles.buttonImage} />
         </Pressable>
       )}
-      {headerLeft && <View style={styles.headerLeftContainer}>{headerLeft}</View>}
+      {headerLeft && <View style={styles.leftButton}>{headerLeft}</View>}
       <Text style={styles.headerTitle}>{options.title}
       </Text>
       <View style={styles.headerRightContainer}>{headerRight}

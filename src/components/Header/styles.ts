@@ -2,6 +2,7 @@ import { StyleSheet } from 'react-native';
 
 import { Colors } from '@UI/Colors';
 import { Fonts } from '@UI/Fonts';
+import { normalize } from '@UI/normalize';
 
 export const styles = StyleSheet.create({
   headerContainer: {
@@ -30,9 +31,9 @@ export const styles = StyleSheet.create({
     alignSelf: 'center',
   },
 
-  button: {
-    width: 25,
-    height: 25,
+  leftButton: {
+    width: normalize(25),
+    height: normalize(25),
     justifyContent: 'center',
     position: 'absolute',
     left: 10,
@@ -45,7 +46,6 @@ export const styles = StyleSheet.create({
     right: 10,
     zIndex: 1,
   },
-
   headerLeftContainer: {
     width: 25,
     height: 25,
