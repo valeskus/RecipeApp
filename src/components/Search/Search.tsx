@@ -3,6 +3,7 @@ import { Image, TextInput, Pressable } from 'react-native';
 import { useTranslation } from 'react-i18next';
 
 import { Icons } from '@UI/Icons';
+import { Colors } from '@UI/Colors';
 
 import { styles } from './styles';
 import {
@@ -32,6 +33,7 @@ export function Search({ onSearch }: Props): JSX.Element {
         value={searchTerm}
         ref={searchInputRef}
         autoCapitalize="none"
+        placeholderTextColor = {Colors.borderTextSecondary}
       />
       {searchTerm && (
         <Pressable
