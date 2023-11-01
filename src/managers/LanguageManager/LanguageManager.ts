@@ -19,8 +19,15 @@ export class LanguageManager {
 
    static async initLanguage() {
       const language = await this.getLanguage();
-      changeLanguage(language);
 
+      if (!language) {
+         changeLanguage('en');
+         i18n.changeLanguage('en');
+
+         return;
+      }
+
+      changeLanguage(language);
       i18n.changeLanguage(language);
    }
 }
