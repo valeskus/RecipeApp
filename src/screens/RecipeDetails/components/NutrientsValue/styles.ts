@@ -2,6 +2,7 @@ import { StyleSheet } from 'react-native';
 
 import { Fonts } from '@UI/Fonts';
 import { normalize } from '@UI/normalize';
+import { Colors } from '@UI/Colors';
 
 export const styles = StyleSheet.create({
   nutrientValuesContainer: {
@@ -26,6 +27,7 @@ export const styles = StyleSheet.create({
     fontFamily: Fonts.secondary,
     fontWeight: '600',
     flexShrink: 1,
+    color: Colors.text,
   },
   column: {
     flex: 1,

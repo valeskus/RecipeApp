@@ -6,7 +6,7 @@ export const Colors = {
   tertiary: '#CEF3F9',
   borderTextSecondary: '#8F8E8E',
   shadow: '#9492AB',
-  text: '#4B4B4D',
+  text: '#38383B',
   rating: '#FFCC00',
   snowflakes: '#86D3FF',
 };

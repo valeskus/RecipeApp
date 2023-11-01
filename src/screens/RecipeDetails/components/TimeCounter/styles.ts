@@ -1,6 +1,7 @@
 import { StyleSheet } from 'react-native';
 
 import { Fonts } from '@UI/Fonts';
+import { Colors } from '@UI/Colors';
 
 export const styles = StyleSheet.create({
   timeContainer: {
@@ -21,5 +22,6 @@ export const styles = StyleSheet.create({
     fontSize: 15,
     fontWeight: '600',
     fontFamily: Fonts.secondary,
+    color: Colors.text,
   },
 });

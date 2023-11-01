@@ -45,10 +45,13 @@ export const styles = StyleSheet.create({
     fontFamily: Fonts.primary,
     flex: 2,
     flexWrap: 'wrap',
+    color: Colors.text,
   },
   description: {
     marginBottom: 20,
     fontWeight: '400',
     fontFamily: Fonts.secondary,
+    fontSize: 15,
+    color: Colors.text,
   },
 });

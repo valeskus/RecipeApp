@@ -36,6 +36,7 @@ export const styles = StyleSheet.create({
     fontWeight: '400',
     fontSize: 15,
     fontFamily: Fonts.secondary,
+    color: Colors.text,
   },
   activeTitle: {
     color: Colors.background,
