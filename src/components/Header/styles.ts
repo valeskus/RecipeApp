@@ -54,4 +54,13 @@ export const styles = StyleSheet.create({
     left: 15,
     zIndex: 1,
   },
+
+  snowflakesContainer: {
+    width: '100%',
+    paddingHorizontal: 20,
+    height: 70,
+    overflow: 'hidden',
+    position: 'absolute',
+    zIndex: 0,
+  },
 });

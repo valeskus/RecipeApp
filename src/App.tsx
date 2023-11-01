@@ -4,6 +4,7 @@ import { Platform, SafeAreaView, UIManager } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useTranslation } from 'react-i18next';
+import LottieView from 'lottie-react-native';
 
 import { Header } from '@components/Header';
 import { SettingsButton } from '@components/SettingsButton';
@@ -70,7 +71,19 @@ export function App(): JSX.Element {
                 title: t('screenHeaderTitle.categories'),
                 header: ({ options }) => (
                   <SafeAreaView>
-                    <Header options={options} headerLeft={<SettingsButton />} />
+                    <Header
+                      options={options}
+                      headerLeft={<SettingsButton />}
+                      seasonAnimate={(
+                        <LottieView
+                          style={{ flex: 1 }}
+                          source={require('./UI/animationConfigs/snow.json')}
+                          autoPlay
+                          loop
+                          resizeMode="cover"
+                        />
+                      )}
+                    />
                   </SafeAreaView>
                 ),
               }}
@@ -80,6 +93,22 @@ export function App(): JSX.Element {
               component={RecipesList}
               options={{
                 title: t('screenHeaderTitle.recipes'),
+                header: ({ options }) => (
+                  <SafeAreaView>
+                    <Header
+                      options={options}
+                      seasonAnimate={(
+                        <LottieView
+                          style={{ flex: 1 }}
+                          source={require('./UI/animationConfigs/snow.json')}
+                          autoPlay
+                          loop
+                          resizeMode="cover"
+                        />
+                      )}
+                    />
+                  </SafeAreaView>
+                ),
               }}
             />
           </Stack.Group>

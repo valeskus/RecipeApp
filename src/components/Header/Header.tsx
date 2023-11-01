@@ -11,9 +11,10 @@ interface Props {
   options: NativeStackNavigationOptions;
   headerRight?: React.ReactNode;
   headerLeft?: React.ReactNode;
+  seasonAnimate?: React.ReactNode;
 }
 
-export function Header({ options, headerRight, headerLeft }: Props): JSX.Element {
+export function Header({ options, headerRight, headerLeft, seasonAnimate }: Props): JSX.Element {
   const navigation = useNavigation();
 
   const onGoBack = useCallback(() => {
@@ -38,6 +39,7 @@ export function Header({ options, headerRight, headerLeft }: Props): JSX.Element
       </Text>
       <View style={styles.headerRightContainer}>{headerRight}
       </View>
+      {seasonAnimate && <View style={styles.snowflakesContainer}>{seasonAnimate}</View>}
     </View>
   );
 }

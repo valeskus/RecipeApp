@@ -8,4 +8,5 @@ export const Colors = {
   shadow: '#9492AB',
   text: '#4B4B4D',
   rating: '#FFCC00',
+  snowflakes: '#86D3FF',
 };
