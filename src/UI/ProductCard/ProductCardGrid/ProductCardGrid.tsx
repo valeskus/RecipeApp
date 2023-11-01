@@ -41,14 +41,16 @@ export function ProductCardGrid({
         <Text numberOfLines={2} style={styles.productCardTitle}>
           {title}
         </Text>
-        <View style={styles.productCardDetailsItemBox}>
-          <Image source={Icons.time} style={styles.icon} />
-          <Text style={styles.productCardDetailsItem}>{TimeManager.getHours(time)}</Text>
-        </View>
-        <View style={styles.productCardDetailsItemBox}>
-          <Image source={Icons.kCal} style={styles.icon} />
-          <Text style={styles.productCardDetailsItem} numberOfLines={1}>{calories} {t('units.kCal')}</Text>
-          <Text style={styles.note}> / 100 {t('units.g')}</Text>
+        <View style={styles.productCardDetailsItemContainer}>
+          <View style={styles.productCardDetailsItemBox}>
+            <Image source={Icons.time} style={styles.icon} />
+            <Text style={styles.productCardDetailsItem}>{TimeManager.getHours(time)}</Text>
+          </View>
+          <View style={styles.productCardDetailsItemBox}>
+            <Image source={Icons.kCal} style={styles.icon} />
+            <Text style={styles.productCardDetailsItem} numberOfLines={1}>{calories} {t('units.kCal')}</Text>
+            <Text style={styles.note}> / 100 {t('units.g')}</Text>
+          </View>
         </View>
       </View>
     </Pressable>

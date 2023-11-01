@@ -48,6 +48,7 @@ export const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'flex-end',
   },
+
   cardPressed: {
     transform: [{ scale: 0.9 }],
   },
