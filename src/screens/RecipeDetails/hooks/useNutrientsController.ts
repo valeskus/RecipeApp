@@ -80,14 +80,13 @@ export const useNutrientsController = (params: UseNutrientsControllerParams) => 
     const { numberOfServings } = params;
 
     return {
-      kCal: (recipe.kCal / recipe.servingsCount) * (numberOfServings || recipe.servingsCount),
+      kCal: (recipe.kCal / recipe.servingsCount) * numberOfServings,
       protein:
-        (recipe.macroNutrients.proteins / recipe.servingsCount) *
-        (numberOfServings || recipe.servingsCount),
+        (recipe.macroNutrients.proteins / recipe.servingsCount) * numberOfServings,
       fats:
-        (recipe.macroNutrients.fats / recipe.servingsCount) * (numberOfServings || recipe.servingsCount),
+        (recipe.macroNutrients.fats / recipe.servingsCount) * numberOfServings,
       carbs:
-        (recipe.macroNutrients.carbs / recipe.servingsCount) * (numberOfServings || recipe.servingsCount),
+        (recipe.macroNutrients.carbs / recipe.servingsCount) * numberOfServings,
     };
   }, [params.numberOfServings, !!recipe]);
 
