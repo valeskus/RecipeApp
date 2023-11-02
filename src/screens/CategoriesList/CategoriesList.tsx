@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StatusBar } from 'react-native';
+import { View } from 'react-native';
 
 import { Search } from '@components/Search';
 
@@ -17,7 +17,6 @@ export function CategoriesList(): JSX.Element {
 
   return (
     <View style={styles.categoriesScreenContainer}>
-      <StatusBar />
       <View style={styles.searchContainer}>
         <Search onSearch={handleSearch} />
       </View>

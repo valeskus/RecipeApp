@@ -1,12 +1,14 @@
 import React, { useEffect } from 'react';
 import { Provider } from 'react-redux';
-import { Platform, SafeAreaView, UIManager } from 'react-native';
+import { Platform, SafeAreaView, StatusBar, UIManager } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useTranslation } from 'react-i18next';
 import SplashScreen from 'react-native-splash-screen';
 
 import { LottieAnimation } from '@UI/LottieAnimation';
+
+import { Colors } from '@UI/Colors';
 
 import { Header } from '@components/Header';
 import { SettingsButton } from '@components/SettingsButton';
@@ -56,17 +58,10 @@ export function App(): JSX.Element {
 
   return (
     <Provider store={store}>
+      <StatusBar backgroundColor={Colors.background} barStyle={'dark-content'} />
       <NavigationContainer>
         <Stack.Navigator>
-          <Stack.Group
-            screenOptions={{
-              header: ({ options }) => (
-                <SafeAreaView>
-                  <Header options={options} />
-                </SafeAreaView>
-              ),
-            }}
-          >
+          <Stack.Group >
             <Stack.Screen
               name="Categories"
               component={CategoriesList}
@@ -92,17 +87,21 @@ export function App(): JSX.Element {
                 title: t('screenHeaderTitle.recipes'),
                 header: ({ options }) => (
                   <SafeAreaView>
-                    <Header
-                      options={options}
-                      seasonAnimate={(
-                        <LottieAnimation />
-                      )}
-                    />
-                  </SafeAreaView>
+<<<<<<< HEAD
+  <Header
+    options={options}
+    seasonAnimate={(
+      <LottieAnimation />
+    )}
+  />
+=======
+                    <Header options={options} />
+>>>>>>> 06d2bd2 (Add statusBar on App component and remove it from CategoryList component.adapt that for android and IOS.)
+                  </SafeAreaView >
                 ),
-              }}
-            />
-          </Stack.Group>
+}}
+/>
+          </Stack.Group >
           <Stack.Screen
             name="Sort"
             component={Sort}
@@ -139,8 +138,8 @@ export function App(): JSX.Element {
             component={RecipeDetails}
             options={{ headerShown: false }}
           />
-        </Stack.Navigator>
-      </NavigationContainer>
-    </Provider>
+        </Stack.Navigator >
+      </NavigationContainer >
+    </Provider >
   );
 }

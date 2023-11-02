@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { Animated, Dimensions, Text, View } from 'react-native';
+import { Animated, Dimensions, StatusBar, Text, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
 
 import { Tabs } from '@UI/Tabs';
@@ -56,6 +56,9 @@ export function RecipeDetails(): JSX.Element {
 
   return (
     <View style={styles.detailsScreenContainer}>
+      <StatusBar backgroundColor="transparent" barStyle={'dark-content'}
+        translucent={true}
+      />
       <Header scrollYRef={scrollYRef} />
       <Animated.Image
         source={{ uri: recipe.image }}
