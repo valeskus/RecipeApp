@@ -4,7 +4,8 @@ import { Platform, SafeAreaView, UIManager } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useTranslation } from 'react-i18next';
-import LottieView from 'lottie-react-native';
+
+import { LottieAnimation } from '@UI/LottieAnimation';
 
 import { Header } from '@components/Header';
 import { SettingsButton } from '@components/SettingsButton';
@@ -75,13 +76,7 @@ export function App(): JSX.Element {
                       options={options}
                       headerLeft={<SettingsButton />}
                       seasonAnimate={(
-                        <LottieView
-                          style={{ flex: 1 }}
-                          source={require('./UI/animationConfigs/snow.json')}
-                          autoPlay
-                          loop
-                          resizeMode="cover"
-                        />
+                        <LottieAnimation />
                       )}
                     />
                   </SafeAreaView>
@@ -98,13 +93,7 @@ export function App(): JSX.Element {
                     <Header
                       options={options}
                       seasonAnimate={(
-                        <LottieView
-                          style={{ flex: 1 }}
-                          source={require('./UI/animationConfigs/snow.json')}
-                          autoPlay
-                          loop
-                          resizeMode="cover"
-                        />
+                        <LottieAnimation />
                       )}
                     />
                   </SafeAreaView>

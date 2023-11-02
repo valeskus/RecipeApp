@@ -49,7 +49,8 @@ module.exports = {
         'ua',
         'en',
         'ooops',
-        'Nunito'
+        'Nunito',
+        'lottie'
       ]
     }],
     'import/no-unresolved': ['error', { ignore: ['@env'] }],
