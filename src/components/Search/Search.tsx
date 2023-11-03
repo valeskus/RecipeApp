@@ -11,7 +11,7 @@ import {
   useSearchController,
 } from './useSearchController';
 
-interface Props extends SearchControllerParams {}
+interface Props extends SearchControllerParams { }
 
 export function Search({ onSearch }: Props): JSX.Element {
   const {
@@ -33,7 +33,7 @@ export function Search({ onSearch }: Props): JSX.Element {
         value={searchTerm}
         ref={searchInputRef}
         autoCapitalize="none"
-        placeholderTextColor = {Colors.borderTextSecondary}
+        placeholderTextColor={Colors.borderTextSecondary}
       />
       {searchTerm && (
         <Pressable
