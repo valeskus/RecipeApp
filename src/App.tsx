@@ -5,6 +5,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useTranslation } from 'react-i18next';
 
+import { LottieAnimation } from '@UI/LottieAnimation';
+
 import { Header } from '@components/Header';
 import { SettingsButton } from '@components/SettingsButton';
 
@@ -70,7 +72,13 @@ export function App(): JSX.Element {
                 title: t('screenHeaderTitle.categories'),
                 header: ({ options }) => (
                   <SafeAreaView>
-                    <Header options={options} headerLeft={<SettingsButton />} />
+                    <Header
+                      options={options}
+                      headerLeft={<SettingsButton />}
+                      seasonAnimate={(
+                        <LottieAnimation />
+                      )}
+                    />
                   </SafeAreaView>
                 ),
               }}
@@ -80,6 +88,16 @@ export function App(): JSX.Element {
               component={RecipesList}
               options={{
                 title: t('screenHeaderTitle.recipes'),
+                header: ({ options }) => (
+                  <SafeAreaView>
+                    <Header
+                      options={options}
+                      seasonAnimate={(
+                        <LottieAnimation />
+                      )}
+                    />
+                  </SafeAreaView>
+                ),
               }}
             />
           </Stack.Group>
