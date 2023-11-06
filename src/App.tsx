@@ -57,7 +57,7 @@ export function App(): JSX.Element {
 
   return (
     <Provider store={store}>
-      <StatusBar backgroundColor={Colors.background} barStyle={'dark-content'} />
+      <StatusBar backgroundColor={Colors.background} barStyle="dark-content" />
       <NavigationContainer>
         <Stack.Navigator>
           <Stack.Group >
