@@ -7,7 +7,6 @@ import { useTranslation } from 'react-i18next';
 import SplashScreen from 'react-native-splash-screen';
 
 import { LottieAnimation } from '@UI/LottieAnimation';
-
 import { Colors } from '@UI/Colors';
 
 import { Header } from '@components/Header';
@@ -87,20 +86,16 @@ export function App(): JSX.Element {
                 title: t('screenHeaderTitle.recipes'),
                 header: ({ options }) => (
                   <SafeAreaView>
-<<<<<<< HEAD
-  <Header
-    options={options}
-    seasonAnimate={(
-      <LottieAnimation />
-    )}
-  />
-=======
-                    <Header options={options} />
->>>>>>> 06d2bd2 (Add statusBar on App component and remove it from CategoryList component.adapt that for android and IOS.)
+                    <Header
+                      options={options}
+                      seasonAnimate={(
+                        <LottieAnimation />
+                      )}
+                    />
                   </SafeAreaView >
                 ),
-}}
-/>
+              }}
+            />
           </Stack.Group >
           <Stack.Screen
             name="Sort"
