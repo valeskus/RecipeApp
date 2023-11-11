@@ -7,7 +7,7 @@ export interface UseCounterControllerParams {
 
 export const useCounterController = (params: UseCounterControllerParams) => {
   const onMinusPress = useCallback(() => {
-    if (params.count === 0) {
+    if (params.count === 1) {
       return;
     }
 

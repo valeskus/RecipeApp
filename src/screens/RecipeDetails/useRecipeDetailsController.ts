@@ -18,6 +18,7 @@ export const useRecipeDetailsController = () => {
     useRoute<RouteProp<ReactNavigation.RootParamList, 'RecipeDetails'>>();
 
   const PrescriptionCard = usePrescriptionCardController();
+
   const Nutrients = useNutrientsController({
     numberOfServings: PrescriptionCard.servingsCount,
   });

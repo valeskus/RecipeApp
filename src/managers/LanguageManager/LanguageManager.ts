@@ -18,9 +18,9 @@ export class LanguageManager {
    }
 
    static async initLanguage() {
-      const language = await this.getLanguage();
-      changeLanguage(language);
+      const language = await this.getLanguage() || 'en';
 
+      changeLanguage(language);
       i18n.changeLanguage(language);
    }
 }
