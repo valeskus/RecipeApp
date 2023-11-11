@@ -7,7 +7,7 @@ describe('normalize', () => {
         jest.spyOn(Dimensions, 'get');
     });
 
-    it('should return the same size as we send to normalize the function when the width is 320', () => {
+    it('should return the same size as we send to the normalize function when the width is 320', () => {
         const width320 = 320;
 
         jest.mocked(Dimensions.get).mockReturnValueOnce({
@@ -20,7 +20,7 @@ describe('normalize', () => {
         expect(normalize(17)).toBe(17);
     });
 
-    it('should return a size greater than we send to normalize the function when the width is more than 320', () => {
+    it('should return a size greater than we send to the normalize function when the width is more than 320', () => {
         const width430 = 430;
 
         jest.mocked(Dimensions.get).mockReturnValueOnce({

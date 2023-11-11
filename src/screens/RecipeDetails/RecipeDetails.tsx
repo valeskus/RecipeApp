@@ -56,9 +56,7 @@ export function RecipeDetails(): JSX.Element {
 
   return (
     <View style={styles.detailsScreenContainer}>
-      <StatusBar backgroundColor="transparent" barStyle="dark-content"
-        translucent={true}
-      />
+      <StatusBar backgroundColor="transparent" barStyle="dark-content" translucent={true} />
       <Header scrollYRef={scrollYRef} />
       <Animated.Image
         source={{ uri: recipe.image }}

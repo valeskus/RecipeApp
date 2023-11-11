@@ -18,7 +18,7 @@ export function RecipeDetailsSkeleton(): JSX.Element {
         translucent={true}
       />
       <Rect x="0" y="0" rx="0" ry="0" width="100%" height="100%" />
-      <Circle cx={'9.5%'} cy={(StatusBar.currentHeight && StatusBar.currentHeight + 25)} r={normalize(25)} />
+      <Circle cx={'9.5%'} cy={(StatusBar.currentHeight ? StatusBar.currentHeight + 25 : 25)} r={normalize(25)} />
 
       <Rect x="-16%" y="320" rx="60" ry="60" width="116%" height="100%" />
       <Rect x="3%" y="370" rx="4" ry="4" width="47%" height="25" />
