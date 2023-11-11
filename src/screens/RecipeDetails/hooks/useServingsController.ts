@@ -15,7 +15,7 @@ export const useServingsController = () => {
 
   const onCountChange = useCallback((value: number) => {
     setServingsCount(value);
-  }, [recipe]);
+  }, []);
 
   return {
     servingsCount,
