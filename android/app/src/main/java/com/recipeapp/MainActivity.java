@@ -1,10 +1,7 @@
 package com.recipeapp;
 
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import org.devio.rn.splashscreen.SplashScreen;
-
-import androidx.annotation.Nullable;
 
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;
