@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { Image, Pressable, Text, View } from 'react-native';
+import { Image, Pressable, SafeAreaView, Text, View } from 'react-native';
 import { NativeStackNavigationOptions } from '@react-navigation/native-stack';
 import { useNavigation } from '@react-navigation/native';
 
@@ -22,7 +22,7 @@ export function Header({ options, headerRight, headerLeft, seasonAnimate }: Prop
   }, []);
 
   return (
-    <View style={styles.headerContainer}>
+    <SafeAreaView style={styles.headerContainer}>
       {!headerLeft && (
         <Pressable
           onPress={onGoBack}
@@ -40,6 +40,6 @@ export function Header({ options, headerRight, headerLeft, seasonAnimate }: Prop
       <View style={styles.headerRightContainer}>{headerRight}
       </View>
       {seasonAnimate && <View style={styles.snowflakesContainer}>{seasonAnimate}</View>}
-    </View>
+    </SafeAreaView>
   );
 }

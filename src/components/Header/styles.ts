@@ -35,9 +35,9 @@ export const styles = StyleSheet.create({
     width: normalize(25),
     height: normalize(25),
     justifyContent: 'center',
-    position: 'absolute',
-    left: 10,
     zIndex: 10,
+    marginLeft: 10,
+    marginRight: -normalize(25) - 10,
   },
 
   headerRightContainer: {
@@ -46,19 +46,11 @@ export const styles = StyleSheet.create({
     right: 10,
     zIndex: 1,
   },
-  headerLeftContainer: {
-    width: 25,
-    height: 25,
-    justifyContent: 'center',
-    position: 'absolute',
-    left: 15,
-    zIndex: 1,
-  },
 
   snowflakesContainer: {
     width: '100%',
     paddingHorizontal: 20,
-    height: 70,
+    height: 110,
     overflow: 'hidden',
     position: 'absolute',
     zIndex: 0,
