@@ -18,9 +18,10 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 5,
   },
   title: {
-    fontSize: 20,
+    fontSize: 21,
     flex: 1,
     fontWeight: '500',
     fontFamily: Fonts.primary,
+    color: Colors.text,
   },
 });

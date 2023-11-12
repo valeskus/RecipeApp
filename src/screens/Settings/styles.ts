@@ -16,9 +16,9 @@ export const styles = StyleSheet.create({
   },
   label: {
     margin: 10,
-    fontSize: 18,
-    fontFamily: Fonts.secondary,
-    fontWeight: '500',
-    color: Colors.primary,
+    fontSize: 21,
+    fontFamily: Fonts.primary,
+    fontWeight: '700',
+    color: Colors.text,
   },
 });

@@ -30,5 +30,6 @@ export const styles = StyleSheet.create({
     flex: 1,
     fontWeight: '500',
     fontFamily: Fonts.primary,
+    color: Colors.text,
   },
 });

@@ -5,8 +5,7 @@ import { Fonts } from '@UI/Fonts';
 
 export const styles = StyleSheet.create({
   textMessageContainer: {
-    width: '100%',
-    justifyContent: 'center',
+    marginTop: 50,
     alignContent: 'center',
     alignItems: 'center',
     flex: 1,

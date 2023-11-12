@@ -24,10 +24,10 @@ export const styles = StyleSheet.create({
     elevation: 8,
     justifyContent: 'flex-start',
     flexDirection: 'column',
-    margin: 10,
+    margin: 5,
   },
   categoryCardTitle: {
-    margin: 10,
+    margin: 6,
     fontSize: 18,
     fontWeight: '800',
     fontFamily: Fonts.primary,

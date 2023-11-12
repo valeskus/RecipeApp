@@ -12,6 +12,7 @@ export const styles = StyleSheet.create({
     position: 'relative',
     borderRadius: 15,
     alignItems: 'center',
+    marginBottom: 10,
   },
   selectButton: {
     flex: 1,
@@ -21,7 +22,7 @@ export const styles = StyleSheet.create({
     backgroundColor: Colors.primary,
     borderRadius: 15,
     zIndex: 10,
-    paddingVertical: 20,
+    paddingVertical: 23,
   },
   selectItem: {
     width: '100%',
@@ -33,7 +34,9 @@ export const styles = StyleSheet.create({
     flex: 1,
     alignSelf: 'center',
     fontWeight: '400',
+    fontSize: 15,
     fontFamily: Fonts.secondary,
+    color: Colors.text,
   },
   activeTitle: {
     color: Colors.background,

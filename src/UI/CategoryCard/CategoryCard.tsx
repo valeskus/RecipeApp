@@ -26,7 +26,7 @@ export function CategoryCard({
       ]}
     >
       <Image source={{ uri: image }} style={styles.categoryCardImage} />
-      <Text style={styles.categoryCardTitle} numberOfLines={2}>{title}</Text>
+      <Text style={styles.categoryCardTitle} numberOfLines={3}>{title}</Text>
     </Pressable>
   );
 }

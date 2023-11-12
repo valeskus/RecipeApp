@@ -16,7 +16,7 @@ export const styles = StyleSheet.create({
     elevation: 8,
     justifyContent: 'center',
     flexDirection: 'row',
-    marginVertical: 8,
+    marginVertical: 5,
   },
   productCardLineImage: {
     flex: 2,
@@ -27,9 +27,9 @@ export const styles = StyleSheet.create({
   },
   productCardTitle: {
     marginBottom: 2,
-    fontSize: 18,
+    fontSize: 19,
     fontFamily: Fonts.primary,
-    fontWeight: '700',
+    fontWeight: '800',
     color: Colors.primary,
     flex: 1,
   },
@@ -38,11 +38,11 @@ export const styles = StyleSheet.create({
     padding: 10,
   },
   productCardLineDetailsItem: {
-    fontSize: 15,
+    fontSize: 16,
     fontFamily: Fonts.secondary,
     fontWeight: '400',
     color: Colors.text,
-    width: '60%',
+    maxWidth: '50%',
   },
   cardPressed: {
     transform: [{ scale: 0.9 }],
@@ -59,14 +59,17 @@ export const styles = StyleSheet.create({
   },
   note: {
     color: Colors.secondary,
-    fontSize: 13,
+    fontSize: 14,
     fontFamily: Fonts.secondary,
     fontWeight: '300',
   },
   productCardDetailsItemBox: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 5,
+    marginBottom: 7,
+  },
+  productCardDetailsItemContainer: {
     flex: 1,
+    justifyContent: 'flex-end',
   },
 });

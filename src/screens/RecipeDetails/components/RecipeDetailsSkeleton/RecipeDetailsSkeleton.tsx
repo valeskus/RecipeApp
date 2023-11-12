@@ -1,7 +1,9 @@
 import React from 'react';
 import ContentLoader, { Circle, Rect } from 'react-content-loader/native';
+import { StatusBar } from 'react-native';
 
 import { Colors } from '@UI/Colors';
+import { normalize } from '@UI/normalize';
 
 export function RecipeDetailsSkeleton(): JSX.Element {
   return (
@@ -12,8 +14,11 @@ export function RecipeDetailsSkeleton(): JSX.Element {
       width={'100%'}
       height={'100%'}
     >
+      <StatusBar backgroundColor="transparent" barStyle="dark-content"
+        translucent={true}
+      />
       <Rect x="0" y="0" rx="0" ry="0" width="100%" height="100%" />
-      <Circle cx={'9.5%'} cy={80} r={25} />
+      <Circle cx={'9.5%'} cy={(StatusBar.currentHeight ? StatusBar.currentHeight + 25 : 25)} r={normalize(25)} />
 
       <Rect x="-16%" y="320" rx="60" ry="60" width="116%" height="100%" />
       <Rect x="3%" y="370" rx="4" ry="4" width="47%" height="25" />

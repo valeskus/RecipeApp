@@ -1,5 +1,7 @@
 import { StyleSheet } from 'react-native';
 
+import { normalize } from '@UI/normalize';
+
 import { Colors } from '../Colors';
 
 export const styles = StyleSheet.create({
@@ -10,8 +12,8 @@ export const styles = StyleSheet.create({
   },
   button: {
     borderRadius: 50,
-    width: 50,
-    height: 50,
+    width: normalize(48),
+    height: normalize(48),
     backgroundColor: Colors.background,
     shadowColor: Colors.shadow,
     shadowOpacity: 0.5,

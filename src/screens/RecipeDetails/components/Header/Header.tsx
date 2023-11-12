@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { Animated, View, SafeAreaView } from 'react-native';
+import { Animated, View, SafeAreaView, StatusBar } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 import { Button } from '@UI/Button';
@@ -24,7 +24,7 @@ export function Header({ scrollYRef }: Props): JSX.Element {
   return (
     <SafeAreaView style={styles.header}>
       <Animated.View style={[styles.headerWrapper, { opacity: headerOpacity }]} />
-      <View style={styles.headerLeftButton}>
+      <View style={[styles.headerLeftButton, { marginTop: StatusBar.currentHeight }]}>
         <Button icon="leftArrow" onPress={onGoBack} />
       </View>
     </SafeAreaView>

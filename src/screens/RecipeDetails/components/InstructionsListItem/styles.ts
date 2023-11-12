@@ -27,6 +27,7 @@ export const styles = StyleSheet.create({
   listItemDescription: {
     color: Colors.text,
     fontWeight: '400',
+    fontSize: 15,
     fontFamily: Fonts.secondary,
     marginBottom: 15,
     width: '100%',
@@ -39,7 +40,7 @@ export const styles = StyleSheet.create({
     marginRight: 10,
   },
   listItemImage: {
-    width: '70%',
+    width: '80%',
     height: 150,
     marginBottom: 15,
     borderRadius: 15,

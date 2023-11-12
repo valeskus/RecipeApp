@@ -1,6 +1,7 @@
 import { StyleSheet } from 'react-native';
 
 import { Fonts } from '@UI/Fonts';
+import { Colors } from '@UI/Colors';
 
 export const styles = StyleSheet.create({
   timeContainer: {
@@ -10,7 +11,7 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'flex-end',
-    paddingRight: 40,
+    paddingRight: 20,
   },
   timeIcon: {
     width: 25,
@@ -21,5 +22,6 @@ export const styles = StyleSheet.create({
     fontSize: 15,
     fontWeight: '600',
     fontFamily: Fonts.secondary,
+    color: Colors.text,
   },
 });

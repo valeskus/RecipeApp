@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text } from 'react-native';
+import { useTranslation } from 'react-i18next';
 
 import { InstructionModel } from '../../../../models';
 import { InstructionsListItem } from '../InstructionsListItem';
@@ -11,10 +12,12 @@ interface Props {
 }
 
 export function InstructionsList({ instructions }: Props): JSX.Element {
+  const { t } = useTranslation();
+
   return (
     <View style={styles.instructionsContainer}>
       <View style={styles.header}>
-        <Text style={styles.title}>Instructions</Text>
+        <Text style={styles.title}>{t('recipeDetails.instructions')}</Text>
       </View>
       {instructions.map((item, index) => {
         return (
