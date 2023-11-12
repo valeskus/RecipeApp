@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Provider } from 'react-redux';
 import { Platform, StatusBar, UIManager } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createStackNavigator } from '@react-navigation/stack';
 import { useTranslation } from 'react-i18next';
 import SplashScreen from 'react-native-splash-screen';
 
@@ -40,7 +40,7 @@ export type RootStackParamList = {
   };
 };
 
-const Stack = createNativeStackNavigator();
+const Stack = createStackNavigator();
 declare global {
   namespace ReactNavigation {
     interface RootParamList extends RootStackParamList { }
@@ -57,10 +57,15 @@ export function App(): JSX.Element {
 
   return (
     <Provider store={store}>
-      <StatusBar backgroundColor={Colors.accent} barStyle="dark-content" />
+      <StatusBar backgroundColor={'transparent'} barStyle="dark-content" translucent={true} />
       <NavigationContainer>
-        <Stack.Navigator>
-          <Stack.Group >
+        <Stack.Navigator screenOptions={{
+          cardStyle: {
+            backgroundColor: Colors.background,
+          },
+        }}
+        >
+          <Stack.Group>
             <Stack.Screen
               name="Categories"
               component={CategoriesList}
@@ -92,38 +97,40 @@ export function App(): JSX.Element {
                 ),
               }}
             />
-          </Stack.Group >
-          <Stack.Screen
-            name="Sort"
-            component={Sort}
-            options={{
-              presentation: 'modal',
-              title: t('screenHeaderTitle.sort'),
-              header: ({ options }) => <Header options={options} />,
-            }}
-          />
-          <Stack.Screen
-            name="Filter"
-            component={Filter}
-            options={{
-              presentation: 'modal',
-              title: t('screenHeaderTitle.filter'),
-              header: ({ options }) => (
-                <Header options={options} headerRight={<ClearButton />} />
-              ),
-            }}
-          />
-          <Stack.Screen
-            name="Settings"
-            component={Settings}
-            options={{
-              presentation: 'modal',
-              title: t('screenHeaderTitle.settings'),
-              header: ({ options }) => (
-                <Header options={options} />
-              ),
-            }}
-          />
+          </Stack.Group>
+          <Stack.Group screenOptions={{
+            presentation: 'modal',
+          }}
+          >
+            <Stack.Screen
+              name="Sort"
+              component={Sort}
+              options={{
+                title: t('screenHeaderTitle.sort'),
+                header: ({ options }) => <Header ignoreTopOffset options={options} />,
+              }}
+            />
+            <Stack.Screen
+              name="Filter"
+              component={Filter}
+              options={{
+                title: t('screenHeaderTitle.filter'),
+                header: ({ options }) => (
+                  <Header ignoreTopOffset options={options} headerRight={<ClearButton />} />
+                ),
+              }}
+            />
+            <Stack.Screen
+              name="Settings"
+              component={Settings}
+              options={{
+                title: t('screenHeaderTitle.settings'),
+                header: ({ options }) => (
+                  <Header ignoreTopOffset options={options} />
+                ),
+              }}
+            />
+          </Stack.Group>
           <Stack.Screen
             name="RecipeDetails"
             component={RecipeDetails}

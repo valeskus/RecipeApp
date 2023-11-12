@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { Platform, StatusBar, StyleSheet } from 'react-native';
 
 import { Colors } from '@UI/Colors';
 import { Fonts } from '@UI/Fonts';
@@ -6,10 +6,14 @@ import { normalize } from '@UI/normalize';
 
 export const styles = StyleSheet.create({
   headerContainer: {
-    backgroundColor: Colors.background,
     flexDirection: 'row',
     alignItems: 'center',
-    paddingVertical: 10,
+    paddingBottom: 10,
+    position: 'relative',
+  },
+
+  headerDefaultOffset: {
+    paddingTop: Platform.OS === 'ios' ? 15 : (StatusBar.currentHeight || 15),
   },
 
   headerTitle: {
@@ -37,22 +41,23 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     zIndex: 10,
     marginLeft: 10,
-    marginRight: -normalize(25) - 10,
   },
 
   headerRightContainer: {
     justifyContent: 'center',
-    position: 'absolute',
-    right: 10,
+    marginRight: 10,
+    width: normalize(25),
+    height: normalize(25),
     zIndex: 1,
   },
 
   snowflakesContainer: {
     width: '100%',
     paddingHorizontal: 20,
-    height: 110,
     overflow: 'hidden',
     position: 'absolute',
     zIndex: 0,
+    top: 0,
+    bottom: 0,
   },
 });
