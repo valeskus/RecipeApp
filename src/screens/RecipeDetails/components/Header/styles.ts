@@ -1,6 +1,7 @@
-import { StyleSheet } from 'react-native';
+import { Platform, StatusBar, StyleSheet } from 'react-native';
 
 import { Colors } from '@UI/Colors';
+import { normalize } from '@UI/normalize';
 
 export const styles = StyleSheet.create({
   header: {
@@ -15,7 +16,7 @@ export const styles = StyleSheet.create({
     top: 0,
     right: 0,
     left: 0,
-    height: 115,
+    height: normalize(115),
     opacity: 0,
     borderBottomRightRadius: 30,
     borderBottomLeftRadius: 30,
@@ -29,5 +30,8 @@ export const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'flex-end',
     alignItems: 'flex-start',
+  },
+  headerDefaultOffset: {
+    paddingTop: Platform.OS === 'ios' ? 15 : (StatusBar.currentHeight || 15),
   },
 });
