@@ -1,7 +1,6 @@
 import { StyleSheet } from 'react-native';
 
 import { Colors } from '@UI/Colors';
-import { Fonts } from '@UI/Fonts';
 
 export const styles = StyleSheet.create({
   modalContainer: {
@@ -17,8 +16,7 @@ export const styles = StyleSheet.create({
   label: {
     margin: 10,
     fontSize: 21,
-    fontFamily: Fonts.primary,
-    fontWeight: '700',
+    fontFamily: 'Nunito-Bold',
     color: Colors.text,
   },
 });

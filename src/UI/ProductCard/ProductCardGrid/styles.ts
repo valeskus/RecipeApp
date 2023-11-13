@@ -1,6 +1,5 @@
 import { StyleSheet } from 'react-native';
 
-import { Fonts } from '@UI/Fonts';
 import { normalize } from '@UI/normalize';
 
 import { Colors } from '../../Colors';
@@ -28,8 +27,7 @@ export const styles = StyleSheet.create({
   productCardTitle: {
     marginBottom: 10,
     fontSize: 19,
-    fontFamily: Fonts.primary,
-    fontWeight: '800',
+    fontFamily: 'Nunito-Extrabold',
     color: Colors.primary,
   },
   productCardDetails: {
@@ -39,8 +37,7 @@ export const styles = StyleSheet.create({
   },
   productCardDetailsItem: {
     fontSize: 16,
-    fontFamily: Fonts.secondary,
-    fontWeight: '400',
+    fontFamily: 'Montserrat-Regular',
     color: Colors.text,
     maxWidth: '50%',
   },
@@ -55,7 +52,7 @@ export const styles = StyleSheet.create({
   note: {
     color: Colors.secondary,
     fontSize: 14,
-    fontFamily: Fonts.secondary,
+    fontFamily: 'Montserrat-Regular',
   },
   productCardDetailsItemBox: {
     flexDirection: 'row',

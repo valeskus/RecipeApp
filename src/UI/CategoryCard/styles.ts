@@ -1,7 +1,5 @@
 import { StyleSheet } from 'react-native';
 
-import { Fonts } from '@UI/Fonts';
-
 import { Colors } from '../Colors';
 
 export const styles = StyleSheet.create({
@@ -29,8 +27,7 @@ export const styles = StyleSheet.create({
   categoryCardTitle: {
     margin: 6,
     fontSize: 18,
-    fontWeight: '800',
-    fontFamily: Fonts.primary,
+    fontFamily: 'Nunito-Extrabold',
     color: Colors.primary,
   },
 

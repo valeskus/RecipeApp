@@ -1,7 +1,6 @@
 import { StyleSheet } from 'react-native';
 
 import { Colors } from '@UI/Colors';
-import { Fonts } from '@UI/Fonts';
 
 export const styles = StyleSheet.create({
   ingredientsContainer: {
@@ -19,8 +18,7 @@ export const styles = StyleSheet.create({
   },
   itemsCounter: {
     fontSize: 14,
-    fontWeight: '400',
-    fontFamily: Fonts.secondary,
+    fontFamily: 'Montserrat-Regular',
     color: Colors.borderTextSecondary,
     marginBottom: 15,
     paddingHorizontal: 5,
@@ -28,8 +26,7 @@ export const styles = StyleSheet.create({
   title: {
     fontSize: 21,
     flex: 1,
-    fontWeight: '500',
-    fontFamily: Fonts.primary,
+    fontFamily: 'Nunito-Bold',
     color: Colors.text,
   },
 });

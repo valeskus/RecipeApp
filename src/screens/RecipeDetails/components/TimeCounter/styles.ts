@@ -1,6 +1,5 @@
 import { StyleSheet } from 'react-native';
 
-import { Fonts } from '@UI/Fonts';
 import { Colors } from '@UI/Colors';
 
 export const styles = StyleSheet.create({
@@ -20,8 +19,7 @@ export const styles = StyleSheet.create({
   },
   time: {
     fontSize: 15,
-    fontWeight: '600',
-    fontFamily: Fonts.secondary,
+    fontFamily: 'Montserrat-Semibold',
     color: Colors.text,
   },
 });

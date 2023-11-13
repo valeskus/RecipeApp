@@ -1,6 +1,5 @@
 import { StyleSheet } from 'react-native';
 
-import { Fonts } from '@UI/Fonts';
 import { normalize } from '@UI/normalize';
 
 import { Colors } from '../Colors';
@@ -9,7 +8,7 @@ export const styles = StyleSheet.create({
   buttonContent: {
     fontSize: 18,
     color: Colors.primary,
-    fontWeight: '600',
+    fontFamily: 'Montserrat-Bold',
   },
   buttonPressed: {
     transform: [{ scale: 0.9 }],
@@ -36,8 +35,7 @@ export const styles = StyleSheet.create({
   },
   count: {
     fontSize: 20,
-    fontFamily: Fonts.secondary,
-    fontWeight: '600',
+    fontFamily: 'Montserrat-Semibold',
     color: Colors.primary,
     marginHorizontal: 10,
     minWidth: normalize(25),

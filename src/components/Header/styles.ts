@@ -1,7 +1,6 @@
 import { Platform, StatusBar, StyleSheet } from 'react-native';
 
 import { Colors } from '@UI/Colors';
-import { Fonts } from '@UI/Fonts';
 import { normalize } from '@UI/normalize';
 
 export const styles = StyleSheet.create({
@@ -19,9 +18,8 @@ export const styles = StyleSheet.create({
   headerTitle: {
     color: Colors.primary,
     fontSize: 28,
-    fontWeight: '900',
     textAlign: 'center',
-    fontFamily: Fonts.primary,
+    fontFamily: 'Nunito-Black',
     flex: 1,
   },
 
