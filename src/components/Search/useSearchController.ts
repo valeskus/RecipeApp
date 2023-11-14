@@ -22,6 +22,10 @@ export const useSearchController = (params: SearchControllerParams) => {
     [],
   );
   const handleSearch = useCallback(() => {
+    if (pendingSearchTerm === searchTerm) {
+      return;
+    }
+
     resetSearchOptions();
     params.onSearch();
 
