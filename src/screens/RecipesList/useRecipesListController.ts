@@ -8,6 +8,7 @@ import { useGridTypes } from './hooks';
 export const useRecipeListController = () => {
   const { gridType, onChangeCardType } = useGridTypes();
   const [isLoading, setLoading] = useState(false);
+  const [isFetching, setFetching] = useState(false);
 
   const { recipes } = RecipesStore.useRecipesStore();
 
@@ -40,7 +41,9 @@ export const useRecipeListController = () => {
       return;
     }
 
-    getRecipes(searchOptions);
+    setFetching(true);
+    getRecipes(searchOptions).then(() => setFetching(false)
+    );
   }, [searchOptions.offset]);
 
   useEffect(() => {
@@ -57,5 +60,6 @@ export const useRecipeListController = () => {
     recipes,
     onChangeCardType,
     resetRecipes,
+    isFetching,
   };
 };

@@ -18,12 +18,13 @@ export function RecipesList(): JSX.Element {
     recipes,
     onChangeCardType,
     resetRecipes,
+    isFetching,
   } = useRecipeListController();
 
   return (
     <View style={styles.recipesScreenContainer}>
       <View style={styles.searchMenuContainer}>
-        <Search onSearch={resetRecipes}/>
+        <Search onSearch={resetRecipes} />
         {!isLoading && !isRecipesListEmpty && (
           <RecipesListControls
             onCardTypeChange={onChangeCardType}
@@ -34,7 +35,7 @@ export function RecipesList(): JSX.Element {
       <View style={styles.blurContainer} />
       {isLoading && <RecipeListSkeleton />}
       {!isLoading && isRecipesListEmpty && <RecipesListMessage />}
-      {!isLoading && <RecipesCards gridType={gridType} recipes={recipes}/>}
+      {!isLoading && <RecipesCards gridType={gridType} recipes={recipes} isLoading={isFetching} />}
     </View>
   );
 }
