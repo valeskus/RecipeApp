@@ -13,6 +13,8 @@ export const useSearchController = (params: SearchControllerParams) => {
   const setSearchOptions = SearchStore.useSetSearchOptions();
   const resetSearchOptions = SearchStore.useResetSearchOptions();
 
+  const [isFocused, setFocused] = useState(false);
+
   const searchInputRef = useRef<TextInput>(null);
 
   const handleChange = useCallback(
@@ -22,6 +24,10 @@ export const useSearchController = (params: SearchControllerParams) => {
     [],
   );
   const handleSearch = useCallback(() => {
+    if (!pendingSearchTerm) {
+      return;
+    }
+
     if (pendingSearchTerm === searchTerm) {
       return;
     }
@@ -42,16 +48,36 @@ export const useSearchController = (params: SearchControllerParams) => {
     handlePress();
   }, []);
 
+  const handleFocus = useCallback(() => {
+    setFocused(true);
+  }, []);
+
+  const handleBlur = useCallback(() => {
+    setFocused(false);
+  }, []);
+
   useEffect(() => {
     setPendingSearchTerm(searchTerm);
   }, [searchTerm]);
 
+  const cutSearchTerm = useCallback(() => {
+    if (pendingSearchTerm.length > 35){
+     return pendingSearchTerm.slice(0, 32).concat('', '...');
+    }
+
+    return pendingSearchTerm;
+  }, [pendingSearchTerm]);
+
   return {
     searchTerm: pendingSearchTerm,
     searchInputRef,
+    isFocused,
+    handleBlur,
+    handleFocus,
     handleChange,
     handleSearch,
     handleResetSearchInput,
     handlePress,
+    cutSearchTerm,
   };
 };
