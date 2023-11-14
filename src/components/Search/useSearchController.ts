@@ -31,14 +31,15 @@ export const useSearchController = (params: SearchControllerParams) => {
 
     setSearchOptions({ searchTerm: pendingSearchTerm });
 
-  }, [pendingSearchTerm, params.onSearch]);
-
-  const handleResetSearchInput = useCallback(() => {
-    setPendingSearchTerm('');
-  }, []);
+  }, [pendingSearchTerm, searchTerm, params.onSearch]);
 
   const handlePress = useCallback(() => {
     searchInputRef.current?.focus();
+  }, []);
+
+  const handleResetSearchInput = useCallback(() => {
+    setPendingSearchTerm('');
+    handlePress();
   }, []);
 
   useEffect(() => {

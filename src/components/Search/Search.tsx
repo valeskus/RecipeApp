@@ -34,6 +34,7 @@ export function Search({ onSearch }: Props): JSX.Element {
         ref={searchInputRef}
         autoCapitalize="none"
         placeholderTextColor={Colors.borderTextSecondary}
+        onSubmitEditing={() => searchTerm && handleSearch()}
       />
       {searchTerm && (
         <Pressable
@@ -43,6 +44,7 @@ export function Search({ onSearch }: Props): JSX.Element {
             pressed && styles.searchPress,
           ]}
           disabled={!searchTerm}
+          hitSlop={5}
         >
           <Image source={Icons.cancel} style={styles.resetSearchIcon} />
         </Pressable>
