@@ -17,6 +17,8 @@ export function RecipesList(): JSX.Element {
     isRecipesListEmpty,
     recipes,
     total,
+    isFilterActive,
+    isSortActive,
     onChangeCardType,
     resetRecipes,
   } = useRecipeListController();
@@ -29,6 +31,8 @@ export function RecipesList(): JSX.Element {
           <RecipesListControls
             onCardTypeChange={onChangeCardType}
             gridType={gridType}
+            isFilterActive={isFilterActive}
+            isSortActive={isSortActive}
           />
         )}
       </View>
