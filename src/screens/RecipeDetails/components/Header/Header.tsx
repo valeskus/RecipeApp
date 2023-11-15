@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { Animated, View } from 'react-native';
+import { Animated, SafeAreaView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
@@ -25,11 +25,9 @@ export function Header({ scrollYRef }: Props): JSX.Element {
   const { top } = useSafeAreaInsets();
 
   return (
-    <View style={styles.header}>
+    <SafeAreaView style={styles.header}>
       <Animated.View style={[styles.headerWrapper, { opacity: headerOpacity }]} />
-      <View style={[styles.headerLeftButton, { marginTop: StatusBar.currentHeight }]}>
-        <Button icon="leftArrow" onPress={onGoBack} iconStyle={styles.buttonImage} />
-      </View>
-    </View>
+      <Button icon="leftArrow" onPress={onGoBack} iconStyle={styles.buttonImage} />
+    </SafeAreaView>
   );
 }

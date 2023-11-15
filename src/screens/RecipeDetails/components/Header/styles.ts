@@ -9,6 +9,8 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     zIndex: 10,
     width: '100%',
+    height: 115,
+    alignItems: 'flex-end',
   },
   headerWrapper: {
     backgroundColor: Colors.shadow,
@@ -16,21 +18,12 @@ export const styles = StyleSheet.create({
     top: 0,
     right: 0,
     left: 0,
-    height: normalize(115),
+    height: '100%',
     opacity: 0,
     borderBottomRightRadius: 30,
     borderBottomLeftRadius: 30,
   },
-  headerRightButton: {
-    flex: 1,
-    justifyContent: 'flex-end',
-    alignItems: 'flex-end',
-  },
-  headerLeftButton: {
-    flex: 1,
-    justifyContent: 'flex-end',
-    alignItems: 'flex-start',
-  },
+
   buttonImage: {
     position: 'absolute',
     left: normalize(11),
