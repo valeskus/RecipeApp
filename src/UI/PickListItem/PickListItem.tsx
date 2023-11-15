@@ -22,17 +22,17 @@ export function PickListItem({
   const setActive = useCallback((): void => {
     onChange(value);
   },
-  [onChange, value],
+    [onChange, value],
   );
 
   return (
-    <View style={styles.pickListItemContainer}>
-      <Pressable onPress={setActive} style={styles.pick}>
+    <Pressable onPress={setActive} style={styles.pickListItemContainer}>
+      <View style={styles.pick}>
         {isActive && (
           <Image source={Icons.dot} style={styles.pickActive} />
         )}
-      </Pressable>
+      </View>
       <Text style={styles.pickListItem}>{label}</Text>
-    </View>
+    </Pressable>
   );
 }
