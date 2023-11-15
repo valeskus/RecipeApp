@@ -8,9 +8,8 @@ import { useGridTypes } from './hooks';
 export const useRecipeListController = () => {
   const { gridType, onChangeCardType } = useGridTypes();
   const [isLoading, setLoading] = useState(false);
-  const [isFetching, setFetching] = useState(false);
 
-  const { recipes } = RecipesStore.useRecipesStore();
+  const { recipes, total } = RecipesStore.useRecipesStore();
 
   const getRecipes = RecipesStore.useGetRecipeList();
   const updateFilter = RecipesStore.useFilterUpdate();
@@ -41,9 +40,8 @@ export const useRecipeListController = () => {
       return;
     }
 
-    setFetching(true);
-    getRecipes(searchOptions).then(() => setFetching(false)
-    );
+    getRecipes(searchOptions);
+
   }, [searchOptions.offset]);
 
   useEffect(() => {
@@ -58,8 +56,8 @@ export const useRecipeListController = () => {
     isLoading,
     isRecipesListEmpty,
     recipes,
+    total,
     onChangeCardType,
     resetRecipes,
-    isFetching,
   };
 };

@@ -11,8 +11,8 @@ import { styles } from './styles';
 import { UseRecipeCardsControllerParams, useRecipeCardsController } from './useRecipesCardsController';
 
 interface Props extends UseRecipeCardsControllerParams {
-  isLoading: boolean;
- }
+  total: number;
+}
 
 interface RenderItemParams {
   onPress: (id: string) => void;
@@ -51,7 +51,7 @@ const getRenderItem =
 const keyExtractor: FlatListProps<BaseRecipeModel>['keyExtractor'] = item =>
   item.id;
 
-export function RecipesCards({ gridType, recipes, isLoading }: Props): JSX.Element {
+export function RecipesCards({ gridType, recipes, total }: Props): JSX.Element {
   const { onPress, data, onEndReached } = useRecipeCardsController({ recipes, gridType });
 
   const commonProps = {
@@ -73,7 +73,7 @@ export function RecipesCards({ gridType, recipes, isLoading }: Props): JSX.Eleme
         contentContainerStyle={styles.recipesCardsContainer}
         numColumns={2}
         key="grid-list"
-        ListFooterComponent={() => data && isLoading ? <Loader/> : null}
+        ListFooterComponent={() => (data && recipes.length !== total) ? <Loader /> : null}
       />
     );
   }
@@ -86,7 +86,7 @@ export function RecipesCards({ gridType, recipes, isLoading }: Props): JSX.Eleme
         styles.recipesCardsContainer,
         styles.centeredLineCard,
       ]}
-      ListFooterComponent={() => data && isLoading ? <Loader/> : null}
+      ListFooterComponent={() => (data && recipes.length !== total) ? <Loader /> : null}
     />
   );
 }
