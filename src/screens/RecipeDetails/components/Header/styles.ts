@@ -1,4 +1,4 @@
-import { Platform, StatusBar, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 
 import { Colors } from '@UI/Colors';
 import { normalize } from '@UI/normalize';
@@ -31,7 +31,9 @@ export const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     alignItems: 'flex-start',
   },
-  headerDefaultOffset: {
-    paddingTop: Platform.OS === 'ios' ? 15 : (StatusBar.currentHeight || 15),
+  buttonImage: {
+    position: 'absolute',
+    left: normalize(11),
+    top: normalize(12),
   },
 });

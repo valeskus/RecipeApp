@@ -27,8 +27,8 @@ export function Header({ scrollYRef }: Props): JSX.Element {
   return (
     <View style={styles.header}>
       <Animated.View style={[styles.headerWrapper, { opacity: headerOpacity }]} />
-      <View style={[styles.headerLeftButton, { paddingTop: top }]}>
-        <Button icon="leftArrow" onPress={onGoBack} />
+      <View style={[styles.headerLeftButton, { marginTop: StatusBar.currentHeight }]}>
+        <Button icon="leftArrow" onPress={onGoBack} iconStyle={styles.buttonImage} />
       </View>
     </View>
   );
