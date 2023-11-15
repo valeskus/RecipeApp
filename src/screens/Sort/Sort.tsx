@@ -27,6 +27,7 @@ export function Sort(): JSX.Element {
               key={value}
               isActive={isActive}
               onChange={onSortChange}
+              disabled={isActive}
             />
           );
         })}

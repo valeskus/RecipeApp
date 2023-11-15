@@ -10,6 +10,7 @@ interface Props {
   value: string;
   isActive: boolean;
   onChange: (value: string) => void;
+  disabled?: boolean;
 }
 
 export function PickListItem({
@@ -17,6 +18,7 @@ export function PickListItem({
   value,
   onChange,
   isActive,
+  disabled,
 }: Props): JSX.Element {
 
   const setActive = useCallback((): void => {
@@ -26,7 +28,11 @@ export function PickListItem({
   );
 
   return (
-    <Pressable onPress={setActive} style={styles.pickListItemContainer}>
+    <Pressable
+      onPress={setActive}
+      style={styles.pickListItemContainer}
+      disabled={disabled}
+    >
       <View style={styles.pick}>
         {isActive && (
           <Image source={Icons.dot} style={styles.pickActive} />
