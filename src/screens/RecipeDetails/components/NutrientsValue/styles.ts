@@ -12,9 +12,9 @@ export const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
-    paddingHorizontal: 5,
-    paddingVertical: 10,
+    padding: 5,
     minHeight: normalize(55),
+    margin: 1,
   },
   dotIcon: {
     width: 35,
@@ -26,6 +26,9 @@ export const styles = StyleSheet.create({
     fontFamily: 'Montserrat-Semibold',
     flexShrink: 1,
     color: Colors.text,
+    width: '100%',
+    height: '100%',
+    textAlignVertical: 'center',
   },
   column: {
     flex: 1,
