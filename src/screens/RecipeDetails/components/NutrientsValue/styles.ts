@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { Platform, StyleSheet } from 'react-native';
 
 import { normalize } from '@UI/normalize';
 import { Colors } from '@UI/Colors';
@@ -24,10 +24,9 @@ export const styles = StyleSheet.create({
   title: {
     fontSize: 15,
     fontFamily: 'Montserrat-Semibold',
-    flexShrink: 1,
+    flex: 1,
     color: Colors.text,
-    width: '100%',
-    height: '100%',
+    height: Platform.OS === 'ios' ? 'auto' : normalize(40),
     textAlignVertical: 'center',
   },
   column: {

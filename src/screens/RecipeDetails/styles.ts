@@ -1,6 +1,7 @@
 import { StyleSheet } from 'react-native';
 
 import { Colors } from '@UI/Colors';
+import { normalize } from '@UI/normalize';
 
 export const styles = StyleSheet.create({
   detailsScreenContainer: {
@@ -48,6 +49,7 @@ export const styles = StyleSheet.create({
   },
   timeContainer: {
     flex: 1,
+    top: normalize(10),
   },
   description: {
     marginBottom: 20,

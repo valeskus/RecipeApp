@@ -38,7 +38,6 @@ export function NutrientsValue({ nutrients }: Props): JSX.Element {
           <Image style={styles.dotIcon} source={Icons.proteins} />
           <Text style={styles.title} numberOfLines={2}>
             {formatValue(nutrients.protein)} {t('units.g')} {t('recipeDetails.nutrients.protein')}
-
           </Text>
         </View>
         <View style={styles.nutrientValue}>

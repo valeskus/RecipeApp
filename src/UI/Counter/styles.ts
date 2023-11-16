@@ -6,10 +6,16 @@ import { Colors } from '../Colors';
 
 export const styles = StyleSheet.create({
   buttonContent: {
-    fontSize: 18,
+    fontSize: 16,
     color: Colors.primary,
     fontFamily: 'Montserrat-Bold',
+    textAlign: 'center',
   },
+
+  minus: {
+    paddingTop: 1,
+  },
+
   buttonPressed: {
     transform: [{ scale: 0.9 }],
   },
@@ -23,22 +29,21 @@ export const styles = StyleSheet.create({
     shadowRadius: 1,
     shadowOffset: { width: 0, height: 0 },
     elevation: 8,
-    position: 'relative',
-    alignItems: 'center',
   },
   counterContainer: {
     flexDirection: 'row',
     flex: 1,
     position: 'absolute',
-    right: '15%',
-    top: 20,
+    right: 15,
+    top: 13,
+    alignItems: 'center',
   },
-  count: {
+  countInput: {
     fontSize: 20,
     fontFamily: 'Montserrat-Semibold',
     color: Colors.primary,
     marginHorizontal: 10,
-    minWidth: normalize(25),
+    minWidth: normalize(41),
     textAlign: 'center',
   },
 });

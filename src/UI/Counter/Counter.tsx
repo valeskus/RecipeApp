@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Pressable, Text } from 'react-native';
+import { View, Pressable, Text, TextInput } from 'react-native';
 
 import { styles } from './styles';
 import {
@@ -10,24 +10,38 @@ import {
 interface Props extends UseCounterControllerParams { }
 
 export function Counter(props: Props): JSX.Element {
-  const { onMinusPress, onPlusPress } = useCounterController(props);
+  const { onMinusPress, onPlusPress,
+    onSubmitPress,
+    countValue,
+    handleChange,
+    searchInputRef,
+  } = useCounterController(props);
 
   return (
     <View style={styles.counterContainer}>
       <Pressable
         style={({ pressed }) => [styles.button, pressed && styles.buttonPressed]}
         onPress={onMinusPress}
-        hitSlop={20}
+        hitSlop={17}
       >
-        <Text style={styles.buttonContent}>-</Text>
+        <Text style={[styles.buttonContent, styles.minus]}>—</Text>
       </Pressable>
-      <Text style={styles.count}>{props.count}</Text>
+      <TextInput
+        onChangeText={handleChange}
+        ref={searchInputRef}
+        style={styles.countInput}
+        onSubmitEditing={onSubmitPress}
+        onEndEditing={onSubmitPress}
+        value={countValue}
+        maxLength={3}
+        inputMode={'numeric'}
+      />
       <Pressable
         style={({ pressed }) => [styles.button, pressed && styles.buttonPressed]}
         onPress={onPlusPress}
-        hitSlop={20}
+        hitSlop={17}
       >
-        <Text style={styles.buttonContent}>+</Text>
+        <Text style={styles.buttonContent}>&#65291;</Text>
       </Pressable>
     </View>
   );
