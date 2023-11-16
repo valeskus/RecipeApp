@@ -35,7 +35,7 @@ export const styles = StyleSheet.create({
   },
   topContainer: {
     flexDirection: 'row',
-    alignItems: 'center',
+    alignItems: 'flex-start',
     marginBottom: 10,
     paddingRight: 15,
   },
@@ -45,6 +45,9 @@ export const styles = StyleSheet.create({
     flex: 2,
     flexWrap: 'wrap',
     color: Colors.text,
+  },
+  timeContainer: {
+    flex: 1,
   },
   description: {
     marginBottom: 20,

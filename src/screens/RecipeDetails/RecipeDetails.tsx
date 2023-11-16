@@ -84,7 +84,9 @@ export function RecipeDetails(): JSX.Element {
         <View style={styles.contentContainer}>
           <View style={styles.topContainer}>
             <Text style={styles.title}>{recipe.title}</Text>
-            <TimeCounter time={recipe.time} />
+            <View style={styles.timeContainer}>
+              <TimeCounter time={recipe.time} />
+            </View>
           </View>
           <Text style={styles.description}>{recipe.description}</Text>
           <Toggle

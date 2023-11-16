@@ -4,7 +4,7 @@ import { Colors } from '@UI/Colors';
 
 export const styles = StyleSheet.create({
   timeContainerContainer: {
-    flex: 1,
+    width: '100%',
   },
 
   timeContainer: {
