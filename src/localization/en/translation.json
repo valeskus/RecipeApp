@@ -22,7 +22,9 @@
     "units": {
         "g": "g",
         "ml": "ml",
-        "kCal": "kCal"
+        "kCal": "kCal",
+        "h":"h",
+        "min":"min"
     },
     "inputs": {
         "search": {

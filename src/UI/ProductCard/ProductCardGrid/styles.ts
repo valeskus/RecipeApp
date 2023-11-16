@@ -59,6 +59,10 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 7,
   },
+  productCardTimeContainer: {
+    marginBottom: 7,
+  },
+
   icon: {
     width: normalize(17),
     height: normalize(17),

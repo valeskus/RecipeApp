@@ -3,13 +3,15 @@ import { StyleSheet } from 'react-native';
 import { Colors } from '@UI/Colors';
 
 export const styles = StyleSheet.create({
+  timeContainerContainer: {
+    flex: 1,
+  },
+
   timeContainer: {
     flex: 1,
-    width: 50,
-    height: 50,
+    width: '100%',
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'flex-end',
     paddingRight: 20,
   },
   timeIcon: {
