@@ -32,7 +32,7 @@ export const styles = StyleSheet.create({
     backgroundColor: 'white',
     borderTopRightRadius: 80,
     paddingTop: 20,
-    paddingHorizontal: 15,
+    paddingHorizontal: 10,
   },
   topContainer: {
     flexDirection: 'row',
