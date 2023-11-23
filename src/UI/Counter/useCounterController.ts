@@ -19,7 +19,7 @@ export const useCounterController = (params: UseCounterControllerParams) => {
       return;
     }
 
-    params.onChange(+countValue);
+    params.onChange(countValue);
   }, [params, countValue]);
 
   const handleChange = useCallback((value: string) => {
