@@ -17,7 +17,7 @@ export const styles = StyleSheet.create({
     position: 'relative',
     justifyContent: 'flex-start',
     fontSize: 15,
-    padding: 13,
+    paddingHorizontal: 13,
     paddingRight: 62,
     marginHorizontal: 10,
     marginBottom: 10,
@@ -27,7 +27,15 @@ export const styles = StyleSheet.create({
     fontFamily: 'Montserrat-Regular',
     padding: 0,
     color: Colors.text,
-    width: '100%',
+    position: 'absolute',
+    top: 0,
+    bottom: 0,
+    left: 13,
+    right: 13,
+    zIndex: 0,
+  },
+  fakeInput: {
+    lineHeight: 50,
   },
   searchBarIcon: {
     width: 27,
@@ -53,5 +61,12 @@ export const styles = StyleSheet.create({
   },
   searchPress: {
     transform: [{ scale: 0.9 }],
+  },
+  placeholder: {
+    color: Colors.borderTextSecondary,
+  },
+  inputsContainer: {
+    position: 'relative',
+    flex: 1,
   },
 });

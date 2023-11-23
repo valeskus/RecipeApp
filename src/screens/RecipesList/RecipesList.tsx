@@ -16,6 +16,9 @@ export function RecipesList(): JSX.Element {
     isLoading,
     isRecipesListEmpty,
     recipes,
+    total,
+    isFilterActive,
+    isSortActive,
     onChangeCardType,
     resetRecipes,
   } = useRecipeListController();
@@ -23,18 +26,20 @@ export function RecipesList(): JSX.Element {
   return (
     <View style={styles.recipesScreenContainer}>
       <View style={styles.searchMenuContainer}>
-        <Search onSearch={resetRecipes}/>
+        <Search onSearch={resetRecipes} />
         {!isLoading && !isRecipesListEmpty && (
           <RecipesListControls
             onCardTypeChange={onChangeCardType}
             gridType={gridType}
+            isFilterActive={isFilterActive}
+            isSortActive={isSortActive}
           />
         )}
       </View>
       <View style={styles.blurContainer} />
       {isLoading && <RecipeListSkeleton />}
       {!isLoading && isRecipesListEmpty && <RecipesListMessage />}
-      {!isLoading && <RecipesCards gridType={gridType} recipes={recipes}/>}
+      {!isLoading && <RecipesCards gridType={gridType} recipes={recipes} total={total} />}
     </View>
   );
 }

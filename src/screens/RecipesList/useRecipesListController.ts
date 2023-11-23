@@ -9,7 +9,7 @@ export const useRecipeListController = () => {
   const { gridType, onChangeCardType } = useGridTypes();
   const [isLoading, setLoading] = useState(false);
 
-  const { recipes } = RecipesStore.useRecipesStore();
+  const { recipes, total } = RecipesStore.useRecipesStore();
 
   const getRecipes = RecipesStore.useGetRecipeList();
   const updateFilter = RecipesStore.useFilterUpdate();
@@ -41,6 +41,7 @@ export const useRecipeListController = () => {
     }
 
     getRecipes(searchOptions);
+
   }, [searchOptions.offset]);
 
   useEffect(() => {
@@ -55,6 +56,9 @@ export const useRecipeListController = () => {
     isLoading,
     isRecipesListEmpty,
     recipes,
+    total,
+    isFilterActive: searchOptions.filter.length !== 0,
+    isSortActive: !!searchOptions.sort,
     onChangeCardType,
     resetRecipes,
   };

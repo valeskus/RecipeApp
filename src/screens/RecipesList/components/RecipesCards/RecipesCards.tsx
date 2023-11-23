@@ -5,11 +5,14 @@ import { ProductCardLine } from '@UI/ProductCard/ProductCardLine';
 import { ProductCardGrid } from '@UI/ProductCard/ProductCardGrid';
 
 import { BaseRecipeModel } from '../../../../models';
+import { Loader } from '../Loader';
 
 import { styles } from './styles';
 import { UseRecipeCardsControllerParams, useRecipeCardsController } from './useRecipesCardsController';
 
-interface Props extends UseRecipeCardsControllerParams { }
+interface Props extends UseRecipeCardsControllerParams {
+  total: number;
+}
 
 interface RenderItemParams {
   onPress: (id: string) => void;
@@ -48,7 +51,7 @@ const getRenderItem =
 const keyExtractor: FlatListProps<BaseRecipeModel>['keyExtractor'] = item =>
   item.id;
 
-export function RecipesCards({ gridType, recipes }: Props): JSX.Element {
+export function RecipesCards({ gridType, recipes, total }: Props): JSX.Element {
   const { onPress, data, onEndReached } = useRecipeCardsController({ recipes, gridType });
 
   const commonProps = {
@@ -70,6 +73,7 @@ export function RecipesCards({ gridType, recipes }: Props): JSX.Element {
         contentContainerStyle={styles.recipesCardsContainer}
         numColumns={2}
         key="grid-list"
+        ListFooterComponent={() => (data && recipes.length !== total) ? <Loader /> : null}
       />
     );
   }
@@ -82,6 +86,7 @@ export function RecipesCards({ gridType, recipes }: Props): JSX.Element {
         styles.recipesCardsContainer,
         styles.centeredLineCard,
       ]}
+      ListFooterComponent={() => (data && recipes.length !== total) ? <Loader /> : null}
     />
   );
 }

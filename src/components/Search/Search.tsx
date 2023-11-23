@@ -1,9 +1,8 @@
 import React from 'react';
-import { Image, TextInput, Pressable } from 'react-native';
+import { Image, TextInput, Pressable, View, Text } from 'react-native';
 import { useTranslation } from 'react-i18next';
 
 import { Icons } from '@UI/Icons';
-import { Colors } from '@UI/Colors';
 
 import { styles } from './styles';
 import {
@@ -15,9 +14,12 @@ interface Props extends SearchControllerParams { }
 
 export function Search({ onSearch }: Props): JSX.Element {
   const {
+    isFocused,
     searchTerm,
     searchInputRef,
     handleChange,
+    handleBlur,
+    handleFocus,
     handleSearch,
     handleResetSearchInput,
     handlePress,
@@ -26,15 +28,31 @@ export function Search({ onSearch }: Props): JSX.Element {
 
   return (
     <Pressable style={styles.searchBarContainer} onPress={handlePress}>
-      <TextInput
-        placeholder={t('inputs.search.placeholder')}
-        style={styles.searchBarInput}
-        onChangeText={handleChange}
-        value={searchTerm}
-        ref={searchInputRef}
-        autoCapitalize="none"
-        placeholderTextColor={Colors.borderTextSecondary}
-      />
+      <View style={styles.inputsContainer}>
+        {!isFocused && (
+          <Text
+            style={[styles.searchBarInput, styles.fakeInput]}
+            numberOfLines={1}
+          >
+            {searchTerm}
+          </Text>
+        )}
+        {!searchTerm && (
+          <Text style={[styles.searchBarInput, styles.placeholder, styles.fakeInput]}>
+            {t('inputs.search.placeholder')}
+          </Text>
+        )}
+        <TextInput
+          style={[styles.searchBarInput, { opacity: Number(isFocused) }]}
+          onChangeText={handleChange}
+          onFocus={handleFocus}
+          onBlur={handleBlur}
+          value={searchTerm}
+          ref={searchInputRef}
+          autoCapitalize="none"
+          onSubmitEditing={handleSearch}
+        />
+      </View>
       {searchTerm && (
         <Pressable
           onPress={handleResetSearchInput}
@@ -43,6 +61,7 @@ export function Search({ onSearch }: Props): JSX.Element {
             pressed && styles.searchPress,
           ]}
           disabled={!searchTerm}
+          hitSlop={5}
         >
           <Image source={Icons.cancel} style={styles.resetSearchIcon} />
         </Pressable>
