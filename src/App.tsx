@@ -57,7 +57,7 @@ export function App(): JSX.Element {
 
   return (
     <Provider store={store}>
-      <StatusBar backgroundColor={'transparent'} barStyle="dark-content" translucent={true} />
+      <StatusBar backgroundColor="transparent" barStyle="dark-content" translucent />
       <NavigationContainer>
         <Stack.Navigator screenOptions={{
           cardStyle: {
