@@ -4,7 +4,7 @@ interface TimeFormat {
 }
 export class TimeManager {
 
-  static getHours(number: number): TimeFormat {
+  static getFormattedTime(number: number): TimeFormat {
     const hours = Math.floor(number / 60);
     const minutes = number % 60;
     if (hours === 0) {

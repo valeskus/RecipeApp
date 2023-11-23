@@ -15,7 +15,7 @@ interface Props {
 export function TimeCounter({ time }: Props): JSX.Element {
 
   const formatTime = useMemo(() => {
-    return TimeManager.getHours(time);
+    return TimeManager.getFormattedTime(time);
   }, [time]);
   const { t } = useTranslation();
 

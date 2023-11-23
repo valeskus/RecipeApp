@@ -7,12 +7,12 @@ export interface UseCounterControllerParams {
 }
 
 export const useCounterController = (params: UseCounterControllerParams) => {
-  const [countValue, setCountValue] = useState<string | number>(params.count);
+  const [countValue, setCountValue] = useState<number>(params.count);
 
   const searchInputRef = useRef<TextInput>(null);
 
   const onSubmitPress = useCallback(() => {
-    if (+countValue <= 1) {
+    if (countValue <= 1) {
       setCountValue(1);
       params.onChange(1);
 
@@ -24,7 +24,7 @@ export const useCounterController = (params: UseCounterControllerParams) => {
 
   const handleChange = useCallback((value: string) => {
 
-    setCountValue(value);
+    setCountValue(Number(value));
 
   }, [params]);
 
@@ -33,14 +33,18 @@ export const useCounterController = (params: UseCounterControllerParams) => {
       return;
     }
 
-    setCountValue(+countValue - 1);
+    const nextValue = countValue - 1;
 
-    params.onChange(+countValue - 1);
+    setCountValue(nextValue);
+
+    params.onChange(nextValue);
   }, [params, countValue]);
 
   const onPlusPress = useCallback(() => {
-    params.onChange(+countValue + 1);
-    setCountValue(+countValue + 1);
+    const nextValue = countValue + 1;
+
+    params.onChange(nextValue);
+    setCountValue(nextValue);
   }, [params, countValue]);
 
   return {
