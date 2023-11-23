@@ -1,6 +1,7 @@
 import { StyleSheet } from 'react-native';
 
 import { Colors } from '@UI/Colors';
+import { normalize } from '@UI/normalize';
 
 export const styles = StyleSheet.create({
   detailsScreenContainer: {
@@ -31,12 +32,13 @@ export const styles = StyleSheet.create({
     backgroundColor: 'white',
     borderTopRightRadius: 80,
     paddingTop: 20,
-    paddingHorizontal: 15,
+    paddingHorizontal: 10,
   },
   topContainer: {
     flexDirection: 'row',
-    alignItems: 'center',
+    alignItems: 'flex-start',
     marginBottom: 10,
+    paddingRight: 15,
   },
   title: {
     fontSize: 30,
@@ -44,6 +46,10 @@ export const styles = StyleSheet.create({
     flex: 2,
     flexWrap: 'wrap',
     color: Colors.text,
+  },
+  timeContainer: {
+    flex: 1,
+    top: normalize(10),
   },
   description: {
     marginBottom: 20,

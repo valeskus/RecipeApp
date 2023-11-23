@@ -1,5 +1,7 @@
 import { StyleSheet } from 'react-native';
 
+import { normalize } from '@UI/normalize';
+
 import { Colors } from '../Colors';
 
 export const styles = StyleSheet.create({
@@ -20,7 +22,7 @@ export const styles = StyleSheet.create({
     backgroundColor: Colors.primary,
     borderRadius: 15,
     zIndex: 10,
-    paddingVertical: 23,
+    paddingVertical: normalize(15) + 6,
   },
   selectItem: {
     width: '100%',

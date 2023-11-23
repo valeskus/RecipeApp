@@ -6,10 +6,11 @@ import { Tabs } from '@UI/Tabs';
 import { Counter } from '@UI/Counter';
 import { Toggle } from '@UI/Toggle';
 
+import { TimeCounter } from '../../UI/TimeCounter';
+
 import { styles } from './styles';
 import { useRecipeDetailsController } from './useRecipeDetailsController';
 import { Header } from './components/Header';
-import { TimeCounter } from './components/TimeCounter';
 import { IngredientsList } from './components/IngredientsList ';
 import { InstructionsList } from './components/InstructionsList';
 import { RecipeDetailsSkeleton } from './components/RecipeDetailsSkeleton';
@@ -83,7 +84,9 @@ export function RecipeDetails(): JSX.Element {
         <View style={styles.contentContainer}>
           <View style={styles.topContainer}>
             <Text style={styles.title}>{recipe.title}</Text>
-            <TimeCounter time={recipe.time} />
+            <View style={styles.timeContainer}>
+              <TimeCounter time={recipe.time} />
+            </View>
           </View>
           <Text style={styles.description}>{recipe.description}</Text>
           <Toggle

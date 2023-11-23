@@ -3,8 +3,7 @@ import { Image, Pressable, StyleProp, ViewStyle, Text, View } from 'react-native
 import { useTranslation } from 'react-i18next';
 
 import { Icons } from '@UI/Icons';
-
-import { TimeManager } from '@managers/TimeManager';
+import { TimeCounter } from '@UI/TimeCounter';
 
 import { styles } from './styles';
 
@@ -42,9 +41,8 @@ export function ProductCardGrid({
           {title}
         </Text>
         <View style={styles.productCardDetailsItemContainer}>
-          <View style={styles.productCardDetailsItemBox}>
-            <Image source={Icons.time} style={styles.icon} />
-            <Text style={styles.productCardDetailsItem}>{TimeManager.getHours(time)}</Text>
+          <View style={styles.productCardTimeContainer}>
+            <TimeCounter time={time} />
           </View>
           <View style={styles.productCardDetailsItemBox}>
             <Image source={Icons.kCal} style={styles.icon} />

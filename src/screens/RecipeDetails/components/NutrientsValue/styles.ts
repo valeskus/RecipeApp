@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { Platform, StyleSheet } from 'react-native';
 
 import { normalize } from '@UI/normalize';
 import { Colors } from '@UI/Colors';
@@ -12,9 +12,9 @@ export const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
-    paddingHorizontal: 5,
-    paddingVertical: 10,
+    padding: 5,
     minHeight: normalize(55),
+    margin: 1,
   },
   dotIcon: {
     width: 35,
@@ -24,8 +24,10 @@ export const styles = StyleSheet.create({
   title: {
     fontSize: 15,
     fontFamily: 'Montserrat-Semibold',
-    flexShrink: 1,
+    flex: 1,
     color: Colors.text,
+    height: Platform.OS === 'ios' ? 'auto' : normalize(40),
+    textAlignVertical: 'center',
   },
   column: {
     flex: 1,
