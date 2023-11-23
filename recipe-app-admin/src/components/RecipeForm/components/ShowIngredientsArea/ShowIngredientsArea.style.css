@@ -1,0 +1,21 @@
+.ingredientsShowContainer{
+    display: flex;
+    flex-direction: column;
+    min-width: 370px;
+    font-size: 1em;
+    align-items: start;
+    flex:1;
+    padding-left: 40px;
+}
+
+.showAreaContainer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.showAreaAmount{
+    font-size: 1.1em;
+    align-self: center;
+    padding-left: 5px;
+}

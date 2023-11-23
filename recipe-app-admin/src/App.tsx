@@ -1,26 +1,50 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-function App() {
+import { CategoryForm } from './components/CategoryForm';
+import { Header } from './components/Header';
+import { ProductForm } from './components/ProductForm';
+import { RecipeForm } from './components/RecipeForm';
+import { MainPage } from './components/MainPage';
+import { FileForm } from './components/FileForm';
+import { ImageForm } from './components/ImageForm';
+
+export function App(): JSX.Element {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Header/>
+      <Routes>
+        <Route
+          path="/"
+          element={<MainPage/>}
+        />
+
+        <Route
+          path="/categoryForm"
+          element={<CategoryForm />}
+        />
+
+        <Route
+          path="/fileForm"
+          element={<FileForm />}
+        />
+
+        <Route
+          path="/productForm"
+          element={<ProductForm />}
+        />
+
+        <Route
+          path="/recipeForm"
+          element={<RecipeForm />}
+        />
+        <Route
+          path="/imageForm"
+          element={<ImageForm />}
+        />
+
+      </Routes>
+
+    </BrowserRouter>
   );
 }
-
-export default App;

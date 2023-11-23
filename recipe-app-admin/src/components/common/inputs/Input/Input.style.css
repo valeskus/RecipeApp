@@ -1,0 +1,24 @@
+.input {
+    flex: 3;
+    border: 1px solid rgb(204 204 204);
+    border-radius: 5px;
+    font-size: 1em;
+    padding: 10px;
+    margin: 5px 0;
+}
+
+.input-container{
+    width: 100%;
+    padding: 5px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex:1
+}
+
+.input-label{
+    font-size: 1em;
+    flex:1;
+    margin-right: 10px;
+    min-width: 80px;
+}
