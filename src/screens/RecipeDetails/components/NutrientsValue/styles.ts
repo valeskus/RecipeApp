@@ -1,6 +1,5 @@
 import { StyleSheet } from 'react-native';
 
-import { Fonts } from '@UI/Fonts';
 import { normalize } from '@UI/normalize';
 import { Colors } from '@UI/Colors';
 
@@ -24,8 +23,7 @@ export const styles = StyleSheet.create({
   },
   title: {
     fontSize: 15,
-    fontFamily: Fonts.secondary,
-    fontWeight: '600',
+    fontFamily: 'Montserrat-Semibold',
     flexShrink: 1,
     color: Colors.text,
   },

@@ -1,7 +1,6 @@
 import { StyleSheet } from 'react-native';
 
 import { Colors } from '@UI/Colors';
-import { Fonts } from '@UI/Fonts';
 
 export const styles = StyleSheet.create({
   searchBarContainer: {
@@ -20,11 +19,12 @@ export const styles = StyleSheet.create({
     fontSize: 15,
     padding: 13,
     paddingRight: 62,
-    margin: 10,
+    marginHorizontal: 10,
+    marginBottom: 10,
   },
   searchBarInput: {
     fontSize: 15,
-    fontFamily: Fonts.secondary,
+    fontFamily: 'Montserrat-Regular',
     padding: 0,
     color: Colors.text,
     width: '100%',

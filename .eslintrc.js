@@ -50,7 +50,9 @@ module.exports = {
         'en',
         'ooops',
         'Nunito',
-        'lottie'
+        'lottie',
+        'Extrabold',
+        'Semibold'
       ]
     }],
     'import/no-unresolved': ['error', { ignore: ['@env'] }],

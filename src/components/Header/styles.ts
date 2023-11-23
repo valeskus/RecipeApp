@@ -1,23 +1,25 @@
-import { StyleSheet } from 'react-native';
+import { Platform, StatusBar, StyleSheet } from 'react-native';
 
 import { Colors } from '@UI/Colors';
-import { Fonts } from '@UI/Fonts';
 import { normalize } from '@UI/normalize';
 
 export const styles = StyleSheet.create({
   headerContainer: {
-    backgroundColor: Colors.background,
     flexDirection: 'row',
     alignItems: 'center',
-    paddingVertical: 10,
+    paddingBottom: 10,
+    position: 'relative',
+  },
+
+  headerDefaultOffset: {
+    paddingTop: Platform.OS === 'ios' ? 15 : (StatusBar.currentHeight || 15),
   },
 
   headerTitle: {
     color: Colors.primary,
     fontSize: 28,
-    fontWeight: '900',
     textAlign: 'center',
-    fontFamily: Fonts.primary,
+    fontFamily: 'Nunito-Black',
     flex: 1,
   },
 
@@ -35,32 +37,25 @@ export const styles = StyleSheet.create({
     width: normalize(25),
     height: normalize(25),
     justifyContent: 'center',
-    position: 'absolute',
-    left: 10,
     zIndex: 10,
+    marginLeft: 10,
   },
 
   headerRightContainer: {
     justifyContent: 'center',
-    position: 'absolute',
-    right: 10,
-    zIndex: 1,
-  },
-  headerLeftContainer: {
-    width: 25,
-    height: 25,
-    justifyContent: 'center',
-    position: 'absolute',
-    left: 15,
+    marginRight: 10,
+    width: normalize(25),
+    height: normalize(25),
     zIndex: 1,
   },
 
   snowflakesContainer: {
     width: '100%',
     paddingHorizontal: 20,
-    height: 70,
     overflow: 'hidden',
     position: 'absolute',
     zIndex: 0,
+    top: 0,
+    bottom: 0,
   },
 });

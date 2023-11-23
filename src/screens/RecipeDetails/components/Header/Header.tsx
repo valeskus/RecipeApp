@@ -1,6 +1,7 @@
 import React, { useCallback } from 'react';
-import { Animated, View, SafeAreaView, StatusBar } from 'react-native';
+import { Animated, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Button } from '@UI/Button';
 
@@ -21,12 +22,14 @@ export function Header({ scrollYRef }: Props): JSX.Element {
     extrapolateLeft: 'clamp',
   }) || 0.2;
 
+  const { top } = useSafeAreaInsets();
+
   return (
-    <SafeAreaView style={styles.header}>
+    <View style={styles.header}>
       <Animated.View style={[styles.headerWrapper, { opacity: headerOpacity }]} />
-      <View style={[styles.headerLeftButton, { marginTop: StatusBar.currentHeight }]}>
+      <View style={[styles.headerLeftButton, { paddingTop: top }]}>
         <Button icon="leftArrow" onPress={onGoBack} />
       </View>
-    </SafeAreaView>
+    </View>
   );
 }
