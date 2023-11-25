@@ -15,10 +15,10 @@ export const useRecipesListControlsController = (
     switch (activeSort) {
       case 'relevance': return setSortButtonIcon('sort');
       case 'time': return setSortButtonIcon('hour');
-      case 'alphabetically': return setSortButtonIcon('sort');
-      case '-alphabetically': return setSortButtonIcon('sort');
-      case 'calories': return setSortButtonIcon('sort');
-      case '-calories': return setSortButtonIcon('sort');
+      case 'alphabetically': return setSortButtonIcon('AZ');
+      case '-alphabetically': return setSortButtonIcon('ZA');
+      case 'calories': return setSortButtonIcon('caloriesPlus');
+      case '-calories': return setSortButtonIcon('caloriesMinus');
     }
   }, [activeSort]);
 

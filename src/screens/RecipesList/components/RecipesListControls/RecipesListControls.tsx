@@ -25,7 +25,7 @@ export function RecipesListControls({
   return (
     <View style={styles.buttonBarContainer}>
       <Button icon="filter" onPress={handleFilterPress} active={isFilterActive} />
-      <Button icon={sortButtonIcon} onPress={handleSortPress} active={!!activeSort} />
+      <Button icon={sortButtonIcon} onPress={handleSortPress} active={!!activeSort && activeSort !== 'relevance'} />
       <View style={styles.cardFormButtonContainer}>
         {gridType === 'grid' ? (
           <Button icon="grid" onPress={changeType} />
