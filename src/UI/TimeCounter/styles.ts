@@ -1,6 +1,7 @@
 import { StyleSheet } from 'react-native';
 
 import { Colors } from '@UI/Colors';
+import { normalize } from '@UI/normalize';
 
 export const styles = StyleSheet.create({
   timeContainerContainer: {
@@ -9,19 +10,18 @@ export const styles = StyleSheet.create({
 
   timeContainer: {
     flex: 1,
-    width: '100%',
     flexDirection: 'row',
     alignItems: 'center',
     paddingRight: 20,
   },
   timeIcon: {
-    width: 25,
-    height: 25,
-    marginRight: 5,
+    width: normalize(17),
+    height: normalize(17),
+    marginRight: 3,
   },
   time: {
-    fontSize: 15,
-    fontFamily: 'Montserrat-Semibold',
     color: Colors.text,
+    fontSize: 16,
+    fontFamily: 'Montserrat-Regular',
   },
 });
