@@ -23,6 +23,11 @@ export const Icons = {
   pizza: require('../../../assets/pizza.png'),
   error: require('../../../assets/error.png'),
   setting: require('../../../assets/setting.png'),
+  hour: require('../../../assets/hour.png'),
+  AZ: require('../../../assets/AZ.png'),
+  ZA: require('../../../assets/ZA.png'),
+  caloriesPlus: require('../../../assets/caloriesPlus.png'),
+  caloriesMinus: require('../../../assets/caloriesMinus.png'),
   ua: require('../../../assets/ua.png'),
   en: require('../../../assets/en.png'),
 };
