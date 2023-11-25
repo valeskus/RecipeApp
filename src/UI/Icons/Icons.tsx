@@ -23,6 +23,7 @@ export const Icons = {
   pizza: require('../../../assets/pizza.png'),
   error: require('../../../assets/error.png'),
   setting: require('../../../assets/setting.png'),
+  hour: require('../../../assets/hour.png'),
   ua: require('../../../assets/ua.png'),
   en: require('../../../assets/en.png'),
 };
