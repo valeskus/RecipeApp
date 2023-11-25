@@ -48,7 +48,6 @@ export const styles = StyleSheet.create({
     color: Colors.text,
   },
   timeContainer: {
-    flex: 1,
     top: normalize(10),
   },
   description: {
