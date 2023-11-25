@@ -9,9 +9,10 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     zIndex: 10,
     width: '100%',
-    height: 115,
+    height: normalize(60),
     alignItems: 'flex-end',
   },
+
   headerWrapper: {
     backgroundColor: Colors.shadow,
     position: 'absolute',
