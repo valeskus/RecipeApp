@@ -17,8 +17,8 @@ export const useRecipesListControlsController = (
       case 'time': return setSortButtonIcon('hour');
       case 'alphabetically': return setSortButtonIcon('AZ');
       case '-alphabetically': return setSortButtonIcon('ZA');
-      case 'calories': return setSortButtonIcon('caloriesPlus');
-      case '-calories': return setSortButtonIcon('caloriesMinus');
+      case 'calories': return setSortButtonIcon('caloriesMinus');
+      case '-calories': return setSortButtonIcon('caloriesPlus');
     }
   }, [activeSort]);
 
