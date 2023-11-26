@@ -33,7 +33,7 @@ export function Counter(props: Props): JSX.Element {
         onSubmitEditing={onSubmitPress}
         onEndEditing={onSubmitPress}
         value={countValue}
-        maxLength={3}
+        maxLength={2}
         inputMode={'numeric'}
       />
       <Pressable
