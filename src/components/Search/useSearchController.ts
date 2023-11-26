@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { TextInput } from 'react-native';
+import { Keyboard, TextInput } from 'react-native';
 
 import * as SearchStore from '@stores/search';
 
@@ -24,6 +24,8 @@ export const useSearchController = (params: SearchControllerParams) => {
     [],
   );
   const handleSearch = useCallback(() => {
+    Keyboard.dismiss();
+
     if (!pendingSearchTerm) {
       return;
     }
@@ -61,8 +63,8 @@ export const useSearchController = (params: SearchControllerParams) => {
   }, [searchTerm]);
 
   const cutSearchTerm = useCallback(() => {
-    if (pendingSearchTerm.length > 35){
-     return pendingSearchTerm.slice(0, 32).concat('', '...');
+    if (pendingSearchTerm.length > 35) {
+      return pendingSearchTerm.slice(0, 32).concat('', '...');
     }
 
     return pendingSearchTerm;
