@@ -22,7 +22,7 @@ export const styles = StyleSheet.create({
   ingredientsListItemTitle: {
     color: Colors.text,
     fontSize: 18,
-    fontFamily: 'Montserrat-Regular',
+    fontFamily: 'Montserrat-Medium',
     alignSelf: 'flex-start',
     marginRight: 5,
   },
