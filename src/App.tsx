@@ -21,6 +21,7 @@ import { Filter, ClearButton } from './screens/Filter';
 import { Sort } from './screens/Sort';
 import { RecipeDetails } from './screens/RecipeDetails';
 import { Settings } from './screens/Settings';
+import { Error } from './screens/Error';
 
 if (
   Platform.OS === 'android' &&
@@ -38,6 +39,7 @@ export type RootStackParamList = {
   RecipeDetails: {
     id: string;
   };
+  Error: undefined;
 };
 
 const Stack = createStackNavigator();
@@ -134,6 +136,11 @@ export function App(): JSX.Element {
           <Stack.Screen
             name="RecipeDetails"
             component={RecipeDetails}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Error"
+            component={Error}
             options={{ headerShown: false }}
           />
         </Stack.Navigator >
