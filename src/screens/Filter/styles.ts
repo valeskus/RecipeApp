@@ -5,7 +5,7 @@ import { Colors } from '@UI/Colors';
 export const styles = StyleSheet.create({
   modalContainer: {
     flex: 1,
-    paddingVertical: 10,
+    paddingTop: 10,
     paddingHorizontal: 15,
     backgroundColor: Colors.background,
   },
@@ -22,12 +22,12 @@ export const styles = StyleSheet.create({
     left: 0,
     right: 0,
     position: 'absolute',
-    opacity: 0.8,
+    opacity: 0.7,
     zIndex: 5,
     borderTopEndRadius: 30,
     borderTopStartRadius: 30,
   },
   filterList: {
-    marginBottom: 10,
+    flex: 1,
   },
 });
