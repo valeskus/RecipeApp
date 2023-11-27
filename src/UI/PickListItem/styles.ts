@@ -29,7 +29,7 @@ export const styles = StyleSheet.create({
 
   pickListItem: {
     color: Colors.text,
-    marginLeft: 5,
+    marginLeft: 10,
     fontSize: 18,
     fontFamily: 'Montserrat-Medium',
   },
