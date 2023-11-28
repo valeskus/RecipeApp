@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { FlatList, FlatListProps, ListRenderItem, View } from 'react-native';
+import { useTranslation } from 'react-i18next';
 
 import { ProductCardLine } from '@UI/ProductCard/ProductCardLine';
 import { ProductCardGrid } from '@UI/ProductCard/ProductCardGrid';
@@ -9,7 +10,6 @@ import { Loader } from '../Loader';
 
 import { styles } from './styles';
 import { UseRecipeCardsControllerParams, useRecipeCardsController } from './useRecipesCardsController';
-
 interface Props extends UseRecipeCardsControllerParams {
   total: number;
 }
@@ -17,6 +17,7 @@ interface Props extends UseRecipeCardsControllerParams {
 interface RenderItemParams {
   onPress: (id: string) => void;
   gridType: UseRecipeCardsControllerParams['gridType'];
+  caloriesTitle: string;
 }
 
 const getRenderItem =
@@ -30,6 +31,7 @@ const getRenderItem =
         <ProductCardGrid
           title={item.title}
           calories={item.kCal}
+          caloriesTitle={params.caloriesTitle}
           time={item.time}
           image={item.image}
           onPress={() => params.onPress(item.id)}
@@ -38,6 +40,7 @@ const getRenderItem =
         <ProductCardLine
           title={item.title}
           calories={item.kCal}
+          caloriesTitle={params.caloriesTitle}
           time={item.time}
           image={item.image}
           onPress={() => params.onPress(item.id)}
@@ -52,14 +55,25 @@ const keyExtractor: FlatListProps<BaseRecipeModel>['keyExtractor'] = item =>
   item.id;
 
 export function RecipesCards({ gridType, recipes, total }: Props): JSX.Element {
-  const { onPress, data, onEndReached } = useRecipeCardsController({ recipes, gridType });
+  const { onPress, dataArray, onEndReached } = useRecipeCardsController({ recipes, gridType });
+
+  const { t } = useTranslation();
+
+  const getItemLayout = useCallback((data: ArrayLike<BaseRecipeModel> | null | undefined, index: number) =>
+  ({
+    length: 280,
+    offset: 280 * index,
+    index,
+  })
+    , []);
 
   const commonProps = {
     style: styles.offset,
-    data,
+    data: dataArray,
     renderItem: getRenderItem({
       onPress,
       gridType,
+      caloriesTitle: t('units.kCal'),
     }),
     keyExtractor,
     onEndReachedThreshold: 0.3,
@@ -69,11 +83,13 @@ export function RecipesCards({ gridType, recipes, total }: Props): JSX.Element {
   if (gridType === 'grid') {
     return (
       <FlatList
+        maxToRenderPerBatch={10}
         {...commonProps}
         contentContainerStyle={styles.recipesCardsContainer}
         numColumns={2}
         key="grid-list"
-        ListFooterComponent={() => (data && recipes.length !== total) ? <Loader /> : null}
+        getItemLayout={getItemLayout}
+        ListFooterComponent={() => (dataArray && recipes.length !== total) ? <Loader /> : null}
       />
     );
   }
@@ -86,7 +102,7 @@ export function RecipesCards({ gridType, recipes, total }: Props): JSX.Element {
         styles.recipesCardsContainer,
         styles.centeredLineCard,
       ]}
-      ListFooterComponent={() => (data && recipes.length !== total) ? <Loader /> : null}
+      ListFooterComponent={() => (dataArray && recipes.length !== total) ? <Loader /> : null}
     />
   );
 }
