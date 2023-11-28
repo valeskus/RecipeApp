@@ -54,15 +54,25 @@ const getRenderItem =
 const keyExtractor: FlatListProps<BaseRecipeModel>['keyExtractor'] = item =>
   item.id;
 
+const CARD_GRID_HEIGHT = 270;
+const CARD_LINE_HEIGHT = 130;
+
 export function RecipesCards({ gridType, recipes, total }: Props): JSX.Element {
   const { onPress, dataArray, onEndReached } = useRecipeCardsController({ recipes, gridType });
 
   const { t } = useTranslation();
 
-  const getItemLayout = useCallback((data: ArrayLike<BaseRecipeModel> | null | undefined, index: number) =>
+  const getItemGridLayout = useCallback((data: ArrayLike<BaseRecipeModel> | null | undefined, index: number) =>
   ({
-    length: 280,
-    offset: 280 * index,
+    length: CARD_GRID_HEIGHT,
+    offset: CARD_GRID_HEIGHT * index,
+    index,
+  })
+    , []);
+  const getItemLineLayout = useCallback((data: ArrayLike<BaseRecipeModel> | null | undefined, index: number) =>
+  ({
+    length: CARD_LINE_HEIGHT,
+    offset: CARD_LINE_HEIGHT * index,
     index,
   })
     , []);
@@ -88,7 +98,7 @@ export function RecipesCards({ gridType, recipes, total }: Props): JSX.Element {
         contentContainerStyle={styles.recipesCardsContainer}
         numColumns={2}
         key="grid-list"
-        getItemLayout={getItemLayout}
+        getItemLayout={getItemGridLayout}
         ListFooterComponent={() => (dataArray && recipes.length !== total) ? <Loader /> : null}
       />
     );
@@ -98,6 +108,7 @@ export function RecipesCards({ gridType, recipes, total }: Props): JSX.Element {
     <FlatList
       {...commonProps}
       key="linear-list"
+      getItemLayout={getItemLineLayout}
       contentContainerStyle={[
         styles.recipesCardsContainer,
         styles.centeredLineCard,
