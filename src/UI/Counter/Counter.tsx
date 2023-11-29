@@ -42,8 +42,6 @@ export function Counter(props: Props): JSX.Element {
         hitSlop={17}
       >
         <Text style={styles.buttonContent}>&#65291;</Text>
-        {/* <Image source={Icons.plus} style={styles.buttonImage} /> */}
-
       </Pressable>
     </View>
   );
