@@ -20,7 +20,7 @@ export const useRecipeCardsController = (
     navigation.navigate('RecipeDetails', { id });
   };
 
-  const dataArray = useMemo(() => {
+  const data = useMemo(() => {
     if (params.gridType === 'linear') {
       return params.recipes;
     }
@@ -47,7 +47,7 @@ export const useRecipeCardsController = (
 
   return {
     onPress,
-    dataArray,
+    data,
     onEndReached,
   };
 };

@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import { FlatList, FlatListProps, ListRenderItem, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
 
@@ -57,29 +57,27 @@ const keyExtractor: FlatListProps<BaseRecipeModel>['keyExtractor'] = item =>
 const CARD_GRID_HEIGHT = 270;
 const CARD_LINE_HEIGHT = 130;
 
+const getItemGridLayout = (data: unknown, index: number) =>
+({
+  length: CARD_GRID_HEIGHT,
+  offset: CARD_GRID_HEIGHT * index,
+  index,
+});
+const getItemLineLayout = (data: unknown, index: number) =>
+({
+  length: CARD_LINE_HEIGHT,
+  offset: CARD_LINE_HEIGHT * index,
+  index,
+});
+
 export function RecipesCards({ gridType, recipes, total }: Props): JSX.Element {
-  const { onPress, dataArray, onEndReached } = useRecipeCardsController({ recipes, gridType });
+  const { onPress, data, onEndReached } = useRecipeCardsController({ recipes, gridType });
 
   const { t } = useTranslation();
 
-  const getItemGridLayout = useCallback((data: ArrayLike<BaseRecipeModel> | null | undefined, index: number) =>
-  ({
-    length: CARD_GRID_HEIGHT,
-    offset: CARD_GRID_HEIGHT * index,
-    index,
-  })
-    , []);
-  const getItemLineLayout = useCallback((data: ArrayLike<BaseRecipeModel> | null | undefined, index: number) =>
-  ({
-    length: CARD_LINE_HEIGHT,
-    offset: CARD_LINE_HEIGHT * index,
-    index,
-  })
-    , []);
-
   const commonProps = {
     style: styles.offset,
-    data: dataArray,
+    data,
     renderItem: getRenderItem({
       onPress,
       gridType,
@@ -99,7 +97,7 @@ export function RecipesCards({ gridType, recipes, total }: Props): JSX.Element {
         numColumns={2}
         key="grid-list"
         getItemLayout={getItemGridLayout}
-        ListFooterComponent={() => (dataArray && recipes.length !== total) ? <Loader /> : null}
+        ListFooterComponent={() => (data && recipes.length !== total) ? <Loader /> : null}
       />
     );
   }
@@ -113,7 +111,7 @@ export function RecipesCards({ gridType, recipes, total }: Props): JSX.Element {
         styles.recipesCardsContainer,
         styles.centeredLineCard,
       ]}
-      ListFooterComponent={() => (dataArray && recipes.length !== total) ? <Loader /> : null}
+      ListFooterComponent={() => (data && recipes.length !== total) ? <Loader /> : null}
     />
   );
 }
