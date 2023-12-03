@@ -42,7 +42,7 @@ export function ProductCardLine({
         </Text>
         <View style={styles.productCardDetailsItemContainer}>
           <View style={styles.productCardDetailsItemBox}>
-            <TimeCounter time={time}/>
+            <TimeCounter time={time} />
           </View>
           <View style={styles.productCardDetailsItemBox}>
             <Image source={Icons.kCal} style={styles.icon} />

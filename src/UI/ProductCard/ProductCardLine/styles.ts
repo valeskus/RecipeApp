@@ -38,7 +38,6 @@ export const styles = StyleSheet.create({
     fontSize: 15,
     fontFamily: 'Montserrat-Regular',
     color: Colors.text,
-    maxWidth: '50%',
   },
   cardPressed: {
     transform: [{ scale: 0.9 }],

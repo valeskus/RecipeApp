@@ -39,7 +39,7 @@ export const styles = StyleSheet.create({
     fontSize: 15,
     fontFamily: 'Montserrat-Regular',
     color: Colors.text,
-    maxWidth: '90%',
+    width: '85%',
   },
   productCardDetailsItemContainer: {
     flex: 1,
