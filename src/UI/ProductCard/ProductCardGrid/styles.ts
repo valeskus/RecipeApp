@@ -36,10 +36,10 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 8,
   },
   productCardDetailsItem: {
-    fontSize: 16,
+    fontSize: 15,
     fontFamily: 'Montserrat-Regular',
     color: Colors.text,
-    maxWidth: '50%',
+    maxWidth: '90%',
   },
   productCardDetailsItemContainer: {
     flex: 1,
@@ -51,13 +51,15 @@ export const styles = StyleSheet.create({
   },
   note: {
     color: Colors.secondary,
-    fontSize: 14,
+    fontSize: 12,
     fontFamily: 'Montserrat-Regular',
+
   },
   productCardDetailsItemBox: {
     flexDirection: 'row',
     alignItems: 'center',
     marginBottom: 7,
+
   },
   productCardTimeContainer: {
     marginBottom: 7,

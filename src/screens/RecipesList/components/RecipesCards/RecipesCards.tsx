@@ -1,5 +1,6 @@
 import React from 'react';
 import { FlatList, FlatListProps, ListRenderItem, View } from 'react-native';
+import { useTranslation } from 'react-i18next';
 
 import { ProductCardLine } from '@UI/ProductCard/ProductCardLine';
 import { ProductCardGrid } from '@UI/ProductCard/ProductCardGrid';
@@ -9,7 +10,6 @@ import { Loader } from '../Loader';
 
 import { styles } from './styles';
 import { UseRecipeCardsControllerParams, useRecipeCardsController } from './useRecipesCardsController';
-
 interface Props extends UseRecipeCardsControllerParams {
   total: number;
 }
@@ -17,6 +17,7 @@ interface Props extends UseRecipeCardsControllerParams {
 interface RenderItemParams {
   onPress: (id: string) => void;
   gridType: UseRecipeCardsControllerParams['gridType'];
+  caloriesTitle: string;
 }
 
 const getRenderItem =
@@ -30,6 +31,7 @@ const getRenderItem =
         <ProductCardGrid
           title={item.title}
           calories={item.kCal}
+          caloriesTitle={params.caloriesTitle}
           time={item.time}
           image={item.image}
           onPress={() => params.onPress(item.id)}
@@ -38,6 +40,7 @@ const getRenderItem =
         <ProductCardLine
           title={item.title}
           calories={item.kCal}
+          caloriesTitle={params.caloriesTitle}
           time={item.time}
           image={item.image}
           onPress={() => params.onPress(item.id)}
@@ -51,8 +54,26 @@ const getRenderItem =
 const keyExtractor: FlatListProps<BaseRecipeModel>['keyExtractor'] = item =>
   item.id;
 
+const CARD_GRID_HEIGHT = 270;
+const CARD_LINE_HEIGHT = 130;
+
+const getItemGridLayout = (data: unknown, index: number) =>
+({
+  length: CARD_GRID_HEIGHT,
+  offset: CARD_GRID_HEIGHT * index,
+  index,
+});
+const getItemLineLayout = (data: unknown, index: number) =>
+({
+  length: CARD_LINE_HEIGHT,
+  offset: CARD_LINE_HEIGHT * index,
+  index,
+});
+
 export function RecipesCards({ gridType, recipes, total }: Props): JSX.Element {
   const { onPress, data, onEndReached } = useRecipeCardsController({ recipes, gridType });
+
+  const { t } = useTranslation();
 
   const commonProps = {
     style: styles.offset,
@@ -60,6 +81,7 @@ export function RecipesCards({ gridType, recipes, total }: Props): JSX.Element {
     renderItem: getRenderItem({
       onPress,
       gridType,
+      caloriesTitle: t('units.kCal'),
     }),
     keyExtractor,
     onEndReachedThreshold: 0.3,
@@ -69,10 +91,12 @@ export function RecipesCards({ gridType, recipes, total }: Props): JSX.Element {
   if (gridType === 'grid') {
     return (
       <FlatList
+        maxToRenderPerBatch={10}
         {...commonProps}
         contentContainerStyle={styles.recipesCardsContainer}
         numColumns={2}
         key="grid-list"
+        getItemLayout={getItemGridLayout}
         ListFooterComponent={() => (data && recipes.length !== total) ? <Loader /> : null}
       />
     );
@@ -82,6 +106,7 @@ export function RecipesCards({ gridType, recipes, total }: Props): JSX.Element {
     <FlatList
       {...commonProps}
       key="linear-list"
+      getItemLayout={getItemLineLayout}
       contentContainerStyle={[
         styles.recipesCardsContainer,
         styles.centeredLineCard,
