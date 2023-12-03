@@ -28,11 +28,13 @@ export interface BaseRecipeModel {
   id: string;
   title: string;
   kCal: number;
+  amount: number;
+  units: 'ml' | 'g';
   time: number;
   image: string;
 }
 
-export interface DetailRecipeModel extends BaseRecipeModel {
+export interface DetailRecipeModel extends Omit<BaseRecipeModel, 'units' >{
   description: string;
   servingsCount: number;
   amount: number;
