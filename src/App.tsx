@@ -38,7 +38,6 @@ export type RootStackParamList = {
   RecipeDetails: {
     id: string;
   };
-  Error: undefined;
 };
 
 const Stack = createStackNavigator();

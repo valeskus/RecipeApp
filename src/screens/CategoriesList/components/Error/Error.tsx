@@ -19,7 +19,7 @@ export function Error({ onRetry }: Props): JSX.Element {
       <Image source={Icons.error} style={styles.icon} />
       <Text style={styles.title}>{t('errors.title')}...</Text>
       <Text style={styles.message}>{t('errors.description')}!</Text>
-      <RectangleButton onPress={onRetry} text={t('errors.tryAgain')!} />
+      <RectangleButton onPress={onRetry} text={t('errors.tryAgain')} />
     </View>
   );
 }
