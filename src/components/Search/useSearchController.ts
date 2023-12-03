@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { Keyboard, TextInput } from 'react-native';
+import { TextInput } from 'react-native';
 
 import * as SearchStore from '@stores/search';
 
@@ -24,7 +24,6 @@ export const useSearchController = (params: SearchControllerParams) => {
     [],
   );
   const handleSearch = useCallback(() => {
-    Keyboard.dismiss();
 
     if (!pendingSearchTerm) {
       return;
