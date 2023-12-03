@@ -19,7 +19,7 @@ export const useCategoryListController = () => {
     navigation.navigate('Recipes');
   }, []);
 
-  const fetchData =  useCallback(async() => {
+  const fetchData = useCallback(async () => {
     setLoading(true);
 
     if (errorGetCategories) {
@@ -41,9 +41,9 @@ export const useCategoryListController = () => {
 
   return {
     handleSearch,
+    fetchData,
     categories,
     isLoading,
     isError: !!errorGetCategories,
-    fetchData,
   };
 };
