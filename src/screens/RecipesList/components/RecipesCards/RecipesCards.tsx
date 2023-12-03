@@ -27,10 +27,12 @@ const getRenderItem =
         return <View style={styles.cardPlaceholder} />;
       }
 
+      const calories = (item.kCal * 100) / item.amount;
+
       return params.gridType === 'grid' ? (
         <ProductCardGrid
           title={item.title}
-          calories={item.kCal}
+          calories={calories}
           caloriesTitle={params.caloriesTitle}
           time={item.time}
           image={item.image}
@@ -39,7 +41,7 @@ const getRenderItem =
       ) : (
         <ProductCardLine
           title={item.title}
-          calories={item.kCal}
+          calories={calories}
           caloriesTitle={params.caloriesTitle}
           time={item.time}
           image={item.image}
