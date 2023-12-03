@@ -1,18 +1,12 @@
-import { ApiProperty, PickType } from '@nestjs/swagger';
+import { PickType } from '@nestjs/swagger';
 import { PipelineStage } from 'mongoose';
 
-import { RecipeDataObject } from '../../recipe/dto/recipe-data-object';
+import { RecipeDto } from '../../recipe/dto';
 
-class RecipeListItem extends PickType(RecipeDataObject, ['id', 'image', 'title', 'time']) {
-    @ApiProperty({
-        example: 364,
-        description: 'Amount of kilo calories (for full amount)',
-    })
-    readonly kCal: number;
-
+class RecipeListItem extends PickType(RecipeDto, ['id', 'image', 'title', 'time', 'units', 'amount', 'kCal']) {
     static mongoAggregationConstructor(): Array<PipelineStage.FacetPipelineStage> {
         return [
-            { $project: { id: '$_id', image: 1, title: 1, time: 1, kCal: 1, _id: 0 } },
+            { $project: { id: '$_id', image: 1, title: 1, time: 1, units: 1, amount: 1, kCal: 1, _id: 0 } },
         ];
     }
 }

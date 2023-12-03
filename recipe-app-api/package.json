@@ -8,6 +8,7 @@
   "scripts": {
     "build": "nest build",
     "start:admin:staging": "API_ENV=admin APP_ENV=admin.staging nest start --watch",
+    "start:admin:production": "API_ENV=admin APP_ENV=admin.production nest start --watch",
     "firebase:copy-env:staging": "cp ./env/.staging.env .env.staging",
     "firebase:copy-env:production": "cp ./env/.production.env .env.production",
     "firebase:use:staging": "./node_modules/.bin/firebase use staging && yarn firebase:copy-env:staging",
