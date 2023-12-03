@@ -24,7 +24,7 @@ export function Counter(props: Props): JSX.Element {
         onPress={onMinusPress}
         hitSlop={17}
       >
-        <Text style={[styles.buttonContent, styles.minus]}>—</Text>
+        <Text style={[styles.buttonContent, styles.minus]}>–</Text>
       </Pressable>
       <TextInput
         onChangeText={handleChange}
@@ -33,7 +33,7 @@ export function Counter(props: Props): JSX.Element {
         onSubmitEditing={onSubmitPress}
         onEndEditing={onSubmitPress}
         value={countValue}
-        maxLength={3}
+        maxLength={2}
         inputMode={'numeric'}
       />
       <Pressable

@@ -24,6 +24,7 @@ export const useSearchController = (params: SearchControllerParams) => {
     [],
   );
   const handleSearch = useCallback(() => {
+
     if (!pendingSearchTerm) {
       return;
     }
@@ -61,8 +62,8 @@ export const useSearchController = (params: SearchControllerParams) => {
   }, [searchTerm]);
 
   const cutSearchTerm = useCallback(() => {
-    if (pendingSearchTerm.length > 35){
-     return pendingSearchTerm.slice(0, 32).concat('', '...');
+    if (pendingSearchTerm.length > 35) {
+      return pendingSearchTerm.slice(0, 32).concat('', '...');
     }
 
     return pendingSearchTerm;

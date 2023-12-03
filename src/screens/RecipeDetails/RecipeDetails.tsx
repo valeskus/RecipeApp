@@ -64,6 +64,7 @@ export function RecipeDetails(): JSX.Element {
         style={[styles.image, { transform: [{ scale }] }]}
       />
       <Animated.ScrollView
+        scrollIndicatorInsets={{ right: 1 }}
         style={styles.detailsScreen}
         scrollEventThrottle={16}
         onScroll={Animated.event(

@@ -20,13 +20,13 @@ export function RecipesList(): JSX.Element {
     isFilterActive,
     activeSort,
     onChangeCardType,
-    resetRecipes,
+    onSearch,
   } = useRecipeListController();
 
   return (
     <View style={styles.recipesScreenContainer}>
       <View style={styles.searchMenuContainer}>
-        <Search onSearch={resetRecipes} />
+        <Search onSearch={onSearch} />
         {!isLoading && !isRecipesListEmpty && (
           <RecipesListControls
             onCardTypeChange={onChangeCardType}

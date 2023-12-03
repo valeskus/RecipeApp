@@ -9,6 +9,7 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     marginVertical: 10,
   },
+
   pick: {
     borderRadius: 5,
     width: 35,
@@ -18,15 +19,17 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     position: 'relative',
   },
+
   pickActive: {
     width: '80%',
     height: '80%',
     alignSelf: 'center',
     position: 'absolute',
   },
+
   pickListItem: {
     color: Colors.text,
-    marginLeft: 5,
+    marginLeft: 10,
     fontSize: 18,
     fontFamily: 'Montserrat-Medium',
   },

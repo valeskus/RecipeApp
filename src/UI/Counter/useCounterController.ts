@@ -23,8 +23,12 @@ export const useCounterController = (params: UseCounterControllerParams) => {
   }, [params, countValue]);
 
   const handleChange = useCallback((value: string) => {
+    const nextValue = Number(value);
+    if (isNaN(nextValue) || nextValue % 1 !== 0) {
+      return;
+    }
 
-    setCountValue(Number(value));
+    setCountValue(nextValue);
 
   }, [params]);
 
@@ -51,7 +55,7 @@ export const useCounterController = (params: UseCounterControllerParams) => {
     onMinusPress,
     onPlusPress,
     onSubmitPress,
-    countValue: countValue.toString(),
+    countValue: countValue === 0 ? '' : countValue.toString(),
     handleChange,
     searchInputRef,
   };

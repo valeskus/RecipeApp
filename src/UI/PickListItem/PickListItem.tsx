@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { Image, Pressable, View, Text } from 'react-native';
+import { Image, View, Text, TouchableOpacity } from 'react-native';
 
 import { Icons } from '../Icons';
 
@@ -28,7 +28,7 @@ export function PickListItem({
   );
 
   return (
-    <Pressable
+    <TouchableOpacity
       onPress={setActive}
       style={styles.pickListItemContainer}
       disabled={disabled}
@@ -39,6 +39,6 @@ export function PickListItem({
         )}
       </View>
       <Text style={styles.pickListItem}>{label}</Text>
-    </Pressable>
+    </TouchableOpacity>
   );
 }

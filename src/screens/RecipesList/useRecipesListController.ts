@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 import * as RecipesStore from '@stores/recipes';
 import * as SearchStore from '@stores/search';
@@ -21,6 +21,11 @@ export const useRecipeListController = () => {
   const resetSearchOptions = SearchStore.useResetSearchOptions();
 
   const isRecipesListEmpty = recipes.length === 0;
+
+  const onSearch = useCallback(() => {
+    resetRecipes();
+    setLoading(true);
+  }, [resetRecipes]);
 
   useEffect(() => {
     setLoading(true);
@@ -60,6 +65,6 @@ export const useRecipeListController = () => {
     isFilterActive: searchOptions.filter.length !== 0,
     activeSort: searchOptions.sort,
     onChangeCardType,
-    resetRecipes,
+    onSearch,
   };
 };

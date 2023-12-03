@@ -13,7 +13,7 @@ export const styles = StyleSheet.create({
   },
 
   minus: {
-    paddingTop: 1,
+    paddingBottom: 2,
   },
 
   buttonPressed: {
@@ -29,6 +29,8 @@ export const styles = StyleSheet.create({
     shadowRadius: 1,
     shadowOffset: { width: 0, height: 0 },
     elevation: 8,
+    justifyContent: 'center',
+    position: 'relative',
   },
   counterContainer: {
     flexDirection: 'row',
@@ -45,5 +47,10 @@ export const styles = StyleSheet.create({
     marginHorizontal: 10,
     minWidth: normalize(41),
     textAlign: 'center',
+  },
+  buttonImage: {
+    width: '50%',
+    height: '50%',
+    alignSelf: 'center',
   },
 });

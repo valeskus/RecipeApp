@@ -11,19 +11,19 @@ export function FilterSkeleton(): JSX.Element {
       backgroundColor={Colors.secondary}
       opacity={0.2}
     >
-      <Rect x="2%" y="5" rx="10" ry="10" width="43%" height="30" />
+      <Rect x="2%" y="10" rx="10" ry="10" width="43%" height="30" />
 
-      <Rect x="2%" y="42" rx="10" ry="10" width="35" height="35" />
-      <Rect x="15%" y="43" rx="10" ry="10" width="60%" height="33" />
+      <Rect x="2%" y="50" rx="10" ry="10" width="35" height="35" />
+      <Rect x="15%" y="50" rx="10" ry="10" width="60%" height="33" />
 
-      <Rect x="2%" y="98" rx="10" ry="10" width="35" height="35" />
-      <Rect x="15%" y="99" rx="10" ry="10" width="60%" height="33" />
+      <Rect x="2%" y="105" rx="10" ry="10" width="35" height="35" />
+      <Rect x="15%" y="105" rx="10" ry="10" width="60%" height="33" />
 
-      <Rect x="2%" y="155" rx="10" ry="10" width="35" height="35" />
-      <Rect x="15%" y="156" rx="10" ry="10" width="60%" height="33" />
+      <Rect x="2%" y="160" rx="10" ry="10" width="35" height="35" />
+      <Rect x="15%" y="160" rx="10" ry="10" width="60%" height="33" />
 
-      <Rect x="2%" y="211" rx="10" ry="10" width="35" height="35" />
-      <Rect x="15%" y="212" rx="10" ry="10" width="60%" height="33" />
+      <Rect x="2%" y="215" rx="10" ry="10" width="35" height="35" />
+      <Rect x="15%" y="216" rx="10" ry="10" width="60%" height="33" />
 
       <Rect x="2%" y="270" rx="10" ry="10" width="43%" height="30" />
 
