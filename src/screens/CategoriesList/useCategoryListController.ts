@@ -39,18 +39,11 @@ export const useCategoryListController = () => {
     };
   }, [i18n.language]);
 
-  useEffect(() => {
-    if (errorGetCategories) {
-      return navigation.navigate('Error');
-    }
-  }, [errorGetCategories]);
-
   return {
     handleSearch,
+    fetchData,
     categories,
     isLoading,
     isError: !!errorGetCategories,
-    fetchData,
-    navigation,
   };
 };

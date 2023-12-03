@@ -6,11 +6,13 @@ import { RectangleButton } from '@UI/RectangleButton';
 import { Icons } from '@UI//Icons';
 
 import { styles } from './styles';
-import { useErrorController } from './useErrorController';
 
-export function Error(): JSX.Element {
+interface Props {
+  onRetry: () => void;
+}
+
+export function Error({ onRetry }: Props): JSX.Element {
   const { t } = useTranslation();
-  const { onRetry } = useErrorController();
 
   return (
     <View style={styles.errorScreen}>
