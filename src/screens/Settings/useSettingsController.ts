@@ -4,18 +4,23 @@ import { LanguageManager } from '@managers/LanguageManager';
 
 export const useSettingButtonController = () => {
   const [language, setLanguage] = useState<'ua' | 'en'>();
+  const [isLoading, setLoading] = useState<boolean>(false);
 
-  const onPressUA = useCallback(() => {
+  const onPressUA = useCallback(async () => {
+    setLoading(true);
     setLanguage('ua');
-    LanguageManager.setLanguage('ua');
+    await LanguageManager.setLanguage('ua');
+    setLoading(false);
   }, []);
 
-  const onPressEN = useCallback(() => {
+  const onPressEN = useCallback(async () => {
+    setLoading(true);
     setLanguage('en');
-    LanguageManager.setLanguage('en');
+    await LanguageManager.setLanguage('en');
+    setLoading(false);
   }, []);
 
-  const initLanguage = useCallback(async() => {
+  const initLanguage = useCallback(async () => {
     const currentLanguage = await LanguageManager.getLanguage();
     setLanguage(currentLanguage);
   }, []);
@@ -28,5 +33,6 @@ export const useSettingButtonController = () => {
     onPressUA,
     onPressEN,
     language,
+    isLoading,
   };
 };
