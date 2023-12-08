@@ -1,15 +1,17 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export class PersistentStorageManager {
-    static set(item: string, value: string) {
+    static async set(item: string, value: string) {
 
-        AsyncStorage.setItem(item, value);
+        await AsyncStorage.setItem(item, value);
 
         return;
     }
 
-    static get(item: string) {
-        return AsyncStorage.getItem(item);
+    static async get(item: string) {
+        const value = await AsyncStorage.getItem(item);
+
+        return value;
     }
 
     static remove(item: string) {
