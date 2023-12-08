@@ -4,7 +4,7 @@ import { Colors } from '../Colors';
 
 export const styles = StyleSheet.create({
   pickListItemContainer: {
-    width: '100%',
+    width: '90%',
     flexDirection: 'row',
     alignItems: 'center',
     marginVertical: 10,
