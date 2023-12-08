@@ -10,11 +10,9 @@ export const styles = StyleSheet.create({
     backgroundColor: Colors.background,
   },
   selectButtonContainer: {
-    zIndex: 10,
     flexDirection: 'row',
-    justifyContent: 'flex-end',
-    position: 'absolute',
-    right: 10,
+    justifyContent: 'center',
+    paddingBottom: 10,
   },
   footerOffset: {
     backgroundColor: Colors.background,
