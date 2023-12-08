@@ -29,10 +29,12 @@ export const styles = StyleSheet.create({
     fontFamily: 'Nunito-Extrabold',
     color: Colors.primary,
     flex: 1,
+    minHeight: 50,
   },
   productCardDetails: {
     flex: 2,
-    padding: 10,
+    paddingHorizontal: 10,
+    paddingVertical: 5,
   },
   productCardLineDetailsItem: {
     fontSize: 15,

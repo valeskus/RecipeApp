@@ -8,7 +8,7 @@ import { RecipesCards } from './components/RecipesCards';
 import { RecipesListControls } from './components/RecipesListControls';
 import { useRecipeListController } from './useRecipesListController';
 import { RecipesListMessage } from './components/RecipesListMessage';
-import { RecipeListSkeleton } from './components/RecipeListSkeleton';
+import { GridListSkeleton, LinearListSkeleton } from './components/RecipeListSkeleton';
 
 export function RecipesList(): JSX.Element {
   const {
@@ -37,7 +37,8 @@ export function RecipesList(): JSX.Element {
         )}
       </View>
       <View style={styles.blurContainer} />
-      {isLoading && <RecipeListSkeleton />}
+      {isLoading && gridType === 'grid' && <GridListSkeleton />}
+      {isLoading && gridType === 'linear' && <LinearListSkeleton />}
       {!isLoading && isRecipesListEmpty && <RecipesListMessage />}
       {!isLoading && <RecipesCards gridType={gridType} recipes={recipes} total={total} />}
     </View>

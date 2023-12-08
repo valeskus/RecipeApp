@@ -3,7 +3,7 @@ import ContentLoader, { Circle, Rect } from 'react-content-loader/native';
 
 import { Colors } from '@UI/Colors';
 
-export function RecipeListSkeleton(): JSX.Element {
+export function GridListSkeleton(): JSX.Element {
   return (
     <ContentLoader
       width={'100%'}
