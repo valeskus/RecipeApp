@@ -29,6 +29,7 @@ export const useRecipesListControlsController = (
   const navigation = useNavigation();
 
   const changeType = useCallback(() => {
+
     if (gridType === 'grid') {
       return onCardTypeChange('linear');
     }

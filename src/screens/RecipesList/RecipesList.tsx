@@ -12,14 +12,14 @@ import { GridListSkeleton, LinearListSkeleton } from './components/RecipeListSke
 
 export function RecipesList(): JSX.Element {
   const {
-    gridType,
+    recipeCardType,
     isLoading,
     isRecipesListEmpty,
     recipes,
     total,
     isFilterActive,
     activeSort,
-    onChangeCardType,
+    setCardType,
     onSearch,
   } = useRecipeListController();
 
@@ -29,18 +29,18 @@ export function RecipesList(): JSX.Element {
         <Search onSearch={onSearch} />
         {!isLoading && !isRecipesListEmpty && (
           <RecipesListControls
-            onCardTypeChange={onChangeCardType}
-            gridType={gridType}
+            onCardTypeChange={setCardType}
+            gridType={recipeCardType}
             isFilterActive={isFilterActive}
             activeSort={activeSort}
           />
         )}
       </View>
       <View style={styles.blurContainer} />
-      {isLoading && gridType === 'grid' && <GridListSkeleton />}
-      {isLoading && gridType === 'linear' && <LinearListSkeleton />}
+      {isLoading && recipeCardType === 'grid' && <GridListSkeleton />}
+      {isLoading && recipeCardType === 'linear' && <LinearListSkeleton />}
       {!isLoading && isRecipesListEmpty && <RecipesListMessage />}
-      {!isLoading && <RecipesCards gridType={gridType} recipes={recipes} total={total} />}
+      {!isLoading && <RecipesCards gridType={recipeCardType} recipes={recipes} total={total} />}
     </View>
   );
 }
