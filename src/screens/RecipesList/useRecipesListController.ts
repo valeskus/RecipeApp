@@ -6,7 +6,7 @@ import * as SearchStore from '@stores/search';
 import { useGridTypes } from './hooks';
 
 export const useRecipeListController = () => {
-  const { setCardType, recipeCardType } = useGridTypes();
+  const { setCardType, recipeCardType, getCardType } = useGridTypes();
   const [isLoading, setLoading] = useState(false);
 
   const { recipes, total } = RecipesStore.useRecipesStore();
@@ -29,7 +29,9 @@ export const useRecipeListController = () => {
 
   useEffect(() => {
     setLoading(true);
-    getRecipes(searchOptions).then(() => setLoading(false));
+
+    Promise.all([getRecipes(searchOptions), getCardType()])
+      .then(() => setLoading(false));
   }, [searchOptions.sort, searchOptions.searchTerm]);
 
   useEffect(() => {

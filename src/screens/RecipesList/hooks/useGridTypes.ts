@@ -23,5 +23,5 @@ export const useGridTypes = () => {
     getCardType();
   }, []);
 
-  return { setCardType, recipeCardType };
+  return { setCardType, recipeCardType, getCardType };
 };
