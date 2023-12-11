@@ -4,8 +4,6 @@ export class PersistentStorageManager {
     static async set(item: string, value: string) {
 
         await AsyncStorage.setItem(item, value);
-
-        return;
     }
 
     static async get(item: string) {
@@ -16,8 +14,6 @@ export class PersistentStorageManager {
 
     static remove(item: string) {
         AsyncStorage.removeItem(item);
-
-        return;
     }
 
 }
