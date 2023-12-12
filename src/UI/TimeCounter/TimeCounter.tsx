@@ -21,23 +21,18 @@ export function TimeCounter({ time }: Props): JSX.Element {
 
   return (
     <View style={styles.timeContainerContainer}>
-      {formatTime.hours && (
-        <View style={styles.timeContainer}>
-          <Image style={styles.timeIcon} source={Icons.time} />
-
-          <Text style={styles.time}>{formatTime.hours}</Text>
-          <Text style={styles.time}>{t('units.h')} </Text>
-          <Text style={styles.time}>{formatTime.minutes}</Text>
-          <Text style={styles.time}>{t('units.min')}</Text>
-        </View>)
-      }
-      {!formatTime.hours && (<View style={styles.timeContainer}>
+      <View style={styles.timeContainer}>
         <Image style={styles.timeIcon} source={Icons.time} />
 
-        <Text style={styles.time}>{formatTime.minutes}</Text>
-        <Text style={styles.time}>{t('units.min')}</Text>
-      </View>)
-      }
+        {!!formatTime.hours && (<>
+          <Text style={styles.time}>{formatTime.hours}</Text>
+          <Text style={styles.time}>{t('units.h')} </Text>
+        </>)}
+        {!!formatTime.minutes && (<>
+          <Text style={styles.time}>{formatTime.minutes}</Text>
+          <Text style={styles.time}>{t('units.min')}</Text>
+        </>)}
+      </View>
     </View>
   );
 }

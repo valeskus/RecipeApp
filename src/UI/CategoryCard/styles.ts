@@ -22,7 +22,8 @@ export const styles = StyleSheet.create({
     elevation: 8,
     justifyContent: 'flex-start',
     flexDirection: 'column',
-    margin: 5,
+    marginVertical: 5,
+    marginHorizontal: '2%',
   },
   categoryCardTitle: {
     margin: 6,

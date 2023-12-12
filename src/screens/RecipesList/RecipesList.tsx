@@ -8,18 +8,18 @@ import { RecipesCards } from './components/RecipesCards';
 import { RecipesListControls } from './components/RecipesListControls';
 import { useRecipeListController } from './useRecipesListController';
 import { RecipesListMessage } from './components/RecipesListMessage';
-import { RecipeListSkeleton } from './components/RecipeListSkeleton';
+import { GridListSkeleton, LinearListSkeleton } from './components/RecipeListSkeleton';
 
 export function RecipesList(): JSX.Element {
   const {
-    gridType,
+    recipeCardType,
     isLoading,
     isRecipesListEmpty,
     recipes,
     total,
     isFilterActive,
     activeSort,
-    onChangeCardType,
+    setCardType,
     onSearch,
   } = useRecipeListController();
 
@@ -29,17 +29,18 @@ export function RecipesList(): JSX.Element {
         <Search onSearch={onSearch} />
         {!isLoading && !isRecipesListEmpty && (
           <RecipesListControls
-            onCardTypeChange={onChangeCardType}
-            gridType={gridType}
+            onCardTypeChange={setCardType}
+            gridType={recipeCardType}
             isFilterActive={isFilterActive}
             activeSort={activeSort}
           />
         )}
       </View>
       <View style={styles.blurContainer} />
-      {isLoading && <RecipeListSkeleton />}
+      {isLoading && recipeCardType === 'grid' && <GridListSkeleton />}
+      {isLoading && recipeCardType === 'linear' && <LinearListSkeleton />}
       {!isLoading && isRecipesListEmpty && <RecipesListMessage />}
-      {!isLoading && <RecipesCards gridType={gridType} recipes={recipes} total={total} />}
+      {!isLoading && <RecipesCards gridType={recipeCardType} recipes={recipes} total={total} />}
     </View>
   );
 }

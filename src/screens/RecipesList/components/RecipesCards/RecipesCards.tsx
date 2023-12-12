@@ -93,12 +93,15 @@ export function RecipesCards({ gridType, recipes, total }: Props): JSX.Element {
   if (gridType === 'grid') {
     return (
       <FlatList
-        maxToRenderPerBatch={10}
         {...commonProps}
         contentContainerStyle={styles.recipesCardsContainer}
         numColumns={2}
         key="grid-list"
         getItemLayout={getItemGridLayout}
+        initialNumToRender={8}
+        removeClippedSubviews
+        windowSize={40}
+        maxToRenderPerBatch={10}
         ListFooterComponent={() => (data && recipes.length !== total) ? <Loader /> : null}
       />
     );
@@ -109,6 +112,10 @@ export function RecipesCards({ gridType, recipes, total }: Props): JSX.Element {
       {...commonProps}
       key="linear-list"
       getItemLayout={getItemLineLayout}
+      removeClippedSubviews
+      initialNumToRender={8}
+      maxToRenderPerBatch={10}
+      windowSize={40}
       contentContainerStyle={[
         styles.recipesCardsContainer,
         styles.centeredLineCard,

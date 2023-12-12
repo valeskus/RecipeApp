@@ -14,7 +14,8 @@ export const styles = StyleSheet.create({
     shadowRadius: 5,
     shadowOffset: { width: 0, height: 0 },
     flexDirection: 'column',
-    margin: 5,
+    marginVertical: 5,
+    marginHorizontal: '2%',
     elevation: 8,
   },
   productCardGridImage: {

@@ -12,6 +12,7 @@ interface Props {
   pressableStyle?: StyleProp<ViewStyle>;
   iconStyle?: StyleProp<ImageStyle>;
   iconActiveStyle?: StyleProp<ImageStyle>;
+  disabled?: boolean;
 }
 
 export function Button({
@@ -21,6 +22,7 @@ export function Button({
   pressableStyle,
   iconStyle,
   iconActiveStyle,
+  disabled,
 }: Props): JSX.Element {
   return (
     <Pressable
@@ -30,6 +32,7 @@ export function Button({
         pressed && styles.buttonPressed,
         pressableStyle,
       ]}
+      disabled={disabled}
     >
       <Image source={Icons[icon]} style={[styles.buttonImage, iconStyle]} />
       {active && (
