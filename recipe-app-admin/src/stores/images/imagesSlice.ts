@@ -7,7 +7,7 @@ import { IMAGES, ImagesStateType } from '../types';
 
 const imagesInitialState: ImagesStateType = {
   images: null,
-  error: '',
+  error: undefined,
   isLoading: false,
 };
 
@@ -17,7 +17,7 @@ export const imagesSlice = createSlice({
   reducers: {
     getImages: (state: ImagesStateType) => {
       state.isLoading = true;
-      state.error = '';
+      state.error = undefined;
     },
     getImagesSuccessAction: (state: ImagesStateType,
       { payload: imagesArray }: PayloadAction<ImageListModel>) => {
@@ -28,7 +28,7 @@ export const imagesSlice = createSlice({
     },
     getImagesErrorAction: (state: ImagesStateType, { payload: error }: PayloadAction<AxiosError>) => {
       state.isLoading = false;
-      state.error = error.message;
+      state.error = error;
     },
 
   },

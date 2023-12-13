@@ -6,7 +6,7 @@ import { useAddImageStore } from '../../stores/addImage/hooks';
 import { useResetAddImageState } from '../../stores/addImage/hooks';
 
 export const useImageFormController = () => {
-  const [imageData, setImageData] = useState <Array<FormData>>([]);
+  const [imageData, setImageData] = useState<Array<FormData>>([]);
   const [status, setStatus] = useState<string>('');
 
   const dispatch = useDispatch();
@@ -52,7 +52,8 @@ export const useImageFormController = () => {
     }
 
     if (AddImageStore.error) {
-      setStatus(AddImageStore.error.response.data.message);
+
+      setStatus(AddImageStore.error.message);
     }
   }, [AddImageStore.status, AddImageStore.error]);
 

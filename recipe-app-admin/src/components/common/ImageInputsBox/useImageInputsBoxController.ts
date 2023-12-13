@@ -7,7 +7,7 @@ import { postInstructionImage } from '../../../stores/addInstructionImage/AddIns
 import { useAddInstructionImageStore } from '../../../stores/addInstructionImage/hooks';
 
 export interface ImageInputsControllerParams {
-  component:  'instruction' | 'image';
+  component: 'instruction' | 'image';
   image: string;
   onChange: (image: string) => void;
 }
@@ -39,12 +39,12 @@ export const useImageInputsController = (params: ImageInputsControllerParams) =>
 
     if (AddImageStore.url) {
       setImage(AddImageStore.url);
-      params. onChange(AddImageStore.url);
+      params.onChange(AddImageStore.url);
       setImageStatus('Uploaded');
     }
 
     if (AddImageStore.error) {
-      setImageStatus(AddImageStore.error.response.data.message);
+      setImageStatus(AddImageStore.error.message);
     }
   }, [params.component, AddImageStore.url, AddImageStore.error]);
 
@@ -58,12 +58,12 @@ export const useImageInputsController = (params: ImageInputsControllerParams) =>
     }
 
     if (AddInstructionsImageStore.url) {
-      params. onChange(AddInstructionsImageStore.url);
+      params.onChange(AddInstructionsImageStore.url);
       setImageStatus('Uploaded');
     }
 
     if (AddInstructionsImageStore.error) {
-      setImageStatus(AddInstructionsImageStore.error.response.data.message);
+      setImageStatus(AddInstructionsImageStore.error.message);
     }
 
   }, [params.component, AddInstructionsImageStore]);
@@ -78,7 +78,7 @@ export const useImageInputsController = (params: ImageInputsControllerParams) =>
 
   const handleImage = useCallback((value: string) => {
     setImage(value);
-    params. onChange(value);
+    params.onChange(value);
   }, [setImage]);
 
   const handleImageFile = useCallback((e: any) => {
