@@ -28,7 +28,7 @@ export const imagesSlice = createSlice({
     },
     getImagesErrorAction: (state: ImagesStateType, { payload: error }: PayloadAction<AxiosError>) => {
       state.isLoading = false;
-      state.error = error.message
+      state.error = error.message;
     },
 
   },
