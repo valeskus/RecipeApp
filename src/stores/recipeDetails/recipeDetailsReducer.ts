@@ -29,6 +29,9 @@ export function recipeDetailsReducer(
         ingredients,
         instructions,
       } = action.payload as DetailRecipeModel;
+      ingredients.map((ingredient) => {
+        ingredient.amount = ingredient.amount / servingsCount;
+      });
 
       return {
         recipe: {
