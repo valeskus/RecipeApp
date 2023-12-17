@@ -5,10 +5,10 @@ import { Colors } from '../Colors';
 export const styles = StyleSheet.create({
   categoryCardImage: {
     width: '100%',
-    height: 130,
     alignSelf: 'center',
     borderTopRightRadius: 20,
     borderTopLeftRadius: 20,
+    aspectRatio: 1,
   },
   categoryContainer: {
     borderRadius: 20,
