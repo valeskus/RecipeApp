@@ -1,13 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
-import { AxiosError } from 'axios';
 
 import { AddImagesStateType, IMAGE } from '../types';
 
 const imagesInitialState: AddImagesStateType = {
   url: '',
   status: '',
-  error: '',
+  error: undefined,
   isLoading: false,
 };
 
@@ -15,27 +14,28 @@ export const addImagesSlice = createSlice({
   name: IMAGE,
   initialState: imagesInitialState,
   reducers: {
-    postImage: (state: AddImagesStateType, {}: PayloadAction<FormData>) => {
+    postImage: (state: AddImagesStateType, { }: PayloadAction<FormData>) => {
       state.isLoading = true;
-      state.error = '';
+      state.error = undefined;
     },
     postImageSuccessAction: (state: AddImagesStateType, { payload }: PayloadAction<{
-      image: { url: string }; status: string; }>) => {
+      image: { url: string }; status: string;
+    }>) => {
       state.isLoading = false;
       state.status = payload.status;
       state.url = payload.image.url;
     },
-    postImageErrorAction: (state: AddImagesStateType, { payload: error }: PayloadAction<AxiosError>) => {
+    postImageErrorAction: (state: AddImagesStateType, { payload: error }: PayloadAction<Error>) => {
       state.isLoading = false;
-      state.error = error.message
+      state.error = error;
     },
     resetAddImageState: (state: AddImagesStateType) => {
       state.status = '';
       state.url = '';
-      state.error = '';
+      state.error = undefined;
     },
 
   },
 });
 
-export const {  postImage, postImageSuccessAction, postImageErrorAction, resetAddImageState } = addImagesSlice.actions;
+export const { postImage, postImageSuccessAction, postImageErrorAction, resetAddImageState } = addImagesSlice.actions;

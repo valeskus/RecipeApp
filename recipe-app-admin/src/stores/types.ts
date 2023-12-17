@@ -3,20 +3,20 @@ import { ImageModel } from '../models';
 export type AddImagesStateType = {
   url: string;
   status: string;
-  error:  any ;
+  error?: Error;
   isLoading: boolean;
 };
 
 export type AddInstructionImageStateType = {
   url: string;
   status: string;
-  error:  any ;
+  error?: Error;
   isLoading: boolean;
 };
 
 export type ImagesStateType = {
   images: Array<ImageModel> | null;
-  error:  any ;
+  error?: Error;
   isLoading: boolean;
 };
 
@@ -42,7 +42,7 @@ export type RecipePostModel = {
   }>;
   difficulty: number;
   categories: Array<string>;
-  ingredients: Array <{
+  ingredients: Array<{
     id: string;
     amount: number;
   }>;
@@ -56,7 +56,7 @@ export type RecipePostModel = {
 
 export type RecipeStateType = {
   status: number | string;
-  error: any ;
+  error: any;
   isLoading: boolean;
 };
 
@@ -80,7 +80,7 @@ export type CategoryPostModel = {
 };
 
 export type CategoriesStateType = {
-  categories: Array<CategoryModel> ;
+  categories: Array<CategoryModel>;
   error: any;
   isLoading: boolean;
 };
@@ -91,7 +91,7 @@ export type CreateCategoriesStateType = {
   isLoading: boolean;
 };
 
-export type  CategoriesListModel = {
+export type CategoriesListModel = {
   categories: Array<CategoryModel>;
 };
 
@@ -121,18 +121,18 @@ export type ProductPostModel = {
   };
 };
 
-export type  ProductsListModel = {
+export type ProductsListModel = {
   products: Array<ProductModel>;
 };
 
 export type CreateProductStateType = {
   status: number;
-  error:  any ;
+  error: any;
   isLoading: boolean;
 };
 
 export type ProductsStateType = {
-  products: Array<ProductModel> ;
+  products: Array<ProductModel>;
   error: any;
   isLoading: boolean;
 };

@@ -7,3 +7,7 @@ export const client = axios.create({
   },
 
 });
+
+client.interceptors.response.use(undefined, ({ response }) => {
+  throw new Error(response.data.message);
+});
