@@ -15,6 +15,13 @@ class GetIngredientDto extends OmitType(IngredientDataObject, ['id']) {
         required: true
     })
     readonly units: Units;
+
+    @ApiProperty({
+        example: 10,
+        description: 'Amount of the product per 1 serving',
+        required: true
+    })
+    readonly amountPerServing: number;
 }
 
 class GetInstructionDto extends OmitType(InstructionDataObject, ['translations']) { }

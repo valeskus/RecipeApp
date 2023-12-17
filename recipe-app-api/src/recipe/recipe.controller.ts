@@ -26,7 +26,13 @@ export class RecipeController {
       throw new NotFoundException('Recipe not found');
     }
 
-    return recipe;
+    return {
+      ...recipe,
+      ingredients: recipe.ingredients.map((item) => ({
+        ...item,
+        amountPerServing: item.amount / recipe.servingsCount
+      }))
+    };
   }
 
   @UseGuards(AdminApiGuard)
