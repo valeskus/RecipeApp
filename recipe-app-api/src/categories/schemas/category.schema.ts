@@ -28,6 +28,9 @@ export class Category extends TranslationsSchemaOf(TranslatableCategoryItems) {
 
   @Prop({ required: true })
   type: CategoryType;
+
+  @Prop({ required: true })
+  sortIndex: number;
 }
 
 export const CategorySchema = SchemaFactory.createForClass(Category);

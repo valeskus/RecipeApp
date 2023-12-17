@@ -1,5 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsEnum, IsNotEmpty, IsNumber, IsString, Min } from 'class-validator';
+import { IsEnum, IsNotEmpty, IsNumber, IsOptional, IsString, Min } from 'class-validator';
+import { Transform } from 'class-transformer';
 
 import { TranslationsDtoOf } from '../../translation/dto';
 import { Units } from '../models';
@@ -11,6 +12,7 @@ class TranslatableProductItems {
         required: true
     })
     @IsNotEmpty()
+    @Transform(({ value }) => value?.trim())
     @IsString()
     readonly title: string;
 }
@@ -67,4 +69,14 @@ export class ProductDataObject extends TranslationsDtoOf(TranslatableProductItem
     })
     @IsEnum(Units)
     readonly units: Units;
+
+    @ApiProperty({
+        example: 'Martini',
+        description: 'Recommended brand',
+        required: false
+    })
+    @Transform(({ value }) => value?.trim())
+    @IsString()
+    @IsOptional()
+    readonly recommendedBrand?: string;
 }

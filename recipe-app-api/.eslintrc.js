@@ -54,6 +54,7 @@ module.exports = {
         'jpeg',
         'firebase',
         'cors',
+        'uk'
       ]
     }],
     'no-extra-semi': 'error',
