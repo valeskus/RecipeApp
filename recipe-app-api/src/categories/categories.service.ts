@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
+import { FilterQuery, Model } from 'mongoose';
 import { isMongoId } from 'class-validator';
 
 import { Category } from './schemas';
@@ -11,7 +11,7 @@ export class CategoriesService {
   constructor(@InjectModel(Category.name) private categoryModel: Model<Category>) { }
 
   findAll(): Promise<Array<Category>> {
-    return this.categoryModel.find().exec();
+    return this.categoryModel.find().sort({ sortIndex: 1 });
   }
 
   findOneById(id: string): Promise<Category | null> {
@@ -22,8 +22,8 @@ export class CategoriesService {
     return this.categoryModel.findOne({ _id: id }).exec();
   }
 
-  findOneByTitle(title: string): Promise<Category | null> {
-    return this.categoryModel.findOne({ title }).exec();
+  findOneBy(query: FilterQuery<Category>): Promise<Category | null> {
+    return this.categoryModel.findOne(query).exec();
   }
 
   create(createCategoryDto: CreateCategoryDto): Promise<Category> {

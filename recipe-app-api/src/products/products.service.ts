@@ -1,7 +1,9 @@
-import { Injectable } from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
+import { FilterQuery, Model } from 'mongoose';
 import { isMongoId } from 'class-validator';
+
+import { TranslationService } from '../translation/translation.service';
 
 import { Product } from './schemas';
 import { CreateProductDto } from './dto';
@@ -9,9 +11,23 @@ import { CreateProductDto } from './dto';
 @Injectable()
 export class ProductsService {
   constructor(@InjectModel(Product.name) private productModel: Model<Product>) { }
+  @Inject(TranslationService) private readonly translationService: TranslationService;
 
   findAll(): Promise<Array<Product>> {
-    return this.productModel.find().exec();
+    const query = this.productModel.find();
+
+    return this.translationService.forCurrentLanguage({
+      ua: () => query
+        .collation({
+          locale: 'uk'
+        })
+        .sort({
+          'translations.ua.title': 1,
+        }),
+      en: () => query.sort({
+        title: 1
+      })
+    });
   }
 
   findOneById(id: string): Promise<Product | null> {
@@ -22,8 +38,8 @@ export class ProductsService {
     return this.productModel.findOne({ _id: id }).exec();
   }
 
-  findOneByTitle(title: string): Promise<Product | null> {
-    return this.productModel.findOne({ title }).exec();
+  findOneBy(query: FilterQuery<Product>): Promise<Product | null> {
+    return this.productModel.findOne(query).exec();
   }
 
   createGetterNutritionByAmount(amount: number) {

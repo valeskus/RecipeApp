@@ -1,5 +1,14 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsEnum, IsNotEmpty, IsString, IsUrl } from 'class-validator';
+import {
+    IsDefined,
+    IsDivisibleBy,
+    IsEnum,
+    IsNotEmpty,
+    IsNumber,
+    IsString,
+    IsUrl,
+    Min
+} from 'class-validator';
 
 import { TranslationsDtoOf } from '../../translation/dto';
 import { CategoryType } from '../models';
@@ -39,4 +48,15 @@ export class CategoryDataObject extends TranslationsDtoOf(TranslatableCategoryIt
     })
     @IsEnum(CategoryType)
     readonly type: CategoryType;
+
+    @ApiProperty({
+        example: 0,
+        description: 'The sort index of the category',
+        required: true
+    })
+    @IsDivisibleBy(1)
+    @Min(0)
+    @IsNumber()
+    @IsDefined()
+    readonly sortIndex: number;
 }

@@ -37,6 +37,9 @@ export class Product extends TranslationsSchemaOf(TranslatableProductItems)  {
 
     @Prop({ required: true })
     units: Units;
+
+    @Prop({ required: false })
+    recommendedBrand?: string;
 }
 
 export const ProductSchema = SchemaFactory.createForClass(Product);

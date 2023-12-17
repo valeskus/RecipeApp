@@ -1,4 +1,5 @@
 import {
+  BadRequestException,
   Body,
   Controller,
   Get,
@@ -69,6 +70,17 @@ export class CategoriesController {
     description: 'Creates a category by given fields',
   })
   async create(@Body() createCategoryDto: CreateCategoryDto) {
+    const productUA = await this.categoriesService.findOneBy({
+      'translations.ua.title': createCategoryDto.translations.ua.title
+    });
+
+    // TODO: Think the better solution for searching duplicates in translations
+    if (productUA) {
+      throw new BadRequestException(
+        `Item 'translations.ua.title' with value '${createCategoryDto.translations.ua.title}' already exists`
+      );
+    }
+
     await this.categoriesService.create(createCategoryDto);
   }
 }

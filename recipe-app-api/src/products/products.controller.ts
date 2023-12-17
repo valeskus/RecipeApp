@@ -1,4 +1,4 @@
-import { Body, Controller, Get, NotFoundException, Param, Post, UseGuards } from '@nestjs/common';
+import { BadRequestException, Body, Controller, Get, NotFoundException, Param, Post, UseGuards } from '@nestjs/common';
 import {
   ApiOperation,
   ApiOkResponse,
@@ -60,6 +60,17 @@ export class ProductsController {
     description: 'Creates a product by given fields',
   })
   async create(@Body() createProductDto: CreateProductDto): Promise<void> {
+    const productUA = await this.productsService.findOneBy({
+      'translations.ua.title': createProductDto.translations.ua.title
+    });
+
+    // TODO: Think the better solution for searching duplicates in translations
+    if (productUA) {
+      throw new BadRequestException(
+        `Item 'translations.ua.title' with value '${createProductDto.translations.ua.title}' already exists`
+      );
+    }
+
     await this.productsService.create(createProductDto);
   }
 }

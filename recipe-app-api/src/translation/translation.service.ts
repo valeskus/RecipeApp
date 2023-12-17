@@ -26,7 +26,7 @@ export class TranslationService {
     return this.getCurrentLanguage() === DEFAULT_LANGUAGE;
   }
 
-  forCurrentLanguage<T>(items: Record<Languages, () => T>) {
+  forCurrentLanguage<T>(items: Record<Languages, () => T>): T {
     return items[this.getCurrentLanguage()]();
   }
 
