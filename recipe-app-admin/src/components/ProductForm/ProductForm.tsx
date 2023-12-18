@@ -32,10 +32,12 @@ export function ProductForm(): JSX.Element {
       <div className="product-form">
         <Input label="Title :" type="text" placeholder="Title" onChange={handleTitle} value={title}/>
         <Input label="Title UA:" type="text" placeholder="Назва" onChange={handleUATitle} value={titleUA}/>
-        <Input label="kCal :" type="number" placeholder="kCal" onChange={handleKCal} value={kCal}/>
-        <Input label="Proteins :" type="number" placeholder="proteins" onChange={handleProteins} value={proteins}/>
-        <Input label="Carbs :" type="number" placeholder="carbs" onChange={handleCarbs} value={carbs}/>
-        <Input label="Fats :" type="number" placeholder="fats" onChange={handleFats} value={fats}/>
+        <Input label="kCal :" type="number" step=".1" placeholder="kCal" onChange={handleKCal} value={kCal}/>
+        <Input label="Proteins :" type="number" step=".1"
+          placeholder="proteins" onChange={handleProteins} value={proteins}
+        />
+        <Input label="Carbs :" type="number" step=".1" placeholder="carbs" onChange={handleCarbs} value={carbs}/>
+        <Input label="Fats :" type="number" step=".1" placeholder="fats" onChange={handleFats} value={fats}/>
         <SelectComponent label="Units:" placeholder="units" multiple={false} options={unitsValue}
           onChange={handleUnits}
         />

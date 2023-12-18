@@ -2,6 +2,7 @@ import './Input.style.css';
 interface Props {
   label: string;
   value?: string;
+  step?: string;
   type: string;
   id?: string;
   placeholder: string;
@@ -18,6 +19,7 @@ export function Input(props: Props): JSX.Element {
         }}
         value={props.value}
         type={props.type}
+        step={props.step}
         id={props.id}
         className="input"
         placeholder={props.placeholder}
