@@ -36,7 +36,7 @@ export function IngredientsList({
         return (
           <IngredientsListItem
             title={item.title}
-            amount={setIngredientCount(item.amount)}
+            amount={setIngredientCount(item.amountPerServing)}
             units={item.units}
             key={index}
           />
