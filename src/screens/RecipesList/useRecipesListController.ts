@@ -3,6 +3,8 @@ import { useCallback, useEffect, useState } from 'react';
 import * as RecipesStore from '@stores/recipes';
 import * as SearchStore from '@stores/search';
 
+import { EventService } from '@services/EventService';
+
 import { useGridTypes } from './hooks';
 
 export const useRecipeListController = () => {
@@ -56,6 +58,10 @@ export const useRecipeListController = () => {
       resetSearchOptions();
       resetRecipes();
     };
+  }, []);
+
+  useEffect(() => {
+    EventService.emit('view:recipes-list');
   }, []);
 
   return {

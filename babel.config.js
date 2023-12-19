@@ -16,7 +16,7 @@ module.exports = {
           '@components': './src/components',
           '@api': './src/api',
           '@managers': './src/managers',
-
+          '@services': './src/infrastructure/services',
         },
       },
     ],

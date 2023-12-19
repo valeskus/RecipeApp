@@ -14,6 +14,8 @@ import { SettingsButton } from '@components/SettingsButton';
 
 import { LanguageManager } from '@managers/LanguageManager';
 
+import { EventService } from '@services/EventService';
+
 import { store } from './stores/rootStore';
 import { CategoriesList } from './screens/CategoriesList';
 import { RecipesList } from './screens/RecipesList';
@@ -53,6 +55,7 @@ export function App(): JSX.Element {
   useEffect(() => {
     LanguageManager.initLanguage();
     SplashScreen.hide();
+    EventService.emit('app:start');
   }, []);
 
   return (

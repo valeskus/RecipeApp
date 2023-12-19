@@ -4,10 +4,22 @@ import { name as appName } from './app.json';
 import { PLAYGROUND } from '@env';
 import { Playground } from './src/UI/Playground';
 import './src/localization/i18n';
+import { EventService } from './src/infrastructure/services/EventService';
 
 import { normalize } from './src/UI/normalize'
 
 global.XMLHttpRequest = global.originalXMLHttpRequest || global.XMLHttpRequest;
+
+EventService.init();
+
+if (!__DEV__) {
+  global.ErrorUtils.setGlobalHandler((error) => {
+    EventService.emit('app:error', {
+      moduleName: 'Global',
+      error
+    });
+  });
+}
 
 LogBox.ignoreLogs([
   'Overwriting fontSize style attribute preprocessor',

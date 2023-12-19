@@ -4,6 +4,8 @@ import { RouteProp, useRoute } from '@react-navigation/native';
 import * as RecipeDetailsStore from '@stores/recipeDetails';
 import * as ErrorsStore from '@stores/errors';
 
+import { EventService } from '@services/EventService';
+
 import {
   NutrientsSection,
   PrescriptionCardSection,
@@ -49,19 +51,22 @@ export const useRecipeDetailsController = () => {
       resetError();
     };
   }, []);
-  const onPrescriptionCardSectionChange = useCallback(
-    (activeElement: string) => {
-      PrescriptionCard.changeSection(activeElement as PrescriptionCardSection);
-    },
-    [],
-  );
 
-  const onNutrientsSectionChange = useCallback(
-    (activeElement: string) => {
-      Nutrients.changeSection(activeElement as NutrientsSection);
-    },
-    [],
-  );
+  useEffect(() => {
+    EventService.emit('view:recipe-details');
+  }, []);
+
+  const onPrescriptionCardSectionChange = useCallback((activeElement: string) => {
+    PrescriptionCard.changeSection(activeElement as PrescriptionCardSection);
+
+    EventService.emit('action:recipe-details:prescription-section-change', activeElement as PrescriptionCardSection);
+  }, []);
+
+  const onNutrientsSectionChange = useCallback((activeElement: string) => {
+    Nutrients.changeSection(activeElement as NutrientsSection);
+
+    EventService.emit('action:recipe-details:nutrients-section-change', activeElement as NutrientsSection);
+  }, []);
 
   const nutritionLabelsMap = useMemo(() => {
     return Object.keys(Nutrients.NutrientsUnitLabels).map(id => ({

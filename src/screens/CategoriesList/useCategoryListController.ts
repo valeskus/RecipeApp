@@ -5,6 +5,8 @@ import { useTranslation } from 'react-i18next';
 import * as ErrorsStore from '@stores/errors';
 import * as CategoriesStore from '@stores/categories';
 
+import { EventService } from '@services/EventService';
+
 export const useCategoryListController = () => {
   const [isLoading, setLoading] = useState(false);
   const { categories } = CategoriesStore.useCategoriesStore();
@@ -38,6 +40,10 @@ export const useCategoryListController = () => {
       resetError();
     };
   }, [i18n.language]);
+
+  useEffect(() => {
+    EventService.emit('view:categories-list');
+  }, []);
 
   return {
     handleSearch,
