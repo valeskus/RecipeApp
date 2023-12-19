@@ -1,8 +1,10 @@
-import { useCallback } from 'react';
+import { useCallback, useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
 
 import * as RecipesStore from '@stores/recipes';
 import * as SearchStore from '@stores/search';
+
+import { EventService } from '@services/EventService';
 
 export const useFilterController = () => {
   const navigation = useNavigation();
@@ -22,6 +24,7 @@ export const useFilterController = () => {
         return;
       }
 
+      EventService.emit('action:change-filter', JSON.stringify({ filterName, value }));
       setSearchOptions({
         filter: [...searchOptionsFilters, { key: filterName, value: value }],
         offset: 0,
@@ -34,6 +37,10 @@ export const useFilterController = () => {
   const onSelectPress = () => {
     navigation.goBack();
   };
+
+  useEffect(() => {
+    EventService.emit('view:filter');
+  }, []);
 
   return {
     onSelectPress,

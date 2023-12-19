@@ -3,6 +3,8 @@ import { TextInput } from 'react-native';
 
 import * as SearchStore from '@stores/search';
 
+import { EventService } from '@services/EventService';
+
 export interface SearchControllerParams {
   onSearch: () => void;
 }
@@ -33,6 +35,8 @@ export const useSearchController = (params: SearchControllerParams) => {
       return;
     }
 
+    EventService.emit('action:search', pendingSearchTerm);
+
     resetSearchOptions();
     params.onSearch();
 
@@ -47,6 +51,8 @@ export const useSearchController = (params: SearchControllerParams) => {
   const handleResetSearchInput = useCallback(() => {
     setPendingSearchTerm('');
     handlePress();
+
+    EventService.emit('action:search-reset');
   }, []);
 
   const handleFocus = useCallback(() => {

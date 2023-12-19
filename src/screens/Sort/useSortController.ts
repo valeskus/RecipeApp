@@ -1,8 +1,10 @@
-import { useCallback } from 'react';
+import { useCallback, useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
 
 import * as RecipesStore from '@stores/recipes';
 import * as SearchStore from '@stores/search';
+
+import { EventService } from '@services/EventService';
 
 export const useSortController = () => {
 
@@ -13,13 +15,17 @@ export const useSortController = () => {
   const resetRecipes = RecipesStore.useResetRecipeList();
 
   const onSortChange = useCallback((value: string) => {
-    setSearchOptions({ sort: value, offset: 0,
-    });
+    setSearchOptions({ sort: value, offset: 0 });
+
+    EventService.emit('action:change-sort', value);
+
     resetRecipes();
     navigation.goBack();
-  },
-  [sortOptions],
-  );
+  }, [sortOptions]);
+
+  useEffect(() => {
+    EventService.emit('view:sort');
+  }, []);
 
   return {
     onSortChange,

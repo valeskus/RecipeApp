@@ -52,7 +52,9 @@ module.exports = {
         'Nunito',
         'lottie',
         'Extrabold',
-        'Semibold'
+        'Semibold',
+        'nullish',
+        'dsn'
       ]
     }],
     'import/no-unresolved': ['error', { ignore: ['@env'] }],
@@ -149,6 +151,11 @@ module.exports = {
         },
         {
           'pattern': '@managers/**',
+          'group': 'external',
+          'position': 'after'
+        },
+        {
+          'pattern': '@services/**',
           'group': 'external',
           'position': 'after'
         }
