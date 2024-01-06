@@ -88,6 +88,7 @@ export function RecipesCards({ gridType, recipes, total }: Props): JSX.Element {
     keyExtractor,
     onEndReachedThreshold: 0.3,
     onEndReached: onEndReached,
+    scrollIndicatorInsets: { right: 1 },
   };
 
   if (gridType === 'grid') {
