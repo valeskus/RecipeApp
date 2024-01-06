@@ -1,5 +1,5 @@
 import { Transform } from 'class-transformer';
-import { IsEnum, IsDefined, IsNotEmpty, IsOptional } from 'class-validator';
+import { IsEnum, IsDefined, IsOptional } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 
 import { Calories, Difficulty, SortOptions, TotalTime } from '../models';
@@ -10,9 +10,10 @@ class Search {
         description: 'Search term',
         required: true,
     })
-    @Transform(({ value }) => String(value || '').trim())
-    // TODO: Filter out special characters
-    @IsNotEmpty()
+    @Transform(({ value }) => {
+        // If all characters are filtered out, force the application to return an empty search result
+        return String(value || '').replace(/[^\p{Letter}\s\d-]/ug, '').trim() || '^$';
+    })
     @IsDefined()
     readonly search: string;
 
