@@ -21,22 +21,15 @@ export class RecipeService {
   @Inject(ProductsService) private readonly productsService: ProductsService;
   @Inject(TranslationService) private readonly translationService: TranslationService;
 
-  findOneByTitle(title: string): Promise<Recipe | null> {
-    return this.translationService.forCurrentLanguage({
-      ua: () => this.recipeModelUA.findOne({ title }).exec(),
-      en: () => this.recipeModelEN.findOne({ title }).exec(),
-    });
-  }
-
-  findOneById(id: string): Promise<Recipe | null> {
+  findOneById(id: string): Promise<Recipe | undefined> {
     if (!isMongoId(id)) {
-      return Promise.resolve(null);
+      return Promise.resolve(undefined);
     }
 
     return this.translationService.forCurrentLanguage({
-      ua: () => this.recipeModelUA.findOne({ _id: id }).exec(),
-      en: () => this.recipeModelEN.findOne({ _id: id }).exec(),
-    });
+      ua: () => this.recipeModelUA,
+      en: () => this.recipeModelEN
+    }).findOne({ _id: id }).exec().then((item) => item?.toJSON());
   }
 
   async create(createRecipeDto: CreateRecipeDto): Promise<void> {

@@ -72,7 +72,14 @@ class Recipe extends OmitType(RecipeDataObject, ['translations']) {
         description: 'Amount of kilo calories (for full amount)',
         required: true
     })
-    kCal: number;
+    readonly kCal: number;
+
+    @ApiProperty({
+        example: 364,
+        description: 'Amount of kilo calories (per 100 units)',
+        required: true
+    })
+    readonly kCalPer100: number;
 
     @ApiProperty({
         description: 'Ingredients list',

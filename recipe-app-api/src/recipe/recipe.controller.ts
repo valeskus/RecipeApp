@@ -26,12 +26,14 @@ export class RecipeController {
       throw new NotFoundException('Recipe not found');
     }
 
-    return Object.assign(recipe, {
+    return {
+      ...recipe,
+      kCalPer100: recipe.kCal * 100 / recipe.amount,
       ingredients: recipe.ingredients.map((item) => ({
         ...item,
-        amountPerServing: item.amount / recipe.servingsCount
+        amountPerServing: item.amount / recipe.servingsCount,
       }))
-    });
+    };
   }
 
   @UseGuards(AdminApiGuard)

@@ -79,8 +79,8 @@ export class SearchAggregation extends Array<PipelineStage> {
                     ...mealTypeAggregation.facet,
                     ...dietTypeAggregation.facet,
                     recipes: [
-                        sortAggregation.pipelineStage,
                         ...RecipeListItemDto.mongoAggregationConstructor(),
+                        sortAggregation.pipelineStage,
                         { $skip: inputFilters.offset },
                         { $limit: inputFilters.pageSize },
                     ],
