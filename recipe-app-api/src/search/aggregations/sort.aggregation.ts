@@ -27,13 +27,13 @@ const getSortPipelineBySortOption = (sortOption: SortOptions): PipelineStage.Sor
 
         case SortOptions.CALORIES_ASC: {
             return {
-                kCal: 1
+                kCalPer100: 1,
             };
         }
 
         case SortOptions.CALORIES_DESC: {
             return {
-                kCal: -1
+                kCalPer100: -1,
             };
         }
     }
