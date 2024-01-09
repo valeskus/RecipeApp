@@ -7,6 +7,7 @@ import { RecipeForm } from './components/RecipeForm';
 import { MainPage } from './components/MainPage';
 import { FileForm } from './components/FileForm';
 import { ImageForm } from './components/ImageForm';
+import { ShowArea } from './components/ShowArea';
 
 export function App(): JSX.Element {
 
@@ -41,6 +42,10 @@ export function App(): JSX.Element {
         <Route
           path="/imageForm"
           element={<ImageForm />}
+        />
+        <Route
+          path="/showArea"
+          element={<ShowArea />}
         />
 
       </Routes>
