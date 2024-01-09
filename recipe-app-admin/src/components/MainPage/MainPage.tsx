@@ -30,6 +30,10 @@ export function MainPage(): JSX.Element {
         navigate('/imageForm')
     }
       />
+      <ButtonLink title="ShowArea" onClick={() =>
+        navigate('/showArea')
+    }
+      />
     </div>
 
   </div>);
