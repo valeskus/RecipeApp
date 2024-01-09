@@ -52,7 +52,7 @@ export const useNutrientsController = (params: UseNutrientsControllerParams) => 
     }
 
     return {
-      kCal: (recipe.kCal * 100) / recipe.amount,
+      kCal: recipe.kCalPer100,
       protein: (recipe.macroNutrients.proteins * 100) / recipe.amount,
       fats: (recipe.macroNutrients.fats * 100) / recipe.amount,
       carbs: (recipe.macroNutrients.carbs * 100) / recipe.amount,

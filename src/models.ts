@@ -29,6 +29,7 @@ export interface BaseRecipeModel {
   id: string;
   title: string;
   kCal: number;
+  kCalPer100: number;
   amount: number;
   units: 'ml' | 'g';
   time: number;
