@@ -1,18 +1,19 @@
+import { useNavigate } from 'react-router-dom';
+
 import { Button } from '../common/buttons';
 
 import './ShowArea.style.css';
-// import { useShowAreaController } from './useShowAreaController';
 
 export function ShowArea(): JSX.Element {
-  // const {  } = useShowAreaController();
+  let navigate = useNavigate();
 
   return (
     <div className="showArea-container" >
 
       <div className="showArea-nav">
-        <Button title={'Products'} onClick={() => {}}/>
-        <Button title={'Recipes'} onClick={() => {}}/>
-        <Button title={'Categories'} onClick={() => {}}/>
+        <Button title={'Products'} onClick={() => navigate('/showArea/products')} />
+        <Button title={'Recipes'} onClick={() => navigate('/showArea/recipes')} />
+        <Button title={'Categories'} onClick={() => navigate('/showArea/categories')} />
       </div>
 
     </div>

@@ -8,16 +8,17 @@ import { MainPage } from './components/MainPage';
 import { FileForm } from './components/FileForm';
 import { ImageForm } from './components/ImageForm';
 import { ShowArea } from './components/ShowArea';
+import { RecipesShowArea } from './components/ShowArea/components/RecipesShowArea';
 
 export function App(): JSX.Element {
 
   return (
     <BrowserRouter>
-      <Header/>
+      <Header />
       <Routes>
         <Route
           path="/"
-          element={<MainPage/>}
+          element={<MainPage />}
         />
 
         <Route
@@ -47,7 +48,10 @@ export function App(): JSX.Element {
           path="/showArea"
           element={<ShowArea />}
         />
-
+        <Route
+          path="/showArea/recipes"
+          element={<RecipesShowArea />}
+        />
       </Routes>
 
     </BrowserRouter>
