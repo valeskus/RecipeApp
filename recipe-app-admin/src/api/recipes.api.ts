@@ -8,3 +8,14 @@ export const postRecipe = async (body: RecipePostModel): Promise<{}> => {
 
   return result;
 };
+
+export const getRecipes = async (search: string): Promise<{}> => {
+  const result = await client.get('/search', {
+    params: {
+      search,
+      pageSize: 100,
+    },
+  });
+
+  return result;
+};

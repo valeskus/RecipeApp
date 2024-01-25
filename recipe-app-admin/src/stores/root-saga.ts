@@ -8,6 +8,7 @@ import { watchPostImage } from './addImage';
 import { watchPostInstructionImage } from './addInstructionImage';
 import { watchPostCategory } from './createCategory';
 import { watchPostProduct } from './createProduct';
+import { watchGetRecipes } from './recipes';
 
 export const rootSaga = function* () {
   yield all([
@@ -19,5 +20,6 @@ export const rootSaga = function* () {
     fork(watchGetImages),
     fork(watchPostImage),
     fork(watchPostInstructionImage),
+    fork(watchGetRecipes),
   ]);
 };

@@ -138,3 +138,26 @@ export type ProductsStateType = {
 };
 
 export const PRODUCTS = 'products';
+
+export type BaseRecipeModel = {
+  id: string;
+  title: string;
+  kCal: number;
+  kCalPer100: number;
+  amount: number;
+  units: 'ml' | 'g';
+  time: number;
+  image: string;
+};
+export type RecipeSearchListModel = {
+  recipes: Array<BaseRecipeModel>;
+  total: number;
+};
+
+export type RecipesSearchStateType = {
+  recipesData: RecipeSearchListModel;
+  error: any;
+  isLoading: boolean;
+};
+
+export const RECIPES_SEARCH = 'recipesSearch';
