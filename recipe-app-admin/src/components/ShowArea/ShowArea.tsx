@@ -1,8 +1,10 @@
 import { Button } from '../common/buttons';
+
 import './ShowArea.style.css';
+// import { useShowAreaController } from './useShowAreaController';
 
 export function ShowArea(): JSX.Element {
-//   const { onSend, handleChange, status } = useShowAreaController();
+  // const {  } = useShowAreaController();
 
   return (
     <div className="showArea-container" >

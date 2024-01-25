@@ -6,6 +6,7 @@ import { categoriesSlice } from './categories/categoriesSlice';
 import { rootSaga } from './root-saga';
 import { productsSlice } from './product/productsSlice';
 import { recipesSlice } from './recipe/recipeSlice';
+import { recipesSearchSlice } from './recipes/recipesSearchSlice';
 import { imagesSlice } from './images/imagesSlice';
 import { addImagesSlice } from './addImage';
 import { addInstructionImageSlice } from './addInstructionImage';
@@ -20,6 +21,7 @@ const rootReducer = combineReducers({
   products: productsSlice.reducer,
   createProduct: createProductSlice.reducer,
   recipes: recipesSlice.reducer,
+  recipeSearch: recipesSearchSlice.reducer,
   images: imagesSlice.reducer,
   addImage: addImagesSlice.reducer,
   addInstructionImage: addInstructionImageSlice.reducer,
