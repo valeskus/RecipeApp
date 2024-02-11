@@ -28,7 +28,6 @@ export class RecipeController {
 
     return {
       ...recipe,
-      kCalPer100: Math.round(recipe.kCal * 100 / recipe.amount),
       ingredients: recipe.ingredients.map((item) => ({
         ...item,
         amountPerServing: item.amount / recipe.servingsCount,

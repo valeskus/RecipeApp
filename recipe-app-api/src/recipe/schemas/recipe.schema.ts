@@ -41,6 +41,9 @@ export class Recipe {
     @Prop({ required: true, index: 1 })
     kCal: number;
 
+    @Prop({ required: true, index: 1 })
+    kCalPer100: number;
+
     @Prop({ required: true })
     servingsCount: number;
 
