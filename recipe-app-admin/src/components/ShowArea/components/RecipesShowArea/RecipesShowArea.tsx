@@ -9,6 +9,10 @@ export function RecipesShowArea(): JSX.Element {
 
   return (
     <div className="showArea-container" >
+      {/* <div>
+{categories.map
+}</div> */}
+
       <div className="showArea-input">
         <Input label={'Search:'} type={'string'} placeholder={'Search'} onChange={handleSearchTerm} />
       </div>
