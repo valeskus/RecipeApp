@@ -10,7 +10,6 @@ export const styles = StyleSheet.create({
     borderBottomWidth: 1,
     paddingBottom: 15,
     marginBottom: 15,
-    alignItems: 'baseline',
   },
 
   ingredientsListItemContent: {

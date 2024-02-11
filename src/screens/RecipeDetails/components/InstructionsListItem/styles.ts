@@ -32,9 +32,9 @@ export const styles = StyleSheet.create({
   listItemDot: {
     width: 20,
     height: 20,
-    alignSelf: 'flex-start',
+    marginRight: 5,
+    top: 2,
     tintColor: Colors.primary,
-    marginRight: 10,
   },
   listItemImage: {
     width: '80%',
