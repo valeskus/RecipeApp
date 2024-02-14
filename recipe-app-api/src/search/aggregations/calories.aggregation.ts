@@ -4,7 +4,7 @@ import { RangedFacetAggregation } from './ranged-facet.aggregation';
 
 export class CaloriesAggregation extends RangedFacetAggregation<Calories> {
     public getFilterByField() {
-        return 'kCal';
+        return 'kCalPer100';
     }
 
     public getFacetField() {

@@ -86,6 +86,7 @@ export class RecipeService {
       ...this.translationService.getTranslated({
         _id,
         kCal,
+        kCalPer100: Math.round(kCal * 100 / createRecipeDto.amount),
         macroNutrients: {
           fats,
           carbs,
