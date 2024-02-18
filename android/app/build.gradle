@@ -74,8 +74,8 @@ android {
 
     compileSdkVersion rootProject.ext.compileSdkVersion
 
-    namespace "com.valeskus.recipeApp"
-    defaultConfig {
+    namespace "com.recipeapp"
+        defaultConfig {
         applicationId "com.valeskus.recipeApp"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
