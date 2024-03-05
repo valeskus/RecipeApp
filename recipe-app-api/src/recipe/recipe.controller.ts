@@ -1,10 +1,10 @@
-import { Body, Controller, Get, NotFoundException, Param, Post, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, NotFoundException, Param, Patch, Post, UseGuards } from '@nestjs/common';
 import { ApiOkResponse, ApiOperation, ApiTags } from '@nestjs/swagger';
 
 import { AdminApiGuard } from '../guards/admin-api.guard';
 
 import { RecipeService } from './recipe.service';
-import { CreateRecipeDto, RecipeDto } from './dto';
+import { CreateRecipeDto, RecipeDto, UpdateImageDto } from './dto';
 
 @ApiTags('Recipe')
 @Controller('recipe')
@@ -43,5 +43,19 @@ export class RecipeController {
   })
   async create(@Body() createRecipeDto: CreateRecipeDto): Promise<void> {
     await this.recipeService.create(createRecipeDto);
+  }
+
+  @UseGuards(AdminApiGuard)
+  @Patch(':id/image')
+  @ApiOperation({ summary: 'Update image' })
+  @ApiOkResponse({
+    description: 'Updates the recipe image to the given value'
+  })
+  async updateImage(
+    @Param('id') id: string,
+    @Body() updateImageDto: UpdateImageDto): Promise<string> {
+    const res = await this.recipeService.updateImage(id, updateImageDto);
+
+    return res;
   }
 }
