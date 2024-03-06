@@ -44,8 +44,8 @@ export class RecipeService {
       return;
     }
 
-    recipeUA.updateOne({ image: updateImageDto.image });
-    recipeEN.updateOne({ image: updateImageDto.image });
+    recipeUA.updateOne({ image: updateImageDto.image }).exec();
+    recipeEN.updateOne({ image: updateImageDto.image }).exec();
 
     await recipeUA?.save();
     await recipeEN?.save();
