@@ -1,4 +1,4 @@
-import { BadRequestException, Inject, Injectable } from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model, Types } from 'mongoose';
 import { isMongoId } from 'class-validator';
@@ -32,16 +32,16 @@ export class RecipeService {
     }).findOne({ _id: id }).exec().then((item) => item?.toJSON());
   }
 
-  async updateImage(id: string, updateImageDto: UpdateImageDto): Promise<string> {
+  async updateImage(id: string, updateImageDto: UpdateImageDto): Promise<string | undefined> {
     if (!isMongoId(id)) {
-      throw new BadRequestException('Wrong ID entered');
+      return;
     }
 
     const recipeUA = await this.recipeModelUA.findOne({ _id: id }).exec();
     const recipeEN = await this.recipeModelEN.findOne({ _id: id }).exec();
 
     if (!recipeUA || !recipeEN) {
-      throw new BadRequestException(`Recipe with id ${id} not found!`);
+      return;
     }
 
     recipeUA.updateOne({ image: updateImageDto.image });
@@ -50,7 +50,7 @@ export class RecipeService {
     await recipeUA?.save();
     await recipeEN?.save();
 
-    return Promise.resolve('The image update was successful!');
+    return Promise.resolve(`The recipe image by id:${id} update was successful!`);
   }
 
   async create(createRecipeDto: CreateRecipeDto): Promise<void> {
