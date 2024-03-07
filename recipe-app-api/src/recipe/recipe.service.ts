@@ -11,7 +11,7 @@ import { Product } from '../products/schemas';
 import { Category } from '../categories/schemas';
 
 import { RecipeUA, RecipeEN, Recipe, ShortCategory, Ingredient } from './schemas';
-import { CreateRecipeDto } from './dto';
+import { CreateRecipeDto, UpdateImageDto } from './dto';
 
 @Injectable()
 export class RecipeService {
@@ -30,6 +30,25 @@ export class RecipeService {
       ua: () => this.recipeModelUA,
       en: () => this.recipeModelEN
     }).findOne({ _id: id }).exec().then((item) => item?.toJSON());
+  }
+
+  async updateImage(id: string, updateImageDto: UpdateImageDto): Promise<void> {
+    if (!isMongoId(id)) {
+      throw new Error('Given id is not valid mongo id');
+    }
+
+    const recipeUA = await this.recipeModelUA.findOne({ _id: id }).exec();
+    const recipeEN = await this.recipeModelEN.findOne({ _id: id }).exec();
+
+    if (!recipeUA || !recipeEN) {
+      throw new Error(`Recipe by id:${id} not found!`);
+    }
+
+    recipeUA.updateOne({ image: updateImageDto.image }).exec();
+    recipeEN.updateOne({ image: updateImageDto.image }).exec();
+
+    await recipeUA?.save();
+    await recipeEN?.save();
   }
 
   async create(createRecipeDto: CreateRecipeDto): Promise<void> {
