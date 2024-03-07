@@ -34,7 +34,7 @@ export class RecipeService {
 
   async updateImage(id: string, updateImageDto: UpdateImageDto): Promise<void> {
     if (!isMongoId(id)) {
-      throw new Error('Entered id was wrong!');
+      throw new Error('Given id is not valid mongo id');
     }
 
     const recipeUA = await this.recipeModelUA.findOne({ _id: id }).exec();

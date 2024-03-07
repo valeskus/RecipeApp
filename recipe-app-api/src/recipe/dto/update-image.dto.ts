@@ -6,7 +6,7 @@ import { ApiProperty } from '@nestjs/swagger';
 class UpdateImage {
     @ApiProperty({
         example: 'https://picsum.photos/500/500',
-        description: 'Link to the recipe we want to update',
+        description: 'New image link',
         required: true,
     })
     @IsUrl()
