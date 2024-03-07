@@ -6,6 +6,8 @@ export const styles = StyleSheet.create({
   categoryCardsContainer: {
     width: '100%',
     paddingBottom: 60,
+    paddingHorizontal: 10,
+    paddingTop: 5,
     justifyContent: 'space-between',
     backgroundColor: Colors.background,
   },

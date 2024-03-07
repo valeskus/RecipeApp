@@ -33,6 +33,6 @@ export const styles = StyleSheet.create({
   },
 
   cardPressed: {
-    transform: [{ scale: 0.9 }],
+    transform: [{ scale: 0.96 }],
   },
 });

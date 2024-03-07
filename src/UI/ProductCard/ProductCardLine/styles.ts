@@ -44,7 +44,7 @@ export const styles = StyleSheet.create({
     color: Colors.text,
   },
   cardPressed: {
-    transform: [{ scale: 0.9 }],
+    transform: [{ scale: 0.96 }],
   },
   productCardLineItem: {
     flexDirection: 'row',
