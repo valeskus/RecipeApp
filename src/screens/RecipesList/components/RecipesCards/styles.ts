@@ -13,7 +13,7 @@ export const styles = StyleSheet.create({
     paddingTop: 80,
   },
   centeredLineCard: {
-    paddingHorizontal: '4%',
+    paddingHorizontal: '4.5%',
   },
   loadingIndicator: {
     marginVertical: 18,

@@ -20,7 +20,7 @@ export const styles = StyleSheet.create({
   },
   productCardGridImage: {
     width: '100%',
-    height: 120,
+    height: 130,
     alignSelf: 'center',
     borderTopRightRadius: 20,
     borderTopLeftRadius: 20,
@@ -33,7 +33,7 @@ export const styles = StyleSheet.create({
   },
   productCardDetails: {
     flex: 2,
-    paddingVertical: 10,
+    paddingBottom: 8,
     paddingHorizontal: 8,
   },
   productCardDetailsItem: {

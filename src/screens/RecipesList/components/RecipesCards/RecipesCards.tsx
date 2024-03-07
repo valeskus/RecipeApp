@@ -29,7 +29,7 @@ const getRenderItem =
 
       return params.gridType === 'grid' ? (
         <ProductCardGrid
-          title={item.title}
+          title={item.title.trim()}
           calories={item.kCalPer100}
           caloriesTitle={params.caloriesTitle}
           time={item.time}
@@ -38,7 +38,7 @@ const getRenderItem =
         />
       ) : (
         <ProductCardLine
-          title={item.title}
+          title={item.title.trim()}
           calories={item.kCalPer100}
           caloriesTitle={params.caloriesTitle}
           time={item.time}
