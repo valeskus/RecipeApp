@@ -4,7 +4,7 @@ import { FilterQuery, Model } from 'mongoose';
 import { isMongoId } from 'class-validator';
 
 import { Category } from './schemas';
-import { CreateCategoryDto } from './dto';
+import { CreateCategoryDto, UpdateImageDto } from './dto';
 
 @Injectable()
 export class CategoriesService {
@@ -30,5 +30,21 @@ export class CategoriesService {
     const createdCategory = new this.categoryModel(createCategoryDto);
 
     return createdCategory.save();
+  }
+
+  async updateImage(id: string, updateImageDto: UpdateImageDto): Promise<void> {
+    if (!isMongoId(id)) {
+      throw new Error('Given id is not valid mongo id');
+    }
+
+    const category = await this.categoryModel.findOne({ _id: id }).exec();
+
+    if (!category) {
+      throw new Error(`Category by id:${id} not found!`);
+    }
+
+    category.updateOne({ image: updateImageDto.image }).exec();
+
+    await category?.save();
   }
 }
