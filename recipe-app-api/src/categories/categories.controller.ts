@@ -5,6 +5,7 @@ import {
   Get,
   NotFoundException,
   Param,
+  Patch,
   Post,
   UseGuards
 } from '@nestjs/common';
@@ -18,7 +19,7 @@ import { AdminApiGuard } from '../guards/admin-api.guard';
 import { TranslationContext } from '../translation/translation-context.decorator';
 
 import { CategoriesService } from './categories.service';
-import { CreateCategoryDto, AllCategoriesDto, CategoryDto } from './dto';
+import { CreateCategoryDto, AllCategoriesDto, CategoryDto, UpdateImageDto } from './dto';
 
 @ApiTags('Categories')
 @Controller('categories')
@@ -82,5 +83,22 @@ export class CategoriesController {
     }
 
     await this.categoriesService.create(createCategoryDto);
+  }
+
+  @UseGuards(AdminApiGuard)
+  @Patch(':id/image')
+  @ApiOperation({ summary: 'Update image' })
+  @ApiOkResponse({
+    description: 'Updates the category image to the given value'
+  })
+  async updateImage(
+    @Param('id') id: string,
+    @Body() updateImageDto: UpdateImageDto): Promise<void> {
+    try {
+      await this.categoriesService.updateImage(id, updateImageDto);
+    }
+    catch (error) {
+      throw new BadRequestException(error.message);
+    }
   }
 }
