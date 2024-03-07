@@ -1,0 +1,17 @@
+* {
+    margin: 0;
+}
+
+.card-item-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 5px;
+    margin-top: 5px;
+
+}
+
+.card-item-title {
+    margin-right: 5px;
+    color: #3a3a47
+}
