@@ -27,7 +27,7 @@ export function CategoryCard({
       ]}
     >
       <FastImage source={{ uri: image }} style={styles.categoryCardImage} />
-      <Text style={styles.categoryCardTitle} numberOfLines={3}>{title}</Text>
+      <Text style={styles.categoryCardTitle} numberOfLines={3}>{title.trim()}</Text>
     </Pressable>
   );
 }

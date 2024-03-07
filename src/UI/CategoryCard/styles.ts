@@ -27,6 +27,7 @@ export const styles = StyleSheet.create({
   },
   categoryCardTitle: {
     margin: 6,
+    marginLeft: 12,
     fontSize: 18,
     fontFamily: 'Nunito-Extrabold',
     color: Colors.primary,
