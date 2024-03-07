@@ -63,12 +63,12 @@ export class RecipeController {
   })
   async updateImage(
     @Param('id') id: string,
-    @Body() updateImageDto: UpdateImageDto): Promise<string> {
-    const result = await this.recipeService.updateImage(id, updateImageDto);
-    if (!result) {
-      throw new BadRequestException(`Recipe with id ${id} not found!`);
+    @Body() updateImageDto: UpdateImageDto): Promise<void> {
+    try {
+      await this.recipeService.updateImage(id, updateImageDto);
     }
-
-    return result;
+    catch (error) {
+      throw new BadRequestException(error.message);
+    }
   }
 }

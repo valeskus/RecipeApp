@@ -32,16 +32,16 @@ export class RecipeService {
     }).findOne({ _id: id }).exec().then((item) => item?.toJSON());
   }
 
-  async updateImage(id: string, updateImageDto: UpdateImageDto): Promise<string | undefined> {
+  async updateImage(id: string, updateImageDto: UpdateImageDto): Promise<void> {
     if (!isMongoId(id)) {
-      return;
+      throw new Error('Entered id was wrong!');
     }
 
     const recipeUA = await this.recipeModelUA.findOne({ _id: id }).exec();
     const recipeEN = await this.recipeModelEN.findOne({ _id: id }).exec();
 
     if (!recipeUA || !recipeEN) {
-      return;
+      throw new Error(`Recipe by id:${id} not found!`);
     }
 
     recipeUA.updateOne({ image: updateImageDto.image }).exec();
@@ -49,8 +49,6 @@ export class RecipeService {
 
     await recipeUA?.save();
     await recipeEN?.save();
-
-    return Promise.resolve(`The recipe image by id:${id} update was successful!`);
   }
 
   async create(createRecipeDto: CreateRecipeDto): Promise<void> {
