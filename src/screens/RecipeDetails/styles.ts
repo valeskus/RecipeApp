@@ -13,12 +13,15 @@ export const styles = StyleSheet.create({
     flex: 1,
     zIndex: 5,
   },
-  image: {
+  imageContainer: {
     width: '100%',
     height: 450,
-    resizeMode: 'cover',
     position: 'absolute',
     zIndex: 1,
+  },
+  image: {
+    flex: 1,
+    resizeMode: 'cover',
   },
   detailsContainer: {
     backgroundColor: 'white',
