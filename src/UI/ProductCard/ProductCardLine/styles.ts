@@ -1,5 +1,7 @@
 import { StyleSheet } from 'react-native';
 
+import { normalize } from '@UI/normalize';
+
 import { Colors } from '../../Colors';
 
 export const styles = StyleSheet.create({
@@ -50,8 +52,8 @@ export const styles = StyleSheet.create({
     flexWrap: 'wrap',
   },
   icon: {
-    width: 17,
-    height: 17,
+    width: normalize(17),
+    height: normalize(17),
     marginRight: 3,
   },
   note: {
