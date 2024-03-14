@@ -7,7 +7,7 @@ export function LottieAnimation(): JSX.Element {
   return (
     <LottieView
       style={styles.lottieContainer}
-      source={require('../animationConfigs/snow.json')}
+      source={require('../animationConfigs/spring.json')}
       autoPlay
       loop
       resizeMode="cover"
