@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { Image, Pressable, StyleProp, ViewStyle, Text } from 'react-native';
+import { Pressable, StyleProp, ViewStyle, Text } from 'react-native';
+import FastImage from 'react-native-fast-image';
 
 import { styles } from './styles';
 
@@ -25,7 +26,7 @@ export function CategoryCard({
         pressableStyle,
       ]}
     >
-      <Image source={{ uri: image }} style={styles.categoryCardImage} />
+      <FastImage source={{ uri: image }} style={styles.categoryCardImage} />
       <Text style={styles.categoryCardTitle} numberOfLines={3}>{title}</Text>
     </Pressable>
   );

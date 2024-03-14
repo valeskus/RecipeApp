@@ -1,5 +1,6 @@
 import React from 'react';
-import { Image, Pressable, StyleProp, ViewStyle, Text, View } from 'react-native';
+import { Pressable, StyleProp, ViewStyle, Text, View } from 'react-native';
+import FastImage from 'react-native-fast-image';
 
 import { Icons } from '@UI/Icons';
 import { TimeCounter } from '@UI/TimeCounter';
@@ -35,7 +36,7 @@ export function ProductCardGrid({
         pressableStyle,
       ]}
     >
-      <Image source={{ uri: image }} style={styles.productCardGridImage} />
+      <FastImage source={{ uri: image }} style={styles.productCardGridImage} />
       <View style={styles.productCardDetails}>
         <Text numberOfLines={2} style={styles.productCardTitle}>
           {title}
@@ -45,7 +46,7 @@ export function ProductCardGrid({
             <TimeCounter time={time} />
           </View>
           <View style={styles.productCardDetailsItemBox}>
-            <Image source={Icons.kCal} style={styles.icon} />
+            <FastImage source={Icons.kCal} style={styles.icon} />
             <Text style={styles.productCardDetailsItem} numberOfLines={1}>{calories} {caloriesTitle}</Text>
           </View>
         </View>

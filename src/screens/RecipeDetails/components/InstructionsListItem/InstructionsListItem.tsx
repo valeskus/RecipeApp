@@ -1,6 +1,7 @@
 import React from 'react';
-import { Text, View, Image } from 'react-native';
+import { Text, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
+import FastImage from 'react-native-fast-image';
 
 import { Icons } from '@UI/Icons';
 
@@ -21,10 +22,10 @@ export function InstructionsListItem({
 
   return (
     <View style={styles.ingredientsListItemContainer}>
-      <Image source={Icons.dot} style={styles.listItemDot} />
+      <FastImage source={Icons.dot} style={styles.listItemDot} />
       <View style={styles.listItemContentContainer}>
         <Text style={styles.listItemCount}>{t('recipeDetails.step')} {count}</Text>
-        {image && <Image source={{ uri: image }} style={styles.listItemImage} />}
+        {image && <FastImage source={{ uri: image }} style={styles.listItemImage} />}
         <Text style={styles.listItemDescription}>{description}</Text>
       </View>
     </View>

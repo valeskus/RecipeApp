@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react';
-import { Image, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
+import FastImage from 'react-native-fast-image';
 
 import { Icons } from '@UI/Icons';
 
@@ -22,7 +23,7 @@ export function TimeCounter({ time }: Props): JSX.Element {
   return (
     <View style={styles.timeContainerContainer}>
       <View style={styles.timeContainer}>
-        <Image style={styles.timeIcon} source={Icons.time} />
+        <FastImage style={styles.timeIcon} source={Icons.time} />
 
         {!!formatTime.hours && (<>
           <Text style={styles.time}>{formatTime.hours}</Text>

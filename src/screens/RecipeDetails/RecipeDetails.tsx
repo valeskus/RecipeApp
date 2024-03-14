@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { Animated, Dimensions, StatusBar, Text, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
+import FastImage from 'react-native-fast-image';
 
 import { Tabs } from '@UI/Tabs';
 import { Counter } from '@UI/Counter';
@@ -59,10 +60,11 @@ export function RecipeDetails(): JSX.Element {
     <View style={styles.detailsScreenContainer}>
       <StatusBar backgroundColor="transparent" barStyle="dark-content" translucent={true} />
       <Header scrollYRef={scrollYRef} />
-      <Animated.Image
-        source={{ uri: recipe.image }}
-        style={[styles.image, { transform: [{ scale }] }]}
-      />
+      <Animated.View style={[styles.imageContainer, { transform: [{ scale }] }]}>
+        <FastImage source={{ uri: recipe.image }}
+          style={styles.image}
+        />
+      </Animated.View>
       <Animated.ScrollView
         scrollIndicatorInsets={{ right: 1 }}
         style={styles.detailsScreen}
