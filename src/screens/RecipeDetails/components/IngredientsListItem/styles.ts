@@ -14,7 +14,7 @@ export const styles = StyleSheet.create({
 
   ingredientsListItemContent: {
     flexDirection: 'column',
-    flex: 1,
+    flex: 2,
   },
 
   ingredientsListItemTitle: {
@@ -35,6 +35,12 @@ export const styles = StyleSheet.create({
     color: Colors.text,
     fontSize: 18,
     fontFamily: 'Montserrat-Regular',
+  },
+
+  ingredientsListItemAmountContainer: {
+    flex: 1,
+    display: 'flex',
+    flexDirection: 'row',
   },
 
   ingredientsListItemDot: {

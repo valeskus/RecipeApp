@@ -30,8 +30,11 @@ export function IngredientsListItem({
           </Text>
         )}
       </View>
-      <Text style={styles.ingredientsListItemAmount}>{amount} </Text>
-      <Text style={styles.ingredientsListItemAmount}>{units}</Text>
+      <View style={styles.ingredientsListItemAmountContainer}>
+        <Text style={styles.ingredientsListItemAmount}>{amount} </Text>
+        <Text style={styles.ingredientsListItemAmount}>{units}</Text>
+      </View>
+
     </View>
   );
 }

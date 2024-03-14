@@ -45,6 +45,10 @@ export const useCounterController = (params: UseCounterControllerParams) => {
   }, [params, countValue]);
 
   const onPlusPress = useCallback(() => {
+    if (countValue === 99) {
+      return;
+    }
+
     const nextValue = countValue + 1;
 
     params.onChange(nextValue);
