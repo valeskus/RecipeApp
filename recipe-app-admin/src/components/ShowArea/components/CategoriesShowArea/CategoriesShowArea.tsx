@@ -13,8 +13,8 @@ export function CategoriesShowArea(): JSX.Element {
       </div>
       <div className="showArea-CategoriesList">
         {categories.map((category, index) => {
-          return (<div className="recipe-item" key={index}>
-            <img className="recipe-item-image" src={category.image} />
+          return (<div className="category-item" key={index}>
+            <img className="category-item-image" src={category.image} />
             <div className="card-info">
               <h2>{category.title}</h2>
               <CardItem title="ID" value={category.id} />

@@ -24,7 +24,7 @@
     width: 500px;
 }
 
-.recipe-item {
+.category-item {
     display: flex;
     flex-direction: row;
     margin-left: 10px;
@@ -35,7 +35,7 @@
     width: 500px;
 }
 
-.recipe-item-image {
+.category-item-image {
     width: 200px;
     margin-right: 10px;
     border-radius: 5px;
