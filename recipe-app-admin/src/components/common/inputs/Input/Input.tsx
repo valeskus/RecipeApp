@@ -1,20 +1,20 @@
 import './Input.style.css';
 interface Props {
-  label: string;
+  label?: string;
   value?: string;
   type: string;
   id?: string;
   placeholder: string;
-  onChange: (value: string) => void ;
-  onBlur?: () => void ;
+  onChange: (value: string) => void;
+  onBlur?: () => void;
 }
 export function Input(props: Props): JSX.Element {
   return (
     <div className="input-container">
-      <label className="input-label">{props.label}</label>
+      {props.label && <label className="input-label">{props.label}</label>}
       <input
         onChange={(e) => {
-				  props.onChange(e.target.value);
+          props.onChange(e.target.value);
         }}
         value={props.value}
         type={props.type}

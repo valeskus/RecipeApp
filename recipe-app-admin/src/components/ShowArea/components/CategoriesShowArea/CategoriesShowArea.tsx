@@ -1,10 +1,11 @@
 import { CardItem } from '../CardItem';
+import { TitleEditor } from '../TitleEditor';
 
 import './CategoriesShowArea.style.css';
 import { useCategoriesShowAreaController } from './useCategoriesShowAreaController';
 
 export function CategoriesShowArea(): JSX.Element {
-  const { categories } = useCategoriesShowAreaController();
+  const { categories, updateTitle } = useCategoriesShowAreaController();
 
   return (
     <div className="showArea-container" >
@@ -16,7 +17,7 @@ export function CategoriesShowArea(): JSX.Element {
           return (<div className="category-item" key={index}>
             <img className="category-item-image" src={category.image} />
             <div className="card-info">
-              <h2>{category.title}</h2>
+              < TitleEditor id={category.id} onChange={updateTitle} title={category.title} />
               <CardItem title="ID" value={category.id} />
             </div>
           </div>);
