@@ -1,0 +1,48 @@
+.showArea-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 30px;
+    align-items: center;
+}
+
+.categories-total {
+    font-size: 1.2em;
+    display: flex;
+    justify-content: center;
+}
+
+.showArea-CategoriesList {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.showArea-input {
+    display: flex;
+    width: 500px;
+}
+
+.recipe-item {
+    display: flex;
+    flex-direction: row;
+    margin-left: 10px;
+    padding: 15px;
+    margin: 10px;
+    border-radius: 10px;
+    background-color: #cbc3c86b;
+    width: 500px;
+}
+
+.recipe-item-image {
+    width: 200px;
+    margin-right: 10px;
+    border-radius: 5px;
+}
+
+.card-info {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
