@@ -27,12 +27,13 @@ export const styles = StyleSheet.create({
   },
   categoryCardTitle: {
     margin: 6,
+    marginLeft: 12,
     fontSize: 18,
     fontFamily: 'Nunito-Extrabold',
     color: Colors.primary,
   },
 
   cardPressed: {
-    transform: [{ scale: 0.9 }],
+    transform: [{ scale: 0.96 }],
   },
 });

@@ -60,7 +60,7 @@ export const styles = StyleSheet.create({
     top: 0,
   },
   searchPress: {
-    transform: [{ scale: 0.9 }],
+    transform: [{ scale: 0.96 }],
   },
   placeholder: {
     color: Colors.borderTextSecondary,

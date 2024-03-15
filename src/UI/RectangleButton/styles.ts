@@ -10,7 +10,7 @@ export const styles = StyleSheet.create({
   },
 
   pressed: {
-    transform: [{ scale: 0.9 }],
+    transform: [{ scale: 0.96 }],
   },
 
   button: {

@@ -4,6 +4,8 @@ export const styles = StyleSheet.create({
   recipesCardsContainer: {
     width: '100%',
     paddingBottom: 100,
+    paddingHorizontal: 10,
+    paddingTop: 5,
     justifyContent: 'space-between',
   },
   offset: {
@@ -11,8 +13,7 @@ export const styles = StyleSheet.create({
     paddingTop: 80,
   },
   centeredLineCard: {
-    justifyContent: 'center',
-    paddingHorizontal: '2%',
+    paddingHorizontal: '4.5%',
   },
   loadingIndicator: {
     marginVertical: 18,

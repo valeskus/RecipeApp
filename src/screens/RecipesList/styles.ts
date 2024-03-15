@@ -5,7 +5,6 @@ import { Colors } from '@UI/Colors';
 export const styles = StyleSheet.create({
   recipesScreenContainer: {
     flex: 1,
-    paddingHorizontal: 10,
     flexDirection: 'column',
     backgroundColor: Colors.background,
   },
@@ -19,6 +18,7 @@ export const styles = StyleSheet.create({
     borderBottomStartRadius: 30,
     zIndex: 10,
     alignItems: 'center',
+    paddingHorizontal: 10,
   },
   blurContainer: {
     width: '100%',

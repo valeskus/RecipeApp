@@ -31,6 +31,6 @@ export const styles = StyleSheet.create({
     position: 'absolute',
   },
   buttonPressed: {
-    transform: [{ scale: 0.9 }],
+    transform: [{ scale: 0.96 }],
   },
 });
