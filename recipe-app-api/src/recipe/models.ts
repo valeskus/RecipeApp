@@ -8,3 +8,8 @@ export enum Units {
     ML = 'ml',
     G = 'g'
 }
+
+export enum TagsUpdateStrategy {
+    'replace' = 'replace',
+    'merge' = 'merge'
+}

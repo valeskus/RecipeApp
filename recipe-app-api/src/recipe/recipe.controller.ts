@@ -14,7 +14,7 @@ import { ApiOkResponse, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { AdminApiGuard } from '../guards/admin-api.guard';
 
 import { RecipeService } from './recipe.service';
-import { CreateRecipeDto, RecipeDto, UpdateImageDto } from './dto';
+import { CreateRecipeDto, RecipeDto, UpdateImageDto, UpdateTagsDto } from './dto';
 
 @ApiTags('Recipe')
 @Controller('recipe')
@@ -52,7 +52,11 @@ export class RecipeController {
     description: 'Creates a recipe by given fields',
   })
   async create(@Body() createRecipeDto: CreateRecipeDto): Promise<void> {
-    await this.recipeService.create(createRecipeDto);
+    try {
+      await this.recipeService.create(createRecipeDto);
+    } catch (error) {
+      throw new BadRequestException(error.message, { cause: error });
+    }
   }
 
   @UseGuards(AdminApiGuard)
@@ -69,6 +73,22 @@ export class RecipeController {
     }
     catch (error) {
       throw new BadRequestException(error.message);
+    }
+  }
+
+  @UseGuards(AdminApiGuard)
+  @Patch(':id/tags')
+  @ApiOperation({ summary: 'Update tags' })
+  @ApiOkResponse({
+    description: 'Updates the recipe tags'
+  })
+  async updateTags(
+    @Param('id') id: string,
+    @Body() updateTagsDto: UpdateTagsDto): Promise<void> {
+    try {
+      await this.recipeService.updateTags(id, updateTagsDto);
+    } catch (error) {
+      throw new BadRequestException(error.message, { cause: error });
     }
   }
 }

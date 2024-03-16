@@ -59,6 +59,7 @@ export class SearchAggregation extends Array<PipelineStage> {
                 $match: {
                     $or: [
                         { $text: { $search: `"${inputFilters.search}"` } },
+                        { tags: { $in: [inputFilters.search] } },
                         // If no matches found, proceed partial match for the beginning of the title
                         { title: new RegExp(`^${inputFilters.search}`, 'ig') },
                     ],
