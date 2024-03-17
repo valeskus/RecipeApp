@@ -35,14 +35,9 @@
     width: 500px;
 }
 
-.category-item-image {
-    width: 200px;
-    margin-right: 10px;
-    border-radius: 5px;
-}
-
 .card-info {
     display: flex;
     flex-direction: column;
     width: 100%;
 }
+

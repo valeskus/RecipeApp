@@ -22,12 +22,24 @@ export const useCategoriesShowAreaController = () => {
       return;
     }
 
-    console.log(currentCategory, newTitle);
+    //TODO logic and endpoint
+
+  }, [categories]);
+
+  const updateImage = useCallback((id: string, newImage: string) => {
+    const currentCategory = categories.find((category) => category.id === id);
+
+    if (currentCategory?.image === newImage) {
+      return;
+    }
+
+    //TODO logic
 
   }, [categories]);
 
   return {
     categories,
     updateTitle,
+    updateImage,
   };
 };

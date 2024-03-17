@@ -1,0 +1,25 @@
+.card-image-change{
+    position: absolute;
+    bottom:0
+}
+
+.image-edit{
+    display: flex;
+    position: absolute;
+    left: 147px;
+    top: 0;
+    background-color: #f2f5f7a1;
+    border-radius: 5px;
+}
+
+.image-edit-container{
+    display: flex;
+    position: relative;
+    border-radius: 5px;
+}
+
+.item-image {
+    width: 200px;
+    margin-right: 10px;
+    border-radius: 5px;
+}

@@ -161,3 +161,15 @@ export type RecipesSearchStateType = {
 };
 
 export const RECIPES_SEARCH = 'recipesSearch';
+
+export type ImageUpdateModel = {
+  image: string;
+};
+
+export type UpdateImageStateType = {
+  status: string | number;
+  error: any;
+  isLoading: boolean;
+};
+
+export const IMAGE_UPDATE = 'image_update';

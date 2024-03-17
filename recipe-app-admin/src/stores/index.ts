@@ -12,6 +12,7 @@ import { addImagesSlice } from './addImage';
 import { addInstructionImageSlice } from './addInstructionImage';
 import { createCategorySlice } from './createCategory';
 import { createProductSlice } from './createProduct';
+import { editCategoryImageSlice } from './editCategoryImage/editCategoryImageSlice';
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -25,7 +26,7 @@ const rootReducer = combineReducers({
   images: imagesSlice.reducer,
   addImage: addImagesSlice.reducer,
   addInstructionImage: addInstructionImageSlice.reducer,
-
+  editCategoryImage: editCategoryImageSlice.reducer,
 });
 
 export const store = configureStore({ reducer: rootReducer, middleware: [sagaMiddleware] });
