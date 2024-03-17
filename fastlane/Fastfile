@@ -1,0 +1,17 @@
+platform :ios do
+  desc 'To be used from developer`s machine to download certificates'
+  lane :download_certificates_and_profiles do |options|
+    username = options[:username] || prompt(text: 'Enter your AppleID: ')
+
+    match(
+      type: 'development',
+      readonly: true,
+      username: username
+    )
+    match(
+      type: 'appstore',
+      readonly: true,
+      username: username
+    )
+  end
+end
