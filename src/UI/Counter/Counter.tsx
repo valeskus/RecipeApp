@@ -35,7 +35,7 @@ export function Counter(props: Props): JSX.Element {
         value={countValue}
         maxLength={2}
         inputMode={'numeric'}
-        returnKeyType={ 'done' }
+        returnKeyType={'done'}
       />
       <Pressable
         style={({ pressed }) => [styles.button, pressed && styles.buttonPressed]}
