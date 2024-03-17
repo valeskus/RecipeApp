@@ -5,6 +5,8 @@ import {
     IsPositive,
     IsUrl,
     IsEnum,
+    IsArray,
+    ArrayMinSize,
 } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 
@@ -29,6 +31,17 @@ class TranslatableRecipeItems {
     @IsNotEmpty()
     @IsString()
     readonly description: string;
+
+    @ApiProperty({
+        example: ['cheese', 'crepe', 'yeast'],
+        description: 'Keywords associated with the recipe',
+        required: true,
+    })
+    @IsArray()
+    @IsNotEmpty({ each: true })
+    @IsString({ each: true })
+    @ArrayMinSize(1)
+    readonly tags: Array<string>;
 }
 
 export class RecipeDataObject extends TranslationsDtoOf(TranslatableRecipeItems) {

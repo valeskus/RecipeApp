@@ -12,7 +12,7 @@ class Search {
     })
     @Transform(({ value }) => {
         // If all characters are filtered out, force the application to return an empty search result
-        return String(value || '').replace(/[^\p{Letter}\s\d\-\/]/ug, '').trim() || '^$';
+        return String(value || '').replace(/[^\p{Letter}\s\d\-\\'/]/ug, '').trim() || '^$';
     })
     @IsDefined()
     readonly search: string;

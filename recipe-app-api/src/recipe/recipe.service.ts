@@ -11,7 +11,7 @@ import { Product } from '../products/schemas';
 import { Category } from '../categories/schemas';
 
 import { RecipeUA, RecipeEN, Recipe, ShortCategory, Ingredient } from './schemas';
-import { CreateRecipeDto, UpdateImageDto } from './dto';
+import { CreateRecipeDto, UpdateImageDto, UpdateTagsDto } from './dto';
 
 @Injectable()
 export class RecipeService {
@@ -34,7 +34,7 @@ export class RecipeService {
 
   async updateImage(id: string, updateImageDto: UpdateImageDto): Promise<void> {
     if (!isMongoId(id)) {
-      throw new Error('Given id is not valid mongo id');
+      throw new Error(`Given id ${id} is not valid mongo id`);
     }
 
     const recipeUA = await this.recipeModelUA.findOne({ _id: id }).exec();
@@ -47,11 +47,55 @@ export class RecipeService {
     recipeUA.updateOne({ image: updateImageDto.image }).exec();
     recipeEN.updateOne({ image: updateImageDto.image }).exec();
 
-    await recipeUA?.save();
-    await recipeEN?.save();
+    await recipeUA.save();
+    await recipeEN.save();
+  }
+
+  async updateTags(id: string, updateTagsDto: UpdateTagsDto): Promise<void> {
+    if (!isMongoId(id)) {
+      throw new Error(`Given id ${id} is not valid mongo id`);
+    }
+
+    const recipe = await this.translationService.forCurrentLanguage({
+      ua: () => this.recipeModelUA,
+      en: () => this.recipeModelEN
+    }).findOne({ _id: id }).exec();
+
+    if (!recipe) {
+      throw new Error(`Recipe by id:${id} not found!`);
+    }
+
+    switch (updateTagsDto.strategy) {
+      case 'replace': {
+        recipe
+          .updateOne({ tags: updateTagsDto.tags })
+          .exec();
+        break;
+      }
+
+      case 'merge': {
+        recipe
+          .updateOne({
+            tags: [
+              ...new Set([...updateTagsDto.tags, ...recipe.tags])]
+          })
+          .exec();
+        break;
+      }
+    }
+
+    await recipe.save();
   }
 
   async create(createRecipeDto: CreateRecipeDto): Promise<void> {
+    if (await this.recipeModelUA.findOne({ title: createRecipeDto.translations.ua.title }).exec()) {
+      throw new Error(`Recipe with title ${createRecipeDto.translations.ua.title} already exists`);
+    }
+
+    if (await this.recipeModelEN.findOne({ title: createRecipeDto.title }).exec()) {
+      throw new Error(`Recipe with title ${createRecipeDto.title} already exists`);
+    }
+
     const categories: Array<ShortCategory & Pick<Category, 'translations'>> = [];
     for (const categoryId of createRecipeDto.categories) {
       const category = await this.categoriesService.findOneById(categoryId);

@@ -52,6 +52,9 @@ export class Recipe {
 
     @Prop({ required: true, index: 1 })
     difficulty: Difficulty;
+
+    @Prop({ required: true, index: 1 })
+    tags: Array<string>;
 }
 
 const schemaOptions: SchemaOptions = {
