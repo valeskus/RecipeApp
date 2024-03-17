@@ -2,7 +2,8 @@ import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { AxiosError } from 'axios';
 
-import { IMAGE_UPDATE, ImageUpdateModel, UpdateImageStateType } from '../types';
+import { IMAGE_UPDATE, UpdateImageStateType } from '../types';
+import { ImageModel } from '../../models';
 
 const updateCategoryImageInitialState: UpdateImageStateType = {
   status: '',
@@ -14,7 +15,7 @@ export const editCategoryImageSlice = createSlice({
   name: IMAGE_UPDATE,
   initialState: updateCategoryImageInitialState,
   reducers: {
-    patchCategoryImage: (state: UpdateImageStateType, {}: PayloadAction<ImageUpdateModel>) => {
+    patchCategoryImage: (state: UpdateImageStateType, {}: PayloadAction<ImageModel>) => {
       state.isLoading = true;
       state.error = '';
     },

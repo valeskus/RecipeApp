@@ -2,6 +2,7 @@ import { useCallback, useEffect } from 'react';
 import * as Redux from 'react-redux';
 
 import { useCategoriesStore, useGetCategories } from '../../../../stores/categories';
+import { patchCategoryImage } from '../../../../stores/editCategoryImage/editCategoryImageSlice';
 
 export const useCategoriesShowAreaController = () => {
 
@@ -32,6 +33,8 @@ export const useCategoriesShowAreaController = () => {
     if (currentCategory?.image === newImage) {
       return;
     }
+
+    patchCategoryImage({ id, url: newImage });
 
     //TODO logic
 
