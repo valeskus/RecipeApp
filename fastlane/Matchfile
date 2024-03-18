@@ -1,0 +1,7 @@
+git_url("https://github.com/valeskus/internal-storage.git")
+storage_mode("git")
+git_branch("recipes-hub/match")
+shallow_clone(true)
+
+app_identifier(["com.valeskus.recipes-hub", "com.valeskus.recipes-hub.dev"])
+type("development")
