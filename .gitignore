@@ -64,3 +64,10 @@ yarn-error.log
 
 # testing
 /coverage
+
+derived_data
+.sentryclirc
+build.xcarchive
+auth_transporter.p8
+auth_play_store.json
+modules.json
