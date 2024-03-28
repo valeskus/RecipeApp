@@ -54,7 +54,14 @@ module.exports = {
         'jpeg',
         'firebase',
         'cors',
-        'uk'
+        'uk',
+        'mongodump',
+        'mongorestore',
+        'gzip',
+        'gz',
+        'ns',
+        'argv',
+        'mjs'
       ]
     }],
     'no-extra-semi': 'error',

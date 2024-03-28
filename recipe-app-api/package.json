@@ -7,6 +7,8 @@
   "license": "MIT",
   "scripts": {
     "build": "nest build",
+    "dump:staging": "APP_ENV=admin.staging node cli/dump.mjs",
+    "restore:production": "APP_ENV=admin.production node cli/restore.mjs",
     "start:admin:staging": "API_ENV=admin APP_ENV=admin.staging nest start --watch",
     "start:admin:production": "API_ENV=admin APP_ENV=admin.production nest start --watch",
     "firebase:copy-env:staging": "cp ./env/.staging.env .env.staging",
