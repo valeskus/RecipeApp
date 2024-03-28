@@ -1,4 +1,97 @@
+lane :get_app_version do
+  sh("npm pkg get version | tr -d '\"' | tr -d '\n'")
+end
+
+platform :android do
+  lane :bump_version do
+    version = get_app_version
+    path = "#{ENV['PWD']}/android/app/build.gradle"
+
+    android_set_version_code(
+      gradle_file: path,
+      version_code: Time.now.strftime('%s').to_s
+    )
+    android_set_version_name(
+      gradle_file: path,
+      version_name: version
+    )
+  end
+
+  lane :build_release do
+    password = prompt(text: 'Enter keystore universal password: ')
+    bump_version
+    ENV['APP_ENV'] = 'production'
+    sh('yarn install --production')
+    gradle(
+      task: 'bundle',
+      build_type: 'Release',
+      flavor: 'Production',
+      project_dir: "#{ENV['PWD']}/android/",
+      properties: {
+        'storeFile' => 'release.keystore',
+        'keyAlias' => 'android',
+        'keyPassword' => password,
+        'storePassword' => password
+      }
+    )
+  end
+
+  lane :upload_play_store do
+    upload_to_play_store(
+      track: 'internal',
+      release_status: 'draft',
+      package_name: 'com.valeskus.recipes_hub',
+      aab: "#{ENV['PWD']}/android/app/build/outputs/bundle/productionRelease/app-production-release.aab",
+      json_key: "#{ENV['PWD']}/auth_play_store.json"
+    )
+  end
+end
+
 platform :ios do
+  lane :bump_version do
+    version = get_app_version
+    path = "#{ENV['PWD']}/ios/RecipeApp/Info.plist"
+    set_info_plist_value(path: path, key: 'CFBundleVersion', value: Time.now.strftime('%s'))
+    set_info_plist_value(path: path, key: 'CFBundleShortVersionString', value: version)
+  end 
+
+  lane :build_release do
+    unlock_keychain
+    bump_version
+    ENV['APP_ENV'] = 'production'
+    sh('yarn install --production')
+    cocoapods(
+      deployment: true,
+      podfile: "#{ENV['PWD']}/ios/Podfile"
+    )
+    match(
+      type: 'appstore',
+      app_identifier: 'com.valeskus.recipes-hub',
+      readonly: true
+    )
+    build_app(
+      configuration: 'Release',
+      export_method: 'app-store'
+    )
+  end
+
+  lane :upload_test_flight do
+    api_key = app_store_connect_api_key(
+      key_id: 'CJ93RY9M68',
+      issuer_id: '03ae0a28-fa93-4296-84f0-e9b6a16c3a3b',
+      key_filepath: "#{ENV['PWD']}/auth_transporter.p8",
+      duration: 1200,
+      in_house: false
+    )
+    
+    upload_to_testflight(
+      api_key: api_key,
+      skip_submission: true,
+      ipa: './ios/build/RecipeApp.ipa',
+      skip_waiting_for_build_processing: true
+    )
+  end
+
   desc 'To be used from developer`s machine to download certificates'
   lane :download_certificates_and_profiles do |options|
     username = options[:username] || prompt(text: 'Enter your AppleID: ')

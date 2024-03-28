@@ -1,0 +1,16 @@
+# For more information about this configuration visit
+# https://docs.fastlane.tools/actions/gym/#gymfile
+
+# In general, you can use the options available
+# fastlane gym --help
+
+scheme("RecipeApp")
+workspace("#{ENV["PWD"]}/ios/RecipeApp.xcworkspace")
+output_directory("#{ENV["PWD"]}/ios/build")
+buildlog_path("#{ENV["PWD"]}/ios/build")
+suppress_xcode_output(true)
+clean(true)
+archive_path("./ios/build")
+skip_profile_detection(true)
+derived_data_path("#{ENV["PWD"]}/ios/derived_data")
+destination('generic/platform=iOS')

@@ -72,7 +72,6 @@ def keystorePropertiesFile = rootProject.file("keystore.properties");
 def keystoreProperties = new Properties();
 keystoreProperties.load(new FileInputStream(keystorePropertiesFile));
 
-apply from: new File(["node", "--print", "require.resolve('@sentry/react-native/package.json')"].execute().text.trim(), "../sentry.gradle")
 android {
     flavorDimensions "default"
     ndkVersion rootProject.ext.ndkVersion
@@ -84,8 +83,8 @@ android {
         applicationId "com.valeskus.recipes_hub"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
+        versionCode 1711300757
+        versionName "0.0.1"
     }
     signingConfigs {
         debug {
@@ -95,10 +94,10 @@ android {
             keyPassword 'android'
         }
         release {
-            keyAlias keystoreProperties['keyAlias']
-            keyPassword keystoreProperties['keyPassword']
-            storeFile file(keystoreProperties['storeFile'])
-            storePassword keystoreProperties['storePassword']
+            keyAlias project.keyAlias
+            keyPassword project.keyPassword
+            storeFile file(project.storeFile)
+            storePassword project.storePassword
         }
     }
     buildTypes {

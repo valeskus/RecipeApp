@@ -13,7 +13,71 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 # Available Actions
 
+### get_app_version
+
+```sh
+[bundle exec] fastlane get_app_version
+```
+
+
+
+----
+
+
+## Android
+
+### android bump_version
+
+```sh
+[bundle exec] fastlane android bump_version
+```
+
+
+
+### android build_release
+
+```sh
+[bundle exec] fastlane android build_release
+```
+
+
+
+### android upload_play_store
+
+```sh
+[bundle exec] fastlane android upload_play_store
+```
+
+
+
+----
+
+
 ## iOS
+
+### ios bump_version
+
+```sh
+[bundle exec] fastlane ios bump_version
+```
+
+
+
+### ios build_release
+
+```sh
+[bundle exec] fastlane ios build_release
+```
+
+
+
+### ios upload_test_flight
+
+```sh
+[bundle exec] fastlane ios upload_test_flight
+```
+
+
 
 ### ios download_certificates_and_profiles
 
