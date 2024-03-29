@@ -1,6 +1,6 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Provider } from 'react-redux';
-import { Platform, StatusBar, UIManager } from 'react-native';
+import { Platform, SafeAreaView, StatusBar, UIManager } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { useTranslation } from 'react-i18next';
@@ -24,6 +24,7 @@ import { Sort } from './screens/Sort';
 import { RecipeDetails } from './screens/RecipeDetails';
 import { Settings } from './screens/Settings';
 import { AppStartSkeleton } from './AppStartSkeleton';
+import { styles } from './styles';
 
 if (
   Platform.OS === 'android' &&
@@ -51,30 +52,34 @@ declare global {
 }
 
 export function App(): JSX.Element {
-  const [init, setInit] = useState<boolean>(false);
+  const [isRequiredDataInitialized, setIsRequiredDataInitialized] = useState<boolean>(false);
   const { t } = useTranslation();
 
-  const languageInit = useCallback(async () => {
-    await LanguageManager.initLanguage();
-    setInit(true);
-  }, [LanguageManager.initLanguage]);
-
   useEffect(() => {
-    if (init) {
+    if (isRequiredDataInitialized) {
       SplashScreen.hide();
       EventService.emit('app:start');
 
       return;
     }
 
-    languageInit();
-  }, [init]);
+    LanguageManager.initLanguage().then(() => setIsRequiredDataInitialized(true));
+
+  }, [isRequiredDataInitialized]);
+
+  if (!isRequiredDataInitialized) {
+    return (
+      <SafeAreaView style={styles.appStartSkeletonContainer}>
+        <StatusBar backgroundColor="transparent" barStyle="dark-content" translucent />
+        <AppStartSkeleton />
+      </SafeAreaView>
+    );
+  }
 
   return (
     <Provider store={store}>
       <StatusBar backgroundColor="transparent" barStyle="dark-content" translucent />
-      {!init && <AppStartSkeleton />}
-      {init && (<NavigationContainer>
+      {isRequiredDataInitialized && (<NavigationContainer>
         <Stack.Navigator screenOptions={{
           cardStyle: {
             backgroundColor: Colors.background,
