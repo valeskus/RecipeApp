@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { Provider } from 'react-redux';
 import { Platform, StatusBar, UIManager } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
@@ -23,6 +23,7 @@ import { Filter, ClearButton } from './screens/Filter';
 import { Sort } from './screens/Sort';
 import { RecipeDetails } from './screens/RecipeDetails';
 import { Settings } from './screens/Settings';
+import { AppStartSkeleton } from './AppStartSkeleton';
 
 if (
   Platform.OS === 'android' &&
@@ -50,18 +51,30 @@ declare global {
 }
 
 export function App(): JSX.Element {
+  const [init, setInit] = useState<boolean>(false);
   const { t } = useTranslation();
 
+  const languageInit = useCallback(async () => {
+    await LanguageManager.initLanguage();
+    setInit(true);
+  }, [LanguageManager.initLanguage]);
+
   useEffect(() => {
-    LanguageManager.initLanguage();
-    SplashScreen.hide();
-    EventService.emit('app:start');
-  }, []);
+    if (init) {
+      SplashScreen.hide();
+      EventService.emit('app:start');
+
+      return;
+    }
+
+    languageInit();
+  }, [init]);
 
   return (
     <Provider store={store}>
       <StatusBar backgroundColor="transparent" barStyle="dark-content" translucent />
-      <NavigationContainer>
+      {!init && <AppStartSkeleton />}
+      {init && (<NavigationContainer>
         <Stack.Navigator screenOptions={{
           cardStyle: {
             backgroundColor: Colors.background,
@@ -140,7 +153,7 @@ export function App(): JSX.Element {
             options={{ headerShown: false }}
           />
         </Stack.Navigator >
-      </NavigationContainer >
+      </NavigationContainer >)}
     </Provider >
   );
 }
