@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Provider } from 'react-redux';
-import { Platform, StatusBar, UIManager } from 'react-native';
+import { Platform, SafeAreaView, StatusBar, UIManager } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { useTranslation } from 'react-i18next';
@@ -23,6 +23,8 @@ import { Filter, ClearButton } from './screens/Filter';
 import { Sort } from './screens/Sort';
 import { RecipeDetails } from './screens/RecipeDetails';
 import { Settings } from './screens/Settings';
+import { AppStartSkeleton } from './AppStartSkeleton';
+import { styles } from './styles';
 
 if (
   Platform.OS === 'android' &&
@@ -50,13 +52,24 @@ declare global {
 }
 
 export function App(): JSX.Element {
+  const [isRequiredDataInitialized, setIsRequiredDataInitialized] = useState<boolean>(false);
   const { t } = useTranslation();
 
   useEffect(() => {
-    LanguageManager.initLanguage();
     SplashScreen.hide();
     EventService.emit('app:start');
+
+    LanguageManager.initLanguage().then(() => setIsRequiredDataInitialized(true));
   }, []);
+
+  if (!isRequiredDataInitialized) {
+    return (
+      <SafeAreaView style={styles.appStartSkeletonContainer}>
+        <StatusBar backgroundColor="transparent" barStyle="dark-content" translucent />
+        <AppStartSkeleton />
+      </SafeAreaView>
+    );
+  }
 
   return (
     <Provider store={store}>
