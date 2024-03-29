@@ -31,7 +31,7 @@ export const useSearchController = (params: SearchControllerParams) => {
       return;
     }
 
-    if (pendingSearchTerm === searchTerm) {
+    if (pendingSearchTerm.toLowerCase() === searchTerm.toLowerCase()) {
       return;
     }
 
