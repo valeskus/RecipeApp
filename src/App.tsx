@@ -58,12 +58,9 @@ export function App(): JSX.Element {
   useEffect(() => {
     SplashScreen.hide();
     EventService.emit('app:start');
-  }, []);
-
-  useEffect(() => {
     LanguageManager.initLanguage().then(() => setIsRequiredDataInitialized(true));
 
-  }, [isRequiredDataInitialized]);
+  }, []);
 
   if (!isRequiredDataInitialized) {
     return (
