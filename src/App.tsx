@@ -56,13 +56,11 @@ export function App(): JSX.Element {
   const { t } = useTranslation();
 
   useEffect(() => {
-    if (isRequiredDataInitialized) {
-      SplashScreen.hide();
-      EventService.emit('app:start');
+    SplashScreen.hide();
+    EventService.emit('app:start');
+  }, []);
 
-      return;
-    }
-
+  useEffect(() => {
     LanguageManager.initLanguage().then(() => setIsRequiredDataInitialized(true));
 
   }, [isRequiredDataInitialized]);
@@ -79,7 +77,7 @@ export function App(): JSX.Element {
   return (
     <Provider store={store}>
       <StatusBar backgroundColor="transparent" barStyle="dark-content" translucent />
-      {isRequiredDataInitialized && (<NavigationContainer>
+      <NavigationContainer>
         <Stack.Navigator screenOptions={{
           cardStyle: {
             backgroundColor: Colors.background,
@@ -158,7 +156,7 @@ export function App(): JSX.Element {
             options={{ headerShown: false }}
           />
         </Stack.Navigator >
-      </NavigationContainer >)}
+      </NavigationContainer >
     </Provider >
   );
 }
