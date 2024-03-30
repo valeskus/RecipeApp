@@ -1,0 +1,17 @@
+config:
+  target: "https://recipe-hub-app-api-24e50b540ed7.herokuapp.com"
+  phases:
+    - duration: 120
+      arrivalRate: 40
+    - duration: 120
+      arrivalRate: 40
+    - duration: 120
+      arrivalRate: 40
+scenarios:
+  - flow:
+      - get:
+          url: "/categories"
+      - get:
+          url: "/recipe/6581d8222b36399860155b54"
+      - get:
+          url: "/search?search=meat"
