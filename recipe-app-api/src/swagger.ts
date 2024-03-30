@@ -1,6 +1,3 @@
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-require('dotenv').config({ path: `./env/.${process.env.APP_ENV}.env` });
-
 import * as path from 'path';
 import { readFileSync, writeFileSync } from 'fs';
 
@@ -31,9 +28,8 @@ async function run() {
 
   const content = contentRaw.toString().replace(/var spec = {.*}/g, 'var spec = ' + JSON.stringify(document));
   writeFileSync(htmlFile, content, { encoding: 'utf8' });
-  app.enableCors();
 
-  await app.listen(3000);
+  await app.close();
 }
 
 run();

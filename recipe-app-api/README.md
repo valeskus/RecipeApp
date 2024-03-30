@@ -15,8 +15,7 @@ yarn start:admin:staging
 
 # Swagger
 
-Swagger runs upon `yarn start:dev`.\
-The URL is `http://localhost:3000/api`
+Swagger builds upon `yarn swagger`.
 
 # Environments
 
@@ -28,31 +27,22 @@ Each database can be accessed via the dedicated credentials, provided in `.env` 
 
 # Deployment
 
-This project uses [Firebase Cloud Functions](https://firebase.google.com/docs/functions) as a deployment platform
+This project uses Heroku as a deployment platform
 
-* Install dependencies
+* build a release candidate
 ```bash
-yarn install
+yarn deployment:build
 ```
 
-* Create `.env` file in the root directory
-* Populate the env file with production variables (see `env/.sample.env` for the list of variables to be defined)
-* Login to Firebase and follow the instructions
+* verify the release candidate by running it in docker
 ```bash
-./node_modules/.bin/firebase login
+ docker run -d --restart=always -p 3000:3000 registry.heroku.com/recipe-hub-app-api/web:latest
 ```
 
-* Verify the future deployment by running the command
+* release
 ```bash
-yarn firebase:dry-run:{env}
-```
-**NOTE: You should see no errors in the console otherwise consider the deployment candidate is broken**
-
-**NOTE: Firebase CLI provides a local URL which should be used for verification of the deployment candidate**
-
-* Deploy
-```bash
-yarn firebase:deploy:{env}
+yarn deployment:release
 ```
 
-**NOTE: You should see no errors in the console otherwise consider the deployment has failed**
+* check the host\
+https://recipe-hub-app-api-24e50b540ed7.herokuapp.com
