@@ -14,7 +14,7 @@ export const useFilterController = () => {
   const searchOptions = SearchStore.useSearchStore();
   const onFilterChange = useCallback(
     (filterName: string, value: string) => {
-      const searchOptionsFilters = searchOptions.filter.filter((item) => item.key !== filterName);
+      const searchOptionsFilters = searchOptions.options.filter.filter((item) => item.key !== filterName);
 
       if (!value) {
         setSearchOptions({
@@ -31,7 +31,7 @@ export const useFilterController = () => {
       });
 
     },
-    [searchOptions.filter],
+    [searchOptions.options.filter],
   );
 
   const onSelectPress = () => {

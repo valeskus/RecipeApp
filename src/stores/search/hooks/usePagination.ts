@@ -12,7 +12,7 @@ const PAGE_SIZE = 10;
 export const usePagination = () => {
   const dispatch = Redux.useDispatch();
   const { recipes, total } = RecipesStore.useRecipesStore();
-  const { offset } = useSearchStore();
+  const { pendingOptions } = useSearchStore();
 
   return React.useCallback(
     () => {
@@ -21,8 +21,8 @@ export const usePagination = () => {
         return;
       }
 
-      setSearchOptions({ offset: offset + PAGE_SIZE }, dispatch);
+      setSearchOptions({ offset: pendingOptions.offset + PAGE_SIZE }, dispatch);
     },
-    [dispatch, recipes, total, offset],
+    [dispatch, recipes, total, pendingOptions.offset],
   );
 };

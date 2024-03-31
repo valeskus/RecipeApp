@@ -32,26 +32,26 @@ export const useRecipeListController = () => {
   useEffect(() => {
     setLoading(true);
 
-    Promise.all([getRecipes(searchOptions), getCardType()])
+    Promise.all([getRecipes({ searchTerm: searchOptions.searchTerm, ...searchOptions.pendingOptions }), getCardType()])
       .then(() => setLoading(false));
-  }, [searchOptions.sort, searchOptions.searchTerm]);
+  }, [searchOptions.pendingOptions.sort, searchOptions.searchTerm]);
 
   useEffect(() => {
     if (!recipes.length) {
       return;
     }
 
-    updateFilter(searchOptions);
-  }, [searchOptions.filter]);
+    updateFilter({ searchTerm: searchOptions.searchTerm, ...searchOptions.pendingOptions });
+  }, [searchOptions.pendingOptions.filter]);
 
   useEffect(() => {
-    if (!searchOptions.offset) {
+    if (!searchOptions.pendingOptions.offset) {
       return;
     }
 
-    getRecipes(searchOptions);
+    getRecipes({ searchTerm: searchOptions.searchTerm, ...searchOptions.pendingOptions });
 
-  }, [searchOptions.offset]);
+  }, [searchOptions.pendingOptions.offset]);
 
   useEffect(() => {
     return () => {
@@ -70,8 +70,8 @@ export const useRecipeListController = () => {
     isRecipesListEmpty,
     recipes,
     total,
-    isFilterActive: searchOptions.filter.length !== 0,
-    activeSort: searchOptions.sort,
+    isFilterActive: searchOptions.options.filter.length !== 0,
+    activeSort: searchOptions.options.sort,
     setCardType,
     onSearch,
   };
