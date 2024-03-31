@@ -4,7 +4,7 @@ import { Colors } from '@UI/Colors';
 
 export const styles = StyleSheet.create({
   errorScreen: {
-    flex: 2,
+    marginTop: '20%',
     backgroundColor: Colors.background,
     alignItems: 'center',
     justifyContent: 'center',
