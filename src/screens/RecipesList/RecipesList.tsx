@@ -30,7 +30,7 @@ export function RecipesList(): JSX.Element {
     <View style={styles.recipesScreenContainer}>
       <View style={styles.searchMenuContainer}>
         <Search onSearch={onSearch} />
-        {!isLoading && !isRecipesListEmpty && (
+        {!isLoading && !isRecipesListEmpty && !isError && (
           <RecipesListControls
             onCardTypeChange={setCardType}
             gridType={recipeCardType}
@@ -40,7 +40,7 @@ export function RecipesList(): JSX.Element {
         )}
       </View>
       <View style={styles.blurContainer} />
-      {isError && <Error onRetry={onRetry} />}
+      {isError && !isLoading && <Error onRetry={onRetry} />}
       {isLoading && recipeCardType === 'grid' && <GridListSkeleton />}
       {isLoading && recipeCardType === 'linear' && <LinearListSkeleton />}
       {!isLoading && !isError && isRecipesListEmpty && <RecipesListMessage />}

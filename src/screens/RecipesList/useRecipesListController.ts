@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useFocusEffect } from '@react-navigation/native';
 
 import * as RecipesStore from '@stores/recipes';
 import * as SearchStore from '@stores/search';
@@ -11,6 +12,7 @@ import { useGridTypes } from './hooks';
 export const useRecipeListController = () => {
   const { setCardType, recipeCardType, getCardType } = useGridTypes();
   const [isLoading, setLoading] = useState(false);
+  const [isError, setError] = useState<boolean>(false);
 
   const { recipes, total } = RecipesStore.useRecipesStore();
 
@@ -30,6 +32,12 @@ export const useRecipeListController = () => {
   }, [searchOptions.searchTerm, searchOptions.pendingOptions, searchOptions.offset]);
   const errorGetRecipes = ErrorsStore.useGetErrorFor('getRecipes');
   const resetError = ErrorsStore.useResetErrors('getRecipes');
+
+  useFocusEffect(() => {
+    if (errorGetRecipes) {
+      setError(true);
+    }
+  });
 
   const onSearch = useCallback(() => {
     resetRecipes();
@@ -74,6 +82,7 @@ export const useRecipeListController = () => {
 
     if (errorGetRecipes) {
       resetError();
+      setError(false);
     }
 
     await getRecipes(searchOptions);
@@ -86,6 +95,7 @@ export const useRecipeListController = () => {
       resetSearchOptions();
       resetRecipes();
       resetError();
+      setError(false);
     };
   }, []);
 
@@ -103,7 +113,7 @@ export const useRecipeListController = () => {
     activeSort: searchOptions.options.sort,
     setCardType,
     onSearch,
-    isError: !!errorGetRecipes,
+    isError,
     onRetry,
   };
 };
