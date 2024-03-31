@@ -10,7 +10,6 @@ export const errorHandler: Middleware = () => (
   next(action);
 
   if (action.type.includes('error') && action.type !== '@error/reset') {
-
     EventService.emit('app:error', {
       moduleName: action.name,
       error: new Error(JSON.stringify(action.payload)),

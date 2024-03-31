@@ -2,6 +2,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 
 import * as RecipesStore from '@stores/recipes';
 import * as SearchStore from '@stores/search';
+import * as ErrorsStore from '@stores/errors';
 
 import { EventService } from '@services/EventService';
 
@@ -27,6 +28,8 @@ export const useRecipeListController = () => {
   const searchRecipeOptions = useMemo(() => {
     return { searchTerm: searchOptions.searchTerm, offset: searchOptions.offset, ...searchOptions.pendingOptions };
   }, [searchOptions.searchTerm, searchOptions.pendingOptions, searchOptions.offset]);
+  const errorGetRecipes = ErrorsStore.useGetErrorFor('getRecipes');
+  const resetError = ErrorsStore.useResetErrors('getRecipes');
 
   const onSearch = useCallback(() => {
     resetRecipes();
@@ -66,10 +69,23 @@ export const useRecipeListController = () => {
     getRecipes(searchRecipeOptions);
   }, [searchOptions.offset]);
 
+  const onRetry = useCallback(async () => {
+    setLoading(true);
+
+    if (errorGetRecipes) {
+      resetError();
+    }
+
+    await getRecipes(searchOptions);
+    setLoading(false);
+
+  }, [errorGetRecipes]);
+
   useEffect(() => {
     return () => {
       resetSearchOptions();
       resetRecipes();
+      resetError();
     };
   }, []);
 
@@ -87,5 +103,7 @@ export const useRecipeListController = () => {
     activeSort: searchOptions.options.sort,
     setCardType,
     onSearch,
+    isError: !!errorGetRecipes,
+    onRetry,
   };
 };

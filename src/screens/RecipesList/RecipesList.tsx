@@ -2,6 +2,7 @@ import React from 'react';
 import { View } from 'react-native';
 
 import { Search } from '@components/Search';
+import { Error } from '@components/Error';
 
 import { styles } from './styles';
 import { RecipesCards } from './components/RecipesCards';
@@ -21,6 +22,8 @@ export function RecipesList(): JSX.Element {
     activeSort,
     setCardType,
     onSearch,
+    isError,
+    onRetry,
   } = useRecipeListController();
 
   return (
@@ -37,9 +40,10 @@ export function RecipesList(): JSX.Element {
         )}
       </View>
       <View style={styles.blurContainer} />
+      {isError && <Error onRetry={onRetry} />}
       {isLoading && recipeCardType === 'grid' && <GridListSkeleton />}
       {isLoading && recipeCardType === 'linear' && <LinearListSkeleton />}
-      {!isLoading && isRecipesListEmpty && <RecipesListMessage />}
+      {!isLoading && !isError && isRecipesListEmpty && <RecipesListMessage />}
       {!isLoading && <RecipesCards gridType={recipeCardType} recipes={recipes} total={total} />}
     </View>
   );
