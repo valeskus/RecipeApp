@@ -3,7 +3,7 @@ import { Prop, Schema } from '@nestjs/mongoose';
 
 import { Languages, Translatable, Translations } from '../models';
 
-export function TranslationsSchemaOf<T extends ClassType<Document>, R = InstanceType<T>>(TranslatableItem: T) {
+export function TranslationsSchemaOf<T extends ClassType<object>, R = InstanceType<T>>(TranslatableItem: T) {
   @Schema({
     _id: false,
   })
