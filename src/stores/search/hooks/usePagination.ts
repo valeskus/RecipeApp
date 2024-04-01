@@ -21,8 +21,8 @@ export const usePagination = () => {
         return;
       }
 
-      setSearchOptions({ offset: pendingOptions.offset + PAGE_SIZE }, dispatch);
+      setSearchOptions({ offset: (pendingOptions?.offset || 0) + PAGE_SIZE }, dispatch);
     },
-    [dispatch, recipes, total, pendingOptions.offset],
+    [dispatch, recipes, total, pendingOptions?.offset],
   );
 };

@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 
 import * as RecipesStore from '@stores/recipes';
 import * as SearchStore from '@stores/search';
@@ -24,6 +24,10 @@ export const useRecipeListController = () => {
 
   const isRecipesListEmpty = recipes.length === 0;
 
+  const searchRecipeOptions = useMemo(() => {
+    return { searchTerm: searchOptions.searchTerm, ...searchOptions.pendingOptions };
+  }, [searchOptions.searchTerm, searchOptions.pendingOptions]);
+
   const onSearch = useCallback(() => {
     resetRecipes();
     setLoading(true);
@@ -32,26 +36,26 @@ export const useRecipeListController = () => {
   useEffect(() => {
     setLoading(true);
 
-    Promise.all([getRecipes({ searchTerm: searchOptions.searchTerm, ...searchOptions.pendingOptions }), getCardType()])
+    Promise.all([getRecipes(searchRecipeOptions), getCardType()])
       .then(() => setLoading(false));
-  }, [searchOptions.pendingOptions.sort, searchOptions.searchTerm]);
+  }, [searchOptions.pendingOptions?.sort, searchOptions.searchTerm]);
 
   useEffect(() => {
     if (!recipes.length) {
       return;
     }
 
-    updateFilter({ searchTerm: searchOptions.searchTerm, ...searchOptions.pendingOptions });
-  }, [searchOptions.pendingOptions.filter]);
+    updateFilter(searchRecipeOptions);
+  }, [searchOptions.pendingOptions?.filter]);
 
   useEffect(() => {
-    if (!searchOptions.pendingOptions.offset) {
+    if (!searchOptions.pendingOptions?.offset) {
       return;
     }
 
-    getRecipes({ searchTerm: searchOptions.searchTerm, ...searchOptions.pendingOptions });
+    getRecipes(searchRecipeOptions);
 
-  }, [searchOptions.pendingOptions.offset]);
+  }, [searchOptions.pendingOptions?.offset]);
 
   useEffect(() => {
     return () => {

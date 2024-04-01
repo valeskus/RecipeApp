@@ -13,17 +13,12 @@ interface Options {
 
 export interface SearchState {
   searchTerm: string;
-  pendingOptions: Options;
+  pendingOptions?: Partial<Options>;
   options: Options;
 }
 
 const initialState: SearchState = {
   searchTerm: '',
-  pendingOptions: {
-    sort: 'relevance',
-    filter: [],
-    offset: 0,
-  },
   options: {
     sort: 'relevance',
     filter: [],
@@ -42,23 +37,23 @@ export function searchReducer(state = initialState, action: Redux.AnyAction): Se
         ...state,
         searchTerm: searchTerm || state.searchTerm,
         pendingOptions: {
-          filter: filter || state.pendingOptions.filter,
-          sort: sort || state.pendingOptions.sort,
-          offset: offset ?? state.pendingOptions.offset,
+          filter: filter || state.pendingOptions?.filter,
+          sort: sort || state.pendingOptions?.sort,
+          offset: offset ?? state.pendingOptions?.offset,
         },
       };
     }
 
     case SearchActions.SET_OPTIONS: {
-      const { searchTerm, sort, filter, offset } = state.pendingOptions as SearchOptionsModel;
+      const { searchTerm, pendingOptions } = state;
 
       return {
         ...state,
         searchTerm: searchTerm || state.searchTerm,
         options: {
-          filter: filter || state.options.filter,
-          sort: sort || state.options.sort,
-          offset: offset ?? state.options.offset,
+          filter: pendingOptions?.filter || state.options.filter,
+          sort: pendingOptions?.sort || state.options.sort,
+          offset: pendingOptions?.offset ?? state.options.offset,
         },
       };
     }
