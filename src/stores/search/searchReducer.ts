@@ -66,7 +66,7 @@ export function searchReducer(state = initialState, action: Redux.AnyAction): Se
     case SearchActions.RESET_PENDING_OPTIONS: {
       return {
         ...state,
-        pendingOptions: initialState.pendingOptions,
+        pendingOptions: undefined,
       };
     }
 
