@@ -41,7 +41,7 @@ export const useRecipeListController = () => {
   }, [searchOptions.pendingOptions?.sort, searchOptions.searchTerm]);
 
   useEffect(() => {
-    if (!recipes.length) {
+    if (!recipes.length || !searchOptions.pendingOptions?.filter) {
       return;
     }
 
