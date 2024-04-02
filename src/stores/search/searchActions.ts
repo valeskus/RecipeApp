@@ -25,6 +25,10 @@ export const actionSetSearchOptions = () => ({
   type: SearchActions.SET_OPTIONS,
 });
 
+const actionResetOptions = () => ({
+  type: SearchActions.RESET_OPTIONS,
+});
+
 export const actionResetPendingSearchOptions = () => ({
   type: SearchActions.RESET_PENDING_OPTIONS,
 });
@@ -34,5 +38,5 @@ export const setSearchOptions = (searchOptions: SearchOptionsModel, dispatch: Di
 };
 
 export const resetSearchOptions = (dispatch: Dispatch) => {
-  dispatch(actionResetPendingSearchOptions());
+  dispatch(actionResetOptions());
 };

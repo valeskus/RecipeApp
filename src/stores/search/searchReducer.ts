@@ -51,7 +51,7 @@ export function searchReducer(state = initialState, action: Redux.AnyAction): Se
         ...state,
         searchTerm: searchTerm || state.searchTerm,
         offset: offset ?? state.offset,
-
+        pendingOptions: undefined,
         options: {
           filter: pendingOptions?.filter || state.options.filter,
           sort: pendingOptions?.sort || state.options.sort,
@@ -61,13 +61,6 @@ export function searchReducer(state = initialState, action: Redux.AnyAction): Se
 
     case SearchActions.RESET_OPTIONS: {
       return initialState;
-    }
-
-    case SearchActions.RESET_PENDING_OPTIONS: {
-      return {
-        ...state,
-        pendingOptions: undefined,
-      };
     }
 
     default:
