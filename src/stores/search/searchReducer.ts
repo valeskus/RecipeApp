@@ -8,21 +8,21 @@ interface Options {
     key: string;
     value: string;
   }>;
-  offset: number;
 }
 
 export interface SearchState {
   searchTerm: string;
+  offset: number;
   pendingOptions?: Partial<Options>;
   options: Options;
 }
 
 const initialState: SearchState = {
   searchTerm: '',
+  offset: 0,
   options: {
     sort: 'relevance',
     filter: [],
-    offset: 0,
   },
 
 };
@@ -36,24 +36,25 @@ export function searchReducer(state = initialState, action: Redux.AnyAction): Se
       return {
         ...state,
         searchTerm: searchTerm || state.searchTerm,
+        offset: offset ?? state.offset,
         pendingOptions: {
           filter: filter || state.pendingOptions?.filter,
           sort: sort || state.pendingOptions?.sort,
-          offset: offset ?? state.pendingOptions?.offset,
         },
       };
     }
 
     case SearchActions.SET_OPTIONS: {
-      const { searchTerm, pendingOptions } = state;
+      const { searchTerm, offset, pendingOptions } = state;
 
       return {
         ...state,
         searchTerm: searchTerm || state.searchTerm,
+        offset: offset ?? state.offset,
+
         options: {
           filter: pendingOptions?.filter || state.options.filter,
           sort: pendingOptions?.sort || state.options.sort,
-          offset: pendingOptions?.offset ?? state.options.offset,
         },
       };
     }

@@ -25,8 +25,8 @@ export const useRecipeListController = () => {
   const isRecipesListEmpty = recipes.length === 0;
 
   const searchRecipeOptions = useMemo(() => {
-    return { searchTerm: searchOptions.searchTerm, ...searchOptions.pendingOptions };
-  }, [searchOptions.searchTerm, searchOptions.pendingOptions]);
+    return { searchTerm: searchOptions.searchTerm, offset: searchOptions.offset, ...searchOptions.pendingOptions };
+  }, [searchOptions.searchTerm, searchOptions.pendingOptions, searchOptions.offset]);
 
   const onSearch = useCallback(() => {
     resetRecipes();
@@ -49,13 +49,13 @@ export const useRecipeListController = () => {
   }, [searchOptions.pendingOptions?.filter]);
 
   useEffect(() => {
-    if (!searchOptions.pendingOptions?.offset) {
+    if (!searchOptions.offset) {
       return;
     }
 
     getRecipes(searchRecipeOptions);
 
-  }, [searchOptions.pendingOptions?.offset]);
+  }, [searchOptions.offset]);
 
   useEffect(() => {
     return () => {
