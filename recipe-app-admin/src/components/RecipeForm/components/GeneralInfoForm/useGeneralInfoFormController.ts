@@ -23,6 +23,8 @@ export const useGeneralInfoFormController = (params: GeneralInfoFormControllerPa
   const [servingsCount, setServingsCount] = useState<number | ''>('');
   const [difficulty, setDifficulty] = useState<number >(0);
   const [categoriesArray, setCategoriesArray] = useState<Array<OptionModel>>([]);
+  const [tagsEN, setTagsEN] = useState<Array<string>>([]);
+  const [tagsUA, setTagsUA] = useState<Array<string>>([]);
 
   const dispatch = Redux.useDispatch();
   const getCategories = useGetCategories();
@@ -106,6 +108,18 @@ export const useGeneralInfoFormController = (params: GeneralInfoFormControllerPa
     setCategoriesArray(arrayOfCategories);
   }, [setCategoriesArray]);
 
+  const handleTagsUA = useCallback((value: string) => {
+    const tagsArray = value.split(',').map((item) => item.trim());
+    setTagsUA(tagsArray);
+
+  }, []);
+
+  const handleTagsEN = useCallback((value: string) => {
+    const tagsArray = value.split(',').map((item) => item.trim());
+
+    setTagsEN(tagsArray);
+  }, []);
+
   const onChangeInput = useCallback(() => {
     if (!units || !time || !amount || !servingsCount) {
       return;
@@ -114,10 +128,12 @@ export const useGeneralInfoFormController = (params: GeneralInfoFormControllerPa
     const recipe:  Omit<RecipePostModel, 'ingredients' | 'instructions'> = {
       title,
       description,
+      tags: tagsEN,
       translations: {
         ua: {
           title: titleUA,
           description: descriptionUA,
+          tags: tagsUA,
         },
       },
       time,
@@ -150,7 +166,9 @@ export const useGeneralInfoFormController = (params: GeneralInfoFormControllerPa
     handleServingsCount,
     handleDifficulty,
     handleCategoryArray,
+    handleTagsUA,
+    handleTagsEN,
     title, titleUA, description, descriptionUA, time, image,
-    servingsCount, amount, categoriesArray,
+    servingsCount, amount, categoriesArray, tagsEN, tagsUA,
   };
 };

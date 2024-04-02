@@ -1,13 +1,13 @@
 import './GeneralInfoForm.style.css';
 
-import {  Input } from '../../../common/inputs';
+import { Input } from '../../../common/inputs';
 import { SelectComponent } from '../../../common/Select';
-// import { FormStatus } from '../../../common/FormStatus';
 import { ImageInputsBox } from '../../../common/ImageInputsBox';
+import { TextArea } from '../../../common/TextArea';
 
 import { GeneralInfoFormControllerParams, useGeneralInfoFormController } from './useGeneralInfoFormController';
 
-interface Props extends GeneralInfoFormControllerParams {}
+interface Props extends GeneralInfoFormControllerParams { }
 
 export function GeneralInfoForm(props: Props): JSX.Element {
   const { unitsValue,
@@ -19,7 +19,6 @@ export function GeneralInfoForm(props: Props): JSX.Element {
     handleDescriptionUA,
     handleUnits,
     handleImage,
-    // handleImageFile,
     handleTime,
     handleAmount,
     handleServingsCount,
@@ -32,9 +31,12 @@ export function GeneralInfoForm(props: Props): JSX.Element {
     time,
     amount,
     image,
-    // imageStatus,
     servingsCount,
     categoriesArray,
+    tagsEN,
+    tagsUA,
+    handleTagsUA,
+    handleTagsEN,
     onChangeInput,
   } = useGeneralInfoFormController(props);
 
@@ -48,10 +50,10 @@ export function GeneralInfoForm(props: Props): JSX.Element {
           value={title}
         />
         <Input label="Title UA:" type="text" placeholder="Назва" onBlur={onChangeInput}
-          onChange={handleUATitle}  value={titleUA}
+          onChange={handleUATitle} value={titleUA}
         />
         <Input label="Description:" type="text" placeholder="Description" onBlur={onChangeInput}
-          onChange={handleDescription}  value={description}
+          onChange={handleDescription} value={description}
         />
         <Input label="Description UA:" type="text" placeholder="опис" onBlur={onChangeInput}
           onChange={handleDescriptionUA} value={descriptionUA}
@@ -62,7 +64,7 @@ export function GeneralInfoForm(props: Props): JSX.Element {
       </div>
       <div className="formItems">
 
-        <ImageInputsBox onChange={handleImage} component="image" image={image}/>
+        <ImageInputsBox onChange={handleImage} component="image" image={image} />
 
         <Input label="Time:" type="number" placeholder="time in minutes" onChange={handleTime} onBlur={onChangeInput}
           value={`${time}`}
@@ -82,7 +84,17 @@ export function GeneralInfoForm(props: Props): JSX.Element {
         <SelectComponent label="Categories:" placeholder="---" multiple={true}
           options={categoriesValue} onChange={handleCategoryArray} onBlur={onChangeInput} value={categoriesArray}
         />
+
+        <TextArea label="Tags UA:"
+          onChange={handleTagsUA} value={tagsUA.toString()}
+        />
+
+        <TextArea label="Tags EN:"
+          onChange={handleTagsEN} value={tagsEN.toString()}
+        />
+
       </div>
+
     </div>
   );
 }

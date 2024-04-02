@@ -30,6 +30,7 @@ export type RecipePostModel = {
   amount: number;
   units: 'g' | 'ml';
   description: string;
+  tags: Array<string>;
   servingsCount: number;
   instructions: Array<{
     description: string;
@@ -50,6 +51,7 @@ export type RecipePostModel = {
     ua: {
       title: string;
       description: string;
+      tags: Array<string>;
     };
   };
 };
