@@ -11,11 +11,11 @@ export const useSortController = () => {
   const navigation = useNavigation();
 
   const { sortOptions } = RecipesStore.useRecipesStore();
-  const setSearchOptions = SearchStore.useSetSearchOptions();
+  const setSearchOptions = SearchStore.useSetPendingSearchOptions();
   const resetRecipes = RecipesStore.useResetRecipeList();
 
   const onSortChange = useCallback((value: string) => {
-    setSearchOptions({ sort: value, offset: 0 });
+    setSearchOptions({ sort: value });
 
     EventService.emit('action:change-sort', value);
 

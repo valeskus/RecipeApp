@@ -3,7 +3,7 @@ import { useCallback } from 'react';
 import * as SearchStore from '@stores/search';
 
 export const useClearButtonController = () => {
-  const setSearchOptions = SearchStore.useSetSearchOptions();
+  const setSearchOptions = SearchStore.useSetPendingSearchOptions();
   const { options } = SearchStore.useSearchStore();
 
   const onClearFilters = useCallback(() => {

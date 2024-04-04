@@ -1,14 +1,14 @@
 import * as React from 'react';
 import * as Redux from 'react-redux';
 
-import { SearchOptionsModel, setSearchOptions } from '../searchActions';
+import { SearchOptionsModel, setPendingSearchOptions } from '../searchActions';
 
-export const useSetSearchOptions = () => {
+export const useSetPendingSearchOptions = () => {
   const dispatch = Redux.useDispatch();
 
   return React.useCallback(
     (searchOptions: SearchOptionsModel) => {
-      setSearchOptions(searchOptions, dispatch);
+      setPendingSearchOptions(searchOptions, dispatch);
     },
     [dispatch],
   );

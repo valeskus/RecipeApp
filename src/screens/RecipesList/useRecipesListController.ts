@@ -38,7 +38,17 @@ export const useRecipeListController = () => {
 
     Promise.all([getRecipes(searchRecipeOptions), getCardType()])
       .then(() => setLoading(false));
-  }, [searchOptions.pendingOptions?.sort, searchOptions.searchTerm]);
+  }, [searchOptions.searchTerm]);
+
+  useEffect(() => {
+    if (!searchOptions.pendingOptions?.sort) {
+      return;
+    }
+
+    setLoading(true);
+
+    getRecipes(searchRecipeOptions).then(() => setLoading(false));
+  }, [searchOptions.pendingOptions?.sort]);
 
   useEffect(() => {
     if (!recipes.length || !searchOptions.pendingOptions?.filter) {
@@ -54,7 +64,6 @@ export const useRecipeListController = () => {
     }
 
     getRecipes(searchRecipeOptions);
-
   }, [searchOptions.offset]);
 
   useEffect(() => {
@@ -75,7 +84,7 @@ export const useRecipeListController = () => {
     recipes,
     total,
     isFilterActive: searchOptions.options.filter.length !== 0,
-    activeSort: searchOptions.options.sort,
+    activeSort: searchOptions.options.sort || undefined,
     setCardType,
     onSearch,
   };

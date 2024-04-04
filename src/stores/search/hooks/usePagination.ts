@@ -1,18 +1,16 @@
 import * as React from 'react';
-import * as Redux from 'react-redux';
 
 import * as RecipesStore from '@stores/recipes';
 
-import { setSearchOptions } from '../searchActions';
-
 import { useSearchStore } from './useSearchStore';
+import { useSetOffset } from './useSetOffset';
 
 const PAGE_SIZE = 10;
 
 export const usePagination = () => {
-  const dispatch = Redux.useDispatch();
   const { recipes, total } = RecipesStore.useRecipesStore();
   const { offset } = useSearchStore();
+  const setOffset = useSetOffset();
 
   return React.useCallback(
     () => {
@@ -21,8 +19,8 @@ export const usePagination = () => {
         return;
       }
 
-      setSearchOptions({ offset: offset + PAGE_SIZE }, dispatch);
+      setOffset(offset + PAGE_SIZE);
     },
-    [dispatch, recipes, total, offset],
+    [recipes, total, offset],
   );
 };

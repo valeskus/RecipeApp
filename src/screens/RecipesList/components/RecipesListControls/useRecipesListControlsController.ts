@@ -6,7 +6,7 @@ import { Icons } from '@UI/Icons';
 export const useRecipesListControlsController = (
   onCardTypeChange: (type: 'grid' | 'linear') => void,
   gridType: 'grid' | 'linear',
-  activeSort: string
+  activeSort: string |undefined
 ) => {
 
   const [sortButtonIcon, setSortButtonIcon] = useState<keyof typeof Icons>('sort');

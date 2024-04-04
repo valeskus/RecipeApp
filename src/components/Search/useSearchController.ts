@@ -12,7 +12,7 @@ export interface SearchControllerParams {
 export const useSearchController = (params: SearchControllerParams) => {
   const { searchTerm } = SearchStore.useSearchStore();
   const [pendingSearchTerm, setPendingSearchTerm] = useState(searchTerm);
-  const setSearchOptions = SearchStore.useSetSearchOptions();
+  const setSearchTerm = SearchStore.useSetSearchTerm();
   const resetSearchOptions = SearchStore.useResetSearchOptions();
 
   const [isFocused, setFocused] = useState(false);
@@ -40,7 +40,7 @@ export const useSearchController = (params: SearchControllerParams) => {
     resetSearchOptions();
     params.onSearch();
 
-    setSearchOptions({ searchTerm: pendingSearchTerm });
+    setSearchTerm(pendingSearchTerm);
 
   }, [pendingSearchTerm, searchTerm, params.onSearch]);
 

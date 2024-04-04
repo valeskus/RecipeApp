@@ -3,7 +3,7 @@ import * as Redux from 'redux';
 import { SearchActions, SearchOptionsModel } from './searchActions';
 
 interface Options {
-  sort: string;
+  sort?: string;
   filter: Array<{
     key: string;
     value: string;
@@ -13,7 +13,7 @@ interface Options {
 export interface SearchState {
   searchTerm: string;
   offset: number;
-  pendingOptions?: Partial<Options>;
+  pendingOptions?: Options;
   options: Options;
 }
 
@@ -21,7 +21,6 @@ const initialState: SearchState = {
   searchTerm: '',
   offset: 0,
   options: {
-    sort: 'relevance',
     filter: [],
   },
 
@@ -31,29 +30,47 @@ export function searchReducer(state = initialState, action: Redux.AnyAction): Se
 
   switch (action.type) {
     case SearchActions.SET_PENDING_OPTIONS: {
-      const { searchTerm, sort, filter, offset } = action.payload as SearchOptionsModel;
+      const { sort, filter } = action.payload as SearchOptionsModel;
 
       return {
         ...state,
-        searchTerm: searchTerm || state.searchTerm,
-        offset: offset ?? state.offset,
+        offset: 0,
         pendingOptions: {
-          filter: filter || state.pendingOptions?.filter,
-          sort: sort || state.pendingOptions?.sort,
+          filter: filter || state.options.filter,
+          sort: sort || state.options.sort,
         },
       };
     }
 
-    case SearchActions.SET_OPTIONS: {
+    case SearchActions.SET_OFFSET: {
+      const { offset } = action.payload as {offset: number};
+
+      return {
+        ...state,
+        offset,
+      };
+    }
+
+    case SearchActions.SET_SEARCH_TERM: {
+      const { searchTerm } = action.payload as {searchTerm: string};
+
+      return {
+        ...state,
+        searchTerm,
+      };
+    }
+
+    case SearchActions.RESOLVE_PENDING_OPTIONS: {
       const { pendingOptions } = state;
+
+      if (!pendingOptions) {
+        return state;
+      }
 
       return {
         ...state,
         pendingOptions: undefined,
-        options: {
-          filter: pendingOptions?.filter || state.options.filter,
-          sort: pendingOptions?.sort || state.options.sort,
-        },
+        options: pendingOptions,
       };
     }
 
