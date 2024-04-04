@@ -45,12 +45,10 @@ export function searchReducer(state = initialState, action: Redux.AnyAction): Se
     }
 
     case SearchActions.SET_OPTIONS: {
-      const { searchTerm, offset, pendingOptions } = state;
+      const { pendingOptions } = state;
 
       return {
         ...state,
-        searchTerm: searchTerm || state.searchTerm,
-        offset: offset ?? state.offset,
         pendingOptions: undefined,
         options: {
           filter: pendingOptions?.filter || state.options.filter,
