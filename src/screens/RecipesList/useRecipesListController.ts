@@ -84,7 +84,7 @@ export const useRecipeListController = () => {
     recipes,
     total,
     isFilterActive: searchOptions.options.filter.length !== 0,
-    activeSort: searchOptions.options.sort || undefined,
+    activeSort: searchOptions.options.sort,
     setCardType,
     onSearch,
   };
