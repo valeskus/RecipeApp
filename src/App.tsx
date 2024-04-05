@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Provider } from 'react-redux';
 import { Platform, SafeAreaView, StatusBar, UIManager } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
@@ -9,13 +9,8 @@ import SplashScreen from 'react-native-splash-screen';
 import { LottieAnimation } from '@UI/LottieAnimation';
 import { Colors } from '@UI/Colors';
 
-import { useSetCardType } from '@stores/recipes/hooks/useSetCardType';
-
 import { Header } from '@components/Header';
 import { SettingsButton } from '@components/SettingsButton';
-
-import { LanguageManager } from '@managers/LanguageManager';
-import { RecipesCardTypeManager } from '@managers/RecipesCardTypeManager';
 
 import { EventService } from '@services/EventService';
 
@@ -28,6 +23,7 @@ import { RecipeDetails } from './screens/RecipeDetails';
 import { Settings } from './screens/Settings';
 import { AppStartSkeleton } from './AppStartSkeleton';
 import { styles } from './styles';
+import { useInitRequiredData } from './hook';
 
 if (
   Platform.OS === 'android' &&
@@ -55,16 +51,12 @@ declare global {
 }
 
 export function ConnectedApp(): JSX.Element {
-  const [isRequiredDataInitialized, setIsRequiredDataInitialized] = useState<boolean>(false);
   const { t } = useTranslation();
-  const initRecipeCardType = useSetCardType();
+  const { isRequiredDataInitialized } = useInitRequiredData();
 
   useEffect(() => {
     SplashScreen.hide();
     EventService.emit('app:start');
-
-    RecipesCardTypeManager.initCardType().then((type) => initRecipeCardType(type));
-    LanguageManager.initLanguage().then(() => setIsRequiredDataInitialized(true));
   }, []);
 
   if (!isRequiredDataInitialized) {
@@ -162,8 +154,10 @@ export function ConnectedApp(): JSX.Element {
 }
 
 export function App(): JSX.Element {
-  return (<Provider store={store}>
-    <StatusBar backgroundColor="transparent" barStyle="dark-content" translucent />
-    <ConnectedApp />
-  </Provider>);
+  return (
+    <Provider store={store}>
+      <StatusBar backgroundColor="transparent" barStyle="dark-content" translucent />
+      <ConnectedApp />
+    </Provider>
+  );
 }
