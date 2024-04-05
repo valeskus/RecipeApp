@@ -7,7 +7,7 @@ export const useSetCardType = () => {
     const dispatch = Redux.useDispatch();
 
     return React.useCallback(
-        (cardType:  'grid' | 'linear') => {
+        (cardType: 'grid' | 'linear') => {
             setCardType(cardType, dispatch);
         },
         [dispatch],
