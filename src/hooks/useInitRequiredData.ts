@@ -9,8 +9,8 @@ export const useInitRequiredData = () => {
     const initRecipeCardType = useInitCardType();
 
     useEffect(() => {
-        initRecipeCardType();
-        LanguageManager.initLanguage().then(() => setIsRequiredDataInitialized(true));
+        Promise.all([initRecipeCardType(), LanguageManager.initLanguage()])
+            .then(() => setIsRequiredDataInitialized(true));
     }, []);
 
     return { isRequiredDataInitialized };
