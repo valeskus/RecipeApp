@@ -9,10 +9,13 @@ import SplashScreen from 'react-native-splash-screen';
 import { LottieAnimation } from '@UI/LottieAnimation';
 import { Colors } from '@UI/Colors';
 
+import { useSetCardType } from '@stores/recipes/hooks/useSetCardType';
+
 import { Header } from '@components/Header';
 import { SettingsButton } from '@components/SettingsButton';
 
 import { LanguageManager } from '@managers/LanguageManager';
+import { RecipesCardTypeManager } from '@managers/RecipesCardTypeManager';
 
 import { EventService } from '@services/EventService';
 
@@ -51,14 +54,16 @@ declare global {
   }
 }
 
-export function App(): JSX.Element {
+export function ConnectedApp(): JSX.Element {
   const [isRequiredDataInitialized, setIsRequiredDataInitialized] = useState<boolean>(false);
   const { t } = useTranslation();
+  const initRecipeCardType = useSetCardType();
 
   useEffect(() => {
     SplashScreen.hide();
     EventService.emit('app:start');
 
+    RecipesCardTypeManager.initCardType().then((type) => initRecipeCardType(type));
     LanguageManager.initLanguage().then(() => setIsRequiredDataInitialized(true));
   }, []);
 
@@ -72,88 +77,93 @@ export function App(): JSX.Element {
   }
 
   return (
-    <Provider store={store}>
-      <StatusBar backgroundColor="transparent" barStyle="dark-content" translucent />
-      <NavigationContainer>
-        <Stack.Navigator screenOptions={{
-          cardStyle: {
-            backgroundColor: Colors.background,
-          },
+    <NavigationContainer>
+      <Stack.Navigator screenOptions={{
+        cardStyle: {
+          backgroundColor: Colors.background,
+        },
+      }}
+      >
+        <Stack.Group>
+          <Stack.Screen
+            name="Categories"
+            component={CategoriesList}
+            options={{
+              title: t('screenHeaderTitle.categories'),
+              header: ({ options }) => (
+                <Header
+                  options={options}
+                  headerLeft={<SettingsButton />}
+                  seasonAnimate={(
+                    <LottieAnimation />
+                  )}
+                />
+              ),
+            }}
+          />
+          <Stack.Screen
+            name="Recipes"
+            component={RecipesList}
+            options={{
+              title: t('screenHeaderTitle.recipes'),
+              header: ({ options }) => (
+                <Header
+                  options={options}
+                  seasonAnimate={(
+                    <LottieAnimation />
+                  )}
+                />
+              ),
+            }}
+          />
+        </Stack.Group>
+        <Stack.Group screenOptions={{
+          presentation: 'modal',
         }}
         >
-          <Stack.Group>
-            <Stack.Screen
-              name="Categories"
-              component={CategoriesList}
-              options={{
-                title: t('screenHeaderTitle.categories'),
-                header: ({ options }) => (
-                  <Header
-                    options={options}
-                    headerLeft={<SettingsButton />}
-                    seasonAnimate={(
-                      <LottieAnimation />
-                    )}
-                  />
-                ),
-              }}
-            />
-            <Stack.Screen
-              name="Recipes"
-              component={RecipesList}
-              options={{
-                title: t('screenHeaderTitle.recipes'),
-                header: ({ options }) => (
-                  <Header
-                    options={options}
-                    seasonAnimate={(
-                      <LottieAnimation />
-                    )}
-                  />
-                ),
-              }}
-            />
-          </Stack.Group>
-          <Stack.Group screenOptions={{
-            presentation: 'modal',
-          }}
-          >
-            <Stack.Screen
-              name="Sort"
-              component={Sort}
-              options={{
-                title: t('screenHeaderTitle.sort'),
-                header: ({ options }) => <Header ignoreTopOffset options={options} />,
-              }}
-            />
-            <Stack.Screen
-              name="Filter"
-              component={Filter}
-              options={{
-                title: t('screenHeaderTitle.filter'),
-                header: ({ options }) => (
-                  <Header ignoreTopOffset options={options} headerRight={<ClearButton />} />
-                ),
-              }}
-            />
-            <Stack.Screen
-              name="Settings"
-              component={Settings}
-              options={{
-                title: t('screenHeaderTitle.settings'),
-                header: ({ options }) => (
-                  <Header ignoreTopOffset options={options} />
-                ),
-              }}
-            />
-          </Stack.Group>
           <Stack.Screen
-            name="RecipeDetails"
-            component={RecipeDetails}
-            options={{ headerShown: false }}
+            name="Sort"
+            component={Sort}
+            options={{
+              title: t('screenHeaderTitle.sort'),
+              header: ({ options }) => <Header ignoreTopOffset options={options} />,
+            }}
           />
-        </Stack.Navigator >
-      </NavigationContainer >
-    </Provider >
+          <Stack.Screen
+            name="Filter"
+            component={Filter}
+            options={{
+              title: t('screenHeaderTitle.filter'),
+              header: ({ options }) => (
+                <Header ignoreTopOffset options={options} headerRight={<ClearButton />} />
+              ),
+            }}
+          />
+          <Stack.Screen
+            name="Settings"
+            component={Settings}
+            options={{
+              title: t('screenHeaderTitle.settings'),
+              header: ({ options }) => (
+                <Header ignoreTopOffset options={options} />
+              ),
+            }}
+          />
+        </Stack.Group>
+        <Stack.Screen
+          name="RecipeDetails"
+          component={RecipeDetails}
+          options={{ headerShown: false }}
+        />
+      </Stack.Navigator >
+    </NavigationContainer >
+
   );
+}
+
+export function App(): JSX.Element {
+  return (<Provider store={store}>
+    <StatusBar backgroundColor="transparent" barStyle="dark-content" translucent />
+    <ConnectedApp />
+  </Provider>);
 }

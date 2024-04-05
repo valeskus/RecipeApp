@@ -82,7 +82,11 @@ export const setCardType = (
   cardType:  'grid' | 'linear',
   dispatch: Dispatch,
 ) => {
-  dispatch(actionSetCardType(cardType));
+  try {
+    dispatch(actionSetCardType(cardType));
+  } catch (error){
+    dispatch(actionError('setCardType', error));
+  }
 };
 
 export const resetRecipes = (
