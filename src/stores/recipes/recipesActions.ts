@@ -104,11 +104,12 @@ export const initCardType = async (
   }
 };
 
-export const setCardType = (
+export const setCardType = async (
   cardType: 'grid' | 'linear',
   dispatch: Dispatch,
 ) => {
   try {
+    await PersistentStorageManager.set('recipeCardType', cardType);
     dispatch(actionSetCardType(cardType));
   } catch (error) {
     dispatch(actionError('setCardType', error));
