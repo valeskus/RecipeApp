@@ -1,31 +1,22 @@
-import { useEffect, useState } from 'react';
+import * as RecipesStore from '@stores/recipes';
+import { useSetCardType } from '@stores/recipes/hooks/useSetCardType';
 
-import { PersistentStorageManager } from '@managers/PersistentStorageManager';
+import { RecipesCardTypeManager } from '@managers/RecipesCardTypeManager';
 
 import { EventService } from '@services/EventService';
 
 export const useGridTypes = () => {
-  const [recipeCardType, setRecipeCardType] = useState<'grid' | 'linear'>('grid');
 
-  const setCardType = async (type: 'grid' | 'linear') => {
-    await PersistentStorageManager.set('recipeCardType', type);
-    setRecipeCardType(type);
+  const setCardType = useSetCardType();
+  const { cardType } = RecipesStore.useRecipesStore();
+
+  const addCardType = async (type: 'grid' | 'linear') => {
+    await RecipesCardTypeManager.setCardType(type);
+
+    setCardType(type);
 
     EventService.emit('action:change-card-type', type);
   };
 
-  const getCardType = async () => {
-    const cardType = await PersistentStorageManager.get('recipeCardType');
-    if (!cardType) {
-      return;
-    }
-
-    setRecipeCardType(cardType as 'grid' | 'linear');
-  };
-
-  useEffect(() => {
-    getCardType();
-  }, []);
-
-  return { setCardType, recipeCardType, getCardType };
+  return { addCardType, cardType };
 };

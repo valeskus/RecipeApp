@@ -1,7 +1,7 @@
 import { PersistentStorageManager } from '@managers/PersistentStorageManager';
 
 export class RecipesCardTypeManager {
-    static async setType(cardType:  'grid' | 'linear') {
+    static async setCardType(cardType:  'grid' | 'linear') {
         await PersistentStorageManager.set('recipeCardType', cardType);
     }
 
