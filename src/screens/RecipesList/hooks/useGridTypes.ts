@@ -11,6 +11,7 @@ export const useGridTypes = () => {
   const { cardType } = RecipesStore.useRecipesStore();
 
   const addCardType = async (type: 'grid' | 'linear') => {
+
     await RecipesCardTypeManager.setCardType(type);
 
     setCardType(type);
