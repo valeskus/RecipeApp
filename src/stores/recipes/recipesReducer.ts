@@ -40,6 +40,15 @@ export function recipesReducer(
 ) {
   switch (action.type) {
 
+    case RecipesActions.INIT_CARD_TYPE: {
+      const { cardType } = action.payload as { cardType: 'grid' | 'linear' };
+
+      return {
+        ...state,
+        cardType,
+      };
+    }
+
     case RecipesActions.SET_CARD_TYPE: {
       const { cardType } = action.payload as { cardType: 'grid' | 'linear' };
 
