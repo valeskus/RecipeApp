@@ -11,10 +11,10 @@ export const useCategoryCardsController = (categories: Array<CategoryModel>) => 
 
   const navigation = useNavigation();
 
-  const setSearchOptions = SearchStore.useSetSearchOptions();
+  const setSearchTerm = SearchStore.useSetSearchTerm();
 
   const onPress = useCallback((categoryTitle: string) => {
-    setSearchOptions({ searchTerm: categoryTitle });
+    setSearchTerm(categoryTitle);
 
     EventService.emit('action:search-category', categoryTitle);
 

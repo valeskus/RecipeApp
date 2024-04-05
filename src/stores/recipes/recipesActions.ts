@@ -1,5 +1,7 @@
 import { Dispatch } from 'redux';
 
+import { actionResetPendingSearchOptions, actionResolvePendingOptions } from '@stores/search/searchActions';
+
 import * as RecipesApi from '@api/recipes.api';
 
 import { RecipeListModel } from '../../models';
@@ -43,11 +45,12 @@ export const getRecipes = async (
   dispatch: Dispatch,
 ) => {
   dispatch(actionRecipesFetching(true));
-
   try {
     const recipeList = await RecipesApi.searchRecipes(options);
     dispatch(actionGetRecipes(recipeList));
+    dispatch(actionResolvePendingOptions());
   } catch (error) {
+    dispatch(actionResetPendingSearchOptions());
     dispatch(actionError('getRecipes', error));
   }
 
@@ -59,11 +62,13 @@ export const filterUpdate = async (
   dispatch: Dispatch,
 ) => {
   dispatch(actionRecipesFetching(true));
-
   try {
     const recipeList = await RecipesApi.searchRecipes(options);
+
     dispatch(actionFilterUpdate(recipeList));
+    dispatch(actionResolvePendingOptions());
   } catch (error) {
+    dispatch(actionResetPendingSearchOptions());
     dispatch(actionError('getRecipes', error));
   }
 

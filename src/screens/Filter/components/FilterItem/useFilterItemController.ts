@@ -19,7 +19,7 @@ export const useFilterItemController = (params: UseFilterItemControllerParams) =
   const searchOptions = SearchStore.useSearchStore();
 
   const handleChange = useCallback((value: string | number) => {
-    const previousValue = searchOptions.filter.find((item) => item.key === params.filterName);
+    const previousValue = searchOptions.options.filter.find((item) => item.key === params.filterName);
 
     params.onFilterChange(params.filterName,
       FilterValuesManager.getAppliedFiltersString(
@@ -28,7 +28,7 @@ export const useFilterItemController = (params: UseFilterItemControllerParams) =
         params.multiple
       )
     );
-  }, [params, searchOptions.filter]);
+  }, [params, searchOptions.options.filter]);
 
   return {
     handleChange,

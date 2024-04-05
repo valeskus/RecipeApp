@@ -10,7 +10,7 @@ interface Props {
   onCardTypeChange: (type: 'grid' | 'linear') => void;
   gridType: 'grid' | 'linear';
   isFilterActive: boolean;
-  activeSort: string;
+  activeSort?: string;
 }
 
 export function RecipesListControls({
@@ -25,7 +25,7 @@ export function RecipesListControls({
   return (
     <View style={styles.buttonBarContainer}>
       <Button icon="filter" onPress={handleFilterPress} active={isFilterActive} />
-      <Button icon={sortButtonIcon} onPress={handleSortPress} active={!!activeSort && activeSort !== 'relevance'} />
+      <Button icon={sortButtonIcon} onPress={handleSortPress} active={!!activeSort} />
       <View style={styles.cardFormButtonContainer}>
         {gridType === 'grid' ? (
           <Button icon="grid" onPress={changeType} />

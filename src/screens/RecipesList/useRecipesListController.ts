@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 
 import * as RecipesStore from '@stores/recipes';
 import * as SearchStore from '@stores/search';
@@ -24,6 +24,10 @@ export const useRecipeListController = () => {
 
   const isRecipesListEmpty = recipes.length === 0;
 
+  const searchRecipeOptions = useMemo(() => {
+    return { searchTerm: searchOptions.searchTerm, offset: searchOptions.offset, ...searchOptions.pendingOptions };
+  }, [searchOptions.searchTerm, searchOptions.pendingOptions, searchOptions.offset]);
+
   const onSearch = useCallback(() => {
     resetRecipes();
     setLoading(true);
@@ -32,25 +36,34 @@ export const useRecipeListController = () => {
   useEffect(() => {
     setLoading(true);
 
-    Promise.all([getRecipes(searchOptions), getCardType()])
+    Promise.all([getRecipes(searchRecipeOptions), getCardType()])
       .then(() => setLoading(false));
-  }, [searchOptions.sort, searchOptions.searchTerm]);
+  }, [searchOptions.searchTerm]);
 
   useEffect(() => {
-    if (!recipes.length) {
+    if (!searchOptions.pendingOptions?.sort) {
       return;
     }
 
-    updateFilter(searchOptions);
-  }, [searchOptions.filter]);
+    setLoading(true);
+
+    getRecipes(searchRecipeOptions).then(() => setLoading(false));
+  }, [searchOptions.pendingOptions?.sort]);
+
+  useEffect(() => {
+    if (!recipes.length || !searchOptions.pendingOptions?.filter) {
+      return;
+    }
+
+    updateFilter(searchRecipeOptions);
+  }, [searchOptions.pendingOptions?.filter]);
 
   useEffect(() => {
     if (!searchOptions.offset) {
       return;
     }
 
-    getRecipes(searchOptions);
-
+    getRecipes(searchRecipeOptions);
   }, [searchOptions.offset]);
 
   useEffect(() => {
@@ -70,8 +83,8 @@ export const useRecipeListController = () => {
     isRecipesListEmpty,
     recipes,
     total,
-    isFilterActive: searchOptions.filter.length !== 0,
-    activeSort: searchOptions.sort,
+    isFilterActive: searchOptions.options.filter.length !== 0,
+    activeSort: searchOptions.options.sort,
     setCardType,
     onSearch,
   };

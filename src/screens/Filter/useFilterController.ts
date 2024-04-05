@@ -10,12 +10,12 @@ export const useFilterController = () => {
   const navigation = useNavigation();
 
   const { filters, isRecipesFetching } = RecipesStore.useRecipesStore();
-  const setSearchOptions = SearchStore.useSetSearchOptions();
+  const setSearchOptions = SearchStore.useSetPendingSearchOptions();
   const searchOptions = SearchStore.useSearchStore();
+
   const onFilterChange = useCallback(
     (filterName: string, value: string) => {
-      const searchOptionsFilters = searchOptions.filter.filter((item) => item.key !== filterName);
-
+      const searchOptionsFilters = searchOptions.options.filter.filter((item) => item.key !== filterName);
       if (!value) {
         setSearchOptions({
           filter: searchOptionsFilters,
@@ -27,11 +27,10 @@ export const useFilterController = () => {
       EventService.emit('action:change-filter', JSON.stringify({ filterName, value }));
       setSearchOptions({
         filter: [...searchOptionsFilters, { key: filterName, value: value }],
-        offset: 0,
       });
 
     },
-    [searchOptions.filter],
+    [searchOptions.options.filter],
   );
 
   const onSelectPress = () => {
