@@ -1,8 +1,6 @@
 import * as RecipesStore from '@stores/recipes';
 import { useSetCardType } from '@stores/recipes/hooks/useSetCardType';
 
-import { RecipesCardTypeManager } from '@managers/RecipesCardTypeManager';
-
 import { EventService } from '@services/EventService';
 
 export const useGridTypes = () => {
@@ -10,9 +8,7 @@ export const useGridTypes = () => {
   const setCardType = useSetCardType();
   const { cardType } = RecipesStore.useRecipesStore();
 
-  const addCardType = async (type: 'grid' | 'linear') => {
-
-    await RecipesCardTypeManager.setCardType(type);
+  const addCardType = (type: 'grid' | 'linear') => {
 
     setCardType(type);
 
