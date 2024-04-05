@@ -23,7 +23,7 @@ const actionFilterUpdate = (payload: RecipeListModel) => ({
   payload,
 });
 
-const actionSetCardType = (cardType: 'grid' | 'line') => ({
+const actionSetCardType = (cardType:  'grid' | 'linear') => ({
   type: RecipesActions.GET,
   payload: {
     cardType,
@@ -79,7 +79,7 @@ export const filterUpdate = async (
 };
 
 export const setCardType = (
-  cardType: 'grid' | 'line',
+  cardType:  'grid' | 'linear',
   dispatch: Dispatch,
 ) => {
   dispatch(actionSetCardType(cardType));
