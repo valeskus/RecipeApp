@@ -10,7 +10,7 @@ interface Props {
   onCardTypeChange: (type: 'grid' | 'linear') => void;
   gridType: 'grid' | 'linear';
   isFilterActive: boolean;
-  activeSort: string | undefined;
+  activeSort?: string;
 }
 
 export function RecipesListControls({
