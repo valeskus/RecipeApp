@@ -9,10 +9,13 @@ import SplashScreen from 'react-native-splash-screen';
 import { LottieAnimation } from '@UI/LottieAnimation';
 import { Colors } from '@UI/Colors';
 
+import { useSetCardType } from '@stores/recipes/hooks/useSetCardType';
+
 import { Header } from '@components/Header';
 import { SettingsButton } from '@components/SettingsButton';
 
 import { LanguageManager } from '@managers/LanguageManager';
+import { RecipesCardTypeManager } from '@managers/RecipesCardTypeManager';
 
 import { EventService } from '@services/EventService';
 
@@ -54,11 +57,12 @@ declare global {
 export function App(): JSX.Element {
   const [isRequiredDataInitialized, setIsRequiredDataInitialized] = useState<boolean>(false);
   const { t } = useTranslation();
-
+const setCardType = useSetCardType();
   useEffect(() => {
     SplashScreen.hide();
     EventService.emit('app:start');
 
+    RecipesCardTypeManager.initCardType().then((type) => setCardType(type));
     LanguageManager.initLanguage().then(() => setIsRequiredDataInitialized(true));
   }, []);
 
