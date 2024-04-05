@@ -22,6 +22,7 @@ export interface RecipesStoreState {
   sortOptions: Array<SortOptionModel>;
   total: number;
   isRecipesFetching: boolean;
+  cardType: 'grid' | 'line';
 }
 
 const initialState: RecipesStoreState = {
@@ -30,6 +31,7 @@ const initialState: RecipesStoreState = {
   sortOptions: [],
   total: 0,
   isRecipesFetching: false,
+  cardType: 'grid',
 };
 
 export function recipesReducer(
@@ -37,6 +39,16 @@ export function recipesReducer(
   action: Redux.AnyAction,
 ) {
   switch (action.type) {
+
+    case RecipesActions.SET_CARD_TYPE: {
+      const { cardType } = action.payload as { cardType: 'grid' | 'line' };
+
+      return {
+        ...state,
+        cardType,
+      };
+    }
+
     case RecipesActions.RECIPIES_FETCHING: {
       const { isRecipesFetching } = action.payload as { isRecipesFetching: boolean };
 
