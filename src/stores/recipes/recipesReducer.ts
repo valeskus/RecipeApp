@@ -22,7 +22,7 @@ export interface RecipesStoreState {
   sortOptions: Array<SortOptionModel>;
   total: number;
   isRecipesFetching: boolean;
-  cardType: 'grid' | 'line';
+  cardType:  'grid' | 'linear';
 }
 
 const initialState: RecipesStoreState = {
@@ -41,7 +41,7 @@ export function recipesReducer(
   switch (action.type) {
 
     case RecipesActions.SET_CARD_TYPE: {
-      const { cardType } = action.payload as { cardType: 'grid' | 'line' };
+      const { cardType } = action.payload as { cardType:  'grid' | 'linear' };
 
       return {
         ...state,
