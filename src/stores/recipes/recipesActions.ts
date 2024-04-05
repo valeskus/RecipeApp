@@ -10,7 +10,8 @@ export enum RecipesActions {
   GET = '@recipes/get',
   FILTER_UPDATE = '@recipes/update',
   RESET = '@recipes/reset',
-  RECIPIES_FETCHING = '@recipes/recipes-fetching',
+  SET_CARD_TYPE = '@recipes/set_card_type',
+  RECIPIES_FETCHING = '@recipes/recipes_fetching',
   ERROR = '@error/recipes',
 }
 
@@ -22,6 +23,13 @@ const actionGetRecipes = (payload: RecipeListModel) => ({
 const actionFilterUpdate = (payload: RecipeListModel) => ({
   type: RecipesActions.FILTER_UPDATE,
   payload,
+});
+
+const actionSetCardType = (cardType: 'grid' | 'line') => ({
+  type: RecipesActions.GET,
+  payload: {
+    cardType,
+  },
 });
 
 const actionRecipesFetching = (isRecipesFetching: boolean) => ({
@@ -73,6 +81,13 @@ export const filterUpdate = async (
   }
 
   dispatch(actionRecipesFetching(false));
+};
+
+export const setCardType = (
+  cardType: 'grid' | 'line',
+  dispatch: Dispatch,
+) => {
+  dispatch(actionSetCardType(cardType));
 };
 
 export const resetRecipes = (
