@@ -7,7 +7,7 @@ export const useInitCardType = () => {
     const dispatch = Redux.useDispatch();
 
     return React.useCallback(() => {
-        initCardType(dispatch);
+       return initCardType(dispatch);
     },
         [dispatch],
     );

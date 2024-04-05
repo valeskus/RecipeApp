@@ -23,7 +23,7 @@ import { RecipeDetails } from './screens/RecipeDetails';
 import { Settings } from './screens/Settings';
 import { AppStartSkeleton } from './AppStartSkeleton';
 import { styles } from './styles';
-import { useInitRequiredData } from './hook';
+import { useInitRequiredData } from './hooks';
 
 if (
   Platform.OS === 'android' &&
