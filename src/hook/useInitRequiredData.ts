@@ -1,16 +1,15 @@
 import { useEffect, useState } from 'react';
 
-import { useSetCardType } from '@stores/recipes/hooks/useSetCardType';
+import { useInitCardType } from '@stores/recipes';
 
-import { RecipesCardTypeManager } from '@managers/RecipesCardTypeManager';
 import { LanguageManager } from '@managers/LanguageManager';
 
 export const useInitRequiredData = () => {
     const [isRequiredDataInitialized, setIsRequiredDataInitialized] = useState<boolean>(false);
-    const initRecipeCardType = useSetCardType();
+    const initRecipeCardType = useInitCardType();
 
     useEffect(() => {
-        RecipesCardTypeManager.initCardType().then((type) => initRecipeCardType(type));
+        initRecipeCardType();
         LanguageManager.initLanguage().then(() => setIsRequiredDataInitialized(true));
     }, []);
 
