@@ -9,21 +9,23 @@ import SplashScreen from 'react-native-splash-screen';
 import { LottieAnimation } from '@UI/LottieAnimation';
 import { Colors } from '@UI/Colors';
 
+import { store } from '@stores/rootStore';
+
 import { Header } from '@components/Header';
 import { SettingsButton } from '@components/SettingsButton';
 
 import { EventService } from '@services/EventService';
 
-import { store } from './stores/rootStore';
-import { CategoriesList } from './screens/CategoriesList';
-import { RecipesList } from './screens/RecipesList';
-import { Filter, ClearButton } from './screens/Filter';
-import { Sort } from './screens/Sort';
-import { RecipeDetails } from './screens/RecipeDetails';
-import { Settings } from './screens/Settings';
-import { AppStartSkeleton } from './AppStartSkeleton';
+import { CategoriesList } from '../screens/CategoriesList';
+import { RecipesList } from '../screens/RecipesList';
+import { Sort } from '../screens/Sort';
+import { ClearButton, Filter } from '../screens/Filter';
+import { Settings } from '../screens/Settings';
+import { RecipeDetails } from '../screens/RecipeDetails';
+
 import { styles } from './styles';
 import { useInitRequiredData } from './hooks';
+import { AppStartSkeleton } from './components/AppStartSkeleton';
 
 if (
   Platform.OS === 'android' &&
