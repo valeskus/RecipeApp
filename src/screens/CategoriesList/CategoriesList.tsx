@@ -19,7 +19,7 @@ export function CategoriesList(): JSX.Element {
       </View>
       {isError && <Error onRetry={fetchData} />}
       {isLoading && <CategoryListSkeleton />}
-      {!isLoading && <CategoryCards categories={categories} />}
+      {!isLoading && !isError && <CategoryCards categories={categories} />}
     </View>
   );
 }
