@@ -85,10 +85,10 @@ export const useRecipeListController = () => {
       setError(false);
     }
 
-    await getRecipes(searchOptions);
+    await getRecipes(searchRecipeOptions);
     setLoading(false);
 
-  }, [errorGetRecipes]);
+  }, [errorGetRecipes, searchRecipeOptions]);
 
   useEffect(() => {
     return () => {
