@@ -19,7 +19,7 @@ export function RecipesList(): JSX.Element {
     total,
     isFilterActive,
     activeSort,
-    addCardType,
+    addCardTypeName,
     onSearch,
   } = useRecipeListController();
 
@@ -29,7 +29,7 @@ export function RecipesList(): JSX.Element {
         <Search onSearch={onSearch} />
         {!isLoading && !isRecipesListEmpty && (
           <RecipesListControls
-            onCardTypeChange={addCardType}
+            onCardTypeChange={addCardTypeName}
             gridType={cardType}
             isFilterActive={isFilterActive}
             activeSort={activeSort}

@@ -8,12 +8,12 @@ export const useGridTypes = () => {
   const setCardType = useSetCardType();
   const { cardType } = RecipesStore.useRecipesStore();
 
-  const addCardType = (type: 'grid' | 'linear') => {
+  const addCardTypeName = (type: 'grid' | 'linear') => {
 
     setCardType(type);
 
     EventService.emit('action:change-card-type', type);
   };
 
-  return { addCardType, cardType };
+  return { addCardTypeName, cardType };
 };

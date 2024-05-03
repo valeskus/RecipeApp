@@ -8,7 +8,7 @@ import { EventService } from '@services/EventService';
 import { useGridTypes } from './hooks';
 
 export const useRecipeListController = () => {
-  const { addCardType, cardType } = useGridTypes();
+  const { addCardTypeName, cardType } = useGridTypes();
   const [isLoading, setLoading] = useState(false);
 
   const { recipes, total } = RecipesStore.useRecipesStore();
@@ -84,7 +84,7 @@ export const useRecipeListController = () => {
     total,
     isFilterActive: searchOptions.options.filter.length !== 0,
     activeSort: searchOptions.options.sort,
-    addCardType,
+    addCardTypeName,
     onSearch,
   };
 };
