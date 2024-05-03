@@ -28,8 +28,12 @@ export const useRecipeListController = () => {
   const isRecipesListEmpty = recipes.length === 0;
 
   const searchRecipeOptions = useMemo(() => {
-    return { searchTerm: searchOptions.searchTerm, offset: searchOptions.offset, ...searchOptions.pendingOptions };
-  }, [searchOptions.searchTerm, searchOptions.pendingOptions, searchOptions.offset]);
+    return {
+      searchTerm: searchOptions.searchTerm, offset: searchOptions.offset,
+      sort: searchOptions.pendingOptions?.sort || searchOptions.options.sort,
+      filter: searchOptions.pendingOptions?.filter || searchOptions.options.filter,
+    };
+  }, [searchOptions.searchTerm, searchOptions.pendingOptions, searchOptions.offset, searchOptions.options]);
   const errorGetRecipes = ErrorsStore.useGetErrorFor('getRecipes');
   const resetError = ErrorsStore.useResetErrors('getRecipes');
 
@@ -109,7 +113,7 @@ export const useRecipeListController = () => {
     isRecipesListEmpty,
     recipes,
     total,
-    isFilterActive: searchOptions.options.filter.length !== 0,
+    isFilterActive: !!searchOptions.options.filter && searchOptions.options.filter.length !== 0,
     activeSort: searchOptions.options.sort,
     setCardType,
     onSearch,
