@@ -43,8 +43,8 @@ export function RecipesList(): JSX.Element {
       {isError && !isLoading && <Error onRetry={onRetry} />}
       {isLoading && recipeCardType === 'grid' && <GridListSkeleton />}
       {isLoading && recipeCardType === 'linear' && <LinearListSkeleton />}
-      {!isLoading && !isError && isRecipesListEmpty && <RecipesListMessage />}
-      {!isLoading && !isError && <RecipesCards gridType={recipeCardType} recipes={recipes} total={total} />}
+      {!isLoading && isRecipesListEmpty && <RecipesListMessage />}
+      {!isLoading && <RecipesCards gridType={recipeCardType} recipes={recipes} total={total} />}
     </View>
   );
 }
