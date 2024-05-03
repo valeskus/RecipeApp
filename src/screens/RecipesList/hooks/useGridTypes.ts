@@ -1,4 +1,3 @@
-import * as RecipesStore from '@stores/recipes';
 import { useSetCardType } from '@stores/recipes/hooks/useSetCardType';
 
 import { EventService } from '@services/EventService';
@@ -6,7 +5,6 @@ import { EventService } from '@services/EventService';
 export const useGridTypes = () => {
 
   const setCardType = useSetCardType();
-  const { cardType } = RecipesStore.useRecipesStore();
 
   const addCardTypeName = (type: 'grid' | 'linear') => {
 
@@ -15,5 +13,5 @@ export const useGridTypes = () => {
     EventService.emit('action:change-card-type', type);
   };
 
-  return { addCardTypeName, cardType };
+  return { addCardTypeName };
 };

@@ -8,10 +8,10 @@ import { EventService } from '@services/EventService';
 import { useGridTypes } from './hooks';
 
 export const useRecipeListController = () => {
-  const { addCardTypeName, cardType } = useGridTypes();
+  const { addCardTypeName } = useGridTypes();
   const [isLoading, setLoading] = useState(false);
 
-  const { recipes, total } = RecipesStore.useRecipesStore();
+  const { recipes, total, cardType } = RecipesStore.useRecipesStore();
 
   const getRecipes = RecipesStore.useGetRecipeList();
   const updateFilter = RecipesStore.useFilterUpdate();
