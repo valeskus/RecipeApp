@@ -31,33 +31,21 @@ export function searchReducer(state = initialState, action: Redux.AnyAction): Se
   switch (action.type) {
     case SearchActions.SET_PENDING_OPTIONS: {
       const { sort, filter } = action.payload as SearchOptionsModel;
-      if (sort && !filter) {
-        return {
-          ...state,
-          offset: 0,
-          pendingOptions: {
-            sort,
-          },
-        };
-      }
+      const pendingOptions = {
+        sort,
+        filter,
+      };
 
-      if (filter && !sort) {
-        return {
-          ...state,
-          offset: 0,
-          pendingOptions: {
-            filter,
-          },
-        };
-      }
+      Object.entries(pendingOptions).forEach(([key, value]) => {
+        if (!value) {
+          delete pendingOptions[key as keyof typeof pendingOptions];
+        }
+      });
 
       return {
         ...state,
         offset: 0,
-        pendingOptions: {
-          filter,
-          sort,
-        },
+        pendingOptions,
       };
     }
 
