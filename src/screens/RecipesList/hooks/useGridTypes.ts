@@ -6,12 +6,12 @@ export const useGridTypes = () => {
 
   const setCardType = useSetCardType();
 
-  const addCardTypeName = (type: 'grid' | 'linear') => {
+  const changeCardType = (type: 'grid' | 'linear') => {
 
     setCardType(type);
 
     EventService.emit('action:change-card-type', type);
   };
 
-  return { addCardTypeName };
+  return { changeCardType };
 };
