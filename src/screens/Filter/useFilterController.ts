@@ -49,9 +49,9 @@ export const useFilterController = () => {
   useEffect(() => {
     if (errorGetRecipes) {
 
-      Alert.alert(`${t('errors.title')}`, `${t('errors.description')}`, [
+      Alert.alert(t('errors.title'), t('errors.description'), [
         {
-          text: 'Ok',
+          text: t('errors.ok'),
           onPress: () => {
             resetError();
             navigation.goBack();
