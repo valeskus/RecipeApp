@@ -19,7 +19,7 @@ export const useFilterItemController = (params: UseFilterItemControllerParams) =
   const searchOptions = SearchStore.useSearchStore();
 
   const handleChange = useCallback((value: string | number) => {
-    const previousValue = searchOptions.options.filter.find((item) => item.key === params.filterName);
+    const previousValue = searchOptions.options.filter?.find((item) => item.key === params.filterName);
 
     params.onFilterChange(params.filterName,
       FilterValuesManager.getAppliedFiltersString(

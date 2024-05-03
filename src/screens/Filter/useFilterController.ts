@@ -22,7 +22,7 @@ export const useFilterController = () => {
 
   const onFilterChange = useCallback(
     (filterName: string, value: string) => {
-      const searchOptionsFilters = searchOptions.options.filter.filter((item) => item.key !== filterName);
+      const searchOptionsFilters = searchOptions.options.filter?.filter((item) => item.key !== filterName);
       if (!value) {
         setSearchOptions({
           filter: searchOptionsFilters,
@@ -34,7 +34,7 @@ export const useFilterController = () => {
       EventService.emit('action:change-filter', JSON.stringify({ filterName, value }));
 
       setSearchOptions({
-        filter: [...searchOptionsFilters, { key: filterName, value: value }],
+        filter: [...searchOptionsFilters || [], { key: filterName, value: value }],
       });
 
     },
