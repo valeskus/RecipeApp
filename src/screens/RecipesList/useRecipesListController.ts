@@ -37,11 +37,14 @@ export const useRecipeListController = () => {
   const errorGetRecipes = ErrorsStore.useGetErrorFor('getRecipes');
   const resetError = ErrorsStore.useResetErrors('getRecipes');
 
-  useFocusEffect(() => {
-    if (errorGetRecipes) {
-      setError(true);
-    }
-  });
+  useFocusEffect(
+    useCallback(() => {
+
+      setError(!!errorGetRecipes);
+
+    }, [])
+
+  );
 
   const onSearch = useCallback(() => {
     resetRecipes();
@@ -84,22 +87,18 @@ export const useRecipeListController = () => {
   const onRetry = useCallback(async () => {
     setLoading(true);
 
-    if (errorGetRecipes) {
-      resetError();
-      setError(false);
-    }
+    resetError();
 
     await getRecipes(searchRecipeOptions);
     setLoading(false);
 
-  }, [errorGetRecipes, searchRecipeOptions]);
+  }, [searchRecipeOptions]);
 
   useEffect(() => {
     return () => {
       resetSearchOptions();
       resetRecipes();
       resetError();
-      setError(false);
     };
   }, []);
 
@@ -113,7 +112,7 @@ export const useRecipeListController = () => {
     isRecipesListEmpty,
     recipes,
     total,
-    isFilterActive: !!searchOptions.options.filter && searchOptions.options.filter.length !== 0,
+    isFilterActive: searchOptions.options.filter?.length !== 0,
     activeSort: searchOptions.options.sort,
     setCardType,
     onSearch,
