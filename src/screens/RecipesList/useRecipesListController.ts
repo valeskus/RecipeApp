@@ -39,10 +39,8 @@ export const useRecipeListController = () => {
 
   useFocusEffect(
     useCallback(() => {
-
       setError(!!errorGetRecipes);
-
-    }, [])
+    }, [errorGetRecipes])
 
   );
 

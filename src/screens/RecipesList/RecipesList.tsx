@@ -26,6 +26,15 @@ export function RecipesList(): JSX.Element {
     onRetry,
   } = useRecipeListController();
 
+  if (isError) {
+    return (
+      <View style={styles.recipesScreenContainer}>
+        <Search onSearch={onSearch} />
+        <Error onRetry={onRetry} />
+      </View>
+    );
+  }
+
   return (
     <View style={styles.recipesScreenContainer}>
       <View style={styles.searchMenuContainer}>
@@ -40,7 +49,6 @@ export function RecipesList(): JSX.Element {
         )}
       </View>
       <View style={styles.blurContainer} />
-      {isError && !isLoading && <Error onRetry={onRetry} />}
       {isLoading && recipeCardType === 'grid' && <GridListSkeleton />}
       {isLoading && recipeCardType === 'linear' && <LinearListSkeleton />}
       {!isLoading && isRecipesListEmpty && <RecipesListMessage />}
