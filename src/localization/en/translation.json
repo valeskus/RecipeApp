@@ -23,8 +23,8 @@
         "g": "g",
         "ml": "ml",
         "kCal": "kCal",
-        "h":"h",
-        "min":"min"
+        "h": "h",
+        "min": "min"
     },
     "inputs": {
         "search": {
@@ -34,13 +34,14 @@
     "settings": {
         "language": "Language"
     },
-    "errors":{
+    "errors": {
         "recipes": {
             "errorMessage": "0 results found for your search.",
-            "tryAnother":"Please try another search term"
+            "tryAnother": "Please try another search term"
         },
         "description": "Something went wrong",
-        "title":"Ooops",
-        "tryAgain": "Please, try again"
+        "title": "Ooops",
+        "tryAgain": "Please, try again",
+        "ok": "ok"
     }
 }

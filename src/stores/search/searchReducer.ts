@@ -4,7 +4,7 @@ import { SearchActions, SearchOptionsModel } from './searchActions';
 
 interface Options {
   sort?: string;
-  filter: Array<{
+  filter?: Array<{
     key: string;
     value: string;
   }>;
@@ -31,19 +31,26 @@ export function searchReducer(state = initialState, action: Redux.AnyAction): Se
   switch (action.type) {
     case SearchActions.SET_PENDING_OPTIONS: {
       const { sort, filter } = action.payload as SearchOptionsModel;
+      const pendingOptions = {
+        sort,
+        filter,
+      };
+
+      Object.entries(pendingOptions).forEach(([key, value]) => {
+        if (!value) {
+          delete pendingOptions[key as keyof typeof pendingOptions];
+        }
+      });
 
       return {
         ...state,
         offset: 0,
-        pendingOptions: {
-          filter: filter || state.options.filter,
-          sort: sort || state.options.sort,
-        },
+        pendingOptions,
       };
     }
 
     case SearchActions.SET_OFFSET: {
-      const { offset } = action.payload as {offset: number};
+      const { offset } = action.payload as { offset: number };
 
       return {
         ...state,
@@ -52,7 +59,7 @@ export function searchReducer(state = initialState, action: Redux.AnyAction): Se
     }
 
     case SearchActions.SET_SEARCH_TERM: {
-      const { searchTerm } = action.payload as {searchTerm: string};
+      const { searchTerm } = action.payload as { searchTerm: string };
 
       return {
         ...state,
@@ -70,7 +77,10 @@ export function searchReducer(state = initialState, action: Redux.AnyAction): Se
       return {
         ...state,
         pendingOptions: undefined,
-        options: pendingOptions,
+        options: {
+          sort: pendingOptions.sort || state.options.sort,
+          filter: pendingOptions.filter || state.options.filter,
+        },
       };
     }
 

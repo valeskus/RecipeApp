@@ -14,6 +14,6 @@ export const useClearButtonController = () => {
 
   return {
     onClearFilters,
-    isFiltersActive: options.filter.length === 0,
+    isDisabled: options.filter?.length === 0,
   };
 };

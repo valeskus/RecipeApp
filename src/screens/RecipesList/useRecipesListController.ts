@@ -1,7 +1,9 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useFocusEffect } from '@react-navigation/native';
 
 import * as RecipesStore from '@stores/recipes';
 import * as SearchStore from '@stores/search';
+import * as ErrorsStore from '@stores/errors';
 
 import { EventService } from '@services/EventService';
 
@@ -10,6 +12,7 @@ import { useGridTypes } from './hooks';
 export const useRecipeListController = () => {
   const { changeCardType } = useGridTypes();
   const [isLoading, setLoading] = useState(false);
+  const [isError, setError] = useState<boolean>(false);
 
   const { recipes, total, cardType } = RecipesStore.useRecipesStore();
 
@@ -25,8 +28,22 @@ export const useRecipeListController = () => {
   const isRecipesListEmpty = recipes.length === 0;
 
   const searchRecipeOptions = useMemo(() => {
-    return { searchTerm: searchOptions.searchTerm, offset: searchOptions.offset, ...searchOptions.pendingOptions };
-  }, [searchOptions.searchTerm, searchOptions.pendingOptions, searchOptions.offset]);
+    return {
+      searchTerm: searchOptions.searchTerm,
+      offset: searchOptions.offset,
+      sort: searchOptions.pendingOptions?.sort || searchOptions.options.sort,
+      filter: searchOptions.pendingOptions?.filter || searchOptions.options.filter,
+    };
+  }, [searchOptions.searchTerm, searchOptions.pendingOptions, searchOptions.offset, searchOptions.options]);
+  const errorGetRecipes = ErrorsStore.useGetErrorFor('getRecipes');
+  const resetError = ErrorsStore.useResetErrors('getRecipes');
+
+  useFocusEffect(
+    useCallback(() => {
+      setError(!!errorGetRecipes);
+    }, [errorGetRecipes])
+
+  );
 
   const onSearch = useCallback(() => {
     resetRecipes();
@@ -65,10 +82,21 @@ export const useRecipeListController = () => {
     getRecipes(searchRecipeOptions);
   }, [searchOptions.offset]);
 
+  const onRetry = useCallback(async () => {
+    setLoading(true);
+
+    resetError();
+    setError(false);
+    await getRecipes(searchRecipeOptions);
+    setLoading(false);
+
+  }, [searchRecipeOptions]);
+
   useEffect(() => {
     return () => {
       resetSearchOptions();
       resetRecipes();
+      resetError();
     };
   }, []);
 
@@ -82,9 +110,11 @@ export const useRecipeListController = () => {
     isRecipesListEmpty,
     recipes,
     total,
-    isFilterActive: searchOptions.options.filter.length !== 0,
+    isFilterActive: searchOptions.options.filter?.length !== 0,
     activeSort: searchOptions.options.sort,
     changeCardType,
     onSearch,
+    isError,
+    onRetry,
   };
 };

@@ -2,6 +2,7 @@ import React from 'react';
 import { View } from 'react-native';
 
 import { Search } from '@components/Search';
+import { Error } from '@components/Error';
 
 import { styles } from './styles';
 import { RecipesCards } from './components/RecipesCards';
@@ -21,7 +22,18 @@ export function RecipesList(): JSX.Element {
     activeSort,
     changeCardType,
     onSearch,
+    isError,
+    onRetry,
   } = useRecipeListController();
+
+  if (isError) {
+    return (
+      <View style={styles.recipesScreenContainer}>
+        <Search onSearch={onSearch} />
+        <Error onRetry={onRetry} />
+      </View>
+    );
+  }
 
   return (
     <View style={styles.recipesScreenContainer}>
