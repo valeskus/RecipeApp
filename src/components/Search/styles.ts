@@ -20,7 +20,6 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 13,
     paddingRight: 62,
     marginHorizontal: 10,
-    marginBottom: 10,
   },
   searchBarInput: {
     fontSize: 15,
