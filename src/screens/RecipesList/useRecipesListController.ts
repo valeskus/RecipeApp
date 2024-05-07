@@ -29,7 +29,8 @@ export const useRecipeListController = () => {
 
   const searchRecipeOptions = useMemo(() => {
     return {
-      searchTerm: searchOptions.searchTerm, offset: searchOptions.offset,
+      searchTerm: searchOptions.searchTerm,
+      offset: searchOptions.offset,
       sort: searchOptions.pendingOptions?.sort || searchOptions.options.sort,
       filter: searchOptions.pendingOptions?.filter || searchOptions.options.filter,
     };
