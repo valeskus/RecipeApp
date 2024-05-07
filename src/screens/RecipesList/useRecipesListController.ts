@@ -8,10 +8,10 @@ import { EventService } from '@services/EventService';
 import { useGridTypes } from './hooks';
 
 export const useRecipeListController = () => {
-  const { setCardType, recipeCardType, getCardType } = useGridTypes();
+  const { changeCardType } = useGridTypes();
   const [isLoading, setLoading] = useState(false);
 
-  const { recipes, total } = RecipesStore.useRecipesStore();
+  const { recipes, total, cardType } = RecipesStore.useRecipesStore();
 
   const getRecipes = RecipesStore.useGetRecipeList();
   const updateFilter = RecipesStore.useFilterUpdate();
@@ -35,8 +35,7 @@ export const useRecipeListController = () => {
 
   useEffect(() => {
     setLoading(true);
-
-    Promise.all([getRecipes(searchRecipeOptions), getCardType()])
+    getRecipes(searchOptions)
       .then(() => setLoading(false));
   }, [searchOptions.searchTerm]);
 
@@ -78,14 +77,14 @@ export const useRecipeListController = () => {
   }, []);
 
   return {
-    recipeCardType,
+    cardType,
     isLoading,
     isRecipesListEmpty,
     recipes,
     total,
     isFilterActive: searchOptions.options.filter.length !== 0,
     activeSort: searchOptions.options.sort,
-    setCardType,
+    changeCardType,
     onSearch,
   };
 };
