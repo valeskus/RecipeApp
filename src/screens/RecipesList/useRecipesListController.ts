@@ -86,7 +86,7 @@ export const useRecipeListController = () => {
     setLoading(true);
 
     resetError();
-
+    setError(false);
     await getRecipes(searchRecipeOptions);
     setLoading(false);
 

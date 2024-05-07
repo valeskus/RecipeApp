@@ -39,7 +39,7 @@ export function RecipesList(): JSX.Element {
     <View style={styles.recipesScreenContainer}>
       <View style={styles.searchMenuContainer}>
         <Search onSearch={onSearch} />
-        {!isLoading && !isRecipesListEmpty && !isError && (
+        {!isLoading && !isRecipesListEmpty && (
           <RecipesListControls
             onCardTypeChange={setCardType}
             gridType={recipeCardType}
