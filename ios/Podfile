@@ -45,6 +45,8 @@ target 'RecipeApp' do
     # An absolute path to your application root.
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
+  use_frameworks! :linkage => :static
+  $RNFirebaseAsStaticFramework = true
 
   target 'RecipeAppTests' do
     inherit! :complete
