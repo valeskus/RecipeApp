@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "694972037882",
+    "project_id": "recipeapp-fd5ae",
+    "storage_bucket": "recipeapp-fd5ae.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:694972037882:android:54b6e0210850fb201d2743",
+        "android_client_info": {
+          "package_name": "com.valeskus.recipes_hub"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDAzFP2mvkzH7Jr4Ry0SJyBx-MZiNXJlDk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
