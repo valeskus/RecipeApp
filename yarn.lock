@@ -1708,6 +1708,11 @@
     prompts "^2.4.0"
     semver "^7.5.2"
 
+"@react-native-firebase/analytics@^20.1.0":
+  version "20.1.0"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/analytics/-/analytics-20.1.0.tgz#5ba10fffefc45c43d692c2bbde7f59e27023e347"
+  integrity sha512-tGwivElKEad0PaAwGxXO8ydNynnxUj/D2rtDG6QBtoU/L77hV6/UL0vh/vZcobWiBUv3sqBEkCg19VhA88j1og==
+
 "@react-native-firebase/app@^20.0.0":
   version "20.0.0"
   resolved "https://registry.yarnpkg.com/@react-native-firebase/app/-/app-20.0.0.tgz#0aae0fdaaa0db48f6b248fb410e18687e285f2e1"
@@ -1715,6 +1720,11 @@
   dependencies:
     opencollective-postinstall "^2.0.3"
     superstruct "^0.6.2"
+
+"@react-native-firebase/remote-config@^20.1.0":
+  version "20.1.0"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/remote-config/-/remote-config-20.1.0.tgz#396753f0739335bf38fb4e10ee9b8e72c4ef6f52"
+  integrity sha512-wx9Ie0NEvFlRFZAtzY4Dsy4doVgnCdIP5G1gfLm8RH/FzgfwCPgmHOkot+yEfO2f0L8qixE/2Rc5FrN+L3MswA==
 
 "@react-native/assets-registry@^0.72.0":
   version "0.72.0"

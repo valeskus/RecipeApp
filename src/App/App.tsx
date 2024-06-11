@@ -5,6 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { useTranslation } from 'react-i18next';
 import SplashScreen from 'react-native-splash-screen';
+import remoteConfig from '@react-native-firebase/remote-config';
 
 import { LottieAnimation } from '@UI/LottieAnimation';
 import { Colors } from '@UI/Colors';
@@ -59,6 +60,10 @@ export function ConnectedApp(): JSX.Element {
   useEffect(() => {
     SplashScreen.hide();
     EventService.emit('app:start');
+  }, []);
+
+  useEffect(() => {
+   remoteConfig().fetchAndActivate();
   }, []);
 
   if (!isRequiredDataInitialized) {
