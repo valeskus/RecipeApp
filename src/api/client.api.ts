@@ -1,5 +1,4 @@
 import axios from 'axios';
-// import { API_URL } from '@env';
 import remoteConfig from '@react-native-firebase/remote-config';
 
 const API_URL = remoteConfig().getValue('API_URL');
