@@ -23,7 +23,6 @@
 		98E1B5829BAC4ED0CAB00F36 /* Pods_RecipeApp_RecipeAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C820D3B75D903F985464838D /* Pods_RecipeApp_RecipeAppTests.framework */; };
 		B870D633294E42C792EB0FE2 /* Nunito-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8001C44BE37F4E49A76CD7AD /* Nunito-Semibold.ttf */; };
 		EB77F4AD18884E40BE08E6FC /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A874ECFC73FE4A72B7B9B3F9 /* Montserrat-Medium.ttf */; };
-		F8BF16A52C05F43E00EF1A86 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F8BF16A42C05F43E00EF1A86 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -221,6 +220,7 @@
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				E235C05ADACE081382539298 /* [CP] Copy Pods Resources */,
 				470DB85BF0CF158635F54BB3 /* [CP-User] [RNFB] Core Configuration */,
+				F89C17E12C3195FA008437C8 /* Selecting firebase plist file */,
 			);
 			buildRules = (
 			);
@@ -284,7 +284,6 @@
 				450B53DAE26841D2952380E0 /* Montserrat-Bold.ttf in Resources */,
 				EB77F4AD18884E40BE08E6FC /* Montserrat-Medium.ttf in Resources */,
 				8C7DC372C7464AE5A74841B9 /* Montserrat-Regular.ttf in Resources */,
-				F8BF16A52C05F43E00EF1A86 /* GoogleService-Info.plist in Resources */,
 				7D30886757754536AEFF020F /* Montserrat-Semibold.ttf in Resources */,
 				128266A7F3CC4FCB89DC520B /* Nunito-Black.ttf in Resources */,
 				7557311EFE544543956CA710 /* Nunito-Bold.ttf in Resources */,
@@ -403,6 +402,24 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RecipeApp-RecipeAppTests/Pods-RecipeApp-RecipeAppTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		F89C17E12C3195FA008437C8 /* Selecting firebase plist file */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Selecting firebase plist file";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Name of the resource \nGOOGLESERVICE_INFO_PLIST=GoogleService-Info.plist\n\n# Get references to dev and prod versions of the GoogleService-Info.plist\nGOOGLESERVICE_INFO_DEV=${PROJECT_DIR}/Firebase/Dev/${GOOGLESERVICE_INFO_PLIST}\nGOOGLESERVICE_INFO_PROD=${PROJECT_DIR}/Firebase/Prod/${GOOGLESERVICE_INFO_PLIST}\n\n# Make sure the stg & prod version of GoogleService-Info.plist exists\necho \"Looking for ${GOOGLESERVICE_INFO_PLIST} in ${GOOGLESERVICE_INFO_DEV}\"\nif [ ! -f $GOOGLESERVICE_INFO_DEV ]\nthen\n    echo \"No Development GoogleService-Info.plist found. Please ensure it's in the proper directory.\"\n    exit 1\nfi\n\necho \"Looking for ${GOOGLESERVICE_INFO_PLIST} in ${GOOGLESERVICE_INFO_PROD}\"\nif [ ! -f $GOOGLESERVICE_INFO_PROD ]\nthen\n    echo \"No Production GoogleService-Info.plist found. Please ensure it's in the proper directory.\"\n    exit 1\nfi\n\n# Get a reference to the destination location for the GoogleService-Info.plist\nPLIST_DESTINATION=${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app\necho \"Will copy ${GOOGLESERVICE_INFO_PLIST} to final destination: ${PLIST_DESTINATION}\"\n\n\n# Copy over the stg GoogleService-Info.plist for Debug builds\nif [ \"${CONFIGURATION}\" == \"Debug\" ]\nthen\n    echo \"-> Using ${GOOGLESERVICE_INFO_DEV}\"\n    echo \"-> Config ${CONFIGURATION}\"\n    cp \"${GOOGLESERVICE_INFO_DEV}\" \"${PLIST_DESTINATION}\"\nelse\n    echo \"-> Using ${GOOGLESERVICE_INFO_PROD}\"\n    echo \"-> Config ${CONFIGURATION}\"\n    cp \"${GOOGLESERVICE_INFO_PROD}\" \"${PLIST_DESTINATION}\"\nfi\n";
 		};
 		FD10A7F022414F080027D42C /* Start Packager */ = {
 			isa = PBXShellScriptBuildPhase;
