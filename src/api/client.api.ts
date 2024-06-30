@@ -1,7 +1,8 @@
 import axios from 'axios';
-import remoteConfig from '@react-native-firebase/remote-config';
 
-const API_URL = remoteConfig().getValue('API_URL');
+import { RemoteConfigManager } from '@managers/RemoteConfigManager';
+
+const API_URL = RemoteConfigManager.get('API_URL');
 
 export const client = axios.create({
   baseURL: API_URL.asString(),
