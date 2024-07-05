@@ -2,13 +2,11 @@ import axios from 'axios';
 
 import { RemoteConfigManager } from '@managers/RemoteConfigManager';
 
- function getApiUrl(){
-  return RemoteConfigManager.get('API_URL').asString();
- }
+export const client = axios.create({});
 
-export const client = axios.create({
-  baseURL: getApiUrl(),
-});
+export function clientInitApiUrl() {
+  client.defaults.baseURL = RemoteConfigManager.get('API_URL').asString();
+}
 
 export const changeLanguage = (language: string) => {
   if (!language) {
