@@ -12,9 +12,9 @@ export const useInitRequiredData = () => {
     const initRecipeCardType = useInitCardType();
 
     useEffect(() => {
-        Promise.all([initRecipeCardType(), LanguageManager.initLanguage(), remoteConfig().fetchAndActivate()])
-            .then(() =>
-                setIsRequiredDataInitialized(true))
+        Promise.all([remoteConfig().fetchAndActivate(), initRecipeCardType(), LanguageManager.initLanguage()])
+            .then((fetchedRemotely) =>
+                setIsRequiredDataInitialized(!!fetchedRemotely))
             .catch((error) =>
                 EventService.emit('app:error', {
                     moduleName: 'useInitRequiredData',
