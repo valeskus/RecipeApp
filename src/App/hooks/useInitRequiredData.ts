@@ -3,7 +3,7 @@ import remoteConfig from '@react-native-firebase/remote-config';
 
 import { useInitCardType } from '@stores/recipes';
 
-import { clientInitApiUrl } from '@api/client.api';
+import * as Client from '@api/client.api';
 
 import { LanguageManager } from '@managers/LanguageManager';
 
@@ -16,7 +16,7 @@ export const useInitRequiredData = () => {
     useEffect(() => {
         Promise.all([remoteConfig().fetchAndActivate(), initRecipeCardType(), LanguageManager.initLanguage()])
             .then(() => {
-                clientInitApiUrl();
+                Client.initApiUrl();
 
                 setIsRequiredDataInitialized(true);
             })
