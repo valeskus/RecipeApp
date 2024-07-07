@@ -4,7 +4,7 @@ import { RemoteConfigManager } from '@managers/RemoteConfigManager';
 
 export const client = axios.create({});
 
-export function initApiUrl() {
+export function init() {
   client.defaults.baseURL = RemoteConfigManager.get('API_URL');
 }
 

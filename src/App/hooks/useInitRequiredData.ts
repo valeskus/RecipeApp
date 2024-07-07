@@ -16,7 +16,7 @@ export const useInitRequiredData = () => {
     useEffect(() => {
         Promise.all([remoteConfig().fetchAndActivate(), initRecipeCardType(), LanguageManager.initLanguage()])
             .then(() => {
-                Client.initApiUrl();
+                Client.init();
 
                 setIsRequiredDataInitialized(true);
             })
