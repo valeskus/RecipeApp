@@ -50,6 +50,10 @@ platform :android do
   end
 
   lane :upload_play_store do
+    File.open("#{ENV['PWD']}/auth_play_store.json", 'w+') do |file|
+    file.write(ENV['PLAY_STORE_AUTH_JSON'])
+  end
+
     upload_to_play_store(
       track: 'internal',
       release_status: 'draft',

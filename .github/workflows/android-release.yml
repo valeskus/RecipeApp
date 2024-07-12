@@ -51,3 +51,8 @@ jobs:
           RELEASE_ANDROID_PASSWORD: ${{ secrets.RELEASE_ANDROID_PASSWORD }}
           ACCESS_TOKEN: ${{ secrets.INTERNAL_STORE_ACCESS_TOKEN }}
           SENTRY_KEY: ${{ secrets.SENTRY_KEY  }}
+    
+      - name: Deliver Android release artifacts to play store
+        run: bundle exec fastlane android upload_play_store
+        env:
+          PLAY_STORE_AUTH_JSON: ${{ secrets.PLAY_STORE_AUTH_JSON }}
