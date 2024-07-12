@@ -28,12 +28,10 @@ platform :android do
   end
 
   lane :build_release do
-    sh("cat #{ENV['PWD']}/android/app/build.gradle")
-    sh('git status')
-    sh('git log')
     password = ENV['RELEASE_ANDROID_PASSWORD']
     init_sentry
     bump_version
+    download_keystore
     ENV['APP_ENV'] = 'production'
     sh('yarn install --production')
 
