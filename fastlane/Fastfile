@@ -23,18 +23,24 @@ platform :android do
     )
   end
 
+  lane :download_keystore do
+    sh("curl -o #{ENV['PWD']}/android/app/release.keystore https://#{ENV['ACCESS_TOKEN']}@raw.githubusercontent.com/valeskus/internal-storage/recipes-hub/match/release.keystore")
+  end
+
   lane :build_release do
-    password = prompt(text: 'Enter keystore universal password: ')
+    password = ENV['RELEASE_ANDROID_PASSWORD']
+    init_sentry
     bump_version
     ENV['APP_ENV'] = 'production'
     sh('yarn install --production')
+
     gradle(
       task: 'bundle',
       build_type: 'Release',
       flavor: 'Production',
       project_dir: "#{ENV['PWD']}/android/",
       properties: {
-        'storeFile' => 'release.keystore',
+        'storeFile' => "release.keystore",
         'keyAlias' => 'android',
         'keyPassword' => password,
         'storePassword' => password
@@ -63,6 +69,7 @@ platform :ios do
 
   lane :build_release do
     setup_ci
+    init_sentry
     bump_version
     ENV['APP_ENV'] = 'production'
     sh('yarn install --production')
