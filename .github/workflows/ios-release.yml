@@ -1,47 +1,47 @@
-# name: ios-release
-# on:
-#   pull_request:
-#     branches:
-#       - 'develop'
-# jobs:
-#   build:
-#     runs-on: macos-latest
-#     steps:
-#       - uses: actions/checkout@v3
-#       - uses: ruby/setup-ruby@v1
-#         with:
-#           bundler-cache: true
-#       - name: Cache node modules
-#         uses: actions/cache@v3
-#         with:
-#           path: node_modules
-#           key: node_modules-${{hashFiles('yarn.lock')}}
-#           restore-keys: node_modules-
-#       - name: Cache pods
-#         uses: actions/cache@v3
-#         with:
-#           path: ios/Pods
-#           key: pods-${{hashFiles('ios/Podfile.lock')}}
-#           restore-keys: pods-
-#       - name: Install bundle dependencies
-#         run: bundle exec fastlane install_plugins
-#       - name: Build iOS release for app store
-#         run: bundle exec fastlane ios build_release
-#         env:
-#           INTERNAL_STORE_ACCESS_TOKEN: ${{ secrets.INTERNAL_STORE_ACCESS_TOKEN  }}
-#           INTERNAL_STORE_USERNAME: ${{ secrets.INTERNAL_STORE_USERNAME  }}
-#           MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD  }}
-#           SENTRY_KEY: ${{ secrets.SENTRY_KEY  }}
-#       - name: Deliver iOS release artifacts to app store
-#         run: bundle exec fastlane ios distribute_ios_release
-#         env:
-#           APP_STORE_API_KEY: ${{ secrets.APP_STORE_API_KEY  }}
-#           APP_STORE_API_KEY_ID: ${{ secrets.APP_STORE_API_KEY_ID  }}
-#           APP_STORE_API_KEY_ISSUER_ID: ${{ secrets.APP_STORE_API_KEY_ISSUER_ID  }}
-#       - name: Archive log artifacts
-#         if: always()
-#         uses: actions/upload-artifact@v4
-#         with:
-#           name: logs
-#           path: ios/build/RecipeApp-RecipeApp.log
+name: ios-release
+on:
+  pull_request:
+    branches:
+      - 'main'
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+      - name: Cache node modules
+        uses: actions/cache@v3
+        with:
+          path: node_modules
+          key: node_modules-${{hashFiles('yarn.lock')}}
+          restore-keys: node_modules-
+      - name: Cache pods
+        uses: actions/cache@v3
+        with:
+          path: ios/Pods
+          key: pods-${{hashFiles('ios/Podfile.lock')}}
+          restore-keys: pods-
+      - name: Install bundle dependencies
+        run: bundle exec fastlane install_plugins
+      - name: Build iOS release for app store
+        run: bundle exec fastlane ios build_release
+        env:
+          INTERNAL_STORE_ACCESS_TOKEN: ${{ secrets.INTERNAL_STORE_ACCESS_TOKEN  }}
+          INTERNAL_STORE_USERNAME: ${{ secrets.INTERNAL_STORE_USERNAME  }}
+          MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD  }}
+          SENTRY_KEY: ${{ secrets.SENTRY_KEY  }}
+      - name: Deliver iOS release artifacts to app store
+        run: bundle exec fastlane ios distribute_ios_release
+        env:
+          APP_STORE_API_KEY: ${{ secrets.APP_STORE_API_KEY  }}
+          APP_STORE_API_KEY_ID: ${{ secrets.APP_STORE_API_KEY_ID  }}
+          APP_STORE_API_KEY_ISSUER_ID: ${{ secrets.APP_STORE_API_KEY_ISSUER_ID  }}
+      - name: Archive log artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: logs
+          path: ios/build/RecipeApp-RecipeApp.log
 

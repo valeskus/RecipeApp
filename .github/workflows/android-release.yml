@@ -2,7 +2,7 @@ name: android-release
 on:
   pull_request:
     branches:
-      - 'develop'
+      - 'main'
 
 jobs:
   build:
