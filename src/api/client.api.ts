@@ -15,8 +15,8 @@ client.interceptors.response.use((response) =>
   (error) => {
     EventService
       .emit('app:error', {
-        moduleName: `${error.config.url},${error.config.method},${error.message}`,
-        error: new Error(error.url),
+        moduleName: `${error.config.method} ${error.config.url}`,
+        error: new Error(error.message),
       });
 
     return error;
