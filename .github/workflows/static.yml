@@ -43,7 +43,7 @@ jobs:
       - name: Upload privacy policy
         uses: actions/upload-pages-artifact@v2
         with:
-          path: './privacy_policy.html'
+          path: './pages'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
