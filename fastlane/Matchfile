@@ -1,4 +1,4 @@
-git_url("https://github.com/valeskus/internal-storage.git")
+git_url("https://#{ENV['INTERNAL_STORE_USERNAME']}:#{ENV['INTERNAL_STORE_ACCESS_TOKEN']}@github.com/valeskus/internal-storage.git")
 storage_mode("git")
 git_branch("recipes-hub/match")
 shallow_clone(true)

@@ -2,6 +2,12 @@ lane :get_app_version do
   sh("npm pkg get version | tr -d '\"' | tr -d '\n'")
 end
 
+lane :init_sentry do
+  File.open("#{ENV['PWD']}/.sentryclirc", 'w+') do |file|
+    file.write("[auth]\ntoken=#{ENV['SENTRY_KEY']}")
+  end
+end
+
 platform :android do
   lane :bump_version do
     version = get_app_version
@@ -17,18 +23,25 @@ platform :android do
     )
   end
 
+  lane :download_keystore do
+    sh("curl -o #{ENV['PWD']}/android/app/release.keystore https://#{ENV['ACCESS_TOKEN']}@raw.githubusercontent.com/valeskus/internal-storage/recipes-hub/match/release.keystore")
+  end
+
   lane :build_release do
-    password = prompt(text: 'Enter keystore universal password: ')
+    password = ENV['RELEASE_ANDROID_PASSWORD']
+    init_sentry
     bump_version
+    download_keystore
     ENV['APP_ENV'] = 'production'
     sh('yarn install --production')
+
     gradle(
       task: 'bundle',
       build_type: 'Release',
       flavor: 'Production',
       project_dir: "#{ENV['PWD']}/android/",
       properties: {
-        'storeFile' => 'release.keystore',
+        'storeFile' => "release.keystore",
         'keyAlias' => 'android',
         'keyPassword' => password,
         'storePassword' => password
@@ -37,6 +50,10 @@ platform :android do
   end
 
   lane :upload_play_store do
+    File.open("#{ENV['PWD']}/auth_play_store.json", 'w+') do |file|
+    file.write(ENV['PLAY_STORE_AUTH_JSON'])
+  end
+
     upload_to_play_store(
       track: 'internal',
       release_status: 'draft',
@@ -56,7 +73,8 @@ platform :ios do
   end 
 
   lane :build_release do
-    unlock_keychain
+    setup_ci
+    init_sentry
     bump_version
     ENV['APP_ENV'] = 'production'
     sh('yarn install --production')
@@ -75,23 +93,6 @@ platform :ios do
     )
   end
 
-  lane :upload_test_flight do
-    api_key = app_store_connect_api_key(
-      key_id: 'CJ93RY9M68',
-      issuer_id: '03ae0a28-fa93-4296-84f0-e9b6a16c3a3b',
-      key_filepath: "#{ENV['PWD']}/auth_transporter.p8",
-      duration: 1200,
-      in_house: false
-    )
-    
-    upload_to_testflight(
-      api_key: api_key,
-      skip_submission: true,
-      ipa: './ios/build/RecipeApp.ipa',
-      skip_waiting_for_build_processing: true
-    )
-  end
-
   desc 'To be used from developer`s machine to download certificates'
   lane :download_certificates_and_profiles do |options|
     username = options[:username] || prompt(text: 'Enter your AppleID: ')
@@ -105,6 +106,28 @@ platform :ios do
       type: 'appstore',
       readonly: true,
       username: username
+    )
+  end
+
+  desc 'Distributes build to TestFlight'
+  lane :distribute_ios_release do
+    File.open("#{ENV['PWD']}/auth_key.p8", 'w+') do |file|
+      file.write(ENV['APP_STORE_API_KEY'])
+    end
+
+    api_key = app_store_connect_api_key(
+      key_id: ENV['APP_STORE_API_KEY_ID'],
+      issuer_id: ENV['APP_STORE_API_KEY_ISSUER_ID'],
+      key_filepath: "#{ENV['PWD']}/auth_key.p8",
+      duration: 1200,
+      in_house: false
+    )
+
+    upload_to_testflight(
+      skip_submission: true,
+      api_key: api_key,
+      ipa: './ios/build/RecipeApp.ipa',
+      skip_waiting_for_build_processing: true
     )
   end
 end
