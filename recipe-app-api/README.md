@@ -29,6 +29,11 @@ Each database can be accessed via the dedicated credentials, provided in `.env` 
 
 This project uses Heroku as a deployment platform
 
+* login to Heroku
+```bash
+yarn deployment:login
+```
+
 * build a release candidate
 ```bash
 yarn deployment:build
@@ -36,12 +41,17 @@ yarn deployment:build
 
 * verify the release candidate by running it in docker
 ```bash
- docker run -d --restart=always -p 3000:3000 registry.heroku.com/recipe-hub-app-api/web:latest
+docker run -d --restart=always -p 3000:3000 registry.heroku.com/recipe-hub-app-api/web:latest
 ```
 
 * release
 ```bash
 yarn deployment:release
+```
+
+* see remote server restarts
+```bash
+yarn deployment:logs
 ```
 
 * check the host\

@@ -1,4 +1,5 @@
 import { Module } from '@nestjs/common';
+import { SentryModule } from '@sentry/nestjs/setup';
 
 import { RecipeModule } from './recipe/recipe.module';
 import { CategoriesModule } from './categories/categories.module';
@@ -10,6 +11,7 @@ import { ImagesModule } from './images/images.module';
 
 @Module({
   imports: [
+    SentryModule.forRoot(),
     MongoModule,
     RecipeModule,
     CategoriesModule,
