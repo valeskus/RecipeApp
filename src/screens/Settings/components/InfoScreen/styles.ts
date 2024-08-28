@@ -11,7 +11,7 @@ export const styles = StyleSheet.create({
     backgroundColor: Colors.background,
   },
   textContainer: {
-    marginBottom: 20,
+    marginBottom: 25,
   },
   text: {
     fontFamily: 'Montserrat-Regular',
@@ -27,6 +27,10 @@ export const styles = StyleSheet.create({
   link: {
     color: Colors.primary,
     fontFamily: 'Montserrat-Medium',
+  },
+  accent: {
+    color: Colors.accent,
+    fontFamily: 'Montserrat-Semibold',
   },
 
 });

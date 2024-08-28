@@ -10,7 +10,7 @@ export function InfoScreen(): JSX.Element {
   return (
     <View style={styles.container}>
       <View style={styles.textContainer}>
-        <Text style={styles.text}>{t('info.foodData')}</Text>
+        <Text style={styles.text}>  {t('info.foodData')}</Text>
         <TouchableOpacity onPress={() => Linking.openURL('https://www.usda.gov')}>
           <Text style={[styles.text, styles.link]}>
             https://www.usda.gov
@@ -18,7 +18,9 @@ export function InfoScreen(): JSX.Element {
         </TouchableOpacity>
       </View>
 
-      <Text style={styles.text}>{t('info.disclaimer')}</Text>
+      <Text style={styles.text}>
+        <Text style={[styles.text, styles.accent]}>  {t('info.disclaimer')}</Text>
+        {t('info.disclaimerText')}</Text>
     </View>
   );
 }

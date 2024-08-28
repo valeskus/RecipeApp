@@ -33,6 +33,7 @@ export function Button({
         pressableStyle,
       ]}
       disabled={disabled}
+      hitSlop={10}
     >
       <Image source={Icons[icon]} style={[styles.buttonImage, iconStyle]} />
       {active && (

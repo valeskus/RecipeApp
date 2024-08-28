@@ -35,7 +35,8 @@
     },
     "info": {
         "foodData": "Food data is taken from the open source of the USDepartment of Agriculture:",
-        "disclaimer": "Disclaimer: This app does not provide medical advice or recommendations.The information provided is for general informational purposes only and should not be considered a substitute for professional medical consultation, diagnosis, or treatment."
+        "disclaimer":"Disclaimer: ",
+        "disclaimerText": "This app does not provide medical advice or recommendations.The information provided is for general informational purposes only and should not be considered a substitute for professional medical consultation, diagnosis, or treatment."
     },
     "errors": {
         "recipes": {
