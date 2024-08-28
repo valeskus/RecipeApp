@@ -20,4 +20,17 @@ export const styles = StyleSheet.create({
     fontFamily: 'Nunito-Bold',
     color: Colors.text,
   },
+  item: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  itemTitle: {
+    marginLeft: 15,
+    fontSize: 18,
+    fontFamily: 'Nunito-Bold',
+    color: Colors.text,
+  },
+  active: {
+    color: Colors.primary,
+  },
 });
