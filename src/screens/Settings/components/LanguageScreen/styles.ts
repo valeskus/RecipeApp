@@ -8,6 +8,7 @@ export const styles = StyleSheet.create({
     paddingVertical: 20,
     paddingHorizontal: 15,
     backgroundColor: Colors.background,
+    flexDirection: 'column',
   },
   buttonImage: {
     width: '60%',

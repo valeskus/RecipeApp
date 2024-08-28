@@ -4,7 +4,9 @@
     "recipes": "Рецепти",
     "filter": "Фільтрування",
     "sort": "Сортування",
-    "settings": "Налаштування"
+    "settings": "Налаштування",
+    "language": "Мова",
+    "info": "Інформація"
   },
   "recipeDetails": {
     "nutrients": {
@@ -30,9 +32,6 @@
     "search": {
       "placeholder": "Пошук"
     }
-  },
-  "settings": {
-    "language": "Мова"
   },
   "errors": {
     "recipes": {

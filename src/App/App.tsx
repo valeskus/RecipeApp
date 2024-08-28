@@ -22,6 +22,8 @@ import { Sort } from '../screens/Sort';
 import { ClearButton, Filter } from '../screens/Filter';
 import { Settings } from '../screens/Settings';
 import { RecipeDetails } from '../screens/RecipeDetails';
+import { LanguageScreen } from '../screens/Settings/components/LanguageScreen';
+import { InfoScreen } from '../screens/Settings/components/InfoScreen';
 
 import { styles } from './styles';
 import { useInitRequiredData } from './hooks';
@@ -43,6 +45,8 @@ export type RootStackParamList = {
   RecipeDetails: {
     id: string;
   };
+  InfoScreen: undefined;
+  LanguageScreen: undefined;
 };
 
 const Stack = createStackNavigator();
@@ -144,6 +148,26 @@ export function ConnectedApp(): JSX.Element {
             }}
           />
         </Stack.Group>
+        <Stack.Screen
+          name="LanguageScreen"
+          component={LanguageScreen}
+          options={{
+            title: t('screenHeaderTitle.language'),
+            header: ({ options }) => (
+              <Header options={options} />
+            ),
+          }}
+        />
+        <Stack.Screen
+          name="InfoScreen"
+          component={InfoScreen}
+          options={{
+            title: t('screenHeaderTitle.info'),
+            header: ({ options }) => (
+              <Header options={options} />
+            ),
+          }}
+        />
         <Stack.Screen
           name="RecipeDetails"
           component={RecipeDetails}

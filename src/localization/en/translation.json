@@ -4,7 +4,9 @@
         "recipes": "Recipes",
         "filter": "Filter",
         "sort": "Sort",
-        "settings": "Settings"
+        "settings": "Settings",
+        "language": "Language",
+        "info": "Info"
     },
     "recipeDetails": {
         "nutrients": {
@@ -30,9 +32,6 @@
         "search": {
             "placeholder": "Search"
         }
-    },
-    "settings": {
-        "language": "Language"
     },
     "errors": {
         "recipes": {
