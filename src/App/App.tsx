@@ -137,17 +137,18 @@ export function ConnectedApp(): JSX.Element {
               ),
             }}
           />
-          <Stack.Screen
-            name="Settings"
-            component={Settings}
-            options={{
+        </Stack.Group>
+        <Stack.Screen
+          name="Settings"
+          component={Settings}
+          options={{
               title: t('screenHeaderTitle.settings'),
               header: ({ options }) => (
-                <Header ignoreTopOffset options={options} />
+                <Header options={options} />
               ),
-            }}
-          />
-        </Stack.Group>
+          }}
+        />
+
         <Stack.Screen
           name="LanguageScreen"
           component={LanguageScreen}
