@@ -16,8 +16,8 @@ export function Language(): JSX.Element {
       {isLoading && <LanguageSkeleton />}
       {!isLoading &&
         (<><Text style={styles.label}>{t('screenHeaderTitle.language')} :</Text>
-          <LanguageItem title={'Ukrainian'} onPress={onPressUA} language={language} icon={'ua'} />
-          <LanguageItem title={'English'} onPress={onPressEN} language={language} icon={'en'} />
+          <LanguageItem title={'Ukrainian'} onPress={onPressUA} language={language} languageCode={'ua'} />
+          <LanguageItem title={'English'} onPress={onPressEN} language={language} languageCode={'en'} />
         </>)}
     </View>
   );

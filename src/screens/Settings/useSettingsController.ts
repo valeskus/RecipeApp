@@ -4,7 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import { EventService } from '@services/EventService';
 
 export const useSettingsController = () => {
-const navigation = useNavigation();
+    const navigation = useNavigation();
 
     const onPressLanguage = useCallback(() => {
         navigation.navigate('Language');
