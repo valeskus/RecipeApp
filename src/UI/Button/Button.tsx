@@ -7,7 +7,7 @@ import { styles } from './styles';
 
 interface Props {
   icon: keyof typeof Icons;
-  onPress: () => any;
+  onPress: () => void;
   active?: boolean;
   pressableStyle?: StyleProp<ViewStyle>;
   iconStyle?: StyleProp<ImageStyle>;

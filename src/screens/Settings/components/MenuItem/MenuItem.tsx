@@ -8,7 +8,7 @@ import { styles } from './styles';
 interface Props {
     icon: keyof typeof Icons;
     title: string;
-    onPress: () => any;
+    onPress: () => void;
 }
 export function MenuItem({ icon, title, onPress }: Props): JSX.Element {
 
