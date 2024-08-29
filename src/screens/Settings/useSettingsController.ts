@@ -7,11 +7,11 @@ export const useSettingsController = () => {
 const navigation = useNavigation();
 
     const onPressLanguage = useCallback(() => {
-        navigation.navigate('LanguageScreen');
+        navigation.navigate('Language');
     }, []);
 
     const onPressInfo = useCallback(() => {
-        navigation.navigate('InfoScreen');
+        navigation.navigate('Info');
 
     }, []);
 

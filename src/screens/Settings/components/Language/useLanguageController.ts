@@ -4,7 +4,7 @@ import { LanguageManager } from '@managers/LanguageManager';
 
 import { EventService } from '@services/EventService';
 
-export const useLanguageScreenController = () => {
+export const useLanguageController = () => {
   const [language, setLanguage] = useState<'ua' | 'en'>();
   const [isLoading, setLoading] = useState<boolean>(false);
 

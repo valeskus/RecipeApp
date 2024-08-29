@@ -1,19 +1,21 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, Linking } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import { useTranslation } from 'react-i18next';
 
 import { styles } from './styles';
+import { useInfoController } from './useInfoController';
 
-export function InfoScreen(): JSX.Element {
+export function Info(): JSX.Element {
+  const { onPress, link } = useInfoController();
   const { t } = useTranslation();
 
   return (
     <View style={styles.container}>
       <View style={styles.textContainer}>
         <Text style={styles.text}>  {t('info.foodData')}</Text>
-        <TouchableOpacity onPress={() => Linking.openURL('https://www.usda.gov')}>
+        <TouchableOpacity onPress={onPress}>
           <Text style={[styles.text, styles.link]}>
-            https://www.usda.gov
+            {link}
           </Text>
         </TouchableOpacity>
       </View>

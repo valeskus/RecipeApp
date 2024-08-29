@@ -7,8 +7,8 @@ import { styles } from './styles';
 
 interface Props {
   icon: keyof typeof Icons;
-  language: 'en' | 'ua' | undefined;
-  onPress: () => any;
+  language?: 'en' | 'ua';
+  onPress: () => void;
   title: string;
 }
 

@@ -1,7 +1,6 @@
 import { StyleSheet } from 'react-native';
 
 import { Colors } from '@UI/Colors';
-import { normalize } from '@UI/normalize';
 
 export const styles = StyleSheet.create({
   container: {
@@ -18,12 +17,6 @@ export const styles = StyleSheet.create({
     fontSize: 15,
     color: Colors.text,
   },
-  icon: {
-    width: normalize(30),
-    height: normalize(30),
-    alignSelf: 'flex-start',
-},
-
   link: {
     color: Colors.primary,
     fontFamily: 'Montserrat-Medium',
