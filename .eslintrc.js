@@ -174,6 +174,13 @@ module.exports = {
     'no-prototype-builtins': 'off',
     'react-native/no-single-element-style-arrays': 'error',
     'require-await': 'error',
+    "jsx-quotes": ["error", "prefer-double"],
+    'react/jsx-curly-brace-presence': ['error', {
+      'props': 'never',
+    }],
+    "react/jsx-tag-spacing": ["error", {
+      "afterOpening": "never",
+    }],
   },
   overrides: [
     {

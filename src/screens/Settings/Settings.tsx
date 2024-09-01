@@ -12,8 +12,8 @@ export function Settings(): JSX.Element {
 
   return (
     <View style={styles.modalContainer}>
-      <MenuItem title={t('screenHeaderTitle.language')} icon={'language'} onPress={onPressLanguage} />
-      <MenuItem title={t('screenHeaderTitle.info')} icon={'info'} onPress={onPressInfo} />
+      <MenuItem title={t('screenHeaderTitle.language')} icon="language" onPress={onPressLanguage} />
+      <MenuItem title={t('screenHeaderTitle.info')} icon="info" onPress={onPressInfo} />
     </View>
   );
 }

@@ -18,7 +18,7 @@ export function Error({ onRetry }: Props): JSX.Element {
 
   return (
     <SafeAreaView style={styles.errorScreen}>
-      <Header/>
+      <Header />
       <View style={styles.errorContainer}>
         <Image source={Icons.pizza} style={styles.icon} />
         <Text style={styles.title}>{t('errors.title')}...</Text>

@@ -34,8 +34,8 @@ export function Counter(props: Props): JSX.Element {
         onEndEditing={onSubmitPress}
         value={countValue}
         maxLength={2}
-        inputMode={'numeric'}
-        returnKeyType={'done'}
+        inputMode="numeric"
+        returnKeyType="done"
       />
       <Pressable
         style={({ pressed }) => [styles.button, pressed && styles.buttonPressed]}
