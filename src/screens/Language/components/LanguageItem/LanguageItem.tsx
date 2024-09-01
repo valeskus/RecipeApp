@@ -6,26 +6,26 @@ import { Icons } from '@UI/Icons';
 import { styles } from './styles';
 
 interface Props {
-  languageCode: 'en' | 'ua';
-  language?: 'en' | 'ua';
+  icon: 'en' | 'ua';
   onPress: () => void;
   title: string;
+  isActive: boolean;
 }
 
-export function LanguageItem({ languageCode, language, title, onPress }: Props): JSX.Element {
+export function LanguageItem({ icon, isActive, title, onPress }: Props): JSX.Element {
 
   return (
     <Pressable style={styles.item} onPress={onPress}>
       <View style={styles.itemBackground}>
-        <Image source={Icons[languageCode]} style={styles.buttonImage} />
-        {language === languageCode && (
+        <Image source={Icons[icon]} style={styles.buttonImage} />
+        {isActive && (
           <Image
             source={Icons.active}
             style={styles.iconActive}
           />
         )}
       </View>
-      <Text style={[styles.itemTitle, language === languageCode && styles.active]}>{title}</Text>
+      <Text style={[styles.itemTitle, isActive && styles.active]}>{title}</Text>
     </Pressable>
   );
 }

@@ -38,7 +38,7 @@ export const useLanguageController = () => {
   }, []);
 
   useEffect(() => {
-    EventService.emit('view:settings');
+    EventService.emit('view:language');
   }, []);
 
   return {

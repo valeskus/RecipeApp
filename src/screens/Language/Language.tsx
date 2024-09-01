@@ -15,9 +15,10 @@ export function Language(): JSX.Element {
     <View style={styles.modalContainer}>
       {isLoading && <LanguageSkeleton />}
       {!isLoading &&
-        (<><Text style={styles.label}>{t('screenHeaderTitle.language')} :</Text>
-          <LanguageItem title="Ukrainian" onPress={onPressUA} language={language} languageCode="ua" />
-          <LanguageItem title="English" onPress={onPressEN} language={language} languageCode="en" />
+        (<>
+          <Text style={styles.label}>{t('screenHeaderTitle.language')} :</Text>
+          <LanguageItem title="Ukrainian" onPress={onPressUA} isActive={language === 'ua'} icon="ua" />
+          <LanguageItem title="English" onPress={onPressEN} isActive={language === 'en'} icon="en" />
         </>)}
     </View>
   );

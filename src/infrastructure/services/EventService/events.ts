@@ -12,6 +12,8 @@ export interface Events {
     'view:recipe-details': undefined;
     'view:recipes-list': undefined;
     'view:settings': undefined;
+    'view:language': undefined;
+    'view:info': undefined;
     'view:sort': undefined;
 
     'action:change-language': 'ua' | 'en';

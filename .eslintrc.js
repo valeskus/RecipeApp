@@ -73,7 +73,7 @@ module.exports = {
     'react/self-closing-comp': ['error', {
       'component': true,
     }],
-    'react/jsx-closing-bracket-location': 'error',
+    'react/jsx-closing-bracket-location': ['error','line-aligned'],
     'react/jsx-indent-props': ['error', 2],
     'react/jsx-wrap-multilines': ['error', {
       declaration: 'parens',
