@@ -7,7 +7,7 @@ import { styles } from './styles';
 
 interface Props {
   languageCode: 'en' | 'ua';
-  language: 'en' | 'ua' | undefined;
+  language?: 'en' | 'ua';
   onPress: () => void;
   title: string;
 }
