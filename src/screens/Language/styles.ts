@@ -8,6 +8,7 @@ export const styles = StyleSheet.create({
     paddingVertical: 20,
     paddingHorizontal: 15,
     backgroundColor: Colors.background,
+    flexDirection: 'column',
   },
   buttonImage: {
     width: '60%',
@@ -18,5 +19,18 @@ export const styles = StyleSheet.create({
     fontSize: 21,
     fontFamily: 'Nunito-Bold',
     color: Colors.text,
+  },
+  item: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  itemTitle: {
+    marginLeft: 15,
+    fontSize: 18,
+    fontFamily: 'Nunito-Bold',
+    color: Colors.text,
+  },
+  active: {
+    color: Colors.primary,
   },
 });

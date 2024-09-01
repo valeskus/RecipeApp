@@ -6,8 +6,8 @@ import { Colors } from '@UI/Colors';
 export function GridListSkeleton(): JSX.Element {
   return (
     <ContentLoader
-      width={'100%'}
-      height={'100%'}
+      width="100%"
+      height="100%"
       backgroundColor={Colors.secondary}
       opacity={0.2}
     >

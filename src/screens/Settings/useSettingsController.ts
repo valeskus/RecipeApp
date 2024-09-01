@@ -1,50 +1,26 @@
-import { useCallback, useEffect, useState } from 'react';
-
-import { LanguageManager } from '@managers/LanguageManager';
+import { useCallback, useEffect } from 'react';
+import { useNavigation } from '@react-navigation/native';
 
 import { EventService } from '@services/EventService';
 
-export const useSettingButtonController = () => {
-  const [language, setLanguage] = useState<'ua' | 'en'>();
-  const [isLoading, setLoading] = useState<boolean>(false);
+export const useSettingsController = () => {
+    const navigation = useNavigation();
 
-  const onPressUA = useCallback(async () => {
-    setLoading(true);
-    setLanguage('ua');
-    await LanguageManager.setLanguage('ua');
-    setLoading(false);
-    LanguageManager.setLanguage('ua');
+    const onPressLanguage = useCallback(() => {
+        navigation.navigate('Language');
+    }, []);
 
-    EventService.emit('action:change-language', 'ua');
-  }, []);
+    const onPressInfo = useCallback(() => {
+        navigation.navigate('Info');
 
-  const onPressEN = useCallback(async () => {
-    setLoading(true);
-    setLanguage('en');
-    await LanguageManager.setLanguage('en');
-    setLoading(false);
-    LanguageManager.setLanguage('en');
+    }, []);
 
-    EventService.emit('action:change-language', 'en');
-  }, []);
+    useEffect(() => {
+        EventService.emit('view:settings');
+    }, []);
 
-  const initLanguage = useCallback(async () => {
-    const currentLanguage = await LanguageManager.getLanguage();
-    setLanguage(currentLanguage);
-  }, []);
-
-  useEffect(() => {
-    initLanguage();
-  }, []);
-
-  useEffect(() => {
-    EventService.emit('view:settings');
-  }, []);
-
-  return {
-    onPressUA,
-    onPressEN,
-    language,
-    isLoading,
-  };
+    return {
+        onPressLanguage,
+        onPressInfo,
+    };
 };

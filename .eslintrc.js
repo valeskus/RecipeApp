@@ -73,7 +73,7 @@ module.exports = {
     'react/self-closing-comp': ['error', {
       'component': true,
     }],
-    'react/jsx-closing-bracket-location': 'error',
+    'react/jsx-closing-bracket-location': ['error','line-aligned'],
     'react/jsx-indent-props': ['error', 2],
     'react/jsx-wrap-multilines': ['error', {
       declaration: 'parens',
@@ -174,6 +174,13 @@ module.exports = {
     'no-prototype-builtins': 'off',
     'react-native/no-single-element-style-arrays': 'error',
     'require-await': 'error',
+    "jsx-quotes": ["error", "prefer-double"],
+    'react/jsx-curly-brace-presence': ['error', {
+      'props': 'never',
+    }],
+    "react/jsx-tag-spacing": ["error", {
+      "afterOpening": "never",
+    }],
   },
   overrides: [
     {

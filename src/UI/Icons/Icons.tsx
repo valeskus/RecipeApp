@@ -30,4 +30,7 @@ export const Icons = {
   caloriesMinus: require('../../../assets/caloriesMinus.png'),
   ua: require('../../../assets/ua.png'),
   en: require('../../../assets/en.png'),
+  language: require('../../../assets/language.png'),
+  info: require('../../../assets/info.png'),
+
 };
