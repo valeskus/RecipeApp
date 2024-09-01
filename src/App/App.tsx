@@ -22,8 +22,8 @@ import { Sort } from '../screens/Sort';
 import { ClearButton, Filter } from '../screens/Filter';
 import { Settings } from '../screens/Settings';
 import { RecipeDetails } from '../screens/RecipeDetails';
-import { Language } from '../screens/Settings/components/Language';
-import { Info } from '../screens/Settings/components/Info';
+import { Language } from '../screens/Language';
+import { Info } from '../screens/Info';
 
 import { styles } from './styles';
 import { useInitRequiredData } from './hooks';
