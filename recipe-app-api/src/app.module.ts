@@ -8,6 +8,7 @@ import { ProductsModule } from './products/products.module';
 import { TranslationModule } from './translation/translation.module';
 import { MongoModule } from './mongo/mongo.module';
 import { ImagesModule } from './images/images.module';
+import { SMTPModule } from './SMTP/smtp.module';
 
 @Module({
   imports: [
@@ -18,7 +19,8 @@ import { ImagesModule } from './images/images.module';
     SearchModule,
     ProductsModule,
     TranslationModule,
-    ImagesModule
+    ImagesModule,
+    SMTPModule
   ],
   controllers: [],
   providers: [],
