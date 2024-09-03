@@ -1,0 +1,91 @@
+{
+  "name": "recipe-app-api",
+  "version": "0.0.1",
+  "description": "",
+  "author": "",
+  "private": false,
+  "license": "MIT",
+  "scripts": {
+    "build": "nest build",
+    "swagger": "API_ENV=admin APP_ENV=admin.staging nest start --entryFile ./swagger.js",
+    "dump:staging": "APP_ENV=admin.staging node cli/dump.mjs",
+    "restore:production": "APP_ENV=admin.production node cli/restore.mjs",
+    "start:production": "APP_ENV=production nest start",
+    "start:admin:staging": "API_ENV=admin APP_ENV=admin.staging nest start --watch",
+    "start:admin:production": "API_ENV=admin APP_ENV=admin.production nest start --watch",
+    "deployment:login": "./node_modules/.bin/heroku login && ./node_modules/.bin/heroku container:login",
+    "deployment:build": "./node_modules/.bin/heroku container:push web -a recipe-hub-app-api",
+    "deployment:release": "./node_modules/.bin/heroku container:release web -a recipe-hub-app-api",
+    "deployment:logs": "./node_modules/.bin/heroku logs --tail -a recipe-hub-app-api",
+    "lint:ts": "./node_modules/.bin/tsc --project tsconfig.json",
+    "lint": "eslint ./src"
+  },
+  "engines": {
+    "node": "18.16.1"
+  },
+  "main": "dist/main.js",
+  "dependencies": {
+    "@nestjs/common": "^9.0.0",
+    "@nestjs/core": "^9.0.0",
+    "@nestjs/microservices": "^10.4.1",
+    "@nestjs/mongoose": "^9.2.2",
+    "@nestjs/platform-express": "^9.0.0",
+    "@nestjs/swagger": "^6.3.0",
+    "@sentry/cli": "^2.33.1",
+    "@sentry/nestjs": "^8.26.0",
+    "@sentry/profiling-node": "^8.26.0",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.14.0",
+    "dotenv": "^16.1.3",
+    "firebase-admin": "^11.8.0",
+    "image-size": "^1.0.2",
+    "mongoose": "^7.2.2",
+    "nestjs-i18n": "^10.2.6",
+    "nodemailer": "^6.9.14",
+    "reflect-metadata": "^0.1.13",
+    "rxjs": "^7.2.0"
+  },
+  "devDependencies": {
+    "@nestjs/cli": "^9.0.0",
+    "@nestjs/schematics": "^9.0.0",
+    "@nestjs/testing": "^9.0.0",
+    "@types/express": "^4.17.13",
+    "@types/jest": "29.5.1",
+    "@types/multer": "^1.4.8",
+    "@types/node": "18.16.12",
+    "@types/nodemailer": "^6.4.15",
+    "@types/supertest": "^2.0.11",
+    "@typescript-eslint/eslint-plugin": "^5.0.0",
+    "@typescript-eslint/parser": "^5.0.0",
+    "artillery": "^2.0.8",
+    "eslint": "^8.0.1",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-spellcheck": "^0.0.20",
+    "heroku": "^8.11.1",
+    "jest": "29.5.0",
+    "source-map-support": "^0.5.20",
+    "supertest": "^6.1.3",
+    "ts-jest": "29.1.0",
+    "ts-loader": "^9.2.3",
+    "ts-node": "^10.0.0",
+    "tsconfig-paths": "4.2.0",
+    "typescript": "^5.0.0"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "ts"
+    ],
+    "rootDir": "src",
+    "testRegex": ".*\\.spec\\.ts$",
+    "transform": {
+      "^.+\\.(t|j)s$": "ts-jest"
+    },
+    "collectCoverageFrom": [
+      "**/*.(t|j)s"
+    ],
+    "coverageDirectory": "../coverage",
+    "testEnvironment": "node"
+  }
+}

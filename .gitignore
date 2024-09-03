@@ -28,6 +28,7 @@ build/
 .idea
 .gradle
 local.properties
+android/app/gradle.properties
 *.iml
 *.hprof
 .cxx/
@@ -61,3 +62,15 @@ yarn-error.log
 
 # Temporary files created by Metro to check the health of the file watcher
 .metro-health-check*
+
+# testing
+/coverage
+
+derived_data
+.sentryclirc
+build.xcarchive
+auth_transporter.p8
+auth_play_store.json
+modules.json
+
+.yarn

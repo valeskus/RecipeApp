@@ -1,3 +1,16 @@
 {
-  "extends": "@tsconfig/react-native/tsconfig.json"
+  "extends": "@tsconfig/react-native/tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "@UI/*": ["./src/UI/*"],
+      "@stores/*": ["./src/stores/*"],
+      "@components/*": ["./src/components/*"],
+      "@api/*": ["./src/api/*"],
+      "@managers/*": ["./src/managers/*"],
+      "@services/*": ["./src/infrastructure/services/*"]
+    },  
+    "lib": ["es2022"],
+  },
+  "include": ["./src"]
 }

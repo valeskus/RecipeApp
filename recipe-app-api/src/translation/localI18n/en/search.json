@@ -1,0 +1,47 @@
+{
+    "sort": {
+        "relevance": "By relevance",
+        "time": "Quickest first",
+        "alphabetically": "A-Z",
+        "-alphabetically": "Z-A",
+        "calories": "Low calories first",
+        "-calories": "Hight calories first"
+    },
+    "filter": {
+        "calories": {
+            "name": "Calories",
+            "query": {
+                "lte100": "Up to 100 kCal",
+                "lte250": "Up to 250 kCal",
+                "lte500": "Up to 500 kCal",
+                "lte750": "Up to 750 kCal",
+                "lte1000": "Up to 1000 kCal",
+                "gt1000": "More then 1000 kCal"
+            }
+        },
+        "total_time": {
+            "name": "Cooking time",
+            "query": {
+                "lte20": "Up to 20 minutes",
+                "lte30": "Up to 30 minutes",
+                "lte45": "Up to 45 minutes",
+                "lte60": "Up to 1 hour",
+                "gt60": "More then 1 hour"
+            }
+        },
+        "difficulty": {
+            "name": "Difficulty",
+            "query": {
+                "2": "A challenge",
+                "1": "More effort",
+                "0": "Easy"
+            }
+        },
+        "meal_type": {
+            "name": "Category"
+        },
+        "diet_type": {
+            "name": "Diet"
+        }
+    }
+}
