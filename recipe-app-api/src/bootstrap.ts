@@ -1,10 +1,8 @@
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-require('dotenv').config({ path: `./env/.${process.env.APP_ENV}.env` });
-
 import { INestApplication, ValidationPipe } from '@nestjs/common';
 import { HttpAdapterHost } from '@nestjs/core';
 
 import { MongoExceptionFilter } from './exception-filters/mongo.exception-filter';
+import { SentryExceptionFilter } from './exception-filters/sentry.exception-filter';
 
 export function bootstrap(app: INestApplication) {
   app.useGlobalPipes(new ValidationPipe({
@@ -14,4 +12,5 @@ export function bootstrap(app: INestApplication) {
   const { httpAdapter } = app.get(HttpAdapterHost);
 
   app.useGlobalFilters(new MongoExceptionFilter({ httpAdapter }));
+  app.useGlobalFilters(new SentryExceptionFilter(httpAdapter));
 }

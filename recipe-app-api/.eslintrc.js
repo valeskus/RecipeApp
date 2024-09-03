@@ -61,7 +61,10 @@ module.exports = {
         'gz',
         'ns',
         'argv',
-        'mjs'
+        'mjs',
+        'dsn',
+        'integrations',
+        'smtp'
       ]
     }],
     'no-extra-semi': 'error',

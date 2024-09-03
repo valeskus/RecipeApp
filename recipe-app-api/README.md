@@ -29,6 +29,13 @@ Each database can be accessed via the dedicated credentials, provided in `.env` 
 
 This project uses Heroku as a deployment platform
 
+Run docker on your machine.
+
+* login to Heroku
+```bash
+yarn deployment:login
+```
+
 * build a release candidate
 ```bash
 yarn deployment:build
@@ -36,12 +43,21 @@ yarn deployment:build
 
 * verify the release candidate by running it in docker
 ```bash
- docker run -d --restart=always -p 3000:3000 registry.heroku.com/recipe-hub-app-api/web:latest
+docker run -d --restart=always -p 3000:3000 registry.heroku.com/recipe-hub-app-api/web:latest
+```
+*Note: for Apple Silicone run this before running docker image*
+```bash
+export DOCKER_DEFAULT_PLATFORM=linux/amd64
 ```
 
 * release
 ```bash
 yarn deployment:release
+```
+
+* see remote server restarts
+```bash
+yarn deployment:logs
 ```
 
 * check the host\
