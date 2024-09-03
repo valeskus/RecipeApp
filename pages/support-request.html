@@ -2,10 +2,190 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="0; url=https://docs.google.com/forms/d/e/1FAIpQLSeEE_mKLVsn4lcKrkxorq0_Q0zbr8MnghCv7qf14-Xt6n3Dsg/viewform">
-    <title>Redirecting...</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .description {
+            text-align: center;
+            color: #777;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+        }
+
+        input[type="email"],
+        textarea {
+            width: calc(100% - 24px);
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            background-color: #28a745;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            position: relative;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #218838;
+        }
+
+        input[disabled] {
+            cursor: not-allowed;
+        }
+
+        .loading-spinner {
+            border: 3px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 3px solid #ffffff;
+            width: 16px;
+            height: 16px;
+            animation: spin 1s linear infinite;
+            position: absolute;
+            top: 50%;
+            left: 10px;
+            transform: translateY(-50%);
+            display: none;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .message {
+            text-align: center;
+            font-size: 16px;
+            color: green;
+            margin-top: 20px;
+        }
+
+        .error {
+            text-align: center;
+            font-size: 16px;
+            color: red;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
-    <p>If you are not redirected, <a href="https://docs.google.com/forms/d/e/1FAIpQLSeEE_mKLVsn4lcKrkxorq0_Q0zbr8MnghCv7qf14-Xt6n3Dsg/viewform">click here</a>.</p>
+
+    <div class="container">
+        <h2>Contact Us</h2>
+        <p class="description">Have a question for the Recipes Hub team? Fill out the form below, and we’ll get back to you!</p>
+        <form id="contactForm" onsubmit="sendEmail(event);">
+            <label for="email">Your Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="question">Your Question:</label>
+            <textarea id="question" name="question" required></textarea>
+
+            <input type="submit" value="Send">
+            <div class="loading-spinner"></div>
+        </form>
+
+        <div id="formMessages"></div>
+    </div>
+
+    <script type="text/javascript">
+        async function sendEmail(event) {
+            event.preventDefault(); // Prevent the form from submitting the traditional way
+
+            const emailInput = document.getElementById('email');
+            const questionInput = document.getElementById('question');
+            const submitButton = document.querySelector('input[type="submit"]');
+            const loadingSpinner = document.querySelector('.loading-spinner');
+            const formMessages = document.getElementById('formMessages');
+
+            // Remove previous messages
+            formMessages.innerHTML = '';
+
+            // Disable inputs and button
+            emailInput.disabled = true;
+            questionInput.disabled = true;
+            submitButton.disabled = true;
+            submitButton.value = 'Sending...';
+            submitButton.style.backgroundColor = '#6c757d'; // "Grayish" green
+            loadingSpinner.style.display = 'block'; // Show the loading spinner
+
+            const data = {
+                message: questionInput.value,
+                authorEmail: emailInput.value
+            };
+
+            try {
+                const response = await fetch('https://recipe-hub-app-api-24e50b540ed7.herokuapp.com/smtp/request-support', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                loadingSpinner.style.display = 'none'; // Hide the loading spinner
+                submitButton.value = 'Send'; // Reset the button text
+                submitButton.style.backgroundColor = '#28a745'; // Reset button color
+                submitButton.disabled = false;
+                emailInput.disabled = false;
+                questionInput.disabled = false;
+
+                if (response.ok) {
+                    formMessages.innerHTML = '<div class="message">Thank you! Your question has been sent.</div>';
+                } else {
+                    throw new Error('Failed to send the email.');
+                }
+            } catch (error) {
+                loadingSpinner.style.display = 'none'; // Hide the loading spinner
+                submitButton.value = 'Send'; // Reset the button text
+                submitButton.style.backgroundColor = '#28a745'; // Reset button color
+                submitButton.disabled = false;
+                emailInput.disabled = false;
+                questionInput.disabled = false;
+
+                formMessages.innerHTML = '<div class="error">Oops! Something went wrong. Please try again.</div>';
+            }
+        }
+    </script>
+
 </body>
 </html>
+
+<!-- This HTML form and script were written by ChatGPT, an AI language model created by OpenAI. -->

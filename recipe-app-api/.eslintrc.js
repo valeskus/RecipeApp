@@ -63,7 +63,8 @@ module.exports = {
         'argv',
         'mjs',
         'dsn',
-        'integrations'
+        'integrations',
+        'smtp'
       ]
     }],
     'no-extra-semi': 'error',
