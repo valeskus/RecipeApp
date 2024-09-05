@@ -73,7 +73,7 @@ module.exports = {
     'react/self-closing-comp': ['error', {
       'component': true,
     }],
-    'react/jsx-closing-bracket-location': ['error','line-aligned'],
+    'react/jsx-closing-bracket-location': ['error', 'line-aligned'],
     'react/jsx-indent-props': ['error', 2],
     'react/jsx-wrap-multilines': ['error', {
       declaration: 'parens',
@@ -189,5 +189,11 @@ module.exports = {
         '@typescript-eslint/default-param-last': 'off'
       },
     },
+    {
+      files: ["e2e/**/*.js"],
+      parserOptions: {
+        project: "./tsconfig.e2e.json"
+      }
+    }
   ]
 };
