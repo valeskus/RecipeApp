@@ -93,6 +93,7 @@ export function RecipesCards({ gridType, recipes, total }: Props): JSX.Element {
     return (
       <FlatList
         {...commonProps}
+        testID="recipesList"
         contentContainerStyle={styles.recipesCardsContainer}
         numColumns={2}
         key="grid-list"
@@ -109,6 +110,7 @@ export function RecipesCards({ gridType, recipes, total }: Props): JSX.Element {
   return (
     <FlatList
       {...commonProps}
+      testID="recipesListLine"
       key="linear-list"
       getItemLayout={getItemLineLayout}
       removeClippedSubviews

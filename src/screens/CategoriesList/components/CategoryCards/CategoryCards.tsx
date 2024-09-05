@@ -42,6 +42,7 @@ export function CategoryCards({ categories }: Props): JSX.Element {
 
   return (
     <FlatList
+      testID="categoriesList"
       data={data}
       style={styles.offset}
       renderItem={getRenderItem({ onPress })}
