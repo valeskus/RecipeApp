@@ -28,6 +28,7 @@ LogBox.ignoreLogs([
 StyleSheet.setStyleAttributePreprocessor('fontSize', (size) => {
   return normalize(size)
 });
+// test commit 3
 
 if (PLAYGROUND === 'true') {
   AppRegistry.registerComponent(appName, () => Playground);
